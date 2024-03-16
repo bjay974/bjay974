@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbre Généalogique</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        .tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+        }
+        .node {
+            border: 2px solid #333;
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 20px;
+            background-color: #fff;
+            text-decoration: none;
+            color: #333;
+            position: relative;
+            text-align: center;
+        }
+        .node:hover {
+            background-color: #ccc;
+        }
+        .arrow {
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            border: solid black;
+            border-width: 0 2px 2px 0;
+            display: inline-block;
+            padding: 5px;
+        }
+        .arrow-up {
+            transform: rotate(-135deg);
+            -webkit-transform: rotate(-135deg);
+        }
+        .arrow-down {
+            transform: rotate(45deg);
+            -webkit-transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="tree">
+        <div class="node">
+            <span>Nom: BETSMAN</span><br>
+            <span>Prénom: Jérôme</span>
+            <div class="arrow arrow-down"></div>
+        </div>
+        <div class="node">
+            <span>Nom: GRONDIN</span><br>
+            <span>Prénom: Emmanuelle</span>
+            <div class="arrow arrow-down"></div>
+        </div>
+    </div>
+    <div class="tree">
+        <div class="node">
+            <span>Nom: BETSMAN</span><br>
+            <span>Prénom: Eugenie</span>
+            <div class="arrow arrow-up"></div>
+        </div>
+    </div>
+    <div class="tree">
+        <div class="node">
+            <span>Nom: Doe</span><br>
+            <span>Prénom: James</span>
+            <div class="arrow arrow-down"></div>
+        </div>
+        <div class="node">
+            <span>Nom: Doe</span><br>
+            <span>Prénom: Emily</span>
+            <div class="arrow arrow-down"></div>
+        </div>
+    </div>
+</body>
+</html>
