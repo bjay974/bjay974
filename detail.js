@@ -34,9 +34,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const weddingDateItem = document.createElement('li');
                     weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} `;
                     detailsList.appendChild(weddingDateItem);
-                    const weddingNameItem = document.createElement('li');
-                    weddingNameItem.textContent = `Nom d'épouse: ${person.nom_epouse}`;
-                    detailsList.appendChild(weddingNameItem);
+                    if (person.nom_epouse !== null) {
+                        const weddingNameItem = document.createElement('li');
+                        weddingNameItem.textContent = `Nom d'épouse: ${person.nom_epouse}`;
+                        detailsList.appendChild(weddingNameItem);  }
                 }
                 
                 // Ajouter la date de décès si elle n'est pas nulle
@@ -45,7 +46,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} `;
                     detailsList.appendChild(deathDateItem);
                 }
+                
+                // Ajouter l'origine
+                if (person.date_deces !== null) {
+                    const deathDateItem = document.createElement('li');
+                    origineItem.textContent = `Pays d'origine : ${person.origine}`;
+                    detailsList.appendChild(origineItem);
+                }
 
+                // Ajouter l'affranchissement 
+                if (person.affranchi !== null) {
+                    const deathDateItem = document.createElement('li');
+                    affranchissementItem.textContent = `Affranchi en 1848`;
+                    detailsList.appendChild(affranchissementItem);
+                }                
 
 
                 
