@@ -9,7 +9,7 @@ fetch('data.json')
             // Créer un élément de liste pour chaque personne
             const listItem = document.createElement('li');
             const link = document.createElement('a');
-            link.textContent = person.nom + ' ' + person.prénom;
+            link.textContent = person.nom + ' ' + person.prenom;
             link.href = 'person.html?id=' + person.id;
             listItem.appendChild(link);
             personList.appendChild(listItem);
