@@ -22,36 +22,28 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
-                birthDateItem.textContent = `Date de Naissance: ${person.date_naissance}`;
+                birthDateItem.textContent = `Naissance: ${person.date_naissance} à ${person.lieu_naissance} `;
                 detailsList.appendChild(birthDateItem);
 
-                // Ajouter le lieu de naissance
-                const birthPlaceItem = document.createElement('li');
-                birthPlaceItem.textContent = `Lieu de Naissance: ${person.lieu_naissance}`;
-                detailsList.appendChild(birthPlaceItem);
-
-                // Ajouter la date de décès si elle n'est pas nulle
-                if (person.date_deces !== null) {
-                    const deathDateItem = document.createElement('li');
-                    deathDateItem.textContent = `Date de Décès: ${person.date_deces}`;
-                    detailsList.appendChild(deathDateItem);
-                    const deathPlaceItem = document.createElement('li');
-                    deathPlaceItem.textContent = `Lieu du Décès: ${person.lieu_deces}`;
-                    detailsList.appendChild(deathPlaceItem);
-                }
-
+              
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
-                    weddingDateItem.textContent = `Date de Mariage: ${person.date_mariage}`;
+                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} `;
                     detailsList.appendChild(weddingDateItem);
-                    const weddingPlaceItem = document.createElement('li');
-                    weddingPlaceItem.textContent = `Lieu du Mariage: ${person.lieu_mariage}`;
-                    detailsList.appendChild(weddingPlaceItem);
                     const weddingNameItem = document.createElement('li');
                     weddingNameItem.textContent = `Nom d'épouse: ${person.nom_epouse}`;
                     detailsList.appendChild(weddingNameItem);
                 }
+                
+                // Ajouter la date de décès si elle n'est pas nulle
+                if (person.date_deces !== null) {
+                    const deathDateItem = document.createElement('li');
+                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} `;
+                    detailsList.appendChild(deathDateItem);
+                }
+
+
 
                 
                 personDetails.appendChild(detailsList);
