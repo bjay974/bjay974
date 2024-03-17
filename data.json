@@ -1,6 +1,6 @@
 [
   {
-    "id": "201",
+    "id": 201,
     "nom": "BETSMAN",
     "prenom": "Jean-Paul",
     "Genre": "M",
@@ -25,7 +25,7 @@
     "generation": null
   },
   {
-    "id": "202",
+    "id": 202,
     "nom": "FONTAINE",
     "prenom": "Marie-Josée",
     "Genre": "F",
@@ -50,7 +50,7 @@
     "generation": null
   },
   {
-    "id": "101",
+    "id": 101,
     "nom": "BETSMAN",
     "prenom": "Jérôme",
     "Genre": "M",
@@ -75,7 +75,7 @@
     "generation": null
   },
   {
-    "id": "302",
+    "id": 302,
     "nom": "MARTIN",
     "prenom": "Marie Eugenie",
     "Genre": "F",
@@ -100,7 +100,7 @@
     "generation": null
   },
   {
-    "id": "301",
+    "id": 301,
     "nom": "BETSMAN",
     "prenom": "Georges",
     "Genre": "M",
@@ -125,7 +125,7 @@
     "generation": null
   },
   {
-    "id": "1",
+    "id": 1,
     "nom": "BETSMAN",
     "prenom": "Eugenie",
     "Genre": "F",
@@ -150,7 +150,7 @@
     "generation": null
   },
   {
-    "id": "2",
+    "id": 2,
     "nom": "BETSMAN",
     "prenom": "Jeremy",
     "Genre": "M",
@@ -175,7 +175,7 @@
     "generation": null
   },
   {
-    "id": "3",
+    "id": 3,
     "nom": "BETSMAN",
     "prenom": "Johanna",
     "Genre": "F",
@@ -200,7 +200,7 @@
     "generation": null
   },
   {
-    "id": "4",
+    "id": 4,
     "nom": "BETSMAN",
     "prenom": "Jayna",
     "Genre": "F",
@@ -225,7 +225,7 @@
     "generation": null
   },
   {
-    "id": "401",
+    "id": 401,
     "nom": "MARTIN",
     "prenom": "Emmanuel",
     "Genre": "M",
@@ -250,7 +250,7 @@
     "generation": null
   },
   {
-    "id": "402",
+    "id": 402,
     "nom": "GRAMINO",
     "prenom": "Emilia",
     "Genre": "F",
@@ -275,7 +275,7 @@
     "generation": null
   },
   {
-    "id": "601",
+    "id": 601,
     "nom": "MARTIN",
     "prenom": "Saint Caprice",
     "Genre": "M",
@@ -300,7 +300,7 @@
     "generation": "6"
   },
   {
-    "id": "602",
+    "id": 602,
     "nom": "MONTIGUE",
     "prenom": "Olympe",
     "Genre": "F",
@@ -325,7 +325,7 @@
     "generation": "6"
   },
   {
-    "id": "501",
+    "id": 501,
     "nom": "MONTIGUE",
     "prenom": "Eugene",
     "Genre": "M",
@@ -350,7 +350,7 @@
     "generation": "5"
   },
   {
-    "id": "502",
+    "id": 502,
     "nom": "ATHANASE",
     "prenom": "Marie Josephine",
     "Genre": "F",
