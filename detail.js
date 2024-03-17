@@ -37,28 +37,28 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(deathDateItem);
                     const deathPlaceItem = document.createElement('li');
                     deathPlaceItem.textContent = `Lieu du Décès: ${person.lieu_deces}`;
-                    detailsList.appendChild(deathPlaceItem); }
-                    
-                // Ajouter la date de mariage et le nom  si la date n'est pas nulle
+                    detailsList.appendChild(deathPlaceItem);
+                }
+
+                // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
                     weddingDateItem.textContent = `Date de Mariage: ${person.date_mariage}`;
                     detailsList.appendChild(weddingDateItem);
                     const weddingPlaceItem = document.createElement('li');
                     weddingPlaceItem.textContent = `Lieu du Mariage: ${person.lieu_mariage}`;
-                    detailsList.appendChild(weddingPlaceItem);  
+                    detailsList.appendChild(weddingPlaceItem);
                     const weddingNameItem = document.createElement('li');
                     weddingNameItem.textContent = `Nom d'épouse: ${person.nom_epouse}`;
-                    detailsList.appendChild(weddingNameItem);   }     
-                
+                    detailsList.appendChild(weddingNameItem);
                 }
 
+                
                 personDetails.appendChild(detailsList);
-                    
+
             } else {
                 personDetails.textContent = 'Personne introuvable.';
             }
         })
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 });
-
