@@ -3,7 +3,7 @@
     "id": 1,"nom": "Betsman","prenom": "Jean-Paul","nom_epouse": null,"nom_pere": "Betsman","prenom_pere": "Georges","nom_mere": "Martin","prenom_mere": "Marie Eugenie","date_naissance": "28/04/1952","lieu_naissance": "Saint-Denis",
     "date_deces": "31/01/2024","lieu_deces": "Limoges","date_mariage": null,"lieu_mariage": "Limoges","domicile": null,"affranchi": null,"origine": "Pére","lien": "2", "generation": null},
   {
-    "id": 202,
+    "id": 9,
     "nom": "Fontaine",
     "prenom": "Marie-Josée",
     "nom_epouse": null,
@@ -150,7 +150,7 @@
     "generation": null
   },
   {
-    "id": 8",
+    "id": 8,
     "nom": "Martin",
     "prenom": "Emmanuel",
     "nom_epouse": null,
