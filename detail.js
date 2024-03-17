@@ -14,9 +14,11 @@ window.onload = function() {
             const personDetails = document.getElementById('person-details');
             if (person) {
                 personDetails.innerHTML = `
-                    <p>Nom : ${person.nom}</p>
-                    <p>Prénom : ${person.prénom}</p>
-                    <p>Âge : ${person.âge}</p>
+                    <p>Nom : ${person.nom} Prénom : ${person.prenom}</p>
+                    <p>Date de Naissance : ${person.Date de naissance> à ${person.Lieu de naissance></p>
+                    <p>Pére : ${person.nom du pere} - : ${person.prenom du pere}</p>  
+                    <p>Mére : ${person.nom de la Mere} - : ${person.prenom de la Mere}</p>                                      
+                                                                          
                 `;
             } else {
                 personDetails.textContent = 'Personne non trouvée';
