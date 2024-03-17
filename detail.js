@@ -35,6 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     const deathDateItem = document.createElement('li');
                     deathDateItem.textContent = `Date de Décès: ${person.date_deces}`;
                     detailsList.appendChild(deathDateItem);
+                    const deathPlaceItem = document.createElement('li');
+                    deathPlaceItem.textContent = `Lieu du Décès: ${person.lieu_deces}`;
+                    detailsList.appendChild(deathDateItem);
+
+                    
                 }
 
                 personDetails.appendChild(detailsList);
