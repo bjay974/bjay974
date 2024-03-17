@@ -1,27 +1,9 @@
 [
   {
-    "id_f": 201,
-    "nom": "Betsman",
-    "prenom": "Jean-Paul",
-    "nom_epouse": null,
-    "nom_pere": "Betsman",
-    "prenom_pere": "Georges",
-    "nom_mere": "Martin",
-    "prenom_mere": "Marie Eugenie",
-    "date_naissance": "28/04/1952",
-    "lieu_naissance": "Saint-Denis",
-    "date_deces": "31/01/2024",
-    "lieu_deces": "Limoges",
-    "date_mariage": null,
-    "lieu_mariage": "Limoges",
-    "domicile": null,
-    "affranchi": null,
-    "origine": "Pére",
-    "lien": "2",
-    "generation": null
-  },
+    "id": 1,"nom": "Betsman","prenom": "Jean-Paul","nom_epouse": null,"nom_pere": "Betsman","prenom_pere": "Georges","nom_mere": "Martin","prenom_mere": "Marie Eugenie","date_naissance": "28/04/1952","lieu_naissance": "Saint-Denis",
+    "date_deces": "31/01/2024","lieu_deces": "Limoges","date_mariage": null,"lieu_mariage": "Limoges","domicile": null,"affranchi": null,"origine": "Pére","lien": "2", "generation": null},
   {
-    "id_f": 202,
+    "id": 202,
     "nom": "Fontaine",
     "prenom": "Marie-Josée",
     "nom_epouse": null,
@@ -42,7 +24,7 @@
     "generation": null
   },
   {
-    "id_f": 101,
+    "id": 2,
     "nom": "Betsman",
     "prenom": "Jérôme",
     "nom_epouse": null,
@@ -63,7 +45,7 @@
     "generation": null
   },
   {
-    "id_f": 301,
+    "id": 3,
     "nom": "Martin",
     "prenom": "Marie Eugenie",
     "nom_epouse": "Betsman",
@@ -84,7 +66,7 @@
     "generation": null
   },
   {
-    "id_f": 1,
+    "id": 4,
     "nom": "Betsman",
     "prenom": "Eugenie",
     "nom_epouse": null,
@@ -105,7 +87,7 @@
     "generation": null
   },
   {
-    "id_f": 2,
+    "id": 5,
     "nom": "Betsman",
     "prenom": "Jeremy",
     "nom_epouse": null,
@@ -126,7 +108,7 @@
     "generation": null
   },
   {
-    "id_f": 3,
+    "id": 6,
     "nom": "Betsman",
     "prenom": "Johanna",
     "nom_epouse": null,
@@ -147,7 +129,7 @@
     "generation": null
   },
   {
-    "id_f": 4,
+    "id": 7,
     "nom": "Betsman",
     "prenom": "Jayna",
     "nom_epouse": null,
@@ -168,7 +150,7 @@
     "generation": null
   },
   {
-    "id_f": 40",
+    "id": 8",
     "nom": "Martin",
     "prenom": "Emmanuel",
     "nom_epouse": null,
