@@ -20,9 +20,8 @@
     "prenom_conjoint": "Marie Josée",
     "domicile": "Limoges",
     "affranchi": null,
-    "origine": "Pére",
-    "lien": "2",
-    "generation": null
+    "origine": null,
+    "lien": "2"
   },
   {
     "id": 202,
@@ -45,9 +44,8 @@
     "prenom_conjoint": "Jean Paul",
     "domicile": "Limoges",
     "affranchi": null,
-    "origine": "Mére",
-    "lien": "2",
-    "generation": null
+    "origine": null,
+    "lien": "2"  
   },
   {
     "id": 101,
@@ -70,9 +68,8 @@
     "prenom_conjoint": "Emmanuelle",
     "domicile": "Limoges",
     "affranchi": null,
-    "origine": "Moi",
-    "lien": "1",
-    "generation": null
+    "origine": null,
+    "lien": "1"  
   },
   {
     "id": 302,
@@ -95,9 +92,8 @@
     "prenom_conjoint": "Georges",
     "domicile": "Rue Sainte Anne",
     "affranchi": null,
-    "origine": "Grand Mére",
-    "lien": "3",
-    "generation": null
+    "origine": null,
+    "lien": "3"    
   },
   {
     "id": 301,
@@ -120,9 +116,9 @@
     "prenom_conjoint": null,
     "domicile": null,
     "affranchi": null,
-    "origine": "Grand Pére",
+    "origine": "Nigéria",
     "lien": "3",
-    "generation": null
+    
   },
   {
     "id": 1,
@@ -145,9 +141,8 @@
     "prenom_conjoint": null,
     "domicile": null,
     "affranchi": null,
-    "origine": "Enfant",
-    "lien": "0",
-    "generation": null
+    "origine": null,
+    "lien": "0"
   },
   {
     "id": 2,
@@ -170,9 +165,8 @@
     "prenom_conjoint": null,
     "domicile": null,
     "affranchi": null,
-    "origine": "Enfant",
-    "lien": "0",
-    "generation": null
+    "origine": null,
+    "lien": "0"
   },
   {
     "id": 3,
@@ -195,9 +189,8 @@
     "prenom_conjoint": null,
     "domicile": null,
     "affranchi": null,
-    "origine": "Enfant",
-    "lien": "0",
-    "generation": null
+    "origine": null,
+    "lien": "0"  
   },
   {
     "id": 4,
@@ -220,9 +213,8 @@
     "prenom_conjoint": null,
     "domicile": null,
     "affranchi": null,
-    "origine": "Enfant",
-    "lien": "0",
-    "generation": null
+    "origine": null,
+    "lien": "0" 
   },
   {
     "id": 401,
@@ -245,9 +237,8 @@
     "prenom_conjoint": "Emilia",
     "domicile": null,
     "affranchi": null,
-    "origine": "A Grand Pére",
-    "lien": "4",
-    "generation": null
+    "origine": null,
+    "lien": "4"
   },
   {
     "id": 402,
@@ -270,9 +261,8 @@
     "prenom_conjoint": "Emmanuel",
     "domicile": null,
     "affranchi": null,
-    "origine": "A Grand Mére",
-    "lien": "4",
-    "generation": null
+    "origine": null,
+    "lien": "4"
   },
   {
     "id": 601,
@@ -295,9 +285,8 @@
     "prenom_conjoint": "Olympe",
     "domicile": "Madagascar",
     "affranchi": "OUI",
-    "origine": "AAA Grand Pére",
-    "lien": "6",
-    "generation": "6"
+    "origine": null,
+    "lien": "6"
   },
   {
     "id": 602,
@@ -320,9 +309,8 @@
     "prenom_conjoint": "Caprice",
     "domicile": null,
     "affranchi": null,
-    "origine": "AAA Grand Mére",
-    "lien": "6",
-    "generation": "6"
+    "origine": "Madagascar",
+    "lien": "6"
   },
   {
     "id": 501,
@@ -345,9 +333,8 @@
     "prenom_conjoint": "Marie Joséphine",
     "domicile": null,
     "affranchi": null,
-    "origine": "AA Grand Pére",
-    "lien": "5",
-    "generation": "5"
+    "origine": null,
+    "lien": "5"
   },
   {
     "id": 502,
@@ -370,9 +357,8 @@
     "prenom_conjoint": "Eugene",
     "domicile": null,
     "affranchi": null,
-    "origine": "AA Grand Mére",
-    "lien": "5",
-    "generation": "5"
+    "origine": null,
+    "lien": "5"
   }
 ]
 
