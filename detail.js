@@ -48,15 +48,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // Ajouter l'origine
-                if (person.date_deces !== null) {
-                    const deathDateItem = document.createElement('li');
+                if (person.origine !== null) {
+                    const origineItem = document.createElement('li');
                     origineItem.textContent = `Pays d'origine : ${person.origine}`;
                     detailsList.appendChild(origineItem);
                 }
 
                 // Ajouter l'affranchissement 
                 if (person.affranchi !== null) {
-                    const deathDateItem = document.createElement('li');
+                    const affranchissementItem = document.createElement('li');
                     affranchissementItem.textContent = `Affranchi en 1848`;
                     detailsList.appendChild(affranchissementItem);
                 }                
