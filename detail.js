@@ -5,24 +5,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const urlParams = new URLSearchParams(window.location.search);
     const personId = urlParams.get('id');
 
-    // Fonction pour afficher les enfants d'une personne
-    function displayChildren(person, data, personId) {
-        if (person && person.enfants && person.enfants.length > 0) {
-            const childrenList = document.createElement('ul');
-            person.enfants.forEach(childId => {
-                const child = findPersonById(data, childId);
-                if (child) {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = `${child.nom} ${child.prenom}`;
-                    childrenList.appendChild(listItem);
-                }
-            });
-            document.getElementById('children-details').appendChild(childrenList);
-        } else {
-            document.getElementById('children-details').textContent = 'Aucun enfant trouvé.';
-        }
-    }
-    
     // Charger les données depuis le fichier JSON
     fetch('data.json')
         .then(response => response.json())
@@ -55,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(deathDateItem);
                     const deathPlaceItem = document.createElement('li');
                     deathPlaceItem.textContent = `Lieu du Décès: ${person.lieu_deces}`;
-                    detailsList.appendChild(deathPlaceItem);
+                    detailsList.appendChild(deathPlaceItem); }
                     
                 // Ajouter la date de mariage et le nom  si la date n'est pas nulle
                 if (person.date_mariage !== null) {
@@ -67,12 +49,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(weddingPlaceItem);  
                     const weddingNameItem = document.createElement('li');
                     weddingNameItem.textContent = `Nom d'épouse: ${person.nom_epouse}`;
-                    detailsList.appendChild(weddingNameItem);
-                    
+                    detailsList.appendChild(weddingNameItem);   }     
+                
                 }
 
                 personDetails.appendChild(detailsList);
-                displayChildren(person, data, personId);
                     
             } else {
                 personDetails.textContent = 'Personne introuvable.';
