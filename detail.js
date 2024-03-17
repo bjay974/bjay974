@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) ||
                            (child.nom_mere === person.nom && child.prenom_mere === person.prenom);
                 });
-
+                children.sort((a, b) => (a.date_naissance > b.date_naissance) ? 1 : ((b.date_naissance > a.date_naissance) ? -1 : 0)); // Trie par date de naissance
                 if (children.length > 0) {
                     const childrenList = document.createElement('li');
                     const childrenHeader = document.createElement('h3');
