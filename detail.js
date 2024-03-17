@@ -15,7 +15,7 @@ window.onload = function() {
             if (person) {
                 personDetails.innerHTML = `
                     <p>Nom : ${person.nom}</p>
-                    <p>Prénom : ${person.prénom}</p>
+                    <p>Prénom : ${person.prenom}</p>
                     <p>Date de Naissance  : ${person.date_naissance}</p>
                 `;
             } else {
