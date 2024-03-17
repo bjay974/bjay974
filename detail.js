@@ -10,8 +10,8 @@ document.addEventListener('DOMContentLoaded', () => {
         .then(response => response.json())
         .then(data => {
             // Trouver la personne correspondante
-            const person = data.find(person => person.id == personId);
-
+            const person = data.find(p => p.id === parseInt(personId));
+            const personDetails = document.getElementById('person-details');
             if (person) {
                 const detailsList = document.createElement('ul');
 
