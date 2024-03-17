@@ -308,8 +308,8 @@
     "nom_conjoint": "St-Martin",
     "prenom_conjoint": "Caprice",
     "domicile": null,
-    "affranchi": null,
-    "origine": "Madagascar",
+    "affranchi": "OUI",
+    "origine": null,
     "lien": "6"
   },
   {
