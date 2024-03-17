@@ -4,13 +4,6 @@
                 .then(data => {
                     const personList = document.getElementById('person-list');   
                         
-                    // Trier les données par date de naissance
-                    data.sort((a, b) => {
-                        const dateA = new Date(a.date_naissance);
-                        const dateB = new Date(b.date_naissance);
-                        return dateA - dateB;
-                    });
-
                     // Parcourir chaque personne dans les données
                     data.forEach(person => {
                          // Créer un élément de liste pour chaque personne
