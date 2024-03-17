@@ -61,7 +61,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(affranchissementItem);
                 }                
 
+                // Recherche des enfants
+                const children = data.filter(child => {
+                    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) ||
+                           (child.nom_mere === person.nom && child.prenom_mere === person.prenom);
+                });
 
+                if (children.length > 0) {
+                    const childrenList = document.createElement('li');
+                    const childrenHeader = document.createElement('h3');
+                    childrenHeader.textContent = "Enfants :";
+                    childrenList.appendChild(childrenHeader);
+                    const childrenUl = document.createElement('ul');
+                    children.forEach(child => {
+                        const childItem = document.createElement('li');
+                        childItem.textContent = `${child.nom}, ${child.prenom}`;
+                        childrenUl.appendChild(childItem);
+                    });
+                    childrenList.appendChild(childrenUl);
+                    detailsList.appendChild(childrenList);
+                }
                 
                 personDetails.appendChild(detailsList);
 
