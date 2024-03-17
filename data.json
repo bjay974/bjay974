@@ -1,6 +1,6 @@
 [
   {
-    "id": "201",
+    "id": 201,
     "nom": "Betsman",
     "prenom": "Jean-Paul",
     "nom_epouse": null,
@@ -21,7 +21,7 @@
     "generation": null
   },
   {
-    "id": "202",
+    "id": 202,
     "nom": "Fontaine",
     "prenom": "Marie-Josée",
     "nom_epouse": null,
@@ -42,7 +42,7 @@
     "generation": null
   },
   {
-    "id": "101",
+    "id": 101,
     "nom": "Betsman",
     "prenom": "Jérôme",
     "nom_epouse": null,
@@ -63,7 +63,7 @@
     "generation": null
   },
   {
-    "id": "301",
+    "id": 301,
     "nom": "Martin",
     "prenom": "Marie Eugenie",
     "nom_epouse": "Betsman",
@@ -84,7 +84,7 @@
     "generation": null
   },
   {
-    "id": "1",
+    "id": 1,
     "nom": "Betsman",
     "prenom": "Eugenie",
     "nom_epouse": null,
@@ -105,7 +105,7 @@
     "generation": null
   },
   {
-    "id": "2",
+    "id": 2,
     "nom": "Betsman",
     "prenom": "Jeremy",
     "nom_epouse": null,
@@ -126,7 +126,7 @@
     "generation": null
   },
   {
-    "id": "3",
+    "id": 3,
     "nom": "Betsman",
     "prenom": "Johanna",
     "nom_epouse": null,
@@ -147,7 +147,7 @@
     "generation": null
   },
   {
-    "id": "4",
+    "id": 4,
     "nom": "Betsman",
     "prenom": "Jayna",
     "nom_epouse": null,
@@ -168,7 +168,7 @@
     "generation": null
   },
   {
-    "id": "401",
+    "id": 40",
     "nom": "Martin",
     "prenom": "Emmanuel",
     "nom_epouse": null,
