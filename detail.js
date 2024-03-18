@@ -28,6 +28,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 birthDateItem.textContent = `Naissance: ${person.date_naissance} à ${person.lieu_naissance} `;
                 detailsList.appendChild(birthDateItem);
 
+                // Ajouter la date de décès si elle n'est pas nulle
+                if (person.date_deces !== null) {
+                    const deathDateItem = document.createElement('li');
+                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} `;
+                    detailsList.appendChild(deathDateItem);
+                }
+
               
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
@@ -61,12 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
                            }
                  }
                                 
-                // Ajouter la date de décès si elle n'est pas nulle
-                if (person.date_deces !== null) {
-                    const deathDateItem = document.createElement('li');
-                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} `;
-                    detailsList.appendChild(deathDateItem);
-                }
                 
                 // Ajouter l'origine
                 if (person.origine !== null) {
