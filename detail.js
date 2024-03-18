@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     else {
                             const conjointNameItem = document.createElement('li');
-                            conjointNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            conjointNameItem.textContent = `Conjoint : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                            }
                  }
