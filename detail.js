@@ -116,11 +116,31 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 });
 
-function calculateAge(date1, date2) {
+function newcalculateAge(date1, date2) {
     let annee1 = new Date(date1).getFullYear();
     let annee2 = new Date(date2).getFullYear();
     return annee1 - annee2;
 }
+
+function calculateAge(date1, date2) {
+    const birthDate = new Date(date1);
+    const otherDate = date2 ? new Date(date2) : new Date();
+    
+    let age = otherDate.getFullYear() - birthDate.getFullYear();
+    const monthDiff = otherDate.getMonth() - birthDate.getMonth();
+    
+    // Si le mois actuel est antérieur au mois de naissance ou s'ils sont identiques mais le jour actuel est antérieur au jour de naissance,
+    // alors l'âge doit être diminué de 1.
+    if (monthDiff < 0 || (monthDiff === 0 && otherDate.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
+
+// Exemple d'utilisation :
+const age = calculateAge("24/06/1976", "16/03/2024");
+console.log(age); // Affichera l'âge de la personne
 
 // Obtenir l’âge
 function twCalculeAge(date1) {
