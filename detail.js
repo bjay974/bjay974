@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const weddingDateItem = document.createElement('li');
                     weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} `;
                     detailsList.appendChild(weddingDateItem);
-                    if (person.nom_epouse !== null) {
+                    if (person.nom_conjoint !== null) {
                         const weddingNameItem = document.createElement('li');
                         weddingNameItem.textContent = `Nom du conjoint : ${person.nom_conjoint}`;
                         detailsList.appendChild(weddingNameItem);  }
