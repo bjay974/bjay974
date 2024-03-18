@@ -121,13 +121,13 @@ function calculateAge(date1, date2) {
     const an1 = parseInt(date1.substr(6, 4));
     const mois1 = parseInt(date1.substr(3, 2));
     const day1 = parseInt(date1.substr(0, 2));
-    const an2 = parseInt(date1.substr(6, 4));
-    const mois2 = parseInt(date1.substr(3, 2));
-    const day2 = parseInt(date1.substr(0, 2));
-    const dateNaissance = new Date(an1 + "-" + mois1 + "-" + day1);
-    const date2 = new Date(an2 + "-" + mois2 + "-" + day2);
-    let age = date2.getFullYear() - dateNaissance.getFullYear();
-    let m = date2.getMonth() - dateNaissance.getMonth();
+    const an2 = parseInt(date2.substr(6, 4));
+    const mois2 = parseInt(date2.substr(3, 2));
+    const day2 = parseInt(date2.substr(0, 2));
+    const dateNaissance = new Date(an2 + "-" + mois2 + "-" + day2);
+    const date1 = new Date(an1 + "-" + mois1 + "-" + day1);
+    let age = date1.getFullYear() - dateNaissance.getFullYear();
+    let m = date1.getMonth() - dateNaissance.getMonth();
     if (m < 0 || (m === 0 && date2.getDate() < dateNaissance.getDate())) {
         age = age - 1;
     }
@@ -138,7 +138,7 @@ function twCalculeAge(date1) {
     const an = parseInt(date1.substr(6, 4));
     const mois = parseInt(date1.substr(3, 2));
     const day = parseInt(date1.substr(0, 2));
-    const dateNaissance = new Date(an, mois - 1, day); // Le mois commence à 0 dans les objets Date
+    const dateNaissance = new Date(an1 + "-" + mois1 + "-" + day1);
     const today = new Date();
     const ageDiff = today.getTime() - dateNaissance.getTime(); // Différence en millisecondes
     const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
