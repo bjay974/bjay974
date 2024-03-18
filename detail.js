@@ -116,35 +116,38 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 });
 
-function newcalculateAge(date1, date2) {
-    let annee1 = new Date(date1).getFullYear();
-    let annee2 = new Date(date2).getFullYear();
-    return annee1 - annee2;
-}
 
-function calculateAge(date1, date2) {
-    const birthDate = new Date(date1);
-    const otherDate = date2 ? new Date(date2) : new Date();
-    
-    let age = otherDate.getFullYear() - birthDate.getFullYear();
-    const monthDiff = otherDate.getMonth() - birthDate.getMonth();
-    
-    // Si le mois actuel est antérieur au mois de naissance ou s'ils sont identiques mais le jour actuel est antérieur au jour de naissance,
-    // alors l'âge doit être diminué de 1.
-    if (monthDiff < 0 || (monthDiff === 0 && otherDate.getDate() < birthDate.getDate())) {
-        age--;
+function calculateAge(date1, date2) {   
+    let an1=date1.substr(6,4); // l'année (les quatre premiers caractères de la chaîne à partir de 6)
+    let mois1=date1.substr(3,2);// On selectionne le mois de la date de naissance
+    let day1= date1.substr(0,2); // On selectionne la jour de la date de naissance
+    let an2=date2.substr(6,4); 
+    let mois2=date2.substr(3,2);
+    let day2= date2.substr(0,2);
+    let dateNaissance = new Date(an1 + "-" + mois1 + "-" + day1);
+    let date2 = new Date(an2 + "-" + mois2 + "-" + day2);
+
+    let age = date2.getFullYear() - dateNaissance.getFullYear();
+    let m = date2.getMonth() - dateNaissance.getMonth();
+    if (m < 0 || (m === 0 && date2.getDate() < dateNaissance.getDate())) {
+        age = age - 1;
     }
-    
-    return age;
+   return age 
 }
 
-// Exemple d'utilisation :
-const age = calculateAge("24/06/1976", "16/03/2024");
-console.log(age); // Affichera l'âge de la personne
 
-// Obtenir l’âge
-function twCalculeAge(date1) {
-    let annee1 = new Date().getFullYear();
-    let annee2 = new Date(date1).getFullYear();
-    return annee1 - annee2;
+function twCalculeAge(date1) {   
+    let an=date1.substr(6,4); // l'année (les quatre premiers caractères de la chaîne à partir de 6)
+    let mois=date1.substr(3,2);// On selectionne le mois de la date de naissance
+    let day= date1.substr(0,2); // On selectionne la jour de la date de naissance
+
+    let dateNaissance = new Date(an + "-" + mois + "-" + day);
+
+    let age = today.getFullYear() - dateNaissance.getFullYear();
+    let m = today.getMonth() - dateNaissance.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < dateNaissance.getDate())) {
+        age = age - 1;
+    }
+   return age 
 }
+
