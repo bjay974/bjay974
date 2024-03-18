@@ -53,11 +53,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             const conjointNameItem = document.createElement('li');
                             conjointNameItem.textContent = `Epouse : ${person.nom_epouse}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); }
+                        }
                     else {
                             const conjointNameItem = document.createElement('li');
                             conjointNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                            }
+                    }
                }
                                 
                 // Ajouter la date de décès si elle n'est pas nulle
