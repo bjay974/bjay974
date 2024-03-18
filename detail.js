@@ -59,8 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             conjointNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                            }
-                    }
-               }
+                 }
                                 
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
