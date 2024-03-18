@@ -68,3 +68,12 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.list {
+    width: 45%; /* Vous pouvez ajuster la largeur en fonction de vos préférences */
+}
+
