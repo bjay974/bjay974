@@ -116,14 +116,14 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function calculateAge(date1, date2) {
-    let annee1 = new Date(date1).getFullYear();
-    let annee2 = new Date(date2).getFullYear();
+    let annee1 = new Date(date1).getUTCFullYear();
+    let annee2 = new Date(date2).getUTCFullYear();
     return annee1 - annee2;
 }
 
 // Obtenir l’âge
 function twCalculeAge(date1) {
-    let annee1 = new Date().getFullYear();
-    let annee2 = new Date(date1).getFullYear();
+    let annee1 = new Date().getUTCFullYear();
+    let annee2 = new Date(date1).getUTCFullYear();
     return annee1 - annee2;
 }
