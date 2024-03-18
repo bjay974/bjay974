@@ -45,14 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.nom_conjoint !== null) {
                     if (person.date_mariage !== null) {
                         if (person.genre == "F") {
-                            const conjointNameItem = document.createElement('li');
-                            conjointNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
-                            detailsList.appendChild(conjointNameItem); 
+                            const epouxNameItem = document.createElement('li');
+                            epouxNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            detailsList.appendChild(epouxNameItem); 
                             }
                         else {
-                            const conjointNameItem = document.createElement('li');
-                            conjointNameItem.textContent = `Epouse : ${person.nom_epouse}, ${person.prenom_conjoint} `;
-                            detailsList.appendChild(conjointNameItem); }
+                            const epouseNameItem = document.createElement('li');
+                            epouseNameItem.textContent = `Epouse : ${person.nom_epouse}, ${person.prenom_conjoint} `;
+                            detailsList.appendChild(epouseNameItem); }
                         }
                     else {
                             const conjointNameItem = document.createElement('li');
