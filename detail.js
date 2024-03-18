@@ -31,20 +31,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
-                    const age = calculateAge(person.date_deces, person.date_naissance);
-                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${age} ans `;
+                    const ageDeces = calculateAge(person.date_deces, person.date_naissance);
+                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${ageDeces} ans `;
                     detailsList.appendChild(deathDateItem);}
                 else {
                     const ageNowItem = document.createElement('li');
-                    const age = twCalculeAge(person.date_naissance);
-                    ageNowItem.textContent = `Âge : ${age} ans `;
+                    const ageNow = twCalculeAge(person.date_naissance);
+                    ageNowItem.textContent = `Âge : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);                    
                  }
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
-                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} `;
+                    const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
+                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${person.ageMariage}  `;
                     detailsList.appendChild(weddingDateItem);
                     if (person.nom_epouse !== null) {
                         const weddingNameItem = document.createElement('li');
@@ -57,16 +58,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.nom_conjoint !== null) {
                     if (person.date_mariage !== null) {
                         if (person.genre == "F") {
+                            const epouxHeader = document.createElement('h3');
+                            epouxHeader.textContent = "Epoux :";
                             const epouxNameItem = document.createElement('li');
-                            epouxNameItem.textContent = `Epoux : ${person.nom_epouse}, ${person.prenom_conjoint} `;
+                            epouxNameItem.textContent = `${person.nom_epouse}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
                             }
                         else {
+                            const epouseHeader = document.createElement('h3');
+                            epouxHeader.textContent = "Epouse :";
                             const epouseNameItem = document.createElement('li');
-                            epouseNameItem.textContent = `Epouse : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            epouseNameItem.textContent = `: ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem); }
                         }
                     else {
+                            const conjointHeader = document.createElement('h3');
+                            conjointHeader.textContent = "Epoux :";    
                             const conjointNameItem = document.createElement('li');
                             conjointNameItem.textContent = `Conjoint : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
