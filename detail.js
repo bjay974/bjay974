@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ageNowItem = document.createElement('li');
                     const age = twCalculeAge(person.date_naissance);
                     ageNowItem.textContent = `Âge : ${age} ans `;
-                    detailsList.appendChild(ageNowItem);}                    
+                    detailsList.appendChild(ageNowItem);                    
                  }
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
                            }
                  }
                                 
-                
                 // Ajouter l'origine
                 if (person.origine !== null) {
                     const origineItem = document.createElement('li');
@@ -91,8 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Recherche des enfants
                 const children = data.filter(child => {
                     return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || (child.nom_mere === person.nom && child.prenom_mere === person.prenom);
-                });
-                children.sort((a, b) => (a.date_naissance > b.date_naissance) ? 1 : ((b.date_naissance > a.date_naissance) ? -1 : 0)); // Trie par date de naissance
+                     });
                 if (children.length > 0) {
                     const childrenList = document.createElement('li');
                     const childrenHeader = document.createElement('h3');
