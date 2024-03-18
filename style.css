@@ -78,3 +78,35 @@ footer {
     width: 45%; /* Vous pouvez ajuster la largeur en fonction de vos préférences */
 }
 
+.person {
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #ffcccc; /* Fond rose pour la mère */
+    width: 150px;
+}
+
+.father {
+    background-color: #ccccff; /* Fond bleu pour les hommes */
+}
+
+.child {
+    margin-top: 20px;
+}
+
+.line {
+    border-left: 2px solid black;
+    height: 40px;
+    position: absolute;
+    left: 50%;
+}
+
+.vertical-line {
+    border-left: 2px solid black;
+    height: 100px;
+    position: absolute;
+    left: 50%;
+    top: 30px;
+}
