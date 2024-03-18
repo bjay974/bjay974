@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
-                    const ageDeces = calculateAge(person.date_deces, person.date_naissance);
+                    let ageDeces = calculateAge(person.date_deces, person.date_naissance);
                     deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${ageDeces} ans `;
                     detailsList.appendChild(deathDateItem);}
                 else {
@@ -58,22 +58,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.nom_conjoint !== null) {
                     if (person.date_mariage !== null) {
                         if (person.genre == "F") {
-                            const epouxHeader = document.createElement('h3');
-                            epouxHeader.textContent = "Epoux :";
                             const epouxNameItem = document.createElement('li');
                             epouxNameItem.textContent = `${person.nom_epouse}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
                             }
                         else {
-                            const epouseHeader = document.createElement('h3');
-                            epouxHeader.textContent = "Epouse :";
                             const epouseNameItem = document.createElement('li');
                             epouseNameItem.textContent = `: ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem); }
                         }
                     else {
-                            const conjointHeader = document.createElement('h3');
-                            conjointHeader.textContent = "Epoux :";    
                             const conjointNameItem = document.createElement('li');
                             conjointNameItem.textContent = `Conjoint : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
