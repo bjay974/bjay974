@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
-                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${person.ageMariage}  `;
+                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${ageMariage}  `;
                     detailsList.appendChild(weddingDateItem);
                     if (person.nom_epouse !== null) {
                         const weddingNameItem = document.createElement('li');
