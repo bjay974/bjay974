@@ -31,16 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
-                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} `;
-                    detailsList.appendChild(deathDateItem);
-                    
-                    const ageItem = document.createElement('li');
-                    const age = calculateAge(person.date_naissance, person.date_deces);
-                    ageItem.textContent = `Âge :${age} ans`;
-                    detailsList.appendChild(ageItem);
+                    const age = calculateAge(person.date_deces, person.date_naissance) ;
+                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${age} ans `;
+                    detailsList.appendChild(deathDateItem);}
+                else {
+                    const ageNowItem = document.createElement('li');
+                    const age = twCalculeAge(person.date_naissance) ;
+                    ageNowItem.textContent = `Âge : ${age} ans `;
+                    detailsList.appendChild(ageNowItem);}                    
                  }
 
-              
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
@@ -117,8 +117,16 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 });
 
-function calculateAge(naissance, deces) {
-    const birthYear = new Date(naissance).getFullYear();
-    const deathYear = new Date(deces).getFullYear();
-    return deathYear - birthYear;
+function calculateAge(date1, date2) {
+    const annee1 = new Date(date1).getFullYear();
+    const annee2 = new Date(date2).getFullYear();
+    return annee1 - annee2;
+}
+
+// Obtenir l’âge
+function twCalculeAge(dNaissance) {
+  let nDifferenceEnMilliseconde = Date.now() - dNaissance.getTime();
+  let dAge = new Date(nDifferenceEnMilliseconde); // Millisecondes
+  // LA date UTC renvoie le nombre de millièmes de seconde depuis le 1er janvier 1970 !!
+  return Math.abs(dAge.getUTCFullYear() - 1970);
 }
