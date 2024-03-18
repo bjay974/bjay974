@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
-                    const age = calculateAge(person.date_deces, person.date_naissance) ;
+                    const age = calculateAge(person.date_deces, person.date_naissance);
                     deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${age} ans `;
                     detailsList.appendChild(deathDateItem);}
                 else {
                     const ageNowItem = document.createElement('li');
-                    const age = twCalculeAge(person.date_naissance) ;
+                    const age = twCalculeAge(person.date_naissance);
                     ageNowItem.textContent = `Âge : ${age} ans `;
                     detailsList.appendChild(ageNowItem);}                    
                  }
@@ -124,9 +124,8 @@ function calculateAge(date1, date2) {
 }
 
 // Obtenir l’âge
-function twCalculeAge(dNaissance) {
-  let nDifferenceEnMilliseconde = Date.now() - dNaissance.getTime();
-  let dAge = new Date(nDifferenceEnMilliseconde); // Millisecondes
-  // LA date UTC renvoie le nombre de millièmes de seconde depuis le 1er janvier 1970 !!
-  return Math.abs(dAge.getUTCFullYear() - 1970);
+function twCalculeAge(date1) {
+    const annee1 = new Date().getFullYear();
+    const annee2 = new Date(date1).getFullYear();
+    return annee1 - annee2;
 }
