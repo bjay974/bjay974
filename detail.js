@@ -34,12 +34,32 @@ document.addEventListener('DOMContentLoaded', () => {
                     const weddingDateItem = document.createElement('li');
                     weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} `;
                     detailsList.appendChild(weddingDateItem);
-                    if (person.nom_conjoint !== null) {
+                    if (person.nom_epouse !== null) {
                         const weddingNameItem = document.createElement('li');
-                        weddingNameItem.textContent = `Nom du conjoint : ${person.nom_conjoint}`;
-                        detailsList.appendChild(weddingNameItem);  }
+                        weddingNameItem.textContent = `Nom d'épouse : ${person.nom_epouse}`;
+                        detailsList.appendChild(weddingNameItem); 
+                        }
                 }
-                
+
+                // Ajouter le nom du conjoint 
+                if (person.nom_conjoint !== null) {
+                    if (person.date_mariage !== null) {
+                        if (person.genre == "F") {
+                            const conjointNameItem = document.createElement('li');
+                            conjointNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            detailsList.appendChild(conjointNameItem); 
+                            }
+                        else {
+                            const conjointNameItem = document.createElement('li');
+                            conjointNameItem.textContent = `Epouse : ${person.nom_epouse}, ${person.prenom_conjoint} `;
+                            detailsList.appendChild(conjointNameItem); }
+                    else {
+                            const conjointNameItem = document.createElement('li');
+                            conjointNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            detailsList.appendChild(conjointNameItem); 
+                           }
+               }
+                                
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
