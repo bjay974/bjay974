@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
-                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${ageMariage}  `;
+                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${ageMariage} ans `;
                     detailsList.appendChild(weddingDateItem);
                     if (person.nom_epouse !== null) {
                         const weddingNameItem = document.createElement('li');
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (children.length > 0) {
                     const childrenList = document.createElement('li');
                     const childrenHeader = document.createElement('h3');
-                    childrenHeader.textContent = "Enfants :";
+                    childrenHeader.textContent = "Enfant(s) :";
                     childrenList.appendChild(childrenHeader);
                     const childrenUl = document.createElement('ul');
                     children.forEach(child => {
