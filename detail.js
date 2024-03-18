@@ -53,12 +53,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (person.date_mariage !== null) {
                         if (person.genre == "F") {
                             const epouxNameItem = document.createElement('li');
-                            epouxNameItem.textContent = `Epoux : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            epouxNameItem.textContent = `Epoux : ${person.nom_epouse}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
                             }
                         else {
                             const epouseNameItem = document.createElement('li');
-                            epouseNameItem.textContent = `Epouse : ${person.nom_epouse}, ${person.prenom_conjoint} `;
+                            epouseNameItem.textContent = `Epouse : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem); }
                         }
                     else {
