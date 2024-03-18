@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
-                    let ageDeces = calculateAge(person.date_deces, person.date_naissance);
+                    const ageDeces = calculateAge(person.date_deces, person.date_naissance);
                     deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${ageDeces} ans `;
                     detailsList.appendChild(deathDateItem);}
                 else {
