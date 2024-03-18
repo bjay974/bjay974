@@ -118,15 +118,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 function calculateAge(date1, date2) {   
-    let an1=date1.substr(6,4); // l'année (les quatre premiers caractères de la chaîne à partir de 6)
-    let mois1=date1.substr(3,2);// On selectionne le mois de la date de naissance
-    let day1= date1.substr(0,2); // On selectionne la jour de la date de naissance
-    let an2=date2.substr(6,4); 
-    let mois2=date2.substr(3,2);
-    let day2= date2.substr(0,2);
-    let dateNaissance = new Date(an1 + "-" + mois1 + "-" + day1);
-    let date2 = new Date(an2 + "-" + mois2 + "-" + day2);
-
+    const an1 = parseInt(date1.substr(6, 4));
+    const mois1 = parseInt(date1.substr(3, 2));
+    const day1 = parseInt(date1.substr(0, 2));
+    const an2 = parseInt(date1.substr(6, 4));
+    const mois2 = parseInt(date1.substr(3, 2));
+    const day2 = parseInt(date1.substr(0, 2));
+    const dateNaissance = new Date(an1 + "-" + mois1 + "-" + day1);
+    const date2 = new Date(an2 + "-" + mois2 + "-" + day2);
     let age = date2.getFullYear() - dateNaissance.getFullYear();
     let m = date2.getMonth() - dateNaissance.getMonth();
     if (m < 0 || (m === 0 && date2.getDate() < dateNaissance.getDate())) {
@@ -135,19 +134,14 @@ function calculateAge(date1, date2) {
    return age 
 }
 
-
 function twCalculeAge(date1) {   
-    let an=date1.substr(6,4); // l'année (les quatre premiers caractères de la chaîne à partir de 6)
-    let mois=date1.substr(3,2);// On selectionne le mois de la date de naissance
-    let day= date1.substr(0,2); // On selectionne la jour de la date de naissance
-
-    let dateNaissance = new Date(an + "-" + mois + "-" + day);
-
-    let age = today.getFullYear() - dateNaissance.getFullYear();
-    let m = today.getMonth() - dateNaissance.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < dateNaissance.getDate())) {
-        age = age - 1;
-    }
-   return age 
+    const an = parseInt(date1.substr(6, 4));
+    const mois = parseInt(date1.substr(3, 2));
+    const day = parseInt(date1.substr(0, 2));
+    const dateNaissance = new Date(an, mois - 1, day); // Le mois commence à 0 dans les objets Date
+    const today = new Date();
+    const ageDiff = today.getTime() - dateNaissance.getTime(); // Différence en millisecondes
+    const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
+    return Math.abs(ageDate.getUTCFullYear()); // Obtenez l'année de l'objet Date pour obtenir l'âge
 }
 
