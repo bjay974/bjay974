@@ -110,3 +110,9 @@ footer {
     left: 50%;
     top: 30px;
 }
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* pour centrer verticalement */
+}
