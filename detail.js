@@ -128,7 +128,7 @@ function calculateAge(date1, date2) {
     const newDate1 = new Date(an1, mois1-1, day1); // Le mois commence à 0 dans les objets Date
     const ageDiff = newDate1 - dateNaissance.getTime(); // Différence en millisecondes
     const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
-    return Math.abs(ageDate.getUTCFullYear() -1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
+    return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
 }
 
 function twCalculeAge(date1) {   
@@ -139,5 +139,5 @@ function twCalculeAge(date1) {
     const today = new Date();
     const ageDiff = today.getTime() - dateNaissance.getTime(); // Différence en millisecondes
     const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
-    return Math.abs(ageDate.getUTCFullYear()- 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
+    return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
 }
