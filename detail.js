@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     const ageItem = document.createElement('li');
                     const age = calculateAge(person.date_naissance, person.date_deces);
-                    ageItem.textContent = `Âge : : ${age} ans`;
+                    ageItem.textContent = `Âge :${age} ans`;
                     detailsList.appendChild(ageItem);
                  }
 
