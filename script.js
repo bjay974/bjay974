@@ -3,14 +3,14 @@ fetch('data.json')
     .then(response => response.json())
     .then(data => {
         // Filtrer les personnes par genre
-        const hommes = data.filter(person => person.Genre === 'M');
-        const femmes = data.filter(person => person.Genre === 'F');
+        const hommes = data.filter(person => person.genre === 'M');
+        const femmes = data.filter(person => person.genre === 'F');
 
         const hommeList = document.getElementById('homme-list');
         const femmeList = document.getElementById('femme-list');
         
         // Titre pour la liste des hommes
-        const hommeTitle = document.createElement('h2');
+        const hommeTitle = document.createElement('h3');
         hommeTitle.textContent = 'Hommes';
         hommeList.appendChild(hommeTitle);
         
@@ -26,7 +26,7 @@ fetch('data.json')
         });
 
         // Titre pour la liste des femmes
-        const femmeTitle = document.createElement('h2');
+        const femmeTitle = document.createElement('h3');
         femmeTitle.textContent = 'Femmes';
         femmeList.appendChild(femmeTitle);
         
