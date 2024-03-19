@@ -76,18 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     const pereItem = document.createElement('li');
                     const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== "Inconnue") {
-                            pereItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
-                            detailsList.appendChild(origineItem);
+                            parentItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
+                            detailsList.appendChild(parentItem);
                         } else {
-                            pereItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
-                            detailsList.appendChild(origineItem); }
+                            parentItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
+                            detailsList.appendChild(parentItem); }
                 } else {
                         if (person.nom_mere !== "Inconnue") {
-                            pereItem.textContent = `${adjectif_genre} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
-                            detailsList.appendChild(origineItem);
+                            parentItem.textContent = `${adjectif_genre} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
+                            detailsList.appendChild(parentItem);
                         } else {
-                            pereItem.textContent = `${adjectif_genre} : de père et de mère inconnus` ;
-                            detailsList.appendChild(origineItem); } 
+                            parentItem.textContent = `${adjectif_genre} : de père et de mère inconnus` ;
+                            detailsList.appendChild(parentItem); } 
                  }          
                                 
                 // Ajouter l'origine
