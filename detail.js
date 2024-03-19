@@ -189,9 +189,9 @@ function ajouterEgenreM(adjectif, genre) {
 //Ajouter Fils de ou Fille de en fonction du genre
 function ajouterParent(genre) {
     if (genre === "M") {
-        return "Fils " ;
+        return "Fils" ;
     } else {
-        return "Fille ";
+        return "Fille";
     }
 }
 
