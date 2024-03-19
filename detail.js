@@ -22,7 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
                 const adjectif_genre = ajouterE("Né", person.genre)
-                birthDateItem.textContent = `${adjectif_genre} le ${person.date_naissance} à ${person.lieu_naissance}`;
+                const dateVerified = verifieDate(person.date_naissance) 
+                birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                 detailsList.appendChild(birthDateItem);  
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
@@ -163,9 +164,10 @@ function verifieDate(date) {
     if (an === "01" && mois === "01" && an !=="1901") {
         return "dans le courant de l'année" + an
     }
-    else if an === "01" && mois === "01" && an ==="1901"
+    else if an === "01" && mois === "01" && an ==="1901" {
         return "à une date inconnue"
     }
-    else 
+    else {
         return "le" + date
+    }
 }
