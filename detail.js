@@ -41,13 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
-                    detailsList.appendChild(deathDateItem);  
+                    detailsList.appendChild(deathDateItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 else {
                     const ageNowItem = document.createElement('li');
                     const ageNow = calculeAge(person.date_naissance);
                     ageNowItem.textContent = `Âge : ${ageNow} ans `;
-                    detailsList.appendChild(ageNowItem);                    
+                    detailsList.appendChild(ageNowItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                  }
                 
                 // Ajouter le nom du conjoint 
@@ -57,17 +59,20 @@ document.addEventListener('DOMContentLoaded', () => {
                             const epouxNameItem = document.createElement('li');
                             epouxNameItem.textContent = `Epoux : ${person.nom_epouse} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                             }
                         else {
                             const epouseNameItem = document.createElement('li');
                             epouseNameItem.textContent = `Epouse : ${person.nom_conjoint} ${person.prenom_conjoint} `;
-                            detailsList.appendChild(epouseNameItem); }
+                            detailsList.appendChild(epouseNameItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace }
                         }
                     else {
                             const conjointNameItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
                             conjointNameItem.textContent = `${adjectif_genre} : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                            }
                  }
                 
@@ -78,16 +83,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (person.nom_mere !== "Inconnue") {
                             parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
                             detailsList.appendChild(parentItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         } else {
                             parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
-                            detailsList.appendChild(parentItem); }
+                            detailsList.appendChild(parentItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace}
                 } else {
                         if (person.nom_mere !== "Inconnue") {
                             parentItem.textContent = `${lienEnfant} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
-                            detailsList.appendChild(parentItem);
+                            detailsList.appendChild(parentItem)
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  ;
                         } else {
                             parentItem.textContent = `${lienEnfant} : de père et de mère inconnus` ;
-                            detailsList.appendChild(parentItem); } 
+                            detailsList.appendChild(parentItem); 
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  } 
                  }          
                                 
                 // Ajouter l'origine
@@ -95,6 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const origineItem = document.createElement('li');
                     origineItem.textContent = `Pays d'origine : ${person.origine}`;
                     detailsList.appendChild(origineItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
 
                 // Ajouter l'affranchissement 
@@ -102,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const affranchissementItem = document.createElement('li');
                     affranchissementItem.textContent = `Affranchi en 1848`;
                     detailsList.appendChild(affranchissementItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
 
                 // Recherche des enfants
