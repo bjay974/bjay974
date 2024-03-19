@@ -75,31 +75,59 @@ document.addEventListener('DOMContentLoaded', () => {
                      }
                  }
                 
-                // Ajouter les parents
-                if (person.nom_pere !== null) {
-                    const parentItem = document.createElement('li');
-                    const lienEnfant = ajouterParent(person.genre)
-                        if (person.nom_mere !== null) {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
-                            detailsList.appendChild(parentItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                        } else {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
-                            detailsList.appendChild(parentItem);
-                            detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
-                 } else {
-                        const parentItem = document.createElement('li');
-                        const lienEnfant = ajouterParent(person.genre)
-                        if (person.nom_mere !== null) {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de  ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
-                            detailsList.appendChild(parentItem)
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  ;
-                        } else {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de père et de mère inconnus` ;
-                            detailsList.appendChild(parentItem); 
-                            detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace   
-                 }          
-                                
+           // Charger le père si l'ID du père est défini
+            if (person.id_pere) {
+                const father = data.find(p => p.id === person.id_pere);
+                if (father) {
+                    const fatherItem = document.createElement('li');
+                    fatherItem.textContent = `Père : ${father.nom} ${father.prenom}`;
+                    detailsList.appendChild(fatherItem);
+                } else {
+                    const fatherItem = document.createElement('li');
+                    fatherItem.textContent = "Père non trouvé.";
+                    detailsList.appendChild(fatherItem);
+                }
+            } else {
+                const fatherItem = document.createElement('li');
+                fatherItem.textContent = "Père inconnu";
+                detailsList.appendChild(fatherItem);
+            }
+
+            // Charger la mère si l'ID de la mère est défini
+            if (person.id_mere) {
+                const mother = data.find(p => p.id === person.id_mere);
+                if (mother) {
+                    const motherItem = document.createElement('li');
+                    motherItem.textContent = `Mère : ${mother.nom} ${mother.prenom}`;
+                    detailsList.appendChild(motherItem);
+                } else {
+                    const motherItem = document.createElement('li');
+                    motherItem.textContent = "Mère non trouvée.";
+                    detailsList.appendChild(motherItem);
+                }
+            } else {
+                const motherItem = document.createElement('li');
+                motherItem.textContent = "Mère inconnue";
+                detailsList.appendChild(motherItem);
+            }          
+
+                        // Charger le ou la conjoint
+            if (person.id_conjoint) {
+                const mother = data.find(p => p.id === person.id_conjoint);
+                if (conjoint) {
+                    const conjointItem = document.createElement('li');
+                    conjointItem.textContent = `Conjoint : ${conjoint.nom} ${conjoint.prenom}`;.textContent = `Mère : ${conjoint.nom} ${conjoint.prenom}`;
+                    detailsList.appendChild(conjointItem);
+                } else {
+                    const conjointItem = document.createElement('li');
+                    conjointItem.textContent = "Conjoint non trouvée.";
+                    detailsList.appendChild(conjointItem);
+                }
+            } else {
+                const conjointItem = document.createElement('li');
+                conjointItem.textContent = "Conjoint inconnue";
+                detailsList.appendChild(conjointItem);
+            } 
                  // Ajouter l'origine
                 if (person.origine !== null) {
                     const origineItem = document.createElement('li');
@@ -116,61 +144,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
 
-// Recherche des enfants
-const children = data.filter(child => {
-    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || 
-           (child.nom_mere === person.nom && child.prenom_mere === person.prenom); 
-});
-
-// Recherche des enfants reconnus
-if (person.nom_legitime !== null) {
-    const nomLegitime = person.nom_legitime;
-    const childrenLegitimes = data.filter(child2 => {
-        // Vérifier si le nom du père est similaire au nom légitime
-        return sontSimilairesAvecDifference(nomLegitime, child2.nom_pere);
-    });
-
-    // Fusionner les enfants et les enfants reconnus dans une seule liste
-    const allChildren = [...children, ...childrenLegitimes];
-
-    // Afficher la liste des enfants
-    if (allChildren.length > 0) {
-        const childrenList = document.createElement('li');
-        const childrenHeader = document.createElement('h3');
-        childrenHeader.textContent = "Enfant(s) :";
-        childrenList.appendChild(childrenHeader);
-        const childrenUl = document.createElement('ul');
-        allChildren.forEach(child => {
-            const childItem = document.createElement('li');
-            childItem.textContent = `${child.nom} ${child.prenom}`;
-            childrenUl.appendChild(childItem);
-        });
-        childrenList.appendChild(childrenUl);
-        detailsList.appendChild(childrenList);
-    }
-} else {
-    // Afficher uniquement la liste des enfants
-    if (children.length > 0) {
-        const childrenList = document.createElement('li');
-        const childrenHeader = document.createElement('h3');
-        childrenHeader.textContent = "Enfant(s) :";
-        childrenList.appendChild(childrenHeader);
-        const childrenUl = document.createElement('ul');
-        children.forEach(child => {
-            const childItem = document.createElement('li');
-            childItem.textContent = `${child.nom} ${child.prenom}`;
-            childrenUl.appendChild(childItem);
-        });
-        childrenList.appendChild(childrenUl);
-        detailsList.appendChild(childrenList);
-    }
-}
-
+            // Récupérer les enfants de la personne si elle est définie comme père ou mère
+                const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
+                if (childrenOfPerson.length > 0) {
+                    const childrenOfPersonList = document.createElement('li');
+                    childrenOfPersonList.textContent = "Enfant(s) :";
+                    const childrenOfPersonUl = document.createElement('ul');
+                    childrenOfPerson.forEach(child => {
+                        const childItem = document.createElement('li');
+                        childItem.textContent = `${child.nom} ${child.prenom}`;
+                        childrenOfPersonUl.appendChild(childItem);
+                    });
+                    childrenOfPersonList.appendChild(childrenOfPersonUl);
+                    detailsList.appendChild(childrenOfPersonList);
+                } 
+            } 
                 personDetails.appendChild(detailsList);
-
-            } else {
-                personDetails.textContent = 'Personne introuvable.';
-            }
+                
         })
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 });
