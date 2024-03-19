@@ -1,0 +1,16 @@
+id,nom,prenom,genre,nom_epouse,nom_legitime,nom_pere,prenom_pere,nom_mere,prenom_mere,date_naissance,lieu_naissance,date_deces,lieu_deces,date_mariage,lieu_mariage,nom_conjoint,prenom_conjoint,domicile,affranchi,origine,lien
+201,BETSMAN,Jean Paul,M,null,null,BETSMAN,Georges,MARTIN,Marie Eugenie,28/04/1952,Saint-Denis,31/01/2024,Limoges,null,null,FONTAINE,Marie Josée,Limoges,null,null,2
+202,FONTAINE,Marie Josée,F,null,null,LAURET,Marie Jeannine,21/12/1954,Saint-Denis,null,null,null,BETSMAN,Jean Paul,Limoges,null,null,null,null,2
+101,BETSMAN,Jérôme,M,null,null,BETSMAN,Jean Paul,FONTAINE,Marie Josée,24/06/1976,Saint-Denis,null,null,null,GRONDIN,Emmanuelle,Limoges,null,null,null,1
+302,MARTIN,Marie Eugenie,F,BETSMAN,null,MARTIN,Emmanuel,GRAMINO,Emilia,08/05/1909,Saint-Benoit,28/02/1987,Saint-Denis,29/12/1944,Saint-Denis,BETSMAN,Georges,Rue Sainte Anne,null,null,3
+301,BETSMAN,Georges,M,null,null,BETSMAN,null,Ovion ?,Biokoko,01/01/1895,Warrio,null,null,null,null,null,null,null,Nigéria,3
+1,BETSMAN,Eugenie,F,null,null,BETSMAN,Jérôme,Grondin,Emmanuelle,09/08/1998,Limoges,null,null,null,null,null,null,null,null,0
+2,BETSMAN,Jeremy,M,null,null,BETSMAN,Jérôme,GRONDIN,Emmanuelle,03/04/2001,Limoges,null,null,null,null,null,null,null,null,0
+3,BETSMAN,Johanna,F,null,null,BETSMAN,Jérôme,GRONDIN,Emmanuelle,09/12/2004,Limoges,null,null,null,null,null,null,null,null,0
+4,BETSMAN,Jayna,F,null,null,BETSMAN,Jérôme,GRONDIN,Emmanuelle,06/12/2014,Limoges,null,null,null,null,null,null,null,null,0
+401,MARTIN,Emmanuel,M,null,null,MARTIN,Eugene,ATHANASE,Marie Joséphine,06/01/1889,Saint-Benoit,17/03/1931,Saint-Denis,13/06/1908,Sainte-Rose,GRAMINO,Emilia,null,null,null,4
+402,GRAMINO,Emilia,F,MARTIN,null,GRAMINO,Thelor,EVRARD,Héléne,25/01/1890,Saint-Benoit,03/02/1919,Saint-Benoit,13/06/1908,Sainte-Rose,MARTIN,Emmanuel,null,null,null,4
+601,SAINT MARTIN,Caprice,M,null,null,null,null,null,null,null,01/01/1825,null,29/08/1887,Saint-Benoit,03/05/1862,Saint-Benoit,MONTIGUE,Olympe,Bras Canot,OUI,Madagascar,6
+602,MONTIGUE,Olympe,F,SAINT MARTIN,null,null,null,MONTIGUE,Héléne,14/07/1848,Saint-Benoit,null,null,null,SAINT MARTIN,Caprice,null,null,OUI,null,6
+501,MONTIGUE,Eugene,M,null,MARTIN,SAINT MARTIN,Caprice,MONTIGUE,Olympe,01/03/1862,Saint-Benoit,15/05/1896,Saint-Benoit,12/11/1884,Sainte-Rose,ATHANASE,Marie Joséphine,null,null,null,5
+502,ATHANASE,Marie Josephine,F,MARTIN,null,ATHANASE,Pierre,NECODA,Marie Rose,27/09/1865,Saint-Benoit,12/04/1935,Saint-Denis,12/11/1884,Sainte-Rose,MARTIN,Eugene,null,null,null,5
