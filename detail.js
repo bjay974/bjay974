@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-                    const dateVerified = verifieDate(date_deces) 
+                    const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
                     detailsList.appendChild(deathDateItem);  
