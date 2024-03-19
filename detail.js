@@ -138,15 +138,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Recherche des enfants reconnu
                 if (person.nom_legitime !== null) {
                     const childleg = data.filter(child => {
-                        return (child.prenom_pere === person.prenom) ;
+                        return (child.prenom_pere === person.prenom);
                             });
-                    const compareNom = sontSimilairesAvecDifference(nom_legitime, nom_pere)
-                
+                    const compareNom = sontSimilairesAvecDifference(nom_legitime, child.nom_pere)                
                     if ( childleg.length > 0 && compareNom === true) {
                         const childlegList = document.createElement('li');
-                        const childlegHeader = document.createElement('h3');
-                        childlegHeader.textContent = "Enfant(s) :";
-                        childlegList.appendChild(childlegHeader);
                         const childlegUl = document.createElement('ul');
                         childleg.forEach(child => {
                             const childlegItem = document.createElement('li');
