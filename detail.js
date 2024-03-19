@@ -135,7 +135,29 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenList.appendChild(childrenUl);
                     detailsList.appendChild(childrenList);
                 }
-                
+
+                // Recherche des enfants reconnu
+                if (person.nom_legitime !== null) {
+                    const children_leg = data.filter(child => {
+                        return (child.prenom_pere === person.prenom) ;
+                            });
+                    const compareNom = sontSimilairesAvecDifference(nom_legitime, nom_pere)
+                }
+                    if ( children_leg.length > 0 && compareNom === true) {
+                        const childrenList = document.createElement('li');
+                        const childrenHeader = document.createElement('h3');
+                        childrenHeader.textContent = "Enfant(s) :";
+                        childrenList.appendChild(childrenHeader);
+                        const childrenUl = document.createElement('ul');
+                        children_leg.forEach(child => {
+                            const childItem = document.createElement('li');
+                            childItem.textContent = `${child.nom} ${child.prenom}`;
+                            childrenUl.appendChild(childItem);
+                        });
+                        childrenList.appendChild(childrenUl);
+                        detailsList.appendChild(childrenList);
+                    }
+
                 personDetails.appendChild(detailsList);
 
             } else {
@@ -213,17 +235,15 @@ function verifieDate(date) {
     }
 }
 
-function sontSimilairesAvecDifference2(chaine1, chaine2) {
+function sontSimilairesAvecDifference(chaine1, chaine2) {
     // Vérifier si l'une des chaînes est incluse dans l'autre
     if (chaine1.includes(chaine2) || chaine2.includes(chaine1)) {
         return true;
     }
-
     // Vérifier si les chaînes ont une différence de taille de plus de 1
     if (Math.abs(chaine1.length - chaine2.length) > 1) {
         return false;
     }
-
     // Déterminer la chaîne la plus courte et la plus longue
     let chaineCourte = (chaine1.length < chaine2.length) ? chaine1 : chaine2;
     let chaineLongue = (chaine1.length < chaine2.length) ? chaine2 : chaine1;
@@ -231,7 +251,6 @@ function sontSimilairesAvecDifference2(chaine1, chaine2) {
     let indexCourt = 0;
     let indexLong = 0;
     let differences = 0;
-
     // Parcourir les deux chaînes caractère par caractère
     while (indexLong < chaineLongue.length && indexCourt < chaineCourte.length) {
         // Si les caractères sont différents
@@ -250,62 +269,12 @@ function sontSimilairesAvecDifference2(chaine1, chaine2) {
             indexLong++;
         }
     }
-
     // Si une seule différence est trouvée à la fin, les chaînes sont similaires avec une différence
     return true;
 }
 
-const nom1 = "MARTIN";
-const nom2 = "SAINT MARTIN";
 
-if (sontSimilairesAvecDifference(nom1, nom2)) {
-    console.log("Les noms sont similaires avec une différence.");
-} else {
-    console.log("Les noms sont différents.");
-}
 
-function sontSimilairesAvecDifference(chaine1, chaine2) {
-    // Vérifier si les chaînes ont une différence de taille de plus de 1
-    if (Math.abs(chaine1.length - chaine2.length) > 1) {
-        return false;
-    }
 
-    // Déterminer la chaîne la plus courte et la plus longue
-    let chaineCourte = (chaine1.length < chaine2.length) ? chaine1 : chaine2;
-    let chaineLongue = (chaine1.length < chaine2.length) ? chaine2 : chaine1;
 
-    let indexCourt = 0;
-    let indexLong = 0;
-    let differences = 0;
 
-    // Parcourir les deux chaînes caractère par caractère
-    while (indexLong < chaineLongue.length && indexCourt < chaineCourte.length) {
-        // Si les caractères sont différents
-        if (chaineCourte[indexCourt] !== chaineLongue[indexLong]) {
-            // Incrémenter le compteur de différences
-            differences++;
-            // Décaler l'index de la chaîne la plus longue
-            indexLong++;
-            // Si plus d'une différence est trouvée, les chaînes ne sont pas similaires
-            if (differences > 1) {
-                return false;
-            }
-        } else {
-            // Sinon, passer au caractère suivant des deux chaînes
-            indexCourt++;
-            indexLong++;
-        }
-    }
-
-    // Si une seule différence est trouvée à la fin, les chaînes sont similaires avec une différence
-    return true;
-}
-
-const nom1 = "BETSMAN";
-const nom2 = "BESTMAN";
-
-if (sontSimilairesAvecDifference(nom1, nom2)) {
-    console.log("Les noms sont similaires avec une différence.");
-} else {
-    console.log("Les noms sont différents.");
-}
