@@ -115,7 +115,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Recherche des enfants
                 const children = data.filter(child => {
-                    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || (child.nom_mere === person.nom && child.prenom_mere === person.prenom);
+                    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || (child.nom_mere === person.nom && child.prenom_mere === person.prenom) 
+                        || (child.nom_legitime === person.nom && child.prenom_pere === person.prenom) ;
                      });
                 if (children.length > 0) {
                     const childrenList = document.createElement('li');
