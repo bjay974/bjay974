@@ -119,3 +119,11 @@ footer {
     text-align: center;
     height: 100vh; /* pour centrer verticalement */
 }
+#hommeList {
+    list-style-type: none; /* Supprime les puces des listes */
+    text-align: left; /* Aligne la liste à gauche */
+}
+#femmeList {
+    list-style-type: none; /* Supprime les puces des listes */
+    text-align: left; /* Aligne la liste à gauche */
+}
