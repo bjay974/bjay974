@@ -161,13 +161,13 @@ function verifieDate(date) {
     const an = parseInt(date.substr(6, 4));
     const mois = parseInt(date.substr(3, 2));
     const day = parseInt(date.substr(0, 2));
-    if (an === "01" && mois === "01" && an !=="1901") {
-        return "dans le courant de l'année" + an
-    }
-    else if an === "01" && mois === "01" && an ==="1901" {
-        return "à une date inconnue"
-    }
-    else {
+    if (day === "01" && mois === "01") {
+        if (an === "1901") {
+            return "à une date inconnue" 
+        }  else {
+            return "dans le courant de l'année" + an
+        }
+    } else {
         return "le" + date
     }
 }
