@@ -70,6 +70,25 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(conjointNameItem); 
                            }
                  }
+
+                // Ajouter les parents
+                if (person.nom_pere !== "Inconnu") {
+                    const pereItem = document.createElement('li');
+                    const lienEnfant = ajouterParent(person.genre)
+                        if (person.nom_mere !== "Inconnue") {
+                            pereItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}' ;
+                            detailsList.appendChild(origineItem); }
+                        else {
+                            pereItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue' ;
+                            detailsList.appendChild(origineItem); }                          
+                else {
+                     if (person.nom_mere !== "Inconnue") {
+                            pereItem.textContent = `${adjectif_genre} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu' ;
+                            detailsList.appendChild(origineItem); }
+                        else {
+                            pereItem.textContent = `${adjectif_genre} : de père et de mère incoonus' ;
+                            detailsList.appendChild(origineItem); } 
+                }                
                                 
                 // Ajouter l'origine
                 if (person.origine !== null) {
@@ -153,6 +172,15 @@ function ajouterEgenreM(adjectif, genre) {
         return adjectif + "e";
     } else {
         return adjectif;
+    }
+}
+
+//Ajouter Fils de ou Fille de en fonction du genre
+function ajouterParent(genre) {
+    if (genre === "M") {
+        return "Fils de" ;
+    } else {
+        return "Fille de";
     }
 }
 
