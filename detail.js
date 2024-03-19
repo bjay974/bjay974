@@ -30,21 +30,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
                         if (person.genre == "F") {
-                            weddingDateItem.textContent = `Mariée le ${person.date_mariage} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_mariage} `;
+                            weddingDateItem.textContent = `Mariée le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
                             detailsList.appendChild(weddingDateItem);  }
                         else { 
-                            weddingDateItem.textContent = `Marié le ${person.date_mariage} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_mariage} `;
+                            weddingDateItem.textContent = `Marié le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
                             detailsList.appendChild(weddingDateItem);  }
+                }
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
                     const ageDeces = calculateAge(person.date_deces, person.date_naissance);
                         if (person.genre == "F") {
-                             deathDateItem.textContent = `Décédée le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces} `;
+                            deathDateItem.textContent = `Décédée le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
                             detailsList.appendChild(deathDateItem);  }
                         else { 
                             deathDateItem.textContent = `Décédé le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
                             detailsList.appendChild(deathDateItem);  }
+                }
                 else {
                     const ageNowItem = document.createElement('li');
                     const ageNow = twCalculeAge(person.date_naissance);
