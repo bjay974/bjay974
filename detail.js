@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    //const personDetails = document.getElementById('person-details');
 
     // Extraire l'identifiant de la personne depuis l'URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -22,38 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
-                if (person.genre == "F") {
-                    birthDateItem.textContent = `Née le ${person.date_naissance} à ${person.lieu_naissance}`;
-                    detailsList.appendChild(birthDateItem);  }
-                else { 
-                    birthDateItem.textContent = `Né le ${person.date_naissance} à ${person.lieu_naissance}`;
-                    detailsList.appendChild(birthDateItem);  }
+                const adjectif_genre = ajouterE("Né", person.genre)
+                birthDateItem.textContent = `${adjectif_genre} le ${person.date_naissance} à ${person.lieu_naissance}`;
+                detailsList.appendChild(birthDateItem);  
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
-                    const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
-                        if (person.genre == "F") {
-                            weddingDateItem.textContent = `Mariée le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
-                            detailsList.appendChild(weddingDateItem);  }
-                        else { 
-                            weddingDateItem.textContent = `Marié le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
-                            detailsList.appendChild(weddingDateItem);  }
+                    const ageMariage = diffAge(person.date_mariage, person.date_naissance);
+                    const adjectif_genre = ajouterE("Marié", person.genre)
+                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
+                    detailsList.appendChild(weddingDateItem);  
                 }
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
-                    const ageDeces = calculateAge(person.date_deces, person.date_naissance);
-                        if (person.genre == "F") {
-                            deathDateItem.textContent = `Décédée le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
-                            detailsList.appendChild(deathDateItem);  }
-                        else { 
-                            deathDateItem.textContent = `Décédé le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
-                            detailsList.appendChild(deathDateItem);  }
+                    const ageDeces = diffAge(person.date_deces, person.date_naissance);
+                    const adjectif_genre = ajouterE("Décédé", person.genre)
+                    deathDateItem.textContent = `${adjectif_genre} le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
+                    detailsList.appendChild(deathDateItem);  
                 }
                 else {
                     const ageNowItem = document.createElement('li');
-                    const ageNow = twCalculeAge(person.date_naissance);
+                    const ageNow = calculeAge(person.date_naissance);
                     ageNowItem.textContent = `Âge : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);                    
                  }
@@ -73,7 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     else {
                             const conjointNameItem = document.createElement('li');
-                            conjointNameItem.textContent = `Conjoint : ${person.nom_conjoint} ${person.prenom_conjoint} `;
+                            const adjectif_genre = ajouterE("Conjoint", person.genre)
+                            conjointNameItem.textContent = `${adjectif_genre} : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                            }
                  }
@@ -120,8 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 });
 
-
-function calculateAge(date1, date2) {   
+function diffAge(date1, date2) {   
     const an1 = parseInt(date1.substr(6, 4));
     const mois1 = parseInt(date1.substr(3, 2));
     const day1 = parseInt(date1.substr(0, 2));
@@ -135,7 +125,7 @@ function calculateAge(date1, date2) {
     return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
 }
 
-function twCalculeAge(date1) {   
+function calculeAge(date1) {   
     const an = parseInt(date1.substr(6, 4));
     const mois = parseInt(date1.substr(3, 2));
     const day = parseInt(date1.substr(0, 2));
@@ -144,4 +134,12 @@ function twCalculeAge(date1) {
     const ageDiff = today.getTime() - dateNaissance.getTime(); // Différence en millisecondes
     const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
     return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
+}
+
+function ajouterE(adjectif, genre) {
+    if (genre === "féminin") {
+        return adjectif + "e";
+    } else {
+        return adjectif;
+    }
 }
