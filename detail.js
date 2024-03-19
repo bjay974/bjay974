@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     else {
                             const conjointNameItem = document.createElement('li');
-                            const adjectif_genre = ajouterE("Conjoint", person.genre)
+                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
                             conjointNameItem.textContent = `${adjectif_genre} : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                            }
@@ -136,8 +136,18 @@ function calculeAge(date1) {
     return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
 }
 
+//Ajouter un e a un adjectif !! si genre est F (ex : NéE)
 function ajouterE(adjectif, genre) {
     if (genre === "F") {
+        return adjectif + "e";
+    } else {
+        return adjectif;
+    }
+}
+
+//Ajouter un e a un adjectif !! si genre est M (ex : conjointE)
+function ajouterEgenreM(adjectif, genre) {
+    if (genre === "M") {
         return adjectif + "e";
     } else {
         return adjectif;
