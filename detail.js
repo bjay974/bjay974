@@ -88,6 +88,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
                 } else {
+                        const parentItem = document.createElement('li');
+                        const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== null) {
                             parentItem.innerHTML = `<strong>${lienEnfant}</strong> de  ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
                             detailsList.appendChild(parentItem)
