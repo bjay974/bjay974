@@ -76,6 +76,10 @@ footer {
     text-align: left; /* Aligne la liste à gauche */
 }
 
+.list-details {
+    list-style-type: none; /* Supprime les puces des listes */
+}
+
 .person {
     text-align: center;
     padding: 10px;
