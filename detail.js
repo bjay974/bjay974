@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
-                nameItem.textContent = `${person.nom}, ${person.prenom}`;
+                nameItem.textContent = `${person.nom} ${person.prenom}`;
                 detailsList.appendChild(nameItem);
 
                 // Ajouter la date de naissance
@@ -29,16 +29,22 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_mariage !== null) {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
-                    weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${ageMariage} ans `;
-                    detailsList.appendChild(weddingDateItem);
-                }
-                
+                        if (person.genre == "F") {
+                            weddingDateItem.textContent = `Mariée le ${person.date_mariage} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_mariage} `;
+                            detailsList.appendChild(weddingDateItem);  }
+                        else { 
+                            weddingDateItem.textContent = `Marié le ${person.date_mariage} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_mariage} `;
+                            detailsList.appendChild(weddingDateItem);  }
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
                     const ageDeces = calculateAge(person.date_deces, person.date_naissance);
-                    deathDateItem.textContent = `Décès: ${person.date_deces} à ${person.lieu_deces} à ${ageDeces} ans `;
-                    detailsList.appendChild(deathDateItem);}
+                        if (person.genre == "F") {
+                             deathDateItem.textContent = `Décédée le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces} `;
+                            detailsList.appendChild(deathDateItem);  }
+                        else { 
+                            deathDateItem.textContent = `Décédé le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
+                            detailsList.appendChild(deathDateItem);  }
                 else {
                     const ageNowItem = document.createElement('li');
                     const ageNow = twCalculeAge(person.date_naissance);
@@ -51,17 +57,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (person.date_mariage !== null) {
                         if (person.genre == "F") {
                             const epouxNameItem = document.createElement('li');
-                            epouxNameItem.textContent = `Epoux : ${person.nom_epouse}, ${person.prenom_conjoint} `;
+                            epouxNameItem.textContent = `Epoux : ${person.nom_epouse} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
                             }
                         else {
                             const epouseNameItem = document.createElement('li');
-                            epouseNameItem.textContent = `Epouse : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            epouseNameItem.textContent = `Epouse : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem); }
                         }
                     else {
                             const conjointNameItem = document.createElement('li');
-                            conjointNameItem.textContent = `Conjoint : ${person.nom_conjoint}, ${person.prenom_conjoint} `;
+                            conjointNameItem.textContent = `Conjoint : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                            }
                  }
@@ -92,7 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const childrenUl = document.createElement('ul');
                     children.forEach(child => {
                         const childItem = document.createElement('li');
-                        childItem.textContent = `${child.nom}, ${child.prenom}`;
+                        childItem.textContent = `${child.nom} ${child.prenom}`;
                         childrenUl.appendChild(childItem);
                     });
                     childrenList.appendChild(childrenUl);
