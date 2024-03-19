@@ -199,7 +199,7 @@ function verifieDate(date) {
     const mois = parseInt(date.substr(3, 2));
     const day = parseInt(date.substr(0, 2));
     if (day === 1 && mois === 1) {
-        if (an === 1901) {
+        if (an === 2001) {
             return "à une date inconnue" 
         }  else {
             return "dans le courant de l'année " + an
