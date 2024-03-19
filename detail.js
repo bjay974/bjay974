@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const epouseNameItem = document.createElement('li');
                             epouseNameItem.textContent = `Epouse : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace 
+                            detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace 
                     } else {
                             const conjointNameItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else {
                             parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
                             detailsList.appendChild(parentItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace}
+                            detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
                 } else {
                         if (person.nom_mere !== "Inconnue") {
                             parentItem.textContent = `${lienEnfant} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else {
                             parentItem.textContent = `${lienEnfant} : de père et de mère inconnus` ;
                             detailsList.appendChild(parentItem); 
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  } 
+                            detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace   
                  }          
                                 
                 // Ajouter l'origine
