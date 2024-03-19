@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const childleg = data.filter(child => {
                         return (child.prenom_pere === person.prenom);
                             });
-                    const compareNom = sontSimilairesAvecDifference(nom_legitime, child.nom_pere)                
+                    const compareNom = sontSimilairesAvecDifference(person.nom_legitime, child.nom_pere)                
                     if ( childleg.length > 0 && compareNom === true) {
                         const childlegList = document.createElement('li');
                         const childlegUl = document.createElement('ul');
