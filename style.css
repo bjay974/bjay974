@@ -77,7 +77,6 @@ footer {
 }
 
 .list {
-    width: 45%; /* Vous pouvez ajuster la largeur en fonction de vos préférences */
     list-style-type: none; /* Supprime les puces des listes */
     text-align: left; /* Aligne la liste à gauche */
 }
@@ -114,10 +113,5 @@ footer {
     left: 50%;
     top: 30px;
 }
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
+
 
