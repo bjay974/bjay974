@@ -116,47 +116,55 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
 
-                // Recherche des enfants
-                const children = data.filter(child => {
-                    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || (child.nom_mere === person.nom && child.prenom_mere === person.prenom); 
-                     });
-                if (children.length > 0) {
-                    const childrenList = document.createElement('li');
-                    const childrenHeader = document.createElement('h3');
-                    childrenHeader.textContent = "Enfant(s) :";
-                    childrenList.appendChild(childrenHeader);
-                    const childrenUl = document.createElement('ul');
-                    children.forEach(child => {
-                        const childItem = document.createElement('li');
-                        childItem.textContent = `${child.nom} ${child.prenom}`;
-                        childrenUl.appendChild(childItem);
-                    });
-                    childrenList.appendChild(childrenUl);
-                    detailsList.appendChild(childrenList);
-                }
+// Recherche des enfants
+const children = data.filter(child => {
+    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || 
+           (child.nom_mere === person.nom && child.prenom_mere === person.prenom); 
+});
 
-                // Recherche des enfants reconnu
-                // Appeler la fonction de test
-    testSontSimilairesAvecDifference();
-    console.log(`valeur de nom_legitime avec ${person.nom_legitime}`);
-                if (person.nom_legitime !== null) {
-                    const childleg = data.filter(child => {
-                        return (child.prenom_pere === person.prenom);
-                            });
-                    console.log(`valeur de child.nom_pere avec ${child.nom_pere}`);
-                    const compareNom = sontSimilairesAvecDifference(person.nom_legitime, child.nom_pere)                
-                    if ( childleg.length > 0 && compareNom === true) {
-                        const childlegList = document.createElement('li');
-                        const childlegUl = document.createElement('ul');
-                        childleg.forEach(child => {
-                            const childlegItem = document.createElement('li');
-                            childlegItem.textContent = `${child.nom} ${child.prenom}`;
-                            childlegUl.appendChild(childlegItem);
-                        });
-                        childlegList.appendChild(childlegUl);
-                        detailsList.appendChild(childlegList);
-                    }
-                }
+// Recherche des enfants reconnus
+if (person.nom_legitime !== null) {
+    const nomLegitime = person.nom_legitime;
+    const childrenLegitimes = data.filter(child => {
+        // Vérifier si le nom du père est similaire au nom légitime
+        return sontSimilairesAvecDifference(nomLegitime, child.nom_pere);
+    });
+
+    // Fusionner les enfants et les enfants reconnus dans une seule liste
+    const allChildren = [...children, ...childrenLegitimes];
+
+    // Afficher la liste des enfants
+    if (allChildren.length > 0) {
+        const childrenList = document.createElement('li');
+        const childrenHeader = document.createElement('h3');
+        childrenHeader.textContent = "Enfant(s) :";
+        childrenList.appendChild(childrenHeader);
+        const childrenUl = document.createElement('ul');
+        allChildren.forEach(child => {
+            const childItem = document.createElement('li');
+            childItem.textContent = `${child.nom} ${child.prenom}`;
+            childrenUl.appendChild(childItem);
+        });
+        childrenList.appendChild(childrenUl);
+        detailsList.appendChild(childrenList);
+    }
+} else {
+    // Afficher uniquement la liste des enfants
+    if (children.length > 0) {
+        const childrenList = document.createElement('li');
+        const childrenHeader = document.createElement('h3');
+        childrenHeader.textContent = "Enfant(s) :";
+        childrenList.appendChild(childrenHeader);
+        const childrenUl = document.createElement('ul');
+        children.forEach(child => {
+            const childItem = document.createElement('li');
+            childItem.textContent = `${child.nom} ${child.prenom}`;
+            childrenUl.appendChild(childItem);
+        });
+        childrenList.appendChild(childrenUl);
+        detailsList.appendChild(childrenList);
+    }
+}
 
                 personDetails.appendChild(detailsList);
 
