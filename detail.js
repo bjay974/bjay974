@@ -16,11 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const detailsList = document.createElement('ul');
 
                 // Ajouter le nom et prénom en gras
-                const nameItem = document.createElement('li');
+                const nameItem = document.createElement('h3');
                 const boldText = document.createElement('span');
-                boldText.textContent = `${person.nom}, ${person.prenom}`;
-                boldText.style.fontWeight = 'bold'; // Application du style gras
-                nameItem.appendChild(boldText);
+                nameItem.textContent = `${person.nom}, ${person.prenom}`;
                 detailsList.appendChild(nameItem);
 
                 // Ajouter la date de naissance
