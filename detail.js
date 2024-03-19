@@ -79,20 +79,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     const parentItem = document.createElement('li');
                     const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         } else {
-                            parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong>: ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
                 } else {
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.textContent = `${lienEnfant} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
                             detailsList.appendChild(parentItem)
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  ;
                         } else {
-                            parentItem.textContent = `${lienEnfant} : de père et de mère inconnus` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong>: de père et de mère inconnus` ;
                             detailsList.appendChild(parentItem); 
                             detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace   
                  }          
@@ -198,11 +198,11 @@ function verifieDate(date) {
     const an = parseInt(date.substr(6, 4));
     const mois = parseInt(date.substr(3, 2));
     const day = parseInt(date.substr(0, 2));
-    if (day === 01 && mois === 01) {
+    if (day === 1 && mois === 1) {
         if (an === 1901) {
             return "à une date inconnue" 
         }  else {
-            return "dans le courant de l'année" + an
+            return "dans le courant de l'année " + an
         }
     } else {
         return "le " + date
