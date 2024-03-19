@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             parentItem.innerHTML = `<strong>${lienEnfant}</strong> de ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
-                } else {
+                 } else {
                         const parentItem = document.createElement('li');
                         const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== null) {
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace   
                  }          
                                 
-                // Ajouter l'origine
+                 // Ajouter l'origine
                 if (person.origine !== null) {
                     const origineItem = document.createElement('li');
                     origineItem.textContent = `Pays d'origine : ${person.origine}`;
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         return (child.prenom_pere === person.prenom) ;
                             });
                     const compareNom = sontSimilairesAvecDifference(nom_legitime, nom_pere)
-                }
+                
                     if ( children_leg.length > 0 && compareNom === true) {
                         const childrenList = document.createElement('li');
                         const childrenHeader = document.createElement('h3');
@@ -157,6 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         childrenList.appendChild(childrenUl);
                         detailsList.appendChild(childrenList);
                     }
+                }
 
                 personDetails.appendChild(detailsList);
 
@@ -272,9 +273,3 @@ function sontSimilairesAvecDifference(chaine1, chaine2) {
     // Si une seule différence est trouvée à la fin, les chaînes sont similaires avec une différence
     return true;
 }
-
-
-
-
-
-
