@@ -336,6 +336,29 @@
     "lien": "5"
   },
   {
+    "id": 203,
+    "nom": "MARTIN",
+    "prenom": "Claude",
+    "genre": "M",
+    "nom_epouse": null,
+    "nom_legitime": "BESTMAN",
+    "nom_pere": "BETSMAN",
+    "prenom_pere": "Georges",
+    "nom_mere": "MARTIN",
+    "prenom_mere": "Eugenie",
+    "date_naissance": "05/06/1933",
+    "lieu_naissance": "Saint-Denis",
+    "date_deces": "12/01/2001",
+    "lieu_deces": "Saint-Denis",
+    "date_mariage": "12/11/1944",
+    "lieu_mariage": "Sainte-Rose",
+    "nom_conjoint": "ROSE",
+    "prenom_conjoint": "Micheline",
+    "domicile": null,
+    "affranchi": null,
+    "origine": null,
+    "lien": "2",
+  {
     "id": 502,
     "nom": "ATHANASE",
     "prenom": "Marie Josephine",
@@ -359,5 +382,6 @@
     "origine": null,
     "lien": "5"
   }
+}
 ]
 
