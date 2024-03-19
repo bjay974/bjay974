@@ -158,9 +158,9 @@ function ajouterEgenreM(adjectif, genre) {
 
 //Verifie si la date est connue  
 function verifieDate(date) {
-    const an = parseInt(date1.substr(6, 4));
-    const mois = parseInt(date1.substr(3, 2));
-    const day = parseInt(date1.substr(0, 2));
+    const an = parseInt(date.substr(6, 4));
+    const mois = parseInt(date.substr(3, 2));
+    const day = parseInt(date.substr(0, 2));
     if (an === "01" && mois === "01" && an !=="1901") {
         return "dans le courant de l'année" + an
     }
