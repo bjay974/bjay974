@@ -137,7 +137,7 @@ function calculeAge(date1) {
 }
 
 function ajouterE(adjectif, genre) {
-    if (genre === "féminin") {
+    if (genre === "F") {
         return adjectif + "e";
     } else {
         return adjectif;
