@@ -37,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
+                    const dateVerified = verifieDate(date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
-                    deathDateItem.textContent = `${adjectif_genre} le ${person.date_deces} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
+                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
                     detailsList.appendChild(deathDateItem);  
                 }
                 else {
@@ -152,4 +153,19 @@ function ajouterEgenreM(adjectif, genre) {
     } else {
         return adjectif;
     }
+}
+
+//Verifie si la date est connue  
+function verifieDate(date) {
+    const an = parseInt(date1.substr(6, 4));
+    const mois = parseInt(date1.substr(3, 2));
+    const day = parseInt(date1.substr(0, 2));
+    if (an === "01" && mois === "01" && an !=="1901") {
+        return "dans le courant de l'année" + an
+    }
+    else if an === "01" && mois === "01" && an ==="1901"
+        return "à une date inconnue"
+    }
+    else 
+        return "le" + date
 }
