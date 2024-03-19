@@ -47,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 else {
                     const ageNowItem = document.createElement('li');
                     const ageNow = calculeAge(person.date_naissance);
-                    ageNowItem.textContent = `Âge : ${ageNow} ans `;
+                    const adjectif_genre = ajouterE("Agé", person.genre)
+                    ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                  }
@@ -79,20 +80,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     const parentItem = document.createElement('li');
                     const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         } else {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
                 } else {
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong>  ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de  ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
                             detailsList.appendChild(parentItem)
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  ;
                         } else {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong>: de père et de mère inconnus` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> de père et de mère inconnus` ;
                             detailsList.appendChild(parentItem); 
                             detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace   
                  }          
@@ -188,9 +189,9 @@ function ajouterEgenreM(adjectif, genre) {
 //Ajouter Fils de ou Fille de en fonction du genre
 function ajouterParent(genre) {
     if (genre === "M") {
-        return "Fils de" ;
+        return "Fils " ;
     } else {
-        return "Fille de";
+        return "Fille ";
     }
 }
 
