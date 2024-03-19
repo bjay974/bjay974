@@ -73,20 +73,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Ajouter les parents
                 if (person.nom_pere !== "Inconnu") {
-                    const pereItem = document.createElement('li');
+                    const parentItem = document.createElement('li');
                     const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
+                            parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
                             detailsList.appendChild(parentItem);
                         } else {
-                            parentItem.textContent = `${adjectif_genre} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
+                            parentItem.textContent = `${lienEnfant} : ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
                             detailsList.appendChild(parentItem); }
                 } else {
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.textContent = `${adjectif_genre} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
+                            parentItem.textContent = `${lienEnfant} : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
                             detailsList.appendChild(parentItem);
                         } else {
-                            parentItem.textContent = `${adjectif_genre} : de père et de mère inconnus` ;
+                            parentItem.textContent = `${lienEnfant} : de père et de mère inconnus` ;
                             detailsList.appendChild(parentItem); } 
                  }          
                                 
