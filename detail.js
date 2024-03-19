@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
-                const boldText = document.createElement('span');
                 nameItem.textContent = `${person.nom}, ${person.prenom}`;
                 detailsList.appendChild(nameItem);
 
@@ -32,11 +31,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ageMariage = calculateAge(person.date_mariage, person.date_naissance);
                     weddingDateItem.textContent = `Mariage: ${person.date_mariage} à ${person.lieu_mariage} à ${ageMariage} ans `;
                     detailsList.appendChild(weddingDateItem);
-                    if (person.nom_epouse !== null) {
-                        const weddingNameItem = document.createElement('li');
-                        weddingNameItem.textContent = `Nom d'épouse : ${person.nom_epouse}`;
-                        detailsList.appendChild(weddingNameItem); 
-                        }
                 }
                 
                 // Ajouter la date de décès si elle n'est pas nulle
