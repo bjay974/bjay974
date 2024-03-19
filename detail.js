@@ -136,10 +136,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Recherche des enfants reconnu
+                // Appeler la fonction de test
+    testSontSimilairesAvecDifference();
+    console.log(`valeur de nom_legitime avec ${person.nom_legitime}`);
                 if (person.nom_legitime !== null) {
                     const childleg = data.filter(child => {
                         return (child.prenom_pere === person.prenom);
                             });
+                    console.log(`valeur de child.nom_pere avec ${child.nom_pere}`);
                     const compareNom = sontSimilairesAvecDifference(person.nom_legitime, child.nom_pere)                
                     if ( childleg.length > 0 && compareNom === true) {
                         const childlegList = document.createElement('li');
@@ -268,3 +272,22 @@ function sontSimilairesAvecDifference(chaine1, chaine2) {
     // Si une seule différence est trouvée à la fin, les chaînes sont similaires avec une différence
     return true;
 }
+
+// Test de la fonction sontSimilairesAvecDifference
+function testSontSimilairesAvecDifference() {
+    // Définir quelques paires de chaînes à tester
+    const tests = [
+        { chaine1: "MARTIN", chaine2: "SAINT MARTIN", attendu: true },
+        { chaine1: "BETSMAN", chaine2: "BESTMAN", attendu: true },
+        { chaine1: "ALAIN", chaine2: "ALAN", attendu: true },
+        { chaine1: "JULIE", chaine2: "JULES", attendu: false },
+        { chaine1: "Pierre", chaine2: "Paul", attendu: false }
+    ];
+
+    // Effectuer les tests
+    tests.forEach(test => {
+        const resultat = sontSimilairesAvecDifference(test.chaine1, test.chaine2);
+        console.log(`Test avec ${test.chaine1} et ${test.chaine2}: ${resultat === test.attendu ? 'Réussi' : 'Échoué'}`);
+    });
+}
+
