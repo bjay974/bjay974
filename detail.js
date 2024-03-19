@@ -57,18 +57,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (person.date_mariage !== null) {
                         if (person.genre == "F") {
                             const epouxNameItem = document.createElement('li');
-                            epouxNameItem.textContent = `Epoux : ${person.nom_epouse} ${person.prenom_conjoint} `;
+                            epouxNameItem.innerHTML = `<strong>Epoux</strong> : ${person.nom_epouse} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         } else {
                             const epouseNameItem = document.createElement('li');
-                            epouseNameItem.textContent = `Epouse : ${person.nom_conjoint} ${person.prenom_conjoint} `;
+                            epouseNameItem.innerHTML = `<strong>Epouse</strong> : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem);
                             detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace 
                     } else {
                             const conjointNameItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
-                            conjointNameItem.textContent = `${adjectif_genre} : ${person.nom_conjoint} ${person.prenom_conjoint} `;
+                            conjointNameItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
@@ -79,16 +79,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     const parentItem = document.createElement('li');
                     const lienEnfant = ajouterParent(person.genre)
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> : ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         } else {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong>: ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> ${person.nom_pere} ${person.prenom_pere} et de mère inconnue` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
                 } else {
                         if (person.nom_mere !== "Inconnue") {
-                            parentItem.innerHTML = `<strong>${lienEnfant}</strong> : ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
+                            parentItem.innerHTML = `<strong>${lienEnfant}</strong>  ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
                             detailsList.appendChild(parentItem)
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  ;
                         } else {
