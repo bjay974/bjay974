@@ -118,8 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Recherche des enfants
                 const children = data.filter(child => {
-                    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || (child.nom_mere === person.nom && child.prenom_mere === person.prenom) 
-                        || (child.nom_legitime === person.nom && child.prenom_pere === person.prenom) ;
+                    return (child.nom_pere === person.nom && child.prenom_pere === person.prenom) || (child.nom_mere === person.nom && child.prenom_mere === person.prenom); 
                      });
                 if (children.length > 0) {
                     const childrenList = document.createElement('li');
@@ -138,24 +137,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Recherche des enfants reconnu
                 if (person.nom_legitime !== null) {
-                    const children_leg = data.filter(child => {
+                    const childleg = data.filter(child => {
                         return (child.prenom_pere === person.prenom) ;
                             });
                     const compareNom = sontSimilairesAvecDifference(nom_legitime, nom_pere)
                 
-                    if ( children_leg.length > 0 && compareNom === true) {
-                        const childrenList = document.createElement('li');
-                        const childrenHeader = document.createElement('h3');
-                        childrenHeader.textContent = "Enfant(s) :";
-                        childrenList.appendChild(childrenHeader);
-                        const childrenUl = document.createElement('ul');
-                        children_leg.forEach(child => {
-                            const childItem = document.createElement('li');
-                            childItem.textContent = `${child.nom} ${child.prenom}`;
-                            childrenUl.appendChild(childItem);
+                    if ( childleg.length > 0 && compareNom === true) {
+                        const childlegList = document.createElement('li');
+                        const childlegHeader = document.createElement('h3');
+                        childlegHeader.textContent = "Enfant(s) :";
+                        childlegList.appendChild(childlegHeader);
+                        const childlegUl = document.createElement('ul');
+                        childleg.forEach(child => {
+                            const childlegItem = document.createElement('li');
+                            childlegItem.textContent = `${child.nom} ${child.prenom}`;
+                            childlegUl.appendChild(childlegItem);
                         });
-                        childrenList.appendChild(childrenUl);
-                        detailsList.appendChild(childrenList);
+                        childlegList.appendChild(childlegUl);
+                        detailsList.appendChild(childlegList);
                     }
                 }
 
