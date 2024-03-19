@@ -60,20 +60,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             epouxNameItem.textContent = `Epoux : ${person.nom_epouse} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouxNameItem); 
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                            }
-                        else {
+                        } else {
                             const epouseNameItem = document.createElement('li');
                             epouseNameItem.textContent = `Epouse : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(epouseNameItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace }
-                        }
-                    else {
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace 
+                    } else {
                             const conjointNameItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
                             conjointNameItem.textContent = `${adjectif_genre} : ${person.nom_conjoint} ${person.prenom_conjoint} `;
                             detailsList.appendChild(conjointNameItem); 
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                           }
+                     }
                  }
                 
                 // Ajouter les parents
