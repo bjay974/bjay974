@@ -76,10 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
                  }
                 
                 // Ajouter les parents
-                if (person.nom_pere !== "Inconnu") {
+                if (person.nom_pere !== null) {
                     const parentItem = document.createElement('li');
                     const lienEnfant = ajouterParent(person.genre)
-                        if (person.nom_mere !== "Inconnue") {
+                        if (person.nom_mere !== null) {
                             parentItem.innerHTML = `<strong>${lienEnfant}</strong> de ${person.nom_pere} ${person.prenom_pere} et de ${person.nom_mere} ${person.prenom_mere}` ;
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(parentItem);
                             detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
                 } else {
-                        if (person.nom_mere !== "Inconnue") {
+                        if (person.nom_mere !== null) {
                             parentItem.innerHTML = `<strong>${lienEnfant}</strong> de  ${person.nom_mere} ${person.prenom_mere} et de père inconnu` ;
                             detailsList.appendChild(parentItem)
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace  ;
@@ -201,7 +201,7 @@ function verifieDate(date) {
     const mois = parseInt(date.substr(3, 2));
     const day = parseInt(date.substr(0, 2));
     if (day === 1 && mois === 1) {
-        if (an === 2001) {
+        if (an === 1901) {
             return "à une date inconnue" 
         }  else {
             return "dans le courant de l'année " + an
