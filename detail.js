@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const personDetails = document.getElementById('person-details');
+    //const personDetails = document.getElementById('person-details');
 
     // Extraire l'identifiant de la personne depuis l'URL
     const urlParams = new URLSearchParams(window.location.search);
@@ -22,8 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
-                birthDateItem.textContent = `Naissance: ${person.date_naissance} à ${person.lieu_naissance} `;
-                detailsList.appendChild(birthDateItem);
+                if (person.genre == "F") {
+                    birthDateItem.textContent = `Née le ${person.date_naissance} à ${person.lieu_naissance}`;
+                    detailsList.appendChild(birthDateItem);  }
+                else { 
+                    birthDateItem.textContent = `Né le ${person.date_naissance} à ${person.lieu_naissance}`;
+                    detailsList.appendChild(birthDateItem);  }
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
