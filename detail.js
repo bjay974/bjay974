@@ -125,9 +125,9 @@ const children = data.filter(child => {
 // Recherche des enfants reconnus
 if (person.nom_legitime !== null) {
     const nomLegitime = person.nom_legitime;
-    const childrenLegitimes = data.filter(child => {
+    const childrenLegitimes = data.filter(child2 => {
         // Vérifier si le nom du père est similaire au nom légitime
-        return sontSimilairesAvecDifference(nomLegitime, child.nom_pere);
+        return sontSimilairesAvecDifference(nomLegitime, child2.nom_pere);
     });
 
     // Fusionner les enfants et les enfants reconnus dans une seule liste
@@ -279,23 +279,5 @@ function sontSimilairesAvecDifference(chaine1, chaine2) {
     }
     // Si une seule différence est trouvée à la fin, les chaînes sont similaires avec une différence
     return true;
-}
-
-// Test de la fonction sontSimilairesAvecDifference
-function testSontSimilairesAvecDifference() {
-    // Définir quelques paires de chaînes à tester
-    const tests = [
-        { chaine1: "MARTIN", chaine2: "SAINT MARTIN", attendu: true },
-        { chaine1: "BETSMAN", chaine2: "BESTMAN", attendu: true },
-        { chaine1: "ALAIN", chaine2: "ALAN", attendu: true },
-        { chaine1: "JULIE", chaine2: "JULES", attendu: false },
-        { chaine1: "Pierre", chaine2: "Paul", attendu: false }
-    ];
-
-    // Effectuer les tests
-    tests.forEach(test => {
-        const resultat = sontSimilairesAvecDifference(test.chaine1, test.chaine2);
-        console.log(`Test avec ${test.chaine1} et ${test.chaine2}: ${resultat === test.attendu ? 'Réussi' : 'Échoué'}`);
-    });
 }
 
