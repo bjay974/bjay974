@@ -205,37 +205,34 @@ document.addEventListener('DOMContentLoaded', () => {
                  })
                 }
                 
-                // Vérifier si l'acte de naissance existe pour la personne
+                // Vérifier si l'acte de mariage existe pour la personne
                 if (person.acte_mar === true) {
-                    const acteMariageItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`mariage/${pdfFileName}`)
+                   fetch(`naissance/${pdfFileName}`)
                         .then(response => {
                             if (response.ok) {
+                                const acteMariageItem = document.createElement('li');
+                                const idPerson = person.id;
+                                const pdfFileName = `${idPerson}.pdf`;
                                 const pdfFilePath = `mariage/${pdfFileName}`;
                                 const pdfLink = document.createElement('a');
                                 pdfLink.textContent = `Voir l'acte de mariage (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
+                                const pdfFileName2 = `${idPerson}_2.pdf`;
+                                const pdfFilePath2 = `mariage/${pdfFileName2}`;
+                                const pdfLink2 = document.createElement('a');
+                                pdfLink2.textContent = `Voir l'acte de mariage (PDF)`;
+                                pdfLink2.href = pdfFilePath;
+                                pdfLink2.target = '_blank';  
                                 acteMariageItem.appendChild(pdfLink);
-                                detailsList.appendChild(acteMariageItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            } else {
-                                const jpegFileName = `${idPerson}.jpg`;
-                                const jpegFilePath = `mariage/${jpegFileName}`;
-                                const jpegLink = document.createElement('a');
-                                jpegLink.textContent = `Voir l'acte de mariage (JPEG)`;
-                                jpegLink.href = jpegFilePath;
-                                jpegLink.target = '_blank';
-                                acteMariageItem.appendChild(jpegLink);
+                                acteMariageItem.appendChild(document.createTextNode(' | '));
+                                acteMariageItem.appendChild(pdfLink2);
                                 detailsList.appendChild(acteMariageItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
-                 })
+                    })
                 }
+                
                 // Vérifier si l'acte de déces existe pour la personne
                 if (person.acte_dec === true) {
                     const acteDecesItem = document.createElement('li');
