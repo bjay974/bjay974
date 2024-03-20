@@ -193,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         marLink.href = marFilePathExt;
                         marLink.target = '_blank';
                         const marFileName2 = `${idPerson}_2`; 
-                        const marFilePath2 = `mariage/${marFileName2}`;
+                        const marFilePath2 = `mariage/${marFileName2}.${extensionFic}`;
                         const marLink2 = document.createElement('a');
                         marLink2.textContent = `Voir l'acte de mariage (partie 2)`;
                         marLink2.href = marFilePath;
@@ -241,10 +241,11 @@ function rechercheExtension(nomFichier) {
             .then(response => {
                 if (response.ok) {
                     // Gérer la réponse
-                    console.log(`Résultat :${nomFichier}.${extension}`);
+                    console.log(`reponse ok :${nomFichier}.${extension}`);
                     return extension;
                 } else {
-                   console.log(`Résultat : ${response}`);
+                   console.log(`Ko : ${response- ${extension}`);
+                   return null
                 }
             })
     }
