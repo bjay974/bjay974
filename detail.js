@@ -114,6 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     affranchissementItem.textContent = `Affranchi en 1848`;
                     detailsList.appendChild(affranchissementItem);
                 
+                    
                     // Créer l'élément object pour l'image ou le PDF
                     const imageAffranchissement = document.createElement('object');
                     const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
