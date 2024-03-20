@@ -235,14 +235,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function rechercheExtension(nomFichier) {
     const extensions = ['pdf', 'jpg', 'jpeg'];
+    console.log(`Le fichier : ${nomFichier}`);
     for (let i = 0; i < extensions.length; i++) {
         const extension = extensions[i];
         const filePath = `${nomFichier}.${extension}`;
+        console.log(`Le fichier + ext : ${filePath}`);
         if (fileExists(filePath)) {
+            console.log(`Résultat : ${filePath}`);
             return extension;
         }
     }
-    return null; // Aucune des extensions n'a été trouvée
+    console.log(`Ko : ${filePath}Aucune des extensions n'a été trouvée`);
+    return null; 
 }
 
 function diffAge(date1, date2) {   
