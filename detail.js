@@ -141,35 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
                 
-                   // Ajouter l'affranchissement 
-                if (person.affranchi !== null) {
-                    const affranchissementItem = document.createElement('li');
-                    affranchissementItem.textContent = `Affranchi en 1848`;
-                    detailsList.appendChild(affranchissementItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    // Créer l'élément object pour l'image ou le PDF
-                    const imageAffranchissement = document.createElement('object');
-                    const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
-                    const pdfFileName = `${person.id}.pdf`; // Formez le nom du fichier PDF à partir de l'ID de la personne
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`affranchissement/${imageFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                imageAffranchissement.data = `affranchissement/${imageFileName}`; // Utilisez le nom du fichier image formé
-                                imageAffranchissement.type = 'image/jpeg'; // Définir le type de l'objet comme JPEG
-                            } else {
-                                imageAffranchissement.data = `affranchissement/${pdfFileName}`; // Utilisez le nom du fichier PDF formé
-                                imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
-                            }
-                            imageAffranchissement.width = 'auto'; // Ajuster la largeur selon vos besoins
-                            imageAffranchissement.height = 'auto'; // Ajuster la hauteur selon vos besoins
-                            // Ajouter l'attribut alt pour les fichiers PDF
-                            imageAffranchissement.alt = `Document d'affranchissement de ${person.nom} ${person.prenom}`;
-                            // Ajouter l'image à la suite de l'élément affranchissementItem
-                            detailsList.appendChild(imageAffranchissement);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                 }) }
-                 
                 // Vérifier si l'acte d'affranchissemment existe pour la personne
                 if (person.affranchi !== null) {
                     const acteAffranItem = document.createElement('li');
@@ -224,6 +195,36 @@ document.addEventListener('DOMContentLoaded', () => {
                                 jpegLink.href = jpegFilePath;
                                 jpegLink.target = '_blank';
                                 detailsList.appendChild(acteNaissanceItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            }
+                 })
+                }
+
+                // Vérifier si l'acte de déces existe pour la personne
+                if (person.acte_dec !== null) {
+                    const acteDecesItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier PDF existe
+                    const pdfFileName = `${idPerson}.pdf`;
+                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
+                    fetch(`deces/${pdfFileName}`)
+                        .then(response => {
+                            if (response.ok) {
+                                const pdfFilePath = `deces/${pdfFileName}`;
+                                const pdfLink = document.createElement('a');
+                                pdfLink.textContent = `Voir l'acte de décés (PDF)`;
+                                pdfLink.href = pdfFilePath;
+                                pdfLink.target = '_blank';
+                                detailsList.appendChild(acteDecesItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            } else {
+                                const jpegFileName = `${idPerson}.jpg`;
+                                const jpegFilePath = `deces/${jpegFileName}`;
+                                const jpegLink = document.createElement('a');
+                                jpegLink.textContent = `Voir l'acte de décés (JPEG)`;
+                                jpegLink.href = jpegFilePath;
+                                jpegLink.target = '_blank';
+                                detailsList.appendChild(acteDecesItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
                  })
