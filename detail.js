@@ -79,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const motherItem = document.createElement('li');
                     motherItem.textContent = "Mère inconnue";
                     detailsList.appendChild(motherItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }          
                 
                 // Charger le ou la conjoint
