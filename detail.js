@@ -161,17 +161,46 @@ document.addEventListener('DOMContentLoaded', () => {
                                 imageAffranchissement.data = `affranchissement/${pdfFileName}`; // Utilisez le nom du fichier PDF formé
                                 imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
                             }
-                            imageAffranchissement.width = '30%'; // Ajuster la largeur selon vos besoins
-                            imageAffranchissement.height = '30%'; // Ajuster la hauteur selon vos besoins
+                            imageAffranchissement.width = 'auto'; // Ajuster la largeur selon vos besoins
+                            imageAffranchissement.height = 'auto'; // Ajuster la hauteur selon vos besoins
                             // Ajouter l'attribut alt pour les fichiers PDF
                             imageAffranchissement.alt = `Document d'affranchissement de ${person.nom} ${person.prenom}`;
                             // Ajouter l'image à la suite de l'élément affranchissementItem
                             detailsList.appendChild(imageAffranchissement);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                  }) }
-
+                 
+                // Vérifier si l'acte d'affranchissemment existe pour la personne
+                if (person.affranchi !== null) {
+                    const acteAffranItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier PDF existe
+                    const pdfFileName = `${idPerson}.pdf`;
+                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
+                    fetch(`affranchissement/${pdfFileName}`)
+                        .then(response => {
+                            if (response.ok) {
+                                const pdfFilePath = `affranchissement/${pdfFileName}`;
+                                const pdfLink = document.createElement('a');
+                                pdfLink.textContent = `Voir l'acte d'affranchissement' (PDF)`;
+                                pdfLink.href = pdfFilePath;
+                                pdfLink.target = '_blank';
+                                detailsList.appendChild(acteAffranItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            } else {
+                                const jpegFileName = `${idPerson}.jpg`;
+                                const jpegFilePath = `affranchissement/${jpegFileName}`;
+                                const jpegLink = document.createElement('a');
+                                jpegLink.textContent = `Voir l'acte d'affranchissement (JPEG)`;
+                                jpegLink.href = jpegFilePath;
+                                jpegLink.target = '_blank';
+                                detailsList.appendChild(acteAffranItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            }
+                 })
+                }
                 // Vérifier si l'acte de naissance existe pour la personne
-                if (person.acte_nai === true) {
+                if (person.acte_nai !== null) {
                     const acteNaissanceItem = document.createElement('li');
                     const idPerson = person.id;
                     // Vérifier si le fichier PDF existe
@@ -185,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 pdfLink.textContent = `Voir l'acte de naissance (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
-                                acteNaissanceItem.appendChild(pdfLink);
                                 detailsList.appendChild(acteNaissanceItem);
                                 detailsList.appendChild(document.createElement('br'));
                             } else {
@@ -195,7 +223,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
                                 jpegLink.href = jpegFilePath;
                                 jpegLink.target = '_blank';
-                                acteNaissanceItem.appendChild(jpegLink);
                                 detailsList.appendChild(acteNaissanceItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
