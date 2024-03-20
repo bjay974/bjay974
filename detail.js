@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre)
-                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
+                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à de ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
                     conjointItem.innerHTML = `à : ${conjoint.nom} ${conjoint.prenom}`;
                     detailsList.appendChild(conjointItem); 
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
                     const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
-                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans dans la ville de ${person.lieu_deces}`;
+                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
                     detailsList.appendChild(deathDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
@@ -66,7 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }    } 
-                }                 
+                }     
+                
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     const father = data.find(p => p.id === person.id_pere);
@@ -114,17 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(affranchissementItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
-
-                // Ajouter le lien vers l'acte de naissance 
-                if (person.acte_nai) {
-                    const acteNaiItem = document.createElement('li');
-                    acteNaiItem.textContent = `Acte de naissance`;
-                    detailsList.appendChild(affranchissementItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                }
-
-
-                
+          
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
@@ -139,6 +130,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
                 } 
+
+               // Ajouter le lien vers l'acte de naissance 
+                if (person.acte_nai) {
+                    const acteNaiItem = document.createElement('li');
+                    acteNaiItem.textContent = `Acte de naissance`;
+                    detailsList.appendChild(affranchissementItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                }
              
                 personDetails.appendChild(detailsList);
             }      
