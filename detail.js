@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (mother) {
                         const motherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre)
-                        motherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${father.nom} ${father.prenom}`;
+                        motherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${mother.nom} ${mother.prenom}`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
