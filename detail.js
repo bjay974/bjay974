@@ -44,8 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à de ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
                     const weddingCoItem = document.createElement('li');
-                    weddingCoItem.innerHTML = `à : ${conjoint.nom} ${conjoint.prenom}`;
-                    detailsList.appendChild(weddingCoItem); 
+                    const conjoint = data.find(p => p.id === person.id_conjoint);
+                        if (conjoint) {
+                            const conjointItem = document.createElement('li');
+                            conjointItem.textContent = à : ${conjoint.nom} ${conjoint.prenom}`;
+                            detailsList.appendChild(conjointItem);     
+                        }
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 
