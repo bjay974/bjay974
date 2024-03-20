@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const pdfFileName2 = `${idPerson}_2.pdf`;
                                 const pdfFilePath2 = `mariage/${pdfFileName2}`;
                                 const pdfLink2 = document.createElement('a');
-                                pdfLink2.textContent = `Voir l'acte de mariage (PDF)`;
+                                pdfLink2.textContent = `Voir l'acte de mariage (page2) (PDF)`;
                                 pdfLink2.href = pdfFilePath;
                                 pdfLink2.target = '_blank';  
                                 acteMariageItem.appendChild(pdfLink);
@@ -251,20 +251,40 @@ document.addEventListener('DOMContentLoaded', () => {
                                 acteDecesItem.appendChild(pdfLink);
                                 detailsList.appendChild(acteDecesItem);
                                 detailsList.appendChild(document.createElement('br'));
-                            } else {
-                                const jpegFileName = `${idPerson}.jpg`;
-                                const jpegFilePath = `deces/${jpegFileName}`;
-                                const jpegLink = document.createElement('a');
-                                jpegLink.textContent = `Voir l'acte de décés (JPEG)`;
-                                jpegLink.href = jpegFilePath;
-                                jpegLink.target = '_blank';
-                                acteDecesItem.appendChild(jpegLink);
-                                detailsList.appendChild(acteDecesItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            }
-                 })
-                }
-                
+                             } else {
+                                const jpegFileName = `${idPerson}.jpeg`;
+                                fetch(`deces/${jpegFileName}`) 
+                                    .then(response => {
+                                        if (response.ok) {
+                                            const jpegFilePath = `deces/${jpegFileName}`;
+                                            const jpegLink = document.createElement('a');
+                                            jpegLink.textContent = `Voir l'acte de décés (JPEG)`;
+                                            jpegLink.href = pdfFilePath;
+                                            jpegLink.target = '_blank';
+                                            acteDecesItem.appendChild(jpegLink);
+                                            detailsList.appendChild(acteDecesItem);
+                                            detailsList.appendChild(document.createElement('br')); }
+                                        else {
+                                        const jpgFileName = `${idPerson}.jpg`;
+                                        fetch(`deces/${jpgFileName}`) 
+                                            .then(response => {
+                                                if (response.ok) {
+                                                    const jpegFilePath = `deces/${jpgFileName}`;
+                                                    const jpegLink = document.createElement('a');
+                                                    jpgLink.textContent = `Voir l'acte de décés (JPEG)`;
+                                                    jpgLink.href = pdfFilePath;
+                                                    jpgLink.target = '_blank';
+                                                    acteDecesItem.appendChild(jpgLink);
+                                                    detailsList.appendChild(acteDecesItem);
+                                                    detailsList.appendChild(document.createElement('br')); } 
+                                            }
+                                            )
+                                        }
+                                    } 
+                                }
+                            } )  
+                        }
+
                 // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
                 if (person.acte_div === true) {
                     const acteDiversItem = document.createElement('li');
@@ -280,7 +300,15 @@ document.addEventListener('DOMContentLoaded', () => {
                                 pdfLink.textContent = `Voir l'acte (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
+                                const pdfFileName2 = `${idPerson}_2.pdf`;
+                                const pdfFilePath2 = `divers/${pdfFileName2}`;
+                                const pdfLink2 = document.createElement('a');
+                                pdfLink2.textContent = `Voir l'acte (page2) (PDF)`;
+                                pdfLink2.href = pdfFilePath;
+                                pdfLink2.target = '_blank';  
                                 acteDiversItem.appendChild(pdfLink);
+                                acteDiversItem.appendChild(document.createTextNode(' | '));
+                                acteDiversItem.appendChild(pdfLink2);
                                 detailsList.appendChild(acteDiversItem);
                                 detailsList.appendChild(document.createElement('br'));
                             } else {
