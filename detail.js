@@ -158,95 +158,43 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br'));
                 }
 
-                
-                // Vérifier si l'acte de déces existe pour la personne
-                if (person.acte_nai === true) {
-                    const acteNaissanceItem = document.createElement('li');
+                // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
+                if (person.acte_div === true) {
+                    const acteDiversItem = document.createElement('li');
                     const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`naissance/${pdfFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const pdfFilePath = `naissance/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte de naissance (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                acteNaissanceItem.appendChild(pdfLink);
-                                detailsList.appendChild(acteNaissanceItem);
-                                detailsList.appendChild(document.createElement('br'));
-                             } else {
-                                const jpegFileName = `${idPerson}.jpeg`;
-                                fetch(`naissance/${jpegFileName}`) 
-                                    .then(response => {
-                                        if (response.ok) {
-                                            const jpegFilePath = `naissance/${jpegFileName}`;
-                                            const jpegLink = document.createElement('a');
-                                            jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
-                                            jpegLink.href = pdfFilePath;
-                                            jpegLink.target = '_blank';
-                                            acteNaissanceItem.appendChild(jpegLink);
-                                            detailsList.appendChild(acteNaissanceItem);
-                                            detailsList.appendChild(document.createElement('br')); }
-                                        else {
-                                        const jpgFileName = `${idPerson}.jpg`;
-                                        fetch(`naissance/${jpgFileName}`) 
-                                            .then(response => {
-                                                if (response.ok) {
-                                                    const jpegFilePath = `naissance/${jpgFileName}`;
-                                                    const jpegLink = document.createElement('a');
-                                                    jpgLink.textContent = `Voir l'acte de naissance (JPG)`;
-                                                    jpgLink.href = pdfFilePath;
-                                                    jpgLink.target = '_blank';
-                                                    acteNaissanceItem.appendChild(jpgLink);
-                                                    detailsList.appendChild(acteNaissanceItem);
-                                                    detailsList.appendChild(document.createElement('br')); 
-                                                } 
-                                            } )
-                                        }
-                                    } )
-                                }
-                            } )  
-                        }                
-                // Vérifier si l'acte de naissance existe pour la personne
-                if (person.acte_nai === true) {
-                    const acteNaissanceItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`naissance/${pdfFileName}`)
-                        .then(response => {                        
-                            if (response.ok) {
-                                const pdfFilePath = `naissance/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte de naissance (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                acteNaissanceItem.appendChild(pdfLink);
-                                detailsList.appendChild(acteNaissanceItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            } else {
-                                const jpegFileName = `${idPerson}.jpg`;
-                                const jpegFilePath = `naissance/${jpegFileName}`;
-                                const jpegLink = document.createElement('a');
-                                jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
-                                jpegLink.href = jpegFilePath;
-                                jpegLink.target = '_blank';
-                                acteNaissanceItem.appendChild(jpegLink);
-                                detailsList.appendChild(acteNaissanceItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            }
-                 })
+                    // Vérifier si le fichier  existe
+                    const divFileName = `${idPerson}`; 
+                    const divFilePath = `divers/${divFileName}`;
+                    const divLink = document.createElement('a');
+                    divLink.textContent = `Voir l'acte`;
+                    divLink.href = divFilePath;
+                    divLink.target = '_blank';
+                    acteDiversItem.appendChild(divLink); 
+                    detailsList.appendChild(acteDiversItem);
+                    detailsList.appendChild(document.createElement('br'));
                 }
-                
+
+                // Vérifier si un acte naissance existe pour la personne
+                if (person.acte_nai === true) {
+                    const acteNaissanceItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier existe
+                    const naiFileName = `${idPerson}.pdf`; 
+                    const naiFilePath = `naissance/${naiFileName}`;
+                    const naiLink = document.createElement('a');
+                    naiLink.textContent = `Voir l'acte`;
+                    naiLink.href = naiFilePath;
+                    naiLink.target = '_blank';
+                    acteDiversItem.appendChild(naiLink); 
+                    detailsList.appendChild(naiFileName);
+                    detailsList.appendChild(document.createElement('br'));
+                }
+                   
                 // Vérifier si l'acte de mariage existe pour la personne
                 if (person.acte_mar === true) {
                     const acteMariageItem = document.createElement('li');
                     const idPerson = person.id;
-                    const pdfFileName = `${idPerson}.pdf`;  
+                    const pdfFileName = `${idPerson.pdf}`;  
                     fetch(`mariage/${pdfFileName}`)
                         .then(response => {
                             if (response.ok) {
@@ -270,99 +218,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     })
                 }
                 
-                // Vérifier si l'acte de déces existe pour la personne
+                // Vérifier si un acte décés existe pour la personne
                 if (person.acte_dec === true) {
                     const acteDecesItem = document.createElement('li');
                     const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`deces/${pdfFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const pdfFilePath = `deces/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte de décés (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                acteDecesItem.appendChild(pdfLink);
-                                detailsList.appendChild(acteDecesItem);
-                                detailsList.appendChild(document.createElement('br'));
-                             } else {
-                                const jpegFileName = `${idPerson}.jpeg`;
-                                fetch(`deces/${jpegFileName}`) 
-                                    .then(response => {
-                                        if (response.ok) {
-                                            const jpegFilePath = `deces/${jpegFileName}`;
-                                            const jpegLink = document.createElement('a');
-                                            jpegLink.textContent = `Voir l'acte de décés (JPEG)`;
-                                            jpegLink.href = pdfFilePath;
-                                            jpegLink.target = '_blank';
-                                            acteDecesItem.appendChild(jpegLink);
-                                            detailsList.appendChild(acteDecesItem);
-                                            detailsList.appendChild(document.createElement('br')); }
-                                        else {
-                                        const jpgFileName = `${idPerson}.jpg`;
-                                        fetch(`deces/${jpgFileName}`) 
-                                            .then(response => {
-                                                if (response.ok) {
-                                                    const jpegFilePath = `deces/${jpgFileName}`;
-                                                    const jpegLink = document.createElement('a');
-                                                    jpgLink.textContent = `Voir l'acte de décés (JPG)`;
-                                                    jpgLink.href = pdfFilePath;
-                                                    jpgLink.target = '_blank';
-                                                    acteDecesItem.appendChild(jpgLink);
-                                                    detailsList.appendChild(acteDecesItem);
-                                                    detailsList.appendChild(document.createElement('br')); 
-                                                } 
-                                            } )
-                                        }
-                                    } )
-                                }
-                            } )  
-                        }
-
-                // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
-                if (person.acte_div === true) {
-                    const acteDiversItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`divers/${pdfFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const pdfFilePath = `divers/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                const pdfFileName2 = `${idPerson}_2.pdf`;
-                                const pdfFilePath2 = `divers/${pdfFileName2}`;
-                                const pdfLink2 = document.createElement('a');
-                                pdfLink2.textContent = `Voir l'acte (page2) (PDF)`;
-                                pdfLink2.href = pdfFilePath;
-                                pdfLink2.target = '_blank';  
-                                acteDiversItem.appendChild(pdfLink);
-                                acteDiversItem.appendChild(document.createTextNode(' | '));
-                                acteDiversItem.appendChild(pdfLink2);
-                                detailsList.appendChild(acteDiversItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            } else {
-                                const jpegFileName = `${idPerson}.jpg`;
-                                const jpegFilePath = `divers/${jpegFileName}`;
-                                const jpegLink = document.createElement('a');
-                                jpegLink.textContent = `Voir l'acte (JPEG)`;
-                                jpegLink.href = jpegFilePath;
-                                jpegLink.target = '_blank';
-                                acteDiversItem.appendChild(jpegLink);
-                                detailsList.appendChild(acteDiversItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            }
-                 })
-                }
-
-                
+                    // Vérifier si le fichier  existe
+                    const decFileName = `${idPerson}`;
+                    const decFilePath = `deces/${decFileName}`;
+                    const decLink = document.createElement('a');
+                    decLink.textContent = `Voir l'acte`;
+                    decLink.href = decFilePath;
+                    decLink.target = '_blank';
+                    acteDecesItem.appendChild(decLink); 
+                    detailsList.appendChild(decFileName);
+                    detailsList.appendChild(document.createElement('br'));
+                }    
+            
                 personDetails.appendChild(detailsList);
             }      
         })
