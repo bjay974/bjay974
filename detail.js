@@ -58,12 +58,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
-                        fatherItem.textContent = `Père : ${father.nom} ${father.prenom}`;
+                        fatherItem.innerHTML = `<em>Père</em> : ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.textContent = "Père inconnu";
+                    fatherItem.innerHTML = "Père inconnu";
                     detailsList.appendChild(fatherItem);
                 }
 
@@ -72,12 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
                         const motherItem = document.createElement('li');
-                        motherItem.textContent = `Mère : ${mother.nom} ${mother.prenom}`;
+                        motherItem.innerHTML = `<em>Mère</em> : ${mother.nom} ${mother.prenom}`;
                         detailsList.appendChild(motherItem);
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
                 } else {
                     const motherItem = document.createElement('li');
-                    motherItem.textContent = "Mère inconnue";
+                    motherItem.innerHTML = "Mère inconnue";
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }          
@@ -88,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (conjoint) {
                         const conjointItem = document.createElement('li');
                         const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
-                        conjointItem.textContent = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
+                        conjointItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      } 
