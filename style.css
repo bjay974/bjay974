@@ -13,19 +13,6 @@ header {
     text-align: center;
 }
 
-h1 {
-    margin: 0;
-    font-size: 36px;
-    text-align: center;
-}
-
-h2 {
-    margin: 0;
-    font-size: 24px;
-    text-align: center;
-}
-
-
 nav {
     background-color: #666;
     padding: 10px 0;
@@ -77,39 +64,13 @@ footer {
 .list {
     list-style-type: none; /* Supprime les puces des listes */
     text-align: left; /* Aligne la liste à gauche */
-}
-
-.person {
-    text-align: center;
-    padding: 10px;
-    margin: 10px;
-    border: 2px solid black;
-    border-radius: 10px;
-    background-color: #ffcccc; /* Fond rose pour la mère */
-    width: 150px;
-}
-
-.father {
-    background-color: #ccccff; /* Fond bleu pour les hommes */
+    list-style-type: none; /* Supprime les puces des listes */
 }
 
 .child {
-    margin-top: 20px;
+    margin-top: 15px;
+    text-align: left; /* Aligne la liste à gauche */
 }
 
-.line {
-    border-left: 2px solid black;
-    height: 40px;
-    position: absolute;
-    left: 50%;
-}
-
-.vertical-line {
-    border-left: 2px solid black;
-    height: 100px;
-    position: absolute;
-    left: 50%;
-    top: 30px;
-}
 
 
