@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } 
                 
                 // Vérifier si l'acte d'affranchissemment existe pour la personne
-                if (person.affranchi !== true) {
+                if (person.affranchi === true) {
                     const acteAffranItem = document.createElement('li');
                     const idPerson = person.id;
                     // Vérifier si le fichier PDF existe
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  })
                 }
                 // Vérifier si l'acte de naissance existe pour la personne
-                if (person.acte_nai !== true) {
+                if (person.acte_nai === true) {
                     const acteNaissanceItem = document.createElement('li');
                     const idPerson = person.id;
                     // Vérifier si le fichier PDF existe
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Vérifier si l'acte de déces existe pour la personne
-                if (person.acte_dec !== true) {
+                if (person.acte_dec === true) {
                     const acteDecesItem = document.createElement('li');
                     const idPerson = person.id;
                     // Vérifier si le fichier PDF existe
