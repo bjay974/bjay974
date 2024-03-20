@@ -276,11 +276,11 @@ document.addEventListener('DOMContentLoaded', () => {
                                                     jpgLink.target = '_blank';
                                                     acteDecesItem.appendChild(jpgLink);
                                                     detailsList.appendChild(acteDecesItem);
-                                                    detailsList.appendChild(document.createElement('br')); } 
-                                            }
-                                            )
+                                                    detailsList.appendChild(document.createElement('br')); 
+                                                } 
+                                            } )
                                         }
-                                    } 
+                                    } )
                                 }
                             } )  
                         }
