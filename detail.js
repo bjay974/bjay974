@@ -158,23 +158,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br'));
                 }
 
-                // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
-                if (person.acte_div === true) {
-                    const acteDiversItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier  existe
-                    const divFileName = `${idPerson}`; 
-                    const divFilePath = `divers/${divFileName}`;
-                    const divLink = document.createElement('a');
-                    divLink.textContent = `Voir l'acte`;
-                    divLink.href = divFilePath;
-                    divLink.target = '_blank';
-                    acteDiversItem.appendChild(divLink); 
-                    detailsList.appendChild(acteDiversItem);
-                    detailsList.appendChild(document.createElement('br'));
-                }
-
-                // Vérifier si un acte naissance existe pour la personne
+               
+                // Vérifier si l'acte de naissance existe pour la personne
                 if (person.acte_nai === true) {
                     const acteNaissanceItem = document.createElement('li');
                     const idPerson = person.id;
@@ -217,24 +202,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                     })
                 }
-                
-                // Vérifier si un acte décés existe pour la personne
-                if (person.acte_dec === true) {
-                    const acteDecesItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier  existe
-                    const decFileName = `${idPerson}`;
-                    const decFilePath = `deces/${decFileName}`;
-                    const decLink = document.createElement('a');
-                    decLink.textContent = `Voir l'acte`;
-                    decLink.href = decFilePath;
-                    decLink.target = '_blank';
-                    acteDecesItem.appendChild(decLink); 
-                    detailsList.appendChild(decFileName);
-                    detailsList.appendChild(document.createElement('br'));
-                }    
-            
-                personDetails.appendChild(detailsList);
+               
+               }    
+                  
+               personDetails.appendChild(detailsList);
             }      
         })
      
