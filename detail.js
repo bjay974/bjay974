@@ -33,6 +33,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const adjectif_genre = ajouterE("Marié", person.genre)
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans dans la ville de ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
+                    conjointItem.innerHTML = `à : ${conjoint.nom} ${conjoint.prenom}`;
+                    detailsList.appendChild(conjointItem); 
                 }
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
@@ -86,15 +88,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 }          
                 
                 // Charger le ou la conjoint
-                if (person.id_conjoint) {
-                    const conjoint = data.find(p => p.id === person.id_conjoint);
-                    if (conjoint) {
-                        const conjointItem = document.createElement('li');
-                        const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
-                        conjointItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
-                        detailsList.appendChild(conjointItem);
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                     } 
+                if (person.date_mariage === null) {
+                    if (person.id_conjoint) {
+                        const conjoint = data.find(p => p.id === person.id_conjoint);
+                        if (conjoint) {
+                            const conjointItem = document.createElement('li');
+                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
+                            conjointItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
+                            detailsList.appendChild(conjointItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }    } 
                 } 
 
                 // Ajouter l'origine
