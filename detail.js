@@ -24,7 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const adjectif_genre = ajouterE("Né", person.genre)
                 const dateVerified = verifieDate(person.date_naissance) 
                 birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
-                detailsList.appendChild(birthDateItem);  
+                detailsList.appendChild(birthDateItem);
+
+                // Ajouter la date de reonnaisance ainsi que le nom
+                if (person.date_legitime !== null) {
+                    const legDateItem = document.createElement('li');
+                    const dateVerified = verifieDate(person.date_legitime) 
+                    const adjectif_genre = ajouterE("Reconnu", person.genre)
+                    legDateItem.innerHTML = `${adjectif_genre} le ${dateVerified} :<strong>${person.nom_legitime}</strong> `;
+                    detailsList.appendChild(legDateItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                }
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
@@ -33,10 +43,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const adjectif_genre = ajouterE("Marié", person.genre)
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à de ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
-                    conjointItem.innerHTML = `à : ${conjoint.nom} ${conjoint.prenom}`;
-                    detailsList.appendChild(conjointItem); 
+                    const weddingCoItem = document.createElement('li');
+                    weddingCoItem.innerHTML = `à : ${conjoint.nom} ${conjoint.prenom}`;
+                    detailsList.appendChild(weddingCoItem); 
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
-                // Ajouter la date de décès si elle n'est pas nulle
+                
+                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
