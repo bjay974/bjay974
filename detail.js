@@ -115,6 +115,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
 
+                // Ajouter le lien vers l'acte de naissance 
+                if (person.acte_nai) {
+                    const acteNaiItem = document.createElement('li');
+                    acteNaiItem.textContent = `Acte de naissance`;
+                    detailsList.appendChild(affranchissementItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                }
+
+
+                
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
