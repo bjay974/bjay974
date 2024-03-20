@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
-                  //  const deathDateItem = document.createElement('li');
+                    const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
                     const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
@@ -55,6 +55,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                  }
                 
+                // Charger le ou la conjoint
+                if (person.date_mariage === null) {
+                    if (person.id_conjoint) {
+                        const conjoint = data.find(p => p.id === person.id_conjoint);
+                        if (conjoint) {
+                            const conjointItem = document.createElement('li');
+                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
+                            conjointItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
+                            detailsList.appendChild(conjointItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }    } 
+                }                 
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     const father = data.find(p => p.id === person.id_pere);
@@ -69,12 +81,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     fatherItem.innerHTML = "Père inconnu";
                     detailsList.appendChild(fatherItem);
                 }
-
+                
               // Charger la mère si l'ID de la mère est défini
                 if (person.id_mere) {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                 //       const motherItem = document.createElement('li');
+                        const motherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre)
                         motherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(motherItem);
@@ -85,23 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     motherItem.innerHTML = "Mère inconnue";
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                }          
+                }   
                 
-                // Charger le ou la conjoint
-                if (person.date_mariage === null) {
-                    if (person.id_conjoint) {
-                        const conjoint = data.find(p => p.id === person.id_conjoint);
-                        if (conjoint) {
-                            const conjointItem = document.createElement('li');
-                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
-                            conjointItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
-                            detailsList.appendChild(conjointItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    }    } 
-                } 
-
                 // Ajouter l'origine
-                if (person.origine !== null) {
+                if (person.origine) {
                     const origineItem = document.createElement('li');
                     origineItem.textContent = `Pays d'origine : ${person.origine}`;
                     detailsList.appendChild(origineItem);
@@ -109,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Ajouter l'affranchissement 
-                if (person.affranchi !== null) {
+                if (person.affranchi) {
                     const affranchissementItem = document.createElement('li');
                     affranchissementItem.textContent = `Affranchi en 1848`;
                     detailsList.appendChild(affranchissementItem);
@@ -123,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPersonList.textContent = "Enfant(s) :";
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
-                      //  const childItem = document.createElement('li');
+                        const childItem = document.createElement('li');
                         childItem.textContent = `${child.nom} ${child.prenom}`;
                         childrenOfPersonUl.appendChild(childItem);
                     });
