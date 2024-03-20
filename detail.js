@@ -140,23 +140,27 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
-
-                // Vérifier si l'acte d'affranchissement existe pour la personne
+                
+                // Charger l'extension du fichier affranchissement si elle existe
                 if (person.affranchi === true || person.acte_div === true) {
                     const acteDiversItem = document.createElement('li');
                     const idPerson = person.id;                    
                     const divFileName = `${idPerson}`; // Vérifier si le fichier existe
                     const divFilePath = `affranchissement/${divFileName}`;
-                    const extensionFic = rechercheExtension(divFilePath);
-                    if (extensionFic !== null){
-                        const divFilePathExt = `${divFilePath}.${extensionFic}`
-                        const divLink = document.createElement('a');
-                        divLink.textContent = `Voir l'acte d'affranchissement `;
-                        divLink.href = divFilePathExt;
-                        divLink.target = '_blank';
-                        acteDiversItem.appendChild(divLink);
-                        detailsList.appendChild(acteDiversItem);
-                        detailsList.appendChild(document.createElement('br'));
+                    try {
+                        const extensionFic = await rechercheExtension(divFilePath);
+                        if (extensionFic !== null) {
+                            const divFilePathExt = `${divFilePath}.${extensionFic}`;
+                            const divLink = document.createElement('a');
+                            divLink.textContent = `Voir l'acte d'affranchissement `;
+                            divLink.href = divFilePathExt;
+                            divLink.target = '_blank';
+                            acteDiversItem.appendChild(divLink);
+                            detailsList.appendChild(acteDiversItem);
+                            detailsList.appendChild(document.createElement('br'));
+                        }
+                    } catch (error) {
+                        console.error(error);
                     }
                 }
                
@@ -166,7 +170,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const idPerson = person.id;
                     const naiFileName = `${idPerson}`; 
                     const naiFilePath = `naissance/${naiFileName}`;
-                    const extensionFic = rechercheExtension(naiFilePath);
+                    try {
+                    const extensionFic = await rechercheExtension(naiFilePath);
                     if (extensionFic !== null){
                         const naiFilePathExt = `${naiFilePath}.${extensionFic}`
                         const naiLink = document.createElement('a');
@@ -176,6 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         acteNaissanceItem.appendChild(naiLink); 
                         detailsList.appendChild(acteNaissanceItem);
                         detailsList.appendChild(document.createElement('br'));
+                       }
+                    } catch (error) {
+                        console.error(error);
                     }
                 }
 
@@ -185,7 +193,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const idPerson = person.id;
                     const marFileName = `${idPerson}`;  // Vérifier si le fichier existe
                     const marFilePath = `mariage/${marFileName}`;
-                    const extensionFic = rechercheExtension(marFilePath);
+                    try {
+                    const extensionFic = await rechercheExtension(marFilePath);
                     if (extensionFic !== null){
                         const marFilePathExt = `${marFilePath}.${extensionFic}`
                         const marLink = document.createElement('a');
@@ -203,6 +212,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         acteMariageItem.appendChild(marLink2);
                         detailsList.appendChild(acteMariageItem);
                         detailsList.appendChild(document.createElement('br'));
+                         }
+                    } catch (error) {
+                        console.error(error);
                     }
                 }
             
@@ -212,7 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const idPerson = person.id;                    
                     const decFileName = `${idPerson}`; // Vérifier si le fichier existe
                     const decFilePath = `deces/${decFileName}`;
-                    const extensionFic = rechercheExtension(decFilePath);
+                    try {
+                    const extensionFic = await rechercheExtension(decFilePath);
                     if (extensionFic !== null){
                         const decFilePathExt = `${decFilePath}.${extensionFic}`
                         const decLink = document.createElement('a');
@@ -222,6 +235,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         acteDecesItem.appendChild(decLink);
                         detailsList.appendChild(acteDecesItem);
                         detailsList.appendChild(document.createElement('br'));
+                         }
+                    } catch (error) {
+                        console.error(error);
                     }
                 }                
 
