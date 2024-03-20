@@ -251,6 +251,24 @@ function rechercheExtension(nomFichier) {
     }
 }
 
+async function rechercheExtension(nomFichier) {
+    const extensions = ['pdf', 'jpg', 'jpeg'];
+    for (let i = 0; i < extensions.length; i++) {
+        const extension = extensions[i];
+        try {
+            const response = await fetch(`${nomFichier}.${extension}`);
+            if (response.ok) {
+                return extension;
+            } else {
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+    return null; // Aucune extension trouvée
+}
+
+
 function diffAge(date1, date2) {   
     const an1 = parseInt(date1.substr(6, 4));
     const mois1 = parseInt(date1.substr(3, 2));
