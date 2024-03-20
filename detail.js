@@ -158,6 +158,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br'));
                 }
 
+                // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
+                if (person.acte_div === true) {
+                    const acteDiversItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier  existe
+                    const divFileName = `${idPerson}`; 
+                    const divFilePath = `divers/${divFileName}`;
+                    const divLink = document.createElement('a');
+                    divLink.textContent = `Voir l'acte`;
+                    divLink.href = divFilePath;
+                    divLink.target = '_blank';
+                    acteDiversItem.appendChild(divLink); 
+                    detailsList.appendChild(acteDiversItem);
+                    detailsList.appendChild(document.createElement('br'));
+                }
                 
                 // Vérifier si l'acte de déces existe pour la personne
                 if (person.acte_nai === true) {
@@ -209,7 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                     } )
                                 }
                             } )  
-                        }                
+                        }    
+                
                 // Vérifier si l'acte de naissance existe pour la personne
                 if (person.acte_nai === true) {
                     const acteNaissanceItem = document.createElement('li');
@@ -322,45 +338,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             } )  
                         }
 
-                // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
-                if (person.acte_div === true) {
-                    const acteDiversItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`divers/${pdfFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const pdfFilePath = `divers/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                const pdfFileName2 = `${idPerson}_2.pdf`;
-                                const pdfFilePath2 = `divers/${pdfFileName2}`;
-                                const pdfLink2 = document.createElement('a');
-                                pdfLink2.textContent = `Voir l'acte (page2) (PDF)`;
-                                pdfLink2.href = pdfFilePath;
-                                pdfLink2.target = '_blank';  
-                                acteDiversItem.appendChild(pdfLink);
-                                acteDiversItem.appendChild(document.createTextNode(' | '));
-                                acteDiversItem.appendChild(pdfLink2);
-                                detailsList.appendChild(acteDiversItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            } else {
-                                const jpegFileName = `${idPerson}.jpg`;
-                                const jpegFilePath = `divers/${jpegFileName}`;
-                                const jpegLink = document.createElement('a');
-                                jpegLink.textContent = `Voir l'acte (JPEG)`;
-                                jpegLink.href = jpegFilePath;
-                                jpegLink.target = '_blank';
-                                acteDiversItem.appendChild(jpegLink);
-                                detailsList.appendChild(acteDiversItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            }
-                 })
-                }
+
 
                 
                 personDetails.appendChild(detailsList);
