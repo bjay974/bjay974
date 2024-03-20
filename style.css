@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f2f2f2;
+    overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
 }
 
 header {
