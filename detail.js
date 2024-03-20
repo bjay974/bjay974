@@ -241,10 +241,10 @@ function rechercheExtension(nomFichier) {
             .then(response => {
                 if (response.ok) {
                     // Gérer la réponse
-                    console.log(`Résultat : ${filePath}`);
+                    console.log(`Résultat :${nomFichier}.${extension}`);
                     return extension;
                 } else {
-                   console.log(`Résultat : ${filePath}`);
+                   console.log(`Résultat : ${response}`);
                 }
             })
     }
