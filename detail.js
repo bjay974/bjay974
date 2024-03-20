@@ -170,13 +170,34 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                  }) }
 
-               // Ajouter le lien vers l'acte de naissance 
-                if (person.acte_nai) {
-                    const acteNaiItem = document.createElement('li');
-                    acteNaiItem.textContent = `Acte de naissance`;
-                    detailsList.appendChild(affranchissementItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                // Vérifier si l'acte de naissance existe pour la personne
+                if (person.acte_nai !== null) {
+                    const acteNaissanceItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier PDF existe
+                    const pdfFileName = `${idPerson}.pdf`;
+                    const pdfFilePath = `https://github.com/bjay974/bjay974/raw/main/naissance/${pdfFileName}`;
+                    const pdfLink = document.createElement('a');
+                    pdfLink.textContent = `Voir l'acte de naissance (PDF)`;
+                    pdfLink.href = pdfFilePath;
+                    pdfLink.target = '_blank';
+                    // Vérifier si le fichier JPEG existe
+                    const jpegFileName = `${idPerson}.jpg`;
+                    const jpegFilePath = `https://github.com/bjay974/bjay974/raw/main/naissance/${jpegFileName}`;
+                    const jpegLink = document.createElement('a');
+                    jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
+                    jpegLink.href = jpegFilePath;
+                    jpegLink.target = '_blank
+                    // Ajouter les liens à l'élément de la liste
+                    acteNaissanceItem.appendChild(pdfLink);
+                    acteNaissanceItem.appendChild(document.createTextNode(' | ')); // Ajouter un séparateur
+                    acteNaissanceItem.appendChild(jpegLink);
+                
+                    // Ajouter l'élément à la liste des détails
+                    detailsList.appendChild(acteNaissanceItem);
                 }
+
+
              
                 personDetails.appendChild(detailsList);
             }      
