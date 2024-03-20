@@ -53,28 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                  }
                 
-                // Ajouter le nom du conjoint 
-                if (person.nom_conjoint !== null) {
-                    if (person.date_mariage !== null) {
-                        if (person.genre == "F") {
-                            const epouxNameItem = document.createElement('li');
-                            epouxNameItem.innerHTML = `<strong>Epoux</strong> : ${person.nom_epouse} ${person.prenom_conjoint} `;
-                            detailsList.appendChild(epouxNameItem); 
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                        } else {
-                            const epouseNameItem = document.createElement('li');
-                            epouseNameItem.innerHTML = `<strong>Epouse</strong> : ${person.nom_conjoint} ${person.prenom_conjoint} `;
-                            detailsList.appendChild(epouseNameItem);
-                            detailsList.appendChild(document.createElement('br')); } // Ajout d'un espace 
-                    } else {
-                            const conjointNameItem = document.createElement('li');
-                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
-                            conjointNameItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${person.nom_conjoint} ${person.prenom_conjoint} `;
-                            detailsList.appendChild(conjointNameItem); 
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                     }
-                }
-                
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     const father = data.find(p => p.id === person.id_pere);
@@ -82,11 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fatherItem = document.createElement('li');
                         fatherItem.textContent = `Père : ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
-                    } else {
-                        const fatherItem = document.createElement('li');
-                        fatherItem.textContent = "Père non trouvé.";
-                        detailsList.appendChild(fatherItem);
-                    }
+                    } 
                 } else {
                     const fatherItem = document.createElement('li');
                     fatherItem.textContent = "Père inconnu";
@@ -100,28 +74,26 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('li');
                         motherItem.textContent = `Mère : ${mother.nom} ${mother.prenom}`;
                         detailsList.appendChild(motherItem);
-                    } else {
-                        const motherItem = document.createElement('li');
-                        motherItem.textContent = "Mère non trouvée.";
-                        detailsList.appendChild(motherItem);
                     }
                 } else {
                     const motherItem = document.createElement('li');
                     motherItem.textContent = "Mère inconnue";
                     detailsList.appendChild(motherItem);
                 }          
-
-                    // Charger le ou la conjoint
+                
+                // Charger le ou la conjoint
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         const conjointItem = document.createElement('li');
-                        conjointItem.textContent = `Conjoint : ${conjoint.nom} ${conjoint.prenom}`;.textContent = `Mère : ${conjoint.nom} ${conjoint.prenom}`;
+                        const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
+                        conjointItem.textContent = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
                         detailsList.appendChild(conjointItem);
-                    } 
-                }  
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                     } 
+                } 
 
-                    // Ajouter l'origine
+                // Ajouter l'origine
                 if (person.origine !== null) {
                     const origineItem = document.createElement('li');
                     origineItem.textContent = `Pays d'origine : ${person.origine}`;
