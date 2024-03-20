@@ -235,26 +235,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function rechercheExtension(nomFichier) {
     const extensions = ['pdf', 'jpg', 'jpeg'];
-    console.log(`Le fichier : ${nomFichier}`);
     for (let i = 0; i < extensions.length; i++) {
         const extension = extensions[i];
-        const filePath = `${nomFichier}.${extension}`;
-        console.log(`Le fichier + ext : ${filePath}`);
-        if (fileExists(filePath)) {
-            console.log(`Résultat : ${filePath}`);
-            return extension;
-        }
-    }
-    console.log(`Ko : ${filePath}Aucune des extensions n'a été trouvée`);
-    return null; 
-}
-
-function fileExists(filePath) {
-    try {
-        fs.accessSync(filePath, fs.constants.F_OK);
-        return true; // Le fichier existe
-    } catch (err) {
-        return false; // Le fichier n'existe pas
+        return fetch(`${nomFichier}.${extension}`)
+            .then(response => {
+                if (response.ok) {
+                    // Gérer la réponse
+                    console.log(`Résultat : ${filePath}`);
+                    return extension;
+                } else {
+                   console.log(`Résultat : ${filePath}`);
+                }
+            })
     }
 }
 
