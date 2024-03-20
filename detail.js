@@ -156,6 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 pdfLink.textContent = `Voir l'acte d'affranchissement' (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
+                                acteAffranItem.appendChild(pdfLink);
                                 detailsList.appendChild(acteAffranItem);
                                 detailsList.appendChild(document.createElement('br'));
                             } else {
@@ -165,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 jpegLink.textContent = `Voir l'acte d'affranchissement (JPEG)`;
                                 jpegLink.href = jpegFilePath;
                                 jpegLink.target = '_blank';
+                                acteAffranItem.appendChild(jpegLink);
                                 detailsList.appendChild(acteAffranItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
@@ -185,6 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 pdfLink.textContent = `Voir l'acte de naissance (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
+                                acteNaissanceItem.appendChild(pdfLink);
                                 detailsList.appendChild(acteNaissanceItem);
                                 detailsList.appendChild(document.createElement('br'));
                             } else {
@@ -194,12 +197,44 @@ document.addEventListener('DOMContentLoaded', () => {
                                 jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
                                 jpegLink.href = jpegFilePath;
                                 jpegLink.target = '_blank';
+                                acteNaissanceItem.appendChild(jpegLink);
                                 detailsList.appendChild(acteNaissanceItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
                  })
                 }
-
+                
+                // Vérifier si l'acte de naissance existe pour la personne
+                if (person.acte_mar === true) {
+                    const acteMariageItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier PDF existe
+                    const pdfFileName = `${idPerson}.pdf`;
+                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
+                    fetch(`mariage/${pdfFileName}`)
+                        .then(response => {
+                            if (response.ok) {
+                                const pdfFilePath = `mariage/${pdfFileName}`;
+                                const pdfLink = document.createElement('a');
+                                pdfLink.textContent = `Voir l'acte de mariage (PDF)`;
+                                pdfLink.href = pdfFilePath;
+                                pdfLink.target = '_blank';
+                                acteMariageItem.appendChild(pdfLink);
+                                detailsList.appendChild(acteMariageItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            } else {
+                                const jpegFileName = `${idPerson}.jpg`;
+                                const jpegFilePath = `mariage/${jpegFileName}`;
+                                const jpegLink = document.createElement('a');
+                                jpegLink.textContent = `Voir l'acte de mariage (JPEG)`;
+                                jpegLink.href = jpegFilePath;
+                                jpegLink.target = '_blank';
+                                acteMariageItem.appendChild(jpegLink);
+                                detailsList.appendChild(acteMariageItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            }
+                 })
+                }
                 // Vérifier si l'acte de déces existe pour la personne
                 if (person.acte_dec === true) {
                     const acteDecesItem = document.createElement('li');
@@ -215,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 pdfLink.textContent = `Voir l'acte de décés (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
+                                acteDecesItem.appendChild(pdfLink);
                                 detailsList.appendChild(acteDecesItem);
                                 detailsList.appendChild(document.createElement('br'));
                             } else {
@@ -224,12 +260,46 @@ document.addEventListener('DOMContentLoaded', () => {
                                 jpegLink.textContent = `Voir l'acte de décés (JPEG)`;
                                 jpegLink.href = jpegFilePath;
                                 jpegLink.target = '_blank';
+                                acteDecesItem.appendChild(jpegLink);
                                 detailsList.appendChild(acteDecesItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
                  })
                 }
-             
+                
+                // Vérifier si un acte divers (militaire, naturalisation) existe pour la personne
+                if (person.acte_div === true) {
+                    const acteDiversItem = document.createElement('li');
+                    const idPerson = person.id;
+                    // Vérifier si le fichier PDF existe
+                    const pdfFileName = `${idPerson}.pdf`;
+                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
+                    fetch(`divers/${pdfFileName}`)
+                        .then(response => {
+                            if (response.ok) {
+                                const pdfFilePath = `divers/${pdfFileName}`;
+                                const pdfLink = document.createElement('a');
+                                pdfLink.textContent = `Voir l'acte (PDF)`;
+                                pdfLink.href = pdfFilePath;
+                                pdfLink.target = '_blank';
+                                acteDiversItem.appendChild(pdfLink);
+                                detailsList.appendChild(acteDiversItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            } else {
+                                const jpegFileName = `${idPerson}.jpg`;
+                                const jpegFilePath = `divers/${jpegFileName}`;
+                                const jpegLink = document.createElement('a');
+                                jpegLink.textContent = `Voir l'acte (JPEG)`;
+                                jpegLink.href = jpegFilePath;
+                                jpegLink.target = '_blank';
+                                acteDiversItem.appendChild(jpegLink);
+                                detailsList.appendChild(acteDiversItem);
+                                detailsList.appendChild(document.createElement('br'));
+                            }
+                 })
+                }
+
+                
                 personDetails.appendChild(detailsList);
             }      
         })
