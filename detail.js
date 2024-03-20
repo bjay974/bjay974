@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const acteMariageItem = document.createElement('li');
                     const idPerson = person.id;
                     const pdfFileName = `${idPerson}.pdf`;  
-                    fetch(`naissance/${pdfFileName}`)
+                    fetch(`mariage/${pdfFileName}`)
                         .then(response => {
                             if (response.ok) {
                                 const pdfFilePath = `mariage/${pdfFileName}`;
