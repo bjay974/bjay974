@@ -151,8 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Ajouter l'image à la suite de l'élément affranchissementItem
                     detailsList.appendChild(imageAffranchissement);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                } }
-            
+         }) }
           
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
