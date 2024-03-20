@@ -36,7 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
-                    const deathDateItem = document.createElement('li');
+                  //  const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
                     const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
@@ -58,7 +58,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
-                        fatherItem.innerHTML = `<em>Père</em> : ${father.nom} ${father.prenom}`;
+                        const adjectif_genre = ajouterParent(person.genre)
+                        fatherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
@@ -71,8 +72,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_mere) {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                        const motherItem = document.createElement('li');
-                        motherItem.innerHTML = `<em>Mère</em> : ${mother.nom} ${mother.prenom}`;
+                 //       const motherItem = document.createElement('li');
+                        const adjectif_genre = ajouterParent(person.genre)
+                        motherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
@@ -118,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPersonList.textContent = "Enfant(s) :";
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
-                        const childItem = document.createElement('li');
+                      //  const childItem = document.createElement('li');
                         childItem.textContent = `${child.nom} ${child.prenom}`;
                         childrenOfPersonUl.appendChild(childItem);
                     });
