@@ -129,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
                     const childrenOfPersonList = document.createElement('li');
-                    childrenOfPersonList.innerHTML = "<front>Enfant(s)</front> :";
+                    childrenOfPersonList.innerHTML = "<strong>Enfant(s)</strong> :";
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
@@ -138,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
                 
                    // Ajouter l'affranchissement 
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
                     const pdfFileName = `${person.id}.pdf`; // Formez le nom du fichier PDF à partir de l'ID de la personne
                     // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`/affranchissement/${imageFileName}`)
+                    fetch(`affranchissement/${imageFileName}`)
                         .then(response => {
                             if (response.ok) {
                                 imageAffranchissement.data = `affranchissement/${imageFileName}`; // Utilisez le nom du fichier image formé
