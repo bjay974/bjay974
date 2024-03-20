@@ -229,7 +229,9 @@
     "domicile": null,
     "affranchi": null,
     "origine": null,
-    "acte_nai": true
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true  
   },
   {
     "id": 501,
@@ -287,7 +289,7 @@
     "date_legitime": null,
     "id_pere": 901,
     "id_mere": 902,
-    "date_naissance": "14/07/1848",
+    "date_naissance": "14/07/1845",
     "lieu_naissance": "Saint-Benoit",
     "date_deces": "01/01/1901",
     "lieu_deces": "Inconnu",
@@ -297,10 +299,12 @@
     "domicile": "Bras Canot",
     "affranchi": "OUI",
     "origine": null,
-    "acte_nai": true
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true  
   },
   {
-    "id": 501,
+    "id": 503,
     "nom": "MONTIGUE",
     "prenom": "Eugene",
     "genre": "M",
@@ -341,7 +345,7 @@
     "origine": null
   },
   {
-    "id": 701,
+    "id": 603,
     "nom": "ATHANASE",
     "prenom": "Pierre",
     "genre": "M",
@@ -349,16 +353,42 @@
     "nom_legitime": null,
     "date_legitime": null,
     "id_pere": null,
-    "date_naissance": "01/01/1810",
+    "date_naissance": "18/11/1843",
     "lieu_naissance": "Inconnu",
-    "date_deces": "01/01/1901",
+    "date_deces": "01/01/1906",
     "lieu_deces": "Inconnu",
-    "date_mariage": null,
-    "lieu_mariage": null,
-    "id_conjoint": null,
+    "date_mariage": "26/05/1862",
+    "lieu_mariage": "Saint-benoit",
+    "id_conjoint": 604,
     "domicile": null,
     "affranchi": null,
-    "origine": null
+    "origine": null,
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true    
+  },
+  {
+    "id": 604,
+    "nom": "NECODA",
+    "prenom": "Marie Rose",
+    "genre": "F",
+    "nom_epouse": null,
+    "nom_legitime": null,
+    "date_legitime": null,
+    "id_pere": null,
+    "date_naissance": "01/01/1847",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "08/06/1911",
+    "lieu_deces": "Saint-Benoit",
+    "date_mariage": "26/05/1862",
+    "lieu_mariage": "Saint-benoit",
+    "id_conjoint": 603,
+    "domicile": null,
+    "affranchi": null,
+    "origine": null,
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true    
   },
   {
     "id": 102,
