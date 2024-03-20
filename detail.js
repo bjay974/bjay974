@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
-                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre)
+                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
                             conjointItem.innerHTML = `<strong>${adjectif_genre}</strong> : ${conjoint.nom} ${conjoint.prenom}`;
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -72,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     const father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
-                        const adjectif_genre = ajouterParent(person.genre)
+                        const adjectif_genre = ajouterParent(person.genre);
                         fatherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.innerHTML = "Père inconnu";
+                    fatherItem.innerHTML = "<strong><em>Père</em></strong> inconnu";
                     detailsList.appendChild(fatherItem);
                 }
                 
@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 } else {
                     const motherItem = document.createElement('li');
-                    motherItem.innerHTML = "Mère inconnue";
+                    motherItem.innerHTML = "<strong><em>Mère</em></strong> inconnue";
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }   
