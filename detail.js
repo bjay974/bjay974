@@ -73,62 +73,55 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(conjointNameItem); 
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
-                 }
+                }
                 
-           // Charger le père si l'ID du père est défini
-            if (person.id_pere) {
-                const father = data.find(p => p.id === person.id_pere);
-                if (father) {
-                    const fatherItem = document.createElement('li');
-                    fatherItem.textContent = `Père : ${father.nom} ${father.prenom}`;
-                    detailsList.appendChild(fatherItem);
+                // Charger le père si l'ID du père est défini
+                if (person.id_pere) {
+                    const father = data.find(p => p.id === person.id_pere);
+                    if (father) {
+                        const fatherItem = document.createElement('li');
+                        fatherItem.textContent = `Père : ${father.nom} ${father.prenom}`;
+                        detailsList.appendChild(fatherItem);
+                    } else {
+                        const fatherItem = document.createElement('li');
+                        fatherItem.textContent = "Père non trouvé.";
+                        detailsList.appendChild(fatherItem);
+                    }
                 } else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.textContent = "Père non trouvé.";
+                    fatherItem.textContent = "Père inconnu";
                     detailsList.appendChild(fatherItem);
                 }
-            } else {
-                const fatherItem = document.createElement('li');
-                fatherItem.textContent = "Père inconnu";
-                detailsList.appendChild(fatherItem);
-            }
 
-            // Charger la mère si l'ID de la mère est défini
-            if (person.id_mere) {
-                const mother = data.find(p => p.id === person.id_mere);
-                if (mother) {
-                    const motherItem = document.createElement('li');
-                    motherItem.textContent = `Mère : ${mother.nom} ${mother.prenom}`;
-                    detailsList.appendChild(motherItem);
+              // Charger la mère si l'ID de la mère est défini
+                if (person.id_mere) {
+                    const mother = data.find(p => p.id === person.id_mere);
+                    if (mother) {
+                        const motherItem = document.createElement('li');
+                        motherItem.textContent = `Mère : ${mother.nom} ${mother.prenom}`;
+                        detailsList.appendChild(motherItem);
+                    } else {
+                        const motherItem = document.createElement('li');
+                        motherItem.textContent = "Mère non trouvée.";
+                        detailsList.appendChild(motherItem);
+                    }
                 } else {
                     const motherItem = document.createElement('li');
-                    motherItem.textContent = "Mère non trouvée.";
+                    motherItem.textContent = "Mère inconnue";
                     detailsList.appendChild(motherItem);
-                }
-            } else {
-                const motherItem = document.createElement('li');
-                motherItem.textContent = "Mère inconnue";
-                detailsList.appendChild(motherItem);
-            }          
+                }          
 
-                        // Charger le ou la conjoint
-            if (person.id_conjoint) {
-                const mother = data.find(p => p.id === person.id_conjoint);
-                if (conjoint) {
-                    const conjointItem = document.createElement('li');
-                    conjointItem.textContent = `Conjoint : ${conjoint.nom} ${conjoint.prenom}`;.textContent = `Mère : ${conjoint.nom} ${conjoint.prenom}`;
-                    detailsList.appendChild(conjointItem);
-                } else {
-                    const conjointItem = document.createElement('li');
-                    conjointItem.textContent = "Conjoint non trouvée.";
-                    detailsList.appendChild(conjointItem);
-                }
-            } else {
-                const conjointItem = document.createElement('li');
-                conjointItem.textContent = "Conjoint inconnue";
-                detailsList.appendChild(conjointItem);
-            } 
-                 // Ajouter l'origine
+                    // Charger le ou la conjoint
+                if (person.id_conjoint) {
+                    const conjoint = data.find(p => p.id === person.id_conjoint);
+                    if (conjoint) {
+                        const conjointItem = document.createElement('li');
+                        conjointItem.textContent = `Conjoint : ${conjoint.nom} ${conjoint.prenom}`;.textContent = `Mère : ${conjoint.nom} ${conjoint.prenom}`;
+                        detailsList.appendChild(conjointItem);
+                    } 
+                }  
+
+                    // Ajouter l'origine
                 if (person.origine !== null) {
                     const origineItem = document.createElement('li');
                     origineItem.textContent = `Pays d'origine : ${person.origine}`;
@@ -144,7 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
 
-            // Récupérer les enfants de la personne si elle est définie comme père ou mère
+                // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
                     const childrenOfPersonList = document.createElement('li');
@@ -158,11 +151,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
                 } 
-            } 
+             
                 personDetails.appendChild(detailsList);
-                
+            }      
         })
+     
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
+
 });
 
 function diffAge(date1, date2) {   
@@ -233,41 +228,4 @@ function verifieDate(date) {
     }
 }
 
-function sontSimilairesAvecDifference(chaine1, chaine2) {
-    // Vérifier si l'une des chaînes est incluse dans l'autre
-    if (chaine1.includes(chaine2) || chaine2.includes(chaine1)) {
-        return true;
-    }
-    // Vérifier si les chaînes ont une différence de taille de plus de 1
-    if (Math.abs(chaine1.length - chaine2.length) > 1) {
-        return false;
-    }
-    // Déterminer la chaîne la plus courte et la plus longue
-    let chaineCourte = (chaine1.length < chaine2.length) ? chaine1 : chaine2;
-    let chaineLongue = (chaine1.length < chaine2.length) ? chaine2 : chaine1;
-
-    let indexCourt = 0;
-    let indexLong = 0;
-    let differences = 0;
-    // Parcourir les deux chaînes caractère par caractère
-    while (indexLong < chaineLongue.length && indexCourt < chaineCourte.length) {
-        // Si les caractères sont différents
-        if (chaineCourte[indexCourt] !== chaineLongue[indexLong]) {
-            // Incrémenter le compteur de différences
-            differences++;
-            // Décaler l'index de la chaîne la plus longue
-            indexLong++;
-            // Si plus d'une différence est trouvée, les chaînes ne sont pas similaires
-            if (differences > 1) {
-                return false;
-            }
-        } else {
-            // Sinon, passer au caractère suivant des deux chaînes
-            indexCourt++;
-            indexLong++;
-        }
-    }
-    // Si une seule différence est trouvée à la fin, les chaînes sont similaires avec une différence
-    return true;
-}
 
