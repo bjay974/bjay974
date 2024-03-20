@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const legDateItem = document.createElement('li');
                     const dateVerified = verifieDate(person.date_legitime) 
                     const adjectif_genre = ajouterE("Reconnu", person.genre)
-                    legDateItem.innerHTML = `${adjectif_genre} le ${dateVerified} :<strong>${person.nom_legitime}</strong> `;
+                    legDateItem.innerHTML = `<em>${adjectif_genre} ${dateVerified} : <strong>${person.nom_legitime}</strong></em>`;
                     detailsList.appendChild(legDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (father) {
                         const fatherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        fatherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${father.nom} ${father.prenom}`;
+                        fatherItem.innerHTML = `<strong><em>${adjectif_genre} de</em></strong> ${father.nom} ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (mother) {
                         const motherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre)
-                        motherItem.innerHTML = `<strong><em>${adjectif_genre}</em></strong> de ${mother.nom} ${mother.prenom}`;
+                        motherItem.innerHTML = `<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
@@ -124,40 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(origineItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
-
-        // Ajouter l'affranchissement 
-        if (person.affranchi !== null) {
-            const affranchissementItem = document.createElement('li');
-            affranchissementItem.textContent = `Affranchi en 1848`;
-            detailsList.appendChild(affranchissementItem);
-            // Créer l'élément object pour l'image ou le PDF
-            const imageAffranchissement = document.createElement('object');
-            const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
-            const pdfFileName = `${person.id}.pdf`; // Formez le nom du fichier PDF à partir de l'ID de la personne
-            // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-            fetch(`/affranchissement/${imageFileName}`)
-                .then(response => {
-                    if (response.ok) {
-                        imageAffranchissement.data = `/affranchissement/${imageFileName}`; // Utilisez le nom du fichier image formé
-                        imageAffranchissement.type = 'image/jpeg'; // Définir le type de l'objet comme JPEG
-                    } else {
-                        imageAffranchissement.data = `/affranchissement/${pdfFileName}`; // Utilisez le nom du fichier PDF formé
-                        imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
-                    }
-                    imageAffranchissement.width = 'auto'; // Ajuster la largeur selon vos besoins
-                    imageAffranchissement.height = 'auto'; // Ajuster la hauteur selon vos besoins
-                    // Ajouter l'attribut alt pour les fichiers PDF
-                    imageAffranchissement.alt = `Document d'affranchissement de ${person.nom} ${person.prenom}`;
-                    // Ajouter l'image à la suite de l'élément affranchissementItem
-                    detailsList.appendChild(imageAffranchissement);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-         }) }
-          
+           
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
                     const childrenOfPersonList = document.createElement('li');
-                    childrenOfPersonList.textContent = "Enfant(s) :";
+                    childrenOfPersonList.innerHTML = "<front>Enfant(s)</front> :";
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
@@ -167,6 +139,35 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
                 } 
+                
+                   // Ajouter l'affranchissement 
+                if (person.affranchi !== null) {
+                    const affranchissementItem = document.createElement('li');
+                    affranchissementItem.textContent = `Affranchi en 1848`;
+                    detailsList.appendChild(affranchissementItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    // Créer l'élément object pour l'image ou le PDF
+                    const imageAffranchissement = document.createElement('object');
+                    const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
+                    const pdfFileName = `${person.id}.pdf`; // Formez le nom du fichier PDF à partir de l'ID de la personne
+                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
+                    fetch(`/affranchissement/${imageFileName}`)
+                        .then(response => {
+                            if (response.ok) {
+                                imageAffranchissement.data = `affranchissement/${imageFileName}`; // Utilisez le nom du fichier image formé
+                                imageAffranchissement.type = 'image/jpeg'; // Définir le type de l'objet comme JPEG
+                            } else {
+                                imageAffranchissement.data = `affranchissement/${pdfFileName}`; // Utilisez le nom du fichier PDF formé
+                                imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
+                            }
+                            imageAffranchissement.width = 'auto'; // Ajuster la largeur selon vos besoins
+                            imageAffranchissement.height = 'auto'; // Ajuster la hauteur selon vos besoins
+                            // Ajouter l'attribut alt pour les fichiers PDF
+                            imageAffranchissement.alt = `Document d'affranchissement de ${person.nom} ${person.prenom}`;
+                            // Ajouter l'image à la suite de l'élément affranchissementItem
+                            detailsList.appendChild(imageAffranchissement);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                 }) }
 
                // Ajouter le lien vers l'acte de naissance 
                 if (person.acte_nai) {
