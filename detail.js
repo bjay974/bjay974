@@ -140,38 +140,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
+
                 
-                // Vérifier si l'acte d'affranchissemment existe pour la personne
+                // Vérifier si l'acte d'affranchissement existe pour la personne
                 if (person.affranchi === true) {
                     const acteAffranItem = document.createElement('li');
-                    const idPerson = person.id;
-                    // Vérifier si le fichier PDF existe
-                    const pdfFileName = `${idPerson}.pdf`;
-                    // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
-                    fetch(`affranchissement/${pdfFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const pdfFilePath = `affranchissement/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte d'affranchissement' (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                acteAffranItem.appendChild(pdfLink);
-                                detailsList.appendChild(acteAffranItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            } else {
-                                const jpegFileName = `${idPerson}.jpg`;
-                                const jpegFilePath = `affranchissement/${jpegFileName}`;
-                                const jpegLink = document.createElement('a');
-                                jpegLink.textContent = `Voir l'acte d'affranchissement (JPEG)`;
-                                jpegLink.href = jpegFilePath;
-                                jpegLink.target = '_blank';
-                                acteAffranItem.appendChild(jpegLink);
-                                detailsList.appendChild(acteAffranItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            }
-                 })
+                    const idPerson = person.id;                    
+                    // Vérifier si le fichier existe
+                    const affFileName = `${idPerson}`; 
+                    const affFilePath = `affranchissement/${affFileName}`;
+                    const affLink = document.createElement('a');
+                    affLink.textContent = `Voir l'acte d'affranchissement `;
+                    affLink.href = affFilePath;
+                    affLink.target = '_blank';
+                    acteAffranItem.appendChild(affLink); // Correction ici
+                    detailsList.appendChild(acteAffranItem);
+                    detailsList.appendChild(document.createElement('br'));
                 }
+
+                
                 // Vérifier si l'acte de déces existe pour la personne
                 if (person.acte_nai === true) {
                     const acteNaissanceItem = document.createElement('li');
