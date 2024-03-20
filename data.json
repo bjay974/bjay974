@@ -220,7 +220,7 @@
     "id_pere": 901,
     "id_mere": 902,
     "date_naissance": "25/01/1890",
-    "lieu_naissance": "Saint-Benoit",
+    "lieu_naissance": "Sainte-Rose",
     "date_deces": "03/02/1919",
     "lieu_deces": "Saint-Benoit",
     "date_mariage": "13/06/19008",
@@ -230,6 +230,30 @@
     "affranchi": null,
     "origine": null,
     "acte_nai": true
+  },
+  {
+    "id": 501,
+    "nom": "GRAMINO",
+    "prenom": "Emile",
+    "genre": "M",
+    "nom_epouse": null,
+    "nom_legitime": null,
+    "date_legitime": null,
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "14/06/1870",
+    "lieu_naissance": "Sainte-Rose",
+    "date_deces": "02/07/1891",
+    "lieu_deces": "Saint-Benoit",
+    "date_mariage": "29/09/1858",
+    "lieu_mariage": "Sainte-Rose",
+    "id_conjoint": 401,
+    "domicile": null,
+    "affranchi": null,
+    "origine": null,
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true
   },
   {
     "id": 601,
@@ -250,7 +274,8 @@
     "id_conjoint": 602,
     "domicile": "Bras Canot",
     "affranchi": "OUI",
-    "origine": "Madagascar"
+    "origine": "Madagascar",
+    "acte_nai": true
   },
   {
     "id": 602,
@@ -271,7 +296,8 @@
     "id_conjoint": 601,
     "domicile": "Bras Canot",
     "affranchi": "OUI",
-    "origine": null
+    "origine": null,
+    "acte_nai": true
   },
   {
     "id": 501,
