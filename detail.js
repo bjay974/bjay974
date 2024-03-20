@@ -249,6 +249,15 @@ function rechercheExtension(nomFichier) {
     return null; 
 }
 
+function fileExists(filePath) {
+    try {
+        fs.accessSync(filePath, fs.constants.F_OK);
+        return true; // Le fichier existe
+    } catch (err) {
+        return false; // Le fichier n'existe pas
+    }
+}
+
 function diffAge(date1, date2) {   
     const an1 = parseInt(date1.substr(6, 4));
     const mois1 = parseInt(date1.substr(3, 2));
