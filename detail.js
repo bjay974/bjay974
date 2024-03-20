@@ -141,69 +141,58 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
 
-                
                 // Vérifier si l'acte d'affranchissement existe pour la personne
-                if (person.affranchi === true) {
-                    const acteAffranItem = document.createElement('li');
+                if (person.affranchi === true || person.acte_div === true) {
+                    const acteDiversItem = document.createElement('li');
                     const idPerson = person.id;                    
-                    // Vérifier si le fichier existe
-                    const affFileName = `${idPerson}`; 
-                    const affFilePath = `affranchissement/${affFileName}`;
-                    const affLink = document.createElement('a');
-                    affLink.textContent = `Voir l'acte d'affranchissement `;
-                    affLink.href = affFilePath;
-                    affLink.target = '_blank';
-                    acteAffranItem.appendChild(affLink); // Correction ici
-                    detailsList.appendChild(acteAffranItem);
+                    const divFileName = `${idPerson}`; // Vérifier si le fichier existe
+                    const divFilePath = `affranchissement/${divFileName}`;
+                    const divLink = document.createElement('a');
+                    divLink.textContent = `Voir l'acte d'affranchissement `;
+                    divLink.href = divFilePath;
+                    divLink.target = '_blank';
+                    acteDiversItem.appendChild(divLink);
+                    detailsList.appendChild(acteDiversItem);
                     detailsList.appendChild(document.createElement('br'));
                 }
-
                
                 // Vérifier si l'acte de naissance existe pour la personne
                 if (person.acte_nai === true) {
                     const acteNaissanceItem = document.createElement('li');
                     const idPerson = person.id;
-                    // Vérifier si le fichier existe
-                    const naiFileName = `${idPerson}.pdf`; 
+                    const naiFileName = `${idPerson}`; 
                     const naiFilePath = `naissance/${naiFileName}`;
                     const naiLink = document.createElement('a');
                     naiLink.textContent = `Voir l'acte`;
                     naiLink.href = naiFilePath;
                     naiLink.target = '_blank';
-                    acteDiversItem.appendChild(naiLink); 
-                    detailsList.appendChild(naiFileName);
+                    acteNaissanceItem.appendChild(naiLink); 
+                    detailsList.appendChild(acteNaissanceItem);
                     detailsList.appendChild(document.createElement('br'));
                 }
-                   
+
                 // Vérifier si l'acte de mariage existe pour la personne
                 if (person.acte_mar === true) {
                     const acteMariageItem = document.createElement('li');
                     const idPerson = person.id;
-                    const pdfFileName = `${idPerson.pdf}`;  
-                    fetch(`mariage/${pdfFileName}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const pdfFilePath = `mariage/${pdfFileName}`;
-                                const pdfLink = document.createElement('a');
-                                pdfLink.textContent = `Voir l'acte de mariage (PDF)`;
-                                pdfLink.href = pdfFilePath;
-                                pdfLink.target = '_blank';
-                                const pdfFileName2 = `${idPerson}_2.pdf`;
-                                const pdfFilePath2 = `mariage/${pdfFileName2}`;
-                                const pdfLink2 = document.createElement('a');
-                                pdfLink2.textContent = `Voir l'acte de mariage (page2) (PDF)`;
-                                pdfLink2.href = pdfFilePath;
-                                pdfLink2.target = '_blank';  
-                                acteMariageItem.appendChild(pdfLink);
-                                acteMariageItem.appendChild(document.createTextNode(' | '));
-                                acteMariageItem.appendChild(pdfLink2);
-                                detailsList.appendChild(acteMariageItem);
-                                detailsList.appendChild(document.createElement('br'));
-                            }
-                    })
+                    const marFileName = `${idPerson}`;  // Vérifier si le fichier existe
+                    const marFilePath = `mariage/${marFileName}`;
+                    const marLink = document.createElement('a');
+                    marLink.textContent = `Voir l'acte de mariage`;
+                    marLink.href = marFilePath;
+                    marLink.target = '_blank';
+                    const marFileName2 = `${idPerson}_2`; 
+                    const marFilePath2 = `mariage/${marFileName2}`;
+                    const marLink2 = document.createElement('a');
+                    marLink2.textContent = `Voir l'acte de mariage (partie 2)`;
+                    marLink2.href = marFilePath;
+                    marLink2.target = '_blank';
+                    acteMariageItem.appendChild(marLink);
+                    acteMariageItem.appendChild(document.createTextNode(' | '));
+                    acteMariageItem.appendChild(marLink2);
+                    detailsList.appendChild(acteMariageItem);
+                    detailsList.appendChild(document.createElement('br'));
                 }
-               
-               }    
                   
                personDetails.appendChild(detailsList);
             }      
