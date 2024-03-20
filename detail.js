@@ -161,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                 imageAffranchissement.data = `affranchissement/${pdfFileName}`; // Utilisez le nom du fichier PDF formé
                                 imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
                             }
-                            imageAffranchissement.width = 'auto'; // Ajuster la largeur selon vos besoins
-                            imageAffranchissement.height = 'auto'; // Ajuster la hauteur selon vos besoins
+                            imageAffranchissement.width = '30%'; // Ajuster la largeur selon vos besoins
+                            imageAffranchissement.height = '30%'; // Ajuster la hauteur selon vos besoins
                             // Ajouter l'attribut alt pour les fichiers PDF
                             imageAffranchissement.alt = `Document d'affranchissement de ${person.nom} ${person.prenom}`;
                             // Ajouter l'image à la suite de l'élément affranchissementItem
@@ -185,6 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 pdfLink.textContent = `Voir l'acte de naissance (PDF)`;
                                 pdfLink.href = pdfFilePath;
                                 pdfLink.target = '_blank';
+                                acteNaissanceItem.appendChild(pdfLink);
                                 detailsList.appendChild(acteNaissanceItem);
                                 detailsList.appendChild(document.createElement('br'));
                             } else {
@@ -194,6 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
                                 jpegLink.href = jpegFilePath;
                                 jpegLink.target = '_blank';
+                                acteNaissanceItem.appendChild(jpegLink);
                                 detailsList.appendChild(acteNaissanceItem);
                                 detailsList.appendChild(document.createElement('br'));
                             }
