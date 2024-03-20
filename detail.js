@@ -113,6 +113,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const affranchissementItem = document.createElement('li');
                     affranchissementItem.textContent = `Affranchi en 1848`;
                     detailsList.appendChild(affranchissementItem);
+
+                    
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }                
           
