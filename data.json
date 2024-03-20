@@ -228,7 +228,8 @@
     "id_conjoint": 401,
     "domicile": null,
     "affranchi": null,
-    "origine": null
+    "origine": null,
+    "acte_nai": true
   },
   {
     "id": 601,
