@@ -233,24 +233,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-function rechercheExtension(nomFichier) {
-    const extensions = ['pdf', 'jpg', 'jpeg'];
-    for (let i = 0; i < extensions.length; i++) {
-        const extension = extensions[i];
-        return fetch(`${nomFichier}.${extension}`)
-            .then(response => {
-                if (response.ok) {
-                    // Gérer la réponse
-                    console.log(`reponse ok :${nomFichier}.${extension}`);
-                    return extension;
-                } else {
-                   console.log(`Ko : ${response- ${extension}`);
-                   return null
-                }
-            })
-    }
-}
-
 async function rechercheExtension(nomFichier) {
     const extensions = ['pdf', 'jpg', 'jpeg'];
     for (let i = 0; i < extensions.length; i++) {
@@ -259,8 +241,7 @@ async function rechercheExtension(nomFichier) {
             const response = await fetch(`${nomFichier}.${extension}`);
             if (response.ok) {
                 return extension;
-            } else {
-            }
+            } 
         } catch (error) {
             console.error(error);
         }
