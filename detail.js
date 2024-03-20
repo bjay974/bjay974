@@ -181,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const pdfFileName = `${idPerson}.pdf`;
                     // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
                     fetch(`naissance/${pdfFileName}`)
-                        .then(response => {
+                        .then(response => {                        
                             if (response.ok) {
                                 const pdfFilePath = `naissance/${pdfFileName}`;
                                 const pdfLink = document.createElement('a');
@@ -207,12 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Vérifier si l'acte de mariage existe pour la personne
                 if (person.acte_mar === true) {
-                   fetch(`naissance/${pdfFileName}`)
+                    const acteMariageItem = document.createElement('li');
+                    const idPerson = person.id;
+                    const pdfFileName = `${idPerson}.pdf`;  
+                    fetch(`naissance/${pdfFileName}`)
                         .then(response => {
                             if (response.ok) {
-                                const acteMariageItem = document.createElement('li');
-                                const idPerson = person.id;
-                                const pdfFileName = `${idPerson}.pdf`;
                                 const pdfFilePath = `mariage/${pdfFileName}`;
                                 const pdfLink = document.createElement('a');
                                 pdfLink.textContent = `Voir l'acte de mariage (PDF)`;
