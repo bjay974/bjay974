@@ -187,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const jpegLink = document.createElement('a');
                     jpegLink.textContent = `Voir l'acte de naissance (JPEG)`;
                     jpegLink.href = jpegFilePath;
-                    jpegLink.target = '_blank
+                    jpegLink.target = '_blank;
                     // Ajouter les liens à l'élément de la liste
                     acteNaissanceItem.appendChild(pdfLink);
                     acteNaissanceItem.appendChild(document.createTextNode(' | ')); // Ajouter un séparateur
