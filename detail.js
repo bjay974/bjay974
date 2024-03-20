@@ -237,8 +237,9 @@ async function rechercheExtension(nomFichier) {
     const extensions = ['pdf', 'jpg', 'jpeg'];
     for (let i = 0; i < extensions.length; i++) {
         const extension = extensions[i];
+        const repFicExt = `${nomFichier}.${nomFichier}`
         try {
-            const response = await fetch(`${nomFichier}.${extension}`);
+            const response = await fetch(`${repFicExt}`);
             if (response.ok) {
                 return extension;
             } 
