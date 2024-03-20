@@ -102,7 +102,11 @@
     "id_conjoint": 302,
     "domicile": null,
     "affranchi": null,
-    "origine": "Nigéria"
+    "origine": "Nigéria",
+    "acte_nai": false,
+    "acte_dec": false,
+    "acte_mar": true,
+    "acte_div": true,
   },
   {
     "id": 1,
@@ -207,7 +211,10 @@
     "id_conjoint": 402,
     "domicile": null,
     "affranchi": null,
-    "origine": null
+    "origine": null,
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true
   },
   {
     "id": 402,
@@ -277,7 +284,9 @@
     "domicile": "Bras Canot",
     "affranchi": "OUI",
     "origine": "Madagascar",
-    "acte_nai": true
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true
   },
   {
     "id": 602,
@@ -314,18 +323,21 @@
     "id_pere": 601,
     "id_mere": 602,
     "date_naissance": "01/03/1862",
-    "lieu_naissance": "Saint-Benoit",
+    "lieu_naissance": "Sainte-Rose",
     "date_deces": "15/05/1896",
     "lieu_deces": "Saint-Benoit",
     "date_mariage": "12/11/1884",
     "lieu_mariage": "Sainte-Rose",
-    "id_conjoint": 502,
+    "id_conjoint": 504,
     "domicile": null,
     "affranchi": null,
-    "origine": null
+    "origine": null,
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true
   },
   {
-    "id": 502,
+    "id": 504,
     "nom": "ATHANASE",
     "prenom": "Marie Josephine",
     "genre": "F",
@@ -339,10 +351,13 @@
     "lieu_deces": "Saint-Denis",
     "date_mariage": "12/11/1884",
     "lieu_mariage": "Sainte-Rose",
-    "id_conjoint": 501,
+    "id_conjoint": 503,
     "domicile": null,
     "affranchi": null,
-    "origine": null
+    "origine": null,
+    "acte_nai": true,
+    "acte_dec": true,
+    "acte_mar": true
   },
   {
     "id": 603,
