@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
-                            conjointItem.textContent = à : ${conjoint.nom} ${conjoint.prenom}`;
+                            conjointItem.textContent = ` à : ${conjoint.nom} ${conjoint.prenom}`;
                             detailsList.appendChild(conjointItem);     
                         }
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -125,18 +125,25 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
 
-               // Ajouter l'affranchissement 
-                if (person.affranchi) {
-                    const affranchissementItem = document.createElement('li');
-                    affranchissementItem.textContent = `Affranchi en 1848`;
-                    detailsList.appendChild(affranchissementItem);
-                
-                    
-                    // Créer l'élément object pour l'image ou le PDF
-                    const imageAffranchissement = document.createElement('object');
-                    const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
-                    imageAffranchissement.data = `/affranchissement/${imageFileName}`; // Utilisez le nom du fichier formé
-                    imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
+        // Ajouter l'affranchissement 
+        if (person.affranchi !== null) {
+            const affranchissementItem = document.createElement('li');
+            affranchissementItem.textContent = `Affranchi en 1848`;
+            detailsList.appendChild(affranchissementItem);
+            // Créer l'élément object pour l'image ou le PDF
+            const imageAffranchissement = document.createElement('object');
+            const imageFileName = `${person.id}.jpg`; // Formez le nom du fichier image à partir de l'ID de la personne
+            const pdfFileName = `${person.id}.pdf`; // Formez le nom du fichier PDF à partir de l'ID de la personne
+            // Vérifier si le fichier JPEG existe, sinon vérifier le fichier PDF
+            fetch(`/affranchissement/${imageFileName}`)
+                .then(response => {
+                    if (response.ok) {
+                        imageAffranchissement.data = `/affranchissement/${imageFileName}`; // Utilisez le nom du fichier image formé
+                        imageAffranchissement.type = 'image/jpeg'; // Définir le type de l'objet comme JPEG
+                    } else {
+                        imageAffranchissement.data = `/affranchissement/${pdfFileName}`; // Utilisez le nom du fichier PDF formé
+                        imageAffranchissement.type = 'application/pdf'; // Définir le type de l'objet comme PDF
+                    }
                     imageAffranchissement.width = 'auto'; // Ajuster la largeur selon vos besoins
                     imageAffranchissement.height = 'auto'; // Ajuster la hauteur selon vos besoins
                     // Ajouter l'attribut alt pour les fichiers PDF
@@ -144,8 +151,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Ajouter l'image à la suite de l'élément affranchissementItem
                     detailsList.appendChild(imageAffranchissement);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                }
-      
+                } }
+            
           
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
