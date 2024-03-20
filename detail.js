@@ -149,10 +149,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const divFilePath = `affranchissement/${divFileName}`;
                     const extensionFic = rechercheExtension(divFilePath);
                     if (extensionFic !== null){
-                        const divFilePath = `${divFilePath}.${extensionFic}`
+                        const divFilePathExt = `${divFilePath}.${extensionFic}`
                         const divLink = document.createElement('a');
                         divLink.textContent = `Voir l'acte d'affranchissement `;
-                        divLink.href = divFilePath;
+                        divLink.href = divFilePathExt;
                         divLink.target = '_blank';
                         acteDiversItem.appendChild(divLink);
                         detailsList.appendChild(acteDiversItem);
@@ -168,10 +168,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const naiFilePath = `naissance/${naiFileName}`;
                     const extensionFic = rechercheExtension(naiFilePath);
                     if (extensionFic !== null){
-                        const naiFilePath = `${naiFilePath}.${extensionFic}`
+                        const naiFilePathExt = `${naiFilePath}.${extensionFic}`
                         const naiLink = document.createElement('a');
                         naiLink.textContent = `Voir l'acte`;
-                        naiLink.href = naiFilePath;
+                        naiLink.href = naiFilePathExt;
                         naiLink.target = '_blank';
                         acteNaissanceItem.appendChild(naiLink); 
                         detailsList.appendChild(acteNaissanceItem);
@@ -187,10 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const marFilePath = `mariage/${marFileName}`;
                     const extensionFic = rechercheExtension(marFilePath);
                     if (extensionFic !== null){
-                        const marFilePath = `${marFilePath}.${extensionFic}`
+                        const marFilePathExt = `${marFilePath}.${extensionFic}`
                         const marLink = document.createElement('a');
                         marLink.textContent = `Voir l'acte de mariage`;
-                        marLink.href = marFilePath;
+                        marLink.href = marFilePathExt;
                         marLink.target = '_blank';
                         const marFileName2 = `${idPerson}_2`; 
                         const marFilePath2 = `mariage/${marFileName2}`;
@@ -214,10 +214,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const decFilePath = `deces/${decFileName}`;
                     const extensionFic = rechercheExtension(decFilePath);
                     if (extensionFic !== null){
-                        const decFilePath = `${decFilePath}.${extensionFic}`
+                        const decFilePathExt = `${decFilePath}.${extensionFic}`
                         const decLink = document.createElement('a');
                         decLink.textContent = `Voir l'acte de décés `;
-                        decLink.href = decFilePath;
+                        decLink.href = decFilePathExt;
                         decLink.target = '_blank';
                         acteDecesItem.appendChild(decLink);
                         detailsList.appendChild(acteDecesItem);
