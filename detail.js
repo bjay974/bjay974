@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
+                nameItem.textStyle.color = "blue";
                 nameItem.textContent = `${person.nom} ${person.prenom}`;
                 detailsList.appendChild(nameItem);
 
@@ -31,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const legDateItem = document.createElement('p');
                     const dateVerified = verifieDate(person.date_legitime) 
                     const adjectif_genre = ajouterE("Reconnu", person.genre)
-                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime} ${dateVerified}`;
+                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong> ${dateVerified}`;
                     detailsList.appendChild(legDateItem);
                 }
 
@@ -47,7 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('p');
                             const espaceDebut = "  ";
-                            conjointItem.textContent = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}`</strong>`;
+                            conjointItem.textContent = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             detailsList.appendChild(conjointItem);     
                         }
                 }
