@@ -17,7 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
                 nameItem.style.color = "blue";
-                nameItem.textContent = `${person.nom} ${person.prenom}`;
+                let nomLegitime = " ";
+                if (person.nom_legitime !== null) {
+                    let nomLegitime = person.nom_legitime
+                }
+                nameItem.innerHTML = `${person.nom} <em>${nomLegitime}</em> ${person.prenom}`;
                 detailsList.appendChild(nameItem);
                 
                 // Ajouter la date de naissance
