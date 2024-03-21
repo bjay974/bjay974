@@ -94,6 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const fatherItem = document.createElement('li');
                     fatherItem.innerHTML = "<strong><em>Père </em></strong> inconnu";
                     detailsList.appendChild(fatherItem);
