@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             conjointItem.classList.add('special-li');
-                            conjointItem.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            conjointItem.innerHTML = `\t à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ageNowItem = document.createElement('li');
                     const ageNow = calculeAge(person.date_naissance);
                     const adjectif_genre = ajouterE("Agé", person.genre)
-                    ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
+                    ageNowItem.textContent = `t${adjectif_genre} de : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
@@ -92,12 +92,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (father) {
                         const fatherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        fatherItem.innerHTML = `<em>${adjectif_genre} de</em><strong>${father.nom} ${father.prenom}</strong>`;
+                        fatherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom} ${father.prenom}</strong>`;
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.innerHTML = `<strong><em>Père </em></strong> inconnu`;
+                    fatherItem.innerHTML = `<em>Père </em> inconnu`;
                     detailsList.appendChild(fatherItem);
                 }
                 
@@ -108,13 +108,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('li');
                         motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        motherItem.innerHTML = `<em>et de \t </em><strong> ${mother.nom} ${mother.prenom}</strong>`;
+                        motherItem.innerHTML = `<em>et de \t\t</em><strong> ${mother.nom} ${mother.prenom}</strong>`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
                 } else {
                     const motherItem = document.createElement('li');
-                    motherItem.innerHTML = `<strong><em>Mère</em></strong> inconnue`;
+                    motherItem.innerHTML = `<em>Mère</em> inconnue`;
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }   
@@ -149,7 +149,6 @@ document.addEventListener('DOMContentLoaded', () => {
                           .then(response => {
                               if (response.ok) {
                                   const acteItem = document.createElement('li');
-                                  acteItem.classList.add('special-li');
                                   const ficLink = document.createElement('a');
                                   ficLink.textContent = `Voir l'acte de ${repertoire}`;
                                   ficLink.href = monFichier;
