@@ -141,91 +141,38 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
 
-              // Charger l'extension du fichier affranchissement si elle existe
-                if (person.affranchi === true || person.acte_div === true) {
-                    const acteDiversItem = document.createElement('li');
-                    const idPerson = person.id;                    
-                    const divFileName = `${idPerson}`; // Vérifier si le fichier existe
-                    const divFilePath = `affranchissement/${divFileName}`;
-                    rechercheExtension(divFilePath)
-                        .then(extensionFic => {
-                            const divFilePathExt = `${divFilePath}.${extensionFic}`;
-                            const divLink = document.createElement('a');
-                            divLink.textContent = `Voir l'acte d'affranchissement `;
-                            divLink.href = divFilePathExt;
-                            divLink.target = '_blank';
-                            acteDiversItem.appendChild(divLink);
-                            detailsList.appendChild(acteDiversItem);
-                            detailsList.appendChild(document.createElement('br'));
-                    })
-                }
-              
-                // Vérifier si l'acte de naissance existe pour la personne
+              // Charger l'extension du fichier naissance si elle existe
                 if (person.acte_nai === true) {
-                    const acteNaissanceItem = document.createElement('li');
                     const idPerson = person.id;
-                    const naiFileName = `${idPerson}`; 
-                    const naiFilePath = `naissance/${naiFileName}`;
-                    rechercheExtension(naiFilePath);
-                        .then(extensionFic => {
-                            const naiFilePathExt = `${naiFilePath}.${extensionFic}`
-                            const naiLink = document.createElement('a');
-                            naiLink.textContent = `Voir l'acte`;
-                            naiLink.href = naiFilePathExt;
-                            naiLink.target = '_blank';
-                            acteNaissanceItem.appendChild(naiLink); 
-                            detailsList.appendChild(acteNaissanceItem);
-                            detailsList.appendChild(document.createElement('br'));
-                           })
+                    const repFichier = `naissance`;
+                    const acteItem = document.createElement('li');
+                    const nomFichier = `${idPerson}`;
+                    const extensions = ['pdf', 'jpg', 'jpeg'];
+                    for (let i = 0; i < extensions.length; i++) {
+                        const extension = extensions[i];
+                        const monFichier = `${repFichier}/${nomFichier}.${extension}`;
+                        fetch(`${monFichier}`)
+                        .then(response => {
+                            if (response.ok) {
+                                const ficLink = document.createElement('a');
+                                ficLink.textContent = `Voir l'acte de ${repFichier} (${extension})`;
+                                ficLink.href = monFichier;
+                                ficLink.target = '_blank';
+                                const monFichierBis = `${repFichier}/${nomFichier}_2.${extension}`
+                                const ficLinkbis = document.createElement('a');
+                                ficLinkbis.textContent = `Voir l'acte de ${repFichier} (partie 2)`;
+                                ficLinkbis.href = monFichierBis;
+                                ficLinkbis.target = '_blank';
+                                acteItem.appendChild(ficLink);
+                                acteItem.appendChild(document.createTextNode(' | '));
+                                acteItem.appendChild(ficLinkbis);
+                                detailsList.appendChild(acteItem);
+                                detailsList.appendChild(document.createElement('br'));
+                        } })
+                    }
                 }
-
-                // Vérifier si l'acte de mariage existe pour la personne
-                if (person.acte_mar === true) {
-                    const acteMariageItem = document.createElement('li');
-                    const idPerson = person.id;
-                    const marFileName = `${idPerson}`;  // Vérifier si le fichier existe
-                    const marFilePath = `mariage/${marFileName}`;
-                    rechercheExtension(marFilePath);
-                        .then(extensionFic => {
-                            const marFilePathExt = `${marFilePath}.${extensionFic}`
-                            const marLink = document.createElement('a');
-                            marLink.textContent = `Voir l'acte de mariage`;
-                            marLink.href = marFilePathExt;
-                            marLink.target = '_blank';
-                            const marFileName2 = `${idPerson}_2`; 
-                            const marFilePath2 = `mariage/${marFileName2}.${extensionFic}`;
-                            const marLink2 = document.createElement('a');
-                            marLink2.textContent = `Voir l'acte de mariage (partie 2)`;
-                            marLink2.href = marFilePath;
-                            marLink2.target = '_blank';
-                            acteMariageItem.appendChild(marLink);
-                            acteMariageItem.appendChild(document.createTextNode(' | '));
-                            acteMariageItem.appendChild(marLink2);
-                            detailsList.appendChild(acteMariageItem);
-                            detailsList.appendChild(document.createElement('br'));
-                         })
-                }
-            
-                // Vérifier si l'acte décés existe pour la personne
-                if (person.acte_dec === true) {
-                    const acteDecesItem = document.createElement('li');
-                    const idPerson = person.id;                    
-                    const decFileName = `${idPerson}`; // Vérifier si le fichier existe
-                    const decFilePath = `deces/${decFileName}`;
-                    rechercheExtension(decFilePath);
-                        .then(extensionFic => {
-                            const decFilePathExt = `${decFilePath}.${extensionFic}`
-                            const decLink = document.createElement('a');
-                            decLink.textContent = `Voir l'acte de décés `;
-                            decLink.href = decFilePathExt;
-                            decLink.target = '_blank';
-                            acteDecesItem.appendChild(decLink);
-                            detailsList.appendChild(acteDecesItem);
-                            detailsList.appendChild(document.createElement('br'));
-                        })
-                }                
-
-               personDetails.appendChild(detailsList);
+ 
+                personDetails.appendChild(detailsList);
             }      
         })
      
