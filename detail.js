@@ -150,6 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const nomFichier = person.id;
                     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
                     const acteList = document.createElement('li');
+                    const acteItem = document.createElement('span');
                     acteList.innerHTML = "<strong>Acte(s)</strong> :";
                     acteItem.appendChild(acteList);
                     for (let i = 0; i < repertoires.length; i++) {    
