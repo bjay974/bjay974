@@ -21,6 +21,7 @@ fetch('data.json')
             const link = document.createElement('a');
             link.textContent = person.nom + ' ' + person.prenom;
             link.href = 'person.html?id=' + person.id;
+            link.classList.add("lien"); //ajout la classe lien du ccs au lien
             listItem.appendChild(link);
             hommeList.appendChild(listItem);
         });
