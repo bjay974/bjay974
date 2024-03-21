@@ -159,6 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
                                   ficLink.target = '_blank';
+                                  acteItem.appendChild(ficLink);
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
                                   fetch(`${monFichierBis}`)
                                   .then(response => {
@@ -167,10 +168,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                           ficLinkbis.textContent = `Voir l'acte de ${repertoire} (${extension}) Partie 2`;
                                           ficLinkbis.href = monFichierBis;
                                           ficLinkbis.target = '_blank';
+                                          acteItem.appendChild(document.createTextNode(' | '));
+                                          acteItem.appendChild(ficLinkbis);
                                   } })
-                                  acteItem.appendChild(ficLink);
-                                  acteItem.appendChild(document.createTextNode(' | '));
-                                  acteItem.appendChild(ficLinkbis);
                                   detailsList.appendChild(acteItem);
                                   detailsList.appendChild(document.createElement('br'));
                           } })
