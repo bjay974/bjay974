@@ -107,13 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('span');
                         const adjectif_genre = ajouterParent(person.genre);
                         const espaceDebut = "  ";
-                        motherItem.innerHTML = "${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}";
+                        motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
                 } else {
                     const motherItem = document.createElement('li');
-                    motherItem.innerHTML = "<strong><em>Mère</em></strong> inconnue";
+                    motherItem.innerHTML = `<strong><em>Mère</em></strong> inconnue`;
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }   
@@ -141,10 +141,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const acteList = document.createElement('li');
                     const acteItemUl = document.createElement('ul');
                     acteList.innerHTML = "<strong>Acte(s)</strong> :";
-                    acteItem.appendChild(acteList);
+                    acteItemUl.appendChild(acteList);
                     for (let i = 0; i < repertoires.length; i++) {    
                       const repertoire = repertoires[i];
-                      const acteItem = document.createElement('li');
                       const extensions = ['pdf', 'jpg', 'jpeg'];
                       for (let i = 0; i < extensions.length; i++) {
                           const extension = extensions[i];
@@ -152,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                           fetch(`${monFichier}`)
                           .then(response => {
                               if (response.ok) {
+                                  const acteItem = document.createElement('li');
                                   const ficLink = document.createElement('a');
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
@@ -160,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                   ficLink.style.color = "blue"; 
                                   acteItemUl.appendChild(acteItem);
                                   acteItem.appendChild(ficLink);
-                                  
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
                                   fetch(`${monFichierBis}`)
                                   .then(response => {
