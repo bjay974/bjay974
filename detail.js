@@ -28,7 +28,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(birthDateItem);
                     // Ajouter la date de reconnaisance ainsi que le nom
                     if (person.date_legitime !== null) {
-                        const legDateItem = document.createElement('span');
+                        const legDateItem = document.createElement('li');
+                        detailsList.appendChild(conjointItem);    
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
                         legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
@@ -46,12 +48,13 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(weddingDateItem);  
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
-                            const conjointItem = document.createElement('span');
+                            const conjointItem = document.createElement('li');
+                            conjointItem.classList.add('special-li');
                             const espaceDebut = "  ";
                             conjointItem.innerHTML = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
-                            detailsList.appendChild(conjointItem);     
+                            detailsList.appendChild(conjointItem);    
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 
                  // Ajouter la date de décès si elle n'est pas nulle
@@ -105,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
                         const motherItem = document.createElement('span');
+                        motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
                         const espaceDebut = "  ";
                         motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
@@ -138,10 +142,6 @@ document.addEventListener('DOMContentLoaded', () => {
               if (person.acte_nai === true || person.acte_dec === true || person.acte_mar === true || person.affranchi === true  ) {
                     const nomFichier = person.id;
                     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
-                    const acteList = document.createElement('li');
-                    const acteItemUl = document.createElement('ul');
-                    acteList.innerHTML = "<strong>Acte(s)</strong> :";
-                    acteItemUl.appendChild(acteList);
                     for (let i = 0; i < repertoires.length; i++) {    
                       const repertoire = repertoires[i];
                       const extensions = ['pdf', 'jpg', 'jpeg'];
@@ -158,7 +158,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                   ficLink.target = '_blank';                                  
                                   ficLink.style.textDecoration = "none";
                                   ficLink.style.color = "blue"; 
-                                  acteItemUl.appendChild(acteItem);
                                   acteItem.appendChild(ficLink);
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
                                   fetch(`${monFichierBis}`)
