@@ -28,40 +28,39 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de reonnaisance ainsi que le nom
                 if (person.date_legitime !== null) {
-                    const legDateItem = document.createElement('li');
+                    const legDateItem = document.createElement('p');
                     const dateVerified = verifieDate(person.date_legitime) 
                     const adjectif_genre = ajouterE("Reconnu", person.genre)
                     legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime} ${dateVerified}`;
                     detailsList.appendChild(legDateItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre)
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à de ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
-                    const weddingCoItem = document.createElement('p');
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
-                            const conjointItem = document.createElement('li');
-                            conjointItem.textContent = `   à : ${conjoint.nom} ${conjoint.prenom}`;
+                            const conjointItem = document.createElement('p');
+                            const espaceDebut = "  ";
+                            conjointItem.textContent = `${espaceDebut} à : ${conjoint.nom} ${conjoint.prenom}`;
                             detailsList.appendChild(conjointItem);     
                         }
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 
                  // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
                     const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
                     detailsList.appendChild(deathDateItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 else {
                     const ageNowItem = document.createElement('li');
@@ -69,8 +68,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const adjectif_genre = ajouterE("Agé", person.genre)
                     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                 }
+                }
                 
                 // Charger le ou la conjoint
                 if (person.date_mariage === null) {
@@ -87,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
@@ -104,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_mere) {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                        const motherItem = document.createElement('li');
+                        const motherItem = document.createElement('p');
                         const adjectif_genre = ajouterParent(person.genre);
                         const espaceDebut = "  ";
                         motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
@@ -162,7 +161,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
                                   ficLink.target = '_blank';                                  
-                                  ficLink.style.textDecoration = "non";
+                                  ficLink.style.textDecoration = "none";
                                   ficLink.style.color = "blue";                                  
                                   acteItem.appendChild(ficLink);
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
@@ -172,14 +171,13 @@ document.addEventListener('DOMContentLoaded', () => {
                                           const ficLinkbis = document.createElement('a');
                                           ficLinkbis.textContent = `Voir l'acte de ${repertoire} (${extension}) Partie 2`;
                                           ficLinkbis.href = monFichierBis;                                          
-                                          ficLink.style.textDecoration = "non";
+                                          ficLink.style.textDecoration = "none";
                                           ficLink.style.color = "blue";
                                           acteItem.appendChild(document.createTextNode(' | '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
                                   detailsList.appendChild(acteItem);
-                                  detailsList.appendChild(document.createElement('br'));
-                          } })
+                             } })
                       }
                     }     
               }
