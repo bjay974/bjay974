@@ -29,10 +29,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime !== null) {
-                    const legDateItem = document.createElement('p');
+                    const legDateItem = document.createElement('span');
                     const dateVerified = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
+                    legDateItem.style.color = "blue";
                     detailsList.appendChild(legDateItem);
                 }
 
@@ -46,9 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(weddingDateItem);  
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
-                            const conjointItem = document.createElement('p');
+                            const conjointItem = document.createElement('span');
                             const espaceDebut = "  ";
-                            conjointItem.textContent = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            conjointItem.innerHTML = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             detailsList.appendChild(conjointItem);     
                         }
                 }
@@ -106,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_mere) {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                        const motherItem = document.createElement('p');
+                        const motherItem = document.createElement('span');
                         const adjectif_genre = ajouterParent(person.genre);
                         const espaceDebut = "  ";
                         motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
@@ -147,10 +148,13 @@ document.addEventListener('DOMContentLoaded', () => {
               // Charger les liens vers les actes si il y en a
               if (person.acte_nai === true || person.acte_dec === true || person.acte_mar === true || person.affranchi === true  ) {
                     const nomFichier = person.id;
-                    const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];  
+                    const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
+                    const acteList = document.createElement('li');
+                    acteList.innerHTML = "<strong>Acte(s)</strong> :";
+                    acteItem.appendChild(acteList);
                     for (let i = 0; i < repertoires.length; i++) {    
                       const repertoire = repertoires[i];
-                      const acteItem = document.createElement('p');
+                      const acteItem = document.createElement('span');
                       const extensions = ['pdf', 'jpg', 'jpeg'];
                       for (let i = 0; i < extensions.length; i++) {
                           const extension = extensions[i];
@@ -158,8 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
                           fetch(`${monFichier}`)
                           .then(response => {
                               if (response.ok) {
-                                  const acteList = document.createElement('li');
-                                  acteList.innerHTML = "<strong>Acte(s)</strong> :";
                                   const ficLink = document.createElement('a');
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
