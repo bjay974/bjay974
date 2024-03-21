@@ -31,9 +31,7 @@ nav a:hover {
 
 section {
     padding: 10px;
-    text-align: center;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
-
 }
 
 footer {
