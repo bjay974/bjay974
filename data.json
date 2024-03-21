@@ -62,6 +62,27 @@
     "affranchi": null,
     "origine": null
   },
+    {
+    "id": 102,
+    "nom": "GRONDIN",
+    "prenom": "Emmanuelle",
+    "genre": "F",
+    "nom_epouse": "BETSMAN",
+    "nom_legitime": null,
+    "date_legitime": null,
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "24/06/1976",
+    "lieu_naissance": "Saint-Denis",
+    "date_deces": null,
+    "lieu_deces": null,
+    "date_mariage": null,
+    "lieu_mariage": null,
+    "id_conjoint": null,
+    "domicile": "Limoges",
+    "affranchi": null,
+    "origine": null
+  },
   {
     "id": 302,
     "nom": "MARTIN",
