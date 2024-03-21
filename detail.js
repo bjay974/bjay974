@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const legDateItem = document.createElement('li');
                     const dateVerified = verifieDate(person.date_legitime) 
                     const adjectif_genre = ajouterE("Reconnu", person.genre)
-                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime} le ${dateVerified}`;
+                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime} ${dateVerified}`;
                     detailsList.appendChild(legDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } 
                 } else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.innerHTML = "<strong><em>Père</em></strong> inconnu";
+                    fatherItem.innerHTML = "<strong><em>Père </em></strong> inconnu";
                     detailsList.appendChild(fatherItem);
                 }
                 
@@ -105,8 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
                         const motherItem = document.createElement('li');
-                        const adjectif_genre = ajouterParent(person.genre)
-                        motherItem.innerHTML = `<strong><em>  et de </em></strong> ${mother.nom} ${mother.prenom}`;
+                        const adjectif_genre = ajouterParent(person.genre);
+                        const espaceDebut = "  ";
+                        motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
@@ -144,7 +145,7 @@ document.addEventListener('DOMContentLoaded', () => {
               // Charger les liens vers les actes si il y en a
               if (person.acte_nai === true || person.acte_dec === true || person.acte_mar === true || person.affranchi === true  ) {
                     const nomFichier = person.id;
-                    const repertoires = ['naissance', 'particulier', 'deces', 'mariage'];  
+                    const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];  
                     for (let i = 0; i < repertoires.length; i++) {    
                       const repertoire = repertoires[i];
                       const acteItem = document.createElement('li');
@@ -158,7 +159,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                   const ficLink = document.createElement('a');
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
-                                  ficLink.target = '_blank';
+                                  ficLink.target = '_blank';                                  
+                                  ficLink.style.textDecoration = "non";
+                                  ficLink.style.color = "blue";                                  
                                   acteItem.appendChild(ficLink);
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
                                   fetch(`${monFichierBis}`)
@@ -166,8 +169,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                       if (response.ok) {
                                           const ficLinkbis = document.createElement('a');
                                           ficLinkbis.textContent = `Voir l'acte de ${repertoire} (${extension}) Partie 2`;
-                                          ficLinkbis.href = monFichierBis;
-                                          ficLinkbis.target = '_blank';
+                                          ficLinkbis.href = monFichierBis;                                          
+                                          ficLink.style.textDecoration = "non";
+                                          ficLink.style.color = "blue";
                                           acteItem.appendChild(document.createTextNode(' | '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
