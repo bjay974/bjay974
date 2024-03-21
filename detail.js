@@ -29,8 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Ajouter la date de reconnaisance ainsi que le nom
                     if (person.date_legitime !== null) {
                         const legDateItem = document.createElement('li');
-                        detailsList.appendChild(conjointItem);    
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
                         legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
@@ -107,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_mere) {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                        const motherItem = document.createElement('span');
+                        const motherItem = document.createElement('li');
                         motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
                         const espaceDebut = "  ";
