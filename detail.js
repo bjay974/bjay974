@@ -140,9 +140,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
-
               // Charger l'extension du fichier naissance si elle existe
-                if (person.acte_nai === true) {
+              if (person.acte_nai === true) {
                     const idPerson = person.id;
                     const repFichier = `naissance`;
                     const acteItem = document.createElement('li');
@@ -159,10 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
                                 ficLink.href = monFichier;
                                 ficLink.target = '_blank';
                                 const monFichierBis = `${repFichier}/${nomFichier}_2.${extension}`
-                                const ficLinkbis = document.createElement('a');
-                                ficLinkbis.textContent = `Voir l'acte de ${repFichier} (partie 2)`;
-                                ficLinkbis.href = monFichierBis;
-                                ficLinkbis.target = '_blank';
+                                fetch(`${monFichierBis}`)
+                                .then(response => {
+                                    if (response.ok) {
+                                        const ficLinkbis = document.createElement('a');
+                                        ficLinkbis.textContent = `Voir l'acte de ${repFichier} (${extension}) Partie 2`;
+                                        ficLinkbis.href = monFichierBis;
+                                        ficLinkbis.target = '_blank';
+                                } })
                                 acteItem.appendChild(ficLink);
                                 acteItem.appendChild(document.createTextNode(' | '));
                                 acteItem.appendChild(ficLinkbis);
@@ -170,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 detailsList.appendChild(document.createElement('br'));
                         } })
                     }
-                }
+              }
  
                 personDetails.appendChild(detailsList);
             }      
