@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong><span style="color: blue;> ${person.nom_legitime}</span></strong></em> ${dateVerified}`;
+                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong><span style="color: blue;"> ${person.nom_legitime}</span></strong></em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
