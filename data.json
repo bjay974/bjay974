@@ -391,7 +391,7 @@
     "nom_epouse": null,
     "nom_legitime": null,
     "date_legitime": null,
-    "id_pere": null,
+    "id_pere": 709,
     "date_naissance": "18/11/1843",
     "lieu_naissance": "Inconnu",
     "date_deces": "01/01/1906",
