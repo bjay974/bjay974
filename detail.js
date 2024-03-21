@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
                         const nomEnBleu = `<span style="color:blue;">${person.nom_legitime}</span`
-                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong>${nomEnBleu}</strong></em> ${dateVerified}`;
+                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${nomEnBleu} </strong></em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (father) {
                         const fatherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        fatherItem.innerHTML = `<strong><em>${adjectif_genre} de</em></strong> ${father.nom} ${father.prenom}`;
+                        fatherItem.innerHTML = `<em>${adjectif_genre} de</em><strong>${father.nom} ${father.prenom}</strong>`;
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('li');
                         motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        motherItem.innerHTML = `<em>et  de </em><strong> ${mother.nom} ${mother.prenom}</strong>`;
+                        motherItem.innerHTML = `<em>et de \t </em><strong> ${mother.nom} ${mother.prenom}</strong>`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   const acteItem = document.createElement('li');
                                   acteItem.classList.add('special-li');
                                   const ficLink = document.createElement('a');
-                                  ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
+                                  ficLink.textContent = `Voir l'acte de ${repertoire}`;
                                   ficLink.href = monFichier;
                                   ficLink.target = '_blank';                                  
                                   ficLink.style.textDecoration = "none";
@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                           ficLinkbis.href = monFichierBis;                                          
                                           ficLinkbis.style.textDecoration = "none";
                                           ficLinkbis.style.color = "blue";
-                                          acteItem.appendChild(document.createTextNode(' | '));
+                                          acteItem.appendChild(document.createTextNode('  ||  '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
                                   detailsList.appendChild(acteItem);
