@@ -22,7 +22,7 @@ nav {
 nav a {
     color: #fff;
     text-decoration: none;
-    padding: 7px 20px;
+    padding: 7px 10px;
 }
 
 nav a:hover {
@@ -30,25 +30,10 @@ nav a:hover {
 }
 
 section {
-    padding: 20px;
+    padding: 10px;
     text-align: center;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
 
-}
-
-.tree {
-    margin-top: 20px;
-}
-
-.tree .node {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    text-decoration: none;
-}
-
-.tree .node:hover {
-    background-color: #666;
 }
 
 footer {
