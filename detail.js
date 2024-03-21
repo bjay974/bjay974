@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             conjointItem.classList.add('special-li');
-                            conjointItem.innerHTML = `\t à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            conjointItem.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
@@ -154,7 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
                               if (response.ok) {
                                   const acteItem = document.createElement('li');
                                   const ficLink = document.createElement('a');
-                                  ficLink.textContent = `Voir l'acte de ${repertoire}`;
+                                  if (repertoire === "particulier"){
+                                       ficLink.textContent = `Voir l'acte spécial"`;}
+                                  else if (repertoire === "deces"){
+                                       ficLink.textContent = `Voir l'acte de décés `; }  
+                                  else {
+                                       ficLink.textContent = `Voir l'acte de ${repertoire}`; }   
                                   ficLink.href = monFichier;
                                   ficLink.target = '_blank';                                  
                                   ficLink.style.textDecoration = "none";
