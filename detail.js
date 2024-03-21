@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('p');
                             const espaceDebut = "  ";
-                            conjointItem.textContent = `${espaceDebut} à : ${conjoint.nom} ${conjoint.prenom}`;
+                            conjointItem.textContent = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}`</strong>`;
                             detailsList.appendChild(conjointItem);     
                         }
                 }
@@ -73,11 +73,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Charger le ou la conjoint
                 if (person.date_mariage === null) {
                     if (person.id_conjoint) {
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
-                            conjointItem.innerHTML = `<strong>${adjectif_genre}</strong>  ${conjoint.nom} ${conjoint.prenom}`;
+                            conjointItem.innerHTML = `<strong>${adjectif_genre} ${conjoint.nom} ${conjoint.prenom}`</strong> ;
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }    } 
@@ -172,8 +173,8 @@ document.addEventListener('DOMContentLoaded', () => {
                                           const ficLinkbis = document.createElement('a');
                                           ficLinkbis.textContent = `Voir l'acte de ${repertoire} (${extension}) Partie 2`;
                                           ficLinkbis.href = monFichierBis;                                          
-                                          ficLink.style.textDecoration = "none";
-                                          ficLink.style.color = "blue";
+                                          ficLinkbis.style.textDecoration = "none";
+                                          ficLinkbis.style.color = "blue";
                                           acteItem.appendChild(document.createTextNode(' | '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
