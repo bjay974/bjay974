@@ -19,27 +19,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 nameItem.style.color = "blue";
                 nameItem.textContent = `${person.nom} ${person.prenom}`;
                 detailsList.appendChild(nameItem);
-
+                
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateVerified = verifieDate(person.date_naissance);
                 birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                 detailsList.appendChild(birthDateItem);
-
-                // Ajouter la date de reconnaisance ainsi que le nom
-                if (person.date_legitime !== null) {
-                    const legDateItem = document.createElement('span');
-                    const dateVerified = verifieDate(person.date_legitime);
-                    const adjectif_genre = ajouterE("Reconnu", person.genre);
-                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
-                    legDateItem.style.color = "blue";
-                    detailsList.appendChild(legDateItem);
-                }
+                    // Ajouter la date de reconnaisance ainsi que le nom
+                    if (person.date_legitime !== null) {
+                        const legDateItem = document.createElement('span');
+                        const dateVerified = verifieDate(person.date_legitime);
+                        const adjectif_genre = ajouterE("Reconnu", person.genre);
+                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
+                        legDateItem.style.color = "blue";
+                        detailsList.appendChild(legDateItem);
+                    }
+                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage !== null) {
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre)
@@ -52,17 +51,18 @@ document.addEventListener('DOMContentLoaded', () => {
                             conjointItem.innerHTML = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             detailsList.appendChild(conjointItem);     
                         }
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 
                  // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
                     const dateVerified = verifieDate(person.date_deces) 
                     const adjectif_genre = ajouterE("Décédé", person.genre)
                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
                     detailsList.appendChild(deathDateItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
                 else {
                     const ageNowItem = document.createElement('li');
@@ -70,12 +70,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const adjectif_genre = ajouterE("Agé", person.genre)
                     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
-                
+
                 // Charger le ou la conjoint
                 if (person.date_mariage === null) {
                     if (person.id_conjoint) {
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
@@ -84,11 +84,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }    } 
-                }     
-                
+                }
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
@@ -97,7 +95,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         detailsList.appendChild(fatherItem);
                     } 
                 } else {
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     const fatherItem = document.createElement('li');
                     fatherItem.innerHTML = "<strong><em>Père </em></strong> inconnu";
                     detailsList.appendChild(fatherItem);
@@ -113,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         motherItem.innerHTML = "${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}";
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    }
+                     }
                 } else {
                     const motherItem = document.createElement('li');
                     motherItem.innerHTML = "<strong><em>Mère</em></strong> inconnue";
@@ -121,14 +118,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }   
                 
-                // Ajouter l'origine
-                if (person.origine) {
-                    const origineItem = document.createElement('li');
-                    origineItem.textContent = `Pays d'origine : ${person.origine}`;
-                    detailsList.appendChild(origineItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                }
-           
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
@@ -150,12 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const nomFichier = person.id;
                     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
                     const acteList = document.createElement('li');
-                    const acteItem = document.createElement('span');
+                    const acteItemUl = document.createElement('ul');
                     acteList.innerHTML = "<strong>Acte(s)</strong> :";
                     acteItem.appendChild(acteList);
                     for (let i = 0; i < repertoires.length; i++) {    
                       const repertoire = repertoires[i];
-                      const acteItem = document.createElement('span');
+                      const acteItem = document.createElement('li');
                       const extensions = ['pdf', 'jpg', 'jpeg'];
                       for (let i = 0; i < extensions.length; i++) {
                           const extension = extensions[i];
@@ -168,8 +157,10 @@ document.addEventListener('DOMContentLoaded', () => {
                                   ficLink.href = monFichier;
                                   ficLink.target = '_blank';                                  
                                   ficLink.style.textDecoration = "none";
-                                  ficLink.style.color = "blue";                                  
+                                  ficLink.style.color = "blue"; 
+                                  acteItemUl.appendChild(acteItem);
                                   acteItem.appendChild(ficLink);
+                                  
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
                                   fetch(`${monFichierBis}`)
                                   .then(response => {
@@ -179,6 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                           ficLinkbis.href = monFichierBis;                                          
                                           ficLinkbis.style.textDecoration = "none";
                                           ficLinkbis.style.color = "blue";
+                                          acteItemUl.appendChild(acteItem);
                                           acteItem.appendChild(document.createTextNode(' | '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
