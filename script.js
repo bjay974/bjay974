@@ -10,7 +10,9 @@ fetch('data.json')
         const femmeList = document.getElementById('femme-list');
         
         // Titre pour la liste des hommes
-        const hommeTitle = document.createElement('h3');
+        const hommeTitle = document.createElement('h4');
+        hommeTitle.style.color = "blue";
+        hommeTitle.style.fontStyle ="italic";
         hommeTitle.textContent = 'Hommes';
         hommeList.appendChild(hommeTitle);
         
@@ -27,7 +29,9 @@ fetch('data.json')
         });
 
         // Titre pour la liste des femmes
-        const femmeTitle = document.createElement('h3');
+        const femmeTitle = document.createElement('h4');
+        femmeTitle.style.color = "blue";
+        femmeTitle.style.fontStyle ="italic";
         femmeTitle.textContent = 'Femmes';
         femmeList.appendChild(femmeTitle);
         
@@ -38,6 +42,7 @@ fetch('data.json')
             const link = document.createElement('a');
             link.textContent = person.nom + ' ' + person.prenom;
             link.href = 'person.html?id=' + person.id;
+            link.classList.add("lien"); //ajout la classe lien du ccs au lien
             listItem.appendChild(link);
             femmeList.appendChild(listItem);
         });
