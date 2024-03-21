@@ -57,10 +57,15 @@ footer {
     list-style-type: none; /* Supprime les puces des listes */
     text-align: left; /* Aligne la liste à gauche */
 }
+
 .child {
     margin-top: 5px;
     text-align: left; /* Aligne la liste à gauche */
 }
 
+.lien {
+    text-decoration: none;
+    color: black;
+}
 
 
