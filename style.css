@@ -68,7 +68,7 @@ footer {
     text-align: left; /* Aligne la liste à gauche */
 }
 
-.list-details {
+.list-detail {
     margin-top: 1px;
     margin-left: 1px;
     list-style-type: none; /* Supprime les puces des listes */
