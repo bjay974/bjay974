@@ -63,11 +63,17 @@ footer {
 
 .list {
     margin-top: 5px;
-    margin-left: 5px;
+    margin-left: 10px;
     list-style-type: none; /* Supprime les puces des listes */
     text-align: left; /* Aligne la liste à gauche */
 }
 
+.list-details {
+    margin-top: 1px;
+    margin-left: 1px;
+    list-style-type: none; /* Supprime les puces des listes */
+    text-align: left; /* Aligne la liste à gauche */
+}
 .child {
     margin-top: 5px;
     text-align: left; /* Aligne la liste à gauche */
