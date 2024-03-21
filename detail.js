@@ -169,7 +169,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                           ficLinkbis.href = monFichierBis;                                          
                                           ficLinkbis.style.textDecoration = "none";
                                           ficLinkbis.style.color = "blue";
-                                          acteItemUl.appendChild(acteItem);
                                           acteItem.appendChild(document.createTextNode(' | '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
