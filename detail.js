@@ -180,22 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-async function rechercheExtension(nomFichier) {
-    const extensions = ['pdf', 'jpg', 'jpeg'];
-    for (let i = 0; i < extensions.length; i++) {
-        const extension = extensions[i];
-        const repFicExt = `${nomFichier}.${extension}`
-        try {
-            const response = await fetch(`${repFicExt}`);
-            if (response.ok) {
-                return extension;
-            } 
-        } 
-    }
-    return null; // Aucune extension trouvée
-}
-
-
 function diffAge(date1, date2) {   
     const an1 = parseInt(date1.substr(6, 4));
     const mois1 = parseInt(date1.substr(3, 2));
