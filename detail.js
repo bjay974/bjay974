@@ -22,17 +22,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
-                const adjectif_genre = ajouterE("Né", person.genre)
-                const dateVerified = verifieDate(person.date_naissance) 
+                const adjectif_genre = ajouterE("Né", person.genre);
+                const dateVerified = verifieDate(person.date_naissance);
                 birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                 detailsList.appendChild(birthDateItem);
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime !== null) {
                     const legDateItem = document.createElement('p');
-                    const dateVerified = verifieDate(person.date_legitime) 
-                    const adjectif_genre = ajouterE("Reconnu", person.genre)
-                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong> ${dateVerified}`;
+                    const dateVerified = verifieDate(person.date_legitime);
+                    const adjectif_genre = ajouterE("Reconnu", person.genre);
+                    legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
                     detailsList.appendChild(legDateItem);
                 }
 
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre)
-                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à de ${person.lieu_mariage}`;
+                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
@@ -79,7 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
-                            conjointItem.innerHTML = `<strong>${adjectif_genre} ${conjoint.nom} ${conjoint.prenom}`</strong> ;
+                            conjointItem.innerHTML = `<strong>${adjectif_genre} ${conjoint.nom} ${conjoint.prenom}</strong>` ;
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }    } 
