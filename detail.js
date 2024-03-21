@@ -141,8 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
 
-              
-                // Charger l'extension du fichier affranchissement si elle existe
+              // Charger l'extension du fichier affranchissement si elle existe
                 if (person.affranchi === true || person.acte_div === true) {
                     const acteDiversItem = document.createElement('li');
                     const idPerson = person.id;                    
@@ -160,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(document.createElement('br'));
                     })
                 }
-               
+              
                 // Vérifier si l'acte de naissance existe pour la personne
                 if (person.acte_nai === true) {
                     const acteNaissanceItem = document.createElement('li');
@@ -238,7 +237,7 @@ async function rechercheExtension(nomFichier) {
     const extensions = ['pdf', 'jpg', 'jpeg'];
     for (let i = 0; i < extensions.length; i++) {
         const extension = extensions[i];
-        const repFicExt = `${nomFichier}.${nomFichier}`
+        const repFicExt = `${nomFichier}.${extension}`
         try {
             const response = await fetch(`${repFicExt}`);
             if (response.ok) {
