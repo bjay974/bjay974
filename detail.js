@@ -140,39 +140,42 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
-              // Charger l'extension du fichier naissance si elle existe
-              if (person.acte_nai === true) {
-                    const idPerson = person.id;
-                    const repFichier = `naissance`;
-                    const acteItem = document.createElement('li');
-                    const nomFichier = `${idPerson}`;
-                    const extensions = ['pdf', 'jpg', 'jpeg'];
-                    for (let i = 0; i < extensions.length; i++) {
-                        const extension = extensions[i];
-                        const monFichier = `${repFichier}/${nomFichier}.${extension}`;
-                        fetch(`${monFichier}`)
-                        .then(response => {
-                            if (response.ok) {
-                                const ficLink = document.createElement('a');
-                                ficLink.textContent = `Voir l'acte de ${repFichier} (${extension})`;
-                                ficLink.href = monFichier;
-                                ficLink.target = '_blank';
-                                const monFichierBis = `${repFichier}/${nomFichier}_2.${extension}`
-                                fetch(`${monFichierBis}`)
-                                .then(response => {
-                                    if (response.ok) {
-                                        const ficLinkbis = document.createElement('a');
-                                        ficLinkbis.textContent = `Voir l'acte de ${repFichier} (${extension}) Partie 2`;
-                                        ficLinkbis.href = monFichierBis;
-                                        ficLinkbis.target = '_blank';
-                                } })
-                                acteItem.appendChild(ficLink);
-                                acteItem.appendChild(document.createTextNode(' | '));
-                                acteItem.appendChild(ficLinkbis);
-                                detailsList.appendChild(acteItem);
-                                detailsList.appendChild(document.createElement('br'));
-                        } })
-                    }
+             
+              // Charger les liens vers les actes si il y en a
+              if (person.acte_nai === true || person.acte_dec === true || person.acte_mar === true || person.affranchi === true  ) {
+                    const nomFichier = person.id;
+                    const repertoires = ['naissance', 'particulier', 'deces', 'mariage'];  
+                    for (let i = 0; i < repertoires.length; i++) {    
+                      const repertoire = extensions[i];
+                      const acteItem = document.createElement('li');
+                      const extensions = ['pdf', 'jpg', 'jpeg'];
+                      for (let i = 0; i < extensions.length; i++) {
+                          const extension = extensions[i];
+                          const monFichier = `${repertoire}/${nomFichier}.${extension}`;
+                          fetch(`${monFichier}`)
+                          .then(response => {
+                              if (response.ok) {
+                                  const ficLink = document.createElement('a');
+                                  ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
+                                  ficLink.href = monFichier;
+                                  ficLink.target = '_blank';
+                                  const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
+                                  fetch(`${monFichierBis}`)
+                                  .then(response => {
+                                      if (response.ok) {
+                                          const ficLinkbis = document.createElement('a');
+                                          ficLinkbis.textContent = `Voir l'acte de ${repertoire} (${extension}) Partie 2`;
+                                          ficLinkbis.href = monFichierBis;
+                                          ficLinkbis.target = '_blank';
+                                  } })
+                                  acteItem.appendChild(ficLink);
+                                  acteItem.appendChild(document.createTextNode(' | '));
+                                  acteItem.appendChild(ficLinkbis);
+                                  detailsList.appendChild(acteItem);
+                                  detailsList.appendChild(document.createElement('br'));
+                          } })
+                      }
+                    }     
               }
  
                 personDetails.appendChild(detailsList);
