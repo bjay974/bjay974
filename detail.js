@@ -110,7 +110,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('span');
                         const adjectif_genre = ajouterParent(person.genre);
                         const espaceDebut = "  ";
-                        motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
+                        motherItem.innerHTML = "${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}";
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
