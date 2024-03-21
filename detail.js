@@ -32,7 +32,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong>${person.nom_legitime}</strong></em> ${dateVerified}`;
+                        const nomEnBleu = `<span style="color:blue;">${person.nom_legitime}</span`
+                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong>${nomEnBleu}</strong></em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -48,8 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             conjointItem.classList.add('special-li');
-                            const espaceDebut = "  ";
-                            conjointItem.innerHTML = `${espaceDebut} à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            conjointItem.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     } 
                 } else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.innerHTML = "<strong><em>Père </em></strong> inconnu";
+                    fatherItem.innerHTML = `<strong><em>Père </em></strong> inconnu`;
                     detailsList.appendChild(fatherItem);
                 }
                 
@@ -108,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('li');
                         motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        motherItem.innerHTML = `<em>et  de </em><strong> ${mother.nom} ${mother.prenom}`</strong>;
+                        motherItem.innerHTML = `<em>et  de </em><strong> ${mother.nom} ${mother.prenom}</strong>`;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
