@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
-                nameItem.textStyle.color = "blue";
+                nameItem.style.color = "blue";
                 nameItem.textContent = `${person.nom} ${person.prenom}`;
                 detailsList.appendChild(nameItem);
 
@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                 detailsList.appendChild(birthDateItem);
 
-                // Ajouter la date de reonnaisance ainsi que le nom
+                // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime !== null) {
                     const legDateItem = document.createElement('p');
                     const dateVerified = verifieDate(person.date_legitime) 
