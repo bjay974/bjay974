@@ -29,10 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Ajouter la date de reconnaisance ainsi que le nom
                     if (person.date_legitime !== null) {
                         const legDateItem = document.createElement('li');
+                        legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${person.nom_legitime}</strong></em> ${dateVerified}`;
-                        legDateItem.style.color = "blue";
+                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong><span style="color: blue;> ${person.nom_legitime}</span></strong></em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -108,8 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const motherItem = document.createElement('li');
                         motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
-                        const espaceDebut = "  ";
-                        motherItem.innerHTML = `${espaceDebut}<strong><em>et de </em></strong> ${mother.nom} ${mother.prenom}`;
+                        motherItem.innerHTML = `<em>et  de </em><strong> ${mother.nom} ${mother.prenom}`</strong>;
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
@@ -150,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                           .then(response => {
                               if (response.ok) {
                                   const acteItem = document.createElement('li');
+                                  acteItem.classList.add('special-li');
                                   const ficLink = document.createElement('a');
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   .then(response => {
                                       if (response.ok) {
                                           const ficLinkbis = document.createElement('a');
-                                          ficLinkbis.textContent = `Voir l'acte de ${repertoire} (${extension}) Partie 2`;
+                                          ficLinkbis.textContent = `Voir la Partie 2`;
                                           ficLinkbis.href = monFichierBis;                                          
                                           ficLinkbis.style.textDecoration = "none";
                                           ficLinkbis.style.color = "blue";
