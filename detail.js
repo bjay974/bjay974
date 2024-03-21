@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        const nomlegBlue = '<span style="color: blue;">${person.nom_legitime}</span>;
+                        const nomlegBlue = '<span style="color: blue;">${person.nom_legitime}</span>';
                         legDateItem.innerHTML = `<em>${adjectif_genre}<strong>${nomlegBlue}</strong></em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
