@@ -69,4 +69,10 @@ footer {
     color: black;
 }
 
+.special-li {
+    margin-top: 0;
+    list-style-type: none;
+}
+
+
 
