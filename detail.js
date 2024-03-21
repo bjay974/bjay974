@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const adjectif_genre = ajouterE("Marié", person.genre)
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à de ${person.lieu_mariage}`;
                     detailsList.appendChild(weddingDateItem);  
-                    const weddingCoItem = document.createElement('li');
+                    const weddingCoItem = document.createElement('p');
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];  
                     for (let i = 0; i < repertoires.length; i++) {    
                       const repertoire = repertoires[i];
-                      const acteItem = document.createElement('li');
+                      const acteItem = document.createElement('p');
                       const extensions = ['pdf', 'jpg', 'jpeg'];
                       for (let i = 0; i < extensions.length; i++) {
                           const extension = extensions[i];
@@ -156,6 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
                           fetch(`${monFichier}`)
                           .then(response => {
                               if (response.ok) {
+                                  const acteList = document.createElement('li');
+                                  acteList.innerHTML = "<strong>Acte(s)</strong> :";
                                   const ficLink = document.createElement('a');
                                   ficLink.textContent = `Voir l'acte de ${repertoire} (${extension})`;
                                   ficLink.href = monFichier;
