@@ -262,11 +262,11 @@ function verifieDate(date) {
     const day = parseInt(date.substr(0, 2));
     if (day === 1 && mois === 1) {
         if (an === 1901) {
-            return "" 
+            return "" ;
         }  else {
-            return "dans le courant de l'année " + an
+            return "dans le courant de l'année " + an;
         }
     } else {
-        return "le " + date
+        return "le " + date;
     }
 }
