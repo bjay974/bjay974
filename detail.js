@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Trouver la personne correspondante
             const person = data.find(p => p.id === parseInt(personId));
             const personDetails = document.getElementById('person-details');
-            if (person) {
+            if (person && !person.hidden) {
                 const detailsList = document.createElement('ul');
 
                 // Ajouter le nom et prénom en gras
