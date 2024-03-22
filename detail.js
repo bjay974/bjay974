@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         deathItem.textContent = `Date de décés inconnue`;
                         detailsList.appendChild(deathItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace      
-                }
+                }}
 
                 // Charger le ou la conjoint
                 if (person.date_mariage === null) {
