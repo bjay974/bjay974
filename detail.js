@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Trouver la personne correspondante
             const person = data.find(p => p.id === parseInt(personId));
             const personDetails = document.getElementById('person-details');
-            if (person && !person.hidden) {
+            if (person) {
                 const detailsList = document.createElement('ul');
 
                 // Ajouter le nom et prénom en gras
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
-                    childrenOfPerson.sort((a,b) => new Date(a.date_naissance) - new Date(b.date_naissance));
+                    childrenOfPerson.sort((a,b) => (a.id) - (b.id));
                     const childrenOfPersonList = document.createElement('li');
                     childrenOfPersonList.innerHTML = "<strong>Enfant(s)</strong> :";
                     const childrenOfPersonUl = document.createElement('ul');
