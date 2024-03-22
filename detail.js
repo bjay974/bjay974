@@ -70,13 +70,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                  // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
-                    const deathDateItem = document.createElement('li');
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-                    const dateVerified = verifieDate(person.date_deces) 
-                    const adjectif_genre = ajouterE("Décédé", person.genre)
-                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
-                    detailsList.appendChild(deathDateItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    if (ageDeces > 0) then {
+                        const deathDateItem = document.createElement('li');
+                        const dateVerified = verifieDate(person.date_deces) 
+                        const adjectif_genre = ajouterE("Décédé", person.genre)
+                        deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
+                        detailsList.appendChild(deathDateItem);
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }
                 }
 
                 // Charger le ou la conjoint
