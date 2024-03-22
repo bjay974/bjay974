@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const nameItem = document.createElement('h3');
                 nameItem.style.color = "blue";
                 let nomLegitime = " ";
-                if (person.nom_legitime !== null) {
+                if (person.nom_legitime) {
                     let nomLegitime = person.nom_legitime
                 }
                 nameItem.innerHTML = `${person.nom} <em>${nomLegitime}</em> ${person.prenom}`;
@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                 detailsList.appendChild(birthDateItem);
                     // Ajouter la date de reconnaisance ainsi que le nom
-                    if (person.date_legitime !== null) {
+                    if (person.date_legitime) {
                         const legDateItem = document.createElement('li');
                         legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
@@ -40,6 +40,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${nomEnBleu} </strong></em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
+                    if (!person.date_deces) {
+                        const ageNowItem = document.createElement('li');
+                        const ageNow = calculeAge(person.date_naissance);
+                        ageNowItem.classList.add('special-li');
+                        const adjectif_genre = ajouterE("Agé", person.genre)
+                        ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
+                        detailsList.appendChild(ageNowItem);
+                    }    
+
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
@@ -69,14 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(deathDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
-                else {
-                    const ageNowItem = document.createElement('li');
-                    const ageNow = calculeAge(person.date_naissance);
-                    const adjectif_genre = ajouterE("Agé", person.genre)
-                    ageNowItem.textContent = `t${adjectif_genre} de : ${ageNow} ans `;
-                    detailsList.appendChild(ageNowItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                }
 
                 // Charger le ou la conjoint
                 if (person.date_mariage === null) {
@@ -90,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }    } 
                 }
+                
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     const father = data.find(p => p.id === person.id_pere);
@@ -126,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
+                    childrenOfPerson.sort((a,b) => new Date(a.date_naissance) - new Date(b.date_naissance));
                     const childrenOfPersonList = document.createElement('li');
                     childrenOfPersonList.innerHTML = "<strong>Enfant(s)</strong> :";
                     const childrenOfPersonUl = document.createElement('ul');
