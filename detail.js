@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
-                    childrenOfPerson.sort((a,b) => (a.id) - (b.id));
+                    childrenOfPerson.sort((a, b) => (a.id) - (b.id));
                     const childrenOfPersonList = document.createElement('li');
                     childrenOfPersonList.innerHTML = "<strong>Enfant(s)</strong> :";
                     const childrenOfPersonUl = document.createElement('ul');
