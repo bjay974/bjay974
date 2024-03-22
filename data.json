@@ -755,6 +755,7 @@
   "id": 1001,
   "nom": "FONTAINE",
   "prenom": "Fabiola",
+  "date_naissance": "12/06/1973",
   "hidden": true,  
   "id_pere": 213,
   "id_mere": 214  
