@@ -79,6 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         detailsList.appendChild(deathDateItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
+                    else {
+                        const deathDateItem = document.createElement('li');
+                        deathItem.textContent = `Date de décés inconnue`;
+                        detailsList.appendChild(deathItem);
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace      
                 }
 
                 // Charger le ou la conjoint
@@ -257,7 +262,7 @@ function verifieDate(date) {
     const day = parseInt(date.substr(0, 2));
     if (day === 1 && mois === 1) {
         if (an === 1901) {
-            return "à une date inconnue" 
+            return "" 
         }  else {
             return "dans le courant de l'année " + an
         }
