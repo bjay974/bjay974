@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
                 nameItem.style.color = "blue";
-                let nomLegitime = " ";
+                let nomLegitime = "";
                 if (person.nom_legitime) {
                     let nomLegitime = person.nom_legitime
                 }
