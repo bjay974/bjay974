@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nameItem.style.color = "blue";
                 let nomLegitime = "";
                 if (person.nom_legitime) {
-                    let nomLegitime = person.nom_legitime
+                   nomLegitime = person.nom_legitime
                 }
                 nameItem.innerHTML = `${person.nom} <em>${nomLegitime}</em> ${person.prenom}`;
                 detailsList.appendChild(nameItem);
