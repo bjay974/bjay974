@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   const acteItem = document.createElement('li');
                                   const ficLink = document.createElement('a');
                                   if (repertoire === "particulier"){
-                                       ficLink.textContent = `Voir l'acte spécial"`;}
+                                       ficLink.textContent = `Voir l'acte spécial`;}
                                   else if (repertoire === "deces"){
                                        ficLink.textContent = `Voir l'acte de décés `; }  
                                   else {
