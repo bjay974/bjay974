@@ -88,7 +88,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 else { 
                       const deathDateItem = document.createElement('li');  
                       deathDateItem.textContent = `Date de décés inconnue`; }
-                }}
+                }
 
                 // Charger le ou la conjoint
                 if (person.date_mariage === null) {
