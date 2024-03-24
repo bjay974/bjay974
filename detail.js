@@ -71,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
+                    if (date_deces !== "01/01/1901" {
                     if (ageDeces > 0) {
                         const deathDateItem = document.createElement('li');
                         const dateVerified = verifieDate(person.date_deces) 
@@ -83,7 +84,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         const deathDateItem = document.createElement('li');
                         deathDateItem.textContent = `Date de décés inconnue`;
                         detailsList.appendChild(deathDateItem);
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace      
+                        detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
+                else { 
+                      const deathDateItem = document.createElement('li');  
+                      deathDateItem.textContent = `Date de décés inconnue`;
                 }}
 
                 // Charger le ou la conjoint
