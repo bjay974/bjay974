@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const deathDateItem = document.createElement('li');
                         deathDateItem.textContent = `Date de décés inconnue`;
                         detailsList.appendChild(deathDateItem);
-                        detailsList.appendChild(document.createElement('br')); }// Ajout d'un espace 
+                        detailsList.appendChild(document.createElement('br')); }}// Ajout d'un espace 
                 else { 
                       const deathDateItem = document.createElement('li');  
                       deathDateItem.textContent = `Date de décés inconnue`; }
