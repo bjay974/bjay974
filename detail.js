@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
                  // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-                    if (date_deces !== "01/01/1901" {
+                    if (person.date_deces !== "01/01/1901" {
                     if (ageDeces > 0) {
                         const deathDateItem = document.createElement('li');
                         const dateVerified = verifieDate(person.date_deces) 
