@@ -34,6 +34,7 @@ section {
     padding: 10px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
     text-align: center;
+    marging-bottom: 5;
 }
 
 footer {
