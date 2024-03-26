@@ -84,7 +84,7 @@ footer {
 	-moz-transition: all 0.5s;
 }
 
-h {
+.parent h {
 	padding: 5px 10px;
 	text-decoration: none;
 	font-size: 11px;
@@ -101,7 +101,7 @@ h {
 	background-color: #77B5FE;
 }
 
-f{
+.parent f{
 	padding: 5px 10px;
 	text-decoration: none;
 	font-size: 11px;
