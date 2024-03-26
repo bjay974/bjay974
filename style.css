@@ -79,12 +79,14 @@ footer {
 .homme {
     background-color:#333; /* Fond gris */
     color: white; /* Texte blanc */
-    font-weight: bold; /* Texte en gras */
     padding: 10px; /* Espacement interne */
     border-radius: 10px; /* Bordures arrondies */
     display: inline-block;
     text-decoration: none;  
     margin-bottom: 20px;
+    font-size: 10px; /* Taille du texte */
+    max-width: 70px;
+    text-align: center;
  }
 
 .femme {
@@ -96,6 +98,9 @@ footer {
     display: inline-block;
     text-decoration: none; 
     margin-bottom: 20px;
+    font-size: 10px; /* Taille du texte */
+    max-width: 70px;
+    text-align: center;
 }
 
 .homme + .femme {
@@ -107,9 +112,17 @@ footer {
 }
 
 .second-line {
-    margin-left: calc(10% - 50px); /* Centrer le premier texte horizontalement */
+    margin-left: calc(4% - 0px); /* Centrer le premier texte horizontalement */
 }
 
 .second-line .homme + .femme {
-     margin-left: calc(20% - 50px); /* Distance entre les hommes et les femmes */
+     margin-left: calc(11% - 0px); /* Distance entre les hommes et les femmes */
+}
+
+.third-line {
+    margin-left: calc(13% - 0px); /* Centrer le premier texte horizontalement */
+}
+
+.third-line .homme + .femme {
+     margin-left: calc(11% - 0px); /* Distance entre les hommes et les femmes */
 }
