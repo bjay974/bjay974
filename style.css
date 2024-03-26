@@ -75,9 +75,8 @@ footer {
     margin-top: 0;
     list-style-type: none;
 }
-
 .container {
-    padding: 10px;
+    padding: 5px;
     text-align: center; /* Centrer le contenu dans le conteneur */
   margin-bottom: 20px;
   
@@ -86,39 +85,41 @@ footer {
 .homme {
     background-color:#333; /* Fond gris */
     color: white; /* Texte blanc */
-    padding: 5px; /* Espacement interne */
+    padding: 10px; /* Espacement interne */
     border-radius: 5px; /* Bordures arrondies */
     display: inline-block;
     text-decoration: none;  
     margin-bottom: 20px;
     font-size: 10px; /* Taille du texte */
     width: 70px; /* Largeur fixe du cadre */
-    height: 60px; /* Hauteur fixe du cadre */
+    height: 40px; /* Hauteur fixe du cadre */
     text-align: center;
  }
 
 .femme {
     background-color:#666; /* Fond gris */
     color: white; /* Texte blanc */
-    padding: 5px; /* Espacement interne */
+    padding: 10px; /* Espacement interne */
     border-radius: 5px; /* Bordures arrondies */
     display: inline-block;
     text-decoration: none; 
     margin-bottom: 20px;
     font-size: 10px; /* Taille du texte */
     width: 70px; /* Largeur fixe du cadre */
-    height: 60px; /* Hauteur fixe du cadre */
+    height: 40px; /* Hauteur fixe du cadre */
     text-align: center;
 }
 
 .homme + .femme {
-    margin-left: 10px; /* Distance de 10px entre les deux premiers */
+    margin-left: 5px; /* Distance de 10px entre les deux premiers */
 }
 
 .femme + .homme {
-    margin-left: 40px; /* Distance de 10px entre les deux premiers */
+    margin-left: 15px; /* Distance de 10px entre les deux premiers */
 }
 
 .second-line .homme + .femme {
-     margin-left: 125px
+     margin-left: 110px
 }
+
+
