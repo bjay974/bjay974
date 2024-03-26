@@ -76,45 +76,40 @@ footer {
     list-style-type: none;
 }
 
-.generation {
-	padding-top: 10px; 
-	position: relative;
-	transition: all 0.5s;
-	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
+.homme {
+    background-color:#333; /* Fond gris */
+    color: white; /* Texte blanc */
+    font-weight: bold; /* Texte en gras */
+    padding: 10px; /* Espacement interne */
+    border-radius: 10px; /* Bordures arrondies */
+    display: inline-block;
+    text-decoration: none;  
+    margin-bottom: 20px;
+ }
+
+.femme {
+    background-color:#666; /* Fond gris */
+    color: white; /* Texte blanc */
+    font-weight: bold; /* Texte en gras */
+    padding: 10px; /* Espacement interne */
+    border-radius: 10px; /* Bordures arrondies */
+    display: inline-block;
+    text-decoration: none; 
+    margin-bottom: 20px;
 }
 
-.parent h {
-	padding: 5px 10px;
-	text-decoration: none;
-	font-size: 11px;
-	display: inline-block;
- 	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	transition: all 0.5s;
-  border: 2px solid; 
-  border-radius: 10px; /* Coins arrondis de 10px */
-  padding: 10px; /* Espacement intérieur de 10px */
-  font-weight: bold; /* Texte en gras */
-  color: #0000FF; /* Couleur du texte rose pâle */
-  display: inline-block;
-	background-color: #77B5FE;
+.homme + .femme {
+    margin-left: 10px; /* Distance de 10px entre les deux premiers */
 }
 
-.parent f{
-	padding: 5px 10px;
-	text-decoration: none;
-	font-size: 11px;
-  background-color: #ffcccc; 
-	display: inline-block;
-  border: 2px solid; 
- 	-webkit-transition: all 0.5s;
-	-moz-transition: all 0.5s;
-	transition: all 0.5s;
-  border-radius: 10px; /* Coins arrondis de 10px */
-  padding: 10px; /* Espacement intérieur de 10px */
-  font-weight: bold; /* Texte en gras */
-  color: #FF0000; /* Couleur du texte rose pâle */
+.femme + .homme {
+    margin-left: 40px; /* Distance de 10px entre les deux premiers */
 }
 
+.second-line {
+    margin-left: calc(10% - 50px); /* Centrer le premier texte horizontalement */
+}
 
+.second-line .homme + .femme {
+     margin-left: calc(20% - 50px); /* Distance entre les hommes et les femmes */
+}
