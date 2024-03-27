@@ -78,14 +78,31 @@ footer {
     list-style-type: none;
 }
 
-.container {
-    padding: 5px;
-    text-align: center; /* Centrer le contenu dans le conteneur */
-  margin-bottom: 20px;
-  
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
 }
 
-.homme {
+.container1 {
+  margin-top: 20px;
+  padding: 0px;
+  margin-bottom: 20px;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.container2 {  margin-top:60px;}
+.container3 {  margin-top:180px;}
+.container4 {  margin-top:380px;}
+.container5 {  margin-top:850px;}
+
+.generation {
+  display: flex;
+  flex-direction: column;
+  align-content: flex-start;
+}
+
+.homme, .femme {
     background-color:#333; /* Fond gris */
     color: white; /* Texte blanc */
     padding: 10px; /* Espacement interne */
@@ -93,36 +110,21 @@ footer {
     display: inline-block;
     text-decoration: none;  
     margin-bottom: 20px;
-    font-size: 10px; /* Taille du texte */
-    width: 70px; /* Largeur fixe du cadre */
-    height: 40px; /* Hauteur fixe du cadre */
+    font-size: 15px; /* Taille du texte */
+    width: 200px; /* Largeur fixe du cadre */
+    height: 20px; /* Hauteur fixe du cadre */
     text-align: center;
  }
 
-.femme {
-    background-color:#666; /* Fond gris */
-    color: white; /* Texte blanc */
-    padding: 10px; /* Espacement interne */
-    border-radius: 5px; /* Bordures arrondies */
-    display: inline-block;
-    text-decoration: none; 
-    margin-bottom: 20px;
-    font-size: 10px; /* Taille du texte */
-    width: 70px; /* Largeur fixe du cadre */
-    height: 40px; /* Hauteur fixe du cadre */
-    text-align: center;
-}
+.femme {   background-color:#666; }
 
-.homme + .femme {
-    margin-left: 5px; /* Distance de 10px entre les deux premiers */
-}
+.container1 .homme + .femme {margin-top: 20px}
+.container1 .femme + .homme {margin-top: 80px}
+.container2 .homme + .femme {margin-top: 160px}
+.container2 .femme + .homme {margin-top: 160px}
+.container3 .homme + .femme {margin-top: 380px}
+.container3 .femme + .homme {margin-top: 380px}
+.container4 .homme + .femme {margin-top: 850px}
 
-.femme + .homme {
-    margin-left: 15px; /* Distance de 10px entre les deux premiers */
-}
-
-.second-line .homme + .femme {
-     margin-left: 110px
-}
 
 
