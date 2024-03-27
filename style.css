@@ -89,12 +89,14 @@ footer {
   margin-bottom: 20px;
   flex-direction: column;
   align-content: flex-start;
+  padding-left: 30px;
+  padding-bottom: 20px;
 }
 
-.container2 {  margin-top:60px;}
-.container3 {  margin-top:180px;}
-.container4 {  margin-top:380px;}
-.container5 {  margin-top:850px;}
+.container2 {  margin-top: 60px;  padding-left: 30px;}
+.container3 {  margin-top: 180px;  padding-left: 30px;} 
+.container4 {  margin-top: 380px;  padding-left: 30px;}
+.container5 {  margin-top: 850px;  padding-left: 30px;}
 
 .generation {
   display: flex;
@@ -103,7 +105,7 @@ footer {
 }
 
 .homme, .femme {
-    background-color:#333; /* Fond gris */
+    background-color: #333; /* Fond gris */
     color: white; /* Texte blanc */
     padding: 10px; /* Espacement interne */
     border-radius: 5px; /* Bordures arrondies */
@@ -116,7 +118,9 @@ footer {
     text-align: center;
  }
 
-.femme {   background-color:#666; }
+.femme {  
+    background-color:#666;
+    color: #FFB6C1; /* Texte Rose */}
 
 .container1 .homme + .femme {margin-top: 20px}
 .container1 .femme + .homme {margin-top: 80px}
