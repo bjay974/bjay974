@@ -105,7 +105,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     }
   }
 
-  function trouverGrandPere(parentId) {
+  function trouverGrandPere(parentId, data) {
     const parent = data.find(person => person.id === parentId);
     if (parent) {
       return parent.id_pere
