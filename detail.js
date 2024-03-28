@@ -197,25 +197,26 @@ document.addEventListener('DOMContentLoaded', () => {
                                           acteItem.appendChild(ficLinkbis);
                                   } })
                                   detailsList.appendChild(acteItem);
+                                  detailsList.appendChild(document.createElement('br'));
                              } })
                       }
                     }     
-              }
+                 }
 
-                // Ajouter le lien vers l'arbre perso
-                const arbrePersoItem = document.createElement('h3');
-                const arbrePersoLink = document.createElement('a');
-                const monFichier = "arbrePerso.html";
-                arbrePersoLink.textContent = `Arbre de ${person.nom} ${person.prenom}`;   
-                arbrePersoLink.href = monFichier;
-                arbrePersoLink.target = '_blank';                                  
-                arbrePersoLink.style.textDecoration = "none";
-                arbrePersoLink.style.color = "red"; 
-                arbrePersoItem.appendChild(arbrePersoLink);
-                detailsList.appendChild(arbrePersoItem);
+            // Ajouter le lien vers l'arbre perso
+            const arbrePersoItem = document.createElement('h4');
+            const arbrePersoLink = document.createElement('a');
+            const monFichier = "arbrePerso.html";
+            arbrePersoLink.textContent = `Arbre de ${person.nom} ${person.prenom}`;   
+            arbrePersoLink.href = monFichier;
+            arbrePersoLink.target = '_blank';                                  
+            arbrePersoLink.style.textDecoration = "none";
+            arbrePersoLink.style.color = "red"; 
+            arbrePersoItem.appendChild(arbrePersoLink);
+            detailsList.appendChild(arbrePersoItem);
                 
+            personDetails.appendChild(detailsList);
 
-                personDetails.appendChild(detailsList);
             }      
         })
      

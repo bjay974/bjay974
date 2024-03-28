@@ -4,6 +4,7 @@ function getUrlParams() {
     window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(str,key,value) {
       params[key] = value;
     });
+    console.log("params :"params);
     return params;
   }
   
@@ -24,6 +25,7 @@ xobj.send(null);
 function displayData() {
 var params = getUrlParams();
 var personId = params.id;
+console.log("personId :"personId);
 
 loadJSON(function(response) {
     var data = JSON.parse(response);

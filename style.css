@@ -131,4 +131,25 @@ footer {
 .container4 .homme + .femme {margin-top: 850px}
 
 
+.container {
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 20px;
+    width: 300px;
+  }
+  
+.parent,
+.grandparent,
+.child,
+.grandchild {
+margin-top: 10px;
+}
 
+.male {
+background-color: lightblue;
+}
+
+.female {
+background-color: lightpink;
+}
+  
