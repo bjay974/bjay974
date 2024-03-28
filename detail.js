@@ -206,9 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ajouter le lien vers l'arbre perso
             const arbrePersoItem = document.createElement('h4');
             const arbrePersoLink = document.createElement('a');
-            const monFichier = "arbrePerso.html";
             arbrePersoLink.textContent = `Arbre de ${person.nom} ${person.prenom}`;   
-            arbrePersoLink.href = monFichier;
+            arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
             arbrePersoLink.target = '_blank';                                  
             arbrePersoLink.style.textDecoration = "none";
             arbrePersoLink.style.color = "red"; 
