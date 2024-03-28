@@ -40,7 +40,7 @@ function displayData() {
  
             // Afficher les parents
             displayRelations(person.id_pere, person.id_mere, 'parent', data);           
-            
+          
             var grandPere_Pat = data.find(person => person.id_pere === person_id_pere);
             var grandMere_Pat = data.find(person => person.id_pere === person_id_mere);
             var grandPere_Mat = data.find(person => person.id_mere === person_id_mere);
@@ -48,14 +48,14 @@ function displayData() {
 
 
             // Afficher les grands-parents
-            if (father && mother) {
+            if (person.id_pere && person.id_mere) {
                 displayRelations(grandPere_Pat.id_pere, grandMere_Pat.id_mere, 'grandparentpaternel', data);
                 displayRelations(grandPere_Mat.id_pere, grandMere_Mat.id_mere, 'grandparentmaternel', data);
             }
-            if (father && !mother) {
+            if (person.id_pere && !person.id_mere) {
                 displayRelations(grandPere_Pat.id_pere, grandMere_Pat.id_mere, 'grandparentpaternel', data);
             }
-            if (!father && mother) {
+            if (!person.id_pere && person.id_mere) {
                 displayRelations(grandPere_Mat.id_pere, grandMere_Mat.id_mere, 'grandparentmaternel', data);
             }                
             
