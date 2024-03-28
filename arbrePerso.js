@@ -41,10 +41,10 @@ function displayData() {
             // Afficher les parents
             displayRelations(person.id_pere, person.id_mere, 'parent', data);           
             
-            var grandPere_Pat = data.find(person => person.id_pere === person.id_pere);
-            var grandMere_Pat = data.find(person => person.id_pere === person.id_mere);
-            var grandPere_Mat = data.find(person => person.id_mere === person.id_mere);
-            var grandMere_Mat = data.find(person => person.id_mere === person.id_pere);
+            var grandPere_Pat = data.find(parent => parent.id_pere === person.id_pere);
+            var grandMere_Pat = data.find(parent => parent.id_mere === person.id_mere);
+            var grandPere_Mat = data.find(parent => parent.id_pere === person.id_pere);
+            var grandMere_Mat = data.find(parent => parent.id_mere === person.id_mere);
 
 
             // Afficher les grands-parents
@@ -103,7 +103,7 @@ if (children.length > 0) {
     container.className = 'container ' + containerClass;
     children.forEach(function(child) {
     var genderClass = child.genre === 'M' ? 'male' : 'female';
-    var childHTML = '<div class="' + containerClass + genderClass + '">';
+    var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
     childHTML += '</div>';
     container.innerHTML += childHTML;
