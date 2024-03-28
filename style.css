@@ -1,7 +1,7 @@
 body {
     font-family: Georgia;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     background-color: #f2f2f2;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
 }
@@ -15,7 +15,7 @@ header {
 
 nav {
     background-color: #666;
-    padding: 5px 0;
+    padding: 5px 0px;
     text-align: center;
 }
 
@@ -30,7 +30,7 @@ nav a:hover {
 }
 
 section {
-    padding: 10 5 5 5;
+    padding: 10px 5px 5px 5px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
     text-align: center;
 }
@@ -38,7 +38,7 @@ section {
 footer {
     background-color: #333;
     color: #fff;
-    padding: 0 0 5 0;
+    padding: 0px 0px 5px 0px;
     text-align: center;
     position: fixed;
     bottom: 0;
@@ -53,7 +53,7 @@ footer {
 }
 
 .list-detail {
-    padding: 10 5 5 5;
+    padding: 10px 5px 5px 5px;
     margin-top: 1px;
     margin-left: 1px;
     list-style-type: none; /* Supprime les puces des listes */
@@ -71,7 +71,7 @@ footer {
 }
 
 .special-li {
-    padding: 10 5 5 5;
+    padding: 10px 5px 5px 5px;
     margin-top: 0;
     list-style-type: none;
 }
