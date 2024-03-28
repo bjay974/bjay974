@@ -127,13 +127,12 @@ footer {
 
 
 .container {
-    padding: 20px;
-    margin: 20px;
+    padding: 10px 5px 5px 5px;
   }
 
 .personne {
     padding: 5px 5px;
-    margin: 50px;
+    margin: 20px;
     border-radius: 5px; /* Bordures arrondies */
     width: 300px;
     height: 120px;
@@ -142,23 +141,23 @@ footer {
 
 .parent {
     padding: 20px;
-    width: 300px;
+    width: 200px;
     height: 40px;
-    margin-left: 40px;
+    margin-left: 150px;
 }
 
 .grandparentpaternel {
     padding: 20px;
-    width: 300px;
+    width: 200px;
     height: 40px;
-    margin-left: 20px;
+    margin-left: 100px;
 }
 
 .grandparentmaternel {
     padding: 20px;
-    width: 300px;
+    width: 200px;
     height: 40px;
-    margin-left: 60px;
+    margin-left: 20px;
 }
 
 .enfant {
