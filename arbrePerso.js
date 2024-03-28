@@ -72,17 +72,19 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     var mother = data.find(person => person.id === motherId);
     if (father || mother) {
       var container = document.createElement('div');
-      var genderClass = person.genre === 'M' ? 'male' : 'female';
       container.className = 'container ' + containerClass;
-      var parentHTML = '<div class="container ' + genderClass + '">';
+      var pereHTML = '<div class="container ' + 'male' + '">';
+      var mereHTML = '<div class="container ' + 'female' + '">';
       if (father ) {
-        parentHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
+        pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
+        pereHTML += '</div>';
+        container.innerHTML += pereHTML;
       }
       if (mother ) {
-        parentHTML += '<p>' + mother.nom + ' ' + mother.prenom + '</p>';
+        mereHTML += '<p>' + mother.nom + ' ' + mother.prenom + '</p>';
+        mereHTML += '</div>';
+        container.innerHTML += mereHTML;
       }
-      parentHTML += '</div>';
-      container.innerHTML += parentHTML;
       var personContainer = document.getElementById('person-container');
       personContainer.insertBefore(container, personContainer.firstChild);
     }
