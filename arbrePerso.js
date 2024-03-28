@@ -74,7 +74,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
       var container = document.createElement('div');
       var genderClass = person.genre === 'M' ? 'male' : 'female';
       container.className = 'container ' + containerClass;
-      var parentHTML = '<div class="container ' + genderClass '">';
+      var parentHTML = '<div class="container ' + genderClass + '">';
       if (father ) {
         parentHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
       }
@@ -97,7 +97,7 @@ if (children.length > 0) {
     container.className = 'container ' + containerClass;
     children.forEach(function(child) {
     var genderClass = child.genre === 'M' ? 'male' : 'female';
-    var childHTML = '<div class="container ' + genderClass '">';
+    var childHTML = '<div class="container ' + genderClass + '">';
     childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
     childHTML += '</div>';
     container.innerHTML += childHTML;
