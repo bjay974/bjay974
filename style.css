@@ -144,24 +144,35 @@ footer {
     padding: 20px;
     width: 200px;
     height: 40px;
+    margin-left: 40px;
 }
 
-.granparent {
+.grandparentpaternel {
     padding: 20px;
     width: 200px;
     height: 40px;
+    margin-left: 20px;
+}
+
+.grandparentmaternel {
+    padding: 20px;
+    width: 200px;
+    height: 40px;
+    margin-left: 60px;
 }
 
 .child {
     padding: 20px;
     width: 200px;
     height: 40px;
+    margin-left: 100px;
 }
 
 .grandchild {
     padding: 20px;
     width: 200px;
     height: 40px;
+    margin-left: 120px;
 }
 
 .male, .female {

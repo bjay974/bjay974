@@ -39,49 +39,56 @@ function displayData() {
             personContainer.innerHTML = personHTML;
  
             // Afficher les parents
+            displayRelations(person.id_pere, person.id_mere, 'parent', data);           
+            
+            // Afficher les grands-parents
             var father = data.find(person => person.id === person.id_pere);
             var mother = data.find(person => person.id === person.id_mere);
-            if (father) {
-                displayRelations(father.id_pere, 'parent', father.genre, data);
+            if (father && mother) {
+            displayRelations(father.id_pere, father.id_mere, 'grandparentpaternel', data);
+            displayRelations(mother.id_pere, mother.id_mere, 'grandparentmaternel', data);
             }
-            if (mother) {
-                displayRelations(mother.id_mere, 'parent', mother.genre, data);
-            }            
-            
-           // Afficher les grands-parents
-            var grandfather = data.find(person => person.id === person.id_pere);
-            var grandmother = data.find(person => person.id === person.id_mere);
-            if (grandfather) {
-                displayRelations(grandfather.id_pere, 'grandparent', grandfather.genre, data);
+            if (father && !mother) {
+                displayRelations(father.id_pere, father.id_mere, 'grandparentpaternel', data);
             }
-            if (grandmother) {
-                displayRelations(grandmother.id_mere, 'grandparent', grandmother.genre, data);
-            }
+            if (!father && mother) {
+                displayRelations(mother.id_pere, mother.id_mere, 'grandparentmaternel', data);
+            }                
             
             // Afficher les enfants
-            displayChildren(person.id, 'child', 'Enfants', data);
+            displayChildren(person.id, 'child', data);
             
             // Afficher les petits-enfants
             var children = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
             children.forEach(function(child) {
-            displayChildren(child.id, 'grandchild', 'Petits-enfants', data);
+            displayChildren(child.id, 'grandchild', data);
         });
     });
 }
 
 
-// Fonction pour afficher les relations (parents, grands-parents)
-function displayRelations(parentId, containerClass, genderClass, data) {
-    var container = document.createElement('div');
-    container.className = 'container ' + containerClass;
-    var parentHTML = '<div class="container ' + genderClass + '">';
-    var parentHTML = '<div>';
-    parentHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
-    parentHTML += '</div>';
-    container.innerHTML += parentHTML;
-    var personContainer = document.getElementById('person-container');
-    personContainer.insertBefore(container, personContainer.firstChild);
-}
+function displayRelations(fatherId, motherId, containerClass, data) {
+    var father = data.find(person => person.id === fatherId);
+    var mother = data.find(person => person.id === motherId);
+    if (father || mother) {
+      var container = document.createElement('div');
+      container.className = 'container ' + containerClass;
+      var titleElement = document.createElement('h4');
+      titleElement.textContent = title;
+      container.appendChild(titleElement);
+      var parentHTML = '<div>';
+      if (father ) {
+        parentHTML += '<p>Père : ' + father.nom + ' ' + father.prenom + '</p>';
+      }
+      if (mother ) {
+        parentHTML += '<p>Mère : ' + mother.nom + ' ' + mother.prenom + '</p>';
+      }
+      parentHTML += '</div>';
+      container.innerHTML += parentHTML;
+      var personContainer = document.getElementById('person-container');
+      personContainer.insertBefore(container, personContainer.firstChild);
+    }
+  }
 
 
 // Fonction pour afficher les enfants
