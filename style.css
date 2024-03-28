@@ -88,10 +88,10 @@ footer {
   padding-bottom: 20px;
 }
 
-.container2 {  margin-top: 60px;  padding-left: 10px;}
-.container3 {  margin-top: 180px;  padding-left: 10px;} 
-.container4 {  margin-top: 380px;  padding-left: 10px;}
-.container5 {  margin-top: 850px;  padding-left: 10px;}
+.container2 {  margin-top: 40px;  padding-left: 10px;}
+.container3 {  margin-top: 100px;  padding-left: 10px;} 
+.container4 {  margin-top: 250px;  padding-left: 10px;}
+.container5 {  margin-top: 500px;  padding-left: 10px;}
 
 .generation {
   display: flex;
@@ -100,12 +100,12 @@ footer {
 }
 
 .container1 .male + .female {margin-top: 20px}
-.container1 .female + .male {margin-top: 80px}
-.container2 .male + .female {margin-top: 160px}
-.container2 .female + .male {margin-top: 160px}
-.container3 .male + .female {margin-top: 380px}
-.container3 .female + .male {margin-top: 380px}
-.container4 .male + .female {margin-top: 850px}
+.container1 .female + .male {margin-top: 60px}
+.container2 .male + .female {margin-top: 100px}
+.container2 .female + .male {margin-top: 110px}
+.container3 .male + .female {margin-top: 250px}
+.container3 .female + .male {margin-top: 250px}
+.container4 .male + .female {margin-top: 500px}
 
 
 .container {
@@ -161,7 +161,7 @@ footer {
 .male, .female {
     background-color: lightblue; /* Fond gris */
     color: blue; /* Texte blanc */
-    padding: 10px; /* Espacement interne */
+    padding: 5px; /* Espacement interne */
     border-radius: 5px; /* Bordures arrondies */
     display: inline-block;
     text-decoration: none;  
