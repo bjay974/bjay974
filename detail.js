@@ -203,15 +203,17 @@ document.addEventListener('DOMContentLoaded', () => {
               }
 
                 // Ajouter le lien vers l'arbre perso
-                const arbrePersoLink = document.createElement('h3');
+                const arbrePersoItem = document.createElement('h3');
+                const arbrePersoLink = document.createElement('a');
                 const monFichier = "arbrePerso.html";
                 arbrePersoLink.textContent = `Arbre de ${person.nom} ${person.prenom}`;   
                 arbrePersoLink.href = monFichier;
                 arbrePersoLink.target = '_blank';                                  
                 arbrePersoLink.style.textDecoration = "none";
                 arbrePersoLink.style.color = "red"; 
-                detailsList.appendChild(lienAbreItem);
-              
+                arbrePersoItem.appendChild(arbrePersoLink);
+                detailsList.appendChild(arbrePersoItem);
+                
 
                 personDetails.appendChild(detailsList);
             }      
