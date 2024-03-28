@@ -45,10 +45,10 @@ function displayData() {
             
             // Trouver les grands parents de la personne
               
-            var gr_mere_mat = trouverGrandMere(person.id_mere)
-            var gr_pere_mat = trouverGrandPere(person.id_mere)
-            var gr_mere_pat = trouverGrandMere(person.id_pere)
-            var gr_pere_pat = trouverGrandPere(person.id_pere)
+            var gr_mere_mat = trouverGrandMere(person.id_mere, data)
+            var gr_pere_mat = trouverGrandPere(person.id_mere, data)
+            var gr_mere_pat = trouverGrandMere(person.id_pere, data)
+            var gr_pere_pat = trouverGrandPere(person.id_pere, data)
 
 
             // Afficher les grands-parents
@@ -98,7 +98,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     }
   }
 
-  function trouverGrandMere(parentId) {
+  function trouverGrandMere(parentId, data) {
     const parent = data.find(person => person.id === parentId);
     if (parent) {
       return parent.id_mere
