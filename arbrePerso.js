@@ -40,11 +40,13 @@ function displayData() {
  
             // Afficher les parents
             displayRelations(person.id_pere, person.id_mere, 'parent', data);           
-          
-            var grandPere_Pat = data.find(person => person.id_pere === person_id_pere);
-            var grandMere_Pat = data.find(person => person.id_pere === person_id_mere);
-            var grandPere_Mat = data.find(person => person.id_mere === person_id_mere);
-            var grandMere_Mat = data.find(person => person.id_mere === person_id_pere);
+<<<<<<< HEAD
+            
+            var grandPere_Pat = data.find(person => person.id_pere === person.id_pere);
+            var grandMere_Pat = data.find(person => person.id_pere === person.id_mere);
+            var grandPere_Mat = data.find(person => person.id_mere === person.id_mere);
+            var grandMere_Mat = data.find(person => person.id_mere === person.id_pere);
+
 
 
             // Afficher les grands-parents
