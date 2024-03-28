@@ -73,9 +73,6 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     if (father || mother) {
       var container = document.createElement('div');
       container.className = 'container ' + containerClass;
-      var titleElement = document.createElement('h4');
-      titleElement.textContent = title;
-      container.appendChild(titleElement);
       var parentHTML = '<div>';
       if (father ) {
         parentHTML += '<p>Père : ' + father.nom + ' ' + father.prenom + '</p>';
