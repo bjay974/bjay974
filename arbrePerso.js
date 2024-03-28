@@ -42,8 +42,8 @@ function displayData() {
             displayRelations(person.id_pere, person.id_mere, 'parent', data);           
             
             // Afficher les grands-parents
-            var father = data.find(person => person.id === person.id_pere);
-            var mother = data.find(person => person.id === person.id_mere);
+            const father = data.find(person => person.id === person.id_pere);
+            const mother = data.find(person => person.id === person.id_mere);
 
 console.log(father.id_pere, father.id_mere, mother.id_pere, mother.id_mere, father.nom);
 
@@ -71,8 +71,8 @@ console.log(father.id_pere, father.id_mere, mother.id_pere, mother.id_mere, fath
 
 
 function displayRelations(fatherId, motherId, containerClass, data) {
-    var father = data.find(person => person.id === fatherId);
-    var mother = data.find(person => person.id === motherId);
+    const father = data.find(person => person.id === fatherId);
+    const mother = data.find(person => person.id === motherId);
     if (father || mother) {
       var container = document.createElement('div');
       container.className = 'container ' + containerClass;
