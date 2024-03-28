@@ -41,21 +41,22 @@ function displayData() {
             // Afficher les parents
             displayRelations(person.id_pere, person.id_mere, 'parent', data);           
             
+            var grandPere_Pat = data.find(person => person.id_pere === person_id_pere);
+            var grandMere_Pat = data.find(person => person.id_pere === person_id_mere);
+            var grandPere_Mat = data.find(person => person.id_mere === person_id_mere);
+            var grandMere_Mat = data.find(person => person.id_mere === person_id_pere);
+
+
             // Afficher les grands-parents
-            const father = data.find(person => person.id === person.id_pere);
-            const mother = data.find(person => person.id === person.id_mere);
-
-console.log(father.id_pere, father.id_mere, mother.id_pere, mother.id_mere, father.nom);
-
             if (father && mother) {
-                displayRelations(father.id_pere, father.id_mere, 'grandparentpaternel', data);
-                displayRelations(mother.id_pere, mother.id_mere, 'grandparentmaternel', data);
+                displayRelations(grandPere_Pat.id_pere, grandMere_Pat.id_mere, 'grandparentpaternel', data);
+                displayRelations(grandPere_Mat.id_pere, grandMere_Mat.id_mere, 'grandparentmaternel', data);
             }
             if (father && !mother) {
-                displayRelations(father.id_pere, father.id_mere, 'grandparentpaternel', data);
+                displayRelations(grandPere_Pat.id_pere, grandMere_Pat.id_mere, 'grandparentpaternel', data);
             }
             if (!father && mother) {
-                displayRelations(mother.id_pere, mother.id_mere, 'grandparentmaternel', data);
+                displayRelations(grandPere_Mat.id_pere, grandMere_Mat.id_mere, 'grandparentmaternel', data);
             }                
             
             // Afficher les enfants
@@ -71,8 +72,8 @@ console.log(father.id_pere, father.id_mere, mother.id_pere, mother.id_mere, fath
 
 
 function displayRelations(fatherId, motherId, containerClass, data) {
-    const father = data.find(person => person.id === fatherId);
-    const mother = data.find(person => person.id === motherId);
+    var father = data.find(person => person.id === fatherId);
+    var mother = data.find(person => person.id === motherId);
     if (father || mother) {
       var container = document.createElement('div');
       container.className = 'container ' + containerClass;
