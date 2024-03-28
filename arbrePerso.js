@@ -41,15 +41,11 @@ function displayData() {
             // Afficher les parents
             parents = displayRelations(person.id_pere, person.id_mere, 'parent', data);
             
-            
-            
             // Trouver les grands parents de la personne
-              
             var gr_mere_mat = trouverGrandMere(person.id_mere, data)
             var gr_pere_mat = trouverGrandPere(person.id_mere, data)
             var gr_mere_pat = trouverGrandMere(person.id_pere, data)
             var gr_pere_pat = trouverGrandPere(person.id_pere, data)
-
 
             // Afficher les grands-parents
             if (person.id_pere && person.id_mere) {
@@ -74,27 +70,26 @@ function displayData() {
     });
 }
 
-
 function displayRelations(fatherId, motherId, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
     var mother = data.find(person => person.id === motherId);
     if (father || mother) {
-      var container = document.createElement('div');
-      container.className = 'container ' + containerClass;
-      var pereHTML = '<div class="' + containerClass + ' male">';
-      var mereHTML = '<div class="' + containerClass + ' female">';
+  //    var container = document.createElement('div');
+  //    container.className = 'container ' + containerClass;
       if (father ) {
+        var pereHTML = '<div class="' + containerClass + ' male">';
         pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
         pereHTML += '</div>';
         container.innerHTML += pereHTML;
       }
       if (mother ) {
+        var mereHTML = '<div class="' + containerClass + ' female">';
         mereHTML += '<p>' + mother.nom + ' ' + mother.prenom + '</p>';
         mereHTML += '</div>';
         container.innerHTML += mereHTML;
       }
       var personContainer = document.getElementById('person-container');
-      personContainer.insertBefore(container, personContainer.firstChild);
+      personContainer.appendChild(container);
     }
   }
 
@@ -113,13 +108,12 @@ function displayRelations(fatherId, motherId, containerClass, data) {
   }
 
 
-
 // Fonction pour afficher les enfants
 function displayChildren(parentId, containerClass, data) {
 var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
 if (children.length > 0) {
-    var container = document.createElement('div');
-    container.className = 'container ' + containerClass;
+ //   var container = document.createElement('div');
+ //   container.className = 'container ' + containerClass;
     children.forEach(function(child) {
     var genderClass = child.genre === 'M' ? 'male' : 'female';
     var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';

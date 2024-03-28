@@ -22,7 +22,7 @@ nav {
 nav a {
     color: #fff;
     text-decoration: none;
-    padding: 10px 10px;
+    padding: 5px 5px;
 }
 
 nav a:hover {
@@ -41,7 +41,6 @@ footer {
     padding: 0px 0px 5px 0px;
     text-align: center;
     position: fixed;
-    bottom: 0;
     width: 100%;
 }
 
@@ -100,77 +99,61 @@ footer {
   align-content: flex-start;
 }
 
-.homme, .femme {
-    background-color: #333; /* Fond gris */
-    color: #87CEFA; /* Texte blanc */
-    padding: 10px; /* Espacement interne */
-    border-radius: 5px; /* Bordures arrondies */
-    display: inline-block;
-    text-decoration: none;  
-    font-size: 15px; /* Taille du texte */
-    width: 200px; /* Largeur fixe du cadre */
-    height: 20px; /* Hauteur fixe du cadre */
-    text-align: center;
- }
-
-.femme {  
-    background-color:#666;
-    color: #FFB6C1; /* Texte Rose */}
-
-.container1 .homme + .femme {margin-top: 20px}
-.container1 .femme + .homme {margin-top: 80px}
-.container2 .homme + .femme {margin-top: 160px}
-.container2 .femme + .homme {margin-top: 160px}
-.container3 .homme + .femme {margin-top: 380px}
-.container3 .femme + .homme {margin-top: 380px}
-.container4 .homme + .femme {margin-top: 850px}
+.container1 .male + .female {margin-top: 20px}
+.container1 .female + .male {margin-top: 80px}
+.container2 .male + .female {margin-top: 160px}
+.container2 .female + .male {margin-top: 160px}
+.container3 .male + .female {margin-top: 380px}
+.container3 .female + .male {margin-top: 380px}
+.container4 .male + .female {margin-top: 850px}
 
 
 .container {
     padding: 10px 5px 5px 5px;
+    font-size: 15px; /* Taille du texte */
   }
 
 .personne {
     padding: 5px 5px;
     border-radius: 5px; /* Bordures arrondies */
-    width: 300px;
+    width: 250px;
     height: 120px;
     text-align: center;
 }
 
 .parent {
-    padding: 20px;
-    width: 200px;
-    height: 40px;
-    margin-left: 150px;
-}
-
-.grandparentpaternel {
-    padding: 20px;
-    width: 200px;
+    padding: 10px 5px 5px 5px;
+    width: 100px;
     height: 40px;
     margin-left: 100px;
 }
 
-.grandparentmaternel {
-    padding: 20px;
-    width: 200px;
+.grandparentpaternel {
+    padding: 10px 5px 5px 5px;
+    width: 100px;
     height: 40px;
     margin-left: 20px;
 }
 
-.enfant {
-    padding: 20px;
-    width: 300px;
+.grandparentmaternel {
+    padding: 10px 5px 5px 5px;
+    width: 100px;
     height: 40px;
-    margin-left: 200px;
+    margin-left: 50px;
+}
+
+.enfant {
+    padding: 10px 5px 5px 5px;
+    width: 100px;
+    height: 40px;
+    margin-left: 150px;
 }
 
 .grandenfant {
-    padding: 20px;
-    width: 300px;
+    padding: 10px 5px 5px 5px;
+    width: 100px;
     height: 40px;
-    margin-left: 300px;
+    margin-left: 200px;
 }
 
 .male, .female {
@@ -180,7 +163,7 @@ footer {
     border-radius: 5px; /* Bordures arrondies */
     display: inline-block;
     text-decoration: none;  
-    font-size: 15px; /* Taille du texte */
+    font-size: 12px; /* Taille du texte */
     text-align: center;
  }
 
