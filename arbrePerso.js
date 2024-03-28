@@ -74,8 +74,8 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
     var mother = data.find(person => person.id === motherId);
     if (father || mother) {
-  //    var container = document.createElement('div');
-  //    container.className = 'container ' + containerClass;
+        var container = document.createElement('div');
+        container.className = 'container ' + containerClass;
       if (father ) {
         var pereHTML = '<div class="' + containerClass + ' male">';
         pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
@@ -112,8 +112,8 @@ function displayRelations(fatherId, motherId, containerClass, data) {
 function displayChildren(parentId, containerClass, data) {
 var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
 if (children.length > 0) {
- //   var container = document.createElement('div');
- //   container.className = 'container ' + containerClass;
+     var container = document.createElement('div');
+     container.className = 'container ' + containerClass;
     children.forEach(function(child) {
     var genderClass = child.genre === 'M' ? 'male' : 'female';
     var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
