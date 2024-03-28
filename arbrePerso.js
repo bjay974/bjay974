@@ -86,7 +86,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
         container.innerHTML += mereHTML;
       }
       var personContainer = document.getElementById('person-container');
-      personContainer.insertBefore(parent, personContainer.firstChild);
+      personContainer.insertBefore(container, personContainer.firstChild);
     }
   }
 
