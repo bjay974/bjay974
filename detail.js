@@ -208,7 +208,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const arbrePersoLink = document.createElement('a');
             arbrePersoLink.textContent = `Arbre de ${person.nom} ${person.prenom}`;   
             arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
-            arbrePersoLink.target = '_blank';                                  
             arbrePersoLink.style.textDecoration = "none";
             arbrePersoLink.style.color = "red"; 
             arbrePersoItem.appendChild(arbrePersoLink);
