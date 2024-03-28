@@ -105,7 +105,7 @@ if (children.length > 0) {
     container.innerHTML += childHTML;
     });
     var personContainer = document.getElementById('person-container');
-    personContainer.appendChild(enfant);
+    personContainer.appendChild(container);
 }
 }
 
