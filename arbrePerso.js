@@ -73,8 +73,8 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     if (father || mother) {
       var container = document.createElement('div');
       container.className = 'container ' + containerClass;
-      var pereHTML = '<div class="container ' + 'male' + '">';
-      var mereHTML = '<div class="container ' + 'female' + '">';
+      var pereHTML = '<div class="parent ' + 'male' + '">';
+      var mereHTML = '<div class="parent ' + 'female' + '">';
       if (father ) {
         pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
         pereHTML += '</div>';
@@ -86,7 +86,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
         container.innerHTML += mereHTML;
       }
       var personContainer = document.getElementById('person-container');
-      personContainer.insertBefore(container, personContainer.firstChild);
+      personContainer.insertBefore(parent, personContainer.firstChild);
     }
   }
 
@@ -99,13 +99,13 @@ if (children.length > 0) {
     container.className = 'container ' + containerClass;
     children.forEach(function(child) {
     var genderClass = child.genre === 'M' ? 'male' : 'female';
-    var childHTML = '<div class="container ' + genderClass + '">';
+    var childHTML = '<div class="enfant ' + genderClass + '">';
     childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
     childHTML += '</div>';
     container.innerHTML += childHTML;
     });
     var personContainer = document.getElementById('person-container');
-    personContainer.appendChild(container);
+    personContainer.appendChild(enfant);
 }
 }
 

@@ -131,8 +131,9 @@ footer {
     margin: 20px;
   }
 
-  .personne {
+.personne {
     padding: 5px 5px;
+    margin: 50px;
     border-radius: 5px; /* Bordures arrondies */
     width: 300px;
     height: 120px;
@@ -160,14 +161,14 @@ footer {
     margin-left: 60px;
 }
 
-.child {
+.enfant {
     padding: 20px;
     width: 300px;
     height: 40px;
     margin-left: 100px;
 }
 
-.grandchild {
+.grandenfant {
     padding: 20px;
     width: 300px;
     height: 40px;
