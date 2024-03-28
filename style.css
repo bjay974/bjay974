@@ -85,8 +85,7 @@ footer {
 
 .container1 {
   margin-top: 20px;
-  padding: 0px;
-  margin-bottom: 20px;
+  padding: 0;
   flex-direction: column;
   align-content: flex-start;
   padding-left: 40px;
@@ -111,7 +110,6 @@ footer {
     border-radius: 5px; /* Bordures arrondies */
     display: inline-block;
     text-decoration: none;  
-    margin-bottom: 20px;
     font-size: 15px; /* Taille du texte */
     width: 200px; /* Largeur fixe du cadre */
     height: 20px; /* Hauteur fixe du cadre */
@@ -142,14 +140,14 @@ footer {
 .grandparent,
 .child,
 .grandchild {
-margin-top: 10px;
+    margin-top: 10px;
 }
 
 .male {
-background-color: lightblue;
+    background-color: lightblue;
 }
 
 .female {
-background-color: lightpink;
+    background-color: lightpink;
 }
   
