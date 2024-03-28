@@ -27,10 +27,14 @@ function displayData() {
             var personContainer = document.getElementById('person-container');
             
             // Afficher les informations de la personne
-            var genderClass = person.id_genre === 'M' ? 'male' : 'female';
+            var genderClass = person.genre === 'M' ? 'male' : 'female';
             var personHTML = '<div class="container ' + genderClass + '">';
             personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
             personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
+            // Ajouter la date de décès si elle existe
+            if (person.date_deces) {
+              personHTML += '<p>Date de décès : ' + person.date_deces + '</p>';
+            }
             personHTML += '</div>';
             personContainer.innerHTML = personHTML;
             
