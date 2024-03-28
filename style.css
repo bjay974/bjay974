@@ -133,13 +133,37 @@ footer {
     width: 400px;
     height: 400px;
   }
-  
-.parent,
-.grandparent,
-.child,
+
+.parent {
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 100px;
+    width: 200px;
+    height: 40px;
+}
+
+.granparent {
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 20px;
+    width: 200px;
+    height: 40px;
+}
+
+.child {
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 200px;
+    width: 200px;
+    height: 40px;
+}
+
 .grandchild {
-    margin-top: 10px;
-    height: 20px;
+    border: 2px solid #000;
+    padding: 20px;
+    margin: 400px;
+    width: 200px;
+    height: 40px;
 }
 
 .male, .female {
