@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: #f2f2f2;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
-    marging-bottom: 5;
 }
 
 header {
@@ -34,7 +33,6 @@ section {
     padding: 10 5 5 5;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
     text-align: center;
-    marging-bottom: 5;
 }
 
 footer {
@@ -85,7 +83,6 @@ footer {
 
 .container1 {
   margin-top: 20px;
-  padding: 0;
   flex-direction: column;
   align-content: flex-start;
   padding-left: 40px;
