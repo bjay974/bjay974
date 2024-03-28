@@ -131,45 +131,45 @@ footer {
     margin: 20px;
   }
 
-.personne {
-    padding: 20px;
+  .personne {
+    padding: 5px 5px;
     border-radius: 5px; /* Bordures arrondies */
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 120px;
     text-align: center;
 }
 
 .parent {
     padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 40px;
     margin-left: 40px;
 }
 
 .grandparentpaternel {
     padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 40px;
     margin-left: 20px;
 }
 
 .grandparentmaternel {
     padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 40px;
     margin-left: 60px;
 }
 
 .child {
     padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 40px;
     margin-left: 100px;
 }
 
 .grandchild {
     padding: 20px;
-    width: 200px;
+    width: 300px;
     height: 40px;
     margin-left: 120px;
 }
