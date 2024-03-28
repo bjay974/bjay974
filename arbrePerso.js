@@ -56,12 +56,12 @@ function displayData() {
             }                
             
             // Afficher les enfants
-            displayChildren(person.id, 'child', data);
+            displayChildren(person.id, 'enfant', data);
             
             // Afficher les petits-enfants
             var children = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
             children.forEach(function(child) {
-            displayChildren(child.id, 'grandchild', data);
+            displayGrandChildren(child.id, 'grandenfant', data);
         });
     });
 }
@@ -73,8 +73,8 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     if (father || mother) {
       var container = document.createElement('div');
       container.className = 'container ' + containerClass;
-      var pereHTML = '<div class="parent ' + 'male' + '">';
-      var mereHTML = '<div class="parent ' + 'female' + '">';
+      var pereHTML = '<div class="' + containerClass + ' male">';
+      var mereHTML = '<div class="' + containerClass + ' female">';
       if (father ) {
         pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
         pereHTML += '</div>';
@@ -109,6 +109,24 @@ if (children.length > 0) {
 }
 }
 
+// Fonction pour afficher les enfants
+function displayGrandChildren(parentId, containerClass, data) {
+    var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
+    if (children.length > 0) {
+        var container = document.createElement('div');
+        container.className = 'container ' + containerClass;
+        children.forEach(function(child) {
+        var genderClass = child.genre === 'M' ? 'male' : 'female';
+        var childHTML = '<div class="grandenfant ' + genderClass + '">';
+        childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
+        childHTML += '</div>';
+        container.innerHTML += childHTML;
+        });
+        var personContainer = document.getElementById('person-container');
+        personContainer.appendChild(container);
+    }
+    }
+    
 // Appeler la fonction pour afficher les données
 displayData();
   
