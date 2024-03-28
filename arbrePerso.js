@@ -45,7 +45,7 @@ function displayData() {
                 displayRelations(father.id_pere, 'parent', father.genre, data);
             }
             if (mother) {
-                displayRelations(mother.id_mere, 'parent', mother.genre data);
+                displayRelations(mother.id_mere, 'parent', mother.genre, data);
             }            
             
            // Afficher les grands-parents
