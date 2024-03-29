@@ -43,7 +43,10 @@ function displayPersonne(personneId, containerClass, data) {
     personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
     // Ajouter la date de décès si elle existe
     if (person.date_deces) {
-      personHTML += '<p>Date de décès : ' + person.date_deces + '</p>';
+      if (person.date_deces ="01/01/1901") {
+        personHTML += '<p>Date de décès inconnue</p>'; }
+      else {   
+      personHTML += '<p>Date de décès : ' + person.date_deces + '</p>'; }
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
@@ -170,6 +173,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       title.classList.add('label'); 
       container.appendChild(title);
       // Afficher les enfants
+      children.sort((a, b) => b.id - a.id);
       children.forEach(function(child) {
           var genderClass = child.genre === 'M' ? 'male' : 'female';
           var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
@@ -190,6 +194,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       title.classList.add('label'); 
       container.appendChild(title);
       // Afficher les petits-enfants
+      grandChildren.sort((a, b) => b.id - a.id);
       grandChildren.forEach(function(grandChild) {
           var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
           var grandChildHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
