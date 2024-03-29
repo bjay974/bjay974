@@ -61,7 +61,8 @@ function displayData() {
             
             // Afficher les enfants
             displayChildren(person.id, 'container14', 'enfant', data);
-            
+
+          
             // Afficher les petits-enfants
             var children = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
             children.forEach(function(child) {
