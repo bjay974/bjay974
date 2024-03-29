@@ -60,7 +60,7 @@ function displayPersonne(personneId, colonne, containerClass, data) {
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
-    var personContainer = document.getElementsByClassName(colonne)[0];
+    const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
 
 }
@@ -83,7 +83,7 @@ function displayRelations(fatherId, motherId, colonne, containerClass, data) {
         mereHTML += '</div>';
         container.innerHTML += mereHTML;
       }
-      var personContainer = document.getElementsByClassName(colonne)[0];
+      const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
     }
 }
@@ -100,7 +100,7 @@ function displayChildren(parentId, colonne, containerClass, data) {
       childHTML += '</div>';
       container.innerHTML += childHTML;
       });
-      var personContainer = document.getElementsByClassName(colonne)[0];
+      const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
   }
 }
