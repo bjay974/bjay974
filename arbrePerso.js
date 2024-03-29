@@ -1,17 +1,4 @@
   
-// Fonction pour charger les données JSON
-function loadJSON(callback) {   
-    var xobj = new XMLHttpRequest();
-    xobj.overrideMimeType("application/json");
-    xobj.open('GET', 'data.json', true);
-    xobj.onreadystatechange = function () {
-        if (xobj.readyState == 4 && xobj.status == 200) {
-        callback(xobj.responseText);
-        }
-    };
-    xobj.send(null);  
-}
-
 // Fonction pour afficher les données dans la page
 function displayData() {
 
@@ -25,19 +12,11 @@ function displayData() {
             // Trouver la personne correspondante
             const person = data.find(p => p.id === parseInt(personId));
  
-            // Afficher les informations de la personne
-            displayPersonne(person.id, 'container11', 'personne', data)
- 
-            // Afficher les parents
-            displayRelations(person.id_pere, person.id_mere, 'container12', 'parent', data);
-            
-            // Trouver les grands parents de la personne
+            // Afficher les grands-parents
             var gr_mere_mat = trouverGrandMere(person.id_mere, data)
             var gr_pere_mat = trouverGrandPere(person.id_mere, data)
             var gr_mere_pat = trouverGrandMere(person.id_pere, data)
             var gr_pere_pat = trouverGrandPere(person.id_pere, data)
-
-            // Afficher les grands-parents
             if (person.id_pere && person.id_mere) {
                 displayRelations(gr_mere_pat, gr_pere_pat, 'container13', 'grandparentpaternel', data);
                 displayRelations(gr_mere_mat, gr_mere_mat, 'container13', 'grandparentmaternel', data);
@@ -47,12 +26,17 @@ function displayData() {
             }
             if (!person.id_pere && person.id_mere) {
                 displayRelations(gr_mere_mat, gr_mere_mat, 'container13', 'grandparentmaternel', data);
-            }                
+            } 
+
+            // Afficher les parents
+            displayRelations(person.id_pere, person.id_mere, 'container12', 'parent', data);
+
+            // Afficher les informations de la personne
+            displayPersonne(person.id, 'container11', 'personne', data)
             
             // Afficher les enfants
             displayChildren(person.id, 'container14', 'enfant', data);
 
-          
             // Afficher les petits-enfants
             var children = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
             children.forEach(function(child) {
@@ -60,7 +44,6 @@ function displayData() {
         });
     });
 }
-
 
 function displayPersonne(personneId, colonne, containerClass, data) {
     // Afficher les informations de la personne
@@ -77,9 +60,7 @@ function displayPersonne(personneId, colonne, containerClass, data) {
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
-  }
-
-
+}
 
 function displayRelations(fatherId, motherId, colonne, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
@@ -102,42 +83,39 @@ function displayRelations(fatherId, motherId, colonne, containerClass, data) {
       var personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
     }
-  }
+}
 
-  function trouverGrandMere(parentId, data) {
+function trouverGrandMere(parentId, data) {
     const parent = data.find(person => person.id === parentId);
     if (parent) {
       return parent.id_mere
     }
-  }
+}
 
-  function trouverGrandPere(parentId, data) {
+function trouverGrandPere(parentId, data) {
     const parent = data.find(person => person.id === parentId);
     if (parent) {
       return parent.id_pere
     }
-  }
+}
 
-
-// Fonction pour afficher les enfants
 function displayChildren(parentId, colonne, containerClass, data) {
-var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
-if (children.length > 0) {
-     var container = document.createElement('div');
-     container.className = colonne + containerClass;
-    children.forEach(function(child) {
-    var genderClass = child.genre === 'M' ? 'male' : 'female';
-    var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-    childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
-    childHTML += '</div>';
-    container.innerHTML += childHTML;
-    });
-    var personContainer = document.getElementById('person-container');
-    personContainer.appendChild(container);
+  var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
+  if (children.length > 0) {
+      var container = document.createElement('div');
+      container.className = colonne + containerClass;
+      children.forEach(function(child) {
+      var genderClass = child.genre === 'M' ? 'male' : 'female';
+      var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+      childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
+      childHTML += '</div>';
+      container.innerHTML += childHTML;
+      });
+      var personContainer = document.getElementById('person-container');
+      personContainer.appendChild(container);
+  }
 }
-}
-
-   
+  
 // Appeler la fonction pour afficher les données
 displayData();
   
