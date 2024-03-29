@@ -50,7 +50,7 @@ function displayPersonne(personneId, colonne, containerClass, data) {
     var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
-    container.className = colonne + containerClass;
+    container.className = containerClass;
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
     personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
@@ -60,6 +60,9 @@ function displayPersonne(personneId, colonne, containerClass, data) {
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
+    var personContainer = document.getElementsByClassName(colonne)[0];
+    personContainer.appendChild(container);
+
 }
 
 function displayRelations(fatherId, motherId, colonne, containerClass, data) {
@@ -67,7 +70,7 @@ function displayRelations(fatherId, motherId, colonne, containerClass, data) {
     var mother = data.find(person => person.id === motherId);
     if (father || mother) {
         var container = document.createElement('div');
-        container.className = colonne + containerClass;
+        container.className = containerClass;
       if (father ) {
         var pereHTML = '<div class="' + containerClass + ' male">';
         pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
@@ -80,9 +83,26 @@ function displayRelations(fatherId, motherId, colonne, containerClass, data) {
         mereHTML += '</div>';
         container.innerHTML += mereHTML;
       }
-      var personContainer = document.getElementById('person-container');
+      var personContainer = document.getElementsByClassName(colonne)[0];
       personContainer.appendChild(container);
     }
+}
+
+function displayChildren(parentId, colonne, containerClass, data) {
+  var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
+  if (children.length > 0) {
+      var container = document.createElement('div');
+      container.className = containerClass;
+      children.forEach(function(child) {
+      var genderClass = child.genre === 'M' ? 'male' : 'female';
+      var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+      childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
+      childHTML += '</div>';
+      container.innerHTML += childHTML;
+      });
+      var personContainer = document.getElementsByClassName(colonne)[0];
+      personContainer.appendChild(container);
+  }
 }
 
 function trouverGrandMere(parentId, data) {
@@ -99,22 +119,7 @@ function trouverGrandPere(parentId, data) {
     }
 }
 
-function displayChildren(parentId, colonne, containerClass, data) {
-  var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
-  if (children.length > 0) {
-      var container = document.createElement('div');
-      container.className = colonne + containerClass;
-      children.forEach(function(child) {
-      var genderClass = child.genre === 'M' ? 'male' : 'female';
-      var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-      childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
-      childHTML += '</div>';
-      container.innerHTML += childHTML;
-      });
-      var personContainer = document.getElementById('person-container');
-      personContainer.appendChild(container);
-  }
-}
+
   
 // Appeler la fonction pour afficher les données
 displayData();
