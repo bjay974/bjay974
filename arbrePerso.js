@@ -26,22 +26,10 @@ function displayData() {
             const person = data.find(p => p.id === parseInt(personId));
  
             // Afficher les informations de la personne
-            var genderClass = person.genre === 'M' ? 'male' : 'female';
-
-            var container = document.createElement('div');
-            container.className = "container13 personne";
-            var personHTML = '<div class="personne ' + genderClass + '">';
-            personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-            personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
-            // Ajouter la date de décès si elle existe
-            if (person.date_deces) {
-              personHTML += '<p>Date de décès : ' + person.date_deces + '</p>';
-            }
-            personHTML += '</div>';
-            container.innerHTML = personHTML;
+            displayPersonne(person.id, 'container13', 'personne', data)
  
             // Afficher les parents
-            parents = displayRelations(person.id_pere, person.id_mere, 'container11', 'parent', data);
+            displayRelations(person.id_pere, person.id_mere, 'container11', 'parent', data);
             
             // Trouver les grands parents de la personne
             var gr_mere_mat = trouverGrandMere(person.id_mere, data)
@@ -72,6 +60,26 @@ function displayData() {
         });
     });
 }
+
+
+function displayPersonne(personneId, colonne, containerClass, data) {
+    // Afficher les informations de la personne
+    var personne = data.find(person => person.id === fatherId);
+    var genderClass = personne.genre === 'M' ? 'male' : 'female';
+    var container = document.createElement('div');
+    container.className = colonne + containerClass;
+    var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+    personHTML += '<h4>' + personne.nom + ' ' + personne.prenom + '</h4>';
+    personHTML += '<p>Date de naissance : ' + personne.date_naissance + '</p>';
+    // Ajouter la date de décès si elle existe
+    if (person.date_deces) {
+      personHTML += '<p>Date de décès : ' + personne.date_deces + '</p>';
+    }
+    personHTML += '</div>';
+    container.innerHTML = personHTML;
+  }
+
+
 
 function displayRelations(fatherId, motherId, colonne, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
