@@ -60,8 +60,8 @@ function displayPersonne(personneId, colonne, containerClass, data) {
 function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
   var father1 = data.find(person => person.id === father1Id);
   var mother1 = data.find(person => person.id === mother1Id);
-  var father2 = data.find(person => person.id === father2d);
-  var mother2 = data.find(person => person.id === mother2d);
+  var father2 = data.find(person => person.id === father2Id);
+  var mother2 = data.find(person => person.id === mother2Id);
   if (father1 || mother1) {
       var container = document.createElement('div');
       container.className = containerClass;
