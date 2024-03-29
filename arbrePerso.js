@@ -64,16 +64,16 @@ function displayData() {
 
 function displayPersonne(personneId, colonne, containerClass, data) {
     // Afficher les informations de la personne
-    var personne = data.find(person => person.id === fatherId);
-    var genderClass = personne.genre === 'M' ? 'male' : 'female';
+   // var personne = data.find(person => person.id === fatherId);
+    var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
     container.className = colonne + containerClass;
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-    personHTML += '<h4>' + personne.nom + ' ' + personne.prenom + '</h4>';
-    personHTML += '<p>Date de naissance : ' + personne.date_naissance + '</p>';
+    personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
+    personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
     // Ajouter la date de décès si elle existe
     if (person.date_deces) {
-      personHTML += '<p>Date de décès : ' + personne.date_deces + '</p>';
+      personHTML += '<p>Date de décès : ' + person.date_deces + '</p>';
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
