@@ -18,8 +18,9 @@ function displayData() {
             var gr_mere_pat = trouverGrandMere(person.id_pere, data)
             var gr_pere_pat = trouverGrandPere(person.id_pere, data)
 
-            displayGrandParent(gr_pere_pat, gr_mere_pat, gr_pere_mat, gr_mere_mat, 'grandparent' , data)
-
+            if (gr_mere_mat || gr_pere_mat || gr_mere_pat || gr_mere_pat) {
+            displayGrandParent(gr_pere_pat, gr_mere_pat, gr_pere_mat, gr_mere_mat, 'grandparent', data)
+            }
             // Afficher les parents
             displayRelations(person.id_pere, person.id_mere, 'parent', data);
 
@@ -37,7 +38,7 @@ function displayData() {
     });
 }
 
-function displayPersonne(personneId, colonne, containerClass, data) {
+function displayPersonne(personneId, containerClass, data) {
     // Afficher les informations de la personne
     var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
@@ -54,7 +55,6 @@ function displayPersonne(personneId, colonne, containerClass, data) {
     container.innerHTML = personHTML;
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
-
 }
 
 function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
@@ -98,7 +98,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   personContainer.appendChild(container);
 }
 
-function displayRelations(fatherId, motherId, colonne, containerClass, data) {
+function displayRelations(fatherId, motherId, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
     var mother = data.find(person => person.id === motherId);
     if (father || mother) {
@@ -121,7 +121,7 @@ function displayRelations(fatherId, motherId, colonne, containerClass, data) {
     }
 }
 
-function displayChildren(parentId, colonne, containerClass, data) {
+function displayChildren(parentId, containerClass, data) {
   var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
   if (children.length > 0) {
       var container = document.createElement('div');
