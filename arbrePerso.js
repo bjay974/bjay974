@@ -26,10 +26,10 @@ function displayData() {
             const person = data.find(p => p.id === parseInt(personId));
  
             // Afficher les informations de la personne
-            displayPersonne(person.id, 'container13', 'personne', data)
+            displayPersonne(person.id, 'container11', 'personne', data)
  
             // Afficher les parents
-            displayRelations(person.id_pere, person.id_mere, 'container11', 'parent', data);
+            displayRelations(person.id_pere, person.id_mere, 'container12', 'parent', data);
             
             // Trouver les grands parents de la personne
             var gr_mere_mat = trouverGrandMere(person.id_mere, data)
@@ -39,14 +39,14 @@ function displayData() {
 
             // Afficher les grands-parents
             if (person.id_pere && person.id_mere) {
-                displayRelations(gr_mere_pat, gr_pere_pat, 'container12', 'grandparentpaternel', data);
-                displayRelations(gr_mere_mat, gr_mere_mat, 'container12', 'grandparentmaternel', data);
+                displayRelations(gr_mere_pat, gr_pere_pat, 'container13', 'grandparentpaternel', data);
+                displayRelations(gr_mere_mat, gr_mere_mat, 'container13', 'grandparentmaternel', data);
             }
             if (person.id_pere && !person.id_mere) {
-                displayRelations(gr_mere_pat, gr_pere_pat, 'container12', 'grandparentpaternel', data);
+                displayRelations(gr_mere_pat, gr_pere_pat, 'container13', 'grandparentpaternel', data);
             }
             if (!person.id_pere && person.id_mere) {
-                displayRelations(gr_mere_mat, gr_mere_mat, 'container12', 'grandparentmaternel', data);
+                displayRelations(gr_mere_mat, gr_mere_mat, 'container13', 'grandparentmaternel', data);
             }                
             
             // Afficher les enfants
