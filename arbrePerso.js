@@ -27,10 +27,7 @@ function displayData() {
             // Afficher les informations de la personne
             displayPersonne(person.id, 'personne', data)
             
-            // Afficher les enfants
-            displayChildren(person.id, 'enfant', 'Enfant(s) :', data);
-
-            // Afficher les petits-enfants
+            // Afficher les enfants et  petits-enfants
             displayChildrenAndGrandChildren(person.id, 'enfant', data)
         });
 }
@@ -62,7 +59,11 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
 
   if (father1 || mother1){
     var title = document.createElement('p');
-    title.textContent = "Grand Parent Paternel";
+    if (father1 && mother1) {
+      title.textContent = "Grands Parents Paternels";
+    } else {
+      title.textContent = "Grand Parent Paternel";
+    }
     title.style.fontStyle = 'italic';
     title.classList.add('label'); 
     container.appendChild(title);
@@ -83,6 +84,11 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   var mother2 = data.find(person => person.id === mother2Id);
   if (father2 || mother2){
     var title = document.createElement('p');
+    if (father2 && mother2) {
+      title.textContent = "Grands Parents Maternels";
+    } else {
+      title.textContent = "Grand Parent Maternel";
+    }
     title.textContent = "Grand Parent Maternel";
     title.style.fontStyle = 'italic';
     title.classList.add('label'); 
@@ -112,6 +118,11 @@ function displayRelations(fatherId, motherId, containerClass, data) {
         var container = document.createElement('div');
         container.className = containerClass;
         var title = document.createElement('p');
+        if (father && mother) {
+          title.textContent = "Parents";
+        } else {
+          title.textContent = "Parent";
+        }
         title.textContent = "Parents";
         title.style.fontStyle = 'italic';
         title.classList.add('label'); 
