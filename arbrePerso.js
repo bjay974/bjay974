@@ -62,6 +62,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   container.className = containerClass;
   var father1 = data.find(person => person.id === father1Id);
   var mother1 = data.find(person => person.id === mother1Id);
+
+  if (father1 || mother1){
+    var title = document.createElement('h4');
+    title.textContent = "Grands Parents Paternels";
+    title.style.fontStyle = 'italic';
+    container.appendChild(title);
+  }
   if (father1) {
       var pere1HTML = '<div class="' + containerClass + ' male">';
       pere1HTML += '<p>' + father1.nom + ' ' + father1.prenom + '</p>';
@@ -76,6 +83,12 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   }
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
+  if (father2 || mother2){
+    var title = document.createElement('h4');
+    title.textContent = "Grands Parents Paternels";
+    title.style.fontStyle = 'italic';
+    container.appendChild(title);
+  }
   if (father2) {
       var pere2HTML = '<div class="' + containerClass + ' male">';
       pere2HTML += '<p>' + father2.nom + ' ' + father2.prenom + '</p>';
@@ -95,9 +108,18 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
 function displayRelations(fatherId, motherId, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
     var mother = data.find(person => person.id === motherId);
+    var title = document.createElement('h4');
+    title.textContent = "Parents";
+    title.style.fontStyle = 'italic';
+    container.appendChild(title);
     if (father || mother) {
         var container = document.createElement('div');
         container.className = containerClass;
+        var title = document.createElement('h4');
+        title.textContent = "Grands Parents Paternels";
+        title.style.fontStyle = 'italic';
+        container.appendChild(title);
+    
       if (father ) {
         var pereHTML = '<div class="' + containerClass + ' male">';
         pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
@@ -120,6 +142,10 @@ function displayChildren(parentId, containerClass, data) {
   if (children.length > 0) {
       var container = document.createElement('div');
       container.className = containerClass;
+      var title = document.createElement('h4');
+      title.textContent = "Enfants";
+      title.style.fontStyle = 'italic';
+      container.appendChild(title);
       children.forEach(function(child) {
       var genderClass = child.genre === 'M' ? 'male' : 'female';
       var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';

@@ -132,6 +132,7 @@ footer {
     width: 200px;
     height: 20px;
     margin-left: 10%;
+    display: flex;
 }
 
 .grandparent {
@@ -148,11 +149,14 @@ footer {
     width: 200px;
     margin-top: 5px;
     height: 20px;
+    display: flex;
 }
 
 .grandenfant {
     width: 200px;
+    margin-top: 5px;
     height: 20px;
+    display: flex;
 }
 
 .male, .female {
