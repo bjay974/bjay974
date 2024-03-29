@@ -79,9 +79,9 @@ footer {
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: 20% 20% 20% 20% 20%;
-  }
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+}
 
 .container1 {
   margin-top: 20px;
@@ -116,58 +116,43 @@ footer {
   }
 
 .personne {
+    margin-top: 5px;
     border-radius: 5px; /* Bordures arrondies */
-    width: 250px;
-    height: 50px;
+    width: 200px;
+    height: 100px;
     text-align: center;
-    margin-top: 20px;
     display: flex;
     flex-direction: column;
-    padding-left: 10px;
-    padding-bottom: 10px;
     font-size: 15px; /* Taille du texte */
     font-family: Georgia;
 }
 
 .parent {
-    margin-top: 10px;
+    margin-top: 5px;
     width: 200px;
     height: 20px;
-    flex-direction: column;
-    align-items: flex-start; /* Aligner les éléments sur la gauche */
-    font-size: 15px; /* Taille du texte */
-    font-family: Georgia; 
+    margin-left: 10%;
 }
 
 .grandparent {
-    margin-top: 10px;
+    margin-top: 5px;
+    text-align: center;
     width: 200px;
     height: 20px;
-    padding-left: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start; /* Aligner les éléments sur la gauche */
-    font-size: 15px; /* Taille du texte */
-    font-family: Georgia;    
 }
 
 .enfant {
     width: 200px;
     margin-top: 5px;
     height: 20px;
-    flex-direction: column;
-    align-items: flex-start; /* Aligner les éléments sur la gauche */
-    font-size: 15px; /* Taille du texte */
-    font-family: Georgia; 
 }
 
 .grandenfant {
     width: 200px;
     height: 20px;
-    flex-direction: column;
-    align-items: flex-start; /* Aligner les éléments sur la gauche */
-    font-size: 15px; /* Taille du texte */
-    font-family: Georgia; 
 }
 
 .male, .female {
@@ -176,6 +161,7 @@ footer {
     padding: 5px 10px 15px 10px;
     border-radius: 5px; /* Bordures arrondies */
     text-decoration: none;  
+    font-size: 12px; /* Taille du texte */
     text-align: center;
  }
 
