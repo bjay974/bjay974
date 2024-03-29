@@ -79,9 +79,9 @@ footer {
 }
 
 .grid-container {
-  display: grid;
-  grid-template-columns: auto auto auto auto auto;
-}
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+  }
 
 .container1 {
   margin-top: 20px;
@@ -120,29 +120,29 @@ footer {
     width: 250px;
     height: 50px;
     text-align: center;
-    margin-left: -50%;
     margin-top: 20px;
     display: flex;
     flex-direction: column;
-    padding-left: 40px;
-    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-bottom: 10px;
     font-size: 15px; /* Taille du texte */
     font-family: Georgia;
 }
 
 .parent {
-    margin-top: 5px;
+    margin-top: 10px;
     width: 200px;
     height: 20px;
-    margin-left: 10%;
+    flex-direction: column;
+    align-items: flex-start; /* Aligner les éléments sur la gauche */
+    font-size: 15px; /* Taille du texte */
+    font-family: Georgia; 
 }
 
 .grandparent {
-    margin-top: 5px;
+    margin-top: 10px;
     width: 200px;
     height: 20px;
-    margin-left: 0%;
-    margin-top: 40px;
     padding-left: 10px;
     display: flex;
     flex-direction: column;
@@ -155,12 +155,19 @@ footer {
     width: 200px;
     margin-top: 5px;
     height: 20px;
+    flex-direction: column;
+    align-items: flex-start; /* Aligner les éléments sur la gauche */
+    font-size: 15px; /* Taille du texte */
+    font-family: Georgia; 
 }
 
 .grandenfant {
     width: 200px;
     height: 20px;
-    margin-left: 75%;
+    flex-direction: column;
+    align-items: flex-start; /* Aligner les éléments sur la gauche */
+    font-size: 15px; /* Taille du texte */
+    font-family: Georgia; 
 }
 
 .male, .female {
@@ -169,7 +176,6 @@ footer {
     padding: 5px 10px 15px 10px;
     border-radius: 5px; /* Bordures arrondies */
     text-decoration: none;  
-    font-size: 12px; /* Taille du texte */
     text-align: center;
  }
 

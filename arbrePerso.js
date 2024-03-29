@@ -58,44 +58,49 @@ function displayPersonne(personneId, containerClass, data) {
 }
 
 function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
+  var container1 = document.createElement('div');
+  container1.className = containerClass;
+
   var father1 = data.find(person => person.id === father1Id);
   var mother1 = data.find(person => person.id === mother1Id);
-  var father2 = data.find(person => person.id === father2Id);
-  var mother2 = data.find(person => person.id === mother2Id);
-  if (father1 || mother1) {
-      var container = document.createElement('div');
-      container.className = containerClass;
-    if (father1 ) {
+  if (father1) {
       var pere1HTML = '<div class="' + containerClass + ' male">';
       pere1HTML += '<p>' + father1.nom + ' ' + father1.prenom + '</p>';
       pere1HTML += '</div>';
-      container.innerHTML += pere1HTML;
-    }
-    if (mother1 ) {
+      container1.innerHTML += pere1HTML;
+  }
+  if (mother1) {
       var mere1HTML = '<div class="' + containerClass + ' female">';
       mere1HTML += '<p>' + mother1.nom + ' ' + mother1.prenom + '</p>';
       mere1HTML += '</div>';
-      container.innerHTML += mere1HTML;
-    }
+      container1.innerHTML += mere1HTML;
   }
-  if (father2 || mother2) {
-    var container = document.createElement('div');
-    container.className = containerClass;
-  if (father2 ) {
-    var pere2HTML = '<div class="' + containerClass + ' male">';
-    pere2HTML += '<p>' + father2.nom + ' ' + father2.prenom + '</p>';
-    pere2HTML += '</div>';
-    container.innerHTML += pere2HTML;
+
+  var container2 = document.createElement('div');
+  container2.className = containerClass;
+
+  var father2 = data.find(person => person.id === father2Id);
+  var mother2 = data.find(person => person.id === mother2Id);
+  if (father2) {
+      var pere2HTML = '<div class="' + containerClass + ' male">';
+      pere2HTML += '<p>' + father2.nom + ' ' + father2.prenom + '</p>';
+      pere2HTML += '</div>';
+      container2.innerHTML += pere2HTML;
   }
-  if (mother2 ) {
-    var mere2HTML = '<div class="' + containerClass + ' female">';
-    mere2HTML += '<p>' + mother2.nom + ' ' + mother2.prenom + '</p>';
-    mere2HTML += '</div>';
-    container.innerHTML += mere2HTML;
+  if (mother2) {
+      var mere2HTML = '<div class="' + containerClass + ' female">';
+      mere2HTML += '<p>' + mother2.nom + ' ' + mother2.prenom + '</p>';
+      mere2HTML += '</div>';
+      container2.innerHTML += mere2HTML;
   }
-  }
+
   const personContainer = document.getElementById('person-container');
-  personContainer.appendChild(container);
+  if (container1.innerHTML.trim() !== '') {
+      personContainer.appendChild(container1);
+  }
+  if (container2.innerHTML.trim() !== '') {
+      personContainer.appendChild(container2);
+  }
 }
 
 function displayRelations(fatherId, motherId, containerClass, data) {
