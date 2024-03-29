@@ -24,11 +24,14 @@ function displayData() {
         .then(data => {
             // Trouver la personne correspondante
             const person = data.find(p => p.id === parseInt(personId));
-            var personContainer = document.getElementById('person-container');
-            
+    //        var personContainer = document.getElementById('person-container');
+    //        personContainer.className = "container13 personne";
             // Afficher les informations de la personne
             var genderClass = person.genre === 'M' ? 'male' : 'female';
-            var personHTML = '<div class="container13 personne ' + genderClass + '">';
+
+            var container = document.createElement('div');
+            container.className = "container13 personne";
+            var personHTML = '<div class="personne ' + genderClass + '">';
             personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
             personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
             // Ajouter la date de décès si elle existe

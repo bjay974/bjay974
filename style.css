@@ -137,7 +137,6 @@ footer {
     width: 200px;
     height: 20px;
     margin-left: 0%;
-    display: inline-block; /* Afficher sur la même ligne */
 }
 
 .grandparentmaternel {
@@ -146,7 +145,6 @@ footer {
     width: 200px;
     height: 20px;
     margin-left: 5%;
-    display: inline-block; /* Afficher sur la même ligne */
 }
 
 .enfant {
@@ -166,7 +164,6 @@ footer {
     color: blue; /* Texte blanc */
     padding: 5px 10px 15px 10px;
     border-radius: 5px; /* Bordures arrondies */
-    display: inline-block;
     text-decoration: none;  
     font-size: 12px; /* Taille du texte */
     text-align: center;
