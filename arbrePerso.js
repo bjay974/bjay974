@@ -85,7 +85,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   var mother2 = data.find(person => person.id === mother2Id);
   if (father2 || mother2){
     var title = document.createElement('h4');
-    title.textContent = "Grands Parents Paternels";
+    title.textContent = "Grands Parents Maternels";
     title.style.fontStyle = 'italic';
     container.appendChild(title);
   }
@@ -108,15 +108,12 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
 function displayRelations(fatherId, motherId, containerClass, data) {
     var father = data.find(person => person.id === fatherId);
     var mother = data.find(person => person.id === motherId);
-    var title = document.createElement('h4');
-    title.textContent = "Parents";
-    title.style.fontStyle = 'italic';
-    container.appendChild(title);
+
     if (father || mother) {
         var container = document.createElement('div');
         container.className = containerClass;
         var title = document.createElement('h4');
-        title.textContent = "Grands Parents Paternels";
+        title.textContent = "Parents";
         title.style.fontStyle = 'italic';
         container.appendChild(title);
     
