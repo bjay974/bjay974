@@ -67,13 +67,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
       container.className = containerClass;
     if (father1 ) {
       var pereHTML = '<div class="' + containerClass + ' male">';
-      pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
+      pereHTML += '<p>' + father1.nom + ' ' + father1.prenom + '</p>';
       pereHTML += '</div>';
       container.innerHTML += pere1HTML;
     }
     if (mother1 ) {
       var mereHTML = '<div class="' + containerClass + ' female">';
-      mereHTML += '<p>' + mother.nom + ' ' + mother.prenom + '</p>';
+      mereHTML += '<p>' + mother1.nom + ' ' + mother1.prenom + '</p>';
       mereHTML += '</div>';
       container.innerHTML += mere1HTML;
     }
@@ -83,13 +83,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
     container.className = containerClass;
   if (father2 ) {
     var pereHTML = '<div class="' + containerClass + ' male">';
-    pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
+    pereHTML += '<p>' + father2.nom + ' ' + father2.prenom + '</p>';
     pereHTML += '</div>';
     container.innerHTML += pere2HTML;
   }
   if (mother2 ) {
     var mereHTML = '<div class="' + containerClass + ' female">';
-    mereHTML += '<p>' + mother.nom + ' ' + mother.prenom + '</p>';
+    mereHTML += '<p>' + mother2.nom + ' ' + mother2.prenom + '</p>';
     mereHTML += '</div>';
     container.innerHTML += mere2HTML;
   }
