@@ -64,7 +64,7 @@ function displayData() {
 
 function displayPersonne(personneId, colonne, containerClass, data) {
     // Afficher les informations de la personne
-   // var personne = data.find(person => person.id === fatherId);
+    var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
     container.className = colonne + containerClass;
