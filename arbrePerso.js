@@ -67,6 +67,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
     var title = document.createElement('p');
     title.textContent = "Grand Parent Paternel";
     title.style.fontStyle = 'italic';
+    title.classList.add('label'); 
     container.appendChild(title);
   }
   if (father1) {
@@ -87,6 +88,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
     var title = document.createElement('p');
     title.textContent = "Grand Parent Maternel";
     title.style.fontStyle = 'italic';
+    title.classList.add('label'); 
     container.appendChild(title);
   }
   if (father2) {
@@ -115,6 +117,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
         var title = document.createElement('p');
         title.textContent = "Parents";
         title.style.fontStyle = 'italic';
+        title.classList.add('label'); 
         container.appendChild(title);
     
       if (father ) {
@@ -142,6 +145,7 @@ function displayChildren(parentId, containerClass, titre, data) {
       var title = document.createElement('p');
       title.textContent = titre;
       title.style.fontStyle = 'italic';
+      title.classList.add('label'); 
       container.appendChild(title);
       children.forEach(function(child) {
       var genderClass = child.genre === 'M' ? 'male' : 'female';
