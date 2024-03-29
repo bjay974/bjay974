@@ -24,8 +24,7 @@ function displayData() {
         .then(data => {
             // Trouver la personne correspondante
             const person = data.find(p => p.id === parseInt(personId));
-    //        var personContainer = document.getElementById('person-container');
-    //        personContainer.className = "container13 personne";
+ 
             // Afficher les informations de la personne
             var genderClass = person.genre === 'M' ? 'male' : 'female';
 
@@ -39,7 +38,7 @@ function displayData() {
               personHTML += '<p>Date de décès : ' + person.date_deces + '</p>';
             }
             personHTML += '</div>';
-            personContainer.innerHTML = personHTML;
+            container.innerHTML = personHTML;
  
             // Afficher les parents
             parents = displayRelations(person.id_pere, person.id_mere, 'container11', 'parent', data);
