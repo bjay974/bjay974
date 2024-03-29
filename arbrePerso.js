@@ -31,9 +31,7 @@ function displayData() {
             displayChildren(person.id, 'enfant', 'Enfant(s) :', data);
 
             // Afficher les petits-enfants
-            var children = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
-            children.forEach(function(child) {
-            displayChildren(child.id, 'grandenfant', 'Petit(s) Enfant(s) :', data);
+            displayChildrenAndGrandChildren(person.id, 'enfant', data)
         });
     });
 }
@@ -45,7 +43,7 @@ function displayPersonne(personneId, containerClass, data) {
     var container = document.createElement('div');
     container.className = containerClass;
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-    personHTML += '<h5>' + person.nom + ' ' + person.prenom + '</h5>';
+    personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
     personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
     // Ajouter la date de décès si elle existe
     if (person.date_deces) {
@@ -137,24 +135,53 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     }
 }
 
-function displayChildren(parentId, containerClass, titre, data) {
+// Fonction pour afficher les enfants et les petits-enfants
+function displayChildrenAndGrandChildren(parentId, containerClass, data) {
+  // Filtrer les enfants du parent
   var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
+  // Filtrer les petits-enfants du parent
+  var grandChildren = [];
+  children.forEach(function(child) {
+      var grandChild = data.filter(gc => gc.id_pere === child.id || gc.id_mere === child.id);
+      grandChildren.push(...grandChild);
+  });
+
   if (children.length > 0) {
       var container = document.createElement('div');
       container.className = containerClass;
+      // Ajouter un titre
       var title = document.createElement('p');
-      title.textContent = titre;
+      title.textContent = "Enfant(s)";
       title.style.fontStyle = 'italic';
       title.classList.add('label'); 
       container.appendChild(title);
+      // Afficher les enfants
       children.forEach(function(child) {
-      var genderClass = child.genre === 'M' ? 'male' : 'female';
-      var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-      childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
-      childHTML += '</div>';
-      container.innerHTML += childHTML;
+          var genderClass = child.genre === 'M' ? 'male' : 'female';
+          var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+          childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
+          childHTML += '</div>';
+          container.innerHTML += childHTML;
       });
-      const personContainer = document.getElementById('person-container');
+  }
+  if (grandChildren.length > 0) {
+      // Ajouter un titre
+      var title = document.createElement('p');
+      title.textContent = "Enfant(s)";
+      title.style.fontStyle = 'italic';
+      title.classList.add('label'); 
+      container.appendChild(title);
+      // Afficher les petits-enfants
+      grandChildren.forEach(function(grandChild) {
+          var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
+          var grandChildHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+          grandChildHTML += '<p>' + grandChild.nom + ' ' + grandChild.prenom + '</p>';
+          grandChildHTML += '</div>';
+          container.innerHTML += grandChildHTML;
+      });
+  }
+  if (grandChildren.length > 0 || children.length > 0) { 
+  const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
   }
 }
