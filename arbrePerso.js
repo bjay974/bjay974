@@ -33,7 +33,6 @@ function displayData() {
             // Afficher les petits-enfants
             displayChildrenAndGrandChildren(person.id, 'enfant', data)
         });
-    });
 }
 
 function displayPersonne(personneId, containerClass, data) {
@@ -151,7 +150,11 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       container.className = containerClass;
       // Ajouter un titre
       var title = document.createElement('p');
-      title.textContent = "Enfant(s)";
+      if (children.length === 1) {
+        title.textContent = "Enfant";
+      } else {
+        title.textContent = "Enfants";
+      }
       title.style.fontStyle = 'italic';
       title.classList.add('label'); 
       container.appendChild(title);
@@ -167,7 +170,11 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
   if (grandChildren.length > 0) {
       // Ajouter un titre
       var title = document.createElement('p');
-      title.textContent = "Enfant(s)";
+      if (grandChildren.length === 1) {
+        title.textContent = "Petit Enfant :";
+      } else {
+        title.textContent = "Petits Enfants :";
+      }
       title.style.fontStyle = 'italic';
       title.classList.add('label'); 
       container.appendChild(title);
