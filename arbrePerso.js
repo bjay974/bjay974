@@ -43,7 +43,7 @@ function displayPersonne(personneId, containerClass, data) {
     personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
     // Ajouter la date de décès si elle existe
     if (person.date_deces) {
-      if (person.date_deces ="01/01/1901") {
+      if (person.date_deces === "01/01/1901") {
         personHTML += '<p>Date de décès inconnue</p>'; }
       else {   
       personHTML += '<p>Date de décès : ' + person.date_deces + '</p>'; }
