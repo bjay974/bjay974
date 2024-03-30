@@ -144,6 +144,8 @@ footer {
 .parent .male + .female {margin-top: 100px}
 .grandenfant .male + .female {margin-top: 10px}
 .grandenfant .female + .male {margin-top: 10px}
+.grandenfant .female + .female {margin-top: 10px}
+.grandenfant .male + .male {margin-top: 10px}
 .grandenfant .label + .female {margin-top: 10px}
 .grandenfant .label + .male {margin-top: 10px}
 
