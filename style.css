@@ -120,7 +120,7 @@ footer {
   }
 
 .personne {
-    margin-top: 70px;
+    margin-top: 80px;
     border-radius: 5px; /* Bordures arrondies */
     width: 180px;
     min-height: 50px;
@@ -152,15 +152,6 @@ footer {
 }
 
 .enfant {
-    padding: 5px 5px 5px 5px;
-    width: 180px;
-    margin-top: 5px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.grandenfant {
     padding: 5px 5px 5px 5px;
     width: 180px;
     margin-top: 5px;
