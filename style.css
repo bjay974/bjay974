@@ -123,7 +123,8 @@ footer {
     margin-top: 70px;
     border-radius: 5px; /* Bordures arrondies */
     width: 180px;
-    height: 100px;
+    min-height: 50px;
+    height: auto;
     text-align: center;
     flex-direction: column;
     align-items: flex-start; 
@@ -169,9 +170,10 @@ footer {
 }
 
 .male, .female {
+    min-height: 25px;
     background-color: lightblue; /* Fond gris */
-    color: blue; /* Texte blanc */
-    padding: 5px 10px 15px 10px;
+    color: blue; 
+    padding: 10px 5px 5px 5px;
     border-radius: 5px; /* Bordures arrondies */
     text-decoration: none;  
     font-size: 12px; /* Taille du texte */
