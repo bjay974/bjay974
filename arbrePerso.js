@@ -38,15 +38,17 @@ function displayPersonne(personneId, containerClass, data) {
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
     container.className = containerClass;
+    var dateNaissance = verifieDate(person.date_naissance);
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-    personHTML += '<p>Date de naissance : ' + person.date_naissance + '</p>';
+    personHTML += '<p>Naissance : ' + dateNaissance + '</p>';
     // Ajouter la date de décès si elle existe
     if (person.date_deces) {
+      var dateDeces = verifieDate(person.date_deces);
       if (person.date_deces === "01/01/1901") {
         personHTML += '<p>Date de décès inconnue</p>'; }
       else {   
-      personHTML += '<p>Date de décès : ' + person.date_deces + '</p>'; }
+      personHTML += '<p>Décès : ' + dateDeces + '</p>'; }
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
@@ -181,14 +183,18 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
           childHTML += '</div>';
           container.innerHTML += childHTML;
       });
+      const personContainer = document.getElementById('person-container');
+      personContainer.appendChild(container);
   }
   if (grandChildren.length > 0) {
       // Ajouter un titre
+      var container = document.createElement('div');
       var title = document.createElement('p');
+      var containerClass2 = 'grandenfant'
       if (grandChildren.length === 1) {
-        title.textContent = "Petit Enfant :";
+        title.textContent = "Petit Enfant";
       } else {
-        title.textContent = "Petits Enfants :";
+        title.textContent = "Petits Enfants";
       }
       title.style.fontStyle = 'italic';
       title.classList.add('label'); 
@@ -197,14 +203,12 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       grandChildren.sort((a, b) => b.id - a.id);
       grandChildren.forEach(function(grandChild) {
           var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
-          var grandChildHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+          var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
           grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a></p>';
           grandChildHTML += '</div>';
           container.innerHTML += grandChildHTML;
       });
-  }
-  if (grandChildren.length > 0 || children.length > 0) { 
-  const personContainer = document.getElementById('person-container');
+      const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
   }
 }
@@ -223,6 +227,21 @@ function trouverGrandPere(parentId, data) {
     }
 }
 
+//Verifie si la date est connue  
+function verifieDate(date) {
+  const an = parseInt(date.substr(6, 4));
+  const mois = parseInt(date.substr(3, 2));
+  const day = parseInt(date.substr(0, 2));
+  if (day === 1 && mois === 1) {
+      if (an === 1901) {
+          return "" ;
+      }  else {
+          return "dans le courant de l'année " + an;
+      }
+  } else {
+      return "le " + date;
+  }
+}
 
   
 // Appeler la fonction pour afficher les données

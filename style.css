@@ -120,7 +120,7 @@ footer {
   }
 
 .personne {
-    margin-top: 80px;
+    margin-top: 60px;
     border-radius: 5px; /* Bordures arrondies */
     width: 180px;
     min-height: 50px;
@@ -134,12 +134,14 @@ footer {
 
 .parent {
     padding: 20px 5px 5px 5px;
-    margin-top: 30px;
+    margin-top: 10px;
     width: 180px;
     height: 20px;
     display: flex;
     flex-direction: column;
 }
+
+.parent .male + .female {margin-top: 100px}
 
 .grandparent {
     padding: 10px 5px 5px 5px;
@@ -155,6 +157,17 @@ footer {
     padding: 5px 5px 5px 5px;
     width: 180px;
     margin-top: 5px;
+    margin-right: 5px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.grandenfant {
+    padding: 5px 5px 5px 5px;
+    width: 180px;
+    margin-top: 60px;
+    margin-right: 5px;
     height: 20px;
     display: flex;
     flex-direction: column;
