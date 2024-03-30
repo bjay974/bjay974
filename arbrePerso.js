@@ -73,13 +73,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   }
   if (father1) {
       var pere1HTML = '<div class="' + containerClass + ' male">';
-      pere1HTML += '<p>' + father1.nom + ' ' + father1.prenom + '</p>';
+      pere1HTML += '<a href="arbrePerso.html?id=' + father1.id + '">' + father1.nom + ' ' + father1.prenom + '</a>';
       pere1HTML += '</div>';
       container.innerHTML += pere1HTML;
   }
   if (mother1) {
       var mere1HTML = '<div class="' + containerClass + ' female">';
-      mere1HTML += '<p>' + mother1.nom + ' ' + mother1.prenom + '</p>';
+      mere1HTML += '<a href="arbrePerso.html?id=' + mother1.id + '">' + mother1.nom + ' ' + mother1.prenom + '</a>';
       mere1HTML += '</div>';
       container.innerHTML += mere1HTML;
   }
@@ -99,13 +99,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   }
   if (father2) {
       var pere2HTML = '<div class="' + containerClass + ' male">';
-      pere2HTML += '<p>' + father2.nom + ' ' + father2.prenom + '</p>';
+      pere2HTML += '<a href="arbrePerso.html?id=' + father2.id + '">' + father2.nom + ' ' + father2.prenom + '</a>';
       pere2HTML += '</div>';
       container.innerHTML += pere2HTML;
   }
   if (mother2) {
       var mere2HTML = '<div class="' + containerClass + ' female">';
-      mere2HTML += '<p>' + mother2.nom + ' ' + mother2.prenom + '</p>';
+      mere2HTML += '<a href="arbrePerso.html?id=' + mother2.id + '">' + mother2.nom + ' ' + mother2.prenom + '</a>';
       mere2HTML += '</div>';
       container.innerHTML += mere2HTML;
   }
@@ -133,13 +133,13 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     
       if (father ) {
         var pereHTML = '<div class="' + containerClass + ' male">';
-        pereHTML += '<p>' + father.nom + ' ' + father.prenom + '</p>';
+        pereHTML += '<a href="arbrePerso.html?id=' + father.id + '">' + father.nom + ' ' + father.prenom + '</a>';
         pereHTML += '</div>';
         container.innerHTML += pereHTML;
       }
       if (mother ) {
         var mereHTML = '<div class="' + containerClass + ' female">';
-        mereHTML += '<p>' + mother.nom + ' ' + mother.prenom + '</p>';
+        mereHTML += '<a href="arbrePerso.html?id=' + mother.id + '">' + mother.nom + ' ' + mother.prenom + '</a>';
         mereHTML += '</div>';
         container.innerHTML += mereHTML;
       }
@@ -177,7 +177,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       children.forEach(function(child) {
           var genderClass = child.genre === 'M' ? 'male' : 'female';
           var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-          childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
+          childHTML += '<a href="arbrePerso.html?id=' + child.id + '">' + child.nom + ' ' + child.prenom + '</a>';
           childHTML += '</div>';
           container.innerHTML += childHTML;
       });
@@ -198,7 +198,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       grandChildren.forEach(function(grandChild) {
           var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
           var grandChildHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-          grandChildHTML += '<p>' + grandChild.nom + ' ' + grandChild.prenom + '</p>';
+          grandChildHTML += '<a href="arbrePerso.html?id=' + grandChild.id + '">' + grandChild.nom + ' ' + grandChild.prenom + '</a>';
           grandChildHTML += '</div>';
           container.innerHTML += grandChildHTML;
       });
