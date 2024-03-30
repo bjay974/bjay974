@@ -190,7 +190,8 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       // Ajouter un titre
       var container = document.createElement('div');
       var title = document.createElement('p');
-      var containerClass2 = 'grandenfant'
+      var containerClass2 = 'grandenfant';
+      container.className = containerClass2;
       if (grandChildren.length === 1) {
         title.textContent = "Petit Enfant";
       } else {

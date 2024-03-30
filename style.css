@@ -142,6 +142,9 @@ footer {
 }
 
 .parent .male + .female {margin-top: 100px}
+.grandenfant .male + .female {margin-top: 5px}
+.grandenfant .female + .male {margin-top: 5px}
+
 
 .grandparent {
     padding: 10px 5px 5px 5px;
@@ -166,7 +169,7 @@ footer {
 .grandenfant {
     padding: 5px 5px 5px 5px;
     width: 180px;
-    margin-top: 60px;
+    margin-top: 80px;
     margin-right: 5px;
     height: 20px;
     display: flex;
