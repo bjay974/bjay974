@@ -214,28 +214,6 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
   }
 }
 
-// Fonction pour afficher les enfants
-function displayChildren(parentId, containerClass, title, data) {
-  var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
-  if (children.length > 0) {
-      var container = document.createElement('div');
-      container.className = 'container ' + containerClass;
-      var titleElement = document.createElement('h3');
-      titleElement.textContent = title;
-      container.appendChild(titleElement);
-      children.forEach(function(child) {
-      var genderClass = child.id_genre === 'M' ? 'male' : 'female';
-      var childHTML = '<div class="container ' + genderClass + '">';
-      childHTML += '<p>' + child.nom + ' ' + child.prenom + '</p>';
-      childHTML += '</div>';
-      container.innerHTML += childHTML;
-      });
-      var personContainer = document.getElementById('person-container');
-      personContainer.appendChild(container);
-  }
-  }
-
-
 function trouverGrandMere(parentId, data) {
     const parent = data.find(person => person.id === parentId);
     if (parent) {
