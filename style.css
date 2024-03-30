@@ -142,9 +142,10 @@ footer {
 }
 
 .parent .male + .female {margin-top: 100px}
-.grandenfant .male + .female {margin-top: 5px}
-.grandenfant .female + .male {margin-top: 5px}
-
+.grandenfant .male + .female {margin-top: 10px}
+.grandenfant .female + .male {margin-top: 10px}
+.grandenfant .label + .female {margin-top: 10px}
+.grandenfant .label + .male {margin-top: 10px}
 
 .grandparent {
     padding: 10px 5px 5px 5px;
@@ -169,7 +170,7 @@ footer {
 .grandenfant {
     padding: 5px 5px 5px 5px;
     width: 180px;
-    margin-top: 80px;
+    margin-top: 100px;
     margin-right: 5px;
     height: 20px;
     display: flex;
