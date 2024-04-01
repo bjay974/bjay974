@@ -94,7 +94,6 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
     } else {
       title.textContent = "Grand Parent Maternel";
     }
-    title.textContent = "Grand Parent Maternel";
     title.style.fontStyle = 'italic';
     title.classList.add('label'); 
     container.appendChild(title);
