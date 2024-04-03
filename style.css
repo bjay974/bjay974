@@ -125,9 +125,8 @@ footer {
     width: 180px;
     min-height: 50px;
     height: auto;
-    text-align: center;
     flex-direction: column;
-    align-items: flex-start; 
+    display: flex;
     font-size: 15px; /* Taille du texte */
     font-family: Georgia;
 }
