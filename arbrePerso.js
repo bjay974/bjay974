@@ -121,7 +121,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
       pere2HTML += '<p><a href="arbrePerso.html?id=' + father2.id  + '" style="text-decoration: none; color: inherit;">' + father2.nom + ' ' + father2.prenom + '</a></p>';
       pere2HTML += '</div>';
       container.innerHTML += pere2HTML;
-      if ( editTrait2 === true) { 
+      if (editTrait2 === true) { 
           container.classList.add('trait');
       }
   }
@@ -155,15 +155,15 @@ function displayRelations(fatherId, motherId, containerClass, data) {
         title.classList.add('label'); 
         container.appendChild(title);
     
-      if (father ) {
+      if (father) {
         var pereHTML = '<div class="' + containerClass + ' male">';
         pereHTML += '<p><a href="arbrePerso.html?id=' + father.id  + '" style="text-decoration: none; color: inherit;">' + father.nom + ' ' + father.prenom + '</a></p>';
         pereHTML += '</div>';
         container.innerHTML += pereHTML;
-        if ( editTrait === true) { 
+        if (editTrait === true) { 
           container.classList.add('trait');
-        }
-      if (mother ) {
+        } }
+      if (mother) {
         var mereHTML = '<div class="' + containerClass + ' female">';
         mereHTML += '<p><a href="arbrePerso.html?id=' + mother.id  + '" style="text-decoration: none; color: inherit;">' + mother.nom + ' ' + mother.prenom + '</a></p>';
         mereHTML += '</div>';
