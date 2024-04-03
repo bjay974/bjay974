@@ -14,7 +14,7 @@ fetch('data.json')
         const femmeListMat = document.getElementById('femme-list');        
         
         // Titre pour la liste des hommes
-        const hommeTitle = document.createElement('h4');
+        const hommeTitle = document.createElement('h5');
         hommeTitle.style.color = "blue";
         hommeTitle.style.fontStyle ="italic";
         hommeTitle.textContent = 'Hommes (Branche Paternelle)';
@@ -34,7 +34,7 @@ fetch('data.json')
         });
 
         // Titre pour la liste des femmes
-        const femmeTitle = document.createElement('h4');
+        const femmeTitle = document.createElement('h5');
         femmeTitle.style.color = "blue";
         femmeTitle.style.fontStyle ="italic";
         femmeTitle.textContent = 'Femmes (Branche Paternelle)';
@@ -54,7 +54,7 @@ fetch('data.json')
         });
         
          // Titre pour la liste des hommes coté maternelle
-        const hommeTitleMat = document.createElement('h4');
+        const hommeTitleMat = document.createElement('h5');
         hommeTitleMat.style.color = "blue";
         hommeTitleMat.style.fontStyle ="italic";
         hommeTitleMat.textContent = 'Hommes (Branche Maternelle)';
@@ -74,7 +74,7 @@ fetch('data.json')
         });
 
         // Titre pour la liste des femmes coté maternelle
-        const femmeTitleMat = document.createElement('h4');
+        const femmeTitleMat = document.createElement('h5');
         femmeTitleMat.style.color = "blue";
         femmeTitleMat.style.fontStyle ="italic";
         femmeTitleMat.textContent = 'Femmes (Branche Maternelle)';
