@@ -245,7 +245,7 @@ function verifieDate(date) {
       if (an === 1901) {
           return "" ;
       }  else {
-          return "dans le courant de l'année " + an;
+          return "en " + an;
       }
   } else {
       return "le " + date;
