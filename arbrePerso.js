@@ -55,7 +55,8 @@ function displayPersonne(personneId, containerClass, data) {
    
     if (person.id_conjoint){
       var conjoint = data.find(p => p.id === person.id_conjoint);
-      var conjointHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+      var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
+      var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
       conjointHTML += '<p><a href="arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
       conjointHTML += '</div>';
       container.innerHTML += conjointHTML;
