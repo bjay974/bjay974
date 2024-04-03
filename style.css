@@ -129,14 +129,17 @@ footer {
     display: flex;
     font-size: 15px; /* Taille du texte */
     font-family: Georgia;
-    margin-bottom: 30px;
+    position: relative;   
 }
 
-.personne::after{
+.personne + personne::before{
     content: '';
-    display: block;
-    border-bottom: 1px solid black;
-    margin-top: 20px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 1px;
+    height: 100%;
+    background-color: black;
 }
 
 .parent {
