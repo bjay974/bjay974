@@ -129,6 +129,14 @@ footer {
     display: flex;
     font-size: 15px; /* Taille du texte */
     font-family: Georgia;
+    margin-bottom: 30px;
+}
+
+.personne::after{
+    content: '';
+    display: block;
+    border-bottom: 1px solid black;
+    margin-top: 20px;
 }
 
 .parent {
@@ -168,6 +176,13 @@ footer {
     flex-direction: column;
 }
 
+.enfant::after{
+    content: '';
+    display: block;
+    border-bottom: 1px solid black;
+    margin-top: 10px;
+}
+
 .grandenfant {
     padding: 5px 5px 5px 5px;
     width: 180px;
@@ -194,7 +209,3 @@ footer {
     color: red; 
 }
 
-.trait {
-    border-bottom: 1px solid blue;
-    margin-bottom: 20px;
-}
