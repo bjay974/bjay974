@@ -179,7 +179,7 @@ footer {
     flex-direction: column;
 }
 
-.enfant::after{
+.enfant::after + enfant{
     content: '';
     display: block;
     border-bottom: 1px solid black;
