@@ -193,4 +193,8 @@ footer {
     background-color: lightpink;
     color: red; 
 }
-  
+
+.trait {
+    border-bottom: 1px solid blue;
+    margin-bottom: 20px;
+}
