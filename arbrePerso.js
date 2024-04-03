@@ -52,6 +52,15 @@ function displayPersonne(personneId, containerClass, data) {
     }
     personHTML += '</div>';
     container.innerHTML = personHTML;
+   
+    if (person.id_conjoint){
+      var conjoint = data.find(person => person.id === person.id_conjoint);
+      var conjointHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+      conjointHTML += '<p><a href="arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
+      conjointHTML += '</div>';
+      container.innerHTML = conjointHTML;
+  }
+   
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
 }
