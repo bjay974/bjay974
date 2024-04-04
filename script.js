@@ -13,8 +13,33 @@ fetch('data.json')
         const femmeList = document.getElementById('femme-list');
         const hommeListMat = document.getElementById('homme-list');
         const femmeListMat = document.getElementById('femme-list'); 
-        const familleList = document.getElementById('homme-list');       
+        const familleList = document.getElementById('famille-list');       
         
+        // Titre pour la liste de famille
+        const familleTitle = document.createElement('h5');
+        familleTitle.style.color = "blue";
+        familleTitle.style.fontStyle ="italic";
+        familleTitle.textContent = 'Famille';
+        familleList.appendChild(familleTitle);
+
+        // Parcourir chaque membre dans les données
+        famille.sort((a, b) => b.id - a.id);
+        famille.forEach(person => {
+            // Créer un élément de liste pour chaque membre
+            const listItemMat = document.createElement('li');
+            const linkMat = document.createElement('a');
+            linkMat.textContent = person.nom + ' ' + person.prenom;
+            linkMat.href = 'person.html?id=' + person.id;
+            if (person.genre === "M") {
+                linkMat.classList.add("lienM"); //ajout la classe lien du ccs au lien
+            } 
+            else {
+                linkMat.classList.add("lienF"); //ajout la classe lien du ccs au lien
+            }   
+            listItemMat.appendChild(linkMat);
+            familleList.appendChild(listItemMat);
+        });
+
         // Titre pour la liste des hommes
         const hommeTitle = document.createElement('h5');
         hommeTitle.style.color = "blue";
@@ -96,30 +121,7 @@ fetch('data.json')
         });
 
 
-        // Titre pour la liste de famille
-        const familleTitle = document.createElement('h5');
-        familleTitle.style.color = "blue";
-        familleTitle.style.fontStyle ="italic";
-        familleTitle.textContent = 'Famille';
-        familleList.appendChild(familleTitle);
 
-        // Parcourir chaque membre dans les données
-        famille.sort((a, b) => b.id - a.id);
-        famille.forEach(person => {
-            // Créer un élément de liste pour chaque membre
-            const listItemMat = document.createElement('li');
-            const linkMat = document.createElement('a');
-            linkMat.textContent = person.nom + ' ' + person.prenom;
-            linkMat.href = 'person.html?id=' + person.id;
-            if (person.genre === "M") {
-                linkMat.classList.add("lienM"); //ajout la classe lien du ccs au lien
-            } 
-            else {
-                linkMat.classList.add("lienF"); //ajout la classe lien du ccs au lien
-            }   
-            listItemMat.appendChild(linkMat);
-            familleList.appendChild(listItemMat);
-        });
         
     })
     .catch(error => console.error('Erreur lors du chargement des données :', error));
