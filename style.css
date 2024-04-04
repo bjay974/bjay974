@@ -90,7 +90,8 @@ footer {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5 colonne6"
 }
 
 .container1 {
@@ -130,6 +131,7 @@ footer {
   }
 
 .personne {
+    grid-area: colonne4;
     margin-top: 60px;
     border-radius: 5px; /* Bordures arrondies */
     width: 180px;
@@ -153,6 +155,7 @@ footer {
 }
 
 .parent {
+    grid-area: colonne3;
     padding: 20px 5px 5px 5px;
     margin-top: 10px;
     width: 180px;
@@ -170,6 +173,7 @@ footer {
 .grandenfant .label + .male {margin-top: 10px}
 
 .grandparent {
+    grid-area: colonne2;
     padding: 10px 5px 5px 5px;
     margin-top: 5px;
     text-align: center;
@@ -179,7 +183,20 @@ footer {
     flex-direction: column;
 }
 
+.arrieregrandparent {
+    grid-area: colonne1;
+    padding: 10px 5px 5px 5px;
+    margin-top: 20px;
+    text-align: center;
+    width: 200px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+}
+arrieregrandparent
+
 .enfant {
+    grid-area: colonne5;
     padding: 5px 5px 5px 5px;
     width: 180px;
     margin-top: 5px;
@@ -197,6 +214,7 @@ footer {
 }
 
 .grandenfant {
+    grid-area: colonne6;
     padding: 5px 5px 5px 5px;
     width: 180px;
     margin-top: 100px;

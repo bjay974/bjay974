@@ -18,6 +18,27 @@ function displayData() {
             var gr_mere_pat = trouverGrandMere(person.id_pere, data)
             var gr_pere_pat = trouverGrandPere(person.id_pere, data)
 
+            var ar_gr_mere_mat_mat = trouverGrandMere(gr_mere_mat, data)
+            var ar_gr_pere_mat_mat = trouverGrandPere(gr_mere_mat, data)
+            var ar_gr_mere_pat_mat = trouverGrandMere(gr_mere_pat, data)
+            var ar_gr_pere_pat_mat = trouverGrandPere(gr_mere_pat, data)            
+
+            var ar_gr_mere_mat_pat = trouverGrandMere(gr_mere_pat, data)
+            var ar_gr_pere_mat_pat = trouverGrandPere(gr_mere_pat, data)
+            var ar_gr_mere_pat_pat = trouverGrandMere(gr_pere_pat, data)
+            var ar_gr_pere_pat_pat = trouverGrandPere(gr_pere_pat, data)
+
+            // Afficher les arriéres grands parents maternelles
+            if (ar_gr_mere_mat_mat || ar_gr_pere_mat_mat || ar_gr_mere_pat_mat || ar_gr_pere_pat_mat) {
+              displayGrandParent(ar_gr_mere_mat_mat, ar_gr_pere_mat_mat, ar_gr_mere_pat_mat, ar_gr_pere_pat_mat, 'arrieregrandparent', data)
+            }
+            
+            // Afficher les arriéres grands parents paternelles
+            if (ar_gr_mere_mat_pat || ar_gr_pere_mat_pat || ar_gr_mere_pat_pat || ar_gr_pere_pat_pat) {
+                displayGrandParent(ar_gr_mere_mat_pat, ar_gr_pere_mat_pat, ar_gr_mere_pat_pat, ar_gr_pere_pat_pat, 'arrieregrandparent', data)
+            }
+            
+            // Afficher les grands parents
             if (gr_mere_mat || gr_pere_mat || gr_mere_pat || gr_mere_pat) {
             displayGrandParent(gr_pere_pat, gr_mere_pat, gr_pere_mat, gr_mere_mat, 'grandparent', data)
             }
