@@ -79,9 +79,9 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
     var titrePat = titre + "Paternels";
     var titrePatSansS = titrePat.replace(/s/g, '');
     if (father1 && mother1) {
-      title.textContent = titre;
+      title.textContent = titrePat;
     } else {
-      title.textContent = titreSansS;
+      title.textContent = titrePatSansS;
     }
     title.style.fontStyle = 'italic';
     title.classList.add('label'); 

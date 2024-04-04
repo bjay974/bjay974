@@ -132,7 +132,8 @@ footer {
 
 .personne {
     grid-area: colonne3;
-    margin-top: 60px;
+    padding: 5px 5px 5px 5px;
+    margin-top: 50px;
     border-radius: 5px; /* Bordures arrondies */
     width: 180px;
     min-height: 50px;
@@ -142,16 +143,6 @@ footer {
     font-size: 15px; /* Taille du texte */
     font-family: Georgia;
     position: relative;   
-}
-
-.personne + personne::before{
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 1px;
-    height: 100%;
-    background-color: black;
 }
 
 .parent {
@@ -192,13 +183,6 @@ footer {
     height: 20px;
     display: flex;
     flex-direction: column;
-}
-
-.enfant::after + enfant{
-    content: '';
-    display: block;
-    border-bottom: 1px solid black;
-    margin-top: 10px;
 }
 
 .grandenfant {
