@@ -28,19 +28,18 @@ function displayData() {
             var ar_gr_mere_pat_pat = trouverGrandMere(gr_pere_pat, data)
             var ar_gr_pere_pat_pat = trouverGrandPere(gr_pere_pat, data)
 
-            // Afficher les arriéres grands parents maternelles
-            if (ar_gr_mere_mat_mat || ar_gr_pere_mat_mat || ar_gr_mere_pat_mat || ar_gr_pere_pat_mat) {
-              displayGrandParent(ar_gr_mere_mat_mat, ar_gr_pere_mat_mat, ar_gr_mere_pat_mat, ar_gr_pere_pat_mat, 'arrieregrandparent', data)
-            }
-            
             // Afficher les arriéres grands parents paternelles
             if (ar_gr_mere_mat_pat || ar_gr_pere_mat_pat || ar_gr_mere_pat_pat || ar_gr_pere_pat_pat) {
-                displayGrandParent(ar_gr_mere_mat_pat, ar_gr_pere_mat_pat, ar_gr_mere_pat_pat, ar_gr_pere_pat_pat, 'arrieregrandparent', data)
+              displayGrandParent(ar_gr_mere_mat_pat, ar_gr_pere_mat_pat, ar_gr_mere_pat_pat, ar_gr_pere_pat_pat,'Arrieres GP pat', 'arrieregrandparent', data)
+          }
+            // Afficher les arriéres grands parents maternelles
+            if (ar_gr_mere_mat_mat || ar_gr_pere_mat_mat || ar_gr_mere_pat_mat || ar_gr_pere_pat_mat) {
+              displayGrandParent(ar_gr_mere_mat_mat, ar_gr_pere_mat_mat, ar_gr_mere_pat_mat, ar_gr_pere_pat_mat,'Arrieres GP mat', 'arrieregrandparent', data)
             }
             
             // Afficher les grands parents
             if (gr_mere_mat || gr_pere_mat || gr_mere_pat || gr_mere_pat) {
-            displayGrandParent(gr_pere_pat, gr_mere_pat, gr_pere_mat, gr_mere_mat, 'grandparent', data)
+            displayGrandParent(gr_pere_pat, gr_mere_pat, gr_pere_mat, gr_mere_mat,'Grands Parents', 'grandparent', data)
             }
             // Afficher les parents
             displayRelations(person.id_pere, person.id_mere, 'parent', data);
@@ -58,11 +57,12 @@ function displayPersonne(personneId, containerClass, data) {
     var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
+    var naissance = '\u{1F476}'
     container.className = containerClass;
     var dateNaissance = verifieDate(person.date_naissance);
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-    personHTML += '<p>Naissance : ' + dateNaissance + '</p>';
+    personHTML += '<p>' + naissance + ' : ' + dateNaissance + '</p>';
     // Ajouter la date de décès si elle existe
     if (person.date_deces) {
       var dateDeces = verifieDate(person.date_deces);
@@ -87,18 +87,21 @@ function displayPersonne(personneId, containerClass, data) {
     personContainer.appendChild(container);
 }
 
-function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
+function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, containerClass, data) {
+
   var container = document.createElement('div');
   container.className = containerClass;
   var father1 = data.find(person => person.id === father1Id);
   var mother1 = data.find(person => person.id === mother1Id);
-
+ 
   if (father1 || mother1){
     var title = document.createElement('p');
+    var titrePat = titre + "pat";
+    var titrePatSansS = titrePat.replace(/s/g, '');
     if (father1 && mother1) {
-      title.textContent = "Grands Parents Paternels";
+      title.textContent = titre;
     } else {
-      title.textContent = "Grand Parent Paternel";
+      title.textContent = titreSansS;
     }
     title.style.fontStyle = 'italic';
     title.classList.add('label'); 
@@ -119,11 +122,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
   if (father2 || mother2){
+    var titreMat = titre + "mat";
+    var titreMatSansS = titreMat.replace(/s/g, '');
     var title = document.createElement('p');
     if (father2 && mother2) {
-      title.textContent = "Grands Parents Maternels";
+      title.textContent = titreMat;
     } else {
-      title.textContent = "Grand Parent Maternel";
+      title.textContent = titreMatSansS;
     }
     title.style.fontStyle = 'italic';
     title.classList.add('label'); 
@@ -132,6 +137,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   if (father2) {
       var pere2HTML = '<div class="' + containerClass + ' male">';
       pere2HTML += '<p><a href="arbrePerso.html?id=' + father2.id  + '" style="text-decoration: none; color: inherit;">' + father2.nom + ' ' + father2.prenom + '</a></p>';
+
       pere2HTML += '</div>';
       container.innerHTML += pere2HTML;
   }
@@ -181,6 +187,7 @@ function displayRelations(fatherId, motherId, containerClass, data) {
 
 // Fonction pour afficher les enfants et les petits-enfants
 function displayChildrenAndGrandChildren(parentId, containerClass, data) {
+
   // Filtrer les enfants du parent
   var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
   // Filtrer les petits-enfants du parent
@@ -215,6 +222,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
   }
+
   if (grandChildren.length > 0) {
       // Ajouter un titre
       var container = document.createElement('div');
@@ -241,6 +249,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
   }
+
 }
 
 function trouverGrandMere(parentId, data) {
