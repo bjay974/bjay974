@@ -3,7 +3,7 @@ fetch('data.json')
     .then(response => response.json())
     .then(data => {
         // Filtrer les personnes par genre
-        const famille = data.filter(person => person.genre === 'M' && person.id <= 203);
+        const famille = data.filter(person => person.id <= 203);
         const hommes = data.filter(person => person.genre === 'M' && person.id >= 204 && person.id <= 999);
         const femmes = data.filter(person => person.genre === 'F' && person.id >= 204 && person.id <= 999);
         const hommesMat = data.filter(person => person.genre === 'M' && person.id >= 1000 && person.id <= 1999); 
