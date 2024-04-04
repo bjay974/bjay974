@@ -72,6 +72,16 @@ footer {
     color: black;
 }
 
+.lienM {
+    text-decoration: none;
+    color: blue;
+}
+
+.lienF {
+    text-decoration: none;
+    color: red;
+}
+
 .special-li {
     padding: 10px 5px 5px 5px;
     margin-top: 0;

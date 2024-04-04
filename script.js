@@ -3,15 +3,17 @@ fetch('data.json')
     .then(response => response.json())
     .then(data => {
         // Filtrer les personnes par genre
-        const hommes = data.filter(person => person.genre === 'M' && person.id <= 999);
-        const femmes = data.filter(person => person.genre === 'F' && person.id <= 999);
+        const famille = data.filter(person => person.genre === 'M' && person.id <= 203);
+        const hommes = data.filter(person => person.genre === 'M' && person.id >= 204 && person.id <= 999);
+        const femmes = data.filter(person => person.genre === 'F' && person.id >= 204 && person.id <= 999);
         const hommesMat = data.filter(person => person.genre === 'M' && person.id >= 1000 && person.id <= 1999); 
         const femmesMat = data.filter(person => person.genre === 'F' && person.id >= 1000 && person.id <= 1999);
         
         const hommeList = document.getElementById('homme-list');
         const femmeList = document.getElementById('femme-list');
         const hommeListMat = document.getElementById('homme-list');
-        const femmeListMat = document.getElementById('femme-list');        
+        const femmeListMat = document.getElementById('femme-list'); 
+        const familleList = document.getElementById('homme-list');       
         
         // Titre pour la liste des hommes
         const hommeTitle = document.createElement('h5');
@@ -91,6 +93,32 @@ fetch('data.json')
             linkMat.classList.add("lien"); //ajout la classe lien du ccs au lien
             listItemMat.appendChild(linkMat);
             femmeListMat.appendChild(listItemMat);
+        });
+
+
+        // Titre pour la liste de famille
+        const familleTitle = document.createElement('h5');
+        familleTitle.style.color = "blue";
+        familleTitle.style.fontStyle ="italic";
+        familleTitle.textContent = 'Famille';
+        familleList.appendChild(familleTitle);
+
+        // Parcourir chaque membre dans les données
+        famille.sort((a, b) => b.id - a.id);
+        famille.forEach(person => {
+            // Créer un élément de liste pour chaque membre
+            const listItemMat = document.createElement('li');
+            const linkMat = document.createElement('a');
+            linkMat.textContent = person.nom + ' ' + person.prenom;
+            linkMat.href = 'person.html?id=' + person.id;
+            if (person.genre === "M") {
+                linkMat.classList.add("lienM"); //ajout la classe lien du ccs au lien
+            } 
+            else {
+                linkMat.classList.add("lienF"); //ajout la classe lien du ccs au lien
+            }   
+            listItemMat.appendChild(linkMat);
+            familleList.appendChild(listItemMat);
         });
         
     })
