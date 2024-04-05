@@ -76,7 +76,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
  
   if (father1 || mother1){
     var title = document.createElement('p');
-    var titrePat = titre + "Paternels";
+    var titrePat = titre + " Paternels";
     var titrePatSansS = titrePat.replace(/s/g, '');
     if (father1 && mother1) {
       title.textContent = titrePat;
@@ -102,7 +102,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
   if (father2 || mother2){
-    var titreMat = titre + "Maternels";
+    var titreMat = titre + " Maternels";
     var titreMatSansS = titreMat.replace(/s/g, '');
     var title = document.createElement('p');
     if (father2 && mother2) {
