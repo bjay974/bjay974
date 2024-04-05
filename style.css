@@ -127,7 +127,7 @@ footer {
 
 .container {
     padding: 10px 5px 5px 5px;
-    font-size: 15px; /* Taille du texte */
+    font-size: 12px; /* Taille du texte */
   }
 
 .personne {
@@ -140,7 +140,7 @@ footer {
     height: auto;
     flex-direction: column;
     display: flex;
-    font-size: 15px; /* Taille du texte */
+    font-size: 12px; /* Taille du texte */
     font-family: Georgia;
     position: relative;   
 }
