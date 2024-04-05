@@ -159,6 +159,8 @@ footer {
 .personne .male + .female {margin-top: 50px}
 .personne .male + .label {margin-top: 50px}
 .personne .female + .label {margin-top: 50px}
+.personne .label + .male {margin-top: 50px}
+.personne .label + .female {margin-top: 50px}
 
 .grandparent .male + .label {margin-top: 40px}
 .grandparent .female + .label {margin-top: 50px}
