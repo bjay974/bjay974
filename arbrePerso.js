@@ -54,7 +54,7 @@ function displayPersonne(personneId, containerClass, data) {
     personHTML += '</div>';
     container.innerHTML += personHTML;
    
-    if (person.id_conjoint){
+    if (person.id_conjoint > 0){
       var conjoint = data.find(p => p.id === person.id_conjoint);
       var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
       var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
