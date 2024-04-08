@@ -127,9 +127,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
                         const motherItem = document.createElement('li');
-                        motherItem.classList.add('special-li');
                         const adjectif_genre = ajouterParent(person.genre);
+                        if (father) {
+                            motherItem.classList.add('special-li');
+                            motherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${mother.nom} ${mother.prenom}</strong>`;
+                        }
+                        else {
                         motherItem.innerHTML = `<em>et de \t\t</em><strong> ${mother.nom} ${mother.prenom}</strong>`;
+                        }
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
