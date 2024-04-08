@@ -41,11 +41,10 @@ fetch('data.json')
         });
 
         // Titre pour la liste des hommes
-        const hommeTitle = document.createElement('a');
+        const hommeTitle = document.createElement('h5');
         hommeTitle.style.color = "blue";
         hommeTitle.style.fontStyle ="italic";
         hommeTitle.textContent = 'Hommes (Branche Paternelle)';
-        hommeTitle.classList.add("nav");
         hommeList.appendChild(hommeTitle);
         
         // Parcourir chaque homme dans les données
