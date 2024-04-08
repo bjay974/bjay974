@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ajouter le lien vers l'arbre perso
             const arbrePersoItem = document.createElement('h4');
             const arbrePersoLink = document.createElement('a');
-            const prenomVoyelle = ['a', 'e', 'i', 'o', 'u'].includes(person.prenom.charAt(0));
+            const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(person.prenom.charAt(0));
             if (prenomVoyelle) {
                 arbrePersoLink.textContent = `Arbre d'${person.prenom}`;
             }
