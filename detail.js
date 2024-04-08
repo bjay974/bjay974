@@ -206,7 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Ajouter le lien vers l'arbre perso
             const arbrePersoItem = document.createElement('h4');
             const arbrePersoLink = document.createElement('a');
-            arbrePersoLink.textContent = `Arbre de ${person.nom} ${person.prenom}`;   
+            const prenomVoyelle = ['a', 'e', 'i', 'o', 'u'].includes(person.prenom.charAt(0)):
+            if (prenomVoyelle) {
+                arbrePersoLink.textContent = `Arbre d'${person.prenom}`;
+            }
+            else {
+                arbrePersoLink.textContent = `Arbre de ${person.prenom}`; 
+            }
             arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
             arbrePersoLink.style.textDecoration = "none";
             arbrePersoLink.style.color = "red"; 
