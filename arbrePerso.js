@@ -41,7 +41,7 @@ function displayPersonne(personneId, containerClass, data) {
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-    if (person.date_naissance !=== "01/01/1901") {
+    if (person.date_naissance !== "01/01/1901") {
       var dateNaissance = verifieDate(person.date_naissance);
       personHTML += '<p>' + naissance + '  ' + dateNaissance + '</p>';
     }
