@@ -17,8 +17,6 @@ fetch('data.json')
         
         // Titre pour la liste de famille
         const familleTitle = document.createElement('h5');
-        familleTitle.style.color = "#999";
-        familleTitle.style.fontStyle ="italic";
         familleTitle.textContent = 'A nou';
         familleTitle.classList.add("soustitre")
         familleList.appendChild(familleTitle);
@@ -43,8 +41,7 @@ fetch('data.json')
 
         // Titre pour la liste des hommes
         const hommeTitle = document.createElement('h5');
-        hommeTitle.style.color = "#999";
-        hommeTitle.style.fontStyle ="italic";
+        hommeTitle.classList.add("soustitre")
         hommeTitle.textContent = 'Boug (coté Papa)';
         hommeList.appendChild(hommeTitle);
         
@@ -56,15 +53,14 @@ fetch('data.json')
             const link = document.createElement('a');
             link.textContent = person.nom + ' ' + person.prenom;
             link.href = 'person.html?id=' + person.id;
-            link.classList.add("lien"); //ajout la classe lien du ccs au lien
+            link.classList.add("lienM"); //ajout la classe lien du ccs au lien
             listItem.appendChild(link);
             hommeList.appendChild(listItem);
         });
 
         // Titre pour la liste des femmes
         const femmeTitle = document.createElement('h5');
-        femmeTitle.style.color = "#999";
-        femmeTitle.style.fontStyle ="italic";
+        femmeTitle.classList.add("soustitre")
         femmeTitle.textContent = 'Fanm (coté Papa)';
         femmeList.appendChild(femmeTitle);
         
@@ -76,15 +72,14 @@ fetch('data.json')
             const link = document.createElement('a');
             link.textContent = person.nom + ' ' + person.prenom;
             link.href = 'person.html?id=' + person.id;
-            link.classList.add("lien"); //ajout la classe lien du ccs au lien
+            link.classList.add("lienF"); //ajout la classe lien du ccs au lien
             listItem.appendChild(link);
             femmeList.appendChild(listItem);
         });
         
          // Titre pour la liste des hommes coté maternelle
         const hommeTitleMat = document.createElement('h5');
-        hommeTitleMat.style.color = "#999";
-        hommeTitleMat.style.fontStyle ="italic";
+        hommeTitleMat.classList.add("soustitre")
         hommeTitleMat.textContent = 'Boug (coté Momon)';
         hommeListMat.appendChild(hommeTitleMat);
         
@@ -96,15 +91,14 @@ fetch('data.json')
             const linkMat = document.createElement('a');
             linkMat.textContent = person.nom + ' ' + person.prenom;
             linkMat.href = 'person.html?id=' + person.id;
-            linkMat.classList.add("lien"); //ajout la classe lien du ccs au lien
+            linkMat.classList.add("lienM"); //ajout la classe lien du ccs au lien
             listItemMat.appendChild(linkMat);
             hommeListMat.appendChild(listItemMat);
         });
 
         // Titre pour la liste des femmes coté maternelle
         const femmeTitleMat = document.createElement('h5');
-        femmeTitleMat.style.color = "#999";
-        femmeTitleMat.style.fontStyle ="italic";
+        femmeTitleMat.classList.add("soustitre")
         femmeTitleMat.textContent = 'Fanm (coté Momon)';
         femmeListMat.appendChild(femmeTitleMat);
         
@@ -116,7 +110,7 @@ fetch('data.json')
             const linkMat = document.createElement('a');
             linkMat.textContent = person.nom + ' ' + person.prenom;
             linkMat.href = 'person.html?id=' + person.id;
-            linkMat.classList.add("lien"); //ajout la classe lien du ccs au lien
+            linkMat.classList.add("lienF"); //ajout la classe lien du ccs au lien
             listItemMat.appendChild(linkMat);
             femmeListMat.appendChild(listItemMat);
         });
