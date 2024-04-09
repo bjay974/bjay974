@@ -20,6 +20,7 @@ fetch('data.json')
         familleTitle.style.color = "#999";
         familleTitle.style.fontStyle ="italic";
         familleTitle.textContent = 'A nou';
+        familleTitle.classList.add("soustitre")
         familleList.appendChild(familleTitle);
 
         // Parcourir chaque membre dans les données
