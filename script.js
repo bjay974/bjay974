@@ -19,7 +19,7 @@ fetch('data.json')
         const familleTitle = document.createElement('h5');
         familleTitle.style.color = "#999";
         familleTitle.style.fontStyle ="italic";
-        familleTitle.textContent = 'Famille';
+        familleTitle.textContent = 'A nou';
         familleList.appendChild(familleTitle);
 
         // Parcourir chaque membre dans les données
@@ -44,7 +44,7 @@ fetch('data.json')
         const hommeTitle = document.createElement('h5');
         hommeTitle.style.color = "#999";
         hommeTitle.style.fontStyle ="italic";
-        hommeTitle.textContent = 'Hommes (Branche Paternelle)';
+        hommeTitle.textContent = 'Boug (coté Papa)';
         hommeList.appendChild(hommeTitle);
         
         // Parcourir chaque homme dans les données
@@ -64,7 +64,7 @@ fetch('data.json')
         const femmeTitle = document.createElement('h5');
         femmeTitle.style.color = "#999";
         femmeTitle.style.fontStyle ="italic";
-        femmeTitle.textContent = 'Femmes (Branche Paternelle)';
+        femmeTitle.textContent = 'Fanm (coté Papa)';
         femmeList.appendChild(femmeTitle);
         
         // Parcourir chaque femme dans les données
@@ -84,7 +84,7 @@ fetch('data.json')
         const hommeTitleMat = document.createElement('h5');
         hommeTitleMat.style.color = "#999";
         hommeTitleMat.style.fontStyle ="italic";
-        hommeTitleMat.textContent = 'Hommes (Branche Maternelle)';
+        hommeTitleMat.textContent = 'Boug (coté Momon)';
         hommeListMat.appendChild(hommeTitleMat);
         
         // Parcourir chaque homme dans les données
@@ -104,7 +104,7 @@ fetch('data.json')
         const femmeTitleMat = document.createElement('h5');
         femmeTitleMat.style.color = "#999";
         femmeTitleMat.style.fontStyle ="italic";
-        femmeTitleMat.textContent = 'Femmes (Branche Maternelle)';
+        femmeTitleMat.textContent = 'Fanm (coté Momon)';
         femmeListMat.appendChild(femmeTitleMat);
         
         // Parcourir chaque femme dans les données
