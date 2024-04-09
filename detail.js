@@ -120,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fatherItem = document.createElement('li');
                     fatherItem.innerHTML = `<em>Père </em> inconnu`;
                     detailsList.appendChild(fatherItem);
-                    
+                   
                 }
                 
               // Charger la mère si l'ID de la mère est défini
@@ -131,10 +131,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
                             motherItem.classList.add('special-li');
-                            motherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${mother.nom} ${mother.prenom}</strong>`;
+                            motherItem.innerHTML = `<em>et de \t\t</em><strong> ${mother.nom} ${mother.prenom}</strong>`;
                         }
                         else {
-                        motherItem.innerHTML = `<em>et de \t\t</em><strong> ${mother.nom} ${mother.prenom}</strong>`;
+                            motherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${mother.nom} ${mother.prenom}</strong>`;
                         }
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
