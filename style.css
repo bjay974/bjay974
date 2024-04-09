@@ -7,6 +7,17 @@ body {
     height: 100%;
 }
 
+.soustitre {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #666;
+    color: #fff;
+    z-index: 1000;
+}
+
 header {
     background-color: #333;
     color: #fff;
