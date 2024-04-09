@@ -30,6 +30,26 @@ nav a:hover {
     background-color: #999;
 }
 
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-child {
+    display: none;
+    background-color: #999;
+}
+
+.dropdown-child a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 5px;
+}
+
+.dropdown:hover .dropdown-child {
+    display: block;
+}
+
 section {
     padding: 5px 5px 5px 5px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
