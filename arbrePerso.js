@@ -37,21 +37,22 @@ function displayPersonne(personneId, containerClass, data) {
     var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
-    var naissance = '\u{1F476}'
+    var icone = '\u{1F476}'
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
     if (person.date_naissance !== "01/01/1901") {
       var dateNaissance = verifieDate(person.date_naissance);
-      personHTML += '<p>' + naissance + '  ' + dateNaissance + '</p>';
+      personHTML += '<p>' + icone + '  ' + dateNaissance + '</p>';
     }
 
     if (person.date_deces) {
       var dateDeces = verifieDate(person.date_deces);
+      icone = '\u{1F951}'
       if (person.date_deces === "01/01/1901") {
         personHTML += '<p>Date de décès inconnue</p>'; }
       else {   
-      personHTML += '<p>Décès : ' + dateDeces + '</p>'; }
+      personHTML += '<p>' + icone + '  ' +  dateDeces + '</p>'; }
     }
     personHTML += '</div>';
     container.innerHTML += personHTML;
