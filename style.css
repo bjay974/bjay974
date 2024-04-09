@@ -11,8 +11,8 @@ body {
     text-align: center;
     background-color: #666;
     color: #fff;
-    padding: 10px;
-    margin-top: 20px;
+    padding: 0px;
+    margin-top: 10px;
     width: 100%;
     box-sizing: border-box; 
     font-style: italic;
@@ -76,12 +76,12 @@ nav a:hover {
     padding: 5px 5px;
 }
 
-nav a: hover .dropdown-child {
+nav a:hover .dropdown-child {
     display: block;
 }
 
 section {
-    padding: 5px 5px 5px 5px;
+    padding: 0px 0px 0px 0px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
     text-align: center;
     min-height: calc(100vh - 160px);
