@@ -38,12 +38,14 @@ function displayPersonne(personneId, containerClass, data) {
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
     var naissance = '\u{1F476}'
-    container.className = containerClass;
-    var dateNaissance = verifieDate(person.date_naissance);
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+    container.className = containerClass;
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-    personHTML += '<p>' + naissance + ' : ' + dateNaissance + '</p>';
-    // Ajouter la date de décès si elle existe
+    if (person.date_naissance) {
+      var dateNaissance = verifieDate(person.date_naissance);
+      personHTML += '<p>' + naissance + '  ' + dateNaissance + '</p>';
+    }
+
     if (person.date_deces) {
       var dateDeces = verifieDate(person.date_deces);
       if (person.date_deces === "01/01/1901") {

@@ -213,11 +213,17 @@ document.addEventListener('DOMContentLoaded', () => {
             const arbrePersoItem = document.createElement('h4');
             const arbrePersoLink = document.createElement('a');
             const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(person.prenom.charAt(0));
-            if (prenomVoyelle) {
-                arbrePersoLink.textContent = `Arbre d'${person.prenom}`;
+
+            if (person.prenom) {
+                if (prenomVoyelle) {
+                    arbrePersoLink.textContent = `Arbre d'${person.prenom}`;
+                }
+                else {
+                    arbrePersoLink.textContent = `Arbre de ${person.prenom}`; 
+                }
             }
             else {
-                arbrePersoLink.textContent = `Arbre de ${person.prenom}`; 
+                arbrePersoLink.textContent = `Voir son arbre`;
             }
             arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
             arbrePersoLink.style.textDecoration = "none";
