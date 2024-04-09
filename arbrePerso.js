@@ -41,7 +41,7 @@ function displayPersonne(personneId, containerClass, data) {
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-    if (person.date_naissance) {
+    if (person.date_naissance !=== "01/01/1901") {
       var dateNaissance = verifieDate(person.date_naissance);
       personHTML += '<p>' + naissance + '  ' + dateNaissance + '</p>';
     }
@@ -275,11 +275,7 @@ function verifieDate(date) {
   const mois = parseInt(date.substr(3, 2));
   const day = parseInt(date.substr(0, 2));
   if (day === 1 && mois === 1) {
-      if (an === 1901) {
-          return "" ;
-      }  else {
-          return "en " + an;
-      }
+     return "en " + an;
   } else {
       return "le " + date;
   }
