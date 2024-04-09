@@ -17,7 +17,7 @@ fetch('data.json')
         
         // Titre pour la liste de famille
         const familleTitle = document.createElement('h5');
-        familleTitle.style.color = "blue";
+        familleTitle.style.color = "#999";
         familleTitle.style.fontStyle ="italic";
         familleTitle.textContent = 'Famille';
         familleList.appendChild(familleTitle);
@@ -42,7 +42,7 @@ fetch('data.json')
 
         // Titre pour la liste des hommes
         const hommeTitle = document.createElement('h5');
-        hommeTitle.style.color = "blue";
+        hommeTitle.style.color = "#999";
         hommeTitle.style.fontStyle ="italic";
         hommeTitle.textContent = 'Hommes (Branche Paternelle)';
         hommeList.appendChild(hommeTitle);
@@ -62,7 +62,7 @@ fetch('data.json')
 
         // Titre pour la liste des femmes
         const femmeTitle = document.createElement('h5');
-        femmeTitle.style.color = "blue";
+        femmeTitle.style.color = "#999";
         femmeTitle.style.fontStyle ="italic";
         femmeTitle.textContent = 'Femmes (Branche Paternelle)';
         femmeList.appendChild(femmeTitle);
@@ -82,7 +82,7 @@ fetch('data.json')
         
          // Titre pour la liste des hommes coté maternelle
         const hommeTitleMat = document.createElement('h5');
-        hommeTitleMat.style.color = "blue";
+        hommeTitleMat.style.color = "#999";
         hommeTitleMat.style.fontStyle ="italic";
         hommeTitleMat.textContent = 'Hommes (Branche Maternelle)';
         hommeListMat.appendChild(hommeTitleMat);
@@ -102,7 +102,7 @@ fetch('data.json')
 
         // Titre pour la liste des femmes coté maternelle
         const femmeTitleMat = document.createElement('h5');
-        femmeTitleMat.style.color = "blue";
+        femmeTitleMat.style.color = "#999";
         femmeTitleMat.style.fontStyle ="italic";
         femmeTitleMat.textContent = 'Femmes (Branche Maternelle)';
         femmeListMat.appendChild(femmeTitleMat);
