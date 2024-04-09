@@ -108,18 +108,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    const father = data.find(p => p.id === person.id_pere);
+                    var father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
                         const adjectif_genre = ajouterParent(person.genre);
                         fatherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom} ${father.prenom}</strong>`;
                         detailsList.appendChild(fatherItem);
                     } 
-                 else {
+                }
+                else {
                     const fatherItem = document.createElement('li');
                     fatherItem.innerHTML = `<em>Père </em> inconnu`;
                     detailsList.appendChild(fatherItem);
-                    }
+                    
                 }
                 
               // Charger la mère si l'ID de la mère est défini
@@ -138,12 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                      }
-                 else {
+                }
+                else {
                     const motherItem = document.createElement('li');
                     motherItem.innerHTML = `<em>Mère</em> inconnue`;
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    }   
                 }
                 
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
