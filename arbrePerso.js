@@ -48,7 +48,7 @@ function displayPersonne(personneId, containerClass, data) {
 
     if (person.date_deces) {
       var dateDeces = verifieDate(person.date_deces);
-      icone = '\u{1F951}'
+      icone = '\u{1F64F}'
       if (person.date_deces === "01/01/1901") {
         personHTML += '<p>Date de décès inconnue</p>'; }
       else {   
