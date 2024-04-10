@@ -60,14 +60,14 @@ footer {
 
 .list {
     margin-top: 0px;
-    padding: 0px 0px 0px 0px;
-    margin-left: 0px;
+    padding: 0px 10px 0px 20px;
+    margin-left: 5px;
     text-align: left; /* Aligne la liste à gauche */
     margin-right: 10px;
 }
 
 .list-detail {
-    padding: 5px 5px 5px 5px;
+    padding: 0px 0px 0px 0px;
     margin-top: 0px;
     margin-left: 0px;
     list-style-type: none; /* Supprime les puces des listes */
