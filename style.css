@@ -63,12 +63,13 @@ nav a:hover {
 
 .dropdown-child {
     display: none;
-    background-color: #999;
+    background-color: #666;
     transition: 0.5s padding, 0.5s background;
     position: absolute;
     top: 100%;
     left: 0;
     width: 100%;
+    white-space: nowrap;
 }
 
 .dropdown-child a {
@@ -80,6 +81,7 @@ nav a:hover {
 
 .dropdown:hover .dropdown-child {
     display: block;
+    background-color: #999;
 }
 
 section {
