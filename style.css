@@ -65,12 +65,17 @@ nav a:hover {
     display: none;
     background-color: #999;
     transition: 0.5s padding, 0.5s background;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
 }
 
 .dropdown-child a {
     color: #fff;
     text-decoration: none;
     padding: 5px 5px;
+    display: block;
 }
 
 .dropdown:hover .dropdown-child {
