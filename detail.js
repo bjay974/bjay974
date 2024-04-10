@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
                 nameItem.classList.add('soustitre');
-                if (person.nom_genre === "M") {
+                if (person.genre === "M") {
                     nameItem.style.color = "rgb(11, 65, 83)";
                 }
                 else{
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
             arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
             arbrePersoLink.style.textDecoration = "none";
             arbrePersoLink.style.color = "#999"; 
-            arbrePersoLink.style.fontSize = "80%";
+            arbrePersoLink.style.fontSize = "90%";
             arbrePersoItem.appendChild(arbrePersoLink);
             detailsList.appendChild(arbrePersoItem);
                 

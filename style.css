@@ -8,14 +8,14 @@ body {
 }
 
 .soustitre {
-    text-align: center;
-    background-color: #666;
+    text-align: left;
+    background-color: #999;
     color: #fff;
     margin-top: 20px;
     width: 100%;
     font-style: italic;
     font-weight: bold; 
-    padding: 5px 5px;
+    padding: 5px 30px;
 }
 
 header {
@@ -60,15 +60,16 @@ footer {
 
 .list {
     margin-top: 0px;
+    padding: 0px 0px 0px 0px;
     margin-left: 0px;
     text-align: left; /* Aligne la liste à gauche */
     margin-right: 10px;
 }
 
 .list-detail {
-    padding: 10px 5px 5px 5px;
-    margin-top: 1px;
-    margin-left: 1px;
+    padding: 5px 5px 5px 5px;
+    margin-top: 0px;
+    margin-left: 0px;
     list-style-type: none; /* Supprime les puces des listes */
     text-align: left; /* Aligne la liste à gauche */
 }
