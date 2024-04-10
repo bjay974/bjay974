@@ -41,49 +41,6 @@ nav a:hover {
     background-color: #999;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-child:after {
-    content: "";
-    display: block;
-    height: 0;
-    border-top: 5px solid #ebebeb;
-    border-left: solid transparent;
-    border-right: solid transparent;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 101;
-    transition: 0.5s border-top;
-  }
-  
-
-.dropdown-child {
-    display: none;
-    background-color: #666;
-    transition: 0.5s padding, 0.5s background;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    width: 100%;
-    white-space: nowrap;
-}
-
-.dropdown-child a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 5px;
-    display: block;
-}
-
-.dropdown:hover .dropdown-child {
-    display: block;
-    background-color: #999;
-}
-
 section {
     padding: 0px 0px 0px 0px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
@@ -133,7 +90,6 @@ footer {
     margin-left: 0px;
     text-align: left; /* Aligne la liste à gauche */
     margin-right: 10px;
-    list-style-color: blue;
 }
 
 .lienF {
@@ -143,7 +99,6 @@ footer {
     margin-left: 0px;
     text-align: left; /* Aligne la liste à gauche */
     margin-right: 10px;
-    list-style-color: red;
 }
 
 .special-li {
