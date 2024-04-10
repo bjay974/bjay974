@@ -75,7 +75,7 @@ nav a:hover {
     padding: 5px 5px;
 }
 
-nav:hover .dropdown-child {
+.nav-item:hover .dropdown-child {
     display: block;
 }
 
