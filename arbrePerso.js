@@ -77,7 +77,6 @@ function displayPersonne(personneId, containerClass, data) {
           title.textContent = "Conjointe";
         }
       }
-      title.style.fontStyle = 'italic';
       title.classList.add('label'); 
       container.appendChild(title); 
 
@@ -107,7 +106,6 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
     } else {
       title.textContent = titrePatSansS;
     }
-    title.style.fontStyle = 'italic';
     title.classList.add('label'); 
     container.appendChild(title);
   }
@@ -134,7 +132,6 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
     } else {
       title.textContent = titreMatSansS;
     }
-    title.style.fontStyle = 'italic';
     title.classList.add('label'); 
     container.appendChild(title);
   }
@@ -168,7 +165,6 @@ function displayRelations(fatherId, motherId, containerClass, data) {
           title.textContent = "Parent";
         }
         title.textContent = "Parents";
-        title.style.fontStyle = 'italic';
         title.classList.add('label'); 
         container.appendChild(title);
     
@@ -211,7 +207,6 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       } else {
         title.textContent = "Enfants";
       }
-      title.style.fontStyle = 'italic';
       title.classList.add('label'); 
       container.appendChild(title);
       // Afficher les enfants
@@ -238,7 +233,6 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       } else {
         title.textContent = "Petits Enfants";
       }
-      title.style.fontStyle = 'italic';
       title.classList.add('label'); 
       container.appendChild(title);
       // Afficher les petits-enfants

@@ -70,7 +70,7 @@ footer {
     padding: 0px 0px 0px 0px;
     margin-top: 0px;
     margin-left: 0px;
-    list-style-type: none; /* Supprime les puces des listes */
+    list-style-type: none; 
     text-align: left; /* Aligne la liste à gauche */
 }
 
@@ -136,7 +136,18 @@ footer {
 
 .label {
    color:#999;
+   font-style: italic;
 }
+
+.labelArbre {
+    color:#423d3d;
+    font-style: italic;
+    padding-left: 30px;
+    margin-left: 20px;
+    margin-top: 10px;
+    font-size: 90%;
+    text-align: left;
+ }
 
 .container1 .male + .female {margin-top: 20px}
 .container1 .female + .male {margin-top: 60px}
