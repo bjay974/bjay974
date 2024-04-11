@@ -18,6 +18,17 @@ body {
     padding: 5px 30px;
 }
 
+.soustitreArbre {
+    text-align: left;
+    background-color: #999;
+    color: #1a1919;
+    margin-top: 20px;
+    width: 100%;
+    font-weight: bold; 
+    padding: 5px 30px;
+    list-style-type: none; 
+}
+
 header {
     background-color: #333;
     color: #fff;
