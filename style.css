@@ -260,8 +260,8 @@ footer {
 
 .male, .female {
     min-height: 25px;
-    background-color: rgb(185, 208, 216); /* Fond gris */
-    color: rgb(39, 39, 99); 
+    background-color: rgb(213, 230, 236); /* Fond gris */
+    color: rgb(9, 9, 73); 
     padding: 10px 5px 10px 5px;
     border-radius: 5px; /* Bordures arrondies */
     text-decoration: none;  
@@ -270,7 +270,7 @@ footer {
  }
 
 .female {
-    background-color: rgb(201, 174, 178);
-    color: rgb(53, 16, 16); 
+    background-color: rgb(228, 215, 216);
+    color: rgb(83, 10, 10); 
 }
 
