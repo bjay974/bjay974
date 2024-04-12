@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             const conjointItem = document.createElement('li');
                             conjointItem.classList.add('special-li');
                             conjointItem.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            conjointItem.href = 'person.html?id=' + person.id;
+                            conjointItem.style.textDecoration = "none";
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
@@ -106,6 +108,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
+                            conjointItem.href = 'person.html?id=' + person.id;
+                            conjointItem.style.textDecoration = "none";
+                            if (conjoint.genre==="M"){
+                                conjointItem.style.color = "rgb(11, 65, 83)";
+                            }
+                            else {
+                                conjointItem.style.color = "#583a3a";
+                            }
                             conjointItem.innerHTML = `${adjectif_genre} <strong>${conjoint.nom}</strong> ${conjoint.prenom}` ;
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
