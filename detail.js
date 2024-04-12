@@ -77,14 +77,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             nomLink.style.textDecoration = "none";
-                            conjointItem.style.textDecoration = "none";                            
+                            conjointItem.appendChild(document.createTextNode(' à :  '));                            
                             if (conjoint.genre==="M"){
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${conjoint.nom}</span`;
-                                nomLink.innerHTML = `à : <strong>${nomEnCouleur} ${conjoint.prenom}</strong>`;
+                                nomLink.innerHTML = `<strong>${nomEnCouleur} ${conjoint.prenom}</strong>`;
                             }
                             else {
                                 const nomEnCouleur = `<span style="color:#583a3a;">${conjoint.nom}</span`;
-                                nomLink.innerHTML = `à : <strong>${nomEnCouleur} ${conjoint.prenom}</strong>`;
+                                nomLink.innerHTML = `<strong>${nomEnCouleur} ${conjoint.prenom}</strong>`;
                             }
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);    
