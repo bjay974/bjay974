@@ -254,6 +254,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   ficLink.target = '_blank';                                  
                                   ficLink.style.textDecoration = "none";
                                   ficLink.style.color = "#999"; 
+                                  ficLink.style.fontSize = "90%";
                                   acteItem.appendChild(ficLink);
                                   const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
                                   fetch(`${monFichierBis}`)
@@ -264,6 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                           ficLinkbis.href = monFichierBis;                                          
                                           ficLinkbis.style.textDecoration = "none";
                                           ficLinkbis.style.color = "#999";
+                                          ficLinkbis.style.fontSize = "90%";
                                           acteItem.appendChild(document.createTextNode('  ||  '));
                                           acteItem.appendChild(ficLinkbis);
                                   } })
