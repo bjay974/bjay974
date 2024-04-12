@@ -1,6 +1,6 @@
 body {
     font-family: Georgia;
-    padding: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px; /* haut | droit | bas | gauche */
     margin: 0px 0px 0px 0px;
     background-color: #f2f2f2;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
@@ -54,7 +54,7 @@ nav a:hover {
 }
 
 section {
-    padding: 1px 0px 1px 0px;
+    padding: 5px 0px 5px 5px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
     text-align: center;
     height: 100%;
@@ -72,14 +72,14 @@ footer {
 
 .list {
     margin-top: 0px;
-    padding: 0px 10px 0px 20px;
+    padding: 0px 0px 5px 20px;
     margin-left: 5px;
     text-align: left; /* Aligne la liste à gauche */
     margin-right: 10px;
 }
 
 .list-detail {
-    padding: 0px 0px 0px 0px;
+    padding: 2px 0px 0px 5px;
     margin-top: 0px;
     margin-left: 0px;
     list-style-type: none; 

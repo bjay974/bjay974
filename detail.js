@@ -125,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else {
                     const fatherItem = document.createElement('li');
+                    fatherItem.style.color = "rgb(11, 65, 83)";
                     fatherItem.innerHTML = `<em>Père </em> inconnu`;
                     detailsList.appendChild(fatherItem);
                    
@@ -150,6 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else {
                     const motherItem = document.createElement('li');
+                    motherItem.style.color = "#583a3a";
                     motherItem.innerHTML = `<em>Mère</em> inconnue`;
                     detailsList.appendChild(motherItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
