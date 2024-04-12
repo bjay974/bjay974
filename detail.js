@@ -138,10 +138,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (father) {
                         const fatherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
-                        fatherItem.style.color = "rgb(11, 65, 83)";
+                        nomLink.style.textDecoration = "none";
+                        nomLink.style.color = "rgb(11, 65, 83)";
                         const adjectif_genre = ajouterParent(person.genre);
                         nomLink.href = 'person.html?id=' + father.id;
-                        nomLink.style.textDecoration = "none";                        
                         nomLink.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom}</strong> ${father.prenom}`;
                         fatherItem.appendChild(nomLink);
                         detailsList.appendChild(fatherItem);
