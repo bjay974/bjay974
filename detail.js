@@ -67,10 +67,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
+                            conjointItem.href = 'person.html?id=' + person.id;
+                            conjointItem.style.textDecoration = "none";                            
                             conjointItem.classList.add('special-li');
                             conjointItem.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
-                            conjointItem.href = 'person.html?id=' + person.id;
-                            conjointItem.style.textDecoration = "none";
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
@@ -129,6 +129,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fatherItem = document.createElement('li');
                         fatherItem.style.color = "rgb(11, 65, 83)";
                         const adjectif_genre = ajouterParent(person.genre);
+                        fatherItem.href = 'person.html?id=' + person.id;
+                        fatherItem.style.textDecoration = "none";                        
                         fatherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom}</strong> ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
                     } 
@@ -146,6 +148,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
                         const motherItem = document.createElement('li');
+                        motherItem.href = 'person.html?id=' + person.id;
+                        motherItem.style.textDecoration = "none";
                         motherItem.style.color = "#583a3a";
                         const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
@@ -181,6 +185,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
+                        childItem.href = 'person.html?id=' + person.id;
+                        childItem.style.textDecoration = "none";
                         if (child.genre==="M"){
                             childItem.style.color = "rgb(11, 65, 83)";
                         }
