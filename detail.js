@@ -69,9 +69,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             const conjointItem = document.createElement('li');
                             conjointItem.classList.add('special-li');
                             const nomLink = document.createElement('a');
-                            nomLink.href = 'person.html?id=' + person.id;
+                            nomLink.href = 'person.html?id=' + conjoint.id;
                             nomLink.style.textDecoration = "none";                            
                             nomLink.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            if (conjoint.genre==="M"){
+                                nomLink.style.color = "rgb(11, 65, 83)";
+                            }
+                            else {
+                                nomLink.style.color = "#583a3a";
+                            }
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
