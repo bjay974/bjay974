@@ -126,9 +126,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             conjointItem.style.textDecoration = "none";
-                            nomLink.style.textDecoration = "none";
-                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
-                            conjointItem.appendChild(document.createTextNode(adjectif_genre + ' : ' ));  
+                            nomLink.style.textDecoration = "const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
+const texteNode = document.createTextNode(adjectif_genre + ': ');
+conjointItem.appendChild(texteNode);
+
                             if (conjoint.genre==="M"){
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
                                 nomLink.innerHTML = `${nomEnCouleur}` ;
