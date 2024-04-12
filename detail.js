@@ -151,10 +151,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomLink = document.createElement('a');
                         fatherItem.style.textDecoration = "none";
                         nomLink.style.textDecoration = "none";
-                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${father.nom}</span`;
+                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong>' '${father.prenom} </span>`;
                         const adjectif_genre = ajouterParent(person.genre);
+                        fatherItem.appendChild(document.createTextNode(' '${adjectif_genre}' de '));  
                         nomLink.href = 'person.html?id=' + father.id;
-                        nomLink.innerHTML = `<em>${adjectif_genre} de </em><strong>${nomEnCouleur}</strong> ${father.prenom}`;
+                        nomLink.innerHTML = `${nomEnCouleur}`;
                         fatherItem.appendChild(nomLink);
                         detailsList.appendChild(fatherItem);
                     } 
@@ -175,15 +176,17 @@ document.addEventListener('DOMContentLoaded', () => {
                         nomLink.href = 'person.html?id=' + mother.id;
                         motherItem.style.textDecoration = "none";
                         nomLink.style.textDecoration = "none";
-                        const nomEnCouleur = `<span style="color:#583a3a;">${mother.nom}</span`;
+                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong>' '${mother.prenom} </span>`;
                         const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
                             motherItem.classList.add('special-li');
-                            nomLink.innerHTML = `<em>et de \t\t</em><strong> ${nomEnCouleur}</strong> ${mother.prenom}`;
+                            fatherItem.appendChild(document.createTextNode(' et de ')); 
+                            
                         }
                         else {
-                            nomLink.innerHTML = `<em>${adjectif_genre} de </em><strong>${nomEnCouleur} </strong>${mother.prenom}`;
+                            fatherItem.appendChild(document.createTextNode(' de ')); 
                         }
+                        nomLink.innerHTML = `${nomEnCouleur}`;
                         motherItem.appendChild(nomLink);
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
