@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fatherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         nomLink.style.textDecoration = "none";
-                        nomLink.style.color = "rgb(11, 65, 83)";
+                        nomLink.style.color = "#583a3a";
                         const adjectif_genre = ajouterParent(person.genre);
                         nomLink.href = 'person.html?id=' + father.id;
                         nomLink.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom}</strong> ${father.prenom}`;
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else {
                     const fatherItem = document.createElement('li');
-                    fatherItem.style.color = "rgb(11, 65, 83)";
+                    fatherItem.style.color = "#583a3a";
                     fatherItem.innerHTML = `<em>Père </em> inconnu`;
                     detailsList.appendChild(fatherItem);
                    
@@ -163,7 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomLink = document.createElement('a');
                         nomLink.href = 'person.html?id=' + mother.id;
                         nomLink.style.textDecoration = "none";
-                        nomLink.style.color = "#583a3a";
+                        nomLink.style.color = "rgb(11, 65, 83)";
                         const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
                             motherItem.classList.add('special-li');
