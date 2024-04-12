@@ -42,8 +42,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        const nomEnBleu = `<span style="color:blue;">${person.nom_legitime}</span`
-                        legDateItem.innerHTML = `<em>${adjectif_genre}<strong> ${nomEnBleu} </strong></em> ${dateVerified}`;
+                        const nomEnCouleur = `<span style="color:blue;"><strong>${person.nom_legitime}</strong></span`;
+                        if (personne.genre==="M"){
+                            const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span`;
+                        }
+                        else {
+                            const nomEnCouleur = `<span style="color:#583a3a;"><strong>${person.nom_legitime}</strong></span`;
+                        }
+
+                        legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                         detailsList.appendChild(legDateItem);
                     }
                     if (!person.date_deces) {
@@ -71,13 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             nomLink.style.textDecoration = "none";                            
-                            nomLink.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
                             if (conjoint.genre==="M"){
-                                nomLink.style.color = "rgb(11, 65, 83)";
+                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${conjoint.nom}</span`;
                             }
                             else {
-                                nomLink.style.color = "#583a3a";
+                                const nomEnCouleur = `<span style="color:#583a3a;">${conjoint.nom}</span`;
                             }
+                            nomLink.innerHTML = `à : <strong>${nomEnCouleur} ${conjoint.prenom}</strong>`;
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -120,12 +127,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             nomLink.style.textDecoration = "none";
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
                             if (conjoint.genre==="M"){
-                                nomLink.style.color = "rgb(11, 65, 83)";
+                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${conjoint.nom}</span`;
                             }
                             else {
-                                nomLink.style.color = "#583a3a";
+                                const nomEnCouleur = `<span style="color:#583a3a;">${conjoint.nom}</span`;
                             }
-                            nomLink.innerHTML = `${adjectif_genre} <strong>${conjoint.nom}</strong> ${conjoint.prenom}` ;
+                            nomLink.innerHTML = `${adjectif_genre} <strong>${nomEnCouleur}</strong> ${conjoint.prenom}` ;
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
