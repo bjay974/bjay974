@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
                         const nomEnCouleur = `<span style="color:blue;"><strong>${person.nom_legitime}</strong></span`;
-                        if (personne.genre==="M"){
+                        if (person.genre==="M"){
                             const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span`;
                         }
                         else {
