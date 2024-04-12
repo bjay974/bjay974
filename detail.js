@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
-                            conjointItem.innerHTML = `<strong>${adjectif_genre} ${conjoint.nom} ${conjoint.prenom}</strong>` ;
+                            conjointItem.innerHTML = `${adjectif_genre} <strong>${conjoint.nom}</strong> ${conjoint.prenom}` ;
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }    } 
@@ -117,8 +117,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     var father = data.find(p => p.id === person.id_pere);
                     if (father) {
                         const fatherItem = document.createElement('li');
+                        fatherItem.style.color = "rgb(11, 65, 83)";
                         const adjectif_genre = ajouterParent(person.genre);
-                        fatherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom} ${father.prenom}</strong>`;
+                        fatherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom}</strong> ${father.prenom}`;
                         detailsList.appendChild(fatherItem);
                     } 
                 }
@@ -134,13 +135,14 @@ document.addEventListener('DOMContentLoaded', () => {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
                         const motherItem = document.createElement('li');
+                        motherItem.style.color = "#583a3a";
                         const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
                             motherItem.classList.add('special-li');
-                            motherItem.innerHTML = `<em>et de \t\t</em><strong> ${mother.nom} ${mother.prenom}</strong>`;
+                            motherItem.innerHTML = `<em>et de \t\t</em><strong> ${mother.nom}</strong> ${mother.prenom}`;
                         }
                         else {
-                            motherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${mother.nom} ${mother.prenom}</strong>`;
+                            motherItem.innerHTML = `<em>${adjectif_genre} de </em><strong>${mother.nom} </strong>${mother.prenom}`;
                         }
                         detailsList.appendChild(motherItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -158,10 +160,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (childrenOfPerson.length > 0) {
                     childrenOfPerson.sort((a, b) => b.id - a.id);
                     const childrenOfPersonList = document.createElement('li');
-                    childrenOfPersonList.innerHTML = "<strong>Enfant(s)</strong> :";
+                    if (childrenOfPerson.length === 1) {
+                        childrenOfPersonList.innerHTML = "<strong>Enfant</strong> :";
+                    }
+                    else {
+                        childrenOfPersonList.innerHTML = "<strong>Enfants</strong> :";    
+                    }
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
+                        if (child.genre==="M"){
+                            childItem.style.color = "rgb(11, 65, 83)";
+                        }
+                        else {
+                            childItem.style.color = "#583a3a";
+                        }
                         childItem.textContent = `${child.nom} ${child.prenom}`;
                         childrenOfPersonUl.appendChild(childItem);
                     });

@@ -15,7 +15,7 @@ body {
     width: 100%;
     font-style: italic;
     font-weight: bold; 
-    padding: 5px 30px;
+    padding: 5px 0px 5px 30px;
 }
 
 .soustitreArbre {
@@ -25,7 +25,7 @@ body {
     margin-top: 20px;
     width: 100%;
     font-weight: bold; 
-    padding: 5px 30px;
+    padding: 5px 0px 5px 30px;
     text-decoration: none;
 }
 
