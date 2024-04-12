@@ -67,10 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
-                            conjointItem.href = 'person.html?id=' + person.id;
-                            conjointItem.style.textDecoration = "none";                            
                             conjointItem.classList.add('special-li');
-                            conjointItem.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            const nomLink = document.createElement('a');
+                            nomLink.href = 'person.html?id=' + person.id;
+                            nomLink.style.textDecoration = "none";                            
+                            nomLink.innerHTML = `à : <strong>${conjoint.nom} ${conjoint.prenom}</strong>`;
+                            conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);    
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }
