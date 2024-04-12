@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         nomLink.href = 'person.html?id=' + person.id;
                         nomLink.style.textDecoration = "none";                        
                         nomLink.innerHTML = `<em>${adjectif_genre} de </em><strong>${father.nom}</strong> ${father.prenom}`;
-                        conjointItem.appendChild(nomLink);
+                        fatherItem.appendChild(nomLink);
                         detailsList.appendChild(fatherItem);
                     } 
                 }
