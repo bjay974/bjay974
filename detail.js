@@ -43,11 +43,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
                         if (person.genre==="M"){
-                            const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span`;
+                            const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span>`;
                             legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                         }
                         else {
-                            const nomEnCouleur = `<span style="color:#583a3a;"><strong>${person.nom_legitime}</strong></span`;
+                            const nomEnCouleur = `<span style="color:#583a3a;"><strong>${person.nom_legitime}</strong></span>`;
                             legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                         }
                         detailsList.appendChild(legDateItem);
@@ -76,6 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             conjointItem.classList.add('special-li');
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
+                            nomLink.style.textDecoration = "none";
                             conjointItem.style.textDecoration = "none";                            
                             if (conjoint.genre==="M"){
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${conjoint.nom}</span`;
@@ -125,6 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             conjointItem.style.textDecoration = "none";
+                            nomLink.style.textDecoration = "none";
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
                             if (conjoint.genre==="M"){
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${conjoint.nom}</span`;
@@ -147,6 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fatherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         fatherItem.style.textDecoration = "none";
+                        nomLink.style.textDecoration = "none";
                         const nomEnCouleur = `<span style="color:rgb(11, 65, 83);">${father.nom}</span`;
                         const adjectif_genre = ajouterParent(person.genre);
                         nomLink.href = 'person.html?id=' + father.id;
@@ -171,6 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomLink = document.createElement('a');
                         nomLink.href = 'person.html?id=' + mother.id;
                         motherItem.style.textDecoration = "none";
+                        nomLink.style.textDecoration = "none";
                         const nomEnCouleur = `<span style="color:#583a3a;">${mother.nom}</span`;
                         const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
@@ -238,8 +242,8 @@ document.addEventListener('DOMContentLoaded', () => {
                           fetch(`${monFichier}`)
                           .then(response => {
                               if (response.ok) {
-                                  const acteItem = document.createElement('li');
-                                  const ficLink = document.createElement('h4');
+                                  const acteItem = document.createElement('h4');
+                                  const ficLink = document.createElement('a');
                                   if (repertoire === "particulier"){
                                        ficLink.textContent = `Voir l'acte spécial`;}
                                   else if (repertoire === "deces"){
@@ -255,7 +259,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                   fetch(`${monFichierBis}`)
                                   .then(response => {
                                       if (response.ok) {
-                                          const ficLinkbis = document.createElement('h4');
+                                          const ficLinkbis = document.createElement('a');
                                           ficLinkbis.textContent = `Voir la Partie 2`;
                                           ficLinkbis.href = monFichierBis;                                          
                                           ficLinkbis.style.textDecoration = "none";
