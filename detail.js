@@ -128,15 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             conjointItem.style.textDecoration = "none";
                             nomLink.style.textDecoration = "none";
                             const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
-                            const nomEnCouleur = "couleur"
-                            conjointItem.appendChild(document.createTextNode(' ${adjectif_genre} : '));  
+                            conjointItem.appendChild(document.createTextNode(' '${adjectif_genre}'' : '));  
                             if (conjoint.genre==="M"){
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
+                                nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
                             else {
                                 const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
+                                nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
-                            nomLink.innerHTML = `${nomEnCouleur}` ;
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
