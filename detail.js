@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             conjointItem.style.textDecoration = "none";
-                            nomLink.style.textDecoration = "const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
+                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
 const texteNode = document.createTextNode(adjectif_genre + ': ');
 conjointItem.appendChild(texteNode);
 
