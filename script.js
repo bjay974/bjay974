@@ -20,7 +20,6 @@ fetch('data.json')
 
         // Titre pour la liste de famille
         const familleTitle = document.createElement('h5');
-        familleTitle.classList.add("soustitre")
         familleTitle.textContent = 'A nou';
         familleList.appendChild(familleTitle);
 
@@ -38,7 +37,6 @@ fetch('data.json')
 
         // Titre pour la branche paternelle
         const paternelleTitle = document.createElement('h5');
-        paternelleTitle.classList.add("soustitre")
         paternelleTitle.textContent = 'Coté Papa';
         paternelleList.appendChild(paternelleTitle);
 
@@ -56,7 +54,6 @@ fetch('data.json')
 
         // Titre pour la branche maternelle
         const maternelleTitle = document.createElement('h5');
-        maternelleTitle.classList.add("soustitre")
         maternelleTitle.textContent = 'Coté Momon';
         maternelleList.appendChild(maternelleTitle);
 
