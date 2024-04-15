@@ -78,6 +78,27 @@ footer {
     text-align: left; /* Aligne la liste à gauche */
     list-style-type: none; 
     margin-right: 5%;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px; /* Espacement entre les éléments */
+    font-size: 80%;
+}
+
+.hommelist {
+    text-decoration: none;
+    color: rgb(11, 65, 83);
+    margin-top: 0px;
+    margin-left: 0px;
+    text-align: left; /* Aligne la liste à gauche */
+    margin-right: 0px;
+}
+
+.femmelist {
+    text-decoration: none;
+    color: #583a3a;
+    margin-top: 0px;
+    margin-left: 0px;
+    text-align: left; /* Aligne la liste à gauche */
+    margin-right: 0px;
 }
 
 .list-detail {

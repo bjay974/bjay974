@@ -30,10 +30,10 @@ fetch('data.json')
             linkMat.textContent = person.nom + ' ' + person.prenom;
             linkMat.href = 'person.html?id=' + person.id;
             if (person.genre === "M") {
-                linkMat.classList.add("lienM"); //ajout la classe lien du ccs au lien
+                linkMat.classList.add("hommelist"); //ajout la classe lien du ccs au lien
             } 
             else {
-                linkMat.classList.add("lienF"); //ajout la classe lien du ccs au lien
+                linkMat.classList.add("femmelist"); //ajout la classe lien du ccs au lien
             }   
             listItemMat.appendChild(linkMat);
             familleList.appendChild(listItemMat);
