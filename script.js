@@ -18,11 +18,6 @@ fetch('data.json')
         const paternelleList = document.getElementById('list-paternelle');
         const maternelleList = document.getElementById('list-maternelle');
 
-        // Titre pour la liste de famille
-        const familleTitle = document.createElement('h5');
-        familleTitle.textContent = 'A nou';
-        familleList.appendChild(familleTitle);
-
         // Affichage des hommes de la famille
         hommesFamille.forEach(person => {
             const listItem = createListItem(person);
@@ -35,11 +30,6 @@ fetch('data.json')
             familleList.appendChild(listItem);
         });
 
-        // Titre pour la branche paternelle
-        const paternelleTitle = document.createElement('h5');
-        paternelleTitle.textContent = 'Coté Papa';
-        paternelleList.appendChild(paternelleTitle);
-
         // Affichage des hommes de la branche paternelle
         hommesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
@@ -51,11 +41,6 @@ fetch('data.json')
             const listItem = createListItem(person);
             paternelleList.appendChild(listItem);
         });
-
-        // Titre pour la branche maternelle
-        const maternelleTitle = document.createElement('h5');
-        maternelleTitle.textContent = 'Coté Momon';
-        maternelleList.appendChild(maternelleTitle);
 
         // Affichage des hommes de la branche maternelle
         hommesBrancheMaternelle.forEach(person => {
