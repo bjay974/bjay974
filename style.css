@@ -72,6 +72,7 @@ footer {
 }
 
 .list {
+    display: grid;
     margin-top: 0px;
     padding: 0px 0px 5px 5%;
     margin-left: 5px;
@@ -103,7 +104,6 @@ footer {
     text-align: left; /* Aligne la liste à gauche */
     margin-right: 0px;
     flex-direction: column;
-    align-content: flex-start;
 }
 
 .list-detail {
