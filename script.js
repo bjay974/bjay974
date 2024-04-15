@@ -87,10 +87,10 @@ function createListItem(person) {
     link.textContent = person.nom + ' ' + person.prenom;
     link.href = 'person.html?id=' + person.id;
     if (person.genre === "M") {
-        listItem.classList.add("lienM");
+        link.classList.add("lienM");
     }
     else {
-        listItem.classList.add("lienF");
+        link.classList.add("lienF");
     }
     const link = document.createElement('a');
     listItem.appendChild(link);
