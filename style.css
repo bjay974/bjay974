@@ -12,6 +12,7 @@ body {
     background-color: #999;
     color: #fff;
     margin-top: 20px;
+    margin-bottom: 10px;
     width: 95%;
     font-style: italic;
     font-weight: bold; 
@@ -24,6 +25,7 @@ body {
     background-color: #999;
     color: #1a1919;
     margin-top: 20px;
+    margin-bottom: 10px;
     width: 95%;
     font-weight: bold; 
     padding: 5px 0px 5px 30px;
@@ -73,26 +75,19 @@ footer {
 
 .list {
     display: grid;
-    margin-top: 0px;
-    padding: 0px 0px 5px 5px;
+    margin-top: 10px;
+    padding: 5px 0px 0px 0px;
     margin-left: 5px;
     text-align: left; /* Aligne la liste à gauche */
     list-style-type: none; 
     margin-right: 5%;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "hommelist femmelist";
-    gap: 5px;
+    gap: 10px;
     font-size: 80%;
 }
 
-.hommelist {
-    padding: 5px 0px 5px 0px;
-    flex-direction: column;
-    align-content: flex-start;
-}
-
-.femmelist {
-    padding: 5px 0px 5px 0px;
+.hommelist, .femmelist {
+    padding: 5px 0px 0px 0px;
     flex-direction: column;
     align-content: flex-start;
 }
