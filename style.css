@@ -37,7 +37,8 @@ header {
     color: #fff;
     text-align: center;
     padding: 1px 1px 10px 1px;
-    height: 40px;
+    margin: 0px 0px 0px 0px;
+    height: 35px;
 }
 
 nav {
