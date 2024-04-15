@@ -150,8 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomLink = document.createElement('a');
                         nomLink.style.textDecoration = "none";
                         const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong>' '${father.prenom} </span>`;
-                        const adjectif_genre = ajouterParent(person.genre);
-                        conjointItem.appendChild(document.createTextNode(' Fils de :  ')); 
+                        if (person.genre === "M") {
+                            motherItem.appendChild(document.createTextNode('Fils de ')); 
+                        }
+                        else  {
+                            motherItem.appendChild(document.createTextNode('Fille de ')); 
+                        }  
                         nomLink.href = 'person.html?id=' + father.id;
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         fatherItem.appendChild(nomLink);
@@ -162,7 +166,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fatherItem = document.createElement('li');
                     fatherItem.innerHTML = `<em>Père </em> inconnu`;
                     detailsList.appendChild(fatherItem);
-                   
                 }
                 
               // Charger la mère si l'ID de la mère est défini
@@ -179,7 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             motherItem.appendChild(document.createTextNode(' et de ')); 
                         }
                         else {
-                            motherItem.appendChild(document.createTextNode(' de ')); 
+                            if (person.genre === "M") {
+                            motherItem.appendChild(document.createTextNode('Fils de ')); 
+                            }
+                            else  {
+                            motherItem.appendChild(document.createTextNode('Fille de ')); 
+                            }                            
                         }
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         motherItem.appendChild(nomLink);
