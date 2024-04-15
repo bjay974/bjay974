@@ -15,14 +15,8 @@ fetch('data.json')
         const femmesBrancheMaternelle = brancheMaternelle.filter(person => person.genre === 'F');
 
         const familleList = document.getElementById('famille-list');
-        const hommeListFamille = document.getElementById('famille-list');
-        const femmeListFamille = document.getElementById('famille-list');
         const paternelleList = document.getElementById('list-paternelle');
-        const hommeListPaternelle = document.getElementById('list-paternelle');
-        const femmeListPaternelle = document.getElementById('list-paternelle');
-        const maternelleList = document.getElementById('list-paternelle');
-        const hommeListMaternelle = document.getElementById('list-paternelle');
-        const femmeListMaternelle = document.getElementById('list-maternelle');
+        const maternelleList = document.getElementById('list-maternelle');
 
         // Titre pour la liste de famille
         const familleTitle = document.createElement('h5');
@@ -33,13 +27,13 @@ fetch('data.json')
         // Affichage des hommes de la famille
         hommesFamille.forEach(person => {
             const listItem = createListItem(person);
-            hommeListFamille.appendChild(listItem);
+            familleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la famille
         femmesFamille.forEach(person => {
             const listItem = createListItem(person);
-            femmeListFamille.appendChild(listItem);
+            familleList.appendChild(listItem);
         });
 
         // Titre pour la branche paternelle
@@ -51,13 +45,13 @@ fetch('data.json')
         // Affichage des hommes de la branche paternelle
         hommesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
-            hommeListPaternelle.appendChild(listItem);
+            paternelleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la branche paternelle
         femmesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
-            femmeListPaternelle.appendChild(listItem);
+            paternelleList.appendChild(listItem);
         });
 
         // Titre pour la branche maternelle
@@ -69,13 +63,13 @@ fetch('data.json')
         // Affichage des hommes de la branche maternelle
         hommesBrancheMaternelle.forEach(person => {
             const listItem = createListItem(person);
-            hommeListMaternelle.appendChild(listItem);
+            maternelleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la branche maternelle
         femmesBrancheMaternelle.forEach(person => {
             const listItem = createListItem(person);
-            femmeListMaternelle.appendChild(listItem);
+            maternelleList.appendChild(listItem);
         });
 
     })
