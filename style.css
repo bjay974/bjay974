@@ -81,7 +81,7 @@ footer {
     text-align: left; /* Aligne la liste à gauche */
     list-style-type: none; 
     margin-right: 5%;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: auto auto;
     gap: 10px;
     font-size: 80%;
     grid-template-areas: "hommelist femmelist" ;
@@ -90,11 +90,15 @@ footer {
 .hommelist {
     grid-area: hommelist;
     padding: 0px 5px 0px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 .femmelist {
     grid-area: femmelist;
     padding: 0px 5px 0px 20px;
+    display: flex;
+    flex-direction: column;
 }
 
 
