@@ -23,7 +23,7 @@ body {
 .soustitreArbre {
     text-align: left;
     background-color: #999;
-    color: #1a1919;
+    color: #fff;
     margin-top: 20px;
     margin-bottom: 10px;
     width: 95%;
@@ -84,13 +84,23 @@ footer {
     grid-template-columns: 1fr 1fr;
     gap: 10px;
     font-size: 80%;
+    grid-template-areas: "hommelist femmelist" ;
 }
 
-.hommelist, .femmelist {
+.hommelist {
+    grid-area: hommelist;
     padding: 0px 5px 0px 20px;
     flex-direction: column;
     align-content: flex-start;
 }
+
+.femmelist {
+    grid-area: femmelist;
+    padding: 0px 5px 0px 20px;
+    flex-direction: column;
+    align-content: flex-start;
+}
+
 
 .list-detail {
     padding: 2px 0px 0px 5px;
@@ -138,6 +148,7 @@ footer {
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
+  grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
 }
 
 .container1 {
