@@ -17,9 +17,11 @@ fetch('data.json')
         const familleList = document.getElementById('famille-list');
         const hommeListFamille = document.getElementById('famille-list');
         const femmeListFamille = document.getElementById('famille-list');
+        const paternelleList = document.getElementById('list-paternelle');
         const hommeListPaternelle = document.getElementById('list-paternelle');
         const femmeListPaternelle = document.getElementById('list-paternelle');
-        const hommeListMaternelle = document.getElementById('list-maternelle');
+        const maternelleList = document.getElementById('list-paternelle');
+        const hommeListMaternelle = document.getElementById('list-paternelle');
         const femmeListMaternelle = document.getElementById('list-maternelle');
 
         // Titre pour la liste de famille
@@ -44,7 +46,7 @@ fetch('data.json')
         const paternelleTitle = document.createElement('h5');
         paternelleTitle.classList.add("soustitre")
         paternelleTitle.textContent = 'Coté Papa';
-        familleList.appendChild(paternelleTitle);
+        paternelleList.appendChild(paternelleTitle);
 
         // Affichage des hommes de la branche paternelle
         hommesBranchePaternelle.forEach(person => {
@@ -62,7 +64,7 @@ fetch('data.json')
         const maternelleTitle = document.createElement('h5');
         maternelleTitle.classList.add("soustitre")
         maternelleTitle.textContent = 'Coté Momon';
-        familleList.appendChild(maternelleTitle);
+        maternelleList.appendChild(maternelleTitle);
 
         // Affichage des hommes de la branche maternelle
         hommesBrancheMaternelle.forEach(person => {
