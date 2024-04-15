@@ -77,15 +77,16 @@ fetch('data.json')
 
 function createListItem(person) {
     const listItem = document.createElement('li');
+    if (person.genre === "M") {
+        listItem.classList.add("hommelist");
+    }
+    else {
+        listItem.classList.add("femmelist");
+    }
     const link = document.createElement('a');
     link.textContent = person.nom + ' ' + person.prenom;
     link.href = 'person.html?id=' + person.id;
-    if (person.genre === "M") {
-        link.classList.add("hommelist");
-    }
-    else {
-        link.classList.add("femmelist");
-    }
+
     listItem.appendChild(link);
     return listItem;
 }
