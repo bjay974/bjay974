@@ -1,11 +1,12 @@
 body {
     font-family: Georgia;
+    font-size: 90%;
     padding: 0px 0px 0px 0px; /* haut | droit | bas | gauche */
     margin: 0px 0px 0px 0px;
     background-color: #f2f2f2;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
     height: 100%;
-    min-height: 100vh;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
 }
@@ -175,7 +176,7 @@ footer {
    padding: 0px 0px 0px 0px;
    color:#999;
    font-style: italic;
-   margin-left: 40px;
+   margin-left: 20px;
 }
 
 .labelArbre {
