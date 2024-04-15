@@ -126,15 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             conjointItem.style.textDecoration = "none";
-                            const adjectif_genre = ajouterEgenreM("Conjoint", person.genre);
-const texteNode = document.createTextNode(adjectif_genre + ': ');
-conjointItem.appendChild(texteNode);
-
                             if (conjoint.genre==="M"){
+                                conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
                                 nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
                             else {
+                                conjointItem.appendChild(document.createTextNode(' Conjointe :  '));
                                 const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
                                 nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
@@ -150,11 +148,10 @@ conjointItem.appendChild(texteNode);
                     if (father) {
                         const fatherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
-                        fatherItem.style.textDecoration = "none";
                         nomLink.style.textDecoration = "none";
                         const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong>' '${father.prenom} </span>`;
                         const adjectif_genre = ajouterParent(person.genre);
-                        fatherItem.appendChild(document.createTextNode(' '${adjectif_genre}' de '));  
+                        conjointItem.appendChild(document.createTextNode(' Fils de :  ')); 
                         nomLink.href = 'person.html?id=' + father.id;
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         fatherItem.appendChild(nomLink);
@@ -175,17 +172,14 @@ conjointItem.appendChild(texteNode);
                         const motherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         nomLink.href = 'person.html?id=' + mother.id;
-                        motherItem.style.textDecoration = "none";
                         nomLink.style.textDecoration = "none";
                         const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong>' '${mother.prenom} </span>`;
-                        const adjectif_genre = ajouterParent(person.genre);
                         if (father) {
                             motherItem.classList.add('special-li');
-                            fatherItem.appendChild(document.createTextNode(' et de ')); 
-                            
+                            motherItem.appendChild(document.createTextNode(' et de ')); 
                         }
                         else {
-                            fatherItem.appendChild(document.createTextNode(' de ')); 
+                            motherItem.appendChild(document.createTextNode(' de ')); 
                         }
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         motherItem.appendChild(nomLink);
