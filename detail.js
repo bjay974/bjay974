@@ -280,9 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
                       }
                     }     
                  }
-                else [
+                else {
                     detailsList.appendChild(document.createElement('br')); 
-                ]
+                }
 
             // Ajouter le lien vers l'arbre perso
             const arbrePersoItem = document.createElement('a');
