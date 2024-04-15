@@ -77,13 +77,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             nomLink.style.textDecoration = "none";
-                            conjointItem.appendChild(document.createTextNode(' à :  '));                            
+                            conjointItem.appendChild(document.createTextNode(' à '));                            
                             if (conjoint.genre === "M"){
-                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom}</span>`;
+                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong> ${conjoint.prenom}</span>`;
                                 nomLink.innerHTML = `${nomEnCouleur}`;
                             }
                             else {
-                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong>' '${conjoint.prenom}</span>`;
+                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong> ${conjoint.prenom}</span>`;
                                 nomLink.innerHTML = `${nomEnCouleur}`;
                             }
                             conjointItem.appendChild(nomLink);
@@ -125,15 +125,15 @@ document.addEventListener('DOMContentLoaded', () => {
                             const conjointItem = document.createElement('li');
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
-                            conjointItem.style.textDecoration = "none";
+                            nomLink.style.textDecoration = "none";
                             if (conjoint.genre === "M"){
                                 conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
-                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
+                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong> ${conjoint.prenom} </span`;
                                 nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
                             else {
                                 conjointItem.appendChild(document.createTextNode(' Conjointe :  '));
-                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
+                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong> ${conjoint.prenom} </span`;
                                 nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
                             conjointItem.appendChild(nomLink);
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             fatherItem.appendChild(document.createTextNode('Fille de ')); 
                         }  
                         nomLink.href = 'person.html?id=' + father.id;
-                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong>' '${father.prenom} </span>`;
+                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong> ${father.prenom} </span>`;
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         fatherItem.appendChild(nomLink);
                         detailsList.appendChild(fatherItem);
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             motherItem.appendChild(document.createTextNode('Fille de ')); 
                             }                            
                         }
-                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong>' '${mother.prenom} </span>`;                        
+                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong> ${mother.prenom} </span>`;                        
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         motherItem.appendChild(nomLink);
                         detailsList.appendChild(motherItem);
