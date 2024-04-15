@@ -1,122 +1,89 @@
-// Récupérer la liste des personnes à partir du fichier JSON
 fetch('data.json')
     .then(response => response.json())
     .then(data => {
         // Filtrer les personnes par genre
         const famille = data.filter(person => person.id <= 203);
-        const hommes = data.filter(person => person.genre === 'M' && person.id >= 204 && person.id <= 999);
-        const femmes = data.filter(person => person.genre === 'F' && person.id >= 204 && person.id <= 999);
-        const hommesMat = data.filter(person => person.genre === 'M' && person.id >= 1000 && person.id <= 1999); 
-        const femmesMat = data.filter(person => person.genre === 'F' && person.id >= 1000 && person.id <= 1999);
-        
-        const hommeList = document.getElementById('homme-list');
-        const femmeList = document.getElementById('femme-list');
-        const hommeListMat = document.getElementById('homme-list');
-        const femmeListMat = document.getElementById('femme-list'); 
-        const familleList = document.getElementById('famille-list');       
-        
+        const hommesFamille = famille.filter(person => person.genre === 'M');
+        const femmesFamille = famille.filter(person => person.genre === 'F');
+
+        const branchePaternelle = data.filter(person => person.id >= 204 && person.id <= 999);
+        const hommesBranchePaternelle = branchePaternelle.filter(person => person.genre === 'M');
+        const femmesBranchePaternelle = branchePaternelle.filter(person => person.genre === 'F');
+
+        const brancheMaternelle = data.filter(person => person.id >= 1000 && person.id <= 1999);
+        const hommesBrancheMaternelle = brancheMaternelle.filter(person => person.genre === 'M');
+        const femmesBrancheMaternelle = brancheMaternelle.filter(person => person.genre === 'F');
+
+        const familleList = document.getElementById('famille-list');
+        const hommeListFamille = document.getElementById('homme-list-famille');
+        const femmeListFamille = document.getElementById('femme-list-famille');
+        const hommeListPaternelle = document.getElementById('homme-list-paternelle');
+        const femmeListPaternelle = document.getElementById('femme-list-paternelle');
+        const hommeListMaternelle = document.getElementById('homme-list-maternelle');
+        const femmeListMaternelle = document.getElementById('femme-list-maternelle');
+
         // Titre pour la liste de famille
         const familleTitle = document.createElement('h5');
-        familleTitle.textContent = 'A nou';
         familleTitle.classList.add("soustitre")
+        familleTitle.textContent = 'A nou';
         familleList.appendChild(familleTitle);
 
-        // Parcourir chaque membre dans les données
-        famille.sort((a, b) => b.id - a.id);
-        famille.forEach(person => {
-            // Créer un élément de liste pour chaque membre
-            const listItemMat = document.createElement('li');
-            const linkMat = document.createElement('a');
-            linkMat.textContent = person.nom + ' ' + person.prenom;
-            linkMat.href = 'person.html?id=' + person.id;
-            if (person.genre === "M") {
-                linkMat.classList.add("hommelist"); //ajout la classe lien du ccs au lien
-            } 
-            else {
-                linkMat.classList.add("femmelist"); //ajout la classe lien du ccs au lien
-            }   
-            listItemMat.appendChild(linkMat);
-            familleList.appendChild(listItemMat);
+        // Affichage des hommes de la famille
+        hommesFamille.forEach(person => {
+            const listItem = createListItem(person);
+            hommeListFamille.appendChild(listItem);
         });
 
-        // Titre pour la liste des hommes
-        const hommeTitle = document.createElement('h5');
-        hommeTitle.classList.add("soustitre")
-        hommeTitle.textContent = 'Boug (coté Papa)';
-        hommeList.appendChild(hommeTitle);
-        
-        // Parcourir chaque homme dans les données
-        hommes.sort((a, b) => b.id - a.id);
-        hommes.forEach(person => {
-            // Créer un élément de liste pour chaque homme
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            link.textContent = person.nom + ' ' + person.prenom;
-            link.href = 'person.html?id=' + person.id;
-            link.classList.add("lienM"); //ajout la classe lien du ccs au lien
-            listItem.appendChild(link);
-            hommeList.appendChild(listItem);
+        // Affichage des femmes de la famille
+        femmesFamille.forEach(person => {
+            const listItem = createListItem(person);
+            femmeListFamille.appendChild(listItem);
         });
 
-        // Titre pour la liste des femmes
-        const femmeTitle = document.createElement('h5');
-        femmeTitle.classList.add("soustitre")
-        femmeTitle.textContent = 'Fanm (coté Papa)';
-        femmeList.appendChild(femmeTitle);
-        
-        // Parcourir chaque femme dans les données
-        femmes.sort((a, b) => b.id - a.id);
-        femmes.forEach(person => {
-            // Créer un élément de liste pour chaque femme
-            const listItem = document.createElement('li');
-            const link = document.createElement('a');
-            link.textContent = person.nom + ' ' + person.prenom;
-            link.href = 'person.html?id=' + person.id;
-            link.classList.add("lienF"); //ajout la classe lien du ccs au lien
-            listItem.appendChild(link);
-            femmeList.appendChild(listItem);
-        });
-        
-         // Titre pour la liste des hommes coté maternelle
-        const hommeTitleMat = document.createElement('h5');
-        hommeTitleMat.classList.add("soustitre")
-        hommeTitleMat.textContent = 'Boug (coté Momon)';
-        hommeListMat.appendChild(hommeTitleMat);
-        
-        // Parcourir chaque homme dans les données
-        hommesMat.sort((a, b) => b.id - a.id);
-        hommesMat.forEach(person => {
-            // Créer un élément de liste pour chaque homme
-            const listItemMat = document.createElement('li');
-            const linkMat = document.createElement('a');
-            linkMat.textContent = person.nom + ' ' + person.prenom;
-            linkMat.href = 'person.html?id=' + person.id;
-            linkMat.classList.add("lienM"); //ajout la classe lien du ccs au lien
-            listItemMat.appendChild(linkMat);
-            hommeListMat.appendChild(listItemMat);
+        // Titre pour la branche paternelle
+        const paternelleTitle = document.createElement('h5');
+        paternelleTitle.classList.add("soustitre")
+        paternelleTitle.textContent = 'Coté Papa';
+        familleList.appendChild(paternelleTitle);
+
+        // Affichage des hommes de la branche paternelle
+        hommesBranchePaternelle.forEach(person => {
+            const listItem = createListItem(person);
+            hommeListPaternelle.appendChild(listItem);
         });
 
-        // Titre pour la liste des femmes coté maternelle
-        const femmeTitleMat = document.createElement('h5');
-        femmeTitleMat.classList.add("soustitre")
-        femmeTitleMat.textContent = 'Fanm (coté Momon)';
-        femmeListMat.appendChild(femmeTitleMat);
-        
-        // Parcourir chaque femme dans les données
-        femmesMat.sort((a, b) => b.id - a.id);
-        femmesMat.forEach(person => {
-            // Créer un élément de liste pour chaque femme
-            const listItemMat = document.createElement('li');
-            const linkMat = document.createElement('a');
-            linkMat.textContent = person.nom + ' ' + person.prenom;
-            linkMat.href = 'person.html?id=' + person.id;
-            linkMat.classList.add("lienF"); //ajout la classe lien du ccs au lien
-            listItemMat.appendChild(linkMat);
-            femmeListMat.appendChild(listItemMat);
+        // Affichage des femmes de la branche paternelle
+        femmesBranchePaternelle.forEach(person => {
+            const listItem = createListItem(person);
+            femmeListPaternelle.appendChild(listItem);
         });
 
+        // Titre pour la branche maternelle
+        const maternelleTitle = document.createElement('h5');
+        maternelleTitle.classList.add("soustitre")
+        maternelleTitle.textContent = 'Coté Momon';
+        familleList.appendChild(maternelleTitle);
 
+        // Affichage des hommes de la branche maternelle
+        hommesBrancheMaternelle.forEach(person => {
+            const listItem = createListItem(person);
+            hommeListMaternelle.appendChild(listItem);
+        });
 
-        
+        // Affichage des femmes de la branche maternelle
+        femmesBrancheMaternelle.forEach(person => {
+            const listItem = createListItem(person);
+            femmeListMaternelle.appendChild(listItem);
+        });
+
     })
     .catch(error => console.error('Erreur lors du chargement des données :', error));
+
+function createListItem(person) {
+    const listItem = document.createElement('li');
+    const link = document.createElement('a');
+    link.textContent = person.nom + ' ' + person.prenom;
+    link.href = 'person.html?id=' + person.id;
+    listItem.appendChild(link);
+    return listItem;
+}
