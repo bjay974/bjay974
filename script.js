@@ -34,33 +34,49 @@ fetch('data.json')
 
         // Affichage des femmes de la famille
         const titlefemmefamilleList = document.createElement('p');
-        titlefemmefamilleList.textContent = "Boug";
+        titlefemmefamilleList.textContent = "Fanm";
         titlefemmefamilleList.classList.add('label'); 
-        hommefamilleList.appendChild(titlefemmefamilleList);
+        femmefamilleList.appendChild(titlefemmefamilleList);
         femmesFamille.forEach(person => {
             const listItem = createListItem(person);
             femmefamilleList.appendChild(listItem);
         });
 
         // Affichage des hommes de la branche paternelle
+        const titlehommepaternelleList = document.createElement('p');
+        titlehommepaternelleList.textContent = "Boug coté papa";
+        titlehommepaternelleList.classList.add('label'); 
+        hommepaternelleList.appendChild(titlehommepaternelleList);
         hommesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
             hommepaternelleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la branche paternelle
+        const titlefemmepaternelleList = document.createElement('p');
+        titlefemmepaternelleList.textContent = "Boug coté papa";
+        titlefemmepaternelleList.classList.add('label'); 
+        femmepaternelleList.appendChild(titlefemmepaternelleList);
         femmesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
             femmepaternelleList.appendChild(listItem);
         });
 
         // Affichage des hommes de la branche maternelle
+        const titlehommematernelleList = document.createElement('p');
+        titlehommematernelleList.textContent = "Boug coté momon";
+        titlehommematernelleList.classList.add('label'); 
+        hommematernelleList.appendChild(titlehommematernelleList);
         hommesBrancheMaternelle.forEach(person => {
             const listItem = createListItem(person);
             hommematernelleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la branche maternelle
+        const titlefemmematernelleList = document.createElement('p');
+        titlefemmematernelleList.textContent = "Boug coté papa";
+        titlefemmematernelleList.classList.add('label'); 
+        femmematernelleList.appendChild(titlefemmematernelleList);
         femmesBrancheMaternelle.forEach(person => {
             const listItem = createListItem(person);
             femmematernelleList.appendChild(listItem);

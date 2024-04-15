@@ -168,6 +168,7 @@ footer {
 .label {
    color:#999;
    font-style: italic;
+   margin-left: 20px;
 }
 
 .labelArbre {
