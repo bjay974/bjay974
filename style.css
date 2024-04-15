@@ -82,21 +82,21 @@ footer {
     list-style-type: none; 
     margin-right: 5%;
     grid-template-columns: auto auto;
-    gap: 10px;
-    font-size: 80%;
+    gap: 5px;
+    font-size: 75%;
     grid-template-areas: "hommelist femmelist" ;
 }
 
 .hommelist {
     grid-area: hommelist;
-    padding: 0px 5px 0px 20px;
+    padding: 0px 0px 0px 5px;
     display: flex;
     flex-direction: column;
 }
 
 .femmelist {
     grid-area: femmelist;
-    padding: 0px 5px 0px 20px;
+    padding: 0px 0px 0px 5px;
     display: flex;
     flex-direction: column;
 }
