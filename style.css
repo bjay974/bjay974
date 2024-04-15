@@ -80,30 +80,19 @@ footer {
     list-style-type: none; 
     margin-right: 5%;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "hommelist femmelist"
-    gap: 10px; /* Espacement entre les éléments */
+    grid-template-areas: "hommelist femmelist";
+    gap: 5px;
     font-size: 80%;
 }
 
 .hommelist {
-    text-decoration: none;
-    color: rgb(11, 65, 83);
-    margin-top: 0px;
-    margin-left: 0px;
-    text-align: left; /* Aligne la liste à gauche */
-    margin-right: 0px;
     flex-direction: column;
     align-content: flex-start;
 }
 
 .femmelist {
-    text-decoration: none;
-    color: #583a3a;
-    margin-top: 0px;
-    margin-left: 0px;
-    text-align: left; /* Aligne la liste à gauche */
-    margin-right: 0px;
     flex-direction: column;
+    align-content: flex-start;
 }
 
 .list-detail {
