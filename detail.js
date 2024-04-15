@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         legDateItem.classList.add('special-li');
                         const dateVerified = verifieDate(person.date_legitime);
                         const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        if (person.genre==="M"){
+                        if (person.genre === "M"){
                             const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span>`;
                             legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                         }
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             nomLink.style.textDecoration = "none";
                             conjointItem.appendChild(document.createTextNode(' à :  '));                            
-                            if (conjoint.genre==="M"){
+                            if (conjoint.genre === "M"){
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom}</span>`;
                                 nomLink.innerHTML = `${nomEnCouleur}`;
                             }
@@ -126,15 +126,16 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomLink = document.createElement('a');
                             nomLink.href = 'person.html?id=' + conjoint.id;
                             conjointItem.style.textDecoration = "none";
-                            if (conjoint.genre==="M"){
+                            if (conjoint.genre === "M"){
                                 conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
+                                nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
                             else {
                                 conjointItem.appendChild(document.createTextNode(' Conjointe :  '));
                                 const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
+                                nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
-                            nomLink.innerHTML = `${nomEnCouleur}` ;
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -175,7 +176,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomLink = document.createElement('a');
                         nomLink.href = 'person.html?id=' + mother.id;
                         nomLink.style.textDecoration = "none";
-                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong>' '${mother.prenom} </span>`;
                         if (father) {
                             motherItem.classList.add('special-li');
                             motherItem.appendChild(document.createTextNode(' et de ')); 
@@ -188,6 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             motherItem.appendChild(document.createTextNode('Fille de ')); 
                             }                            
                         }
+                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong>' '${mother.prenom} </span>`;                        
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         motherItem.appendChild(nomLink);
                         detailsList.appendChild(motherItem);
