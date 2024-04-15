@@ -280,6 +280,9 @@ document.addEventListener('DOMContentLoaded', () => {
                       }
                     }     
                  }
+                else [
+                    detailsList.appendChild(document.createElement('br')); 
+                ]
 
             // Ajouter le lien vers l'arbre perso
             const arbrePersoItem = document.createElement('a');
@@ -303,9 +306,8 @@ document.addEventListener('DOMContentLoaded', () => {
             arbrePersoLink.style.fontSize = "90%";
             arbrePersoItem.appendChild(arbrePersoLink);
             detailsList.appendChild(arbrePersoItem);
-                
+            detailsList.appendChild(document.createElement('br'));
             personDetails.appendChild(detailsList);
-
             }      
         })
      
