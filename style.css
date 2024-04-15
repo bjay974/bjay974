@@ -75,7 +75,7 @@ footer {
 
 .list {
     display: grid;
-    margin-top: 10px;
+    margin-top: 5px;
     padding: 0px 0px 0px 0px;
     margin-left: 5px;
     text-align: left; /* Aligne la liste à gauche */

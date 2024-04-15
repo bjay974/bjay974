@@ -54,7 +54,7 @@ fetch('data.json')
 
         // Affichage des femmes de la branche paternelle
         const titlefemmepaternelleList = document.createElement('p');
-        titlefemmepaternelleList.textContent = "Boug coté papa";
+        titlefemmepaternelleList.textContent = "Fanm coté papa";
         titlefemmepaternelleList.classList.add('label'); 
         femmepaternelleList.appendChild(titlefemmepaternelleList);
         femmesBranchePaternelle.forEach(person => {
@@ -74,7 +74,7 @@ fetch('data.json')
 
         // Affichage des femmes de la branche maternelle
         const titlefemmematernelleList = document.createElement('p');
-        titlefemmematernelleList.textContent = "Boug coté papa";
+        titlefemmematernelleList.textContent = "Fanm coté papa";
         titlefemmematernelleList.classList.add('label'); 
         femmematernelleList.appendChild(titlefemmematernelleList);
         femmesBrancheMaternelle.forEach(person => {
