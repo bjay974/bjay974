@@ -129,13 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (conjoint.genre==="M"){
                                 conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
                                 const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
-                                nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
                             else {
                                 conjointItem.appendChild(document.createTextNode(' Conjointe :  '));
                                 const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong>' '${conjoint.prenom} </span`;
-                                nomLink.innerHTML = `${nomEnCouleur}` ;
                             }
+                            nomLink.innerHTML = `${nomEnCouleur}` ;
                             conjointItem.appendChild(nomLink);
                             detailsList.appendChild(conjointItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -149,14 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fatherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         nomLink.style.textDecoration = "none";
-                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong>' '${father.prenom} </span>`;
                         if (person.genre === "M") {
-                            motherItem.appendChild(document.createTextNode('Fils de ')); 
+                            fatherItem.appendChild(document.createTextNode('Fils de ')); 
                         }
                         else  {
-                            motherItem.appendChild(document.createTextNode('Fille de ')); 
+                            fatherItem.appendChild(document.createTextNode('Fille de ')); 
                         }  
                         nomLink.href = 'person.html?id=' + father.id;
+                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong>' '${father.prenom} </span>`;
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         fatherItem.appendChild(nomLink);
                         detailsList.appendChild(fatherItem);
@@ -347,23 +346,6 @@ function ajouterE(adjectif, genre) {
     }
 }
 
-//Ajouter un e a un adjectif !! si genre est M (ex : conjointE)
-function ajouterEgenreM(adjectif, genre) {
-    if (genre === "M") {
-        return adjectif + "e";
-    } else {
-        return adjectif;
-    }
-}
-
-//Ajouter Fils de ou Fille de en fonction du genre
-function ajouterParent(genre) {
-    if (genre === "M") {
-        return "Fils" ;
-    } else {
-        return "Fille";
-    }
-}
 
 //Verifie si la date est connue  
 function verifieDate(date) {
