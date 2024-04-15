@@ -79,6 +79,7 @@ footer {
     list-style-type: none; 
     margin-right: 5%;
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: "hommelist femmelist"
     gap: 10px; /* Espacement entre les éléments */
     font-size: 80%;
 }

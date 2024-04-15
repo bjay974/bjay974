@@ -31,14 +31,12 @@ fetch('data.json')
         // Affichage des hommes de la famille
         hommesFamille.forEach(person => {
             const listItem = createListItem(person);
-            listItem.classList.add("hommelist");
             hommeListFamille.appendChild(listItem);
         });
 
         // Affichage des femmes de la famille
         femmesFamille.forEach(person => {
             const listItem = createListItem(person);
-            listItem.classList.add("femmelist");
             femmeListFamille.appendChild(listItem);
         });
 
@@ -51,14 +49,12 @@ fetch('data.json')
         // Affichage des hommes de la branche paternelle
         hommesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
-            listItem.classList.add("hommelist");
             hommeListPaternelle.appendChild(listItem);
         });
 
         // Affichage des femmes de la branche paternelle
         femmesBranchePaternelle.forEach(person => {
             const listItem = createListItem(person);
-            listItem.classList.add("femmelist");
             femmeListPaternelle.appendChild(listItem);
         });
 
@@ -71,14 +67,12 @@ fetch('data.json')
         // Affichage des hommes de la branche maternelle
         hommesBrancheMaternelle.forEach(person => {
             const listItem = createListItem(person);
-            listItem.classList.add("hommelist");
             hommeListMaternelle.appendChild(listItem);
         });
 
         // Affichage des femmes de la branche maternelle
         femmesBrancheMaternelle.forEach(person => {
             const listItem = createListItem(person);
-            listItem.classList.add("femmelist");
             femmeListMaternelle.appendChild(listItem);
         });
 
@@ -90,6 +84,12 @@ function createListItem(person) {
     const link = document.createElement('a');
     link.textContent = person.nom + ' ' + person.prenom;
     link.href = 'person.html?id=' + person.id;
+    if (person.genre === "M") {
+        link.classList.add("hommelist");
+    }
+    else {
+        link.classList.add("femmelist");
+    }
     listItem.appendChild(link);
     return listItem;
 }
