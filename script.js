@@ -15,19 +15,21 @@ fetch('data.json')
         const femmesBrancheMaternelle = brancheMaternelle.filter(person => person.genre === 'F');
 
         const familleList = document.getElementById('famille-list');
+        const hommefamilleList = document.getElementById('homme-list');
+        const femmefamilleList = document.getElementById('femme-list');
         const paternelleList = document.getElementById('list-paternelle');
         const maternelleList = document.getElementById('list-maternelle');
 
         // Affichage des hommes de la famille
         hommesFamille.forEach(person => {
             const listItem = createListItem(person);
-            familleList.appendChild(listItem);
+            hommefamilleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la famille
         femmesFamille.forEach(person => {
             const listItem = createListItem(person);
-            familleList.appendChild(listItem);
+            femmefamilleList.appendChild(listItem);
         });
 
         // Affichage des hommes de la branche paternelle
