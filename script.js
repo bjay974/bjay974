@@ -23,12 +23,20 @@ fetch('data.json')
         const femmematernelleList = document.getElementById('femme-list-maternelle');
 
         // Affichage des hommes de la famille
+        const titlehommefamilleList = document.createElement('p');
+        titlehommefamilleList.textContent = "Boug";
+        titlehommefamilleList.classList.add('label'); 
+        hommefamilleList.appendChild(titlehommefamilleList);
         hommesFamille.forEach(person => {
             const listItem = createListItem(person);
             hommefamilleList.appendChild(listItem);
         });
 
         // Affichage des femmes de la famille
+        const titlefemmefamilleList = document.createElement('p');
+        titlefemmefamilleList.textContent = "Boug";
+        titlefemmefamilleList.classList.add('label'); 
+        hommefamilleList.appendChild(titlefemmefamilleList);
         femmesFamille.forEach(person => {
             const listItem = createListItem(person);
             femmefamilleList.appendChild(listItem);
