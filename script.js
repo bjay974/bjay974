@@ -92,7 +92,6 @@ function createListItem(person) {
     else {
         link.classList.add("lienF");
     }
-    const link = document.createElement('a');
     listItem.appendChild(link);
     return listItem;
 }
