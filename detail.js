@@ -284,6 +284,48 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(document.createElement('br')); 
                 }
 
+              // Charger les liens vers l'acte de mariage au nom du mari 
+              if (person.acte_mar === true && person.genre === "F") {
+                const nomFichier = person.id_conjoint;
+                  const repertoire = "mariage";
+                  const extensions = ['pdf', 'jpg', 'jpeg'];
+                  for (let i = 0; i < extensions.length; i++) {
+                      const extension = extensions[i];
+                      const monFichier = `${repertoire}/${nomFichier}.${extension}`;
+                      fetch(`${monFichier}`)
+                      .then(response => {
+                          if (response.ok) {
+                              const acteItem = document.createElement('a');
+                              const ficLink = document.createElement('a');
+                              ficLink.textContent = `Voir l'acte de ${repertoire}`;   
+                              ficLink.href = monFichier;
+                              ficLink.target = '_blank';                                  
+                              ficLink.style.textDecoration = "none";
+                              ficLink.style.color = "#999"; 
+                              ficLink.style.fontSize = "90%";
+                              acteItem.appendChild(ficLink);
+                              const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
+                              fetch(`${monFichierBis}`)
+                              .then(response => {
+                                  if (response.ok) {
+                                      const ficLinkbis = document.createElement('a');
+                                      ficLinkbis.textContent = `Voir la partie 2`;
+                                      ficLinkbis.href = monFichierBis;                                          
+                                      ficLinkbis.style.textDecoration = "none";
+                                      ficLinkbis.style.color = "#999";
+                                      ficLinkbis.style.fontSize = "90%";
+                                      acteItem.appendChild(document.createTextNode('  ||  '));
+                                      acteItem.appendChild(ficLinkbis);
+                              } })
+                              detailsList.appendChild(acteItem);
+                              detailsList.appendChild(document.createElement('br'));
+                         } })
+                  }
+             }
+            else {
+                detailsList.appendChild(document.createElement('br')); 
+            }
+
             // Ajouter le lien vers l'arbre perso
             const arbrePersoItem = document.createElement('a');
             const arbrePersoLink = document.createElement('a');
