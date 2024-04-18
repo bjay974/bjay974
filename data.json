@@ -744,7 +744,7 @@
       "lieu_mariage": "Sainte-Rose",
       "id_conjoint": 605,
       "domicile": null,
-      "affranchi": null,
+      "affranchi": true,
       "origine": null,
       "acte_nai": false,
       "acte_dec": false,
