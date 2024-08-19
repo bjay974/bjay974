@@ -107,7 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const deathDateItem = document.createElement('li');
                                 const dateVerified = verifieDate(person.date_deces) 
                                 const adjectif_genre = ajouterE("Décédé", person.genre)
-                                deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
+                                if (person.lieu_naissance === "Inconnu"){
+                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans`;
+                                }
+                                else {
+                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
+                                }
                                 detailsList.appendChild(deathDateItem);
                                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                             }
@@ -116,6 +121,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const deathDateItem = document.createElement('li');
                                 const dateVerified = verifieDate(person.date_deces) 
                                 const adjectif_genre = ajouterE("Décédé", person.genre)
+                                if (person.lieu_naissance === "Inconnu"){
+                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
+                                }
+                                else {
+                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
+                                }
                                 deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
                                 detailsList.appendChild(deathDateItem);
                                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
