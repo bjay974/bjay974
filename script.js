@@ -95,7 +95,7 @@ function createListItem(person) {
     }
     const link = document.createElement('a');
     if (person.origine) {
-        link.textContent = person.nom + ' ' + person.prenom + '(' + person.origine + ')';
+        link.textContent = person.nom + ' ' + person.prenom + ' (' + person.origine + ')';
     }
     else {
         link.textContent = person.nom + ' ' + person.prenom;
