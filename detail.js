@@ -140,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Ajouter l'age de l'affranchissement  si la date de naissance existe 
                     if (person.date_naissance !== "01/01/1901") {
                         const affranchiDateItem = document.createElement('li');
-                        const dateVerified = verifieDate(person.date_deces) 
+                        const dateVerified = verifieDate(person.date_affranchi) 
                         const adjectif_genre = ajouterE("Affranchi", person.genre)
                         affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces}`;
                         detailsList.appendChild(affranchiDateItem);
@@ -149,7 +149,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     else
                     {
                         const affranchiDateItem = document.createElement('li');
-                        const dateVerified = verifieDate(person.date_deces) 
+                        const dateVerified = verifieDate(person.date_affranchi) 
                         const adjectif_genre = ajouterE("Affranchi", person.genre)
                         affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
                         detailsList.appendChild(affranchiDateItem);
