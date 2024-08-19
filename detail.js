@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const affranchiDateItem = document.createElement('li');
                         const dateVerified = verifieDate(person.date_affranchi) 
                         const adjectif_genre = ajouterE("Affranchi", person.genre)
-                        affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageAffranch}` ans;
+                        affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageAffranch} ans`;
                         detailsList.appendChild(affranchiDateItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
