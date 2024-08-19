@@ -38,7 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     birthDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
                 }
                 else {
-                    birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
+                    if (person.lieu_naissance === "Afrique") {
+                       birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en Afrique`; 
+                    }
+                    else {
+                       birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
+                    }
                 }
                 detailsList.appendChild(birthDateItem);
                     // Ajouter la date de reconnaisance ainsi que le nom
@@ -107,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const deathDateItem = document.createElement('li');
                                 const dateVerified = verifieDate(person.date_deces) 
                                 const adjectif_genre = ajouterE("Décédé", person.genre)
-                                if (person.lieu_naissance === "Inconnu"){
+                                if (person.lieu_deces === "Inconnu"){
                                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans`;
                                 }
                                 else {
@@ -121,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 const deathDateItem = document.createElement('li');
                                 const dateVerified = verifieDate(person.date_deces) 
                                 const adjectif_genre = ajouterE("Décédé", person.genre)
-                                if (person.lieu_naissance === "Inconnu"){
+                                if (person.lieu_deces === "Inconnu"){
                                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
                                 }
                                 else {

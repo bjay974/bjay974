@@ -94,7 +94,12 @@ function createListItem(person) {
         listItem.classList.add("femmelist");
     }
     const link = document.createElement('a');
-    link.textContent = person.nom + ' ' + person.prenom;
+    if (person.origine) {
+        link.textContent = person.nom + ' ' + person.prenom + '(' + person.origine + ')';
+    }
+    else {
+        link.textContent = person.nom + ' ' + person.prenom;
+    }
     link.href = 'person.html?id=' + person.id;
     if (person.genre === "M") {
         link.classList.add("lienM");
