@@ -74,7 +74,7 @@ fetch('data.json')
 
         // Affichage des femmes de la branche maternelle
         const titlefemmematernelleList = document.createElement('p');
-        titlefemmematernelleList.textContent = "Fanm coté papa";
+        titlefemmematernelleList.textContent = "Fanm coté momon";
         titlefemmematernelleList.classList.add('label'); 
         femmematernelleList.appendChild(titlefemmematernelleList);
         femmesBrancheMaternelle.forEach(person => {
