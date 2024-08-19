@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const birthDateItem = document.createElement('li');
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateVerified = verifieDate(person.date_naissance);
-                if (person.date_naissance === "Inconnu"){
+                if (person.lieu_naissance === "Inconnu"){
                     birthDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
                 }
                 else {
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const affranchiDateItem = document.createElement('li');
                         const dateVerified = verifieDate(person.date_affranchi) 
                         const adjectif_genre = ajouterE("Affranchi", person.genre)
-                        affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageAffranch}`;
+                        affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageAffranch}` ans;
                         detailsList.appendChild(affranchiDateItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
