@@ -95,12 +95,18 @@ function createListItem(person) {
     }
     const listGeneration = createGenerationId(person); 
     const listAnNaissance = createAnNaissance(person.date_naissance);  
-    const link = document.createElement('a');
-    if (person.origine) {
-        link.textContent = person.nom + ' ' + person.prenom + ' (' + person.origine + ')' + ' - '  + ' (' + listAnNaissance + ') - G ' + listGeneration;
+    if (person.date_deces) {
+        const listAnDeces = createAnDeces(person.date_deces);  
     }
     else {
-        link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ') - G '  + listGeneration ;
+        const listAnDeces = null;  
+    }
+    const link = document.createElement('a');
+    if (person.origine) {
+        link.textContent = person.nom + ' ' + person.prenom  + ' - '  + ' (' + listAnNaissance + ' / ' +  listAnDeces + ' ) ' +  ' (' + person.origine + ') - G' + listGeneration ;
+    }
+    else {
+        link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' +  listAnDeces + ' ) - G' + listGeneration ;
     }
     if (person.id >= 2000) {
      link.href = 'person.html?id=' + person.id;
@@ -131,6 +137,14 @@ function createGenerationId(person) {
 }
 
 function createAnNaissance(date) {
+    const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
+    if (year === 1901) { 
+        return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
+    }
+    return year; 
+}
+
+function createAnDeces(date) {
     const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
     if (year === 1901) { 
         return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
