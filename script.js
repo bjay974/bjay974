@@ -93,14 +93,18 @@ function createListItem(person) {
     else {
         listItem.classList.add("femmelist");
     }
+    const listGeneration = createGenerationId(person); 
+    const listAnNaissance = createAnNaissance(person.date_naissance);  
     const link = document.createElement('a');
     if (person.origine) {
-        link.textContent = person.nom + ' ' + person.prenom + ' (' + person.origine + ')';
+        link.textContent = person.nom + ' ' + person.prenom + ' (' + person.origine + ')' + ' Géneration : ' + listGeneration + ' (' + listAnNaissance + ')';
     }
     else {
-        link.textContent = person.nom + ' ' + person.prenom;
+        link.textContent = person.nom + ' ' + person.prenom + ' Géneration : ' + listGeneration + ' (' + listAnNaissance + ')';
     }
-    link.href = 'person.html?id=' + person.id;
+    if (person.id >= 2000) {
+     link.href = 'person.html?id=' + person.id;
+    }
     if (person.genre === "M") {
         link.classList.add("lienM");
     }
@@ -109,4 +113,18 @@ function createListItem(person) {
     }
     listItem.appendChild(link);
     return listItem;
+}
+
+function createGenerationId(person) {
+    if (person.id < 1000) {
+        return Integer.parseInt(Integer.toString(personId).substring(0,1));
+    }
+    else if (person.id >= 1000 && person.id < 2000) {
+        return Integer.parseInt(Integer.toString(personId).substring(0,2));
+    }
+}
+
+function createAnNaissance(date) {
+    const year = parseInt(date.substr(6, 4));
+    return year;
 }
