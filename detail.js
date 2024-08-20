@@ -107,45 +107,33 @@ document.addEventListener('DOMContentLoaded', () => {
                  // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
                     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-                    if (person.date_deces !== "01/01/1901") {
-                        if (ageDeces > 0) {
-                             // Ajouter l'age du décés si la date de naissance existe 
-                            if (person.date_naissance !== "01/01/1901") {
-                                const deathDateItem = document.createElement('li');
-                                const dateVerified = verifieDate(person.date_deces) 
-                                const adjectif_genre = ajouterE("Décédé", person.genre)
-                                if (person.lieu_deces === "Inconnu"){
-                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans`;
-                                }
-                                else {
-                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
-                                }
-                                detailsList.appendChild(deathDateItem);
-                                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                            }
-                            else
-                            {
-                                const deathDateItem = document.createElement('li');
-                                const dateVerified = verifieDate(person.date_deces) 
-                                const adjectif_genre = ajouterE("Décédé", person.genre)
-                                if (person.lieu_deces === "Inconnu"){
-                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
-                                }
-                                else {
-                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
-                                }
-                                deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
-                                detailsList.appendChild(deathDateItem);
-                                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                            }
+                    if (person.date_naissance !== "01/01/1901") {
+                        const deathDateItem = document.createElement('li');
+                        const dateVerified = verifieDate(person.date_deces) 
+                        const adjectif_genre = ajouterE("Décédé", person.genre)
+                        if (person.lieu_deces === "Inconnu"){
+                            deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans`;
                         }
                         else {
-                            const deathDateItem = document.createElement('li');
-                            deathDateItem.textContent = `Date de décés inconnue`;
-                            detailsList.appendChild(deathDateItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace 
+                            deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
                         }
-                    } 
+                        detailsList.appendChild(deathDateItem);
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }
+                    else {
+                        const deathDateItem = document.createElement('li');
+                        const dateVerified = verifieDate(person.date_deces) 
+                        const adjectif_genre = ajouterE("Décédé", person.genre)
+                        if (person.lieu_deces === "Inconnu"){
+                            deathDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
+                        }
+                        else {
+                            deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
+                        }
+                        deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
+                        detailsList.appendChild(deathDateItem);
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }
                 }
                 else { 
                       const deathDateItem = document.createElement('li');  
@@ -164,8 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         detailsList.appendChild(affranchiDateItem);
                         detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                     }
-                    else
-                    {
+                    else {
                         const affranchiDateItem = document.createElement('li');
                         const dateVerified = verifieDate(person.date_affranchi) 
                         const adjectif_genre = ajouterE("Affranchi", person.genre)
