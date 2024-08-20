@@ -118,7 +118,7 @@ function createListItem(person) {
 function createGenerationId(person) {
     const personId = person.id.toString(); 
     let idGeneration;
-    if (person.id < 100)){
+    if (person.id < 100) {
         idGeneration = 0
     }
     else if (person.id < 1000) {
