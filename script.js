@@ -94,9 +94,12 @@ function createListItem(person) {
         listItem.classList.add("femmelist");
     }
     const listGeneration = createGenerationId(person); 
+<<<<<<< HEAD
+    const listAnNaissance = createAnNaissance(person.date_naissance); 
+=======
     const listAnNaissance = createAnNaissance(person.date_naissance);
     let listAnDeces = "";
-    if (person.date_deces) {
+>>>>if (person.date_deces) {
          listAnDeces = createAnDeces(person.date_deces);  
     }
     const link = document.createElement('a');
