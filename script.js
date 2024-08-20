@@ -97,10 +97,10 @@ function createListItem(person) {
     const listAnNaissance = createAnNaissance(person.date_naissance);  
     const link = document.createElement('a');
     if (person.origine) {
-        link.textContent = person.nom + ' ' + person.prenom + ' (' + person.origine + ')' + ' Géneration : ' + listGeneration + ' (' + listAnNaissance + ')';
+        link.textContent = person.nom + ' ' + person.prenom + ' (' + person.origine + ')' + ' --- '  + ' (' + listAnNaissance + ') --- G:' + listGeneration;
     }
     else {
-        link.textContent = person.nom + ' ' + person.prenom + ' Géneration : ' + listGeneration + ' (' + listAnNaissance + ')';
+        link.textContent = person.nom + ' ' + person.prenom + ' --- ' + ' (' + listAnNaissance + ') --- G:'  + listGeneration ;
     }
     if (person.id >= 2000) {
      link.href = 'person.html?id=' + person.id;
@@ -118,11 +118,14 @@ function createListItem(person) {
 function createGenerationId(person) {
     const personId = person.id.toString(); 
     let idGeneration;
-    if (person.id < 1000) {
+    if (person.id < 100)){
+        idGeneration = 0
+    }
+    else if (person.id < 1000) {
         idGeneration = parseInt(personId.charAt(0));
     } else if (person.id >= 1000 && person.id < 2000) {
         // Prendre les deux premiers chiffres de l'ID
-        idGeneration = parseInt(personId.substr(1, 2));
+        idGeneration = parseInt(personId.substr(1, 1));
     }
     return idGeneration;
 }
