@@ -99,7 +99,7 @@ function createListItem(person) {
         const listAnDeces = createAnDeces(person.date_deces);  
     }
     else {
-        const listAnDeces = null;  
+        const listAnDeces = "";  
     }
     const link = document.createElement('a');
     if (person.origine) {
