@@ -116,12 +116,14 @@ function createListItem(person) {
 }
 
 function createGenerationId(person) {
-    if (person.id < 1000) {
-        return Integer.parseInt(Integer.toString(personId).substring(0,1));
+    const personId = person.id
+    if (personId < 1000) {
+        const idGeneration = parseInt(personId.substr(0,1));
     }
-    else if (person.id >= 1000 && person.id < 2000) {
-        return Integer.parseInt(Integer.toString(personId).substring(0,2));
+    else if (personId >= 1000 && personId < 2000) {
+        const idGeneration = parseInt(personId.substr(0,2));
     }
+    return idGeneration;
 }
 
 function createAnNaissance(date) {
