@@ -85,7 +85,9 @@ document.addEventListener('DOMContentLoaded', () => {
                             const conjointItem = document.createElement('li');
                             conjointItem.classList.add('special-li');
                             const nomLink = document.createElement('a');
-                            nomLink.href = 'person.html?id=' + conjoint.id;
+                            if (conjoint.id < 2000) {
+                                nomLink.href = 'person.html?id=' + conjoint.id;
+                            }
                             nomLink.style.textDecoration = "none";
                             conjointItem.appendChild(document.createTextNode(' à '));                            
                             if (conjoint.genre === "M"){
@@ -180,7 +182,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (conjoint) {
                             const conjointItem = document.createElement('li');
                             const nomLink = document.createElement('a');
-                            nomLink.href = 'person.html?id=' + conjoint.id;
+                            if (conjoint.id < 2000) {
+                                nomLink.href = 'person.html?id=' + conjoint.id;
+                            }
                             nomLink.style.textDecoration = "none";
                             if (conjoint.genre === "M"){
                                 conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
@@ -211,7 +215,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         else  {
                             fatherItem.appendChild(document.createTextNode('Fille de ')); 
                         }  
-                        nomLink.href = 'person.html?id=' + father.id;
+                        if (father.id < 2000) {
+                            nomLink.href = 'person.html?id=' + father.id;
+                        }
                         const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong> ${father.prenom} </span>`;
                         nomLink.innerHTML = `${nomEnCouleur}`;
                         fatherItem.appendChild(nomLink);
@@ -230,7 +236,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (mother) {
                         const motherItem = document.createElement('li');
                         const nomLink = document.createElement('a');
-                        nomLink.href = 'person.html?id=' + mother.id;
+                        if (mother.id < 2000) {
+                            nomLink.href = 'person.html?id=' + mother.id;
+                        }
                         nomLink.style.textDecoration = "none";
                         if (father) {
                             motherItem.classList.add('special-li');
@@ -273,7 +281,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');
-                        nomLink.href = 'person.html?id=' + child.id;
+                        if (child.id < 2000) {
+                            nomLink.href = 'person.html?id=' + child.id;
+                        }
                         nomLink.style.textDecoration = "none";
                         if (child.genre==="M"){
                             nomLink.style.color = "rgb(11, 65, 83)";
@@ -398,7 +408,9 @@ document.addEventListener('DOMContentLoaded', () => {
             else {
                 arbrePersoLink.textContent = `Voir son arbre`;
             }
-            arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
+            if (person.id < 2000) {
+                arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
+            }
             arbrePersoLink.style.textDecoration = "none";
             arbrePersoLink.style.color = "#999"; 
             arbrePersoLink.style.fontSize = "90%";
