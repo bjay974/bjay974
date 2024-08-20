@@ -101,12 +101,12 @@ function createListItem(person) {
     }
     const link = document.createElement('a');
     if (person.origine) {
-        link.textContent = person.nom + ' ' + person.prenom  + ' - '  + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) ' +  ' (' + person.origine + ') - G' + listGeneration;
+        link.textContent = person.nom + ' ' + person.prenom  + '    '  + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) ' +  ' (' + person.origine + ') - G' + listGeneration;
     }
     else {
-        link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) - G' + listGeneration;
+        link.textContent = person.nom + ' ' + person.prenom + '    ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) - G' + listGeneration;
     }
-    if (person.id >= 2000) {
+    if (person.id < 2000) {
      link.href = 'person.html?id=' + person.id;
     }
     if (person.genre === "M") {
