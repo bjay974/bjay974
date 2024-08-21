@@ -41,35 +41,41 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (person.lieu_naissance === "Afrique") {
                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en Afrique`; 
                     }
+                    else if (person.lieu_naissance === "Nigéria") {
+                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} au Nigéria`; 
+                    }
                     else {
                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                     }
                 }
                 detailsList.appendChild(birthDateItem);
-                    // Ajouter la date de reconnaisance ainsi que le nom
-                    if (person.date_legitime) {
-                        const legDateItem = document.createElement('li');
-                        legDateItem.classList.add('special-li');
-                        const dateVerified = verifieDate(person.date_legitime);
-                        const adjectif_genre = ajouterE("Reconnu", person.genre);
-                        if (person.genre === "M"){
-                            const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span>`;
-                            legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
-                        }
-                        else {
-                            const nomEnCouleur = `<span style="color:#583a3a;"><strong>${person.nom_legitime}</strong></span>`;
-                            legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
-                        }
-                        detailsList.appendChild(legDateItem);
+
+                // Ajouter la date de reconnaisance ainsi que le nom
+                if (person.date_legitime) {
+                    const legDateItem = document.createElement('li');
+                    legDateItem.classList.add('special-li');
+                    const dateVerified = verifieDate(person.date_legitime);
+                    const adjectif_genre = ajouterE("Reconnu", person.genre);
+                    if (person.genre === "M"){
+                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span>`;
+                        legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                     }
-                    if (!person.date_deces) {
-                        const ageNowItem = document.createElement('li');
-                        const ageNow = calculeAge(person.date_naissance);
-                        ageNowItem.classList.add('special-li');
-                        const adjectif_genre = ajouterE("Agé", person.genre)
-                        ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
-                        detailsList.appendChild(ageNowItem);
-                    }    
+                    else {
+                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${person.nom_legitime}</strong></span>`;
+                        legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
+                    }
+                    detailsList.appendChild(legDateItem);
+                }
+
+                 // Ajouter l'age actuel
+                if (!person.date_deces) {
+                    const ageNowItem = document.createElement('li');
+                    const ageNow = calculeAge(person.date_naissance);
+                    ageNowItem.classList.add('special-li');
+                    const adjectif_genre = ajouterE("Agé", person.genre)
+                    ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
+                    detailsList.appendChild(ageNowItem);
+                }    
 
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
@@ -104,20 +110,20 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                 }
                 
-                 // Ajouter la date de décès si elle n'est pas nulle
+                // Ajouter la date de décès si elle n'est pas nulle
                 if (person.date_deces !== null) {
-                    const ageDeces = diffAge(person.date_deces, person.date_naissance);
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
+                            const ageDeces = diffAge(person.date_deces, person.date_naissance);
                             if (ageDeces > 5) {
                                 const deathDateItem = document.createElement('li');
-                                const dateVerified = verifieDate(person.date_deces) 
-                                const adjectif_genre = ajouterE("Décédé", person.genre)
+                                const dateVerified = verifieDate(person.date_deces); 
+                                const adjectif_genre = ajouterE("Décédé", person.genre);
                                 if (person.lieu_deces === "Inconnu"){
-                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans`;
+                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${ageDeces} ans`;
                                 }
                                 else {
-                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageDeces} ans à ${person.lieu_deces}`;
+                                    deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${ageDeces} ans à ${person.lieu_deces}`;
                                 }
                                 detailsList.appendChild(deathDateItem);
                                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
@@ -132,7 +138,6 @@ document.addEventListener('DOMContentLoaded', () => {
                                 else {
                                     deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
                                 }
-                                deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
                                 detailsList.appendChild(deathDateItem);
                                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                             }
@@ -140,6 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         else { 
                             const deathDateItem = document.createElement('li');  
                             deathDateItem.textContent = `Date de décés inconnue`;
+                            detailsList.appendChild(deathDateItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         }    
                     }
                     else {
@@ -153,13 +160,14 @@ document.addEventListener('DOMContentLoaded', () => {
                             else {
                                 deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
                             }
-                            deathDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`;
                             detailsList.appendChild(deathDateItem);
                             detailsList.appendChild(document.createElement('br')); // Ajout d'un espace 
                         }
                         else { 
                             const deathDateItem = document.createElement('li');  
                             deathDateItem.textContent = `Date de décés inconnue`;
+                            detailsList.appendChild(deathDateItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                         } 
                     }
                 }
