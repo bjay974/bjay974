@@ -93,7 +93,7 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     const link = document.createElement('a');
     
     // Ajout du nom et prénom
-    const namePart = document.createTextNode(person.nom + ' ' + person.prenom + ' - ');
+    const namePart = document.createTextNode(person.nom + ' ' + person.prenom + '  ');
     link.appendChild(namePart);
 
     // Ajout de l'année de naissance en taille inférieure
@@ -122,7 +122,9 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     }
 
     // Ajout de la génération
-    const generationPart = document.createTextNode('- ' + listGeneration);
+    const generationPart = document.createElement('em');
+    generationPart.style.fontSize = 'smaller';
+    generationPart.textContent = ' ' + listGeneration;
     link.appendChild(generationPart);
 
     if (person.id < 2000) {
