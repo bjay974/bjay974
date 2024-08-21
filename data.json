@@ -102,7 +102,7 @@
       "acte_div": false
     },   
     {
-      "id": 1508,
+      "id": 1510,
       "nom": "FONTAINE",
       "prenom": "Marie Rosa",
       "genre": "F",
@@ -357,10 +357,10 @@
       "prenom": "Léonie",
       "genre": "F",
       "nom_epouse": "FONTAINE",
-      "nom_legitime": 1505,
-      "date_legitime": 1504,
-      "id_pere": null,
-      "id_mere": null,
+      "nom_legitime": null,
+      "date_legitime": null,
+      "id_pere": 1505,
+      "id_mere": 1504,
       "date_naissance": "25/11/1907",
       "lieu_naissance": "Saint Joseph",
       "date_deces": "01/01/1901",
