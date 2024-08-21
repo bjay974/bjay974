@@ -81,15 +81,11 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     }
     const listGeneration = createGenerationId(person);
     const listAnNaissance = createAnNaissance(person.date_naissance);
-    listAnNaissance.classList.add('italique');
-    listGeneration.classList.add('italique');
     let listAnDeces = '';
     if (person.date_deces) {
       listAnDeces = createAnDeces(person.date_deces);
-      listAnDeces.classList.add('italique');
     }
     const personOrigine = person.origine
-    personOrigine.classList.add('italique');
     const link = document.createElement('a');
     if (person.origine) {
       link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) ' + ' (' + personOrigine + ') -' + listGeneration;
