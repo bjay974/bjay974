@@ -173,7 +173,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -223,7 +223,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -273,7 +273,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -298,7 +298,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },   
     {
@@ -323,7 +323,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -348,7 +348,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -373,7 +373,7 @@
       "origine": null,
       "acte_nai": false,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -398,7 +398,7 @@
       "origine": null,
       "acte_nai": true,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -423,7 +423,7 @@
       "origine": null,
       "acte_nai": false,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -462,10 +462,10 @@
       "date_legitime": null,
       "id_pere": null,
       "id_mere": null,
-      "date_naissance": "01/01/1791",
-      "lieu_naissance": "Inconnu",
+      "date_naissance": "10/12/1792",
+      "lieu_naissance": "Sainte-Rose",
       "date_deces": "19/08/1855",
-      "lieu_deces": "Saint Benoit",
+      "lieu_deces": "Sainte-Rose",
       "date_mariage": null,
       "lieu_mariage": null,
       "id_conjoint": null,
@@ -620,8 +620,8 @@
       "id_mere": null,
       "date_naissance": "01/01/1810",
       "lieu_naissance": "Afrique",
-      "date_deces": "01/01/1901",
-      "lieu_deces": "Inconnu",
+      "date_deces": "19/02/1877",
+      "lieu_deces": "Saint Benoit",
       "date_mariage": null,
       "lieu_mariage": null,
       "id_conjoint": 712,
@@ -721,10 +721,10 @@
       "date_legitime": null,
       "id_pere": null,
       "id_mere": null,
-      "date_naissance": "01/01/1821",
+      "date_naissance": "01/01/1812",
       "lieu_naissance": "Inconnu",
-      "date_deces": "01/01/1901",
-      "lieu_deces": "Inconnu",
+      "date_deces": "25/12/1873",
+      "lieu_deces": "Saint Benoit",
       "date_mariage": "08/05/1852",
       "lieu_mariage": "Sainte-Rose",
       "id_conjoint": 701,
@@ -734,7 +734,7 @@
       "origine": null,
       "acte_nai": false,
       "acte_dec": false,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -760,7 +760,7 @@
       "origine": null,
       "acte_nai": false,
       "acte_dec": true,
-      "acte_mar": false,
+      "acte_mar": true,
       "acte_div": false
     },
     {
@@ -930,9 +930,9 @@
       "id_pere": 709,
       "id_mere": 710,
       "date_naissance": "18/11/1843",
-      "lieu_naissance": "Inconnu",
+      "lieu_naissance": "Saint André",
       "date_deces": "11/02/1906",
-      "lieu_deces": "Inconnu",
+      "lieu_deces": "Saint Benoit",
       "date_mariage": "26/05/1862",
       "lieu_mariage": "Saint benoit",
       "id_conjoint": 602,
@@ -1154,11 +1154,11 @@
       "id_mere": 502,
       "date_naissance": "06/01/1889",
       "lieu_naissance": "Saint Benoit",
-      "date_deces": "17/03/1931",
-      "lieu_deces": "Saint Denis",
+      "date_deces": "04/02/1919",
+      "lieu_deces": "Saint Benoit",
       "date_mariage": "13/06/1908",
       "lieu_mariage": "Sainte-Rose",
-      "id_conjoint": 402,
+      "id_conjoint": 401,
       "domicile": null,
       "affranchi": null,
       "origine": null,
