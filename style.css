@@ -179,6 +179,10 @@ footer {
    margin-left: 20px;
 }
 
+.italique {
+    font-style: italic;
+ }
+
 .labelArbre {
     color:#423d3d;
     font-style: italic;

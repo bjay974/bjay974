@@ -81,16 +81,21 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     }
     const listGeneration = createGenerationId(person);
     const listAnNaissance = createAnNaissance(person.date_naissance);
+    listAnNaissance.classList.add('italique');
+    listGeneration.classList.add('italique');
     let listAnDeces = '';
     if (person.date_deces) {
       listAnDeces = createAnDeces(person.date_deces);
+      listAnDeces.classList.add('italique');
     }
+    const personOrigine = person.origine
+    personOrigine.classList.add('italique');
     const link = document.createElement('a');
     if (person.origine) {
-      link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) ' + ' (' + person.origine + ') - G' + listGeneration;
+      link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) ' + ' (' + personOrigine + ') -' + listGeneration;
     } 
     else {
-      link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) - G' + listGeneration;
+      link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) -' + listGeneration;
     }
     if (person.id < 2000) {
       link.href = 'person.html?id=' + person.id;
@@ -112,11 +117,12 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     } 
     else if (person.id < 1000) {
       idGeneration = parseInt(personId.charAt(0));
+
     } else if (person.id >= 1000 && person.id < 2000) {
       // Prendre les deux premiers chiffres de l'ID
       idGeneration = parseInt(personId.substr(1, 1));
     }
-    return idGeneration;
+    return "G" + idGeneration;
   }
   function createAnNaissance(date) {
     const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
