@@ -104,8 +104,9 @@ fetch('data.json').then(response=>response.json()).then(data=>{
 
     // Ajout de la date de décès s'il y en a une
     if (listAnDeces) {
-      const decesPart = document.createTextNode(' / ' + listAnDeces + ' ) ');
+      const decesPart = document.createElement('span');
       decesPart.style.fontSize = 'smaller';
+      decesPart.textContent = ' / ' + listAnDeces + ' ) ';
       link.appendChild(decesPart);
     } else {
       const closeParenthesis = document.createTextNode(' ) ');
