@@ -71,6 +71,8 @@ fetch('data.json').then(response=>response.json()).then(data=>{
       femmematernelleList.appendChild(listItem);
     });
   }).catch(error=>console.error('Erreur lors du chargement des données :', error));
+
+
   function createListItem(person) {
     const listItem = document.createElement('li');
     if (person.genre === 'M') {
@@ -79,32 +81,65 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     else {
       listItem.classList.add('femmelist');
     }
+    
     const listGeneration = createGenerationId(person);
     const listAnNaissance = createAnNaissance(person.date_naissance);
     let listAnDeces = '';
     if (person.date_deces) {
       listAnDeces = createAnDeces(person.date_deces);
     }
-    const personOrigine = person.origine
+    const personOrigine = person.origine;
+
     const link = document.createElement('a');
-    if (person.origine) {
-      link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) ' + ' (' + personOrigine + ') -' + listGeneration;
-    } 
-    else {
-      link.textContent = person.nom + ' ' + person.prenom + ' - ' + ' (' + listAnNaissance + ' / ' + listAnDeces + ' ) -' + listGeneration;
+    
+    // Ajout du nom et prénom
+    const namePart = document.createTextNode(person.nom + ' ' + person.prenom + ' - ');
+    link.appendChild(namePart);
+
+    // Ajout de l'année de naissance en taille inférieure
+    const naissancePart = document.createElement('span');
+    naissancePart.style.fontSize = 'smaller';
+    naissancePart.textContent = '(' + listAnNaissance;
+    link.appendChild(naissancePart);
+
+    // Ajout de la date de décès s'il y en a une
+    if (listAnDeces) {
+      const decesPart = document.createTextNode(' / ' + listAnDeces + ' ) ');
+      decesPart.style.fontSize = 'smaller';
+      link.appendChild(decesPart);
+    } else {
+      const closeParenthesis = document.createTextNode(' ) ');
+      link.appendChild(closeParenthesis);
     }
+
+    // Ajout de l'origine en italique
+    if (personOrigine) {
+      const originePart = document.createElement('em');
+      originePart.style.fontSize = 'smaller';
+      originePart.textContent = ' (' + personOrigine + ') ';
+      link.appendChild(originePart);
+    }
+
+    // Ajout de la génération
+    const generationPart = document.createTextNode('- ' + listGeneration);
+    link.appendChild(generationPart);
+
     if (person.id < 2000) {
       link.href = 'person.html?id=' + person.id;
     }
+    
     if (person.genre === 'M') {
       link.classList.add('lienM');
     } 
     else {
       link.classList.add('lienF');
     }
+    
     listItem.appendChild(link);
     return listItem;
-  }
+}
+
+
   function createGenerationId(person) {
     const personId = person.id.toString();
     let idGeneration;
