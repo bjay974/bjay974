@@ -505,10 +505,10 @@ function getAfficheMessage(repertoire) {
             return "Voir l'acte de décés";
             break;
         case "naissance":
-            return "Voir l'acte de décés";
+            return "Voir l'acte de naissance";
             break;
         case "mariage":
-            return "Voir l'acte de décés";
+            return "Voir l'acte de mariage";
     }
 }
 
