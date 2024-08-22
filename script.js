@@ -5,7 +5,6 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     const femmesFamille = famille.filter(person=>person.genre === 'F');
     const branchePaternelle = data.filter(person=>person.id >= 204 && person.id <= 999);
     const hommesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'M');
-    hommesBranchePaternelle.sort((a, b) => b.id - a.id);
     const femmesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'F');
     femmesBranchePaternelle.sort((a, b) => b.id - a.id);
     const brancheMaternelle = data.filter(person=>person.id >= 1000 && person.id <= 1999);
@@ -20,29 +19,12 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     const femmepaternelleList = document.getElementById('femme-list-paternelle');
     const hommematernelleList = document.getElementById('homme-list-maternelle');
     const femmematernelleList = document.getElementById('femme-list-maternelle');
-    // Affichage des hommes de la famille
-    const titlehommefamilleList = document.createElement('p');
-    titlehommefamilleList.textContent = 'Boug';
-    titlehommefamilleList.classList.add('label');
-    hommefamilleList.appendChild(titlehommefamilleList);
-    hommesFamille.forEach(person=>{
-      const listItem = createListItem(person);
-      hommefamilleList.appendChild(listItem);
-    });
-    // Affichage des femmes de la famille
-    const titlefemmefamilleList = document.createElement('p');
-    titlefemmefamilleList.textContent = 'Fanm';
-    titlefemmefamilleList.classList.add('label');
-    femmefamilleList.appendChild(titlefemmefamilleList);
-    femmesFamille.forEach(person=>{
-      const listItem = createListItem(person);
-      femmefamilleList.appendChild(listItem);
-    });
     // Affichage des hommes de la branche paternelle
     const titlehommepaternelleList = document.createElement('p');
     titlehommepaternelleList.textContent = 'Boug coté papa';
     titlehommepaternelleList.classList.add('label');
     hommepaternelleList.appendChild(titlehommepaternelleList);
+    hommesBranchePaternelle.sort((a, b) => b.id - a.id);
     hommesBranchePaternelle.forEach(person=>{
       const listItem = createListItem(person);
       hommepaternelleList.appendChild(listItem);
@@ -73,6 +55,24 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     femmesBrancheMaternelle.forEach(person=>{
       const listItem = createListItem(person);
       femmematernelleList.appendChild(listItem);
+    });
+    // Affichage des hommes de la famille
+    const titlehommefamilleList = document.createElement('p');
+    titlehommefamilleList.textContent = 'Boug';
+    titlehommefamilleList.classList.add('label');
+    hommefamilleList.appendChild(titlehommefamilleList);
+    hommesFamille.forEach(person=>{
+      const listItem = createListItem(person);
+      hommefamilleList.appendChild(listItem);
+    });
+    // Affichage des femmes de la famille
+    const titlefemmefamilleList = document.createElement('p');
+    titlefemmefamilleList.textContent = 'Fanm';
+    titlefemmefamilleList.classList.add('label');
+    femmefamilleList.appendChild(titlefemmefamilleList);
+    femmesFamille.forEach(person=>{
+      const listItem = createListItem(person);
+      femmefamilleList.appendChild(listItem);
     });
   }).catch(error=>console.error('Erreur lors du chargement des données :', error));
 
