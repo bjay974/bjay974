@@ -322,7 +322,8 @@ document.addEventListener('DOMContentLoaded', () => {
             // Charger le commentaire
             if (person.commentaire) {
                 const commentaireItem = document.createElement('li');
-                const textCommentaire = person.commentaire;
+                const textCommentaire = document.createElement('span');
+                textCommentaire.textContent = person.commentaire;
                 textCommentaire.style.fontSize = 'smaller';
                 commentaireItem.innerHTML = `Notes : <em>${textCommentaire}</em>`; 
                 detailsList.appendChild(commentaireItem);   
