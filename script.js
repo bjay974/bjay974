@@ -1,21 +1,20 @@
 fetch('data.json').then(response=>response.json()).then(data=>{
     // Filtrer les personnes par genre
-    const famille = data.filter(person=>person.id <= 203);
-    const hommesFamille = famille.filter(person=>person.genre === 'M');
-    const femmesFamille = famille.filter(person=>person.genre === 'F');
     const branchePaternelle = data.filter(person=>person.id >= 204 && person.id <= 999);
     const hommesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'M');
     const femmesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'F');
     const brancheMaternelle = data.filter(person=>person.id >= 1000 && person.id <= 1999);
     const hommesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'M');
     const femmesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'F');
-    const familleList = document.getElementById('famille-list');
-    const hommefamilleList = document.getElementById('homme-list');
-    const femmefamilleList = document.getElementById('femme-list');
+    const famille = data.filter(person=>person.id <= 203);
+    const hommesFamille = famille.filter(person=>person.genre === 'M');
+    const femmesFamille = famille.filter(person=>person.genre === 'F');
     const hommepaternelleList = document.getElementById('homme-list-paternelle');
     const femmepaternelleList = document.getElementById('femme-list-paternelle');
     const hommematernelleList = document.getElementById('homme-list-maternelle');
     const femmematernelleList = document.getElementById('femme-list-maternelle');
+    const hommefamilleList = document.getElementById('homme-list');
+    const femmefamilleList = document.getElementById('femme-list');
     // Affichage des hommes de la branche paternelle
     const titlehommepaternelleList = document.createElement('p');
     titlehommepaternelleList.textContent = 'Boug coté papa';
