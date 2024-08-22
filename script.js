@@ -8,9 +8,7 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     const femmesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'F');
     const brancheMaternelle = data.filter(person=>person.id >= 1000 && person.id <= 1999);
     const hommesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'M');
-    hommesBrancheMaternelle.sort((a, b) => b.id - a.id);
     const femmesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'F');
-    femmesBrancheMaternelle.sort((a, b) => b.id - a.id);
     const familleList = document.getElementById('famille-list');
     const hommefamilleList = document.getElementById('homme-list');
     const femmefamilleList = document.getElementById('femme-list');
@@ -43,6 +41,7 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     titlehommematernelleList.textContent = 'Boug coté momon';
     titlehommematernelleList.classList.add('label');
     hommematernelleList.appendChild(titlehommematernelleList);
+    hommesBrancheMaternelle.sort((a, b) => b.id - a.id);
     hommesBrancheMaternelle.forEach(person=>{
       const listItem = createListItem(person);
       hommematernelleList.appendChild(listItem);
@@ -52,6 +51,7 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     titlefemmematernelleList.textContent = 'Fanm coté momon';
     titlefemmematernelleList.classList.add('label');
     femmematernelleList.appendChild(titlefemmematernelleList);
+    femmesBrancheMaternelle.sort((a, b) => b.id - a.id);
     femmesBrancheMaternelle.forEach(person=>{
       const listItem = createListItem(person);
       femmematernelleList.appendChild(listItem);
