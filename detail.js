@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 const textCommentaire = document.createElement('span');
                 textCommentaire.textContent = person.commentaire;
                 textCommentaire.style.fontSize = 'smaller';
-                commentaireItem.innerHTML = `Notes : <em>${textCommentaire}</em>`; 
+                commentaireItem.textContent = `Notes : <em>${textCommentaire}</em>`; 
                 detailsList.appendChild(commentaireItem);   
                 detailsList.appendChild(document.createElement('br')); 
             }
