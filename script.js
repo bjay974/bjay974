@@ -6,7 +6,6 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     const branchePaternelle = data.filter(person=>person.id >= 204 && person.id <= 999);
     const hommesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'M');
     const femmesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'F');
-    femmesBranchePaternelle.sort((a, b) => b.id - a.id);
     const brancheMaternelle = data.filter(person=>person.id >= 1000 && person.id <= 1999);
     const hommesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'M');
     hommesBrancheMaternelle.sort((a, b) => b.id - a.id);
@@ -34,6 +33,7 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     titlefemmepaternelleList.textContent = 'Fanm coté papa';
     titlefemmepaternelleList.classList.add('label');
     femmepaternelleList.appendChild(titlefemmepaternelleList);
+    femmesBranchePaternelle.sort((a, b) => b.id - a.id);
     femmesBranchePaternelle.forEach(person=>{
       const listItem = createListItem(person);
       femmepaternelleList.appendChild(listItem);
