@@ -320,7 +320,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } 
 
             // Charger le commentaire
-            if (person.commentaire === true) {
+            if (person.commentaire) {
                 const commentaireItem = document.createElement('li');
                 const textCommentaire = person.commentaire;
                 textCommentaire.style.fontSize = 'smaller';
