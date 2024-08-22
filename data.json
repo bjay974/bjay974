@@ -942,7 +942,8 @@
       "acte_nai": true,
       "acte_dec": true,
       "acte_mar": true,
-      "acte_div": true
+      "acte_div": true,
+      "commentaire": "Pierre a été employé à l'usine sucriére de Beaulieu, propriétée du Credit Foncier."
     },
     {
       "id": 602,

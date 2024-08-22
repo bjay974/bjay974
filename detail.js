@@ -318,7 +318,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 } 
-             
+
+            // Charger le commentaire
+            if (person.commentaire === true) {
+                const commentaireItem = document.createElement('li');
+                const textCommentaire = person.commentaire;
+                textCommentaire.style.fontSize = 'smaller';
+                commentaireItem.innerHTML = `Notes : <em>${textCommentaire}</em>`; 
+                detailsList.appendChild(commentaireItem);   
+                detailsList.appendChild(document.createElement('br')); 
+            }
+
               // Charger les liens vers les actes si il y en a
               if (person.acte_nai === true || person.acte_dec === true || person.acte_mar === true || person.affranchi === true  ) {
                     const nomFichier = person.id;
