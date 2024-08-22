@@ -792,7 +792,7 @@
     "id_conjoint": 602,
     "domicile": null,
     "affranchi": null,
-,   "commentaire": "Pierre a été employé à l'usine sucriére de Beaulieu, propriétée du Credit Foncier.",
+    "commentaire": "Pierre a été employé à lusine sucriére de Beaulieu, propriétée du Credit Foncier",
     "origine": null
   },
   {
@@ -838,7 +838,7 @@
     "domicile": "Bras Canot",
     "affranchi": true,
     "origine": "Madagascar",
-,   "commentaire":"La traite des esclaves étant interdite depuis 1810 et Caprice étant né en 1825 il n'y a pas de documents officiels qui attestent son arrivée dans l'ile."
+    "commentaire":"La traite des esclaves étant interdite depuis 1810 et Caprice étant né en 1825 il n'y a pas de documents officiels qui attestent son arrivée dans l'ile."
   },
   {
     "id": 504,
