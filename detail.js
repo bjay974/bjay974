@@ -370,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const acteItem = document.createElement('a');
                             const ficLink = document.createElement('a');
                             const afficheMessage = getAfficheMessage(repertoire);
-                            ficLink.textContent = ${afficheMessage};
+                            ficLink.textContent = `${afficheMessage}`;
                             ficLink.href = monFichier;
                             ficLink.target = '_blank';                                  
                             ficLink.style.textDecoration = "none";
@@ -505,10 +505,10 @@ function getAfficheMessage(repertoire) {
             return "Voir l'acte de décés";
             break;
         case "naissance":
-            return "Voir l'acte de naissance";
+            return "Voir l'acte de décés";
             break;
         case "mariage":
-            return "Voir l'acte de mariage";
+            return "Voir l'acte de décés";
     }
 }
 
