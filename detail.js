@@ -329,124 +329,116 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br')); 
             }
 
-              // Charger les liens vers les actes si il y en a
-              if (person.acte_nai === true || person.acte_dec === true || person.acte_mar === true || person.affranchi === true  ) {
-                    const nomFichier = person.id;
-                    const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
-                    for (let i = 0; i < repertoires.length; i++) {    
-                      const repertoire = repertoires[i];
-                      const extensions = ['pdf', 'jpg', 'jpeg'];
-                      for (let i = 0; i < extensions.length; i++) {
-                          const extension = extensions[i];
-                          const monFichier = `${repertoire}/${nomFichier}.${extension}`;
-                          fetch(`${monFichier}`)
-                          .then(response => {
-                              if (response.ok) {
-                                  const acteItem = document.createElement('a');
-                                  const ficLink = document.createElement('a');
-                                  if (repertoire === "particulier"){
-                                       ficLink.textContent = `Voir l'acte spécial`;}
-                                  else if (repertoire === "deces"){
-                                       ficLink.textContent = `Voir l'acte de décés `; }  
-                                  else {
-                                       ficLink.textContent = `Voir l'acte de ${repertoire}`; }   
-                                  ficLink.href = monFichier;
-                                  ficLink.target = '_blank';                                  
-                                  ficLink.style.textDecoration = "none";
-                                  ficLink.style.color = "#999"; 
-                                  ficLink.style.fontSize = "90%";
-                                  acteItem.appendChild(ficLink);
-                                  const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
-                                  fetch(`${monFichierBis}`)
-                                  .then(response => {
-                                      if (response.ok) {
-                                          const ficLinkbis = document.createElement('a');
-                                          ficLinkbis.textContent = `Voir la Partie 2`;
-                                          ficLinkbis.href = monFichierBis;                                          
-                                          ficLinkbis.style.textDecoration = "none";
-                                          ficLinkbis.style.color = "#999";
-                                          ficLinkbis.style.fontSize = "90%";
-                                          acteItem.appendChild(document.createTextNode('  ||  '));
-                                          acteItem.appendChild(ficLinkbis);
-                                  } })
-                                  detailsList.appendChild(acteItem);
-                                  detailsList.appendChild(document.createElement('br'));
-                             } })
-                      }
-                    }     
-                 }
-                else {
-                    detailsList.appendChild(document.createElement('br')); 
-                }
-
-              // Charger les liens vers l'acte de mariage au nom du mari 
-              if (person.acte_mar === true && person.genre === "F") {
-                const nomFichier = person.id_conjoint;
-                  const repertoire = "mariage";
-                  const extensions = ['pdf', 'jpg', 'jpeg'];
-                  for (let i = 0; i < extensions.length; i++) {
-                      const extension = extensions[i];
-                      const monFichier = `${repertoire}/${nomFichier}.${extension}`;
-                      fetch(`${monFichier}`)
-                      .then(response => {
-                          if (response.ok) {
-                              const acteItem = document.createElement('a');
-                              const ficLink = document.createElement('a');
-                              ficLink.textContent = `Voir l'acte de ${repertoire}`;   
-                              ficLink.href = monFichier;
-                              ficLink.target = '_blank';                                  
-                              ficLink.style.textDecoration = "none";
-                              ficLink.style.color = "#999"; 
-                              ficLink.style.fontSize = "90%";
-                              acteItem.appendChild(ficLink);
-                              const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
-                              fetch(`${monFichierBis}`)
-                              .then(response => {
-                                  if (response.ok) {
-                                      const ficLinkbis = document.createElement('a');
-                                      ficLinkbis.textContent = `Voir la partie 2`;
-                                      ficLinkbis.href = monFichierBis;                                          
-                                      ficLinkbis.style.textDecoration = "none";
-                                      ficLinkbis.style.color = "#999";
-                                      ficLinkbis.style.fontSize = "90%";
-                                      acteItem.appendChild(document.createTextNode('  ||  '));
-                                      acteItem.appendChild(ficLinkbis);
-                              } })
-                              detailsList.appendChild(acteItem);
-                              detailsList.appendChild(document.createElement('br'));
-                         } })
-                  }
-             }
-            else {
-                detailsList.appendChild(document.createElement('br')); 
-            }
-
             // Ajouter le lien vers l'arbre perso
-            const arbrePersoItem = document.createElement('a');
-            const arbrePersoLink = document.createElement('a');
-            const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(person.prenom.charAt(0));
-
-            if (person.prenom) {
-                if (prenomVoyelle) {
-                    arbrePersoLink.textContent = `Voir l'arbre d'${person.prenom}`;
+            if (person.id < 2000) {
+                const arbrePersoItem = document.createElement('a');
+                const arbrePersoLink = document.createElement('a');
+                const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(person.prenom.charAt(0));
+                if (person.prenom) {
+                    if (prenomVoyelle) {
+                        arbrePersoLink.textContent = `Voir l'arbre d'${person.prenom}`;
+                    }
+                    else {
+                        arbrePersoLink.textContent = `Voir l'arbre de ${person.prenom}`; 
+                    }
                 }
                 else {
-                    arbrePersoLink.textContent = `Voir l'arbre de ${person.prenom}`; 
+                    arbrePersoLink.textContent = `Voir son arbre`;
+                }
+                arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
+                arbrePersoLink.style.textDecoration = "none";
+                arbrePersoLink.style.color = "#999"; 
+                arbrePersoLink.style.fontSize = "80%";
+                arbrePersoItem.appendChild(arbrePersoLink);
+                detailsList.appendChild(arbrePersoItem);
+                detailsList.appendChild(document.createElement('br'));
+                detailsList.appendChild(document.createElement('br'));
+            }
+
+              // Charger les liens vers les actes si il y en a
+            const nomFichier = person.id;
+            const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
+            for (let i = 0; i < repertoires.length; i++) {    
+                const repertoire = repertoires[i];
+                const extensions = ['pdf', 'jpg', 'jpeg'];
+                for (let i = 0; i < extensions.length; i++) {
+                    const extension = extensions[i];
+                    const monFichier = `${repertoire}/${nomFichier}.${extension}`;
+                    fetch(`${monFichier}`)
+                    .then(response => {
+                        if (response.ok) {
+                            const acteItem = document.createElement('a');
+                            const ficLink = document.createElement('a');
+                            const afficheMessage = getAfficheMessage(repertoire);
+                            ficLink.textContent = ${afficheMessage};
+                            ficLink.href = monFichier;
+                            ficLink.target = '_blank';                                  
+                            ficLink.style.textDecoration = "none";
+                            ficLink.style.color = "#999"; 
+                            ficLink.style.fontSize = "90%";
+                            acteItem.appendChild(ficLink);
+                            const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
+                            fetch(`${monFichierBis}`)
+                            .then(response => {
+                                if (response.ok) {
+                                    const ficLinkbis = document.createElement('a');
+                                    ficLinkbis.textContent = "2éme partie";
+                                    ficLinkbis.href = monFichierBis;                                          
+                                    ficLinkbis.style.textDecoration = "none";
+                                    ficLinkbis.style.color = "#999";
+                                    ficLinkbis.style.fontSize = "90%";
+                                    acteItem.appendChild(document.createTextNode('  ||  '));
+                                    acteItem.appendChild(ficLinkbis);
+                            } })
+                            detailsList.appendChild(acteItem);
+                            detailsList.appendChild(document.createElement('br'));
+                        } })
+                }
+            }     
+            // Charger les liens vers l'acte de mariage au nom du mari 
+            if (person.date_mariage && person.genre === "F") {
+            const nomFichier = person.id_conjoint;
+                const repertoire = "mariage";
+                const extensions = ['pdf', 'jpg', 'jpeg'];
+                for (let i = 0; i < extensions.length; i++) {
+                    const extension = extensions[i];
+                    const monFichier = `${repertoire}/${nomFichier}.${extension}`;
+                    fetch(`${monFichier}`)
+                    .then(response => {
+                        if (response.ok) {
+                            const acteItem = document.createElement('a');
+                            const ficLink = document.createElement('a');
+                            ficLink.textContent = `Voir l'acte de ${repertoire}`;   
+                            ficLink.href = monFichier;
+                            ficLink.target = '_blank';                                  
+                            ficLink.style.textDecoration = "none";
+                            ficLink.style.color = "#999"; 
+                            ficLink.style.fontSize = "90%";
+                            acteItem.appendChild(ficLink);
+                            const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
+                            fetch(`${monFichierBis}`)
+                            .then(response => {
+                                if (response.ok) {
+                                    const ficLinkbis = document.createElement('a');
+                                    ficLinkbis.textContent = `Voir la partie 2`;
+                                    ficLinkbis.href = monFichierBis;                                          
+                                    ficLinkbis.style.textDecoration = "none";
+                                    ficLinkbis.style.color = "#999";
+                                    ficLinkbis.style.fontSize = "90%";
+                                    acteItem.appendChild(document.createTextNode('  ||  '));
+                                    acteItem.appendChild(ficLinkbis);
+                            } })
+                            detailsList.appendChild(acteItem);
+                            detailsList.appendChild(document.createElement('br'));
+                        } })
                 }
             }
-            else {
-                arbrePersoLink.textContent = `Voir son arbre`;
-            }
-            if (person.id < 2000) {
-                arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
-            }
-            arbrePersoLink.style.textDecoration = "none";
-            arbrePersoLink.style.color = "#999"; 
-            arbrePersoLink.style.fontSize = "90%";
-            arbrePersoItem.appendChild(arbrePersoLink);
-            detailsList.appendChild(arbrePersoItem);
-            detailsList.appendChild(document.createElement('br'));
-            personDetails.appendChild(detailsList);
+        else {
+            detailsList.appendChild(document.createElement('br')); 
+        }
+
+        personDetails.appendChild(detailsList);
+
             }      
         })
      
@@ -488,7 +480,6 @@ function ajouterE(adjectif, genre) {
     }
 }
 
-
 //Verifie si la date est connue  
 function verifieDate(date) {
     const an = parseInt(date.substr(6, 4));
@@ -504,3 +495,20 @@ function verifieDate(date) {
         return "le " + date;
     }
 }
+
+function getAfficheMessage(repertoire) {
+    switch(repertoire){
+        case "particulier" : 
+            return "Voir l'acte spécial";
+            break;
+        case "deces":
+            return "Voir l'acte de décés";
+            break;
+        case "naissance":
+            return "Voir l'acte de naissance";
+            break;
+        case "mariage":
+            return "Voir l'acte de mariage";
+    }
+}
+

@@ -5,10 +5,14 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     const femmesFamille = famille.filter(person=>person.genre === 'F');
     const branchePaternelle = data.filter(person=>person.id >= 204 && person.id <= 999);
     const hommesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'M');
+    hommesBranchePaternelle.sort((a, b) => b.id - a.id);
     const femmesBranchePaternelle = branchePaternelle.filter(person=>person.genre === 'F');
+    femmesBranchePaternelle.sort((a, b) => b.id - a.id);
     const brancheMaternelle = data.filter(person=>person.id >= 1000 && person.id <= 1999);
     const hommesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'M');
+    hommesBrancheMaternelle.sort((a, b) => b.id - a.id);
     const femmesBrancheMaternelle = brancheMaternelle.filter(person=>person.genre === 'F');
+    femmesBrancheMaternelle.sort((a, b) => b.id - a.id);
     const familleList = document.getElementById('famille-list');
     const hommefamilleList = document.getElementById('homme-list');
     const femmefamilleList = document.getElementById('femme-list');
