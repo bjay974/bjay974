@@ -352,7 +352,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 arbrePersoItem.appendChild(arbrePersoLink);
                 detailsList.appendChild(arbrePersoItem);
                 detailsList.appendChild(document.createElement('br'));
-                detailsList.appendChild(document.createElement('br'));
             }
 
               // Charger les liens vers les actes si il y en a
