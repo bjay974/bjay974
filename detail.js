@@ -322,11 +322,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // Charger le commentaire
             if (person.commentaire) {
                 const commentaireItem = document.createElement('li');
-                const textCommentaire = document.createElement('span');
-                textCommentaire.textContent = person.commentaire;
-                textCommentaire.style.fontSize = 'smaller';
-                commentaireItem.textContent = `Notes : <em>${textCommentaire}</em>`; 
-                detailsList.appendChild(commentaireItem);   
+                commentaireItem.classList.add('special-li');
+                commentaireItem.textContent = `Notes : ${person.commentaire}`;
+                commentaireItem.style.fontSize = 'smaller';
+                detailsList.appendChild(commentaireItem);
                 detailsList.appendChild(document.createElement('br')); 
             }
 
