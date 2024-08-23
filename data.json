@@ -640,7 +640,7 @@
     "domicile": null,
     "affranchi": true,
     "date_affranchi": "20/12/1848",
-    "commentaire":"Nomé ADONIS à Salazie comme affranchi, s'est marié avec le nom EVRARD (nom donné à sa mére par l'administration)"
+    "commentaire":"Nomé ADONIS à Salazie comme affranchi, s'est marié avec le nom EVRARD (nom donné à sa mére par l'administration)",
     "origine": null
   },
   {
@@ -1005,7 +1005,8 @@
     "id_conjoint": 402,
     "domicile": null,
     "affranchi": null,
-    "origine": null    },
+    "origine": null  
+    },
   {
     "id": 302,
     "nom": "MARTIN",
