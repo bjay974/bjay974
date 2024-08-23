@@ -398,6 +398,7 @@
     "domicile": null,
     "affranchi": null,
     "date_affranchi": null,
+    "commentaire": "Née à Ste Rose d'AIMEE (à TURPIN et COLETTE Marie Catherine)",
     "origine": null
   }, 
   {
@@ -639,6 +640,7 @@
     "domicile": null,
     "affranchi": true,
     "date_affranchi": "20/12/1848",
+    "commentaire":"Nomé ADONIS à Salazie comme affranchi, s'est marié avec le nom EVRARD (nom donné à sa mére par l'administration)"
     "origine": null
   },
   {
@@ -880,7 +882,9 @@
     "id_conjoint": 504,
     "domicile": null,
     "affranchi": null,
-    "origine": null    },
+    "commentaire":"Disparition de son patronime (SAINT) à sa reconnaissance lors du mariage de ses parents",
+    "origine": null  
+  },    
   {
     "id": 502,
     "nom": "VERVOUX",
