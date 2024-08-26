@@ -16,11 +16,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
-                nameItem.classList.add('soustitre');
                 if (person.genre === "M") {
+                    nameItem.classList.add('soustitreM');
                     nameItem.style.color = "rgb(11, 65, 83)";
                 }
                 else{
+                    nameItem.classList.add('soustitreF');
                     nameItem.style.color = "#583a3a";        
                 }                
                 let nomLegitime = "";
