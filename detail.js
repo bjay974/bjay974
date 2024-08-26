@@ -337,14 +337,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(person.prenom.charAt(0));
                 if (person.prenom) {
                     if (prenomVoyelle) {
-                        arbrePersoLink.textContent = `Voir l'arbre d'${person.prenom}`;
+                        arbrePersoLink.textContent = `Aperçu de l'arbre d'${person.prenom}`;
                     }
                     else {
-                        arbrePersoLink.textContent = `Voir l'arbre de ${person.prenom}`; 
+                        arbrePersoLink.textContent = `Aperçu de l'arbre de ${person.prenom}`; 
                     }
                 }
                 else {
-                    arbrePersoLink.textContent = `Voir son arbre`;
+                    arbrePersoLink.textContent = `Aperçu de son arbre`;
                 }
                 arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
                 arbrePersoLink.style.textDecoration = "none";
@@ -420,7 +420,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             .then(response => {
                                 if (response.ok) {
                                     const ficLinkbis = document.createElement('a');
-                                    ficLinkbis.textContent = `Voir la partie 2`;
+                                    ficLinkbis.textContent = `Deuxième partie`;
                                     ficLinkbis.href = monFichierBis;                                          
                                     ficLinkbis.style.textDecoration = "none";
                                     ficLinkbis.style.color = "#999";

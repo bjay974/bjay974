@@ -11,6 +11,19 @@ body {
     flex-direction: column;
 }
 
+.soustitre {
+    text-align: left;
+    background-color: #a8767a;
+    color: #fff;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 75%;
+    font-style: italic;
+    font-weight: bold; 
+    padding: 5px 5px 5px 20%;
+    text-decoration: none;
+}
+
 .soustitreM {
     text-align: left;
     background-color: #cfdbf5;
