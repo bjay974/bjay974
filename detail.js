@@ -178,29 +178,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 }
                 
+                // Initialisation des variables father et mother
+                let father, mother;
+                let parentText = "";
+
                 // Charger le père si l'ID du père est défini
-                    // Initialisation de la variable father
-                let father;
                 if (person.id_pere !== undefined) {
-                    const father = data.find(p => p.id === person.id_pere);
+                    father = data.find(p => p.id === person.id_pere);
                     if (father) {
-                        const relation = person.genre === "M" ? 'Fils de ' : 'Fille de ';
-                        addParentToDetailsList(person, father, relation, 'rgb(11, 65, 83)', detailsList);
+                        parentText = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                        addParentToDetailsList(parentText, createParentLink(father, 'rgb(11, 65, 83)'), detailsList);
                     } else {
-                        addParentToDetailsList(person, null, 'Père', 'rgb(11, 65, 83)', detailsList);
+                        addParentToDetailsList('Père inconnu', document.createTextNode(''), detailsList);
                     }
                 }
 
                 // Charger la mère si l'ID de la mère est défini
                 if (person.id_mere !== undefined) {
-                    const mother = data.find(p => p.id === person.id_mere);
+                    mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                        const relation = father ? ' et de ' : (person.genre === "M" ? 'Fils de ' : 'Fille de ');
-                        addParentToDetailsList(person, mother, relation, '#583a3a', detailsList);
+                        if (father) {
+                            // Modifier le dernier item ajouté pour inclure "et de"
+                            const lastItem = detailsList.lastChild;
+                            lastItem.appendChild(document.createTextNode(' et de '));
+                            lastItem.appendChild(createParentLink(mother, '#583a3a'));
+                        } else {
+                            parentText = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                            addParentToDetailsList(parentText, createParentLink(mother, '#583a3a'), detailsList);
+                        }
                     } else {
-                        addParentToDetailsList(person, null, 'Mère', '#583a3a', detailsList);
+                        addParentToDetailsList('Mère inconnue', document.createTextNode(''), detailsList);
                     }
                 }
+
+                // Ajouter un espace après le dernier item
+                detailsList.appendChild(document.createElement('br'));
                 
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
@@ -365,16 +377,11 @@ function createParentLink(parent, color) {
 }
 
 // Fonction pour ajouter un parent à la liste des détails
-function addParentToDetailsList(person, parent, relation, color, detailsList) {
+function addParentToDetailsList(parentText, parentLink, detailsList) {
     const parentItem = document.createElement('li');
-    if (parent) {
-        parentItem.appendChild(document.createTextNode(relation));
-        parentItem.appendChild(createParentLink(parent, color));
-    } else {
-        parentItem.innerHTML = `<em>${relation}</em> inconnu`;
-    }
+    parentItem.appendChild(document.createTextNode(parentText));
+    parentItem.appendChild(parentLink);
     detailsList.appendChild(parentItem);
-    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 }
 
 // Fonction pour déterminer le texte du lien
