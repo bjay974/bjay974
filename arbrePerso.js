@@ -196,6 +196,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       var grandChild = data.filter(gc => gc.id_pere === child.id || gc.id_mere === child.id);
       grandChildren.push(...grandChild);
   });
+  var prenomChild = " "   // variable pour affectation du prenom de l'enfant
 
   if (children.length > 0) {
       var container = document.createElement('div');
@@ -214,6 +215,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       children.forEach(function(child) {
           var genderClass = child.genre === 'M' ? 'male' : 'female';
           var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+          prenomChild = child.prenom
           childHTML += '<p><a href="arbrePerso.html?id=' + child.id  + '" style="text-decoration: none; color: inherit;">' + child.nom + ' ' + child.prenom + '</a></p>';
           childHTML += '</div>';
           container.innerHTML += childHTML;
@@ -240,7 +242,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       grandChildren.forEach(function(grandChild) {
           var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
           var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
-          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '( ' + child.prenom + ' )' +  '</a></p>';
+          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '( ' + prenomChild + ' )' +  '</a></p>';
           grandChildHTML += '</div>';
           container.innerHTML += grandChildHTML;
       });
