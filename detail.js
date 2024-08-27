@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
-                if (person.date_mariage !== null) {
+                if (person.date_mariage) {
                     const weddingDateItem = document.createElement('li');
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre)
@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // Ajouter la date de décès si elle n'est pas nulle
-                if (person.date_deces !== null) {
+                if (person.date_deces) {
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
                             const ageDeces = diffAge(person.date_deces, person.date_naissance);
@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 // Charger la date d'affranchissement 
-                if (person.affranchi === true) {
+                if (person.date_affranchi) {
                     const ageAffranch = diffAge(person.date_affranchi, person.date_naissance);   
                     // Ajouter l'age de l'affranchissement  si la date de naissance existe 
                     if (person.date_naissance !== "01/01/1901") {
@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 }
                 // Charger le ou la conjoint
-                if (person.date_mariage === null) {
+                if (person.date_mariage) {
                     if (person.id_conjoint) {
                         const conjoint = data.find(p => p.id === person.id_conjoint);
                         if (conjoint) {

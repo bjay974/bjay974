@@ -117,12 +117,11 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     }
 
     // Ajout de l'origine en italique
-    if (personOrigine) {
       const originePart = document.createElement('em');
       originePart.style.fontSize = 'smaller';
-      originePart.textContent = ' (' + personOrigine + ') ';
+      const originePersonne = getOrigine(person.lieu_naissance)
+      originePart.textContent = ' (' + originePersonne + ') ';
       link.appendChild(originePart);
-    }
 
     // Ajout de la génération
     const generationPart = document.createElement('em');
@@ -175,4 +174,26 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     }
     return year;
   }
+
+  function getOrigine(lieuDeNaissance) {
+    let origine;
+    switch (lieuDeNaissance) {
+        case "Afrique":
+            origine = "Afrique";
+            break;
+        case "Madagascar":
+              origine = "Madagascar";
+            break;
+        case "Nigéria":
+            origine = "Nigéria";
+            break;
+        case "France":
+            origine = "France";
+            break;
+        case "Inde":
+            origine = "Inde";
+            break;
+    }
+    return origine;
+}
   
