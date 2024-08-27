@@ -291,26 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br')); 
             }
 
-            // Ajouter le lien vers l'arbre perso
             if (person.id < 2000) {
-                const arbrePersoItem = document.createElement('a');
                 const arbrePersoLink = document.createElement('a');
-                const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(person.prenom.charAt(0));
-                if (person.prenom) {
-                    if (prenomVoyelle) {
-                        arbrePersoLink.textContent = `Aperçu de l'arbre d'${person.prenom}`;
-                    }
-                    else {
-                        arbrePersoLink.textContent = `Aperçu de l'arbre de ${person.prenom}`; 
-                    }
-                }
-                else {
-                    arbrePersoLink.textContent = `Aperçu de son arbre`;
-                }
-                arbrePersoLink.href = 'arbrePerso.html?id=' + person.id;
+                arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
+                arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
                 arbrePersoLink.style.textDecoration = "none";
                 arbrePersoLink.style.color = "#999"; 
                 arbrePersoLink.style.fontSize = "80%";
+            
+                const arbrePersoItem = document.createElement('div'); // Utiliser 'div' pour le conteneur
                 arbrePersoItem.appendChild(arbrePersoLink);
                 detailsList.appendChild(arbrePersoItem);
                 detailsList.appendChild(document.createElement('br'));
@@ -406,6 +395,17 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 
 });
+
+// Fonction pour déterminer le texte du lien
+function getArbrePersoLinkText(prenom) {
+    if (!prenom) {
+        return "Aperçu de son arbre";
+    }
+    const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(prenom.charAt(0).toUpperCase());
+    return prenomVoyelle
+        ? `Aperçu de l'arbre d'${prenom}`
+        : `Aperçu de l'arbre de ${prenom}`;
+}
 
 function createDeathDateItem(text) {
     const deathDateItem = document.createElement('li');
