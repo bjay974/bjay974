@@ -109,10 +109,10 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     if (listAnDeces) {
       const decesPart = document.createElement('span');
       decesPart.style.fontSize = 'smaller';
-      decesPart.textContent = ' / ' + listAnDeces + ' ) ';
+      decesPart.textContent = ' / ' + listAnDeces + ') ';
       link.appendChild(decesPart);
     } else {
-      const closeParenthesis = document.createTextNode(' ) ');
+      const closeParenthesis = document.createTextNode(') ');
       link.appendChild(closeParenthesis);
     }
 
@@ -120,7 +120,7 @@ fetch('data.json').then(response=>response.json()).then(data=>{
       const originePart = document.createElement('em');
       originePart.style.fontSize = 'smaller';
       const originePersonne = getOrigine(person.lieu_naissance)
-      originePart.textContent = ' (' + originePersonne + ') ';
+      originePart.textContent = originePersonne;
       link.appendChild(originePart);
 
     // Ajout de la génération
@@ -177,22 +177,18 @@ fetch('data.json').then(response=>response.json()).then(data=>{
 
   function getOrigine(lieuDeNaissance) {
     let origine;
-    switch (lieuDeNaissance) {
-        case "Afrique":
-            origine = "Afrique";
-            break;
-        case "Madagascar":
-              origine = "Madagascar";
-            break;
-        case "Nigéria":
-            origine = "Nigéria";
-            break;
-        case "France":
-            origine = "France";
-            break;
-        case "Inde":
-            origine = "Inde";
-            break;
+    if (lieuDeNaissance === "Afrique") {
+        origine = "(Afrique)";
+    } else if (lieuDeNaissance === "Nigéria") {
+        origine = "(Nigéria)";
+    } else if (lieuDeNaissance === "Madagascar") {
+        origine = "(Madagascar)";
+    } else if (lieuDeNaissance === "France") {
+        origine = "(France)";
+    } else if (lieuDeNaissance === "Indes") {
+      origine = "(Indes)";
+    }else {
+        origine = "";
     }
     return origine;
 }
