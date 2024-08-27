@@ -243,6 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         detailsList.appendChild(fatherItem);
                     } 
                 }
+                else if (person.id_pere === null) {
+                    //
+                }
                 else {
                     const fatherItem = document.createElement('li');
                     fatherItem.innerHTML = `<em>Père </em> inconnu`;
