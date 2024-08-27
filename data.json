@@ -830,7 +830,7 @@
     "date_legitime": null,
     "id_pere": 711,
     "id_mere": 700,
-    "date_naissance": "01/01/1843",
+    "date_naissance": "14/03/1844",
     "lieu_naissance": "Inconnu",
     "date_deces": "07/06/1911",
     "lieu_deces": "Saint Benoit",
@@ -840,6 +840,7 @@
     "domicile": null,
     "affranchi": true,
     "date_affranchi": "20/12/1848",
+    "commentaire":"Index des Naissances 1844 Saint Benoit : pas d'acte de naissance",
     "origine": null
   },
   {
