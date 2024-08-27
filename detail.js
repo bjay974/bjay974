@@ -179,6 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // Charger le père si l'ID du père est défini
+                    // Initialisation de la variable father
+                let father;
                 if (person.id_pere !== undefined) {
                     const father = data.find(p => p.id === person.id_pere);
                     if (father) {
