@@ -240,7 +240,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       grandChildren.forEach(function(grandChild) {
           var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
           var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
-          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a></p>';
+          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '( ' + child.prenom + ' )' +  '</a></p>';
           grandChildHTML += '</div>';
           container.innerHTML += grandChildHTML;
       });
