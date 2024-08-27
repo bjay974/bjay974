@@ -62,7 +62,9 @@
   {"id": 105,"nom": "BETSMAN","prenom": "Jérôme","genre": "M","id_pere": 203,"id_mere": 202,"date_naissance": "24/06/1976","lieu_naissance": "Saint Denis"  },
   {"id": 104,"nom": "BETSMAN","prenom": "Laurence","genre": "F","id_pere": 203,"id_mere": 202,"date_naissance": "13/09/1977","lieu_naissance": "Saint Denis"  },
   {"id": 103,"nom": "FONTAINE","prenom": "Sebastien","genre": "M","id_pere": 203,"id_mere": 202,"date_naissance": "07/07/1984","lieu_naissance": "Saint Denis"  },
+  {"id": 49,"nom": "LOKIMA","prenom": "Shanna","genre": "F","id_mere": 104,"date_naissance": "22/02/1997","lieu_naissance": "Limoges"  },
   {"id": 49,"nom": "BETSMAN","prenom": "Eugenie","genre": "F","id_pere": 105,"id_mere": 2000,"date_naissance": "09/08/1998","lieu_naissance": "Limoges"  },
+  {"id": 49,"nom": "LOKIMA","prenom": "Whitney","genre": "F","id_mere": 104,"date_naissance": "20/12/1998","lieu_naissance": "Limoges"  },  
   {"id": 48,"nom": "BETSMAN","prenom": "Jeremy","genre": "M","id_pere": 105,"id_mere": 2000,"date_naissance": "03/04/2001","lieu_naissance": "Limoges"  },
   {"id": 47,"nom": "BETSMAN","prenom": "Johanna","genre": "F","id_pere": 105,"id_mere": 2000,"date_naissance": "09/12/2004","lieu_naissance": "Limoges"  },
   {"id": 46,"nom": "BETSMAN","prenom": "Jayna","genre": "F","id_pere": 105,"id_mere": 2000,"date_naissance": "06/12/2014","lieu_naissance": "Limoges"  }
