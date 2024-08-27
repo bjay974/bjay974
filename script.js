@@ -174,22 +174,8 @@ fetch('data.json').then(response=>response.json()).then(data=>{
     }
     return year;
   }
-
   function getOrigine(lieuDeNaissance) {
-    let origine;
-    if (lieuDeNaissance === "Afrique") {
-        origine = "(Afrique)";
-    } else if (lieuDeNaissance === "Nigéria") {
-        origine = "(Nigéria)";
-    } else if (lieuDeNaissance === "Madagascar") {
-        origine = "(Madagascar)";
-    } else if (lieuDeNaissance === "France") {
-        origine = "(France)";
-    } else if (lieuDeNaissance === "Indes") {
-      origine = "(Indes)";
-    }else {
-        origine = "";
-    }
-    return origine;
-}
+    const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France"];
+    return lieuxAcceptes.includes(lieuDeNaissance) ? `(${lieuDeNaissance})` : "";
+  }
   
