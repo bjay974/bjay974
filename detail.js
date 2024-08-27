@@ -162,7 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_pere) {
                     if (person.id_pere === "inconnu") {
                         parentItem = document.createElement('li');
-                        parentItem.appendChild(document.createTextNode('Père inconnu'));
+                        parentItem.appendChild(document.createTextNode('De père inconnu'));
                     } else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
@@ -178,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_mere) {
                     if (person.id_mere === "inconnue") {
                         if (parentItem) {
-                            parentItem.appendChild(document.createTextNode(' et de Mère inconnue'));
+                            parentItem.appendChild(document.createTextNode(' et de mère inconnue'));
                         } else {
                             parentItem = document.createElement('li');
                             parentItem.appendChild(document.createTextNode('Mère inconnue'));
