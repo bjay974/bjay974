@@ -309,10 +309,10 @@ footer {
 .grandenfant {
     grid-area: colonne5;
     padding: 5px 5px 5px 5px;
-    width: 180px;
+    width: 200px;
     margin-top: 15px;
     margin-right: 5px;
-    height: 20px;
+    height: 15px;
     display: flex;
     flex-direction: column;
 }

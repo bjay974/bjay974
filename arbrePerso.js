@@ -226,21 +226,18 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       var title = document.createElement('p');
       var containerClass2 = 'grandenfant';
       container.className = containerClass2;
-      if (grandChildren.length === 1) {
-        title.textContent = "Petit Enfant";
-      } else {
-        title.textContent = "Petits Enfants";
-      }
+      title.textContent = children.length === 1 ? "Petit enfant" : "Petits enfants";
       title.classList.add('label'); 
       container.appendChild(title);
       // Afficher les petits-enfants
       grandChildren.sort((a, b) => b.id - a.id);
       grandChildren.forEach(function(grandChild) {
-          var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
-          var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
-          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '( ' + grandChild.parentPrenom + ' )' +  '</a></p>';
-          grandChildHTML += '</div>';
-          container.innerHTML += grandChildHTML;
+        var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
+        var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
+        grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a>';
+        grandChildHTML += ' <span style="font-size: smaller;">(enfant de ' + grandChild.parentPrenom + ')</span></p>';
+        grandChildHTML += '</div>';
+        container.innerHTML += grandChildHTML;
       });
       const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
