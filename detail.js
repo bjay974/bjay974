@@ -179,70 +179,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 // Charger le père si l'ID du père est défini
-                if (person.id_pere) {
-                    var father = data.find(p => p.id === person.id_pere);
+                if (person.id_pere !== undefined) {
+                    const father = data.find(p => p.id === person.id_pere);
                     if (father) {
-                        const fatherItem = document.createElement('li');
-                        const nomLink = document.createElement('a');
-                        nomLink.style.textDecoration = "none";
-                        if (person.genre === "M") {
-                            fatherItem.appendChild(document.createTextNode('Fils de ')); 
-                        }
-                        else  {
-                            fatherItem.appendChild(document.createTextNode('Fille de ')); 
-                        }  
-                        if (father.id < 2000) {
-                            nomLink.href = 'person.html?id=' + father.id;
-                        }
-                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${father.nom}</strong> ${father.prenom} </span>`;
-                        nomLink.innerHTML = `${nomEnCouleur}`;
-                        fatherItem.appendChild(nomLink);
-                        detailsList.appendChild(fatherItem);
-                    } 
+                        const relation = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                        addParentToDetailsList(person, father, relation, 'rgb(11, 65, 83)', detailsList);
+                    } else {
+                        addParentToDetailsList(person, null, 'Père', 'rgb(11, 65, 83)', detailsList);
+                    }
                 }
-                else if (person.id_pere === null) {
-                    //
-                }
-                else {
-                    const fatherItem = document.createElement('li');
-                    fatherItem.innerHTML = `<em>Père </em> inconnu`;
-                    detailsList.appendChild(fatherItem);
-                }
-                
-              // Charger la mère si l'ID de la mère est défini
-                if (person.id_mere) {
+
+                // Charger la mère si l'ID de la mère est défini
+                if (person.id_mere !== undefined) {
                     const mother = data.find(p => p.id === person.id_mere);
                     if (mother) {
-                        const motherItem = document.createElement('li');
-                        const nomLink = document.createElement('a');
-                        if (mother.id < 2000) {
-                            nomLink.href = 'person.html?id=' + mother.id;
-                        }
-                        nomLink.style.textDecoration = "none";
-                        if (father) {
-                            motherItem.classList.add('special-li');
-                            motherItem.appendChild(document.createTextNode(' et de ')); 
-                        }
-                        else {
-                            if (person.genre === "M") {
-                            motherItem.appendChild(document.createTextNode('Fils de ')); 
-                            }
-                            else  {
-                            motherItem.appendChild(document.createTextNode('Fille de ')); 
-                            }                            
-                        }
-                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${mother.nom}</strong> ${mother.prenom} </span>`;                        
-                        nomLink.innerHTML = `${nomEnCouleur}`;
-                        motherItem.appendChild(nomLink);
-                        detailsList.appendChild(motherItem);
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                     }
-                }
-                else {
-                    const motherItem = document.createElement('li');
-                    motherItem.innerHTML = `<em>Mère</em> inconnue`;
-                    detailsList.appendChild(motherItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                        const relation = father ? ' et de ' : (person.genre === "M" ? 'Fils de ' : 'Fille de ');
+                        addParentToDetailsList(person, mother, relation, '#583a3a', detailsList);
+                    } else {
+                        addParentToDetailsList(person, null, 'Mère', '#583a3a', detailsList);
+                    }
                 }
                 
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
@@ -395,6 +350,30 @@ document.addEventListener('DOMContentLoaded', () => {
         .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
 
 });
+
+// Fonction pour créer un lien de parent
+function createParentLink(parent, color) {
+    const nomLink = document.createElement('a');
+    nomLink.style.textDecoration = "none";
+    if (parent.id < 2000) {
+        nomLink.href = `person.html?id=${parent.id}`;
+    }
+    nomLink.innerHTML = `<span style="color:${color};"><strong>${parent.nom}</strong> ${parent.prenom}</span>`;
+    return nomLink;
+}
+
+// Fonction pour ajouter un parent à la liste des détails
+function addParentToDetailsList(person, parent, relation, color, detailsList) {
+    const parentItem = document.createElement('li');
+    if (parent) {
+        parentItem.appendChild(document.createTextNode(relation));
+        parentItem.appendChild(createParentLink(parent, color));
+    } else {
+        parentItem.innerHTML = `<em>${relation}</em> inconnu`;
+    }
+    detailsList.appendChild(parentItem);
+    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+}
 
 // Fonction pour déterminer le texte du lien
 function getArbrePersoLinkText(prenom) {
