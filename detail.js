@@ -77,68 +77,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);
                 }    
-
-                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-
-                // Ajouter la date de mariage et le nom si la date n'est pas nulle
-                if (person.date_mariage) {
-                    const weddingDateItem = document.createElement('li');
-                    const ageMariage = diffAge(person.date_mariage, person.date_naissance);
-                    const adjectif_genre = ajouterE("Marié", person.genre)
-                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
-                    detailsList.appendChild(weddingDateItem);  
-                    const conjoint = data.find(p => p.id === person.id_conjoint);
-                        if (conjoint) {
-                            const conjointItem = document.createElement('li');
-                            conjointItem.classList.add('special-li');
-                            const nomLink = document.createElement('a');
-                            if (conjoint.id < 2000) {
-                                nomLink.href = 'person.html?id=' + conjoint.id;
-                            }
-                            nomLink.style.textDecoration = "none";
-                            conjointItem.appendChild(document.createTextNode(' à '));                            
-                            if (conjoint.genre === "M"){
-                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong> ${conjoint.prenom}</span>`;
-                                nomLink.innerHTML = `${nomEnCouleur}`;
-                            }
-                            else {
-                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong> ${conjoint.prenom}</span>`;
-                                nomLink.innerHTML = `${nomEnCouleur}`;
-                            }
-                            conjointItem.appendChild(nomLink);
-                            detailsList.appendChild(conjointItem);    
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                        }
-                }
-                // Charger le ou la conjoint
-                else {
-                    if (person.id_conjoint) {
-                        const conjoint = data.find(p => p.id === person.id_conjoint);
-                        if (conjoint) {
-                            const conjointItem = document.createElement('li');
-                            const nomLink = document.createElement('a');
-                            if (conjoint.id < 2000) {
-                                nomLink.href = 'person.html?id=' + conjoint.id;
-                            }
-                            nomLink.style.textDecoration = "none";
-                            if (conjoint.genre === "M"){
-                                conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
-                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong> ${conjoint.prenom} </span`;
-                                nomLink.innerHTML = `${nomEnCouleur}` ;
-                            }
-                            else {
-                                conjointItem.appendChild(document.createTextNode(' Conjointe :  '));
-                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong> ${conjoint.prenom} </span`;
-                                nomLink.innerHTML = `${nomEnCouleur}` ;
-                            }
-                            conjointItem.appendChild(nomLink);
-                            detailsList.appendChild(conjointItem);
-                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    }    } 
-                }
-                
                 // Ajouter la date de décès si elle n'est pas nulle
-                if (person.date_deces) {
+                else {
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
                             const ageDeces = diffAge(person.date_deces, person.date_naissance);
@@ -199,6 +139,65 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
 
+                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+
+                // Ajouter la date de mariage et le nom si la date n'est pas nulle
+                if (person.date_mariage) {
+                    const weddingDateItem = document.createElement('li');
+                    const ageMariage = diffAge(person.date_mariage, person.date_naissance);
+                    const adjectif_genre = ajouterE("Marié", person.genre)
+                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
+                    detailsList.appendChild(weddingDateItem);  
+                    const conjoint = data.find(p => p.id === person.id_conjoint);
+                        if (conjoint) {
+                            const conjointItem = document.createElement('li');
+                            conjointItem.classList.add('special-li');
+                            const nomLink = document.createElement('a');
+                            if (conjoint.id < 2000) {
+                                nomLink.href = 'person.html?id=' + conjoint.id;
+                            }
+                            nomLink.style.textDecoration = "none";
+                            conjointItem.appendChild(document.createTextNode(' à '));                            
+                            if (conjoint.genre === "M"){
+                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong> ${conjoint.prenom}</span>`;
+                                nomLink.innerHTML = `${nomEnCouleur}`;
+                            }
+                            else {
+                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong> ${conjoint.prenom}</span>`;
+                                nomLink.innerHTML = `${nomEnCouleur}`;
+                            }
+                            conjointItem.appendChild(nomLink);
+                            detailsList.appendChild(conjointItem);    
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                        }
+                }
+                // Charger le ou la conjoint
+                else {
+                    if (person.id_conjoint) {
+                        const conjoint = data.find(p => p.id === person.id_conjoint);
+                        if (conjoint) {
+                            const conjointItem = document.createElement('li');
+                            const nomLink = document.createElement('a');
+                            if (conjoint.id < 2000) {
+                                nomLink.href = 'person.html?id=' + conjoint.id;
+                            }
+                            nomLink.style.textDecoration = "none";
+                            if (conjoint.genre === "M"){
+                                conjointItem.appendChild(document.createTextNode(' Conjoint :  '));   
+                                const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${conjoint.nom}</strong> ${conjoint.prenom} </span`;
+                                nomLink.innerHTML = `${nomEnCouleur}` ;
+                            }
+                            else {
+                                conjointItem.appendChild(document.createTextNode(' Conjointe :  '));
+                                const nomEnCouleur = `<span style="color:#583a3a;"><strong>${conjoint.nom}</strong> ${conjoint.prenom} </span`;
+                                nomLink.innerHTML = `${nomEnCouleur}` ;
+                            }
+                            conjointItem.appendChild(nomLink);
+                            detailsList.appendChild(conjointItem);
+                            detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }    } 
+                }
+                
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
                     const ageAffranch = diffAge(person.date_affranchi, person.date_naissance);   
