@@ -30,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 nameItem.innerHTML = `${person.nom} <em>${nomLegitime}</em> ${person.prenom}`;
                 detailsList.appendChild(nameItem);
+                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 
                 // Ajouter la date de naissance
                 const birthDateItem = document.createElement('li');
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
                 detailsList.appendChild(birthDateItem);
+                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
@@ -138,8 +140,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         } 
                     }
                 }
-
-                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
                 // Ajouter la date de mariage et le nom si la date n'est pas nulle
                 if (person.date_mariage) {
