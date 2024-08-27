@@ -154,43 +154,56 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Initialisation des variables father et mother
                 let father, mother;
                 let parentText = "";
+
+                // Initialisation de la variable pour l'élément de liste temporaire
+                let parentItem = null;
+
                 // Charger le père si l'ID du père est défini
-                if ((person.id_pere)) {
+                if (person.id_pere) {
                     if (person.id_pere === "inconnu") {
-                        addParentToDetailsList('Père inconnu', document.createTextNode(''), detailsList);
+                        parentItem = document.createElement('li');
+                        parentItem.appendChild(document.createTextNode('Père inconnu'));
                     } else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
                             parentText = person.genre === "M" ? 'Fils de ' : 'Fille de ';
-                            addParentToDetailsList(parentText, createPersonLink(father, 'rgb(11, 65, 83)'), detailsList);
+                            parentItem = document.createElement('li');
+                            parentItem.appendChild(document.createTextNode(parentText));
+                            parentItem.appendChild(createPersonLink(father, 'rgb(11, 65, 83)'));
                         }
                     }
                 }
+
                 // Charger la mère si l'ID de la mère est défini
                 if (person.id_mere) {
                     if (person.id_mere === "inconnue") {
-                        if (father) {
-                            // Modifier le dernier item ajouté pour inclure "et de"
-                            const lastItem = detailsList.lastChild;
-                            lastItem.appendChild(document.createTextNode(' et de Mère inconnue'));
+                        if (parentItem) {
+                            parentItem.appendChild(document.createTextNode(' et de Mère inconnue'));
                         } else {
-                            addParentToDetailsList('Mère inconnue', document.createTextNode(''), detailsList);
+                            parentItem = document.createElement('li');
+                            parentItem.appendChild(document.createTextNode('Mère inconnue'));
                         }
                     } else {
                         mother = data.find(p => p.id === person.id_mere);
                         if (mother) {
-                            if (father) {
-                                // Modifier le dernier item ajouté pour inclure "et de"
-                                const lastItem = detailsList.lastChild;
-                                lastItem.appendChild(document.createTextNode(' et de '));
-                                lastItem.appendChild(createPersonLink(mother, '#583a3a'));
+                            if (parentItem) {
+                                parentItem.appendChild(document.createTextNode(' et de '));
+                                parentItem.appendChild(createPersonLink(mother, '#583a3a'));
                             } else {
                                 parentText = person.genre === "M" ? 'Fils de ' : 'Fille de ';
-                                addParentToDetailsList(parentText, createPersonLink(mother, '#583a3a'), detailsList);
+                                parentItem = document.createElement('li');
+                                parentItem.appendChild(document.createTextNode(parentText));
+                                parentItem.appendChild(createPersonLink(mother, '#583a3a'));
                             }
                         }
                     }
                 }
+
+                // Ajouter l'élément parentItem à la liste des détails si parentItem n'est pas null
+                if (parentItem) {
+                    detailsList.appendChild(parentItem);
+                }
+
                 // Ajouter un espace après le dernier item
                 detailsList.appendChild(document.createElement('br'));
                 
