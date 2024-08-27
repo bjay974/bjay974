@@ -311,7 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         else {
                             nomLink.style.color = "#583a3a";
                         }
-                        nomLink.textContent = `${child.nom} ${child.prenom}`;
+                        // si l'enfant à un nom_legitime alors pn affiche ce nom  : 
+                        var nomPers = child.nom_legitime ? child.nom_legitime : child.nom;    
+                        nomLink.textContent = `${nomPers} ${child.prenom}`;
                         childItem.appendChild(nomLink);
                         childrenOfPersonUl.appendChild(childItem);
                     });
