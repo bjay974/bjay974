@@ -235,7 +235,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
         var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
         var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
         grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a>';
-        grandChildHTML += ' <span style="font-size: smaller;">(enfant de ' + grandChild.parentPrenom + ')</span></p>';
+        grandChildHTML += ' <span style="font-size: smaller; font-style: italic;">(' + grandChild.parentPrenom + ')</span></p>';
         grandChildHTML += '</div>';
         container.innerHTML += grandChildHTML;
       });
