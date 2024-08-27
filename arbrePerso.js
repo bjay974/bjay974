@@ -194,20 +194,17 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
   var grandChildren = [];
   children.forEach(function(child) {
       var grandChild = data.filter(gc => gc.id_pere === child.id || gc.id_mere === child.id);
+      // Ajouter le nom du parent à chaque petit-enfant
+      grandChild.forEach(gc => gc.parentPrenom = child.prenom);
       grandChildren.push(...grandChild);
   });
-  var prenomChild = " "   // variable pour affectation du prenom de l'enfant
 
   if (children.length > 0) {
       var container = document.createElement('div');
       container.className = containerClass;
       // Ajouter un titre
       var title = document.createElement('p');
-      if (children.length === 1) {
-        title.textContent = "Enfant";
-      } else {
-        title.textContent = "Enfants";
-      }
+      title.textContent = children.length === 1 ? "Enfant" : "Enfants";
       title.classList.add('label'); 
       container.appendChild(title);
       // Afficher les enfants
@@ -215,7 +212,6 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       children.forEach(function(child) {
           var genderClass = child.genre === 'M' ? 'male' : 'female';
           var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-          prenomChild = child.prenom
           childHTML += '<p><a href="arbrePerso.html?id=' + child.id  + '" style="text-decoration: none; color: inherit;">' + child.nom + ' ' + child.prenom + '</a></p>';
           childHTML += '</div>';
           container.innerHTML += childHTML;
@@ -242,7 +238,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       grandChildren.forEach(function(grandChild) {
           var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
           var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
-          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '( ' + prenomChild + ' )' +  '</a></p>';
+          grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '( ' + grandChild.parentPrenom + ' )' +  '</a></p>';
           grandChildHTML += '</div>';
           container.innerHTML += grandChildHTML;
       });
