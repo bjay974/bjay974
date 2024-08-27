@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }
                 detailsList.appendChild(birthDateItem);
-                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
@@ -78,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const adjectif_genre = ajouterE("Agé", person.genre)
                     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
                     detailsList.appendChild(ageNowItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }    
                 // Ajouter la date de décès si elle n'est pas nulle
                 else {
