@@ -4,8 +4,10 @@
     --color-light: #999;
     --color-male: rgb(11, 65, 83);
     --color-female: #583a3a;
+    --color-color-bg:#a8767a;
     --color-male-bg: rgb(213, 230, 236);
     --color-female-bg: rgb(228, 215, 216);
+
     --font-primary: Georgia, serif;
     --font-size-small: 90%;
     --font-size-large: 12px;
@@ -45,7 +47,7 @@ section {
 
 footer {
     background-color: var(--color-primary);
-    color: var(--color-secondary)#;
+    color: var(--color-secondary); 
     padding: 1px 0px 1px 0px;
     text-align: center;
     width: 100%;
@@ -53,7 +55,6 @@ footer {
     font-size: 70%;
     margin-top: auto;
 }
-
 
 .soustitre, .soustitreM, .soustitreF, .soustitreArbre  {
     text-align: left;
@@ -68,15 +69,15 @@ footer {
 }
 
 .soustitre {
-    background-color: #a8767a;
+    background-color: var(--color-color-bg);
 }
 
 .soustitreM {
-    background-color: #cfdbf5;
+    background-color: var(--color-male-bg);
 }
 
 .soustitreF {
-    background-color: #f8c4c4;
+    background-color: var(--color-female-bg);
 }
 
 .soustitreArbre {
@@ -98,7 +99,7 @@ footer {
     margin-right: 5%;
     grid-template-columns: auto auto;
     gap: 5px;
-    font-size: 80%;
+    font-size: var(--font-size-small);
 }
 
 .homlist {
@@ -154,10 +155,14 @@ footer {
   padding-bottom: 20px;
 }
 
-.container2 {  margin-top: 50px;  padding-left: 10px;}
-.container3 {  margin-top: 140px;  padding-left: 10px;} 
-.container4 {  margin-top: 300px;  padding-left: 10px;}
-.container5 {  margin-top: 650px;  padding-left: 10px;}
+.container2, .container3, .container4, .container5 {
+    padding-left: 10px;
+}
+
+.container2 { margin-top: 50px; }
+.container3 { margin-top: 140px; }
+.container4 { margin-top: 300px; }
+.container5 { margin-top: 650px; }
 
 .generation {
   display: flex;
@@ -178,7 +183,7 @@ footer {
     padding-left: 30px;
     margin-left: 20px;
     margin-top: 10px;
-    font-size: 90%;
+    font-size: var(--font-size-small);
     text-align: left;
  }
 
@@ -192,7 +197,7 @@ footer {
 
 .container {
     padding: 10px 5px 5px 5px;
-    font-size: 12px; /* Taille du texte */
+    font-size: var(--font-size-large);
   }
 
 .personne {
@@ -205,7 +210,7 @@ footer {
     height: auto;
     flex-direction: column;
     display: flex;
-    font-size: 12px; /* Taille du texte */
+    font-size: var(--font-size-large);
     font-family: Georgia;
     position: relative;   
 }
@@ -267,29 +272,30 @@ footer {
 
 .male, .female {
     min-height: 25px;
-    background-color: rgb(213, 230, 236); /* Fond gris */
-    color: rgb(9, 9, 73); 
+    background-color: var(--color-male-bg); 
+    color: var(--color-male);
     padding: 10px 5px 10px 5px;
-    border-radius: 5px; /* Bordures arrondies */
+    border-radius: 5px; 
     text-decoration: none;  
-    font-size: 12px; /* Taille du texte */
+    font-size: var(--font-size-large);
     text-align: center;
  }
 
 .female {
-    background-color: rgb(228, 215, 216);
-    color: rgb(83, 10, 10); 
+    background-color: var (--color-female-bg);
+    color: var (--color-female);
+}
+
+.maleLink, .femaleLink {
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .maleLink {
-    color: rgb(10, 90, 117)
-    font-weight: bold;
-    text-decoration: none;
+    color: var(--color-male);
 }
 
 .femaleLink {
-    color:#6e2a2a
-    font-weight: bold;
-    text-decoration: none;
+    color: var(--color-female);
 }
 
