@@ -47,7 +47,7 @@
             event.preventDefault(); // Empêche le rechargement de la page
 
             const serviceID = 'service_s5iw748';  // Mon Service ID
-            const templateID = 'service_s5iw748'; // Mon Template ID
+            const templateID = 'template_74aqzqf'; // Mon Template ID
             const userID = 'rHp6xKxkYt_JZl33u'; // Mon User ID
 
             const templateParams = {
@@ -58,25 +58,34 @@
             };
 
             fetch('https://api.emailjs.com/api/v1.0/email/send', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    service_id: serviceID,
-                    template_id: templateID,
-                    user_id: userID,
-                    template_params: templateParams
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        service_id: serviceID,
+                        template_id: templateID,
+                        user_id: userID,
+                        template_params: templateParams
+                    })
                 })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('SUCCESS!', data);
-                alert('Votre message a été envoyé avec succès !');
-            })
-            .catch(error => {
-                console.error('FAILED...', error);
-                alert('L\'envoi du message a échoué, veuillez réessayer.');
+                .then(response => {
+                    return response.text();  // Convertir la réponse en texte
+                })
+                .then(text => {
+                    console.log('Response Text:', text);
+                    try {
+                        const data = JSON.parse(text);  // Essayer de parser le texte en JSON
+                        console.log('SUCCESS!', data);
+                        alert('Votre message a été envoyé avec succès !');
+                    } catch (error) {
+                        console.error('JSON parsing failed:', error);
+                        alert('Le serveur a renvoyé une réponse inattendue.');
+                    }
+                })
+                .catch(error => {
+                    console.error('FAILED...', error);
+                    alert('L\'envoi du message a échoué, veuillez réessayer.');
             });
 
             document.getElementById('contact-form').reset();
