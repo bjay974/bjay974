@@ -221,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomLink = document.createElement('a');
                         const nomPers = child.nom_legitime || child.nom;    
 
-                        nomLink.href = child.id < 2000 ? `html/person.html?id=${child.id}` : '#';
+                        nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
                         nomLink.classList.add(child.genre === 'M' ? 'maleLink' : 'femaleLink'); 
 
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id < 2000) {
                     const arbrePersoLink = document.createElement('a');
                     arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
-                    arbrePersoLink.href = `html/arbreperso.html?id=${person.id}`;
+                    arbrePersoLink.href = `arbreperso.html?id=${person.id}`;
                     arbrePersoLink.style.textDecoration = "none";
                     arbrePersoLink.style.color = "#999"; 
                     arbrePersoLink.style.fontSize = "80%";
@@ -277,7 +277,7 @@ function creerPersonLink(person, color) {
     const nomLink = document.createElement('a');
     nomLink.style.textDecoration = "none";
     if (person.id < 2000) {
-        nomLink.href = `html/person.html?id=${person.id}`;
+        nomLink.href = `person.html?id=${person.id}`;
     }
     nomLink.innerHTML = `<span style="color:${color};"><strong>${person.nom}</strong> ${person.prenom}</span>`;
     return nomLink;
