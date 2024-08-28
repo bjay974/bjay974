@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact</title>
     <link rel="stylesheet" href="style.css">
-    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
 </head>
 <body>
     <header>
@@ -43,24 +42,24 @@
         <p>&copy; 2024 - BETSMAN Jérôme - Tous droits réservés.</p>
     </footer>
 
-    <script type="text/javascript">
-        (function() {
-            emailjs.init('rHp6xKxkYt_JZl33u'); // ma clé public EmailJS
-        })();
-
+    <script type="module">
+        import emailjs from 'https://cdn.emailjs.com/dist/email.min.js';
+    
+        emailjs.init('rHp6xKxkYt_JZl33u'); // Remplace 'TON_USER_ID' par ton propre identifiant EmailJS
+    
         document.getElementById('contact-form').addEventListener('submit', function(event) {
             event.preventDefault(); // Empêche le rechargement de la page
-
-            const serviceID = 'service_s5iw748';  // Mon Service ID
-            const templateID = 'template_74aqzqf'; // Mon Template ID
-
+    
+            const serviceID = 'service_s5iw748';  // Remplace par ton Service ID
+            const templateID = 'template_74aqzqf'; // Remplace par ton Template ID
+    
             const templateParams = {
                 nom: document.getElementById('nom').value,
                 email: document.getElementById('email').value,
                 sujet: document.getElementById('sujet').value,
                 message: document.getElementById('message').value
             };
-
+    
             emailjs.send(serviceID, templateID, templateParams)
                 .then(function(response) {
                     console.log('SUCCESS!', response.status, response.text);
@@ -69,9 +68,10 @@
                     console.log('FAILED...', error);
                     alert('L\'envoi du message a échoué, veuillez réessayer.');
                 });
-
+    
             document.getElementById('contact-form').reset();
         });
     </script>
+
 </body>
 </html>
