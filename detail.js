@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }                
                 let nomLegitime = "";
                 if (person.nom_legitime) {
-                   nomLegitime = person.nom_legitime
+                    nomLegitime = person.nom_legitime
                 }
                 nameItem.innerHTML = `${person.nom} <em>${nomLegitime}</em> ${person.prenom}`;
                 detailsList.appendChild(nameItem);
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else {
                     if (person.lieu_naissance === "Afrique") {
-                       birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en Afrique`; 
+                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en Afrique`; 
                     }
                     else if (person.lieu_naissance === "Nigéria") {
                         birthDateItem.textContent = `${adjectif_genre} ${dateVerified} au Nigéria`; 
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en France`; 
                     }
                     else {
-                       birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
+                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
                     }
                 }
                 detailsList.appendChild(birthDateItem);
@@ -209,67 +209,64 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
+
                 if (childrenOfPerson.length > 0) {
                     childrenOfPerson.sort((a, b) => b.id - a.id);
+
+                    // Créer un élément li pour contenir la liste des enfants
                     const childrenOfPersonList = document.createElement('li');
-                    if (childrenOfPerson.length === 1) {
-                        childrenOfPersonList.innerHTML = "<strong>Enfant</strong> :";
-                    }
-                    else {
-                        childrenOfPersonList.innerHTML = "<strong>Enfants</strong> :";    
-                    }
+                    childrenOfPersonList.innerHTML = `<strong>${childrenOfPerson.length === 1 ? 'Enfant' : 'Enfants'}</strong> :`;
+
+                    // Utiliser un DocumentFragment pour améliorer les performances
+                    const fragment = document.createDocumentFragment();
                     const childrenOfPersonUl = document.createElement('ul');
+
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');
-                        if (child.id < 2000) {
-                            nomLink.href = 'person.html?id=' + child.id;
-                        }
-                        nomLink.style.textDecoration = "none";
-                        if (child.genre==="M"){
-                            nomLink.style.color = "rgb(11, 65, 83)";
-                        }
-                        else {
-                            nomLink.style.color = "#583a3a";
-                        }
-                        // si l'enfant à un nom_legitime alors on affiche ce nom  : 
-                        var nomPers = child.nom_legitime ? child.nom_legitime : child.nom;    
+                        const nomPers = child.nom_legitime || child.nom;    
+
+                        nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
+                        nomLink.classList.add(child.genre === 'M' ? 'maleLink' : 'femaleLink'); 
+
                         childItem.appendChild(nomLink);
-                        childrenOfPersonUl.appendChild(childItem);
+                        fragment.appendChild(childItem);
                     });
+
+                    childrenOfPersonUl.appendChild(fragment);
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                } 
+                }
 
-            // Charger le commentaire
-            if (person.commentaire) {
-                const commentaireItem = document.createElement('li');
-                commentaireItem.classList.add('special-li');
-                commentaireItem.textContent = `Notes : ${person.commentaire}`;
-                commentaireItem.style.fontSize = 'smaller';
-                detailsList.appendChild(commentaireItem);
-                detailsList.appendChild(document.createElement('br')); 
-            }
-            
-            // Charger l'apercu de l'arbre 
-            if (person.id < 2000) {
-                const arbrePersoLink = document.createElement('a');
-                arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
-                arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
-                arbrePersoLink.style.textDecoration = "none";
-                arbrePersoLink.style.color = "#999"; 
-                arbrePersoLink.style.fontSize = "80%";
-            
-                const arbrePersoItem = document.createElement('div'); // Utiliser 'div' pour le conteneur
-                arbrePersoItem.appendChild(arbrePersoLink);
-                detailsList.appendChild(arbrePersoItem);
-                detailsList.appendChild(document.createElement('br'));
-            }
+                // Charger le commentaire
+                if (person.commentaire) {
+                    const commentaireItem = document.createElement('li');
+                    commentaireItem.classList.add('special-li');
+                    commentaireItem.textContent = `Notes : ${person.commentaire}`;
+                    commentaireItem.style.fontSize = 'smaller';
+                    detailsList.appendChild(commentaireItem);
+                    detailsList.appendChild(document.createElement('br')); 
+                }
+                
+                // Charger l'apercu de l'arbre 
+                if (person.id < 2000) {
+                    const arbrePersoLink = document.createElement('a');
+                    arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
+                    arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
+                    arbrePersoLink.style.textDecoration = "none";
+                    arbrePersoLink.style.color = "#999"; 
+                    arbrePersoLink.style.fontSize = "80%";
+                
+                    const arbrePersoItem = document.createElement('div'); // Utiliser 'div' pour le conteneur
+                    arbrePersoItem.appendChild(arbrePersoLink);
+                    detailsList.appendChild(arbrePersoItem);
+                    detailsList.appendChild(document.createElement('br'));
+                }
 
-            // Charger les liens vers les actes si il y en a
-            chargerLiensActes(person, detailsList);
+                // Charger les liens vers les actes si il y en a
+                chargerLiensActes(person, detailsList);
 
         personDetails.appendChild(detailsList);
 
