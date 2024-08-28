@@ -268,87 +268,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br'));
             }
 
-              // Charger les liens vers les actes si il y en a
-            const nomFichier = person.id;
-            const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
-            for (let i = 0; i < repertoires.length; i++) {    
-                const repertoire = repertoires[i];
-                const extensions = ['pdf', 'jpg', 'jpeg'];
-                for (let i = 0; i < extensions.length; i++) {
-                    const extension = extensions[i];
-                    const monFichier = `${repertoire}/${nomFichier}.${extension}`;
-                    fetch(`${monFichier}`)
-                    .then(response => {
-                        if (response.ok) {
-                            const acteItem = document.createElement('a');
-                            const ficLink = document.createElement('a');
-                            const afficheMessage = getAfficheMessage(repertoire);
-                            ficLink.textContent = `${afficheMessage}`;
-                            ficLink.href = monFichier;
-                            ficLink.target = '_blank';                                  
-                            ficLink.style.textDecoration = "none";
-                            ficLink.style.color = "#999"; 
-                            ficLink.style.fontSize = "90%";
-                            acteItem.appendChild(ficLink);
-                            const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
-                            fetch(`${monFichierBis}`)
-                            .then(response => {
-                                if (response.ok) {
-                                    const ficLinkbis = document.createElement('a');
-                                    ficLinkbis.textContent = "2éme partie";
-                                    ficLinkbis.href = monFichierBis;                                          
-                                    ficLinkbis.style.textDecoration = "none";
-                                    ficLinkbis.style.color = "#999";
-                                    ficLinkbis.style.fontSize = "90%";
-                                    acteItem.appendChild(document.createTextNode('  ||  '));
-                                    acteItem.appendChild(ficLinkbis);
-                            } })
-                            detailsList.appendChild(acteItem);
-                            detailsList.appendChild(document.createElement('br'));
-                        } })
-                }
-            }     
-            // Charger les liens vers l'acte de mariage au nom du mari 
-            if (person.date_mariage && person.genre === "F") {
-            const nomFichier = person.id_conjoint;
-                const repertoire = "mariage";
-                const extensions = ['pdf', 'jpg', 'jpeg'];
-                for (let i = 0; i < extensions.length; i++) {
-                    const extension = extensions[i];
-                    const monFichier = `${repertoire}/${nomFichier}.${extension}`;
-                    fetch(`${monFichier}`)
-                    .then(response => {
-                        if (response.ok) {
-                            const acteItem = document.createElement('a');
-                            const ficLink = document.createElement('a');
-                            ficLink.textContent = `Voir l'acte de ${repertoire}`;   
-                            ficLink.href = monFichier;
-                            ficLink.target = '_blank';                                  
-                            ficLink.style.textDecoration = "none";
-                            ficLink.style.color = "#999"; 
-                            ficLink.style.fontSize = "90%";
-                            acteItem.appendChild(ficLink);
-                            const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`
-                            fetch(`${monFichierBis}`)
-                            .then(response => {
-                                if (response.ok) {
-                                    const ficLinkbis = document.createElement('a');
-                                    ficLinkbis.textContent = `Deuxième partie`;
-                                    ficLinkbis.href = monFichierBis;                                          
-                                    ficLinkbis.style.textDecoration = "none";
-                                    ficLinkbis.style.color = "#999";
-                                    ficLinkbis.style.fontSize = "90%";
-                                    acteItem.appendChild(document.createTextNode('  ||  '));
-                                    acteItem.appendChild(ficLinkbis);
-                            } })
-                            detailsList.appendChild(acteItem);
-                            detailsList.appendChild(document.createElement('br'));
-                        } })
-                }
-            }
-        else {
-            detailsList.appendChild(document.createElement('br')); 
-        }
+            // Charger les liens vers les actes si il y en a
+            chargerLiensActes(person, detailsList);
 
         personDetails.appendChild(detailsList);
 
@@ -490,3 +411,67 @@ function getAfficheMessage(repertoire) {
     }
 }
 
+// Fonction pour créer et ajouter des liens pour les fichiers d'actes
+function ajouterLienActe(detailsList, nomFichier, repertoire, extension, afficheMessage) {
+    const monFichier = `${repertoire}/${nomFichier}.${extension}`;
+    return fetch(monFichier).then(response => {
+        if (response.ok) {
+            const acteItem = document.createElement('a');
+            const ficLink = document.createElement('a');
+            ficLink.textContent = afficheMessage;
+            ficLink.href = monFichier;
+            ficLink.target = '_blank';                                  
+            ficLink.style.textDecoration = "none";
+            ficLink.style.color = "#999"; 
+            ficLink.style.fontSize = "90%";
+            acteItem.appendChild(ficLink);
+
+            // Vérifier l'existence d'une deuxième partie
+            const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`;
+            return fetch(monFichierBis).then(responseBis => {
+                if (responseBis.ok) {
+                    const ficLinkbis = document.createElement('a');
+                    ficLinkbis.textContent = "Deuxième partie";
+                    ficLinkbis.href = monFichierBis;                                          
+                    ficLinkbis.style.textDecoration = "none";
+                    ficLinkbis.style.color = "#999";
+                    ficLinkbis.style.fontSize = "90%";
+                    acteItem.appendChild(document.createTextNode('  ||  '));
+                    acteItem.appendChild(ficLinkbis);
+                }
+                detailsList.appendChild(acteItem);
+                detailsList.appendChild(document.createElement('br'));
+            });
+        }
+    });
+}
+
+// Fonction principale pour charger tous les liens vers les actes
+function chargerLiensActes(person, detailsList) {
+    const nomFichier = person.id;
+    const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
+    const extensions = ['pdf', 'jpg', 'jpeg'];
+
+    // Charge les liens pour les répertoires normaux
+    repertoires.forEach(repertoire => {
+        const afficheMessage = getAfficheMessage(repertoire);
+        const promesses = extensions.map(extension => 
+            ajouterLienActe(detailsList, nomFichier, repertoire, extension, afficheMessage)
+        );
+        // Exécuter toutes les promesses pour ce répertoire
+        Promise.all(promesses);
+    });
+
+    // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
+    if (person.date_mariage && person.genre === "F") {
+        const nomFichierConjoint = person.id_conjoint;
+        const afficheMessage = `Voir l'acte de mariage`;
+        const promessesMariage = extensions.map(extension => 
+            ajouterLienActe(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
+        );
+        // Exécuter toutes les promesses pour le mariage du conjoint
+        Promise.all(promessesMariage);
+    } else {
+        detailsList.appendChild(document.createElement('br'));
+    }
+}

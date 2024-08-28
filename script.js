@@ -59,13 +59,6 @@ function creerTitreEtListe(listElement, titreText) {
   listElement.appendChild(titre);
 }
 
-/* function ajoutMembresListe(listElement, persons) {
-  persons.forEach(person => {
-    const listItem = creerListItem(person);
-    listElement.appendChild(listItem);
-  });
-} */
-
 // Ajouter les membres de la liste
 function ajoutMembresListe(listElement, persons) {
   const fragment = document.createDocumentFragment();
@@ -83,7 +76,7 @@ function creerListItem(person) {
   li.innerHTML = `
       <a href="${person.id < 2000 ? 'person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienM' : 'lienF'}">
           ${person.nom} ${person.prenom} (${creerAnNaissance(person.date_naissance)}${person.date_deces ? ' / ' + creerAnDeces(person.date_deces) : ''}) 
-          <em>${getOrigine(person.lieu_naissance)} G${creerGeneration(person)}</em>
+          <em>${getOrigine(person.lieu_naissance)} ${creerGeneration(person)}</em>
       </a>
   `;
   return li;
