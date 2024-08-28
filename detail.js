@@ -78,19 +78,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (!person.date_deces) {
-                    detailsList.appendChild(handleAgeNow(person));
+                    detailsList.appendChild(getAgeNow(person));
                 } else {
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
                             detailsList.appendChild(handleDeathDetails(person));
                         } else {
-                            detailsList.appendChild(createDeathDateItem('Date de décès inconnue'));
+                            detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
                         }
                     } else {
                         if (person.date_deces !== "01/01/1901") {
                             detailsList.appendChild(handleDeathDetails(person));
                         } else {
-                            detailsList.appendChild(createDeathDateItem('Date de décès inconnue'));
+                            detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
                         }
                     }
                 }
@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (conjoint) {
                         weddingDateItem.appendChild(document.createTextNode(' à '));
                         const styleColor = conjoint.genre === "M" ? "rgb(11, 65, 83)" : "#583a3a";
-                        weddingDateItem.appendChild(createPersonLink(conjoint, styleColor));
+                        weddingDateItem.appendChild(creerPersonLink(conjoint, styleColor));
                     }
 
                     detailsList.appendChild(weddingDateItem);
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const styleColor = conjoint.genre === "M" ? "rgb(11, 65, 83)" : "#583a3a";
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
-                        conjointItem.appendChild(createPersonLink(conjoint, styleColor));
+                        conjointItem.appendChild(creerPersonLink(conjoint, styleColor));
 
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br'));
@@ -153,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Initialisation des variables father et mother
                 let father, mother;
-                let parentText = "";
+                let textParent = "";
 
                 // Initialisation de la variable pour l'élément de liste temporaire
                 let parentItem = null;
@@ -166,10 +166,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     } else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
-                            parentText = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                            textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem = document.createElement('li');
-                            parentItem.appendChild(document.createTextNode(parentText));
-                            parentItem.appendChild(createPersonLink(father, 'rgb(11, 65, 83)'));
+                            parentItem.appendChild(document.createTextNode(textParent));
+                            parentItem.appendChild(creerPersonLink(father, 'rgb(11, 65, 83)'));
                         }
                     }
                 }
@@ -188,12 +188,12 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (mother) {
                             if (parentItem) {
                                 parentItem.appendChild(document.createTextNode(' et de '));
-                                parentItem.appendChild(createPersonLink(mother, '#583a3a'));
+                                parentItem.appendChild(creerPersonLink(mother, '#583a3a'));
                             } else {
-                                parentText = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                                textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                                 parentItem = document.createElement('li');
-                                parentItem.appendChild(document.createTextNode(parentText));
-                                parentItem.appendChild(createPersonLink(mother, '#583a3a'));
+                                parentItem.appendChild(document.createTextNode(textParent));
+                                parentItem.appendChild(creerPersonLink(mother, '#583a3a'));
                             }
                         }
                     }
@@ -281,7 +281,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Fonction pour créer un lien formaté pour une personne (nom + prénom) avec une couleur et un href optionnel
-function createPersonLink(person, color) {
+function creerPersonLink(person, color) {
     const nomLink = document.createElement('a');
     nomLink.style.textDecoration = "none";
     if (person.id < 2000) {
@@ -292,9 +292,9 @@ function createPersonLink(person, color) {
 }
 
 // Fonction pour ajouter un parent à la liste des détails
-function addParentToDetailsList(parentText, parentLink, detailsList) {
+function addParentToDetailsList(textParent, parentLink, detailsList) {
     const parentItem = document.createElement('li');
-    parentItem.appendChild(document.createTextNode(parentText));
+    parentItem.appendChild(document.createTextNode(textParent));
     parentItem.appendChild(parentLink);
     detailsList.appendChild(parentItem);
 }
@@ -310,13 +310,13 @@ function getArbrePersoLinkText(prenom) {
         : `Aperçu de l'arbre de ${prenom}`;
 }
 
-function createDeathDateItem(text) {
+function creerDateDecesItem(text) {
     const deathDateItem = document.createElement('li');
     deathDateItem.textContent = text;
     return deathDateItem;
 }
 
-function handleAgeNow(person) {
+function getAgeNow(person) {
     const ageNowItem = document.createElement('li');
     const ageNow = calculeAge(person.date_naissance);
     ageNowItem.classList.add('special-li');
@@ -332,15 +332,15 @@ function handleDeathDetails(person) {
 
     if (ageDeces <= 5) {
         if (person.lieu_deces === "Inconnu") {
-            return createDeathDateItem(`${adjectif_genre} ${dateVerified}`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateVerified}`);
         } else {
-            return createDeathDateItem(`${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`);
         }
     } else {
         if (person.lieu_deces === "Inconnu") {
-            return createDeathDateItem(`${adjectif_genre} ${dateVerified} à ${ageDeces} ans`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateVerified} à ${ageDeces} ans`);
         } else {
-            return createDeathDateItem(`${adjectif_genre} ${dateVerified} à ${ageDeces} ans à ${person.lieu_deces}`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateVerified} à ${ageDeces} ans à ${person.lieu_deces}`);
         }
     }
 }
