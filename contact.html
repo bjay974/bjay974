@@ -25,8 +25,8 @@
             <label for="nom">Vot nom :</label><br>
             <input type="text" id="nom" name="nom" required><br><br>
 
-            <label for="email">Vot e-mail :</label><br>
-            <input type="email" id="email" name="email" required><br><br>
+            <label for="adresseMail">Vot e-mail :</label><br>
+            <input type="text" id="adresseMail" name="adresseMail" required><br><br>
 
             <label for="sujet">Vot Sujet :</label><br>
             <input type="text" id="sujet" name="sujet" required><br><br>
@@ -52,7 +52,7 @@
 
             const templateParams = {
                 nom: document.getElementById('nom').value,
-                adresseMmail: document.getElementById('email').value,
+                adresseMail: document.getElementById('email').value,
                 sujet: document.getElementById('sujet').value,
                 message: document.getElementById('message').value
             };
