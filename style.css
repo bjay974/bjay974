@@ -37,6 +37,22 @@ header {
     height: 35px;
 }
 
+nav {
+    background-color: #666;
+    padding: 5px;
+    text-align: center;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 5px;
+}
+
+nav a:hover {
+    background-color: #999;
+}
+
 section {
     padding: 0px 0px 0px 0px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
