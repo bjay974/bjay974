@@ -335,9 +335,13 @@ footer {
 
 .maleLink {
     color: rgb(10, 90, 117)
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .femaleLink {
     color:#6e2a2a
+    font-weight: bold;
+    text-decoration: none;
 }
 

@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
                 if (person.genre === "M") {
-                    nameItem.classList.add('soustitreM');
+                    nameItem.classList.add('soustitreM' );
                     nameItem.style.color = "rgb(11, 65, 83)";
                 }
                 else{
@@ -65,14 +65,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     legDateItem.classList.add('special-li');
                     const dateVerified = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
-                    if (person.genre === "M"){
-                        const nomEnCouleur = `<span style="color:rgb(11, 65, 83);"><strong>${person.nom_legitime}</strong></span>`;
-                        legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
-                    }
-                    else {
-                        const nomEnCouleur = `<span style="color:#583a3a;"><strong>${person.nom_legitime}</strong></span>`;
-                        legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
-                    }
+                    const linkClass = person.genre === "M" ? "maleLink" : "femaleLink";
+                    const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
+                    legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                     detailsList.appendChild(legDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
