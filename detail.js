@@ -232,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         else {
                             nomLink.style.color = "#583a3a";
                         }
-                        // si l'enfant à un nom_legitime alors pn affiche ce nom  : 
+                        // si l'enfant à un nom_legitime alors on affiche ce nom  : 
                         var nomPers = child.nom_legitime ? child.nom_legitime : child.nom;    
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
                         childItem.appendChild(nomLink);
@@ -252,7 +252,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(commentaireItem);
                 detailsList.appendChild(document.createElement('br')); 
             }
-
+            
+            // Charger l'apercu de l'arbre 
             if (person.id < 2000) {
                 const arbrePersoLink = document.createElement('a');
                 arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
