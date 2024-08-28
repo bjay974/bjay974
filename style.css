@@ -1,3 +1,18 @@
+:root {
+    --color-primary: #333;
+    --color-secondary: #666;
+    --color-light: #999;
+    --color-male: rgb(11, 65, 83);
+    --color-female: #583a3a;
+    --color-male-bg: rgb(213, 230, 236);
+    --color-female-bg: rgb(228, 215, 216);
+    --font-primary: Georgia, serif;
+    --font-size-small: 90%;
+    --font-size-large: 12px;
+    --padding-small: 5px;
+    --margin-small: 5px;
+}
+
 body {
     font-family: Georgia;
     font-size: 90%;
@@ -11,80 +26,14 @@ body {
     flex-direction: column;
 }
 
-.soustitre {
-    text-align: left;
-    background-color: #a8767a;
-    color: #fff;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    width: 75%;
-    font-style: italic;
-    font-weight: bold; 
-    padding: 5px 5px 5px 20%;
-    text-decoration: none;
-}
-
-.soustitreM {
-    text-align: left;
-    background-color: #cfdbf5;
-    color: #fff;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    width: 75%;
-    font-style: italic;
-    font-weight: bold; 
-    padding: 5px 5px 5px 20%;
-    text-decoration: none;
-}
-
-.soustitreF {
-    text-align: left;
-    background-color: #f8c4c4;
-    color: #fff;
-    margin-top: 10px;
-    margin-bottom: 5px;
-    width: 75%;
-    font-style: italic;
-    font-weight: bold; 
-    padding: 5px 5px 5px 20%;
-    text-decoration: none;
-}
-
-.soustitreArbre {
-    text-align: left;
-    background-color: #999;
-    color: #fff;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    width: 90%;
-    font-weight: bold; 
-    padding: 5px 0px 5px 30px;
-    text-decoration: none;
-}
 
 header {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-secondary);
     text-align: center;
     padding: 1px 1px 10px 1px;
     margin: 0px 0px 0px 0px;
     height: 35px;
-}
-
-nav {
-    background-color: #666;
-    padding: 5px;
-    text-align: center;
-}
-
-nav a {
-    color: #fff;
-    text-decoration: none;
-    padding: 5px 5px;
-}
-
-nav a:hover {
-    background-color: #999;
 }
 
 section {
@@ -95,14 +44,47 @@ section {
 }
 
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: var(--color-primary);
+    color: var(--color-secondary)#;
     padding: 1px 0px 1px 0px;
     text-align: center;
     width: 100%;
     height: 30px;
     font-size: 70%;
     margin-top: auto;
+}
+
+
+.soustitre, .soustitreM, .soustitreF, .soustitreArbre  {
+    text-align: left;
+    color: var(--color-secondary);
+    margin-top: 10px;
+    margin-bottom: 5px;
+    width: 75%;
+    font-style: italic;
+    font-weight: bold; 
+    padding: 5px 5px 5px 20%;
+    text-decoration: none;
+}
+
+.soustitre {
+    background-color: #a8767a;
+}
+
+.soustitreM {
+    background-color: #cfdbf5;
+}
+
+.soustitreF {
+    background-color: #f8c4c4;
+}
+
+.soustitreArbre {
+    background-color: #999;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    width: 90%;
+    padding: 5px 0px 5px 30px;
 }
 
 .list {
@@ -129,7 +111,6 @@ footer {
     grid-column: 2;
 }
 
-
 .list-detail {
     padding: 2px 0px 0px 5px;
     margin-top: 0px;
@@ -143,14 +124,8 @@ footer {
     text-align: left; /* Aligne la liste à gauche */
 }
 
-.lien {
+.lienM, .lienF{
     text-decoration: none;
-    color: black;
-}
-
-.lienM {
-    text-decoration: none;
-    color: rgb(11, 65, 83);
     margin-top: 0px;
     margin-left: 0px;
     text-align: left; /* Aligne la liste à gauche */
@@ -158,19 +133,11 @@ footer {
 }
 
 .lienF {
-    text-decoration: none;
-    color: #583a3a;
-    margin-top: 0px;
-    margin-left: 0px;
-    text-align: left; /* Aligne la liste à gauche */
-    margin-right: 10px;
+    color: var(--color-female);
 }
 
-.special-li {
-    padding: 10px 5px 5px 5px;
-    margin-top: 0;
-    list-style-type: none;
-    margin-right: 10px;
+.lienM {
+    color: var(--color-male);
 }
 
 .grid-container {
@@ -204,10 +171,6 @@ footer {
    font-style: italic;
    margin-left: 20px;
 }
-
-.italique {
-    font-style: italic;
- }
 
 .labelArbre {
     color:#423d3d;
@@ -247,7 +210,7 @@ footer {
     position: relative;   
 }
 
-.parent {
+.parent, .grandparent , .enfant , .grandenfant {
     grid-area: colonne2;
     padding: 5px 5px 5px 5px;
     margin-top: 15px;
@@ -255,6 +218,24 @@ footer {
     height: 20px;
     display: flex;
     flex-direction: column;
+}
+
+.grandparent {
+    grid-area: colonne1;
+    text-align: center;
+    width: 200px;
+}
+
+.enfant {
+    grid-area: colonne4;
+    margin-right: 5px;
+}
+
+.grandenfant {
+    grid-area: colonne5;
+    width: 200px;
+    margin-top: 15px;
+    margin-right: 5px;
 }
 
 .personne .female + .male {margin-top: 50px}
@@ -283,39 +264,6 @@ footer {
 .parent .male + .female {margin-top: 160px}
 .parent .label + .male {margin-top: 45px}
 .parent .label + .female {margin-top: 45px}
-
-.grandparent {
-    grid-area: colonne1;
-    padding: 5px 5px 5px 5px;
-    margin-top: 15px;
-    text-align: center;
-    width: 200px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.enfant {
-    grid-area: colonne4;
-    padding: 5px 5px 5px 5px;
-    width: 180px;
-    margin-top: 15px;
-    margin-right: 5px;
-    height: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
-.grandenfant {
-    grid-area: colonne5;
-    padding: 5px 5px 5px 5px;
-    width: 200px;
-    margin-top: 15px;
-    margin-right: 5px;
-    height: 15px;
-    display: flex;
-    flex-direction: column;
-}
 
 .male, .female {
     min-height: 25px;
