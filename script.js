@@ -7,10 +7,10 @@ fetch('data.json').then(response=>response.json()).then(data=>{
   
   // Filtrer les personnes par genre
   const filterByGender = (people, gender) => people.filter(person => person.genre === gender);
-  const hommesPat= filterByGender(branchePaternelle, 'M');
-  const femmesPat= filterByGender(branchePaternelle, 'F');
-  const hommesMat= filterByGender(brancheMaternelle, 'M');
-  const femmesMat= filterByGender(brancheMaternelle, 'F');
+  const hommesPat= filterByGender(branchePat, 'M');
+  const femmesPat= filterByGender(branchePat, 'F');
+  const hommesMat= filterByGender(brancheMat, 'M');
+  const femmesMat= filterByGender(brancheMat, 'F');
   const hommesFam = filterByGender(famille, 'M');
   const femmesFam = filterByGender(famille, 'F');
   
