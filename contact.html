@@ -70,18 +70,8 @@
                     })
                 })
                 .then(response => {
-                    return response.text();  // Convertir la réponse en texte
-                })
-                .then(text => {
-                    console.log('Response Text:', text);
-                    try {
-                        const data = JSON.parse(text);  // Essayer de parser le texte en JSON
-                        console.log('SUCCESS!', data);
-                        alert('Votre message a été envoyé avec succès !');
-                    } catch (error) {
-                        console.error('JSON parsing failed:', error);
-                        alert('Le serveur a renvoyé une réponse inattendue.');
-                    }
+                    console.log('SUCCESS!', data);
+                    alert('Votre message a été envoyé avec succès !');
                 })
                 .catch(error => {
                     console.error('FAILED...', error);
