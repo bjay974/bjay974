@@ -119,12 +119,12 @@ footer {
     font-size: 80%;
 }
 
-.hommelist {
+.homlist {
     padding: 5px 0px 0px 10px;
     grid-column: 1;
 }
 
-.femmelist {
+.femlist {
     padding: 5px 0px 0px 0px;
     grid-column: 2;
 }
