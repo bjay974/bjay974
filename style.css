@@ -297,8 +297,8 @@ footer {
  }
 
 .female {
-    background-color: var (--color-female-bg);
-    color: var (--color-female);
+    background-color: var(--color-female-bg);
+    color: var(--color-female);
 }
 
 .maleLink, .femaleLink {
