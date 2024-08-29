@@ -33,7 +33,7 @@ function afficherData() {
       // Afficher les informations
       afficherPersonne(personnes[personId], personnes);
       afficherRelations(personnes[id_pere], personnes[id_mere]);
-      afficherGrandsParents(personnes , personId);
+      afficherGrandsParents(personnes, personId);
       afficherEnfantetPetitenfant(personnes, enfants, data);
     });
 }
