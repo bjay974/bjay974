@@ -11,10 +11,11 @@ function afficherData() {
       ajouterAncetres(ids, personId, data, 2);
 
       // Ajouter les enfants et petits-enfants
+      let petitsEnfants = " "
       const enfants = data.filter(child => child.id_pere === personId || child.id_mere === personId);
       enfants.forEach(enfant => {
         ids.add(enfant.id);
-      const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+        let petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
         petitsEnfants.forEach(pe => ids.add(pe.id));
       });
 
