@@ -1,3 +1,24 @@
+function ajouterAncetres(ids, idPersonne, data, niveau) {
+  if (niveau === 0) return; // Limiter la profondeur (niveau 0 pour les parents, 1 pour les grands-parents)
+
+  // Ajouter les parents
+  const addParentIds = (id) => {
+    const pereId = trouverIdParent(id, data, 'pere');
+    const mereId = trouverIdParent(id, data, 'mere');
+    if (pereId) ids.add(pereId);
+    if (mereId) ids.add(mereId);
+    return [pereId, mereId];
+  };
+
+  const [pereId, mereId] = addParentIds(idPersonne);
+
+  // Appel récursif pour les grands-parents
+  if (niveau > 0) {
+    if (pereId) ajouterAncetres(ids, pereId, data, niveau - 1);
+    if (mereId) ajouterAncetres(ids, mereId, data, niveau - 1);
+  }
+}
+
 function afficherData() {
   let urlParams = new URLSearchParams(window.location.search);
   let personId = parseInt(urlParams.get('id'));
@@ -11,11 +32,10 @@ function afficherData() {
       ajouterAncetres(ids, personId, data, 2);
 
       // Ajouter les enfants et petits-enfants
-      let petitsEnfants = " "
       const enfants = data.filter(child => child.id_pere === personId || child.id_mere === personId);
       enfants.forEach(enfant => {
         ids.add(enfant.id);
-        let petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+        const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
         petitsEnfants.forEach(pe => ids.add(pe.id));
       });
 
@@ -25,65 +45,40 @@ function afficherData() {
       // Afficher les informations
       afficherPersonne(personnes[personId], personnes);
       afficherParents(personnes[trouverIdParent(personId, data, 'pere')], personnes[trouverIdParent(personId, data, 'mere')]);
-      afficherEnfantetPetitenfant(personnes, enfants, petitsEnfants, data);
       afficherGrandsParents(personnes, personId, data);
+      afficherEnfantetPetitenfant(personnes, enfants, data);
     });
 }
 
-function afficherPersonne(person, personnes) {
-  if (!person) return;
-  const containerClass = 'personne';
-  const genderClass = person.genre === 'M' ? 'male' : 'female';
-  let personHTML = `<div class="${containerClass} ${genderClass}">
-                      <h4>${person.nom} ${person.prenom}</h4>`;
-
-  if (person.date_naissance !== "01/01/1901") {
-    const dateNaissance = verifierDate(person.date_naissance);
-    personHTML += `<p>\u{1F476} ${dateNaissance}</p>`;
-  }
-  if (person.date_deces) {
-    const dateDeces = verifierDate(person.date_deces);
-    const icone = '\u{1F64F}';
-    personHTML += `<p>${icone} ${dateDeces !== "01/01/1901" ? dateDeces : "Date de décès inconnue"}</p>`;
-  }
-  personHTML += `</div>`;
-
-  if (person.id_conjoint > 0) {
-    const conjoint = personnes[person.id_conjoint];
-    if (conjoint) {
-      const genderConjointClass = conjoint.genre === 'M' ? 'male' : 'female';
-      const titreConjoint = person.date_mariage ? (conjoint.genre === 'M' ? "Epoux" : "Epouse") : (conjoint.genre === 'M' ? "Conjoint" : "Conjointe");
-      personHTML += `<div class="${containerClass} ${genderConjointClass}">
-                       <p class="label">${titreConjoint}</p>
-                       <p><a href="arbrePerso.html?id=${conjoint.id}" style="text-decoration: none; color: inherit;">${conjoint.nom} ${conjoint.prenom}</a></p>
-                     </div>`;
-    }
-  }
-  const container = creerDiv(containerClass);
-  container.innerHTML = personHTML;
-  document.getElementById('person-container').appendChild(container);
-}
-
-function afficherGrandsParents(grandsParentsids, personId, data) {
+function afficherGrandsParents(personnes, personId, data) {
   const containerClass = 'grandparent';
   const container = creerDiv(containerClass);
   container.innerHTML = `<p class="label">Grands Parents</p>`;
-  
+
+  // Trouver les grands-parents pour l'identifiant donné
   const id_mere = trouverIdParent(personId, data, 'mere');
   const id_pere = trouverIdParent(personId, data, 'pere');
-  
-  const grandParents = [
-    { person: personnes[trouverIdParent(id_mere, data, 'mere')], genre: 'F' },
-    { person: personnes[trouverIdParent(id_mere, data, 'pere')], genre: 'M' },
-    { person: personnes[trouverIdParent(id_pere, data, 'mere')], genre: 'F' },
-    { person: personnes[trouverIdParent(id_pere, data, 'pere')], genre: 'M' }
-  ];
 
-  grandParents.forEach(gp => {
-    if (gp.person) {
-      container.innerHTML += `<div class="${containerClass} ${gp.genre === 'M' ? 'male' : 'female'}">
-                                 <p><a href="arbrePerso.html?id=${gp.person.id}" style="text-decoration: none; color: inherit;">${gp.person.nom} ${gp.person.prenom}</a></p>
+  const grandsParentsIds = new Set();
+  if (id_mere) {
+    const [id_gr_pere_mere, id_gr_mere_mere] = [trouverIdParent(id_mere, data, 'pere'), trouverIdParent(id_mere, data, 'mere')];
+    grandsParentsIds.add(id_gr_pere_mere);
+    grandsParentsIds.add(id_gr_mere_mere);
+  }
+  if (id_pere) {
+    const [id_gr_pere_pere, id_gr_mere_pere] = [trouverIdParent(id_pere, data, 'pere'), trouverIdParent(id_pere, data, 'mere')];
+    grandsParentsIds.add(id_gr_pere_pere);
+    grandsParentsIds.add(id_gr_mere_pere);
+  }
+
+  grandsParentsIds.forEach(grandParentId => {
+    if (grandParentId) {
+      const person = personnes[grandParentId];
+      if (person) {
+        container.innerHTML += `<div class="${containerClass} ${person.genre === 'M' ? 'male' : 'female'}">
+                                 <p><a href="arbrePerso.html?id=${person.id}" style="text-decoration: none; color: inherit;">${person.nom} ${person.prenom}</a></p>
                               </div>`;
+      }
     }
   });
 
@@ -125,8 +120,8 @@ function trouverPersonneParId(id, data) {
   return data.find(person => person.id === id);
 }
 
-function trouverIdParent(personId, data, type) {
-  const person = data.find(p => p.id === personId);
+function trouverIdParent(id, data, type) {
+  const person = data.find(p => p.id === id);
   return type === 'pere' ? person?.id_pere : person?.id_mere;
 }
 
@@ -140,7 +135,7 @@ function centraliserRecherches(ids, data) {
   return personnes;
 }
 
-function afficherEnfantetPetitenfant(enfants, petitsEnfants, data) {
+function afficherEnfantetPetitenfant(personnes, enfants, data) {
   if (enfants.length > 0) {
     const container = creerDiv('enfant');
     const title = enfants.length === 1 ? "Enfant" : "Enfants";
@@ -155,7 +150,11 @@ function afficherEnfantetPetitenfant(enfants, petitsEnfants, data) {
 
     document.getElementById('person-container').appendChild(container);
 
-    if (petitsEnfants.length > 0) {
+    const grandenfants = enfants.flatMap(enfant => 
+      data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id)
+    );
+
+    if (grandenfants.length > 0) {
       const container = creerDiv('grandenfant');
       const title = grandenfants.length === 1 ? "Petit-enfant" : "Petits-enfants";
       container.innerHTML = `<p class="label">${title}</p>`;
@@ -171,65 +170,5 @@ function afficherEnfantetPetitenfant(enfants, petitsEnfants, data) {
     }
   }
 }
-
-function ajouterAncetres(ids, idPersonne, data, niveau) {
-  if (niveau === 0) return; // Limiter la profondeur (niveau 0 pour les parents, 1 pour les grands-parents)
-
-  // Ajouter les parents
-  const addParentIds = (id) => {
-    const pereId = trouverIdParent(id, data, 'pere');
-    const mereId = trouverIdParent(id, data, 'mere');
-    if (pereId) ids.add(pereId);
-    if (mereId) ids.add(mereId);
-    return [pereId, mereId];
-  };
-
-  const [pereId, mereId] = addParentIds(idPersonne);
-
-  // Appel récursif pour les grands-parents
-  if (niveau > 0) {
-    if (pereId) ajouterAncetres(ids, pereId, data, niveau - 1);
-    if (mereId) ajouterAncetres(ids, mereId, data, niveau - 1);
-  }
-}
-
-function afficherGrandsParents(personnes, personId, data) {
-  const containerClass = 'grandparent';
-  const container = creerDiv(containerClass);
-  container.innerHTML = `<p class="label">Grands Parents</p>`;
-  
-  // Trouver les grands-parents pour l'identifiant donné
-  const id_mere = trouverIdParent(personId, data, 'mere');
-  const id_pere = trouverIdParent(personId, data, 'pere');
-
-  const grandsParentsIds = new Set();
-  if (id_mere) {
-    const [id_gr_pere_mere, id_gr_mere_mere] = trouverIdParent(id_mere, data, 'pere');
-    const [id_gr_pere_pere, id_gr_mere_pere] = trouverIdParent(id_mere, data, 'mere');
-    grandsParentsIds.add(id_gr_pere_mere);
-    grandsParentsIds.add(id_gr_mere_mere);
-    grandsParentsIds.add(id_gr_pere_pere);
-    grandsParentsIds.add(id_gr_mere_pere);
-  }
-  if (id_pere) {
-    const [id_gr_pere_mere, id_gr_mere_mere] = trouverIdParent(id_pere, data, 'pere');
-    const [id_gr_pere_pere, id_gr_mere_pere] = trouverIdParent(id_pere, data, 'mere');
-    grandsParentsIds.add(id_gr_pere_mere);
-    grandsParentsIds.add(id_gr_mere_mere);
-    grandsParentsIds.add(id_gr_pere_pere);
-    grandsParentsIds.add(id_gr_mere_pere);
-  }
-
-  grandsParentsIds.forEach(grandParentId => {
-    const person = personnes[grandParentId];
-    if (person) {
-      container.innerHTML += `<div class="${containerClass} ${person.genre === 'M' ? 'male' : 'female'}">
-                               <p><a href="arbrePerso.html?id=${person.id}" style="text-decoration: none; color: inherit;">${person.nom} ${person.prenom}</a></p>
-                            </div>`;
-    }
-  });
-}
-
-
 
 afficherData();
