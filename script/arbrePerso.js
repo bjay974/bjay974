@@ -220,6 +220,8 @@ function afficherEnfantsPetitEnfants(parentId, data) {
         // Construire le contenu
         petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
         container.appendChild(petitEnfantDiv);
+        const personContainer = document.getElementById('person-container');
+        personContainer.appendChild(container);
       });
   }
 }
