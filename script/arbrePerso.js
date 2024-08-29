@@ -78,10 +78,10 @@ function afficherGrandsParents(personnes, personId) {
   const container = creerDiv(containerClass);
   const titre = "Grands Parents";
   const grandParents = [
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_mere, personnes)], genre: 'F' },
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_pere, personnes)], genre: 'M' },
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_pere]?.id_mere, personnes)], genre: 'F' },
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_pere]?.id_pere, personnes)], genre: 'M' }
+    { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_mere, personnes)], data, genre: 'F' },
+    { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_pere, personnes)], data, genre: 'M' },
+    { person: personnes[trouverIdParent(personnes[personnes[personId].id_pere]?.id_mere, personnes)], data, genre: 'F' },
+    { person: personnes[trouverIdParent(personnes[personnes[personId].id_pere]?.id_pere, personnes)], data, genre: 'M' }
   ];
 
   grandParents.forEach(gp => {
