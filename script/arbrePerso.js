@@ -23,7 +23,7 @@ function afficherData() {
       const enfants = data.filter(child => child.id_pere === personId || child.id_mere === personId);
       enfants.forEach(enfant => {
         ids.add(enfant.id);
-        const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+      const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
         petitsEnfants.forEach(pe => ids.add(pe.id));
       });
 
@@ -33,7 +33,7 @@ function afficherData() {
       // Afficher les informations
       afficherPersonne(personnes[personId], personnes);
       afficherRelations(personnes[id_pere], personnes[id_mere]);
-      afficherGrandsParents(personnes, personId);
+      afficherGrandsParents(personnes, personId ,data);
       afficherEnfantetPetitenfant(personnes, enfants, data);
     });
 }
@@ -73,10 +73,11 @@ function afficherPersonne(person, personnes) {
   document.getElementById('person-container').appendChild(container);
 }
 
-function afficherGrandsParents(personnes, personId) {
+function afficherGrandsParents(personnes, personId ,data) {
   const containerClass = 'grandparent';
   const container = creerDiv(containerClass);
-  const titre = "Grands Parents";
+  const titleText = "Grands Parents"
+  container.innerHTML = `<p class="label">${titleText}</p>`;
   const grandParents = [
     { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_mere, personnes)], data, genre: 'F' },
     { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_pere, personnes)], data, genre: 'M' },
