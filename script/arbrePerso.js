@@ -181,10 +181,10 @@ function afficherEnfantsPetitEnfants(parentId, data) {
     // Filtrer les petits-enfants du parent
     var petitsEnfants = [];
     enfants.forEach(function(enfant) {
-        var grandEnfant = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+        var petitEnfant = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
         // Ajouter le nom du parent à chaque petit-enfant
-        grandEnfant.forEach(gc => gc.parentPrenom = enfant.prenom);
-        petitsEnfants.push(...grandEnfant);
+        petitEnfant.forEach(gc => gc.parentPrenom = enfant.prenom);
+        petitsEnfants.push(...petitEnfant);
       });
 
   if (enfants.length > 0) {
@@ -204,22 +204,22 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 
   if (petitsEnfants.length > 0) {
       // Ajouter DIv et un titre
-      container = ajouterDivetTitre('petitenfant', grandChildren.length === 1, "Petit-enfant", "Petits-enfants");
+      container = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
       // Afficher les petits-enfants
       petitsEnfants.sort((a, b) => b.id - a.id);
-      petitsEnfants.forEach(function(grandEnfant) {
-        var genderClass = grandEnfant.genre === 'M' ? 'male' : 'female';
+      petitsEnfants.forEach(function(petitEnfant) {
+        var genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
         // Créer le conteneur pour chaque petit-enfant
-        var grandEnfantDiv = document.createElement('div');
-        grandEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
+        var petitEnfantDiv = document.createElement('div');
+        petitEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
         // Ajouter le nom et le prénom
-        var grandEnfantLink = '<p><a href="arbrePerso.html?id=' + grandEnfant.id + '" style="text-decoration: none; color: inherit;">' 
-                          + grandEnfant.nom + ' ' + grandEnfant.prenom + '</a></p>';
+        var petitEnfantLink = '<p><a href="arbrePerso.html?id=' + petitEnfant.id + '" style="text-decoration: none; color: inherit;">' 
+                          + petitEnfant.nom + ' ' + petitEnfant.prenom + '</a></p>';
         // Ajouter le nom du parent
-        var parentInfo = '<p class="parent-info">(' + grandEnfant.parentPrenom + ')</p>';
+        var parentInfo = '<p class="parent-info">(' + petitEnfant.parentPrenom + ')</p>';
         // Construire le contenu
-        grandEnfantDiv.innerHTML = grandEnfantLink + parentInfo;
-        container.appendChild(grandEnfantDiv);
+        petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
+        container.appendChild(petitEnfantDiv);
       });
   }
 }
