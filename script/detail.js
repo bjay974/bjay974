@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id < 2000) {
                     const arbrePersoLink = document.createElement('a');
                     arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
-                    arbrePersoLink.href = `arbreperso.html?id=${person.id}`;
+                    arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
                     arbrePersoLink.style.textDecoration = "none";
                     arbrePersoLink.style.color = "#999"; 
                     arbrePersoLink.style.fontSize = "80%";

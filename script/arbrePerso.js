@@ -81,7 +81,7 @@ function displayPersonne(personneId, containerClass, data) {
       container.appendChild(title); 
 
 
-      conjointHTML += '<p><a href="arbreperso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
+      conjointHTML += '<p><a href="arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
       conjointHTML += '</div>';
       container.innerHTML += conjointHTML;
   }
@@ -111,13 +111,13 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
   }
   if (father1) {
       var pere1HTML = '<div class="' + containerClass + ' male">';
-      pere1HTML += '<p><a href="arbreperso.html?id=' + father1.id  + '" style="text-decoration: none; color: inherit;">' + father1.nom + ' ' + father1.prenom + '</a></p>';
+      pere1HTML += '<p><a href="arbrePerso.html?id=' + father1.id  + '" style="text-decoration: none; color: inherit;">' + father1.nom + ' ' + father1.prenom + '</a></p>';
       pere1HTML += '</div>';
       container.innerHTML += pere1HTML;
   }
   if (mother1) {
       var mere1HTML = '<div class="' + containerClass + ' female">';
-      mere1HTML += '<p><a href="arbreperso.html?id=' + mother1.id  + '" style="text-decoration: none; color: inherit;">' + mother1.nom + ' ' + mother1.prenom + '</a></p>';
+      mere1HTML += '<p><a href="arbrePerso.html?id=' + mother1.id  + '" style="text-decoration: none; color: inherit;">' + mother1.nom + ' ' + mother1.prenom + '</a></p>';
       mere1HTML += '</div>';
       container.innerHTML += mere1HTML;
   }
@@ -137,14 +137,14 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
   }
   if (father2) {
       var pere2HTML = '<div class="' + containerClass + ' male">';
-      pere2HTML += '<p><a href="arbreperso.html?id=' + father2.id  + '" style="text-decoration: none; color: inherit;">' + father2.nom + ' ' + father2.prenom + '</a></p>';
+      pere2HTML += '<p><a href="arbrePerso.html?id=' + father2.id  + '" style="text-decoration: none; color: inherit;">' + father2.nom + ' ' + father2.prenom + '</a></p>';
 
       pere2HTML += '</div>';
       container.innerHTML += pere2HTML;
   }
   if (mother2) {
       var mere2HTML = '<div class="' + containerClass + ' female">';
-      mere2HTML += '<p><a href="arbreperso.html?id=' + mother2.id  + '" style="text-decoration: none; color: inherit;">' + mother2.nom + ' ' + mother2.prenom + '</a></p>';
+      mere2HTML += '<p><a href="arbrePerso.html?id=' + mother2.id  + '" style="text-decoration: none; color: inherit;">' + mother2.nom + ' ' + mother2.prenom + '</a></p>';
       mere2HTML += '</div>';
       container.innerHTML += mere2HTML;
   }
@@ -170,13 +170,13 @@ function displayRelations(fatherId, motherId, containerClass, data) {
     
       if (father) {
         var pereHTML = '<div class="' + containerClass + ' male">';
-        pereHTML += '<p><a href="arbreperso.html?id=' + father.id  + '" style="text-decoration: none; color: inherit;">' + father.nom + ' ' + father.prenom + '</a></p>';
+        pereHTML += '<p><a href="arbrePerso.html?id=' + father.id  + '" style="text-decoration: none; color: inherit;">' + father.nom + ' ' + father.prenom + '</a></p>';
         pereHTML += '</div>';
         container.innerHTML += pereHTML;
       }
       if (mother) {
         var mereHTML = '<div class="' + containerClass + ' female">';
-        mereHTML += '<p><a href="arbreperso.html?id=' + mother.id  + '" style="text-decoration: none; color: inherit;">' + mother.nom + ' ' + mother.prenom + '</a></p>';
+        mereHTML += '<p><a href="arbrePerso.html?id=' + mother.id  + '" style="text-decoration: none; color: inherit;">' + mother.nom + ' ' + mother.prenom + '</a></p>';
         mereHTML += '</div>';
         container.innerHTML += mereHTML;
       }
@@ -212,7 +212,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       children.forEach(function(child) {
           var genderClass = child.genre === 'M' ? 'male' : 'female';
           var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-          childHTML += '<p><a href="arbreperso.html?id=' + child.id  + '" style="text-decoration: none; color: inherit;">' + child.nom + ' ' + child.prenom + '</a></p>';
+          childHTML += '<p><a href="arbrePerso.html?id=' + child.id  + '" style="text-decoration: none; color: inherit;">' + child.nom + ' ' + child.prenom + '</a></p>';
           childHTML += '</div>';
           container.innerHTML += childHTML;
       });
@@ -234,7 +234,7 @@ function displayChildrenAndGrandChildren(parentId, containerClass, data) {
       grandChildren.forEach(function(grandChild) {
         var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
         var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
-        grandChildHTML += '<p><a href="arbreperso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a>';
+        grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a>';
         grandChildHTML += ' <span style="font-size: smaller; font-style: italic;">(' + grandChild.parentPrenom + ')</span></p>';
         grandChildHTML += '</div>';
         container.innerHTML += grandChildHTML;
