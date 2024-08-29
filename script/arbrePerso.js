@@ -233,14 +233,18 @@ if (grandChildren.length > 0) {
     grandChildren.sort((a, b) => b.id - a.id);
     grandChildren.forEach(function(grandChild) {
       var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
-      var grandChildHTML = '<div class="' + containerClass2 + ' ' + genderClass + '">';
-      grandChildHTML += '<p><a href="arbrePerso.html?id=' + grandChild.id  + '" style="text-decoration: none; color: inherit;">' + grandChild.nom + ' ' + grandChild.prenom + '</a>';
-      grandChildHTML += ' <span style="font-size: smaller; font-style: italic;">(' + grandChild.parentPrenom + ')</span></p>';
-      grandChildHTML += '</div>';
-      container.innerHTML += grandChildHTML;
+      // Créer le conteneur pour chaque petit-enfant
+      var grandChildDiv = document.createElement('div');
+      grandChildDiv.className = containerClass2 + ' ' + genderClass;
+      // Ajouter le nom et le prénom
+      var grandChildLink = '<p><a href="arbrePerso.html?id=' + grandChild.id + '" style="text-decoration: none; color: inherit;">' 
+                         + grandChild.nom + ' ' + grandChild.prenom + '</a></p>';
+      // Ajouter le nom du parent
+      var parentInfo = '<p class="parent-info">(' + grandChild.parentPrenom + ')</p>';
+      // Construire le contenu
+      grandChildDiv.innerHTML = grandChildLink + parentInfo;
+      container.appendChild(grandChildDiv);
     });
-    const personContainer = document.getElementById('person-container');
-    personContainer.appendChild(container);
 }
 
 }

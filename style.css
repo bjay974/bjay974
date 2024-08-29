@@ -9,6 +9,7 @@
     --color-female-bg: rgb(228, 215, 216);
     --font-primary: Georgia, serif;
     --font-size-small: 90%;
+    --font-size-very-small: 75%;
     --font-size-large: 12px;
     --padding-small: 5px;
     --margin-small: 5px;
@@ -16,7 +17,7 @@
 
 body {
     font-family: Georgia;
-    font-size: 90%;
+    font-size: var(--font-size-small);
     padding: 0px 0px 0px 0px; /* haut | droit | bas | gauche */
     margin: 0px 0px 0px 0px;
     background-color: #f2f2f2;
@@ -256,6 +257,12 @@ footer {
     width: 200px;
     margin-top: 15px;
     margin-right: 5px;
+}
+
+.grandenfant .parent-info {
+    font-size: var(--font-size-small);
+    font-style: italic;
+    margin-top: 5px; /* Pour ajouter un peu d'espace entre le nom/prénom et le nom du parent */
 }
 
 .personne .female + .male {margin-top: 50px}
