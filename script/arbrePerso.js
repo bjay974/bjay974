@@ -6,6 +6,7 @@ function afficherData() {
     .then(response => response.json())
     .then(data => {
       const ids = new Set([personId]);
+      
       const addParentIds = (id) => {
         const pereId = trouverIdParent(id, data, 'pere');
         const mereId = trouverIdParent(id, data, 'mere');
@@ -14,16 +15,19 @@ function afficherData() {
         return [pereId, mereId];
       };
 
-      // Ajouter les parents et grands-parents
+      // Ajouter les parents
       const [id_pere, id_mere] = addParentIds(personId);
       if (id_pere) addParentIds(id_pere);
       if (id_mere) addParentIds(id_mere);
+
+      // Ajouter les grands-parents
+      ajouterGrandsParents(ids, data);
 
       // Ajouter les enfants et petits-enfants
       const enfants = data.filter(child => child.id_pere === personId || child.id_mere === personId);
       enfants.forEach(enfant => {
         ids.add(enfant.id);
-      const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+        const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
         petitsEnfants.forEach(pe => ids.add(pe.id));
       });
 
@@ -32,8 +36,8 @@ function afficherData() {
 
       // Afficher les informations
       afficherPersonne(personnes[personId], personnes);
-      afficherRelations(personnes[id_pere], personnes[id_mere]);
-      afficherGrandsParents(personnes, personId ,data);
+      afficherParents(personnes[id_pere], personnes[id_mere]);
+      afficherGrandsParents(personnes, personId); 
       afficherEnfantetPetitenfant(personnes, enfants, data);
     });
 }
@@ -73,16 +77,19 @@ function afficherPersonne(person, personnes) {
   document.getElementById('person-container').appendChild(container);
 }
 
-function afficherGrandsParents(personnes, personId ,data) {
+function afficherGrandsParents(personnes, personId) {
   const containerClass = 'grandparent';
   const container = creerDiv(containerClass);
-  const titleText = "Grands Parents"
-  container.innerHTML = `<p class="label">${titleText}</p>`;
+  container.innerHTML = `<p class="label">Grands Parents</p>`;
+  
+  const id_mere = trouverIdParent(personId, data, 'mere');
+  const id_pere = trouverIdParent(personId, data, 'pere');
+  
   const grandParents = [
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_mere, personnes)], data, genre: 'F' },
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_mere]?.id_pere, personnes)], data, genre: 'M' },
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_pere]?.id_mere, personnes)], data, genre: 'F' },
-    { person: personnes[trouverIdParent(personnes[personnes[personId].id_pere]?.id_pere, personnes)], data, genre: 'M' }
+    { person: personnes[trouverIdParent(id_mere, data, 'mere')], genre: 'F' },
+    { person: personnes[trouverIdParent(id_mere, data, 'pere')], genre: 'M' },
+    { person: personnes[trouverIdParent(id_pere, data, 'mere')], genre: 'F' },
+    { person: personnes[trouverIdParent(id_pere, data, 'pere')], genre: 'M' }
   ];
 
   grandParents.forEach(gp => {
@@ -96,7 +103,7 @@ function afficherGrandsParents(personnes, personId ,data) {
   document.getElementById('person-container').appendChild(container);
 }
 
-function afficherRelations(father, mother) {
+function afficherParents(father, mother) {
   if (father || mother) {
     const containerClass = 'parent';
     const container = creerDiv(containerClass);
@@ -180,6 +187,26 @@ function afficherEnfantetPetitenfant(personnes, enfants, data) {
       document.getElementById('person-container').appendChild(container);
     }
   }
+}
+
+function ajouterGrandsParents(ids, data) {
+  const grandsParents = new Set();
+  
+  ids.forEach(id => {
+    const pereId = trouverIdParent(id, data, 'pere');
+    const mereId = trouverIdParent(id, data, 'mere');
+    
+    if (pereId) {
+      grandsParents.add(trouverIdParent(pereId, data, 'pere'));
+      grandsParents.add(trouverIdParent(pereId, data, 'mere'));
+    }
+    if (mereId) {
+      grandsParents.add(trouverIdParent(mereId, data, 'pere'));
+      grandsParents.add(trouverIdParent(mereId, data, 'mere'));
+    }
+  });
+  
+  grandsParents.forEach(grandParentId => ids.add(grandParentId));
 }
 
 afficherData();
