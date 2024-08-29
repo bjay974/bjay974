@@ -13,12 +13,16 @@ function displayData() {
           const person = data.find(p => p.id === parseInt(personId));
 
           // Afficher les grands-parents
-          var gr_mere_mat = trouverGrandMere(person.id_mere, data)
-          var gr_pere_mat = trouverGrandPere(person.id_mere, data)
-          var gr_mere_pat = trouverGrandMere(person.id_pere, data)
-          var gr_pere_pat = trouverGrandPere(person.id_pere, data)
-          if (gr_mere_mat || gr_pere_mat || gr_mere_pat || gr_mere_pat) {
-          displayGrandParent(gr_pere_pat, gr_mere_pat, gr_pere_mat, gr_mere_mat,'Grands Parents', 'grandparent', data)
+
+          var grandsParentsMat = trouverGrandsParents(person.id_mere, data);
+          var grandsParentsPat = trouverGrandsParents(person.id_pere, data);
+         
+          if (grandsParentsMat.grandPere || grandsParentsMat.grandMere || grandsParentsPat.grandPere || grandsParentsPat.grandMere) {
+            displayGrandParent(
+              grandsParentsPat.grandPere, grandsParentsPat.grandMere, 
+              grandsParentsMat.grandPere, grandsParentsMat.grandMere, 
+              'Grands Parents', 'grandparent', data
+            ); 
           }
 
           // Afficher les parents
@@ -224,6 +228,17 @@ function afficherEnfantsPetitEnfants(parentId, data) {
         personContainer.appendChild(container);
       });
   }
+}
+
+function trouverGrandsParents(parentId, data) {
+  const parent = data.find(person => person.id === parentId);
+  if (parent) {
+    return {
+      grandPere: parent.id_pere,
+      grandMere: parent.id_mere
+    };
+  }
+  return { grandPere: null, grandMere: null };
 }
 
 function trouverGrandMere(parentId, data) {
