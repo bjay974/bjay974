@@ -252,14 +252,14 @@ footer {
     margin-right: 5px;
 }
 
-.grandenfant {
+.petitenfant {
     grid-area: colonne5;
     width: 200px;
     margin-top: 15px;
     margin-right: 5px;
 }
 
-.grandenfant .parent-info {
+.petitenfant .parent-info {
     font-size: var(--font-size-small);
     font-style: italic;
     margin-top: 5px; /* Pour ajouter un peu d'espace entre le nom/prénom et le nom du parent */

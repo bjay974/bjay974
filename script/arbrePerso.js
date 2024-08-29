@@ -22,17 +22,17 @@ function displayData() {
           }
 
           // Afficher les parents
-          displayRelations(person.id_pere, person.id_mere, 'parent', data);
+          afficherParent(person.id_pere, person.id_mere, 'parent', data);
 
           // Afficher les informations de la personne
-          displayPersonne(person.id, 'personne', data)
+          afficherPersonne(person.id, 'personne', data)
           
           // Afficher les enfants et  petits-enfants
-          displayChildrenAndGrandChildren(person.id, 'enfant', data)
+          afficherEnfantsPetitEnfants(person.id, 'enfant', data)
       });
 }
 
-function displayPersonne(personneId, containerClass, data) {
+function afficherPersonne(personneId, containerClass, data) {
   // Afficher les informations de la personne
   var person = data.find(person => person.id === personneId);
   var genderClass = person.genre === 'M' ? 'male' : 'female';
@@ -61,24 +61,24 @@ function displayPersonne(personneId, containerClass, data) {
     var conjoint = data.find(p => p.id === person.id_conjoint);
     var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
     var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
-    var title = document.createElement('p');
+    var titre = document.createElement('p');
     if (person.date_mariage) {
       if (conjoint.genre === "M") {
-        title.textContent = "Epoux";
+        titre.textContent = "Epoux";
       }
       else {
-        title.textContent = "Epouse";
+        titre.textContent = "Epouse";
       }
     } else {
       if (conjoint.genre === "M") {
-        title.textContent = "Conjoint";
+        titre.textContent = "Conjoint";
       }
       else {
-        title.textContent = "Conjointe";
+        titre.textContent = "Conjointe";
       }
     }
-    title.classList.add('label'); 
-    container.appendChild(title); 
+    titre.classList.add('label'); 
+    container.appendChild(titre); 
 
 
     conjointHTML += '<p><a href="arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
@@ -98,16 +98,16 @@ var father1 = data.find(person => person.id === father1Id);
 var mother1 = data.find(person => person.id === mother1Id);
 
 if (father1 || mother1){
-  var title = document.createElement('p');
+  var titre = document.createElement('p');
   var titrePat = titre + " Paternels";
   var titrePatSansS = titrePat.replace(/s/g, '');
   if (father1 && mother1) {
-    title.textContent = titrePat;
+    titre.textContent = titrePat;
   } else {
-    title.textContent = titrePatSansS;
+    titre.textContent = titrePatSansS;
   }
-  title.classList.add('label'); 
-  container.appendChild(title);
+  titre.classList.add('label'); 
+  container.appendChild(titre);
 }
 if (father1) {
     var pere1HTML = '<div class="' + containerClass + ' male">';
@@ -126,14 +126,14 @@ var mother2 = data.find(person => person.id === mother2Id);
 if (father2 || mother2){
   var titreMat = titre + " Maternels";
   var titreMatSansS = titreMat.replace(/s/g, '');
-  var title = document.createElement('p');
+  var titre = document.createElement('p');
   if (father2 && mother2) {
-    title.textContent = titreMat;
+    titre.textContent = titreMat;
   } else {
-    title.textContent = titreMatSansS;
+    titre.textContent = titreMatSansS;
   }
-  title.classList.add('label'); 
-  container.appendChild(title);
+  titre.classList.add('label'); 
+  container.appendChild(titre);
 }
 if (father2) {
     var pere2HTML = '<div class="' + containerClass + ' male">';
@@ -152,22 +152,11 @@ const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
 }
 
-function displayRelations(fatherId, motherId, containerClass, data) {
+function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
   var mother = data.find(person => person.id === motherId);
   if (father || mother) {
-      var container = document.createElement('div');
-      container.className = containerClass;
-      var title = document.createElement('p');
-      if (father && mother) {
-        title.textContent = "Parents";
-      } else {
-        title.textContent = "Parent";
-      }
-      title.textContent = "Parents";
-      title.classList.add('label'); 
-      container.appendChild(title);
-  
+    container = ajouterDivetTitre(containerClass, father && mother, "Parents", "Parent");
     if (father) {
       var pereHTML = '<div class="' + containerClass + ' male">';
       pereHTML += '<p><a href="arbrePerso.html?id=' + father.id  + '" style="text-decoration: none; color: inherit;">' + father.nom + ' ' + father.prenom + '</a></p>';
@@ -186,64 +175,52 @@ function displayRelations(fatherId, motherId, containerClass, data) {
 }
 
 // Fonction pour afficher les enfants et les petits-enfants
-function displayChildrenAndGrandChildren(parentId, containerClass, data) {
+function afficherEnfantsPetitEnfants(parentId, containerClass, data) {
 
 // Filtrer les enfants du parent
-var children = data.filter(child => child.id_pere === parentId || child.id_mere === parentId);
+var enfants = data.filter(enfant => enfant.id_pere === parentId || enfant.id_mere === parentId);
 // Filtrer les petits-enfants du parent
-var grandChildren = [];
-children.forEach(function(child) {
-    var grandChild = data.filter(gc => gc.id_pere === child.id || gc.id_mere === child.id);
+var petitsEnfants = [];
+enfants.forEach(function(enfant) {
+    var grandEnfant = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
     // Ajouter le nom du parent à chaque petit-enfant
-    grandChild.forEach(gc => gc.parentPrenom = child.prenom);
-    grandChildren.push(...grandChild);
+    grandEnfant.forEach(gc => gc.parentPrenom = enfant.prenom);
+    petitsEnfants.push(...grandEnfant);
 });
 
-if (children.length > 0) {
-    var container = document.createElement('div');
-    container.className = containerClass;
-    // Ajouter un titre
-    var title = document.createElement('p');
-    title.textContent = children.length === 1 ? "Enfant" : "Enfants";
-    title.classList.add('label'); 
-    container.appendChild(title);
+if (enfants.length > 0) {
+    container = ajouterDivetTitre('petitenfant', enfants.length === 1, "Enfant", "Enfants");
     // Afficher les enfants
-    children.sort((a, b) => b.id - a.id);
-    children.forEach(function(child) {
-        var genderClass = child.genre === 'M' ? 'male' : 'female';
-        var childHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-        childHTML += '<p><a href="arbrePerso.html?id=' + child.id  + '" style="text-decoration: none; color: inherit;">' + child.nom + ' ' + child.prenom + '</a></p>';
-        childHTML += '</div>';
-        container.innerHTML += childHTML;
+    enfants.sort((a, b) => b.id - a.id);
+    enfants.forEach(function(enfant) {
+        var genderClass = enfant.genre === 'M' ? 'male' : 'female';
+        var enfantHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
+        enfantHTML += '<p><a href="arbrePerso.html?id=' + enfant.id  + '" style="text-decoration: none; color: inherit;">' + enfant.nom + ' ' + enfant.prenom + '</a></p>';
+        enfantHTML += '</div>';
+        container.innerHTML += enfantHTML;
     });
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
 }
 
-if (grandChildren.length > 0) {
-    // Ajouter un titre
-    var container = document.createElement('div');
-    var title = document.createElement('p');
-    var containerClass2 = 'grandenfant';
-    container.className = containerClass2;
-    title.textContent = children.length === 1 ? "Petit enfant" : "Petits enfants";
-    title.classList.add('label'); 
-    container.appendChild(title);
+if (petitsEnfants.length > 0) {
+    // Ajouter DIv et un titre
+    container = ajouterDivetTitre('petitenfant', grandChildren.length === 1, "Petit-enfant", "Petits-enfants");
     // Afficher les petits-enfants
-    grandChildren.sort((a, b) => b.id - a.id);
-    grandChildren.forEach(function(grandChild) {
-      var genderClass = grandChild.genre === 'M' ? 'male' : 'female';
+    petitsEnfants.sort((a, b) => b.id - a.id);
+    petitsEnfants.forEach(function(grandEnfant) {
+      var genderClass = grandEnfant.genre === 'M' ? 'male' : 'female';
       // Créer le conteneur pour chaque petit-enfant
-      var grandChildDiv = document.createElement('div');
-      grandChildDiv.className = containerClass2 + ' ' + genderClass;
+      var grandEnfantDiv = document.createElement('div');
+      grandEnfantDiv.className = containerClass + ' ' + genderClass;
       // Ajouter le nom et le prénom
-      var grandChildLink = '<p><a href="arbrePerso.html?id=' + grandChild.id + '" style="text-decoration: none; color: inherit;">' 
-                         + grandChild.nom + ' ' + grandChild.prenom + '</a></p>';
+      var grandEnfantLink = '<p><a href="arbrePerso.html?id=' + grandEnfant.id + '" style="text-decoration: none; color: inherit;">' 
+                         + grandEnfant.nom + ' ' + grandEnfant.prenom + '</a></p>';
       // Ajouter le nom du parent
-      var parentInfo = '<p class="parent-info">(' + grandChild.parentPrenom + ')</p>';
+      var parentInfo = '<p class="parent-info">(' + grandEnfant.parentPrenom + ')</p>';
       // Construire le contenu
-      grandChildDiv.innerHTML = grandChildLink + parentInfo;
-      container.appendChild(grandChildDiv);
+      grandEnfantDiv.innerHTML = grandEnfantLink + parentInfo;
+      container.appendChild(grandEnfantDiv);
     });
 }
 
@@ -275,6 +252,15 @@ if (day === 1 && mois === 1) {
 }
 }
 
+function ajouterDivetTitre(containerClass, condition, valeur1, valeur2) {
+  const container = document.createElement('div');
+  container.className = containerClass;
+  var titre = document.createElement('p');
+  titre.textContent = condition ? valeur1 : valeur2;
+  titre.classList.add('label'); 
+  container.appendChild(titre);
+  return container
+}
 
 // Appeler la fonction pour afficher les données
 displayData();
