@@ -231,7 +231,7 @@ footer {
     position: relative;   
 }
 
-.parent, .grandparent , .enfant , .grandenfant {
+.parent, .grandparent , .enfant , .grandenfant , .petitenfant  {
     grid-area: colonne2;
     padding: 5px 5px 5px 5px;
     margin-top: 15px;
@@ -260,7 +260,7 @@ footer {
 }
 
 .petitenfant .parent-info {
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-very-small);
     font-style: italic;
     margin-top: 5px; /* Pour ajouter un peu d'espace entre le nom/prénom et le nom du parent */
 }
