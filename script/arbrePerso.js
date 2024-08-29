@@ -33,7 +33,7 @@ function afficherData() {
       // Afficher les informations
       afficherPersonne(personnes[personId], personnes);
       afficherRelations(personnes[id_pere], personnes[id_mere]);
-      afficherGrandsParents(personnes);
+      afficherGrandsParents(personnes , personId);
       afficherEnfantetPetitenfant(personnes, enfants, data);
     });
 }
@@ -73,7 +73,7 @@ function afficherPersonne(person, personnes) {
   document.getElementById('person-container').appendChild(container);
 }
 
-function afficherGrandsParents(personnes) {
+function afficherGrandsParents(personnes, personId) {
   const containerClass = 'grandparent';
   const container = creerDiv(containerClass);
   const titre = "Grands Parents";
