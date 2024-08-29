@@ -37,7 +37,7 @@ function afficherData() {
       // Afficher les informations
       afficherPersonne(personnes[personId], personnes);
       afficherParents(personnes[id_pere], personnes[id_mere]);
-      afficherGrandsParents(personnes, personId); 
+      afficherGrandsParents(personnes, data, data); 
       afficherEnfantetPetitenfant(personnes, enfants, data);
     });
 }
@@ -77,7 +77,7 @@ function afficherPersonne(person, personnes) {
   document.getElementById('person-container').appendChild(container);
 }
 
-function afficherGrandsParents(personnes, personId) {
+function afficherGrandsParents(personnes, personId, data) {
   const containerClass = 'grandparent';
   const container = creerDiv(containerClass);
   container.innerHTML = `<p class="label">Grands Parents</p>`;
@@ -153,7 +153,7 @@ function centraliserRecherches(ids, data) {
   return personnes;
 }
 
-function afficherEnfantetPetitenfant(personnes, enfants, data) {
+function afficherEnfantetPetitenfant(enfants, data) {
   if (enfants.length > 0) {
     const container = creerDiv('enfant');
     const title = enfants.length === 1 ? "Enfant" : "Enfants";
