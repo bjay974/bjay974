@@ -171,26 +171,6 @@ function afficherEnfantetPetitenfant(enfants, petitsEnfants, data) {
   }
 }
 
-function ajouterGrandsParents(ids, data) {
-  const grandsParents = new Set();
-  
-  ids.forEach(id => {
-    const pereId = trouverIdParent(id, data, 'pere');
-    const mereId = trouverIdParent(id, data, 'mere');
-    
-    if (pereId) {
-      grandsParents.add(trouverIdParent(pereId, data, 'pere'));
-      grandsParents.add(trouverIdParent(pereId, data, 'mere'));
-    }
-    if (mereId) {
-      grandsParents.add(trouverIdParent(mereId, data, 'pere'));
-      grandsParents.add(trouverIdParent(mereId, data, 'mere'));
-    }
-  });
-  grandsParents.forEach(grandParentId => ids.add(grandParentId));
-  return grandsParents
-}
-
 function ajouterAncetres(ids, idPersonne, data, niveau) {
   if (niveau === 0) return; // Limiter la profondeur (niveau 0 pour les parents, 1 pour les grands-parents)
 
