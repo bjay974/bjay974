@@ -102,9 +102,9 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, c
     var titrePat = titre + " Paternels";
     var titrePatSansS = titrePat.replace(/s/g, '');
     if (father1 && mother1) {
-      titre.textContent = titrePat;
+      titreLabel.textContent = titrePat;
     } else {
-      titre.textContent = titrePatSansS;
+      titreLabel.textContent = titrePatSansS;
     }
     titreLabel.classList.add('label'); 
     container.appendChild(titreLabel);
