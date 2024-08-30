@@ -123,11 +123,13 @@ footer {
 
 .homlist {
     padding: 1%;
+    list-style-type: none; 
     grid-column: 1;
 }
 
 .femlist {
     padding: 1%;
+    list-style-type: none; 
     grid-column: 2;
 }
 
