@@ -318,7 +318,6 @@ footer {
 
     .personne, .parent, .grandparent, .enfant, .petitenfant {
         padding: 5px;
-        align-items: center;
         min-width: 100px;
         min-height: 20px;
     }
