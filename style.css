@@ -234,7 +234,6 @@ footer {
     height: auto;
     flex-direction: column;
     box-sizing: border-box; 
-    align-items: center;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -245,7 +244,6 @@ footer {
     flex-direction: column;
     box-sizing: border-box;
     padding: 5px;
-    align-items: center;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -264,19 +262,20 @@ footer {
 .enfant {
     margin-top: 10%; 
     grid-area: colonne4;
+
 }
 
 .petitenfant {
     margin-top: 10%; 
     grid-area: colonne5;
-    margin-right: 1%; 
+    margin-right: 2%;
+    font-size: var(--font-size-small);
 }
 
 .petitenfant .parent-info {
     font-size: var(--font-size-very-small);
     font-style: italic;
     margin: 0;
-    padding:0;
 }
 
 .male, .female {
@@ -302,14 +301,14 @@ footer {
 .personne .label + .female {margin-top: 20%}
 .grandparent .male + .female {margin-top: 10%}
 .grandparent .female + .label {margin-top: 20%}
-.enfant .male + .female {margin-top: 10%}
+.enfant .male + .female {margin-top: 5%}
 .enfant .female + .male {margin-top: 5%}
 .enfant .female + .female {margin-top: 5%}
 .enfant .male + .male {margin-top: 5%}
-.petitenfant .male + .female {margin-top: 2%}
-.petitenfant .female + .male {margin-top: 2%}
-.petitenfant .female + .female {margin-top: 2%}
-.petitenfant .male + .male {margin-top: 2%}
+.petitenfant .male + .female {margin-top: 5%}
+.petitenfant .female + .male {margin-top: 5%}
+.petitenfant .female + .female {margin-top: 5%}
+.petitenfant .male + .male {margin-top: 5%}
 .petitenfant .label + .female {margin-top: 10%}
 .petitenfant .label + .male {margin-top: 10%}
 .parent .male + .female {margin-top: 70%}
@@ -333,6 +332,7 @@ footer {
 @media (max-width: 768px) {
     .personne, .parent, .grandparent, .enfant, .petitenfant {
         padding: 5px;
+        align-items: center;
         min-width: 100px;
         min-height: 20px;
     }
@@ -341,6 +341,7 @@ footer {
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
     .personne, .parent, .grandparent, .enfant, .petitenfant {
+        align-items: center;
         padding: 2px;
         min-width: 80px;
         min-height: 20px;
