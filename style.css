@@ -194,7 +194,8 @@ footer {
 }
 
 .label {
-   padding: 0px 0px 0px 0px;
+   margin : 0px; 
+   padding: 0px;
    color:var(--color-light);
    font-style: italic;
 }
@@ -225,17 +226,15 @@ footer {
 
 /* Conteneur de la personne */
 .personne {
+    padding: 5px;
     display: flex;
     grid-area: colonne3;
-    margin-bottom: 5%; 
-    margin-top: 50%; 
-    min-height: 50px; 
+    margin-bottom: 1%; 
+    margin-top: 35%; 
     height: auto;
     flex-direction: column;
-    position: relative;
     box-sizing: border-box; 
     align-items: center;
-    justify-content: center;  
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -247,7 +246,6 @@ footer {
     box-sizing: border-box;
     padding: 5px;
     align-items: center;
-    justify-content: center;
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -259,7 +257,7 @@ footer {
 
 .grandparent {
     margin-top: 10%; 
-    margin-left: 2%; 
+    margin-left: 1%; 
     grid-area: colonne1;
 }
 
@@ -272,7 +270,7 @@ footer {
     margin-top: 10%; 
     grid-area: colonne5;
     height: 40px;
-    margin-right: 2%; 
+    margin-right: 1%; 
 }
 
 .petitenfant .parent-info {
@@ -295,19 +293,21 @@ footer {
     color: var(--color-female);
 }
 
-.personne .female + .male {margin-top: 50px}
-.personne .male + .female {margin-top: 50%}
-.personne .male + .label {margin-top: 50%}
-.personne .female + .label {margin-top: 50%}
-.personne .label + .male {margin-top: 50%}
-.personne .label + .female {margin-top: 50%}
+.personne .female + .male {margin-top: 30%}
+.personne .male + .female {margin-top: 30%}
+.personne .male + .label {margin-top: 20%}
+.personne .female + .label {margin-top: 20%}
+.personne .label + .male {margin-top: 20%}
+.personne .label + .female {margin-top: 20%}
+
+.grandparent .male + .female {margin-top: 10%}
+.grandparent .female + .label {margin-top: 20%}
 
 .enfant .male + .female {margin-top: 10%}
 .enfant .female + .male {margin-top: 5%}
 .enfant .female + .female {margin-top: 5%}
 .enfant .male + .male {margin-top: 5%}
-.enfant .label + .female {margin-top: 10%}
-.enfant .label + .male {margin-top: 10%}
+
 
 .petitenfant .male + .female {margin-top: 1%}
 .petitenfant .female + .male {margin-top: 1%}
@@ -316,7 +316,7 @@ footer {
 .petitenfant .label + .female {margin-top: 10%}
 .petitenfant .label + .male {margin-top: 10%}
 
-.parent .male + .female {margin-top: 25%}
+.parent .male + .female {margin-top: 70%}
 .parent .label + .male {margin-top: 25%}
 .parent .label + .female {margin-top: 25%}
 
