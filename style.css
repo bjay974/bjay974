@@ -197,7 +197,6 @@ footer {
    padding: 0px 0px 0px 0px;
    color:var(--color-light);
    font-style: italic;
-   margin-left: 20px;
 }
 
 .labelArbre {
@@ -291,31 +290,29 @@ footer {
 }
 
 .personne .female + .male {margin-top: 50px}
-.personne .male + .female {margin-top: 50px}
-.personne .male + .label {margin-top: 50px}
-.personne .female + .label {margin-top: 50px}
-.personne .label + .male {margin-top: 30px}
-.personne .label + .female {margin-top: 30px}
+.personne .male + .female {margin-top: 50%}
+.personne .male + .label {margin-top: 50%}
+.personne .female + .label {margin-top: 50%}
+.personne .label + .male {margin-top: 50%}
+.personne .label + .female {margin-top: 50%}
 
-.grandparent .male + .label {margin-top: 40px}
-.grandparent .female + .label {margin-top: 50px}
-.grandenfant .male + .female {margin-top: 10px}
-.grandenfant .female + .male {margin-top: 10px}
-.grandenfant .female + .female {margin-top: 10px}
-.grandenfant .male + .male {margin-top: 10px}
-.grandenfant .label + .female {margin-top: 45px}
-.grandenfant .label + .male {margin-top: 45px}
+.enfant .male + .female {margin-top: 10%}
+.enfant .female + .male {margin-top: 5%}
+.enfant .female + .female {margin-top: 5%}
+.enfant .male + .male {margin-top: 5%}
+.enfant .label + .female {margin-top: 10%}
+.enfant .label + .male {margin-top: 10%}
 
-.enfant .male + .female {margin-top: 20px}
-.enfant .female + .male {margin-top: 20px}
-.enfant .female + .female {margin-top: 20px}
-.enfant .male + .male {margin-top: 20px}
-.enfant .label + .female {margin-top: 45px}
-.enfant .label + .male {margin-top: 45px}
+.petitenfant .male + .female {margin-top: 1%}
+.petitenfant .female + .male {margin-top: 1%}
+.petitenfant .female + .female {margin-top: 1%}
+.petitenfant .male + .male {margin-top: 1%}
+.petitenfant .label + .female {margin-top: 10%}
+.petitenfant .label + .male {margin-top: 10%}
 
-.parent .male + .female {margin-top: 160px}
-.parent .label + .male {margin-top: 45px}
-.parent .label + .female {margin-top: 45px}
+.parent .male + .female {margin-top: 25%}
+.parent .label + .male {margin-top: 25%}
+.parent .label + .female {margin-top: 25%}
 
 .maleLink, .femaleLink {
     font-weight: bold;
