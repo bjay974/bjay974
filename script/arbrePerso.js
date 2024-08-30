@@ -16,14 +16,16 @@ function displayData() {
 
           var grandsParentsMat = trouverGrandsParents(person.id_mere, data);
           var grandsParentsPat = trouverGrandsParents(person.id_pere, data);
+
+          // Vérifiez que les objets et leurs propriétés sont définis avant de les utiliser
+          const grandPerePat = grandsParentsPat.grandPere || 'Inconnu';
+          const grandMerePat = grandsParentsPat.grandMere || 'Inconnu';
+          const grandPereMat = grandsParentsMat.grandPere || 'Inconnu';
+          const grandMereMat = grandsParentsMat.grandMere || 'Inconnu';
          
-          if (grandsParentsMat.grandPere || grandsParentsMat.grandMere || grandsParentsPat.grandPere || grandsParentsPat.grandMere) {
-            displayGrandParent(
-              grandsParentsPat.grandPere, grandsParentsPat.grandMere, 
-              grandsParentsMat.grandPere, grandsParentsMat.grandMere, 
-              'grandparent', data
-            ); 
-          }
+          displayGrandParent(grandPerePat, grandMerePat, grandPereMat, grandMereMat,
+            'grandparent', data
+          );
 
           // Afficher les parents
           afficherParent(person.id_pere, person.id_mere, 'parent', data);
@@ -110,9 +112,6 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   }
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
- /* if (father2 || mother2){
-    container = ajouterDivetTitre(containerClass, father1 && mother1 === true, "Grands parents paternels", "Grand parent paternel");
-  } */
   if (father2) {
     container.innerHTML += creerParentHTML(father2, containerClass, 'male');
   }
@@ -196,21 +195,18 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 function trouverGrandsParents(parentId, data) {
   // Trouver le parent dans les données
   const parent = data.find(person => person.id === parentId);
+  // Initialiser un objet avec des propriétés définies par défaut
+  const result = { grandPere: null, grandMere: null };
   if (parent) {
     // Vérifier si id_pere et id_mere sont des entiers valides
-    const grandPere = Number.isInteger(parent.id_pere) ? parent.id_pere : null;
-    const grandMere = Number.isInteger(parent.id_mere) ? parent.id_mere : null;
-    // Préparer l'objet à retourner uniquement si au moins une valeur est valide
-    const result = {};
-    if (grandPere !== null) {
-      result.grandPere = grandPere;  }
-    if (grandMere !== null) {
-      result.grandMere = grandMere;    }
-    // Retourner l'objet seulement s'il contient des propriétés valides
-    if (Object.keys(result).length > 0) {
-      return result;   }
+    if (Number.isInteger(parent.id_pere)) {
+      result.grandPere = parent.id_pere;
+    }
+    if (Number.isInteger(parent.id_mere)) {
+      result.grandMere = parent.id_mere;
+    }
   }
-  return;
+  return result;
 }
 
 // Fonction générique pour afficher les membres
