@@ -1,11 +1,11 @@
 :root {
+    --color-font-blanc: #fff;
     --color-primary: #333;
     --color-secondary: #666;
     --color-light: #999;
-    --color-green: #84bd9e;
+    --color-green: #a6dabd;
     --color-male: rgb(11, 65, 83);
     --color-female: #583a3a;
-    --color-color-bg:#5e866c;
     --color-male-bg: rgb(213, 230, 236);
     --color-female-bg: rgb(228, 215, 216);
     --font-primary: Georgia, serif;
@@ -16,7 +16,6 @@
 }
 
 body {
-    font-family: Georgia;
     font-size: var(--font-size-very-small);
     padding: 0px 0px 0px 0px; /* haut | droit | bas | gauche */
     margin: 0px 0px 0px 0px;
@@ -30,7 +29,7 @@ body {
 
 header {
     background-color: var(--color-primary);
-    color: var(--color-secondary);
+    color: var(--color-font-blanc);
     text-align: center;
     padding: 1px 1px 10px 1px;
     margin: 0px 0px 0px 0px;
@@ -38,6 +37,7 @@ header {
 }
 
 nav {
+    color: var(--color-font-blanc);
     background-color: var(--color-secondary);
     padding: 5px;
     text-align: center;
@@ -79,12 +79,12 @@ footer {
     width: 75%;
     font-style: italic;
     font-weight: bold; 
-    padding: 5px 5px 5px 20%;
+    padding: 5px 5px 5px 20px;
     text-decoration: none;
 }
 
 .soustitre {
-    background-color: var(--color-color-bg);
+    background-color: var(--color-green);
 }
 
 .soustitreM {
@@ -96,6 +96,7 @@ footer {
 }
 
 .soustitreArbre {
+    background-color: var(--color-green);
     color : var(--color-primary);
     margin-top: 20px;
     margin-bottom: 10px;
