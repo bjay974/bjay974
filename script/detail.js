@@ -192,10 +192,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Récupérer les frères et sœurs de la personne
                 if (person.id < 2000) {
-                    const fratries = data.filter(fratrie => 
-                        (fratrie.id_pere === person.id_pere || fratrie.id_mere === person.id_mere) 
-                        && fratrie.id !== person.id
-                    );
+                    const fratries = data.filter(fratrie => {
+                        // Vérifie si l'un des parents est défini (non "inconnu") et correspond à ceux de la personne actuelle
+                        const memePere = fratrie.id_pere !== 'inconnu' && fratrie.id_pere != null && fratrie.id_pere === person.id_pere;
+                        const memeMere = fratrie.id_mere !== 'inconnu' && fratrie.id_pere != null && fratrie.id_mere === person.id_mere;
+                        // Exclure la personne elle-même et s'assurer qu'il y a une correspondance valide des parents
+                        return (memePere || memeMere) && fratrie.id !== person.id;
+                    });
                     if (fratries.length > 0) {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
                         const fratriesList = document.createElement('li');
@@ -209,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             nomLink.href = fratrie.id < 2000 ? `person.html?id=${fratrie.id}` : '#';
                             nomLink.textContent = `${nomPers} ${fratrie.prenom}`;
                             nomLink.classList.add(fratrie.genre === 'M' ? 'maleLink' : 'femaleLink');
-                            nomLink.style.fontSize = 'smaller';
+                            nomLink.classList.add('smaller');
                             fratrieItem.appendChild(nomLink);
                             fragment.appendChild(fratrieItem);
                         });
@@ -225,7 +228,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const commentaireItem = document.createElement('li');
                     commentaireItem.classList.add('special-li');
                     commentaireItem.textContent = `Notes : ${person.commentaire}`;
-                    commentaireItem.style.fontSize = 'smaller';
+                    commentaireItem.classList.add('smaller');
                     detailsList.appendChild(commentaireItem);
                     detailsList.appendChild(document.createElement('br')); 
                 }

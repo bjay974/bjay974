@@ -8,8 +8,7 @@
     --color-female: #583a3a;
     --color-male-bg: rgb(213, 230, 236);
     --color-female-bg: rgb(228, 215, 216);
-    --font-primary: Georgia, serif;
-    --font-size-small: 80%;
+    --font-size-small: 90%;
     --font-size-very-small: 70%;
     --padding-small: 5px;
     --margin-small: 5px;
@@ -71,12 +70,16 @@ footer {
     margin-top: auto;
 }
 
+.smaller{
+    font-size: smaller;
+}
+
 .soustitre, .soustitreM, .soustitreF, .soustitreArbre  {
     text-align: left;
     color: var(--color-secondary);
     margin-top: 10px;
     margin-bottom: 5px;
-    width: 75%;
+    width: 90%;
     font-style: italic;
     font-weight: bold; 
     padding: 5px 5px 5px 20px;
