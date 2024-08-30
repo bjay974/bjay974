@@ -17,7 +17,7 @@ function displayData() {
           var grand = trouverGrandsParents(person.id_pere, person.id_mere, data);
 
           if (grand.PerePat || grand.PereMat || grand.MereMat ||grand.PereMat) {
-            displayGrandParent(
+            afficherGrandParent(
               grand.PerePat, grand.PereMat, grand.MerePat, grand.MereMat, 
               'grandparent', data
             ); 
@@ -91,7 +91,7 @@ function afficherPersonne(personneId, containerClass, data) {
   personContainer.appendChild(container);
 }
 
-function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
+function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
 
   if (father1) {var father1 = data.find(person => person.id === father1Id);}
   if (mother1) {var mother1 = data.find(person => person.id === mother1Id);}
@@ -100,21 +100,19 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
 
   let container
   if ((father1 && father1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') || (mother2 && mother2 !== 'inconnu') || (father2 && father21 !== 'inconnue') ) {
-      if ((father1) || (mother1)) {
+      if ((father1) || (mother1) || (father2) || (mother2)) {
         container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
         if (father1) {
           container.innerHTML += creerParentHTML(father1, containerClass, 'male');
         }
         if (mother1) {
           container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
-      } }
-      if ((father2) || (mother2)) {
-        container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+        } 
         if (father2) {
-          container.innerHTML += creerParentHTML(father1, containerClass, 'male');
+          container.innerHTML += creerParentHTML(father2, containerClass, 'male');
         }
         if (mother2) {
-          container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
+          container.innerHTML += creerParentHTML(mother2, containerClass, 'female');
       } }
       const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
@@ -206,12 +204,12 @@ function trouverGrandsParents(pereId, mereId, data) {
       result.PerePat = pere.id_pere;
     }
     if (Number.isInteger(pere.id_mere)) {
-      result.MerePat = mere.id_mere;
+      result.MerePat = mere.id_pere;
   } }
   if (mere) {
       // Vérifier si id_pere et id_mere sont des entiers valides
       if (Number.isInteger(mere.id_pere)) {
-        result.PereMat = pere.id_pere;
+        result.PereMat = pere.id_mere;
       }
       if (Number.isInteger(mere.id_mere)) {
         result.MereMat = mere.id_mere;
