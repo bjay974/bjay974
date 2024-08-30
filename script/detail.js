@@ -32,30 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(nameItem);
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 
-                // Ajouter la date de naissance
+                // Ajouter le lieu et la date de naissance
                 const birthDateItem = document.createElement('li');
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateVerified = verifieDate(person.date_naissance);
-                if (person.lieu_naissance === "Inconnu"){
-                    birthDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
-                }
-                else {
-                    if (person.lieu_naissance === "Afrique") {
-                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en Afrique`; 
-                    }
-                    else if (person.lieu_naissance === "Nigéria") {
-                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} au Nigéria`; 
-                    }
-                    else if (person.lieu_naissance === "Indes") {
-                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en Indes`; 
-                    }
-                    else if (person.lieu_naissance === "France") {
-                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} en France`; 
-                    }
-                    else {
-                        birthDateItem.textContent = `${adjectif_genre} ${dateVerified} à ${person.lieu_naissance}`;
-                    }
-                }
+                const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
+                birthDateItem.textContent = `${adjectif_genre} ${dateVerified} ${lieuNaissance}`;     
                 detailsList.appendChild(birthDateItem);
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
@@ -73,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
 
                 if (!person.date_deces) {
-                    detailsList.appendChild(getAgeNow(person));
+                    detailsList.appendChild(getAgeActuel(person));
                 } else {
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
@@ -106,7 +88,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const styleColor = conjoint.genre === "M" ? "rgb(11, 65, 83)" : "#583a3a";
                         weddingDateItem.appendChild(creerPersonLink(conjoint, styleColor));
                     }
-
                     detailsList.appendChild(weddingDateItem);
                     detailsList.appendChild(document.createElement('br'));
                 } else if (person.id_conjoint) {
@@ -117,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
                         conjointItem.appendChild(creerPersonLink(conjoint, styleColor));
-
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br'));
                     }
@@ -125,34 +105,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
-                    const ageAffranch = diffAge(person.date_affranchi, person.date_naissance);   
-                    // Ajouter l'age de l'affranchissement  si la date de naissance existe 
-                    if (person.date_naissance !== "01/01/1901") {
-                        const affranchiDateItem = document.createElement('li');
-                        const dateVerified = verifieDate(person.date_affranchi) 
-                        const adjectif_genre = ajouterE("Affranchi", person.genre)
-                        affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified} à l'âge de ${ageAffranch} ans`;
-                        detailsList.appendChild(affranchiDateItem);
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    }
-                    else {
-                        const affranchiDateItem = document.createElement('li');
-                        const dateVerified = verifieDate(person.date_affranchi) 
-                        const adjectif_genre = ajouterE("Affranchi", person.genre)
-                        affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
-                        detailsList.appendChild(affranchiDateItem);
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
-                    } 
-
+                    const affranchiDateItem = document.createElement('li');
+                    const dateVerified = verifieDate(person.date_affranchi) 
+                    const adjectif_genre = ajouterE("Affranchi", person.genre)
+                    affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
+                    detailsList.appendChild(affranchiDateItem);
+                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
-                
+
                 // Initialisation des variables father et mother
                 let father, mother;
                 let textParent = "";
-
                 // Initialisation de la variable pour l'élément de liste temporaire
                 let parentItem = null;
-
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     if (person.id_pere === "inconnu") {
@@ -193,48 +158,37 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     }
                 }
-
                 // Ajouter l'élément parentItem à la liste des détails si parentItem n'est pas null
                 if (parentItem) {
                     detailsList.appendChild(parentItem);
                 }
-
                 // Ajouter un espace après le dernier item
                 detailsList.appendChild(document.createElement('br'));
-                
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
-
                 if (childrenOfPerson.length > 0) {
                     childrenOfPerson.sort((a, b) => b.id - a.id);
-
                     // Créer un élément li pour contenir la liste des enfants
                     const childrenOfPersonList = document.createElement('li');
                     childrenOfPersonList.innerHTML = `<strong>${childrenOfPerson.length === 1 ? 'Enfant' : 'Enfants'}</strong> :`;
-
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
                     const childrenOfPersonUl = document.createElement('ul');
-
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         const nomPers = child.nom_legitime || child.nom;    
-
                         nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
                         nomLink.classList.add(child.genre === 'M' ? 'maleLink' : 'femaleLink'); 
-
                         childItem.appendChild(nomLink);
                         fragment.appendChild(childItem);
                     });
-
                     childrenOfPersonUl.appendChild(fragment);
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
-
                 // Charger le commentaire
                 if (person.commentaire) {
                     const commentaireItem = document.createElement('li');
@@ -244,24 +198,20 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(commentaireItem);
                     detailsList.appendChild(document.createElement('br')); 
                 }
-                
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
                     const arbrePersoLink = document.createElement('a');
                     arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
                     arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
-                    arbrePersoLink.add.classList('labelArbre')
+                    arbrePersoLink.classList.add('labelArbre' );
                     const arbrePersoItem = document.createElement('div'); 
                     arbrePersoItem.appendChild(arbrePersoLink);
                     detailsList.appendChild(arbrePersoItem);
                     detailsList.appendChild(document.createElement('br'));
                 }
-
                 // Charger les liens vers les actes si il y en a
                 chargerLiensActes(person, detailsList);
-
         personDetails.appendChild(detailsList);
-
             }      
         })
      
@@ -305,7 +255,7 @@ function creerDateDecesItem(text) {
     return deathDateItem;
 }
 
-function getAgeNow(person) {
+function getAgeActuel(person) {
     const ageNowItem = document.createElement('li');
     const ageNow = calculeAge(person.date_naissance);
     ageNowItem.classList.add('special-li');
@@ -434,6 +384,32 @@ function ajouterLienActe(detailsList, nomFichier, repertoire, extension, affiche
         }
     });
 }
+
+// Fonction pour affecter le lieu de naissance
+function afficherLieuDeNaissance(lieuNaissance) {
+    switch(lieuNaissance){
+        case "Afrique" : 
+            return " en Afrique";
+            break;
+        case "Nigéria":
+            return " au Nigéria";
+            break;
+        case "Indes":
+            return " en Indes";
+            break;
+        case "France":
+            return " en France";
+            break;
+        case "Inconnu":
+            return "";
+            break;
+        default:
+            return "à " + person.lieu_naissance;
+    }
+}
+
+
+
 
 // Fonction principale pour charger tous les liens vers les actes
 function chargerLiensActes(person, detailsList) {
