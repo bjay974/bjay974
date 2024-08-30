@@ -1,49 +1,62 @@
-fetch('data.json').then(response=>response.json()).then(data=>{
+fetch('data.json')
+  .then(response => response.json())
+  .then(data => {
+    // Initialisation des tableaux pour chaque catégorie
+    const homFam = [], femFam = [];
+    const homPat = [], femPat = [];
+    const homMat = [], femMat = [];
 
-  // Trier DATA par id decroissant
-  const dataTri = data.sort((a, b) => b.id - a.id);
+    // Parcourt chaque personne et les répartir dans les tableaux correspondants
+    data.forEach(person => {
+      if (person.id <= 203) {
+        if (person.genre === 'M') {
+          homFam.push(person);
+        } else {
+          femFam.push(person);
+        }
+      } else if (person.id >= 204 && person.id <= 999) {
+        if (person.genre === 'M') {
+          homPat.push(person);
+        } else {
+          femPat.push(person);
+        }
+      } else if (person.id >= 1000 && person.id <= 1999) {
+        if (person.genre === 'M') {
+          homMat.push(person);
+        } else {
+          femMat.push(person);
+        }
+      }
+    });
 
-  // Filtrer les personnes par genre
-  const dataFamily = dataTri.filter(person => person.id <= 203);
-  const dataPat= dataTri.filter(person => person.id >= 204 && person.id <= 999);
-  const dataMat= dataTri.filter(person => person.id >= 1000 && person.id <= 1999);
+    // Trie chaque tableau par ID de manière décroissante
+    homFam.sort((a, b) => b.id - a.id);
+    femFam.sort((a, b) => b.id - a.id);
+    homPat.sort((a, b) => b.id - a.id);
+    femPat.sort((a, b) => b.id - a.id);
+    homMat.sort((a, b) => b.id - a.id);
+    femMat.sort((a, b) => b.id - a.id);
 
-   // Filtrer les personnes par genre
-  const filterByGender = (people, gender) => people.filter(person => person.genre === gender); 
-  const homPat= filterByGender(dataPat, 'M');
-  const femPat= filterByGender(dataPat, 'F');
-  const homMat= filterByGender(dataMat, 'M');
-  const femMat= filterByGender(dataMat, 'F');
-  const homFam = filterByGender(dataFamily, 'M');
-  const femFam = filterByGender(dataFamily, 'F');
-  
-  // Creer les elements de liste pour chaque catégorie
-  const homPatList = document.getElementById('hom-list-pat');
-  const femPatList = document.getElementById('fem-list-pat');
-  const homMatList = document.getElementById('hom-list-mat');
-  const femMatList = document.getElementById('fem-list-mat');
-  const homFamList = document.getElementById('hom-list');
-  const femFamList = document.getElementById('fem-list');
-  
-  // Affichage des hommes de la branche paternelle
-  afficheMembres(homPatList, 'Boug coté papa', homPat);
+    // Création des éléments de liste pour chaque catégorie
+    const homPatList = document.getElementById('hom-list-pat');
+    const femPatList = document.getElementById('fem-list-pat');
+    const homMatList = document.getElementById('hom-list-mat');
+    const femMatList = document.getElementById('fem-list-mat');
+    const homFamList = document.getElementById('hom-list');
+    const femFamList = document.getElementById('fem-list');
 
-  // Affichage des femmes de la branche paternelle
-  afficheMembres(femPatList, 'Fanm coté papa', femPat);
+    // Affichage des membres pour chaque catégorie
+    afficheMembres(homPatList, 'Boug coté papa', homPat);
+    afficheMembres(femPatList, 'Fanm coté papa', femPat);
+    afficheMembres(homMatList, 'Boug coté momon', homMat);
+    afficheMembres(femMatList, 'Fanm coté momon', femMat);
+    afficheMembres(homFamList, 'Boug', homFam);
+    afficheMembres(femFamList, 'Fanm', femFam);
+  })
+  .catch(error => console.error('Erreur lors du chargement des données :', error));
 
-  // Affichage des hommes de la branche maternelle
-  afficheMembres(homMatList, 'Boug coté momon', homMat);
+// Les autres fonctions restent inchangées...
 
-  // Affichage des femmes de la branche maternelle
-  afficheMembres(femMatList, 'Fanm coté momon', femMat);
-
-  // Affichage des hommes de la famille
-  afficheMembres(homFamList, 'Boug', homFam);
-
-  // Affichage des femmes de la famille
-  afficheMembres(femFamList, 'Fanm', femFam);
-  
-}).catch(error=>console.error('Erreur lors du chargement des données :', error));
 
 // Ajouter le titre et alimenter les membres
 function afficheMembres(listElement, titreText, persons) {
@@ -75,7 +88,7 @@ function creerListItem(person) {
   li.className = person.genre === 'M' ? 'hommelist' : 'femmelist';
   li.innerHTML = `
       <a href="${person.id < 2000 ? 'person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienM' : 'lienF'}">
-          ${person.nom} ${person.prenom} (${creerAnNaissance(person.date_naissance)}${person.date_deces ? ' / ' + creerAnDeces(person.date_deces) : ''}) 
+          ${person.nom} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
           <em>${getOrigine(person.lieu_naissance)} ${creerGeneration(person)}</em>
       </a>
   `;
@@ -101,18 +114,10 @@ function creerGeneration(person) {
   return "G" + idGeneration;
 }
 
-function creerAnNaissance(date) {
+function creerAn(date) {
   const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
   if (year === 1901) {
     return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
-  }
-  return year;
-}
-
-function creerAnDeces(date) {
-  const year = parseInt(date.substr(6, 4)); 
-  if (year === 1901) {
-    return '??'; // 
   }
   return year;
 }
