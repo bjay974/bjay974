@@ -151,40 +151,39 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 
       // Afficher les petits-enfants groupés par parent
       enfants.forEach(enfant => {
-        const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
-        if (petitsEnfants.length > 0) {
-            // Ajouter le nom du parent à chaque petit-enfant
-            petitsEnfants.forEach(gc => gc.parentPrenom = enfant.prenom);
-            petitsEnfants.sort((a, b) => b.id - a.id);
+          const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+          if (petitsEnfants.length > 0) {
+              // Ajouter le nom du parent à chaque petit-enfant
+              petitsEnfants.forEach(gc => gc.parentPrenom = enfant.prenom);
+              petitsEnfants.sort((a, b) => b.id - a.id);
 
-            // Si ce n'est pas encore fait, créer le conteneur pour les petits-enfants avec le label
-            if (!petitsEnfantsContainer) {
-              petitsEnfantsContainer = document.createElement('div');
-            }
+              // Si ce n'est pas encore fait, créer le conteneur pour les petits-enfants avec le label
+              if (!petitsEnfantsContainer) {
+                  petitsEnfantsContainer = document.createElement('div');
+                  petitsEnfantsContainer.className = 'petits-enfants-container';
+              }
 
-            // Ajouter les petits-enfants au conteneur
-            petitsEnfants.forEach(petitEnfant => {
-              const genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
-              const petitEnfantDiv = document.createElement('div');
-              petitEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
+              // Ajouter les petits-enfants au conteneur
+              petitsEnfants.forEach(petitEnfant => {
+                  const genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
+                  const petitEnfantDiv = document.createElement('div');
+                  petitEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
 
-              const petitEnfantLink = `<p><a href="arbrePerso.html?id=${petitEnfant.id}" style="text-decoration: none; color: inherit;">${petitEnfant.nom} ${petitEnfant.prenom}</a></p>`;
-              const parentInfo = `<p class="parent-info">(${petitEnfant.parentPrenom})</p>`;
-              petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
+                  const petitEnfantLink = `<p><a href="arbrePerso.html?id=${petitEnfant.id}" style="text-decoration: none; color: inherit;">${petitEnfant.nom} ${petitEnfant.prenom}</a></p>`;
+                  const parentInfo = `<p class="parent-info">(${petitEnfant.parentPrenom})</p>`;
+                  petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
 
-              petitsEnfantsContainer.appendChild(petitEnfantDiv);
-            });
+                  petitsEnfantsContainer.appendChild(petitEnfantDiv);
+              });
 
-            // Ajouter le conteneur avec le label la première fois uniquement
-            if (!isLabelAdded) {
-              const container = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
-              container.appendChild(petitsEnfantsContainer);
-              const personContainer = document.getElementById('person-container');
-              const genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
-              personContainer.className = 'petitenfant' + ' ' + genderClass;
-              personContainer.appendChild(container);
-              isLabelAdded = true;
-            }
+              // Ajouter le conteneur avec le label la première fois uniquement
+              if (!isLabelAdded) {
+                  const container = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
+                  container.appendChild(petitsEnfantsContainer);
+                  const personContainer = document.getElementById('person-container');
+                  personContainer.appendChild(container);
+                  isLabelAdded = true;
+              }
           }
       });
   }
