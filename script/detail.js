@@ -18,11 +18,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const nameItem = document.createElement('h3');
                 if (person.genre === "M") {
                     nameItem.classList.add('soustitreM' );
-                    nameItem.style.color = "rgb(11, 65, 83)";
                 }
                 else{
                     nameItem.classList.add('soustitreF');
-                    nameItem.style.color = "#583a3a";        
                 }                
                 let nomLegitime = "";
                 if (person.nom_legitime) {
@@ -47,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     legDateItem.classList.add('special-li');
                     const dateVerified = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
-                    const linkClass = person.genre === "M" ? "maleLink" : "femaleLink";
+                    const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
                     const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
                     legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
                     detailsList.appendChild(legDateItem);
@@ -85,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         weddingDateItem.appendChild(document.createTextNode(' à '));
-                        const styleColor = conjoint.genre === "M" ? "rgb(11, 65, 83)" : "#583a3a";
+                        weddingDateItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                         weddingDateItem.appendChild(creerPersonLink(conjoint, styleColor));
                     }
                     detailsList.appendChild(weddingDateItem);
@@ -94,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         const conjointItem = document.createElement('li');
-                        const styleColor = conjoint.genre === "M" ? "rgb(11, 65, 83)" : "#583a3a";
+                        conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
                         conjointItem.appendChild(creerPersonLink(conjoint, styleColor));
@@ -180,7 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const nomPers = child.nom_legitime || child.nom;    
                         nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
-                        nomLink.classList.add(child.genre === 'M' ? 'maleLink' : 'femaleLink'); 
+                        nomLink.classList.add(child.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'); 
                         childItem.appendChild(nomLink);
                         fragment.appendChild(childItem);
                     });
@@ -214,7 +212,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const nomPers = fratrie.nom_legitime || fratrie.nom;
                             nomLink.href = fratrie.id < 2000 ? `person.html?id=${fratrie.id}` : '#';
                             nomLink.textContent = `${nomPers} ${fratrie.prenom}`;
-                            nomLink.classList.add(fratrie.genre === 'M' ? 'maleLink' : 'femaleLink');
+                            nomLink.classList.add(fratrie.genre === 'M' ? 'lienHomme' : 'lienFemme');
                             nomLink.classList.add('smaller');
                             fratrieItem.appendChild(nomLink);
                             fragment.appendChild(fratrieItem);
