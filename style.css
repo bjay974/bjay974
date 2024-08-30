@@ -75,7 +75,7 @@ footer {
 }
 
 .soustitre, .soustitreM, .soustitreF, .soustitreArbre  {
-    text-align: left;
+    text-align: center;
     color: var(--color-secondary);
     margin-top: 10px;
     margin-bottom: 5px;
