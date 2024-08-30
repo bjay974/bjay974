@@ -233,14 +233,18 @@ footer {
     height: auto;
     flex-direction: column;
     position: relative;
-    box-sizing: border-box;   
+    box-sizing: border-box; 
+    align-items: center;
+    justify-content: center;  
 }
 /* Conteneurs parents */
 .parent, .grandparent, .enfant, .petitenfant  {
-    padding-left: 2%; 
     text-align: center;
     flex-direction: column;
     box-sizing: border-box;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
 }
 
 .parent {
@@ -250,6 +254,7 @@ footer {
 
 .grandparent {
     margin-top: 10%; 
+    margin-left: 2%; 
     grid-area: colonne1;
 }
 
@@ -262,7 +267,7 @@ footer {
     margin-top: 10%; 
     grid-area: colonne5;
     height: 40px;
-    padding-right: 2%; 
+    margin-right: 2%; 
 }
 
 .petitenfant .parent-info {
