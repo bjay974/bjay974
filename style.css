@@ -123,13 +123,11 @@ footer {
 
 .homlist {
     padding: 1%;
-    list-style-type: none; 
     grid-column: 1;
 }
 
 .femlist {
     padding: 1%;
-    list-style-type: none; 
     grid-column: 2;
 }
 
@@ -260,24 +258,29 @@ footer {
     color: var(--color-female);
 }
 
+.personne .male:first-child { margin-top: 20%}
+.personne .female:first-child { margin-top: 30%}
 .personne .female + .male {margin-top: 30%}
 .personne .male + .female {margin-top: 30%}
-.personne .male + .label {margin-top: 20%}
-.personne .female + .label {margin-top: 20%}
+.personne .male + .label {margin-top: 40%}
+.personne .female + .label {margin-top: 40%}
 .personne .label + .male {margin-top: 20%}
 .personne .label + .female {margin-top: 20%}
+.grandparent .label + .male {margin-top: 10%}
 .grandparent .male + .female {margin-top: 10%}
-.grandparent .female + .label {margin-top: 20%}
+.grandparent .female + .male {margin-top: 10%}
+.enfant .label + .male {margin-top: 10%}
+.enfant .label + .female {margin-top: 10%}
 .enfant .male + .female {margin-top: 5%}
 .enfant .female + .male {margin-top: 5%}
 .enfant .female + .female {margin-top: 5%}
 .enfant .male + .male {margin-top: 5%}
+.petitenfant .label + .female {margin-top: 10%}
+.petitenfant .label + .male {margin-top: 10%}
 .petitenfant .male + .female {margin-top: 5%}
 .petitenfant .female + .male {margin-top: 5%}
 .petitenfant .female + .female {margin-top: 5%}
 .petitenfant .male + .male {margin-top: 5%}
-.petitenfant .label + .female {margin-top: 10%}
-.petitenfant .label + .male {margin-top: 10%}
 .parent .male + .female {margin-top: 70%}
 .parent .label + .male {margin-top: 25%}
 .parent .label + .female {margin-top: 25%}
