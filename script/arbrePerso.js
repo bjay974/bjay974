@@ -199,7 +199,7 @@ function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parent
   membres.forEach(membre => {
       const genderClass = membre.genre === 'M' ? 'male' : 'female';
       const membreDiv = document.createElement('div');
-      membreDiv.className = ${cssClass} ${genderClass};
+      membreDiv.className = cssClass + genderClass;
       const membreLink = <p><a href="arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>;
       membreDiv.innerHTML = parentPrenom ? membreLink + <p class="parent-info">(${parentPrenom})</p> : membreLink;
       container.appendChild(membreDiv);
