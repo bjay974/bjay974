@@ -16,16 +16,13 @@ function displayData() {
 
           var grandsParentsMat = trouverGrandsParents(person.id_mere, data);
           var grandsParentsPat = trouverGrandsParents(person.id_pere, data);
-
-          // Vérifiez que les objets et leurs propriétés sont définis avant de les utiliser
-          const grandPerePat = grandsParentsPat.grandPere || 'Inconnu';
-          const grandMerePat = grandsParentsPat.grandMere || 'Inconnu';
-          const grandPereMat = grandsParentsMat.grandPere || 'Inconnu';
-          const grandMereMat = grandsParentsMat.grandMere || 'Inconnu';
-         
-          displayGrandParent(grandPerePat, grandMerePat, grandPereMat, grandMereMat,
-            'grandparent', data
-          );
+          if (grandsParentsMat.grandPere || grandsParentsMat.grandMere || grandsParentsPat.grandPere || grandsParentsPat.grandMere) {
+            displayGrandParent(
+              grandsParentsPat.grandPere, grandsParentsPat.grandMere, 
+              grandsParentsMat.grandPere, grandsParentsMat.grandMere, 
+              'grandparent', data
+            ); 
+          }
 
           // Afficher les parents
           afficherParent(person.id_pere, person.id_mere, 'parent', data);
@@ -103,26 +100,28 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   var mother2 = data.find(person => person.id === mother2Id);
 
   let container
-
-  if ((father1 && father1 !== 'Inconnu') || (mother1 && mother1 !== 'Inconnu')) {
-    container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
-    if (father1) {
-      container.innerHTML += creerParentHTML(father1, containerClass, 'male');
-    }
-    if (mother1) {
-      container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
-  } }
-  if ((father2 && father2 !== 'Inconnu') || (mother1 && mother1 !== 'Inconnu')) {
-    container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
-    if (father2) {
-      container.innerHTML += creerParentHTML(father1, containerClass, 'male');
-    }
-    if (mother2) {
-      container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
-  } }
-  const personContainer = document.getElementById('person-container');
-  personContainer.appendChild(container);
+  if ((father1 && father1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') || (mother1 && mother1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') ) {
+      if ((father1) || (mother1)) {
+        container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+        if (father1) {
+          container.innerHTML += creerParentHTML(father1, containerClass, 'male');
+        }
+        if (mother1) {
+          container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
+      } }
+      if ((father2) || (mother2)) {
+        container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+        if (father2) {
+          container.innerHTML += creerParentHTML(father1, containerClass, 'male');
+        }
+        if (mother2) {
+          container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
+      } }
+      const personContainer = document.getElementById('person-container');
+      personContainer.appendChild(container);
+  }
 }
+
 
 function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
