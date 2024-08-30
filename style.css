@@ -109,7 +109,7 @@ footer {
     margin-top: 5px;
     padding: 0px 0px 0px 0px;
     margin-left: 5px;
-    text-align: left; /* Aligne la liste à gauche */
+    text-align: left; 
     list-style-type: none; 
     margin-right: 5%;
     grid-template-columns: auto auto;
@@ -132,19 +132,19 @@ footer {
     margin-top: 0px;
     margin-left: 0px;
     list-style-type: none; 
-    text-align: left; /* Aligne la liste à gauche */
+    text-align: left; 
 }
 
 .child {
     margin-top: 5px;
-    text-align: left; /* Aligne la liste à gauche */
+    text-align: left; 
 }
 
 .lienM, .lienF{
     text-decoration: none;
     margin-top: 0px;
     margin-left: 0px;
-    text-align: left; /* Aligne la liste à gauche */
+    text-align: left; 
     margin-right: 10px;
 }
 
@@ -220,24 +220,34 @@ footer {
     grid-area: colonne3;
     padding: 5px 5px 5px 5px;
     margin-top: 85px;
-    border-radius: 5px; /* Bordures arrondies */
     width: 180px;
     min-height: 50px;
     height: auto;
     flex-direction: column;
-    display: flex;
-    font-family: Georgia;
     position: relative;   
 }
 
+.male, .female {
+    min-height: 25px;
+    background-color: var(--color-male-bg); 
+    color: var(--color-male);
+    border-radius: 5px; 
+    text-decoration: none;  
+    text-align: center;
+    display: flex;
+ }
+
+.female {
+    background-color: var(--color-female-bg);
+    color: var(--color-female);
+}
 
 .parent, .grandparent , .enfant  {
     grid-area: colonne2;
     padding: 5px 5px 5px 5px;
     margin-top: 15px;
-    width: 180px;
+    width: 160px;
     height: 20px;
-    display: flex;
     flex-direction: column;
 }
 
@@ -254,7 +264,7 @@ footer {
 
 .petitenfant {
     grid-area: colonne5;
-    width: 200px;
+    width: 180px;
     margin-top: 5px;
 }
 
@@ -291,21 +301,6 @@ footer {
 .parent .male + .female {margin-top: 160px}
 .parent .label + .male {margin-top: 45px}
 .parent .label + .female {margin-top: 45px}
-
-.male, .female {
-    min-height: 25px;
-    background-color: var(--color-male-bg); 
-    color: var(--color-male);
-    padding: 10px 5px 10px 5px;
-    border-radius: 5px; 
-    text-decoration: none;  
-    text-align: center;
- }
-
-.female {
-    background-color: var(--color-female-bg);
-    color: var(--color-female);
-}
 
 .maleLink, .femaleLink {
     font-weight: bold;
