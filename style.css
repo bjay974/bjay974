@@ -269,13 +269,14 @@ footer {
 .petitenfant {
     margin-top: 10%; 
     grid-area: colonne5;
-    height: 40px;
     margin-right: 1%; 
 }
 
 .petitenfant .parent-info {
     font-size: var(--font-size-very-small);
     font-style: italic;
+    margin: 0;
+    padding:0;
 }
 
 .male, .female {
@@ -299,23 +300,18 @@ footer {
 .personne .female + .label {margin-top: 20%}
 .personne .label + .male {margin-top: 20%}
 .personne .label + .female {margin-top: 20%}
-
 .grandparent .male + .female {margin-top: 10%}
 .grandparent .female + .label {margin-top: 20%}
-
 .enfant .male + .female {margin-top: 10%}
 .enfant .female + .male {margin-top: 5%}
 .enfant .female + .female {margin-top: 5%}
 .enfant .male + .male {margin-top: 5%}
-
-
-.petitenfant .male + .female {margin-top: 1%}
-.petitenfant .female + .male {margin-top: 1%}
-.petitenfant .female + .female {margin-top: 1%}
-.petitenfant .male + .male {margin-top: 1%}
+.petitenfant .male + .female {margin-top: 2%}
+.petitenfant .female + .male {margin-top: 2%}
+.petitenfant .female + .female {margin-top: 2%}
+.petitenfant .male + .male {margin-top: 2%}
 .petitenfant .label + .female {margin-top: 10%}
 .petitenfant .label + .male {margin-top: 10%}
-
 .parent .male + .female {margin-top: 70%}
 .parent .label + .male {margin-top: 25%}
 .parent .label + .female {margin-top: 25%}
