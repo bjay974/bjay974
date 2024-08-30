@@ -99,7 +99,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   var mother1 = data.find(person => person.id === mother1Id);
 
   if (father1 || mother1){
-    const container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+    const container = ajouterDivetTitre(containerClass, father1 && mother1 === true, "Grands parents paternels", "Grand parent paternel");
     container.className = containerClass;
   }
   if (father1) {
@@ -111,7 +111,7 @@ function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containe
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
   if (father2 || mother2){
-    const container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+    const container = ajouterDivetTitre(containerClass, father1 && mother1 === true, "Grands parents paternels", "Grand parent paternel");
     container.className = containerClass;
   }
   if (father2) {
@@ -128,7 +128,7 @@ function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
   var mother = data.find(person => person.id === motherId);
   if (father || mother) {
-    container = ajouterDivetTitre(containerClass, father && mother, "Parents", "Parent");
+    container = ajouterDivetTitre(containerClass, father && mother === true, "Parents", "Parent");
     if (father) {
       container.innerHTML += creerParentHTML(father, containerClass, 'male');
     }
