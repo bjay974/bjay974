@@ -182,21 +182,45 @@ function afficherParent(fatherId, motherId, containerClass, data) {
 function afficherEnfantsPetitEnfants(parentId, data) {
   // Filtrer les enfants du parent
   const enfants = data.filter(enfant => enfant.id_pere === parentId || enfant.id_mere === parentId);
-  
+
   if (enfants.length > 0) {
       // Afficher les enfants
       enfants.sort((a, b) => b.id - a.id);
       afficherMembres('Enfant', 'Enfants', enfants, 'enfant');
 
+      // Créer un conteneur unique pour tous les petits-enfants
+      const petitsEnfantsContainer = document.createElement('div');
+      petitsEnfantsContainer.className = 'petits-enfants-container';
+
       // Afficher les petits-enfants groupés par parent
       enfants.forEach(enfant => {
           const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
           if (petitsEnfants.length > 0) {
+              // Ajouter le nom du parent à chaque petit-enfant
               petitsEnfants.forEach(gc => gc.parentPrenom = enfant.prenom);
               petitsEnfants.sort((a, b) => b.id - a.id);
-              afficherMembres('Petit-enfant', 'Petits-enfants', petitsEnfants, 'petitenfant', enfant.prenom);
+
+              // Ajouter les petits-enfants au conteneur
+              const groupContainer = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
+              petitsEnfants.forEach(petitEnfant => {
+                  const genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
+                  const petitEnfantDiv = document.createElement('div');
+                  petitEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
+
+                  const petitEnfantLink = `<p><a href="arbrePerso.html?id=${petitEnfant.id}" style="text-decoration: none; color: inherit;">${petitEnfant.nom} ${petitEnfant.prenom}</a></p>`;
+                  const parentInfo = `<p class="parent-info">(${petitEnfant.parentPrenom})</p>`;
+                  petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
+
+                  groupContainer.appendChild(petitEnfantDiv);
+              });
+
+              petitsEnfantsContainer.appendChild(groupContainer);
           }
       });
+
+      // Ajouter le conteneur des petits-enfants au conteneur principal
+      const personContainer = document.getElementById('person-container');
+      personContainer.appendChild(petitsEnfantsContainer);
   }
 }
 
