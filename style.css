@@ -15,7 +15,7 @@
 }
 
 body {
-    font-size: var(--font-size-very-small);
+    font-size: var(--font-size-small);
     padding: 0px 0px 0px 0px; /* haut | droit | bas | gauche */
     margin: 0px 0px 0px 0px;
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
@@ -43,7 +43,7 @@ nav {
 }
 
 nav a {
-    color: var(--color-light);
+    color: var(--color-font-blanc);
     text-decoration: none;
     padding: 5px 5px;
 }
