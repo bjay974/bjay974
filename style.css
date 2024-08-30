@@ -112,55 +112,33 @@ footer {
 
 .list {
     display: grid;
-    margin : 5px 0px 5px 5px;
-    margin-top: 5px;
-    padding: 0px 0px 0px 0px;
-    margin-left: 5px;
     text-align: left; 
     list-style-type: none; 
-    margin-right: 5%;
     grid-template-columns: auto auto;
     gap: 5px;
     font-size: var(--font-size-small);
 }
 
 .homlist {
-    padding: 5px 0px 0px 10px;
+    padding: 2%;
     grid-column: 1;
 }
 
 .femlist {
-    padding: 5px 0px 0px 0px;
+    padding: 2%;
     grid-column: 2;
 }
 
-.list-detail {
-    padding: 2px 0px 0px 5px;
-    margin-top: 0px;
-    margin-left: 0px;
-    list-style-type: none; 
-    text-align: left; 
-}
-
-.child {
-    margin-top: 5px;
-    text-align: left; 
-}
-
 .lienM, .lienF{
+    color: var(--color-male);
     text-decoration: none;
-    margin-top: 0px;
-    margin-left: 0px;
     text-align: left; 
-    margin-right: 10px;
+    padding: 10px;
+    margin: 10px;
 }
 
 .lienF {
     color: var(--color-female);
-}
-
-.lienM {
-    color: var(--color-male);
 }
 
 .grid-container {
@@ -179,7 +157,7 @@ footer {
 }
 
 .container2, .container3, .container4, .container5 {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 
 .container2 { margin-top: 50px; }
@@ -195,8 +173,7 @@ footer {
 
 .label {
    margin : 0px; 
-   padding: 0px;
-   color:var(--color-light);
+   padding-bottom: 1%;   color:var(--color-light);
    font-style: italic;
 }
 
@@ -224,7 +201,6 @@ footer {
     padding: 10px 5px 5px 5px;
   }
 
-/* Conteneur de la personne */
 .personne {
     padding: 5px;
     display: flex;
@@ -330,22 +306,75 @@ footer {
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
+    body {
+        font-size: var(--font-size-small); /* Ajuste la taille de la police */
+    }
+
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
+    }
+
+    .container1, .container2, .container3, .container4, .container5 {
+        padding-left: 10px;
+        margin-top: 20px;
+    }
+
     .personne, .parent, .grandparent, .enfant, .petitenfant {
         padding: 5px;
         align-items: center;
         min-width: 100px;
         min-height: 20px;
     }
+
+    .list {
+        grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
+        margin-right: 0;
+    }
 }
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
+    body {
+        font-size: 0.6rem; /* Ajuste la taille de la police pour les petits écrans */
+    }
+
+    .grid-container {
+        grid-template-columns: 1fr; /* Passe à une seule colonne */
+    }
+
+    .container1, .container2, .container3, .container4, .container5 {
+        padding-left: 5px;
+        margin-top: 10px;
+    }
+
     .personne, .parent, .grandparent, .enfant, .petitenfant {
-        align-items: center;
         padding: 2px;
         min-width: 80px;
         min-height: 20px;
         font-size: 0.6rem;
-        line-height: 1.2; /* Ajuste la taille de la police pour les petits écrans */
+        line-height: 1.2; /* Ajuste la taille de la police et l'interligne */
+    }
+
+    .list {
+        grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
+        margin-right: 0;
+    }
+
+    .soustitre, .soustitreM, .soustitreF, .soustitreArbre {
+        font-size: 0.8rem; /* Réduit la taille des sous-titres */
+        padding: 5px 5px 5px 10px;
+    }
+
+    .labelArbre {
+        font-size: 0.7rem; /* Réduit la taille des labels */
+    }
+
+    .personne, .parent, .grandparent, .enfant, .petitenfant {
+        margin-top: 10px; /* Réduit les marges pour les petits écrans */
+    }
+
+    /* Cacher certains éléments si nécessaire */
+    .some-element {
+        display: none; /* Exemple : cacher certains éléments */
     }
 }
