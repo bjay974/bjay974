@@ -332,19 +332,19 @@ footer {
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
     .personne, .parent, .grandparent, .enfant, .petitenfant {
-        padding: 8px;
-        min-width: 120px;
-        min-height: 40px;
+        padding: 5px;
+        min-width: 100px;
+        min-height: 20px;
     }
 }
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
     .personne, .parent, .grandparent, .enfant, .petitenfant {
-        padding: 5px;
-        min-width: 100px;
-        min-height: 30px;
-        font-size: 0.8rem;
-        line-height: 1.4; /* Ajuste la taille de la police pour les petits écrans */
+        padding: 2px;
+        min-width: 80px;
+        min-height: 20px;
+        font-size: 0.6rem;
+        line-height: 1.2; /* Ajuste la taille de la police pour les petits écrans */
     }
 }
