@@ -33,9 +33,9 @@ header {
     background-color: var(--color-primary);
     color: var(--color-font-blanc);
     text-align: center;
-    padding: 1px 1px 10px 1px;
+    padding: 1%;
     margin: 0px 0px 0px 0px;
-    height: 35px;
+    font-size: large;
 }
 
 nav {
@@ -142,10 +142,6 @@ footer {
 
 }
 
-.container2, .container3, .container4, .container5 {
-  padding: 2%;
-}
-
 .container2 { margin-top: 15%; }
 .container3 { margin-top: 40%; }
 .container4 { margin-top: 90%; }
@@ -176,14 +172,19 @@ footer {
     text-align: left;
     font-weight: bold;
  }
-
-.container1 .male + .female {margin-top: 10%}
-.container1 .female + .male {margin-top: 25%}
-.container2 .male + .female {margin-top: 41%}
-.container2 .female + .male {margin-top: 41%}
-.container3 .male + .female {margin-top: 91%}
-.container3 .female + .male {margin-top: 95%}
-.container4 .male + .female {margin-top: 190%}
+.container1 .male:first-child { margin-top: 5%}
+.container2 .male:first-child { margin-top: 15%}
+.container3 .male:first-child { margin-top: 25%}
+.container4 .male:first-child { margin-top: 50%}
+.container5 .male:first-child { margin-top: 900%}
+.container5 .female:first-child { margin-top: 90%}
+.container1 .male + .female {margin-top: 20%}
+.container1 .female + .male {margin-top: 35%}
+.container2 .male + .female {margin-top: 61%}
+.container2 .female + .male {margin-top: 61%}
+.container3 .male + .female {margin-top: 135%}
+.container3 .female + .male {margin-top: 135%}
+.container4 .male + .female {margin-top: 280%}
 
 .personne {
     padding: 5px;
@@ -243,7 +244,6 @@ footer {
     color: var(--color-male);
     border-radius: 5px; 
     text-decoration: none;  
-    text-align: center;
     display: flex;
     padding : 1%;
     margin : 1%;
