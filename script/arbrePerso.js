@@ -193,21 +193,27 @@ function afficherEnfantsPetitEnfants(parentId, data) {
   }
 }
 
+// Fonction pour créer le HTML pour un parent (père ou mère)
+function creerParentHTML(parent, containerClass, genderClass) {
+  if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
+
+  let parentHTML = `<div class="${containerClass} ${genderClass}">`;
+  parentHTML += `<p><a href="arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
+  parentHTML += '</div>';
+  
+  return parentHTML;
+}
 // Fonction générique pour afficher les membres
 function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parentPrenom = null) {
   const container = ajouterDivetTitre(cssClass, membres.length === 1, titreSingulier, titrePluriel);
-  
   membres.forEach(membre => {
       const genderClass = membre.genre === 'M' ? 'male' : 'female';
       const membreDiv = document.createElement('div');
       membreDiv.className = `${cssClass} ${genderClass}`;
-      
       const membreLink = `<p><a href="arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
-      
       membreDiv.innerHTML = parentPrenom ? membreLink + `<p class="parent-info">(${parentPrenom})</p>` : membreLink;
       container.appendChild(membreDiv);
   });
-  
   document.getElementById('person-container').appendChild(container);
 }
 
@@ -223,14 +229,23 @@ function ajouterDivetTitre(containerClass, condition, titreSingulier, titrePluri
 }
 
 function trouverGrandsParents(parentId, data) {
+  // Trouver le parent dans les données
   const parent = data.find(person => person.id === parentId);
   if (parent) {
-    return {
-      grandPere: parent.id_pere,
-      grandMere: parent.id_mere
-    };
+    // Vérifier si id_pere et id_mere sont des entiers valides
+    const grandPere = Number.isInteger(parent.id_pere) ? parent.id_pere : null;
+    const grandMere = Number.isInteger(parent.id_mere) ? parent.id_mere : null;
+    // Préparer l'objet à retourner uniquement si au moins une valeur est valide
+    const result = {};
+    if (grandPere !== null) {
+      result.grandPere = grandPere;  }
+    if (grandMere !== null) {
+      result.grandMere = grandMere;    }
+    // Retourner l'objet seulement s'il contient des propriétés valides
+    if (Object.keys(result).length > 0) {
+      return result;   }
   }
-  return { grandPere: null, grandMere: null };
+  return;
 }
 
 //Verifie si la date est connue  
@@ -245,16 +260,7 @@ function verifieDate(date) {
   }
 }
 
-// Fonction pour créer le HTML pour un parent (père ou mère)
-function creerParentHTML(parent, containerClass, genderClass) {
-  if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
 
-  let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-  parentHTML += `<p><a href="arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
-  parentHTML += '</div>';
-  
-  return parentHTML;
-}
 
 // Appeler la fonction pour afficher les données
 displayData();
