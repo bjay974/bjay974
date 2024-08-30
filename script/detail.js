@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPerson.sort((a, b) => b.id - a.id);
                     // Créer un élément li pour contenir la liste des enfants
                     const childrenOfPersonList = document.createElement('li');
-                    childrenOfPersonList.innerHTML = `<strong>${childrenOfPerson.length === 1 ? 'Enfant' : 'Enfants'}</strong> :`;
+                    childrenOfPersonList.innerHTML = `${childrenOfPerson.length === 1 ? 'Enfant' : 'Enfants'} :`;
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
                     const childrenOfPersonUl = document.createElement('ul');
@@ -189,6 +189,37 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(childrenOfPersonList);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
+
+                // Récupérer les frères et sœurs de la personne
+                if (person.id < 2000) {
+                    const fratries = data.filter(fratrie => 
+                        (fratrie.id_pere === person.id_pere || fratrie.id_mere === person.id_mere) 
+                        && fratrie.id !== person.id
+                    );
+                    if (fratries.length > 0) {
+                        fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
+                        const fratriesList = document.createElement('li');
+                        fratriesList.innerHTML = `${fratries.length === 1 ? 'Frère ou sœur' : 'Frères et sœurs'} :`;
+                        const fragment = document.createDocumentFragment();
+                        const fratriesUl = document.createElement('ul');
+                        fratries.forEach(fratrie => {
+                            const fratrieItem = document.createElement('li');
+                            const nomLink = document.createElement('a');
+                            const nomPers = fratrie.nom_legitime || fratrie.nom;
+                            nomLink.href = fratrie.id < 2000 ? `person.html?id=${fratrie.id}` : '#';
+                            nomLink.textContent = `${nomPers} ${fratrie.prenom}`;
+                            nomLink.classList.add(fratrie.genre === 'M' ? 'maleLink' : 'femaleLink');
+                            nomLink.style.fontSize = 'smaller';
+                            fratrieItem.appendChild(nomLink);
+                            fragment.appendChild(fratrieItem);
+                        });
+                        fratriesUl.appendChild(fragment);
+                        fratriesList.appendChild(fratriesUl);
+                        detailsList.appendChild(fratriesList);
+                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    }
+                }
+
                 // Charger le commentaire
                 if (person.commentaire) {
                     const commentaireItem = document.createElement('li');
