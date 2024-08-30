@@ -21,7 +21,7 @@ function displayData() {
             displayGrandParent(
               grandsParentsPat.grandPere, grandsParentsPat.grandMere, 
               grandsParentsMat.grandPere, grandsParentsMat.grandMere, 
-              'Grands Parents', 'grandparent', data
+              'grandparent', data
             ); 
           }
 
@@ -84,7 +84,6 @@ function afficherPersonne(personneId, containerClass, data) {
     titre.classList.add('label'); 
     container.appendChild(titre); 
 
-
     conjointHTML += '<p><a href="arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
     conjointHTML += '</div>';
     container.innerHTML += conjointHTML;
@@ -94,63 +93,32 @@ function afficherPersonne(personneId, containerClass, data) {
   personContainer.appendChild(container);
 }
 
-function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, titre, containerClass, data) {
+function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
 
-  var container = document.createElement('div');
-  container.className = containerClass;
   var father1 = data.find(person => person.id === father1Id);
   var mother1 = data.find(person => person.id === mother1Id);
 
   if (father1 || mother1){
-    var titreLabel = document.createElement('p');
-    var titrePat = titre + " Paternels";
-    var titrePatSansS = titrePat.replace(/s/g, '');
-    if (father1 && mother1) {
-      titreLabel.textContent = titrePat;
-    } else {
-      titreLabel.textContent = titrePatSansS;
-    }
-    titreLabel.classList.add('label'); 
-    container.appendChild(titreLabel);
+    const container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+    container.className = containerClass;
   }
   if (father1) {
-      var pere1HTML = '<div class="' + containerClass + ' male">';
-      pere1HTML += '<p><a href="arbrePerso.html?id=' + father1.id  + '" style="text-decoration: none; color: inherit;">' + father1.nom + ' ' + father1.prenom + '</a></p>';
-      pere1HTML += '</div>';
-      container.innerHTML += pere1HTML;
+    container.innerHTML += creerParentHTML(father1, containerClass, 'male');
   }
   if (mother1) {
-      var mere1HTML = '<div class="' + containerClass + ' female">';
-      mere1HTML += '<p><a href="arbrePerso.html?id=' + mother1.id  + '" style="text-decoration: none; color: inherit;">' + mother1.nom + ' ' + mother1.prenom + '</a></p>';
-      mere1HTML += '</div>';
-      container.innerHTML += mere1HTML;
+     container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
   }
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
   if (father2 || mother2){
-    var titreMat = titre + " Maternels";
-    var titreMatSansS = titreMat.replace(/s/g, '');
-    var titreLabel = document.createElement('p');
-    if (father2 && mother2) {
-      titreLabel.textContent = titreMat;
-    } else {
-      titreLabel.textContent = titreMatSansS;
-    }
-    titreLabel.classList.add('label'); 
-    container.appendChild(titreLabel);
+    const container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands parents paternels", "Grand parent paternel");
+    container.className = containerClass;
   }
   if (father2) {
-      var pere2HTML = '<div class="' + containerClass + ' male">';
-      pere2HTML += '<p><a href="arbrePerso.html?id=' + father2.id  + '" style="text-decoration: none; color: inherit;">' + father2.nom + ' ' + father2.prenom + '</a></p>';
-
-      pere2HTML += '</div>';
-      container.innerHTML += pere2HTML;
+    container.innerHTML += creerParentHTML(father2, containerClass, 'male');
   }
   if (mother2) {
-      var mere2HTML = '<div class="' + containerClass + ' female">';
-      mere2HTML += '<p><a href="arbrePerso.html?id=' + mother2.id  + '" style="text-decoration: none; color: inherit;">' + mother2.nom + ' ' + mother2.prenom + '</a></p>';
-      mere2HTML += '</div>';
-      container.innerHTML += mere2HTML;
+    container.innerHTML += creerParentHTML(mother2, containerClass, 'female');
   }
   const personContainer = document.getElementById('person-container');
       personContainer.appendChild(container);
@@ -162,16 +130,10 @@ function afficherParent(fatherId, motherId, containerClass, data) {
   if (father || mother) {
     container = ajouterDivetTitre(containerClass, father && mother, "Parents", "Parent");
     if (father) {
-      var pereHTML = '<div class="' + containerClass + ' male">';
-      pereHTML += '<p><a href="arbrePerso.html?id=' + father.id  + '" style="text-decoration: none; color: inherit;">' + father.nom + ' ' + father.prenom + '</a></p>';
-      pereHTML += '</div>';
-      container.innerHTML += pereHTML;
+      container.innerHTML += creerParentHTML(father, containerClass, 'male');
     }
     if (mother) {
-      var mereHTML = '<div class="' + containerClass + ' female">';
-      mereHTML += '<p><a href="arbrePerso.html?id=' + mother.id  + '" style="text-decoration: none; color: inherit;">' + mother.nom + ' ' + mother.prenom + '</a></p>';
-      mereHTML += '</div>';
-      container.innerHTML += mereHTML;
+      container.innerHTML += creerParentHTML(mother, containerClass, 'female');
     }
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
@@ -189,8 +151,8 @@ function afficherEnfantsPetitEnfants(parentId, data) {
       afficherMembres('Enfant', 'Enfants', enfants, 'enfant');
 
       // Créer un conteneur unique pour tous les petits-enfants
-      const petitsEnfantsContainer = document.createElement('div');
-      petitsEnfantsContainer.className = 'petits-enfants-container';
+      let petitsEnfantsContainer = null;
+      let isLabelAdded = false;
 
       // Afficher les petits-enfants groupés par parent
       enfants.forEach(enfant => {
@@ -200,8 +162,13 @@ function afficherEnfantsPetitEnfants(parentId, data) {
               petitsEnfants.forEach(gc => gc.parentPrenom = enfant.prenom);
               petitsEnfants.sort((a, b) => b.id - a.id);
 
+              // Si ce n'est pas encore fait, créer le conteneur pour les petits-enfants avec le label
+              if (!petitsEnfantsContainer) {
+                  petitsEnfantsContainer = document.createElement('div');
+                  petitsEnfantsContainer.className = 'petits-enfants-container';
+              }
+
               // Ajouter les petits-enfants au conteneur
-              const groupContainer = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
               petitsEnfants.forEach(petitEnfant => {
                   const genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
                   const petitEnfantDiv = document.createElement('div');
@@ -211,16 +178,19 @@ function afficherEnfantsPetitEnfants(parentId, data) {
                   const parentInfo = `<p class="parent-info">(${petitEnfant.parentPrenom})</p>`;
                   petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
 
-                  groupContainer.appendChild(petitEnfantDiv);
+                  petitsEnfantsContainer.appendChild(petitEnfantDiv);
               });
 
-              petitsEnfantsContainer.appendChild(groupContainer);
+              // Ajouter le conteneur avec le label la première fois uniquement
+              if (!isLabelAdded) {
+                  const container = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
+                  container.appendChild(petitsEnfantsContainer);
+                  const personContainer = document.getElementById('person-container');
+                  personContainer.appendChild(container);
+                  isLabelAdded = true;
+              }
           }
       });
-
-      // Ajouter le conteneur des petits-enfants au conteneur principal
-      const personContainer = document.getElementById('person-container');
-      personContainer.appendChild(petitsEnfantsContainer);
   }
 }
 
@@ -264,20 +234,6 @@ function trouverGrandsParents(parentId, data) {
   return { grandPere: null, grandMere: null };
 }
 
-function trouverGrandMere(parentId, data) {
-  const parent = data.find(person => person.id === parentId);
-  if (parent) {
-    return parent.id_mere
-  }
-}
-
-function trouverGrandPere(parentId, data) {
-  const parent = data.find(person => person.id === parentId);
-  if (parent) {
-    return parent.id_pere
-  }
-}
-
 //Verifie si la date est connue  
 function verifieDate(date) {
   const an = parseInt(date.substr(6, 4));
@@ -290,6 +246,16 @@ function verifieDate(date) {
   }
 }
 
+// Fonction pour créer le HTML pour un parent (père ou mère)
+function creerParentHTML(parent, containerClass, genderClass) {
+  if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
+
+  let parentHTML = `<div class="${containerClass} ${genderClass}">`;
+  parentHTML += `<p><a href="arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
+  parentHTML += '</div>';
+  
+  return parentHTML;
+}
 
 // Appeler la fonction pour afficher les données
 displayData();
