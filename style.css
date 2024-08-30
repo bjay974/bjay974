@@ -114,18 +114,16 @@ footer {
     display: grid;
     text-align: left; 
     list-style-type: none; 
-    grid-template-columns: auto auto;
-    gap: 5px;
     font-size: var(--font-size-small);
 }
 
 .homlist {
-    padding: 2%;
+    padding: 1%;
     grid-column: 1;
 }
 
 .femlist {
-    padding: 2%;
+    padding: 1%;
     grid-column: 2;
 }
 
@@ -133,8 +131,8 @@ footer {
     color: var(--color-male);
     text-decoration: none;
     text-align: left; 
-    padding: 10px;
-    margin: 10px;
+    padding: 1%;
+    margin: 1%;
 }
 
 .lienF {
@@ -303,6 +301,7 @@ footer {
 .femaleLink {
     color: var(--color-female);
 }
+
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {

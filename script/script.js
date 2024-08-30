@@ -85,7 +85,7 @@ function ajoutMembresListe(listElement, persons) {
 // Ajoute un membre a la liste
 function creerListItem(person) {
   const li = document.createElement('li');
-  li.className = person.genre === 'M' ? 'homlist' : 'femmlist';
+  li.className = person.genre === 'M' ? 'homlist' : 'femlist';
   li.innerHTML = `
       <a href="${person.id < 2000 ? 'person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienM' : 'lienF'}">
           ${person.nom} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
