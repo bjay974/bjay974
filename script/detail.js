@@ -193,11 +193,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Récupérer les frères et sœurs de la personne
                 if (person.id < 2000) {
                     const fratries = data.filter(fratrie => {
-                        // Vérifie si l'un des parents est défini (non "inconnu") et correspond à ceux de la personne actuelle
-                        const memePere = fratrie.id_pere !== 'inconnu' && fratrie.id_pere != null && fratrie.id_pere === person.id_pere;
-                        const memeMere = fratrie.id_mere !== 'inconnu' && fratrie.id_pere != null && fratrie.id_mere === person.id_mere;
-                        // Exclure la personne elle-même et s'assurer qu'il y a une correspondance valide des parents
-                        return (memePere || memeMere) && fratrie.id !== person.id;
+                        // Vérifier les conditions pour le père
+                        const pereOk = Number.isInteger(person.id_pere);
+                        const memePere = pereOk && fratrie.id_pere === person.id_pere;
+                    
+                        // Vérifier les conditions pour la mère
+                        const mereOk = Number.isInteger(person.id_mere);
+                        const memePere = mereOk && fratrie.id_mere === person.id_mere;
+                    
+                        // Exclure la personne elle-même et retourner true si l'un des parents correspond et est valide
+                        return (memePere || memePere) && fratrie.id !== person.id;
                     });
                     if (fratries.length > 0) {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
@@ -438,7 +443,7 @@ function afficherLieuDeNaissance(lieuNaissance) {
             return "";
             break;
         default:
-            return "à " + person.lieu_naissance;
+            return "à " + lieuNaissance;
     }
 }
 
