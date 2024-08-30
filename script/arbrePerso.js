@@ -161,7 +161,6 @@ function afficherEnfantsPetitEnfants(parentId, data) {
             // Si ce n'est pas encore fait, créer le conteneur pour les petits-enfants avec le label
             if (!petitsEnfantsContainer) {
               petitsEnfantsContainer = document.createElement('div');
-              petitsEnfantsContainer.className = 'petits-enfants-container';
             }
 
             // Ajouter les petits-enfants au conteneur
@@ -204,12 +203,12 @@ function trouverGrandsParents(pereId, mereId, data) {
       result.PerePat = pere.id_pere;
     }
     if (Number.isInteger(pere.id_mere)) {
-      result.MerePat = mere.id_pere;
+      result.MerePat = pere.id_mere;
   } }
   if (mere) {
       // Vérifier si id_pere et id_mere sont des entiers valides
       if (Number.isInteger(mere.id_pere)) {
-        result.PereMat = pere.id_mere;
+        result.PereMat = mere.id_pere;
       }
       if (Number.isInteger(mere.id_mere)) {
         result.MereMat = mere.id_mere;
