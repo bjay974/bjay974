@@ -193,31 +193,6 @@ function afficherEnfantsPetitEnfants(parentId, data) {
   }
 }
 
-// Fonction générique pour afficher les membres
-function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parentPrenom = null) {
-  const container = ajouterDivetTitre(cssClass, membres.length === 1, titreSingulier, titrePluriel);
-  membres.forEach(membre => {
-      const genderClass = membre.genre === 'M' ? 'male' : 'female';
-      const membreDiv = document.createElement('div');
-      membreDiv.className = cssClass + genderClass;
-      const membreLink = <p><a href="arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>;
-      membreDiv.innerHTML = parentPrenom ? membreLink + <p class="parent-info">(${parentPrenom})</p> : membreLink;
-      container.appendChild(membreDiv);
-  });
-  document.getElementById('person-container').appendChild(container);
-} 
-
-// Fonction pour ajouter un div avec un titre
-function ajouterDivetTitre(containerClass, condition, titreSingulier, titrePluriel) {
-  const container = document.createElement('div');
-  container.className = containerClass;
-  const titre = document.createElement('p');
-  titre.textContent = condition ? titreSingulier : titrePluriel;
-  titre.classList.add('label'); 
-  container.appendChild(titre);
-  return container;
-}
-
 function trouverGrandsParents(parentId, data) {
   // Trouver le parent dans les données
   const parent = data.find(person => person.id === parentId);
@@ -236,6 +211,35 @@ function trouverGrandsParents(parentId, data) {
       return result;   }
   }
   return;
+}
+
+// Fonction générique pour afficher les membres
+function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parentPrenom = null) {
+  const container = ajouterDivetTitre(cssClass, membres.length === 1, titreSingulier, titrePluriel);
+  
+  membres.forEach(membre => {
+      const genderClass = membre.genre === 'M' ? 'male' : 'female';
+      const membreDiv = document.createElement('div');
+      membreDiv.className = `${cssClass} ${genderClass}`;
+      
+      const membreLink = `<p><a href="arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
+      
+      membreDiv.innerHTML = parentPrenom ? membreLink + `<p class="parent-info">(${parentPrenom})</p>` : membreLink;
+      container.appendChild(membreDiv);
+  });
+  
+  document.getElementById('person-container').appendChild(container);
+}
+
+// Fonction pour ajouter un div avec un titre
+function ajouterDivetTitre(containerClass, condition, titreSingulier, titrePluriel) {
+  const container = document.createElement('div');
+  container.className = containerClass;
+  const titre = document.createElement('p');
+  titre.textContent = condition ? titreSingulier : titrePluriel;
+  titre.classList.add('label'); 
+  container.appendChild(titre);
+  return container;
 }
 
 //Verifie si la date est connue  
