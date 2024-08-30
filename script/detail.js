@@ -196,13 +196,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         // Vérifier les conditions pour le père
                         const pereOk = Number.isInteger(person.id_pere);
                         const memePere = pereOk && fratrie.id_pere === person.id_pere;
-                    
                         // Vérifier les conditions pour la mère
                         const mereOk = Number.isInteger(person.id_mere);
-                        const memePere = mereOk && fratrie.id_mere === person.id_mere;
-                    
+                        const memeMere = mereOk && fratrie.id_mere === person.id_mere;
                         // Exclure la personne elle-même et retourner true si l'un des parents correspond et est valide
-                        return (memePere || memePere) && fratrie.id !== person.id;
+                        return (memePere || memeMere) && fratrie.id !== person.id;
                     });
                     if (fratries.length > 0) {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
