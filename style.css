@@ -248,7 +248,7 @@ footer {
     color: var(--color-female);
 }
 
-.parent, .grandparent , .enfant, petitenfant  {
+.parent, .grandparent , .enfant, .petitenfant  {
     grid-area: colonne2;
     text-align: center;
     margin-top: 5px;
