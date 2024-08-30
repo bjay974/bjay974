@@ -14,11 +14,11 @@ function displayData() {
 
           // Afficher les grands-parents
 
-          var grandsParents = trouverGrandsParents(person.id_pere, data);
+          var grand = trouverGrandsParents(person.id_pere, person.id_mere, data);
 
-          if (grandPerePat || grandPereMat || grandMereMat ||grandPereMat) {
+          if (grand.PerePat || grand.PereMat || grand.MereMat ||grand.PereMat) {
             displayGrandParent(
-              grandPerePat, grandPerePat, grandPerePat, grandPerePat, 
+              grand.PerePat, grand.PereMat, grand.MerePat, grand.MereMat, 
               'grandparent', data
             ); 
           }
@@ -203,18 +203,18 @@ function trouverGrandsParents(pereId, mereId, data) {
   if (pere) {
     // Vérifier si id_pere et id_mere sont des entiers valides
     if (Number.isInteger(pere.id_pere)) {
-      result.grandPerePat = pere.id_pere;
+      result.PerePat = pere.id_pere;
     }
     if (Number.isInteger(pere.id_mere)) {
-      result.grandMerePat = mere.id_mere;
+      result.MerePat = mere.id_mere;
   } }
   if (mere) {
       // Vérifier si id_pere et id_mere sont des entiers valides
       if (Number.isInteger(mere.id_pere)) {
-        result.grandPereMat = pere.id_pere;
+        result.PereMat = pere.id_pere;
       }
       if (Number.isInteger(mere.id_mere)) {
-        result.grandMereMat = mere.id_mere;
+        result.MereMat = mere.id_mere;
   } }
   return result;
 }
