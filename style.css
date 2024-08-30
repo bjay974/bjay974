@@ -1,4 +1,7 @@
 :root {
+    --color-bleu-reunion: #2F66FF;
+    --color-jaune-reunion: #FFFF02;
+    --color-rouge-reunion: #F60100;
     --color-font-blanc: #fff;
     --color-primary: #333;
     --color-secondary: #666;
@@ -222,7 +225,6 @@ footer {
 
 .personne {
     grid-area: colonne3;
-    padding: 5px 5px 5px 5px;
     margin-top: 85px;
     width: 180px;
     min-height: 50px;
@@ -232,7 +234,7 @@ footer {
 }
 
 .male, .female {
-    min-height: 25px;
+    min-height: 40px;
     background-color: var(--color-male-bg); 
     color: var(--color-male);
     border-radius: 5px; 
@@ -246,18 +248,17 @@ footer {
     color: var(--color-female);
 }
 
-.parent, .grandparent , .enfant  {
+.parent, .grandparent , .enfant, petitenfant  {
     grid-area: colonne2;
-    padding: 5px 5px 5px 5px;
-    margin-top: 15px;
+    text-align: center;
+    margin-top: 5px;
     width: 160px;
-    height: 20px;
     flex-direction: column;
 }
 
 .grandparent {
+    padding-left : 5px;
     grid-area: colonne1;
-    text-align: center;
     width: 200px;
 }
 
@@ -270,13 +271,14 @@ footer {
     grid-area: colonne5;
     width: 180px;
     margin-top: 5px;
+    padding-left: 10px;
+    height: 40px;
 }
 
 .petitenfant .parent-info {
     font-size: var(--font-size-very-small);
     font-style: italic;
-    height: 0px;
-    padding: 0px 0px 0px 0px;
+    padding-top: 20px;
 }
 
 .personne .female + .male {margin-top: 50px}
