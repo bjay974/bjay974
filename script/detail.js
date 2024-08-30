@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Ajouter le lieu et la date de naissance
                 const birthDateItem = document.createElement('li');
+                birthDateItem.classList.add('list');
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateVerified = verifieDate(person.date_naissance);
                 const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
@@ -42,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
                     const legDateItem = document.createElement('li');
-                    legDateItem.classList.add('special-li');
+                    legDateItem.classList.add('list');
                     const dateVerified = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre);
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
-
+                    weddingDateItem.classList.add('list');
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         weddingDateItem.appendChild(document.createTextNode(' à '));
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
                         conjointItem.appendChild(creerPersonLink(conjoint));
+                        conjointItem.classList.add('list');
                         conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br'));
@@ -230,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Charger le commentaire
                 if (person.commentaire) {
                     const commentaireItem = document.createElement('li');
-                    commentaireItem.classList.add('special-li');
+                    commentaireItem.classList.add('list');
                     commentaireItem.textContent = `Notes : ${person.commentaire}`;
                     commentaireItem.classList.add('smaller');
                     detailsList.appendChild(commentaireItem);
@@ -296,7 +298,7 @@ function creerDateDecesItem(text) {
 function getAgeActuel(person) {
     const ageNowItem = document.createElement('li');
     const ageNow = calculeAge(person.date_naissance);
-    ageNowItem.classList.add('special-li');
+    ageNowItem.classList.add('list');
     const adjectif_genre = ajouterE("Agé", person.genre);
     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
     return ageNowItem;
