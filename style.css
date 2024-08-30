@@ -165,8 +165,9 @@ footer {
 
 .grid-container {
   display: grid;
-  grid-template-columns: auto auto auto auto auto auto;
+  grid-template-columns: repeat(5, 1fr);
   grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
+  gap: 10px
 }
 
 .container1 {
@@ -223,18 +224,51 @@ footer {
     padding: 10px 5px 5px 5px;
   }
 
+/* Conteneur de la personne */
 .personne {
     grid-area: colonne3;
-    margin-top: 85px;
-    width: 180px;
-    min-height: 50px;
+    margin-top: 50%; 
+    width: 20%; 
+    min-height: 50px; 
     height: auto;
     flex-direction: column;
-    position: relative;   
+    position: relative;
+    box-sizing: border-box;   
+}
+/* Conteneurs parents */
+.parent, .grandparent, .enfant, .petitenfant  {
+    padding-left: 1%; 
+    text-align: center;
+    margin-top: 1%; 
+    width: 20%; 
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.parent {
+    grid-area: colonne2;
+}
+
+.grandparent {
+    grid-area: colonne1;
+}
+
+.enfant {
+    grid-area: colonne4;
+}
+
+.petitenfant {
+    grid-area: colonne5;
+    height: 40px;
+}
+
+.petitenfant .parent-info {
+    font-size: var(--font-size-very-small);
+    font-style: italic;
 }
 
 .male, .female {
-    min-height: 40px;
+    min-height: 30px;
     background-color: var(--color-male-bg); 
     color: var(--color-male);
     border-radius: 5px; 
@@ -246,39 +280,6 @@ footer {
 .female {
     background-color: var(--color-female-bg);
     color: var(--color-female);
-}
-
-.parent, .grandparent , .enfant, .petitenfant  {
-    grid-area: colonne2;
-    text-align: center;
-    margin-top: 5px;
-    width: 160px;
-    flex-direction: column;
-}
-
-.grandparent {
-    padding-left : 5px;
-    grid-area: colonne1;
-    width: 200px;
-}
-
-.enfant {
-    grid-area: colonne4;
-    margin-right: 5px;
-}
-
-.petitenfant {
-    grid-area: colonne5;
-    width: 180px;
-    margin-top: 5px;
-    padding-left: 10px;
-    height: 40px;
-}
-
-.petitenfant .parent-info {
-    font-size: var(--font-size-very-small);
-    font-style: italic;
-    padding-top: 20px;
 }
 
 .personne .female + .male {margin-top: 50px}
