@@ -193,29 +193,19 @@ function afficherEnfantsPetitEnfants(parentId, data) {
   }
 }
 
-// Fonction pour créer le HTML pour un parent (père ou mère)
-function creerParentHTML(parent, containerClass, genderClass) {
-  if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
-
-  let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-  parentHTML += `<p><a href="arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
-  parentHTML += '</div>';
-  
-  return parentHTML;
-}
 // Fonction générique pour afficher les membres
 function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parentPrenom = null) {
   const container = ajouterDivetTitre(cssClass, membres.length === 1, titreSingulier, titrePluriel);
   membres.forEach(membre => {
       const genderClass = membre.genre === 'M' ? 'male' : 'female';
       const membreDiv = document.createElement('div');
-      membreDiv.className = `${cssClass} ${genderClass}`;
-      const membreLink = `<p><a href="arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
-      membreDiv.innerHTML = parentPrenom ? membreLink + `<p class="parent-info">(${parentPrenom})</p>` : membreLink;
+      membreDiv.className = ${cssClass} ${genderClass};
+      const membreLink = <p><a href="arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>;
+      membreDiv.innerHTML = parentPrenom ? membreLink + <p class="parent-info">(${parentPrenom})</p> : membreLink;
       container.appendChild(membreDiv);
   });
   document.getElementById('person-container').appendChild(container);
-}
+} 
 
 // Fonction pour ajouter un div avec un titre
 function ajouterDivetTitre(containerClass, condition, titreSingulier, titrePluriel) {
@@ -260,6 +250,16 @@ function verifieDate(date) {
   }
 }
 
+// Fonction pour créer le HTML pour un parent (père ou mère)
+function creerParentHTML(parent, containerClass, genderClass) {
+  if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
+
+  let parentHTML = `<div class="${containerClass} ${genderClass}">`;
+  parentHTML += `<p><a href="arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
+  parentHTML += '</div>';
+  
+  return parentHTML;
+}
 
 
 // Appeler la fonction pour afficher les données
