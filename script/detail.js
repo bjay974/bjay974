@@ -250,11 +250,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const arbrePersoLink = document.createElement('a');
                     arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
                     arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
-                    arbrePersoLink.style.textDecoration = "none";
-                    arbrePersoLink.style.color = "#999"; 
-                    arbrePersoLink.style.fontSize = "80%";
-                
-                    const arbrePersoItem = document.createElement('div'); // Utiliser 'div' pour le conteneur
+                    arbrePersoLink.add.classList('labelArbre')
+                    const arbrePersoItem = document.createElement('div'); 
                     arbrePersoItem.appendChild(arbrePersoLink);
                     detailsList.appendChild(arbrePersoItem);
                     detailsList.appendChild(document.createElement('br'));

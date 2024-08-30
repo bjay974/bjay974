@@ -2,25 +2,25 @@
     --color-primary: #333;
     --color-secondary: #666;
     --color-light: #999;
+    --color-green: #46775c;
     --color-male: rgb(11, 65, 83);
     --color-female: #583a3a;
     --color-color-bg:#a8767a;
     --color-male-bg: rgb(213, 230, 236);
     --color-female-bg: rgb(228, 215, 216);
     --font-primary: Georgia, serif;
-    --font-size-small: 90%;
-    --font-size-very-small: 75%;
-    --font-size-large: 12px;
+    --font-size-small: 80%;
+    --font-size-very-small: 70%;
     --padding-small: 5px;
     --margin-small: 5px;
 }
 
 body {
     font-family: Georgia;
-    font-size: var(--font-size-small);
+    font-size: var(--font-size-very-small);
     padding: 0px 0px 0px 0px; /* haut | droit | bas | gauche */
     margin: 0px 0px 0px 0px;
-    background-color: #f2f2f2;
+    background-color: var(--color-light);
     overflow: auto; /* Ajoute une barre de défilement lorsque le contenu dépasse les dimensions de la fenêtre */
     height: 100%;
     min-height: 90vh;
@@ -39,19 +39,19 @@ header {
 }
 
 nav {
-    background-color: #666;
+    background-color: var(--color-secondary);
     padding: 5px;
     text-align: center;
 }
 
 nav a {
-    color: #fff;
+    color: var(--color-light);
     text-decoration: none;
     padding: 5px 5px;
 }
 
 nav a:hover {
-    background-color: #999;
+    background-color: var(--color-light);
 }
 
 section {
@@ -68,7 +68,7 @@ footer {
     text-align: center;
     width: 100%;
     height: 30px;
-    font-size: 70%;
+    font-size: var(--font-size-very-small)%;
     margin-top: auto;
 }
 
@@ -97,11 +97,12 @@ footer {
 }
 
 .soustitreArbre {
-    background-color: #999;
+    background-color: var(--color-light);
     margin-top: 20px;
     margin-bottom: 10px;
     width: 90%;
     padding: 5px 0px 5px 30px;
+    text-decoration: none;
 }
 
 .list {
@@ -188,13 +189,14 @@ footer {
 
 .label {
    padding: 0px 0px 0px 0px;
-   color:#999;
+   color:var(--color-light);
    font-style: italic;
    margin-left: 20px;
 }
 
 .labelArbre {
-    color:#423d3d;
+    color:var(--color-green);
+    text-decoration: none;
     font-style: italic;
     padding-left: 30px;
     margin-left: 20px;
@@ -213,7 +215,6 @@ footer {
 
 .container {
     padding: 10px 5px 5px 5px;
-    font-size: var(--font-size-large);
   }
 
 .personne {
@@ -226,7 +227,6 @@ footer {
     height: auto;
     flex-direction: column;
     display: flex;
-    font-size: var(--font-size-large);
     font-family: Georgia;
     position: relative;   
 }
@@ -300,7 +300,6 @@ footer {
     padding: 10px 5px 10px 5px;
     border-radius: 5px; 
     text-decoration: none;  
-    font-size: var(--font-size-large);
     text-align: center;
  }
 
