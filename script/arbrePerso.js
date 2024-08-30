@@ -93,10 +93,10 @@ function afficherPersonne(personneId, containerClass, data) {
 
 function displayGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
 
-  var father1 = data.find(person => person.id === father1Id);
-  var mother1 = data.find(person => person.id === mother1Id);
-  var father2 = data.find(person => person.id === father2Id);
-  var mother2 = data.find(person => person.id === mother2Id);
+  if (father1) {var father1 = data.find(person => person.id === father1Id);}
+  if (mother1) {var mother1 = data.find(person => person.id === mother1Id);}
+  if (father2) {var father2 = data.find(person => person.id === father2Id);}
+  if (mother2) {var mother2 = data.find(person => person.id === mother2Id);}
 
   let container
   if ((father1 && father1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') || (mother2 && mother2 !== 'inconnu') || (father2 && father21 !== 'inconnue') ) {
@@ -199,7 +199,7 @@ function trouverGrandsParents(pereId, mereId, data) {
   const pere = data.find(person => person.id === pereId);
   const mere = data.find(person => person.id === mereId);
   // Initialiser un objet avec des propriétés définies par défaut
-  const result = { grandPere: null, grandMere: null };
+  const result = { PerePat: null, MerePat: null, PereMat:null, MereMat:null };
   if (pere) {
     // Vérifier si id_pere et id_mere sont des entiers valides
     if (Number.isInteger(pere.id_pere)) {
