@@ -55,6 +55,10 @@ nav a:hover {
     background-color: var(--color-light);
 }
 
+a {
+    text-decoration: none;
+}
+
 section {
     padding: 0px 0px 0px 0px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
@@ -279,6 +283,7 @@ footer {
 .lienHommeEnGras, .lienFemmeEnGras, .lienHomme, .lienFemme {
     text-decoration: none;
 }
+
 .lienHommeEnGras, .lienFemmeEnGras {
     font-weight: bold;
 }
