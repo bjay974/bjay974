@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         weddingDateItem.appendChild(document.createTextNode(' à '));
+                        weddingDateItem.appendChild(creerPersonLink(conjoint));
                         weddingDateItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                        weddingDateItem.appendChild(creerPersonLink(conjoint, styleColor));
                     }
                     detailsList.appendChild(weddingDateItem);
                     detailsList.appendChild(document.createElement('br'));
@@ -92,10 +92,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         const conjointItem = document.createElement('li');
-                        conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
-                        conjointItem.appendChild(creerPersonLink(conjoint, styleColor));
+                        conjointItem.appendChild(creerPersonLink(conjoint));
+                        conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br'));
                     }
@@ -127,7 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem = document.createElement('li');
                             parentItem.appendChild(document.createTextNode(textParent));
-                            parentItem.appendChild(creerPersonLink(father, 'rgb(11, 65, 83)'));
+                            parentItem.appendChild(creerPersonLink(father));
+                            parentItem.classList.add('lienHomme')
                         }
                     }
                 }
@@ -146,12 +147,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (mother) {
                             if (parentItem) {
                                 parentItem.appendChild(document.createTextNode(' et de '));
-                                parentItem.appendChild(creerPersonLink(mother, '#583a3a'));
+                                parentItem.appendChild(creerPersonLink(mother));
+                                parentItem.classList.add('lienFemme')
                             } else {
                                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                                 parentItem = document.createElement('li');
                                 parentItem.appendChild(document.createTextNode(textParent));
-                                parentItem.appendChild(creerPersonLink(mother, '#583a3a'));
+                                parentItem.appendChild(creerPersonLink(mother));
+                                parentItem.classList.add('lienFemme')
                             }
                         }
                     }
@@ -255,13 +258,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Fonction pour créer un lien formaté pour une personne (nom + prénom) avec une couleur et un href optionnel
-function creerPersonLink(person, color) {
+function creerPersonLink(person) {
     const nomLink = document.createElement('a');
     nomLink.style.textDecoration = "none";
     if (person.id < 2000) {
         nomLink.href = `person.html?id=${person.id}`;
     }
-    nomLink.innerHTML = `<span style="color:${color};"><strong>${person.nom}</strong> ${person.prenom}</span>`;
+    nomLink.innerHTML = `<span><strong>${person.nom}</strong> ${person.prenom}</span>`;
     return nomLink;
 }
 
@@ -303,7 +306,6 @@ function handleDeathDetails(person) {
     const dateVerified = verifieDate(person.date_deces);
     const adjectif_genre = ajouterE("Décédé", person.genre);
     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-
     if (ageDeces <= 5) {
         if (person.lieu_deces === "Inconnu") {
             return creerDateDecesItem(`${adjectif_genre} ${dateVerified}`);
@@ -442,9 +444,6 @@ function afficherLieuDeNaissance(lieuNaissance) {
             return "à " + lieuNaissance;
     }
 }
-
-
-
 
 // Fonction principale pour charger tous les liens vers les actes
 function chargerLiensActes(person, detailsList) {
