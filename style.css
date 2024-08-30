@@ -225,6 +225,7 @@ footer {
 
 /* Conteneur de la personne */
 .personne {
+    display: flex;
     grid-area: colonne3;
     margin-bottom: 5%; 
     margin-top: 50%; 
@@ -235,15 +236,20 @@ footer {
     box-sizing: border-box; 
     align-items: center;
     justify-content: center;  
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
-/* Conteneurs parents */
+
 .parent, .grandparent, .enfant, .petitenfant  {
+    display: flex;
     text-align: center;
     flex-direction: column;
     box-sizing: border-box;
     padding: 5px;
     align-items: center;
     justify-content: center;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .parent {
@@ -327,3 +333,22 @@ footer {
     color: var(--color-female);
 }
 
+/* Styles pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 768px) {
+    .personne, .parent, .grandparent, .enfant, .petitenfant {
+        padding: 8px;
+        min-width: 120px;
+        min-height: 40px;
+    }
+}
+
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+    .personne, .parent, .grandparent, .enfant, .petitenfant {
+        padding: 5px;
+        min-width: 100px;
+        min-height: 30px;
+        font-size: 0.8rem;
+        line-height: 1.4; /* Ajuste la taille de la police pour les petits écrans */
+    }
+}
