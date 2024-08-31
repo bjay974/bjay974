@@ -125,20 +125,24 @@ afficheDetail  {
     align-items: flex-start; 
     padding : 1%;
     margin : 1%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.homlist, .femlist {
+    flex: 0 0 48%; /* Chaque liste occupe 48% de la largeur, pour deux colonnes */
+    margin-bottom: 20px; /* Espace entre les rangées */
+    align-items: left;
+    padding: 1%;
+    margin : 1%;
 }
 
 .homlist {
-    display: flex;
-    padding: 1%;
     grid-column: 1;
-    align-items: left;
 }
 
 .femlist {
-    display: flex;
-    padding: 1%;
     grid-column: 2;
-    align-items: left;
 }
 
 .grid-container {
