@@ -124,17 +124,15 @@ afficheDetail  {
     align-items: flex-start; 
     padding: 1%;
     margin: 1%;
-}
+    flex-wrap: wrap;
+    list-style-type: none; 
 
-.list {
-    display: grid;
-    grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
-    margin-right: 0;
 }
 
 .homlist, .femlist {
     padding: 1%;
-    margin : 1%;
+    margin: 1%;
+    list-style-type: none; 
     line-height: 2;
 }
 
@@ -340,16 +338,22 @@ afficheDetail  {
         grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
         margin-right: 0;
     }
-    .homlist, .femlist {
+     .homlist, .femlist {
         align-items: left;
         padding: 1%;
         margin : 1%;
         line-height: 2;
+
     }
     
     .homlist {
         grid-column: 1;
     }
+    
+    .femlist {
+        grid-column: 2;
+    }
+    
 }
 
 /* Styles pour les petits écrans (mobiles) */
@@ -386,6 +390,7 @@ afficheDetail  {
         padding: 1%;
         margin : 1%;
         line-height: 2;
+
     }
     
     .homlist {
