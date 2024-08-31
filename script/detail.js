@@ -43,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
                     const legDateItem = document.createElement('li');
+                    legDateItem.classList.add('list');
                     const dateVerified = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
@@ -75,29 +76,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.date_mariage) {
-                    const weddingDateItem = document.createElement('li');
+                    const infoMariage = document.createElement('li');
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre);
-                    weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
+                    infoMariage.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
-                        weddingDateItem.appendChild(document.createTextNode(' à '));
-                        weddingDateItem.appendChild(creerPersonLink(conjoint));
-                        weddingDateItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                        weddingDateItem.classList.add('list');
+                        const NomConjoint = document.createElement('a');
+                        NomConjoint.appendChild(document.createTextNode(' à '));
+                        NomConjoint.appendChild(creerPersonLink(conjoint));
+                        NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
+                        NomConjoint.classList.add('list');
+                        infoMariage.appendChild(NomConjoint);
                     }
-                    detailsList.appendChild(weddingDateItem);
+                    detailsList.appendChild(infoMariage);
                     detailsList.appendChild(document.createElement('br'));
                 } else if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
-                        const conjointItem = document.createElement('li');
+                        const infoConjoint = document.createElement('li');
+                        const NomConjoint = document.createElement('a');
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
-                        conjointItem.appendChild(document.createTextNode(texteConjoint));
-                        conjointItem.appendChild(creerPersonLink(conjoint));
-                        conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                        conjointItem.classList.add('list');
-                        detailsList.appendChild(conjointItem);
+                        infoConjoint.appendChild(document.createTextNode(texteConjoint));
+                        NomConjoint.appendChild(creerPersonLink(conjoint));
+                        NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
+                        NomConjoint.classList.add('list');
+                        detailsList.appendChild(NomConjoint);
                         detailsList.appendChild(document.createElement('br'));
                     }
                 }
@@ -271,17 +275,11 @@ function creerPersonLink(person) {
         nomLink.href = `person.html?id=${person.id}`;
     }
     nomLink.innerHTML = `<span><strong>${person.nom}</strong> ${person.prenom}</span>`;
+    nomLink.classList.add ('list');
     return nomLink;
 }
 
-// Fonction pour ajouter un parent à la liste des détails
-function addParentToDetailsList(textParent, parentLink, detailsList) {
-    const parentItem = document.createElement('li');
-    parentItem.classList.add('list');
-    parentItem.appendChild(document.createTextNode(textParent));
-    parentItem.appendChild(parentLink);
-    detailsList.appendChild(parentItem);
-}
+
 
 // Fonction pour déterminer le texte du lien
 function getArbrePersoLinkText(prenom) {
