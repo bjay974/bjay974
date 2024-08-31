@@ -2,7 +2,7 @@
     --color-bleu-reunion: #2F66FF;
     --color-jaune-reunion: #FFFF02;
     --color-rouge-reunion: #F60100;
-    --color-font-blanc: #fff;
+    --color-font-blanc: #F5F5DC;
     --color-primary: #333;
     --color-secondary: #666;
     --color-light: #999;
@@ -24,6 +24,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    background-color: var(--color-font-blanc);
 }
 
 header {
@@ -192,11 +193,11 @@ afficheDetail  {
 .container5 .female:first-child { margin-top: 90%}
 .container1 .male + .female {margin-top: 20%}
 .container1 .female + .male {margin-top: 35%}
-.container2 .male + .female {margin-top: 61%}
-.container2 .female + .male {margin-top: 61%}
-.container3 .male + .female {margin-top: 135%}
-.container3 .female + .male {margin-top: 135%}
-.container4 .male + .female {margin-top: 280%}
+.container2 .male + .female {margin-top: 60%}
+.container2 .female + .male {margin-top: 59%}
+.container3 .male + .female {margin-top: 130%}
+.container3 .female + .male {margin-top: 130%}
+.container4 .male + .female {margin-top: 270%}
 
 .personne {
     padding: 5px;
@@ -265,8 +266,8 @@ afficheDetail  {
     color: var(--color-female);
 }
 
-.personne .male:first-child { margin-top: 20%}
-.personne .female:first-child { margin-top: 30%}
+.personne .male:first-child { margin-top: 35%}
+.personne .female:first-child { margin-top: 35%}
 .personne .female + .male {margin-top: 30%}
 .personne .male + .female {margin-top: 30%}
 .personne .male + .label {margin-top: 40%}
@@ -275,7 +276,9 @@ afficheDetail  {
 .personne .label + .female {margin-top: 20%}
 .grandparent .label + .male {margin-top: 10%}
 .grandparent .male + .female {margin-top: 10%}
-.grandparent .female + .male {margin-top: 10%}
+.grandparent .female + .male {margin-top: 45%}
+.grandparent .label + .female {margin-top: 45%}
+.grandparent .female + .female {margin-top: 80%}
 .enfant .label + .male {margin-top: 10%}
 .enfant .label + .female {margin-top: 10%}
 .enfant .male + .female {margin-top: 5%}
@@ -308,6 +311,45 @@ afficheDetail  {
     color: var(--color-female);
 }
 
+input[type="submit"] {
+    background-color: var(--color-green);
+    color: var(--color-primary); /* Couleur du texte */
+    border: none; /* Supprimer les bordures */
+    padding: 15px 32px; /* Padding interne du bouton */
+    text-align: center; /* Aligner le texte */
+    text-decoration: none; /* Supprimer la décoration du texte */
+    display: inline-block; /* Garder l'affichage en ligne */
+    font-size: 12px; /* Taille du texte */
+    margin: 4px 2px; /* Espacement extérieur */
+    cursor: pointer; /* Curseur de la souris */
+    border-radius: 5px; /* Bordures arrondies */
+    transition: background-color 0.3s ease; /* Transition fluide pour l'effet de survol */
+}
+
+/* Effet au survol (hover) */
+input[type="submit"]:hover {
+    background-color: var(--color-font-blanc); /* Couleur de fond au survol */
+}
+
+input[type="text"], textarea {
+    width: 100%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+    padding: 10px; /* Ajoute de l'espace interne */
+    margin: 10px 10px; /* Espace entre les éléments */
+    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+    border: 2px solid #ccc; /* Bordure gris clair */
+    border-radius: 5px; /* Bordure arrondie */
+    background-color: var(--color-font-blanc); /* Couleur de fond */
+    font-size: 16px; /* Taille de la police */
+    color: var(--color-primary); /* Couleur du texte */
+}
+
+/* Style au focus (quand l'utilisateur clique ou navigue dans le champ) */
+input[type="text"]:focus, textarea:focus {
+    border-color: var(--color-green); /* Change la couleur de la bordure lorsqu'elle est active */
+    outline: none; /* Enlève le contour bleu par défaut */
+    background-color:var(--color-font-blanc); /* Change la couleur de fond au focus */
+}
+
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
     body {
@@ -331,7 +373,6 @@ afficheDetail  {
 
     .list {
         display: flex;
-        grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
         margin-right: 0;
         line-height: 1.2;
     }
@@ -378,7 +419,6 @@ afficheDetail  {
 
     .list {
         display: grid;
-        grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
         margin-right: 0;
         line-height: 1.2;
     }
@@ -388,7 +428,6 @@ afficheDetail  {
         padding: 1%;
         margin : 1%;
         line-height: 2;
-
     }
     
     .homlist {
