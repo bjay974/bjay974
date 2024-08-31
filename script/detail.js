@@ -59,13 +59,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
-                            detailsList.appendChild(handleDeathDetails(person));
+                            detailsList.appendChild(detailDeces(person));
                         } else {
                             detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
                         }
                     } else {
                         if (person.date_deces !== "01/01/1901") {
-                            detailsList.appendChild(handleDeathDetails(person));
+                            detailsList.appendChild(detailDeces(person));
                         } else {
                             detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
                         }
@@ -109,8 +109,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 let father, mother;
                 let textParent = "";
                 let parentItem = null;
-                let pereItem
-                let mereItem
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     parentItem = document.createElement('p');
@@ -123,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem.appendChild(document.createTextNode(textParent));    
-                            nomPere.appendChild(creerPersonLink(father));
+                            const nomPere = creerPersonLink(father); 
                             nomPere.classList.add('lienHomme');
                             parentItem.appendChild(nomPere); 
                         }
@@ -152,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
                         parentItem.appendChild(document.createTextNode(textParent)); 
-                        const nomMere= appendChild(creerPersonLink(mother));
+                        const nomMere = creerPersonLink(mother);
                         nomMere.classList.add('lienFemme');
                         parentItem.appendChild(nomMere);         
                     }
@@ -164,18 +162,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
           
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
-                const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
-                if (childrenOfPerson.length > 0) {
-                    childrenOfPerson.sort((a, b) => b.id - a.id);
+                const enfants = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
+                if (enfants.length > 0) {
+                    enfants.sort((a, b) => b.id - a.id);
                     // Créer un élément li pour contenir la liste des enfants
-                    const childrenOfPersonList = document.createElement('p');
-                    childrenOfPersonList.classList.add('afficheDetail');
-                    childrenOfPersonList.innerHTML = `${childrenOfPerson.length === 1 ? 'Enfant' : 'Enfants'} :`;
+                    const enfantsList = document.createElement('p');
+                    enfantsList.classList.add('afficheDetail');
+                    enfantsList.innerHTML = `${enfants.length === 1 ? 'Enfant' : 'Enfants'} :`;
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
-                    const childrenOfPersonUl = document.createElement('ul');
-                    childrenOfPersonUl.classList.add('list');
-                    childrenOfPerson.forEach(child => {
+                    const enfantsUl = document.createElement('ul');
+                    enfantsUl.classList.add('list');
+                    enfants.forEach(child => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         const nomPers = child.nom_legitime || child.nom;    
@@ -186,9 +184,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         childItem.appendChild(nomLink);
                         fragment.appendChild(childItem);
                     });
-                    childrenOfPersonUl.appendChild(fragment);
-                    childrenOfPersonList.appendChild(childrenOfPersonUl);
-                    detailsList.appendChild(childrenOfPersonList);
+                    enfantsUl.appendChild(fragment);
+                    enfantsList.appendChild(enfantsUl);
+                    detailsList.appendChild(enfantsList);
                     detailsList.appendChild(document.createElement('br'));
                 }
 
@@ -241,12 +239,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
-                    const arbrePersoLink = document.createElement('a');
-                    arbrePersoLink.textContent = getArbrePersoLinkText(person.prenom);
-                    arbrePersoLink.href = `arbrePerso.html?id=${person.id}`;
-                    arbrePersoLink.classList.add('labelArbre' );
+                    const lienArbrePerso = document.createElement('a');
+                    lienArbrePerso.textContent = CreerLienArbrePerso(person.prenom);
+                    lienArbrePerso.href = `arbrePerso.html?id=${person.id}`;
+                    lienArbrePerso.classList.add('labelArbre' );
                     const arbrePersoItem = document.createElement('div'); 
-                    arbrePersoItem.appendChild(arbrePersoLink);
+                    arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
                     detailsList.appendChild(document.createElement('br'));
                 }
@@ -271,10 +269,8 @@ function creerPersonLink(person) {
     return nomLink;
 }
 
-
-
 // Fonction pour déterminer le texte du lien
-function getArbrePersoLinkText(prenom) {
+function CreerLienArbrePerso(prenom) {
     if (!prenom) {
         return "Aperçu de son arbre";
     }
@@ -300,7 +296,7 @@ function getAgeActuel(person) {
     return ageNowItem;
 }
 
-function handleDeathDetails(person) {
+function detailDeces(person) {
     const dateValide = verifieDate(person.date_deces);
     const adjectif_genre = ajouterE("Décédé", person.genre);
     const ageDeces = diffAge(person.date_deces, person.date_naissance);
