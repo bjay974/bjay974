@@ -50,25 +50,18 @@ document.addEventListener('DOMContentLoaded', () => {
                     const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
                     legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide}`;
                     detailsList.appendChild(legDateItem);
-                    detailsList.appendChild(document.createElement('br')); 
                 }
 
                 if (!person.date_deces) {
-                    detailsList.appendChild(getAgeActuel(person));
-                    detailsList.appendChild(document.createElement('br'));
+                    const ageActuel = document.createElement('p');
+                    ageActuel.classList.add('afficheDetail');
+                    ageActuel.appendChild(getAgeActuel(person));
+                    detailsList.appendChild(ageActuel);
                 } else {
-                    if (person.date_naissance !== "01/01/1901") {
-                        if (person.date_deces !== "01/01/1901") {
-                            detailsList.appendChild(detailDeces(person));
-                        } else {
-                            detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
-                        }
+                    if (person.date_deces !== "01/01/1901") {
+                        detailsList.appendChild(detailDeces(person));
                     } else {
-                        if (person.date_deces !== "01/01/1901") {
-                            detailsList.appendChild(detailDeces(person));
-                        } else {
-                            detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
-                        }
+                        detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
                     }
                 }
                
@@ -224,19 +217,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Charger le commentaire
                 if (person.commentaire) {
-                    const commentaireItem = document.createElement('li');
-                    commentaireItem.classList.add('list');
+                    const commentaireItem = document.createElement('p');
+                    commentaireItem.classList.add('afficheDetail');
                     commentaireItem.textContent = `Notes : ${person.commentaire}`;
                     commentaireItem.classList.add('smaller');
                     detailsList.appendChild(commentaireItem);
                 }
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
+                    const arbrePersoItem = document.createElement('p');
+                    arbrePersoItem.classList.add('afficheDetail');
                     const lienArbrePerso = document.createElement('a');
                     lienArbrePerso.textContent = CreerLienArbrePerso(person.prenom);
                     lienArbrePerso.href = `arbrePerso.html?id=${person.id}`;
                     lienArbrePerso.classList.add('labelArbre' );
-                    const arbrePersoItem = document.createElement('div'); 
                     arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
                 }
@@ -292,7 +286,10 @@ function detailDeces(person) {
     const dateValide = verifieDate(person.date_deces);
     const adjectif_genre = ajouterE("Décédé", person.genre);
     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-    if (ageDeces <= 5) {
+    if (ageDeces = 0) {
+        return
+    }
+    else if (ageDeces > 0 && ageDeces <= 5) {
         if (person.lieu_deces === "Inconnu") {
             return creerDateDecesItem(`${adjectif_genre} ${dateValide}`);
         } else {
