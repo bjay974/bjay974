@@ -84,6 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         weddingDateItem.appendChild(document.createTextNode(' à '));
                         weddingDateItem.appendChild(creerPersonLink(conjoint));
                         weddingDateItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
+                        weddingDateItem.classList.add('list');
                     }
                     detailsList.appendChild(weddingDateItem);
                     detailsList.appendChild(document.createElement('br'));
@@ -95,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
                         conjointItem.appendChild(creerPersonLink(conjoint));
                         conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
+                        conjointItem.classList.add('list');
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br'));
                     }
@@ -119,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     parentItem = document.createElement('li');
+                    parentItem.classList.add('list');
                     if (person.id_pere === "inconnu") {
                         parentItem.appendChild(document.createTextNode('De père inconnu'));
                     } else {
@@ -127,7 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem.appendChild(document.createTextNode(textParent));
                             parentItem.appendChild(creerPersonLink(father));
-                            parentItem.classList.add('lienHomme')
+                            parentItem.classList.add('lienHomme');
                         }
                     }
                 }
@@ -151,7 +154,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             } else {
                                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                                 parentItem = document.createElement('li');
-                                parentItem.classList.add('list');
                                 parentItem.appendChild(document.createTextNode(textParent));
                                 parentItem.appendChild(creerPersonLink(mother));
                                 parentItem.classList.add('lienFemme')
@@ -176,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
                     const childrenOfPersonUl = document.createElement('ul');
+                    childrenOfPersonUl.classList.add('list');
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');

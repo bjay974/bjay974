@@ -1,6 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     var audioPlayer = document.getElementById('audioPlayer');
-    audioPlayer.volume = 0.5; // Réglez le volume initial (0 à 1)
+    audioPlayer.volume = 0.8;
+    // start de la musique( en secondes)
+    var startTime = 18;
+    
+    // Lance la musique 
+    audioPlayer.addEventListener('loadedmetadata', function() {
+        audioPlayer.currentTime = startTime;
+    });
 
-    // Vous pouvez ajouter d'autres fonctionnalités JavaScript ici, par exemple contrôler le lecteur audio avec des boutons.
+    // lancement auto
+    audioPlayer.play();
+
 });
