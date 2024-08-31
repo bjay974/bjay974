@@ -31,18 +31,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 
                 // Ajouter le lieu et la date de naissance
-                const birthDateItem = document.createElement('p');
+                const birthDateItem = document.createElement('span');
                 birthDateItem.classList.add('afficheDetail');
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateValide = verifieDate(person.date_naissance);
                 const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
                 birthDateItem.textContent = `${adjectif_genre} ${dateValide} ${lieuNaissance}`;     
                 detailsList.appendChild(birthDateItem);
-                detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                detailsList.appendChild(document.createElement('br')); 
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
-                    const legDateItem = document.createElement('p');
+                    const legDateItem = document.createElement('span');
                     legDateItem.classList.add('afficheDetail');
                     const dateValide = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
@@ -50,11 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
                     legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide}`;
                     detailsList.appendChild(legDateItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    detailsList.appendChild(document.createElement('br')); 
                 }
 
                 if (!person.date_deces) {
                     detailsList.appendChild(getAgeActuel(person));
+                    detailsList.appendChild(document.createElement('br'));
                 } else {
                     if (person.date_naissance !== "01/01/1901") {
                         if (person.date_deces !== "01/01/1901") {
@@ -69,14 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
                             detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
                         }
                     }
+                    detailsList.appendChild(document.createElement('br'));
                 }
-                
-                // Ajout d'un espace après chaque item
-                detailsList.appendChild(document.createElement('br'));
+               
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
-                    const infoConjoint = document.createElement('p');
+                    const infoConjoint = document.createElement('span');
                     infoConjoint.classList.add('afficheDetail');
                     const NomConjoint = creerPersonLink(conjoint); 
                     let texteConjoint 
@@ -93,17 +93,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(infoConjoint);
                     detailsList.appendChild(document.createElement('br'));
                 }
-                
-            
+           
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
-                    const affranchiDateItem = document.createElement('p');
+                    const affranchiDateItem = document.createElement('span');
                     affranchiDateItem.classList.add('afficheDetailx');
                     const dateValide = verifieDate(person.date_affranchi) 
                     const adjectif_genre = ajouterE("Affranchi", person.genre)
                     affranchiDateItem.textContent = `${adjectif_genre} ${dateValide}`;
                     detailsList.appendChild(affranchiDateItem);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    detailsList.appendChild(document.createElement('br')); 
                 }
 
                 // Initialisation des variables father et mother
@@ -113,21 +112,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 let parentItem = null;
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    parentItem = document.createElement('p');
+                    parentItem = document.createElement('span');
                     parentItem.classList.add('afficheDetail');
                     if (person.id_pere === "inconnu") {
-                        textParent = " et de mère inconnue"
+                        textParent = "De pére inconnu"
+                        parentItem.appendChild(document.createTextNode(textParent));  
                      } else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                            parentItem.appendChild(document.createTextNode(textParent));    
                             parentItem.appendChild(creerPersonLink(father));
                             parentItem.classList.add('lienHomme');
                         }
                     }
-                    parentItem.appendChild(document.createTextNode(textParent));
                 }
-
                 // Charger la mère si l'ID de la mère est défini
                 if (person.id_mere) {
                     if (person.id_mere === "inconnue") {
@@ -138,8 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             parentItem.classList.add('afficheDetail');
                             textParent = "Mèreinconnue"
                         }
-                        parentItem.appendChild(document.createTextNode(textParent));
-                        parentItem.appendChild(creerPersonLink(mother));
                     } else {
                         mother = data.find(p => p.id === person.id_mere);
                         if (mother) {
@@ -151,17 +148,17 @@ document.addEventListener('DOMContentLoaded', () => {
                                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             }
                         parentItem.classList.add('lienFemme')
-                        parentItem.appendChild(document.createTextNode(textParent));
-                        parentItem.appendChild(creerPersonLink(mother));
                         }
                     }
+                    parentItem.appendChild(document.createTextNode(textParent));
+                    parentItem.appendChild(creerPersonLink(mother));    
                 }
                 // Ajouter l'élément parentItem à la liste des détails si parentItem n'est pas null
                 if (parentItem) {
                     detailsList.appendChild(parentItem);
+                    detailsList.appendChild(document.createElement('br'));
                 }
-                // Ajouter un espace après le dernier item
-                detailsList.appendChild(document.createElement('br'));
+          
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
                 const childrenOfPerson = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
                 if (childrenOfPerson.length > 0) {
@@ -188,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     childrenOfPersonUl.appendChild(fragment);
                     childrenOfPersonList.appendChild(childrenOfPersonUl);
                     detailsList.appendChild(childrenOfPersonList);
-                    detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                    detailsList.appendChild(document.createElement('br'));
                 }
 
                 // Récupérer les frères et sœurs de la personne
@@ -225,7 +222,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         fratriesUl.appendChild(fragment);
                         fratriesList.appendChild(fratriesUl);
                         detailsList.appendChild(fratriesList);
-                        detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
+                        detailsList.appendChild(document.createElement('br')); 
                     }
                 }
 
