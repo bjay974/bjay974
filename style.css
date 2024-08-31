@@ -365,11 +365,24 @@ afficheDetail  {
     }
 
     .list {
-        display: flex;
+        display: grid;
         grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
         margin-right: 0;
     }
 
+    .homlist, .femlist {
+        align-items: left;
+        padding: 1%;
+        margin : 1%;
+    }
+    
+    .homlist {
+        grid-column: 1;
+    }
+    
+    .femlist {
+        grid-column: 2;
+    }
     .soustitre, .soustitreM, .soustitreF, .soustitreArbre {
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
         padding: 5px 5px 5px 10px;
