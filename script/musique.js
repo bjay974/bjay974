@@ -1,15 +1,14 @@
 document.addEventListener('DOMContentLoaded', function() {
     var audio = document.getElementById('audioPlayer');
-    audioPlayer.volume = 0.8;
-    // start de la musique( en secondes)
+    audio.volume = 0.8;  // Ajuster le volume
+
+    // Définir le temps de départ en secondes
     var startTime = 18;
     
-    // Lance la musique 
+    // Lancer la musique à la position startTime
     audio.addEventListener('loadedmetadata', function() {
-        audioPlayer.currentTime = startTime;
+        audio.currentTime = startTime;  // Positionner à 18 secondes
+        audio.play();  // Démarrer la lecture
     });
-
-    // lancement auto
-    audio.play();
 });
 
