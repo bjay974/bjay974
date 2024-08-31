@@ -86,13 +86,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                         const adjectif_genre = ajouterE("Marié", person.genre);
                         infoConjoint.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
-                        infoConjoint.appendChild(document.createTextNode(' à '));
-                        infoConjoint.appendChild(document.createTextNode(NomConjoint));
-
+                        infoConjoint.appendChild(document.createTextNode(' à ' + NomConjoint ));
                     } else {
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
-                        infoConjoint.appendChild(document.createTextNode(texteConjoint));
-                        infoConjoint.appendChild(document.createTextNode(NomConjoint));
+                        infoConjoint.appendChild(document.createTextNode(texteConjoint + NomConjoint));
                     }
                     detailsList.appendChild(infoConjoint);
                     detailsList.appendChild(document.createElement('br'));
