@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     infoConjoint.classList.add('list');
                     const NomConjoint = creerPersonLink(conjoint); 
                     NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                    const texteConjoint = document.createElement('span');
+                    let texteConjoint;
                     if (person.date_mariage) {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                         const adjectif_genre = ajouterE("Marié", person.genre);
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                     }
                     const spanTextNode = document.createElement('span');
-                    infoConjoint.appendChild(texteConjoint);
+                    spanTextNode.textContent = texteConjoint;
                     infoConjoint.appendChild(NomConjoint); 
                     // Ajouter l'élément <li> à la liste des détails
                     detailsList.appendChild(infoConjoint);
