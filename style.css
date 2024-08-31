@@ -232,7 +232,6 @@ footer {
     margin-top: 10%; 
     grid-area: colonne5;
     margin-right: 2%;
-    font-size: var(--font-size-small);
 }
 
 .petitenfant .parent-info {
