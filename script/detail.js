@@ -75,37 +75,29 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br'));
 
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
-                if (person.date_mariage) {
-                    const infoMariage = document.createElement('li');
-                    const ageMariage = diffAge(person.date_mariage, person.date_naissance);
-                    const adjectif_genre = ajouterE("Marié", person.genre);
-                    infoMariage.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
+                if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
-                    if (conjoint) {
-                        const NomConjoint = document.createElement('a');
-                        NomConjoint.appendChild(document.createTextNode(' à '));
-                        NomConjoint.appendChild(creerPersonLink(conjoint));
-                        NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                        NomConjoint.classList.add('list');
-                        infoMariage.appendChild(NomConjoint);
-                    }
-                    detailsList.appendChild(infoMariage);
-                    detailsList.appendChild(document.createElement('br'));
-                } else if (person.id_conjoint) {
-                    const conjoint = data.find(p => p.id === person.id_conjoint);
-                    if (conjoint) {
-                        const infoConjoint = document.createElement('li');
-                        const NomConjoint = document.createElement('a');
+                    const infoConjoint = document.createElement('li');
+                    infoConjoint.classList.add('list');
+                    const NomConjoint = creerPersonLink(conjoint);  
+                    NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
+                    NomConjoint.classList.add('list');  
+                    if (person.date_mariage) {
+                        const ageMariage = diffAge(person.date_mariage, person.date_naissance);
+                        const adjectif_genre = ajouterE("Marié", person.genre);
+                        infoConjoint.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
+                        infoConjoint.appendChild(document.createTextNode(' à '));
+                        infoConjoint.appendChild(document.createTextNode(NomConjoint));
+
+                    } else {
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         infoConjoint.appendChild(document.createTextNode(texteConjoint));
-                        NomConjoint.appendChild(creerPersonLink(conjoint));
-                        NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                        NomConjoint.classList.add('list');
-                        detailsList.appendChild(NomConjoint);
-                        detailsList.appendChild(document.createElement('br'));
+                        infoConjoint.appendChild(document.createTextNode(NomConjoint));
                     }
+                    detailsList.appendChild(infoConjoint);
+                    detailsList.appendChild(document.createElement('br'));
                 }
-                
+            
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
                     const affranchiDateItem = document.createElement('li');
