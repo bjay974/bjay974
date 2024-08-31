@@ -118,7 +118,6 @@ footer {
     display: grid;
     text-align: left; 
     list-style-type: none; 
-    font-size: var(--font-size-small);
 }
 
 .homlist {
@@ -160,8 +159,9 @@ footer {
 }
 
 .label {
-   margin : 0px; 
-   padding-bottom: 1%;   color:var(--color-light);
+   margin : 1%; 
+   padding : 1%; 
+   color:var(--color-light);
    font-style: italic;
 }
 
@@ -169,9 +169,8 @@ footer {
     color:var(--color-green);
     text-decoration: none;
     font-style: italic;
-    padding-left: 10px;
-    margin-left: 10px;
-    margin-top: 10px;
+    padding : 1%;
+    margin: 1%;
     font-size: var(--font-size-small);
     text-align: left;
     font-weight: bold;

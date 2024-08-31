@@ -43,7 +43,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
                     const legDateItem = document.createElement('li');
-                    legDateItem.classList.add('list');
                     const dateVerified = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
@@ -80,7 +79,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                     const adjectif_genre = ajouterE("Marié", person.genre);
                     weddingDateItem.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
-                    weddingDateItem.classList.add('list');
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     if (conjoint) {
                         weddingDateItem.appendChild(document.createTextNode(' à '));
@@ -96,7 +94,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                         conjointItem.appendChild(document.createTextNode(texteConjoint));
                         conjointItem.appendChild(creerPersonLink(conjoint));
-                        conjointItem.classList.add('list');
                         conjointItem.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                         detailsList.appendChild(conjointItem);
                         detailsList.appendChild(document.createElement('br'));
@@ -122,7 +119,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
                     parentItem = document.createElement('li');
-                    parentItem.classList.add('list');
                     if (person.id_pere === "inconnu") {
                         parentItem.appendChild(document.createTextNode('De père inconnu'));
                     } else {
@@ -143,7 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             parentItem.appendChild(document.createTextNode(' et de mère inconnue'));
                         } else {
                             parentItem = document.createElement('li');
-                            parentItem.classList.add('list');
                             parentItem.appendChild(document.createTextNode('Mère inconnue'));
                         }
                     } else {
@@ -183,12 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     const childrenOfPersonUl = document.createElement('ul');
                     childrenOfPerson.forEach(child => {
                         const childItem = document.createElement('li');
-                        childItem.classList.add('list');
                         const nomLink = document.createElement('a');
                         const nomPers = child.nom_legitime || child.nom;    
                         nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
                         nomLink.classList.add(child.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'); 
+                        nomLink.classList.add('smaller');
                         childItem.appendChild(nomLink);
                         fragment.appendChild(childItem);
                     });
@@ -219,7 +214,6 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fratriesUl = document.createElement('ul');
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
-                            fratriesList.classList.add('list');
                             const nomLink = document.createElement('a');
                             const nomPers = fratrie.nom_legitime || fratrie.nom;
                             nomLink.href = fratrie.id < 2000 ? `person.html?id=${fratrie.id}` : '#';
