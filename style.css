@@ -476,8 +476,8 @@ input[type="text"]:focus, textarea:focus {
         display: none; /* Exemple : cacher certains éléments */
     }
     input[type="text"], textarea {
-        width: 10%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
-        padding: 10px; /* Ajoute de l'espace interne */
+        width: 50%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+        padding: 2%; /* Ajoute de l'espace interne */
         margin: 1px 1px; /* Espace entre les éléments */
         box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
         border: 2px solid #ccc; /* Bordure gris clair */
