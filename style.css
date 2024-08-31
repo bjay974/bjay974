@@ -174,10 +174,9 @@ afficheDetail  {
     font-style: italic;
     padding : 1%;
     margin: 1%;
-    font-size: var(--font-size-small);
     text-align: left;
-    font-weight: bold;
  }
+
 .container1 .male:first-child { margin-top: 5%}
 .container2 .male:first-child { margin-top: 15%}
 .container3 .male:first-child { margin-top: 25%}
@@ -360,10 +359,6 @@ afficheDetail  {
     .soustitre, .soustitreM, .soustitreF, .soustitreArbre {
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
         padding: 5px 5px 5px 10px;
-    }
-
-    .labelArbre {
-        font-size: 0.7rem; /* Réduit la taille des labels */
     }
 
     .personne, .parent, .grandparent, .enfant, .petitenfant {

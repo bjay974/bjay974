@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (person.date_deces !== "01/01/1901") {
                         detailsList.appendChild(detailDeces(person));
                     } else {
-                        detailsList.appendChild(creerDateDecesItem('Date de décès inconnue'));
+                        detailsList.appendChild(creerDecesItem('Date de décès inconnue'));
                     }
                 }
                
@@ -266,11 +266,11 @@ function CreerLienArbrePerso(prenom) {
         : `Aperçu de l'arbre de ${prenom}`;
 }
 
-function creerDateDecesItem(text) {
-    const deathDateItem = document.createElement('li');
-    deathDateItem.textContent = text;
-    deathDateItem.classList.add('list')
-    return deathDateItem;
+function creerDecesItem(text) {
+    const decesItem = document.createElement('p');
+    decesItem.textContent = text;
+    decesItem.classList.add('afficheDetail')
+    return decesItem;
 }
 
 function getAgeActuel(person) {
@@ -286,20 +286,20 @@ function detailDeces(person) {
     const dateValide = verifieDate(person.date_deces);
     const adjectif_genre = ajouterE("Décédé", person.genre);
     const ageDeces = diffAge(person.date_deces, person.date_naissance);
-    if (ageDeces = 0) {
+    if (person.date_naissance = "01/01/1901") {
         return
     }
-    else if (ageDeces > 0 && ageDeces <= 5) {
+    if (ageDeces <= 5) {
         if (person.lieu_deces === "Inconnu") {
-            return creerDateDecesItem(`${adjectif_genre} ${dateValide}`);
+            return creerDecesItem(`${adjectif_genre} ${dateValide}`);
         } else {
-            return creerDateDecesItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
+            return creerDecesItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
         }
     } else {
         if (person.lieu_deces === "Inconnu") {
-            return creerDateDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
+            return creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
         } else {
-            return creerDateDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
+            return creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
         }
     }
 }
