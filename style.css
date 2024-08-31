@@ -113,6 +113,9 @@ footer {
     padding: 5px 0px 5px 30px;
     text-decoration: none;
 }
+afficheDetail  {
+    text-align: left; 
+}
 
 .list {
     display: grid;

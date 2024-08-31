@@ -31,8 +31,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 
                 // Ajouter le lieu et la date de naissance
-                const birthDateItem = document.createElement('li');
-                birthDateItem.classList.add('list');
+                const birthDateItem = document.createElement('p');
+                birthDateItem.classList.add('afficheDetail');
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateValide = verifieDate(person.date_naissance);
                 const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
@@ -42,8 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
-                    const legDateItem = document.createElement('li');
-                    legDateItem.classList.add('list');
+                    const legDateItem = document.createElement('p');
+                    legDateItem.classList.add('afficheDetail');
                     const dateValide = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
-                    const infoConjoint = document.createElement('li');
-                    infoConjoint.classList.add('list');
+                    const infoConjoint = document.createElement('p');
+                    infoConjoint.classList.add('afficheDetail');
                     const NomConjoint = creerPersonLink(conjoint); 
                     let texteConjoint 
                     NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
@@ -97,8 +97,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
-                    const affranchiDateItem = document.createElement('li');
-                    affranchiDateItem.classList.add('list');
+                    const affranchiDateItem = document.createElement('p');
+                    affranchiDateItem.classList.add('afficheDetailx');
                     const dateValide = verifieDate(person.date_affranchi) 
                     const adjectif_genre = ajouterE("Affranchi", person.genre)
                     affranchiDateItem.textContent = `${adjectif_genre} ${dateValide}`;
@@ -113,44 +113,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 let parentItem = null;
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    parentItem = document.createElement('li');
-                    parentItem.classList.add('list');
+                    parentItem = document.createElement('p');
+                    parentItem.classList.add('afficheDetail');
                     if (person.id_pere === "inconnu") {
-                        parentItem.appendChild(document.createTextNode('De père inconnu'));
-                    } else {
+                        textParent = " et de mère inconnue"
+                     } else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
-                            parentItem.appendChild(document.createTextNode(textParent));
                             parentItem.appendChild(creerPersonLink(father));
                             parentItem.classList.add('lienHomme');
                         }
                     }
+                    parentItem.appendChild(document.createTextNode(textParent));
                 }
 
                 // Charger la mère si l'ID de la mère est défini
                 if (person.id_mere) {
                     if (person.id_mere === "inconnue") {
                         if (parentItem) {
-                            parentItem.appendChild(document.createTextNode(' et de mère inconnue'));
+                            textParent = " et de mère inconnue"
                         } else {
-                            parentItem = document.createElement('li');
-                            parentItem.appendChild(document.createTextNode('Mère inconnue'));
+                            parentItem = document.createElement('p');
+                            parentItem.classList.add('afficheDetail');
+                            textParent = "Mèreinconnue"
                         }
+                        parentItem.appendChild(document.createTextNode(textParent));
+                        parentItem.appendChild(creerPersonLink(mother));
                     } else {
                         mother = data.find(p => p.id === person.id_mere);
                         if (mother) {
                             if (parentItem) {
-                                parentItem.appendChild(document.createTextNode(' et de '));
-                                parentItem.appendChild(creerPersonLink(mother));
-                                parentItem.classList.add('lienFemme')
+                                textParent = " et de "
                             } else {
+                                parentItem = document.createElement('p');
+                                parentItem.classList.add('afficheDetail');
                                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
-                                parentItem = document.createElement('li');
-                                parentItem.appendChild(document.createTextNode(textParent));
-                                parentItem.appendChild(creerPersonLink(mother));
-                                parentItem.classList.add('lienFemme')
                             }
+                        parentItem.classList.add('lienFemme')
+                        parentItem.appendChild(document.createTextNode(textParent));
+                        parentItem.appendChild(creerPersonLink(mother));
                         }
                     }
                 }
