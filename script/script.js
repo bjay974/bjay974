@@ -39,11 +39,18 @@ fetch('data.json')
 
     // Création des éléments de liste pour chaque catégorie
     const homPatList = document.getElementById('hom-list-pat');
+    homPatList.classList.add(homlist);
     const femPatList = document.getElementById('fem-list-pat');
+    femPatList.classList.add(femlist);
     const homMatList = document.getElementById('hom-list-mat');
+    homMatList.classList.add(homlist);
     const femMatList = document.getElementById('fem-list-mat');
+    femPatList.classList.add(femlist);
     const homFamList = document.getElementById('hom-list');
+    homFamList.classList.add(homlist);
     const femFamList = document.getElementById('fem-list');
+    femPatList.classList.add(femlist);
+
 
     // Affichage des membres pour chaque catégorie
     afficheMembres(homPatList, 'Boug coté papa', homPat);
@@ -85,7 +92,6 @@ function ajoutMembresListe(listElement, persons) {
 // Ajoute un membre a la liste
 function creerListItem(person) {
   const li = document.createElement('li');
-  li.className = person.genre === 'M' ? 'homlist' : 'femlist';
   li.innerHTML = `
       <a href="${person.id < 2000 ? 'person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
           ${person.nom} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
