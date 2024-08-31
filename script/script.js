@@ -39,18 +39,11 @@ fetch('data.json')
 
     // Création des éléments de liste pour chaque catégorie
     const homPatList = document.getElementById('hom-list-pat');
-    homPatList.classList.add('homlist');
     const femPatList = document.getElementById('fem-list-pat');
-    femPatList.classList.add('femlist');
     const homMatList = document.getElementById('hom-list-mat');
-    homMatList.classList.add('homlist');
     const femMatList = document.getElementById('fem-list-mat');
-    femPatList.classList.add('femlist');
     const homFamList = document.getElementById('hom-list');
-    homFamList.classList.add('homlist');
     const femFamList = document.getElementById('fem-list');
-    femPatList.classList.add('femlist');
-
 
     // Affichage des membres pour chaque catégorie
     afficheMembres(homPatList, 'Boug coté papa', homPat);
@@ -98,6 +91,7 @@ function creerListItem(person) {
           <em>${getOrigine(person.lieu_naissance)} ${creerGeneration(person)}</em>
       </a>
   `;
+
   return li;
 }
 
@@ -121,11 +115,11 @@ function creerGeneration(person) {
 }
 
 function creerAn(date) {
-  const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
-  if (year === 1901) {
-    return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
-  }
-  return year;
+    const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
+    if (year === 1901) {
+      return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
+    }
+    return year;
 }
 
 function getOrigine(lieuDeNaissance) {
