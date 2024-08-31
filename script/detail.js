@@ -34,9 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 const birthDateItem = document.createElement('li');
                 birthDateItem.classList.add('list');
                 const adjectif_genre = ajouterE("Né", person.genre);
-                const dateVerified = verifieDate(person.date_naissance);
+                const dateValide = verifieDate(person.date_naissance);
                 const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
-                birthDateItem.textContent = `${adjectif_genre} ${dateVerified} ${lieuNaissance}`;     
+                birthDateItem.textContent = `${adjectif_genre} ${dateValide} ${lieuNaissance}`;     
                 detailsList.appendChild(birthDateItem);
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
 
@@ -44,11 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_legitime) {
                     const legDateItem = document.createElement('li');
                     legDateItem.classList.add('list');
-                    const dateVerified = verifieDate(person.date_legitime);
+                    const dateValide = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
                     const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
-                    legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateVerified}`;
+                    legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide}`;
                     detailsList.appendChild(legDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
@@ -110,9 +110,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.date_affranchi) {
                     const affranchiDateItem = document.createElement('li');
                     affranchiDateItem.classList.add('list');
-                    const dateVerified = verifieDate(person.date_affranchi) 
+                    const dateValide = verifieDate(person.date_affranchi) 
                     const adjectif_genre = ajouterE("Affranchi", person.genre)
-                    affranchiDateItem.textContent = `${adjectif_genre} ${dateVerified}`;
+                    affranchiDateItem.textContent = `${adjectif_genre} ${dateValide}`;
                     detailsList.appendChild(affranchiDateItem);
                     detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 }
@@ -309,20 +309,20 @@ function getAgeActuel(person) {
 }
 
 function handleDeathDetails(person) {
-    const dateVerified = verifieDate(person.date_deces);
+    const dateValide = verifieDate(person.date_deces);
     const adjectif_genre = ajouterE("Décédé", person.genre);
     const ageDeces = diffAge(person.date_deces, person.date_naissance);
     if (ageDeces <= 5) {
         if (person.lieu_deces === "Inconnu") {
-            return creerDateDecesItem(`${adjectif_genre} ${dateVerified}`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateValide}`);
         } else {
-            return creerDateDecesItem(`${adjectif_genre} ${dateVerified} à ${person.lieu_deces}`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
         }
     } else {
         if (person.lieu_deces === "Inconnu") {
-            return creerDateDecesItem(`${adjectif_genre} ${dateVerified} à ${ageDeces} ans`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
         } else {
-            return creerDateDecesItem(`${adjectif_genre} ${dateVerified} à ${ageDeces} ans à ${person.lieu_deces}`);
+            return creerDateDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
         }
     }
 }
