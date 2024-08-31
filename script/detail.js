@@ -59,7 +59,26 @@ document.addEventListener('DOMContentLoaded', () => {
                     detailsList.appendChild(ageActuel);
                 } else {
                     if (person.date_deces !== "01/01/1901") {
-                        detailsList.appendChild(detailDeces(person));
+                        if (person.date_naissance !== "01/01/1901") {
+                            const dateValide = verifieDate(person.date_deces);
+                            const adjectif_genre = ajouterE("Décédé", person.genre);
+                            const ageDeces = diffAge(person.date_deces, person.date_naissance);
+                            let decesItem
+                            if (ageDeces <= 5) {
+                                if (person.lieu_deces === "Inconnu") {
+                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide}`);
+                                } else {
+                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
+                                }
+                            } else {
+                                if (person.lieu_deces === "Inconnu") {
+                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
+                                } else {
+                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
+                                }
+                            }
+                            detailsList.appendChild(decesItem)
+                        }
                     } else {
                         detailsList.appendChild(creerDecesItem('Date de décès inconnue'));
                     }
@@ -283,25 +302,7 @@ function getAgeActuel(person) {
 }
 
 function detailDeces(person) {
-    const dateValide = verifieDate(person.date_deces);
-    const adjectif_genre = ajouterE("Décédé", person.genre);
-    const ageDeces = diffAge(person.date_deces, person.date_naissance);
-    if (person.date_naissance = "01/01/1901") {
-        return
-    }
-    if (ageDeces <= 5) {
-        if (person.lieu_deces === "Inconnu") {
-            return creerDecesItem(`${adjectif_genre} ${dateValide}`);
-        } else {
-            return creerDecesItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
-        }
-    } else {
-        if (person.lieu_deces === "Inconnu") {
-            return creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
-        } else {
-            return creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
-        }
-    }
+
 }
 
 function diffAge(date1, date2) {   

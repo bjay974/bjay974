@@ -39,17 +39,17 @@ fetch('data.json')
 
     // Création des éléments de liste pour chaque catégorie
     const homPatList = document.getElementById('hom-list-pat');
-    homPatList.classList.add(homlist);
+    homPatList.classList.add('homlist');
     const femPatList = document.getElementById('fem-list-pat');
-    femPatList.classList.add(femlist);
+    femPatList.classList.add('femlist');
     const homMatList = document.getElementById('hom-list-mat');
-    homMatList.classList.add(homlist);
+    homMatList.classList.add('homlist');
     const femMatList = document.getElementById('fem-list-mat');
-    femPatList.classList.add(femlist);
+    femPatList.classList.add('femlist');
     const homFamList = document.getElementById('hom-list');
-    homFamList.classList.add(homlist);
+    homFamList.classList.add('homlist');
     const femFamList = document.getElementById('fem-list');
-    femPatList.classList.add(femlist);
+    femPatList.classList.add('femlist');
 
 
     // Affichage des membres pour chaque catégorie
