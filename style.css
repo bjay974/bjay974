@@ -341,13 +341,12 @@ input[type="submit"]:hover {
 
 input[type="text"], textarea {
     width: 25%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
-    padding: 15px; /* Ajoute de l'espace interne */
+    padding: 10px; /* Ajoute de l'espace interne */
     margin: 10px 10px; /* Espace entre les éléments */
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
     border: 2px solid #ccc; /* Bordure gris clair */
     border-radius: 5px; /* Bordure arrondie */
     background-color: var(--color-font-blanc); /* Couleur de fond */
-    font-size: 16px; /* Taille de la police */
     color: var(--color-primary); /* Couleur du texte */
 }
 
