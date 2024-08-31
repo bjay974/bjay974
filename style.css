@@ -86,7 +86,7 @@ footer {
     color: var(--color-secondary);
     margin-top: 10px;
     margin-bottom: 5px;
-    width: 90%;
+    width: 95%;
     font-style: italic;
     font-weight: bold; 
     padding: 5px 5px 5px 20px;
@@ -118,19 +118,25 @@ afficheDetail  {
 }
 
 .list {
-    display: grid;
+    display: flex;
     text-align: left; 
     list-style-type: none; 
+    flex-direction: column;
+    align-items: flex-start; 
 }
 
 .homlist {
+    display: flex;
     padding: 1%;
     grid-column: 1;
+    align-items: left;
 }
 
 .femlist {
+    display: flex;
     padding: 1%;
     grid-column: 2;
+    align-items: left;
 }
 
 .grid-container {
@@ -323,6 +329,7 @@ afficheDetail  {
     }
 
     .list {
+        display: flex;
         grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
         margin-right: 0;
     }
@@ -352,6 +359,7 @@ afficheDetail  {
     }
 
     .list {
+        display: flex;
         grid-template-columns: 1fr; /* Passe à une colonne pour les listes */
         margin-right: 0;
     }
