@@ -36,19 +36,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateValide = verifieDate(person.date_naissance);
                 const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
-                birthDateItem.textContent = `${adjectif_genre} ${dateValide} ${lieuNaissance}`;     
+                birthDateItem.textContent = `${adjectif_genre} ${dateValide} ${lieuNaissance} '.'`;     
                 detailsList.appendChild(birthDateItem);
                 detailsList.appendChild(document.createElement('br')); 
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
-                    const legDateItem = document.createElement('span');
+                    const legDateItem = document.createElement('p');
                     legDateItem.classList.add('afficheDetail');
                     const dateValide = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienHommeEnGras" : "lienFemmeEnGras";
                     const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
-                    legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide}`;
+                    legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide} '.'`;
                     detailsList.appendChild(legDateItem);
                     detailsList.appendChild(document.createElement('br')); 
                 }
@@ -76,11 +76,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
-                    const infoConjoint = document.createElement('span');
+                    const infoConjoint = document.createElement('p');
                     infoConjoint.classList.add('afficheDetail');
-                    const NomConjoint = creerPersonLink(conjoint); 
+                    const nomConjoint = creerPersonLink(conjoint); 
                     let texteConjoint 
-                    NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
+                    nomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                     if (person.date_mariage) {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                         const adjectif_genre = ajouterE("Marié", person.genre);
@@ -89,14 +89,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                     }
                     infoConjoint.appendChild(document.createTextNode(texteConjoint));
-                    infoConjoint.appendChild(NomConjoint); 
+                    infoConjoint.appendChild(nomConjoint); 
                     detailsList.appendChild(infoConjoint);
                     detailsList.appendChild(document.createElement('br'));
                 }
            
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
-                    const affranchiDateItem = document.createElement('span');
+                    const affranchiDateItem = document.createElement('p');
                     affranchiDateItem.classList.add('afficheDetailx');
                     const dateValide = verifieDate(person.date_affranchi) 
                     const adjectif_genre = ajouterE("Affranchi", person.genre)
@@ -108,22 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Initialisation des variables father et mother
                 let father, mother;
                 let textParent = "";
-                // Initialisation de la variable pour l'élément de liste temporaire
                 let parentItem = null;
+                let pereItem
+                let mereItem
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    parentItem = document.createElement('span');
+                    parentItem = document.createElement('p');
                     parentItem.classList.add('afficheDetail');
                     if (person.id_pere === "inconnu") {
                         textParent = "De pére inconnu"
                         parentItem.appendChild(document.createTextNode(textParent));  
-                     } else {
+                    } else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem.appendChild(document.createTextNode(textParent));    
-                            parentItem.appendChild(creerPersonLink(father));
-                            parentItem.classList.add('lienHomme');
+                            nomPere.appendChild(creerPersonLink(father));
+                            nomPere.classList.add('lienHomme');
+                            parentItem.appendChild(nomPere); 
                         }
                     }
                 }
@@ -135,8 +137,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         } else {
                             parentItem = document.createElement('p');
                             parentItem.classList.add('afficheDetail');
-                            textParent = "Mèreinconnue"
+                            textParent = "Mère inconnue"
                         }
+                        parentItem.appendChild(document.createTextNode(textParent)); 
                     } else {
                         mother = data.find(p => p.id === person.id_mere);
                         if (mother) {
@@ -147,11 +150,12 @@ document.addEventListener('DOMContentLoaded', () => {
                                 parentItem.classList.add('afficheDetail');
                                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             }
-                        parentItem.classList.add('lienFemme')
                         }
+                        parentItem.appendChild(document.createTextNode(textParent)); 
+                        const nomMere= appendChild(creerPersonLink(mother));
+                        nomMere.classList.add('lienFemme');
+                        parentItem.appendChild(nomMere);         
                     }
-                    parentItem.appendChild(document.createTextNode(textParent));
-                    parentItem.appendChild(creerPersonLink(mother));    
                 }
                 // Ajouter l'élément parentItem à la liste des détails si parentItem n'est pas null
                 if (parentItem) {
@@ -164,8 +168,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (childrenOfPerson.length > 0) {
                     childrenOfPerson.sort((a, b) => b.id - a.id);
                     // Créer un élément li pour contenir la liste des enfants
-                    const childrenOfPersonList = document.createElement('li');
-                    childrenOfPersonList.classList.add('list');
+                    const childrenOfPersonList = document.createElement('p');
+                    childrenOfPersonList.classList.add('afficheDetail');
                     childrenOfPersonList.innerHTML = `${childrenOfPerson.length === 1 ? 'Enfant' : 'Enfants'} :`;
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
@@ -202,8 +206,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     if (fratries.length > 0) {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
-                        const fratriesList = document.createElement('li');
-                        fratriesList.classList.add('list');
+                        const fratriesList = document.createElement('p');
+                        fratriesList.classList.add('afficheDetail');
                         fratriesList.innerHTML = `${fratries.length === 1 ? 'Frère ou sœur' : 'Frères et sœurs'} :`;
                         const fragment = document.createDocumentFragment();
                         const fratriesUl = document.createElement('ul');
