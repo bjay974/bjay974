@@ -73,27 +73,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 // Ajout d'un espace après chaque item
                 detailsList.appendChild(document.createElement('br'));
-
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     const infoConjoint = document.createElement('li');
                     infoConjoint.classList.add('list');
                     const NomConjoint = creerPersonLink(conjoint); 
+                    let texteConjoint 
                     NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
-                    let texteConjoint;
                     if (person.date_mariage) {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                         const adjectif_genre = ajouterE("Marié", person.genre);
-                        texteConjoint = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à `;
+                        texteConjoint = `${adjectif_genre} le ${person.date_mariage} (à ${ageMariage} ans) à `;
                     } else {
                         texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                     }
-                    const spanTextNode = document.createElement('span');
-                    spanTextNode.textContent = texteConjoint;
+                    infoConjoint.appendChild(document.createTextNode(texteConjoint));
                     infoConjoint.appendChild(NomConjoint); 
-                    // Ajouter l'élément <li> à la liste des détails
                     detailsList.appendChild(infoConjoint);
+                    detailsList.appendChild(document.createElement('br'));
                 }
                 
             
@@ -212,6 +210,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fratriesUl = document.createElement('ul');
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
+                            fratrieItem.classList.add('list');
                             const nomLink = document.createElement('a');
                             const nomPers = fratrie.nom_legitime || fratrie.nom;
                             nomLink.href = fratrie.id < 2000 ? `person.html?id=${fratrie.id}` : '#';
