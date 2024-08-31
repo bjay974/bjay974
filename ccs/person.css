@@ -81,8 +81,8 @@
     }
     .bannierePersonM, .bannierePersonF {
         text-align: center;
-        width: 100%;
-        padding: 5px 5px 5px 20px;
+        font-size: 0.8rem; /* Réduit la taille des sous-titres */
+        padding: 5px 5px 5px 10px;
     }
     .smaller{
         font-size: 90%;
