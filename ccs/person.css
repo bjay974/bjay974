@@ -9,7 +9,7 @@
     line-height: 1.2;
 }
 
-.bannierePersonM, .bannierePersonF, {
+.bannierePersonM, .bannierePersonF {
     text-align: left;
     color: var(--color-secondary);
     margin-top: 10px;
