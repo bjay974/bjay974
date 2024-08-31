@@ -265,7 +265,6 @@ function creerPersonLink(person) {
         nomLink.href = `person.html?id=${person.id}`;
     }
     nomLink.innerHTML = `<span><strong>${person.nom}</strong> ${person.prenom}</span>`;
-    nomLink.classList.add ('list');
     return nomLink;
 }
 
