@@ -109,8 +109,17 @@ footer {
     margin-bottom: 1%;
     padding: 1% 0px 1% 5%;
     text-align: left;
-
 }
+
+.soustitreMail {
+    background-color: var(--color-green);
+    color: var(--color-primary);
+    margin-top: 1%;
+    margin-bottom: 1%;
+    padding: 1% 0px 1% 5%;
+    text-align: center;
+}
+
 afficheDetail  {
     text-align: left; 
 }
@@ -398,7 +407,16 @@ input[type="text"]:focus, textarea:focus {
     .femlist {
         grid-column: 2;
     }
-    
+    input[type="text"], textarea {
+        width: 10%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+        padding: 10px; /* Ajoute de l'espace interne */
+        margin: 1px 1px; /* Espace entre les éléments */
+        box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+        border: 2px solid #ccc; /* Bordure gris clair */
+        border-radius: 5px; /* Bordure arrondie */
+        background-color: var(--color-font-blanc); /* Couleur de fond */
+        color: var(--color-primary); /* Couleur du texte */
+    }    
 }
 
 /* Styles pour les petits écrans (mobiles) */
@@ -457,4 +475,14 @@ input[type="text"]:focus, textarea:focus {
     .some-element {
         display: none; /* Exemple : cacher certains éléments */
     }
+    input[type="text"], textarea {
+        width: 10%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+        padding: 10px; /* Ajoute de l'espace interne */
+        margin: 1px 1px; /* Espace entre les éléments */
+        box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+        border: 2px solid #ccc; /* Bordure gris clair */
+        border-radius: 5px; /* Bordure arrondie */
+        background-color: var(--color-font-blanc); /* Couleur de fond */
+        color: var(--color-primary); /* Couleur du texte */
+    } 
 }
