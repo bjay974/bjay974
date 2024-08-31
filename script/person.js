@@ -12,12 +12,13 @@ document.addEventListener('DOMContentLoaded', () => {
             const person = data.find(p => p.id === parseInt(personId));
             const personDetails = document.getElementById('person-details');
             if (person) {
-                const detailsList = document.createElement('ul');
+                const detailsList = document.createElement('li');
+                detailsList.classList.add('listPerson');
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
                 if (person.genre === "M") {
-                    nameItem.classList.add('bannierePersonM' );
+                    nameItem.classList.add('bannierePersonM');
                 }
                 else{
                     nameItem.classList.add('bannierePersonF');
@@ -179,7 +180,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     enfantsList.innerHTML = `${enfants.length === 1 ? 'Enfant' : 'Enfants'} :`;
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
-                    const enfantsUl = document.createElement('ul');
+
+
+
+
+       /*             const enfantsUl = document.createElement('ul');
                     enfantsUl.classList.add('listPerson');
                     enfants.forEach(child => {
                         const childItem = document.createElement('li');
@@ -193,7 +198,25 @@ document.addEventListener('DOMContentLoaded', () => {
                         fragment.appendChild(childItem);
                     });
                     enfantsUl.appendChild(fragment);
-                    enfantsList.appendChild(enfantsUl);
+                    enfantsList.appendChild(enfantsUl);*/
+
+                    enfants.forEach(child => {
+                        const childItem = document.createElement('li');
+                        const nomLink = document.createElement('a');
+                        const nomPers = child.nom_legitime || child.nom;    
+                        nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
+                        nomLink.textContent = `${nomPers} ${child.prenom}`;
+                        nomLink.classList.add(child.genre === 'M' ? 'lienPersonHEnGras' : 'lienPersonFEnGras'); 
+                        nomLink.classList.add('smallerPerson');
+                        childItem.appendChild(nomLink);
+                        fragment.appendChild(childItem);
+                    });
+                    enfantsList.appendChild(fragment);
+
+                    
+
+
+                    
                     detailsList.appendChild(enfantsList);
                 }
 
