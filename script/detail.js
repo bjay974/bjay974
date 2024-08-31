@@ -79,18 +79,19 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     const infoConjoint = document.createElement('li');
                     infoConjoint.classList.add('list');
-                    const NomConjoint = creerPersonLink(conjoint);  
+                    const NomConjoint = creerPersonLink(conjoint); 
+                    let texteConjoint 
                     NomConjoint.classList.add(conjoint.genre === 'M' ? 'lienHomme' : 'lienFemme');
                     NomConjoint.classList.add('list');  
                     if (person.date_mariage) {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                         const adjectif_genre = ajouterE("Marié", person.genre);
-                        infoConjoint.textContent = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage}`;
-                        infoConjoint.appendChild(document.createTextNode(' à ' + NomConjoint ));
+                        texteConjoint = `${adjectif_genre} le ${person.date_mariage} à l'âge de ${ageMariage} ans à ${person.lieu_mariage} à `;
                     } else {
-                        const texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
-                        infoConjoint.appendChild(document.createTextNode(texteConjoint + NomConjoint));
+                        texteConjoint = conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ";
                     }
+                    infoConjoint.appendChild(document.createTextNode(texteConjoint));
+                    infoConjoint.appendChild(NomConjoint); 
                     detailsList.appendChild(infoConjoint);
                     detailsList.appendChild(document.createElement('br'));
                 }
