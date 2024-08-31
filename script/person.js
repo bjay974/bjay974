@@ -180,12 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     enfantsList.innerHTML = `${enfants.length === 1 ? 'Enfant' : 'Enfants'} :`;
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
-
-
-
-
-       /*             const enfantsUl = document.createElement('ul');
-                    enfantsUl.classList.add('listPerson');
                     enfants.forEach(child => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');
@@ -193,30 +187,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
                         nomLink.classList.add(child.genre === 'M' ? 'lienPersonHEnGras' : 'lienPersonFEnGras'); 
-                        nomLink.classList.add('smallerPerson');
-                        childItem.appendChild(nomLink);
-                        fragment.appendChild(childItem);
-                    });
-                    enfantsUl.appendChild(fragment);
-                    enfantsList.appendChild(enfantsUl);*/
-
-                    enfants.forEach(child => {
-                        const childItem = document.createElement('li');
-                        const nomLink = document.createElement('a');
-                        const nomPers = child.nom_legitime || child.nom;    
-                        nomLink.href = child.id < 2000 ? `person.html?id=${child.id}` : '#';
-                        nomLink.textContent = `${nomPers} ${child.prenom}`;
-                        nomLink.classList.add(child.genre === 'M' ? 'lienPersonHEnGras' : 'lienPersonFEnGras'); 
-                        nomLink.classList.add('smallerPerson');
+                        nomLink.classList.add('listEnfant');
                         childItem.appendChild(nomLink);
                         fragment.appendChild(childItem);
                     });
                     enfantsList.appendChild(fragment);
-
-                    
-
-
-                    
                     detailsList.appendChild(enfantsList);
                 }
 
@@ -238,10 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
                         fratriesList.classList.add('affichePerson');
                         fratriesList.innerHTML = `${fratries.length === 1 ? 'Frère ou sœur' : 'Frères et sœurs'} :`;
                         const fragment = document.createDocumentFragment();
-                        const fratriesUl = document.createElement('ul');
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
-                            fratrieItem.classList.add('listPerson');
+                            fratrieItem.classList.add('listFratrie');
                             const nomLink = document.createElement('a');
                             const nomPers = fratrie.nom_legitime || fratrie.nom;
                             nomLink.href = fratrie.id < 2000 ? `person.html?id=${fratrie.id}` : '#';
@@ -251,8 +225,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             fratrieItem.appendChild(nomLink);
                             fragment.appendChild(fratrieItem);
                         });
-                        fratriesUl.appendChild(fragment);
-                        fratriesList.appendChild(fratriesUl);
+                        fratriesList.appendChild(fragment);
                         detailsList.appendChild(fratriesList);
                     }
                 }

@@ -1,4 +1,4 @@
-.listPerson {
+.listPerson, .listEnfant, .listFratrie {
     display: grid;
     text-align: left; 
     flex-direction: column;
@@ -7,6 +7,22 @@
     list-style-type: none; 
     padding-left: 1%;
     line-height: 1.2;
+}
+
+.listPerson {
+    padding-left: 1%;
+    line-height: 1.2;
+}
+
+.listEnfant {
+    line-height: 1.5;
+    margin-right: 2%;
+}
+
+.listFratrie {
+    line-height: 1.2;
+    font-size: 90%;
+    margin-right: 2%;
 }
 
 .bannierePersonM, .bannierePersonF {
@@ -48,9 +64,6 @@
     text-align: left; 
 }
 
-.smaller{
-    font-size: smaller;
-}
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
@@ -66,9 +79,7 @@
         width: 100%;
         padding: 5px 5px 5px 20px;
     }
-    .smaller{
-        font-size: 90%;
-    }
+
 }
 
 /* Styles pour les petits écrans (mobiles) */
@@ -84,7 +95,5 @@
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
         padding: 5px 5px 5px 10px;
     }
-    .smaller{
-        font-size: 90%;
-    }
+
 }
