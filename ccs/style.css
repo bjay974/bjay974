@@ -88,58 +88,6 @@ footer {
    font-style: italic;
 }
 
-
-.personne {
-    padding: 5px;
-    display: flex;
-    grid-area: colonne3;
-    margin-bottom: 1%; 
-    margin-top: 35%; 
-    height: auto;
-    flex-direction: column;
-    box-sizing: border-box; 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.parent, .grandparent, .enfant, .petitenfant  {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 5px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.parent {
-    grid-area: colonne2;
-    margin-top: 10%; 
-}
-
-.grandparent {
-    margin-top: 10%; 
-    margin-left: 1%; 
-    grid-area: colonne1;
-}
-
-.enfant {
-    margin-top: 10%; 
-    grid-area: colonne4;
-
-}
-
-.petitenfant {
-    margin-top: 10%; 
-    grid-area: colonne5;
-    margin-right: 2%;
-}
-
-.petitenfant .parent-info {
-    font-size: var(--font-size-very-small);
-    font-style: italic;
-    margin: 0;
-}
-
 .male, .female {
     min-height: 30px;
     background-color: var(--color-male-bg); 
@@ -155,35 +103,6 @@ footer {
     background-color: var(--color-female-bg);
     color: var(--color-female);
 }
-
-.personne .male:first-child { margin-top: 35%}
-.personne .female:first-child { margin-top: 35%}
-.personne .female + .male {margin-top: 30%}
-.personne .male + .female {margin-top: 30%}
-.personne .male + .label {margin-top: 40%}
-.personne .female + .label {margin-top: 40%}
-.personne .label + .male {margin-top: 20%}
-.personne .label + .female {margin-top: 20%}
-.grandparent .label + .male {margin-top: 10%}
-.grandparent .male + .female {margin-top: 10%}
-.grandparent .female + .male {margin-top: 45%}
-.grandparent .label + .female {margin-top: 45%}
-.grandparent .female + .female {margin-top: 80%}
-.enfant .label + .male {margin-top: 10%}
-.enfant .label + .female {margin-top: 10%}
-.enfant .male + .female {margin-top: 5%}
-.enfant .female + .male {margin-top: 5%}
-.enfant .female + .female {margin-top: 5%}
-.enfant .male + .male {margin-top: 5%}
-.petitenfant .label + .female {margin-top: 10%}
-.petitenfant .label + .male {margin-top: 10%}
-.petitenfant .male + .female {margin-top: 5%}
-.petitenfant .female + .male {margin-top: 5%}
-.petitenfant .female + .female {margin-top: 5%}
-.petitenfant .male + .male {margin-top: 5%}
-.parent .male + .female {margin-top: 70%}
-.parent .label + .male {margin-top: 25%}
-.parent .label + .female {margin-top: 25%}
 
 .lienHommeEnGras, .lienFemmeEnGras, .lienHomme, .lienFemme {
     text-decoration: none;
