@@ -275,7 +275,7 @@ function chargerLiensDocuments(listeDetails, personne, donnees) {
 }
 
 // Fonction principale pour charger tous les liens vers les actes
-function chargerLiensActes(person, detailsList) {
+function chargerLiensActes(person, listeDetails) {
     const nomFichier = person.id;
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
@@ -300,7 +300,7 @@ function chargerLiensActes(person, detailsList) {
         // Exécuter toutes les promesses pour le mariage du conjoint
         Promise.all(promessesMariage);
     } else {
-        detailsList.appendChild(document.createElement('br'));
+        listeDetails.appendChild(document.createElement('br'));
     }
 }
 
@@ -321,7 +321,7 @@ function getAfficheMessage(repertoire) {
 }
 
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
-function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage) {
+function ajouterlienFichier(listeDetails, nomFichier, repertoire, extension, afficheMessage) {
     const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
     return fetch(monFichierComplet).then(response => {
         if (response.ok) {
@@ -342,8 +342,8 @@ function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, affi
                     acteItem.appendChild(document.createTextNode('  ||  '));
                     acteItem.appendChild(lienFichierbis);
                 }
-                detailsList.appendChild(acteItem);
-                detailsList.appendChild(document.createElement('br'));
+                listeDetails.appendChild(acteItem);
+                listeDetails.appendChild(document.createElement('br'));
             });
          
         }
