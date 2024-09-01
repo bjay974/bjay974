@@ -66,7 +66,7 @@ function afficheMembres(listElement, titreText, persons) {
 
 // Creer le titre et liste
 function creerTitreEtListe(listElement, titreText) {
-  const titre = document.createElement('p');
+  const titre = document.createElement('span');
   titre.textContent = titreText;
   titre.classList.add('labelFamille');
   listElement.appendChild(titre);

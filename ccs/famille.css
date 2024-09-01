@@ -99,13 +99,13 @@
 
     .homlist, .femlist {
         align-items: left;
-        padding: 1%;
-        margin : 1%;
-        line-height: 2;
+        line-height: 1.5;
     }
     
     .homlist {
         grid-column: 1;
+        padding: 1%;
+        margin : 1%;
     }
     
     .femlist {
