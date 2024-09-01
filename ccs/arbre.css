@@ -1,9 +1,9 @@
 .soustitreArbre {
     background-color: var(--color-green);
     color: var(--color-primary);
-    margin-top: 1%;
     margin-bottom: 1%;
-    padding: 1% 0px 1% 5%;
+    padding : 1%;
+    padding-left: 4%;
     text-align: left;
 }
 
@@ -35,12 +35,13 @@
 }
 
 .labelArbre {
-    color:var(--color-green);
+    color:var(--color-primary);
     text-decoration: none;
     font-style: italic;
-    padding : 1%;
+    margin-bottom: 2%;
     margin: 1%;
     text-align: left;
+    font-size: 85%;
  }
 
 .containerArbre1 .male:first-child { margin-top: 5%}
