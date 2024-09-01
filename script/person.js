@@ -252,11 +252,11 @@ function creerLienNom(laPersonne, lienHomme, lienFemme, laClasse) {
     const nomPersonne = laPersonne.nom_legitime || laPersonne.nom;    
     lienPersonne.href = laPersonne.id < 2000 ? `../html/person.html?id=${laPersonne.id}` : '#';
     lienPersonne.textContent = `${nomPersonne} ${laPersonne.prenom}`;
-    lienPersonne.classList.add(child.genre === 'M' ? lienHomme : lienFemme); 
+    lienPersonne.classList.add(laPersonne.genre === 'M' ? lienHomme : lienFemme); 
     if (laClasse) {
         lienPersonne.classList.add(laClasse);
     }
-    return lienPersonne; // Ne pas oublier de retourner le lien créé
+    return lienPersonne; 
 }
 
 // Fonction pour déterminer le texte du lien
