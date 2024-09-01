@@ -270,13 +270,9 @@ function afficherLieuNaissance(lieuNaissance) {
     return lieuNaissance && lieuNaissance !== "Inconnu" ? `à ${lieuNaissance}` : "";
 }
 
-function chargerLiensDocuments(listeDetails, personne, donnees) {
-    // Implémentez ici la logique de chargement des documents si nécessaire
-}
-
 // Fonction principale pour charger tous les liens vers les actes
-function chargerLiensActes(person, listeDetails) {
-    const nomFichier = person.id;
+function chargerLiensActes(listeDetails, personne) {
+    const nomFichier = personne.id;
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
 
@@ -291,7 +287,7 @@ function chargerLiensActes(person, listeDetails) {
     });
 
     // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
-    if (person.date_mariage && person.genre === "F") {
+    if (personne.date_mariage && personne.genre === "F") {
         const nomFichierConjoint = person.id_conjoint;
         const afficheMessage = `Voir l'acte de mariage`;
         const promessesMariage = extensions.map(extension => 
