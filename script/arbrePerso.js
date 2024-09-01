@@ -6,7 +6,7 @@ function displayData() {
   var personId = urlParams.get('id');
   
   // Charger les données depuis le fichier JSON
-  fetch('data.json')
+  fetch('../data/data.json')
       .then(response => response.json())
       .then(data => {
           // Trouver la personne correspondante
