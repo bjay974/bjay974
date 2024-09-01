@@ -200,9 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
-                    const arbrePersoItem = creerItem(`Notes : ${person.commentaire}`);
+                    const arbrePersoItem = creerItem(CreerTexteLienArbre(person.prenom));
                     const lienArbrePerso = document.createElement('a');
-                    lienArbrePerso.textContent = CreerTexteLienArbre(person.prenom);
                     lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
                     lienArbrePerso.classList.add('labelArbrePerso' );
                     arbrePersoItem.appendChild(lienArbrePerso);
@@ -220,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// Fonction pour créer un lien formaté pour enfants ou fratrie (nom + prénom) avec une couleur et un href optionnel
+// Fonction pour créer un lien formaté (nom + prénom) et  un href optionnel et une classe
 function creerLienNom(laPersonne, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
     const nomPersonne = laPersonne.nom_legitime || laPersonne.nom;    
@@ -258,10 +257,6 @@ function getAgeActuel(person) {
     const adjectif_genre = ajouterE("Agé", person.genre);
     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
     return ageNowItem;
-}
-
-function detailDeces(person) {
-
 }
 
 function diffAge(date1, date2) {   
