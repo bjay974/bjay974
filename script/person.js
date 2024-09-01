@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function afficherDetailsPersonne(donnees, personneId) {
     const personne = donnees.find(p => p.id === parseInt(personneId));
-    const detailsPersonne = document.getElementById('person-details');
+    const detailsPersonne = document.getElementById('personne-detail');
 
     if (!personne) return;
 
@@ -28,7 +28,7 @@ function afficherDetailsPersonne(donnees, personneId) {
     ajouterDetailsFratrie(listeDetails, personne, donnees);
     ajouterCommentaire(listeDetails, personne);
     ajouterLienArbreGenealogique(listeDetails, personne);
-    ajouterLienFichiers(listeDetails, personne, donnees);
+    chargerLiensActes(listeDetails, personne);
 
     detailsPersonne.appendChild(listeDetails);
 }
@@ -274,34 +274,78 @@ function chargerLiensDocuments(listeDetails, personne, donnees) {
     // Implémentez ici la logique de chargement des documents si nécessaire
 }
 
-function ajouterLienFichiers(detailList, personne, data) {
+// Fonction principale pour charger tous les liens vers les actes
+function chargerLiensActes(person, detailsList) {
+    const nomFichier = person.id;
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
+    const extensions = ['pdf', 'jpg', 'jpeg'];
 
-    repertoires.forEach(async (repertoire) => {
-        const chemin = `../actes/${repertoire}/${personne.nom}_${personne.prenom}.jpg`;
-        const response = await fetch(chemin);
-
-        if (response.ok) {
-            const lien = creerLienFichier(chemin, repertoire, personne);
-            detailList.appendChild(lien);
-        }
+    // Charge les liens pour les répertoires normaux
+    repertoires.forEach(repertoire => {
+        const afficheMessage = getAfficheMessage(repertoire);
+        const promesses = extensions.map(extension => 
+            ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
+        );
+        // Exécuter toutes les promesses pour ce répertoire
+        Promise.all(promesses);
     });
+
+    // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
+    if (person.date_mariage && person.genre === "F") {
+        const nomFichierConjoint = person.id_conjoint;
+        const afficheMessage = `Voir l'acte de mariage`;
+        const promessesMariage = extensions.map(extension => 
+            ajouterlienFichier(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
+        );
+        // Exécuter toutes les promesses pour le mariage du conjoint
+        Promise.all(promessesMariage);
+    } else {
+        detailsList.appendChild(document.createElement('br'));
+    }
 }
 
-function creerLienFichier(chemin, repertoire, personne) {
-    const lien = document.createElement('a');
-    lien.href = chemin;
-    lien.classList.add('lienArbreDeces');
-    lien.target = '_blank';
-
-    let repertoireText;
-    switch (repertoire) {
-        case 'naissance': repertoireText = 'Acte de naissance'; break;
-        case 'mariage': repertoireText = 'Acte de mariage'; break;
-        case 'particulier': repertoireText = 'Acte de liberté'; break;
-        case 'deces': repertoireText = 'Acte de décès'; break;
+function getAfficheMessage(repertoire) {
+    switch(repertoire){
+        case "particulier" : 
+            return "Voir l'acte spécial";
+            break;
+        case "deces":
+            return "Voir l'acte de décés";
+            break;
+        case "naissance":
+            return "Voir l'acte de naissance";
+            break;
+        case "mariage":
+            return "Voir l'acte de mariage";
     }
+}
 
-    lien.textContent = `${repertoireText} de ${personne.prenom} ${personne.nom}`;
-    return lien;
+// Fonction pour créer et ajouter des liens pour les fichiers d'actes
+function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage) {
+    const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
+    return fetch(monFichierComplet).then(response => {
+        if (response.ok) {
+            const acteItem = document.createElement('a');
+            const lienFichier = document.createElement('a');
+            lienFichier.classList.add('lienFichier')
+            lienFichier.textContent = afficheMessage;
+            lienFichier.href = monFichierComplet;
+            acteItem.appendChild(lienFichier);
+            // Vérifier l'existence d'une deuxième partie
+            const monFichierBis = `../${repertoire}/${nomFichier}_2.${extension}`;
+            return fetch(monFichierBis).then(responseBis => {
+                if (responseBis.ok) {
+                    const lienFichierbis = document.createElement('a');
+                    lienFichierbis.classList.add('lienFichier')
+                    lienFichierbis.textContent = "Deuxième partie";
+                    lienFichierbis.href = monFichierBis;                                          
+                    acteItem.appendChild(document.createTextNode('  ||  '));
+                    acteItem.appendChild(lienFichierbis);
+                }
+                detailsList.appendChild(acteItem);
+                detailsList.appendChild(document.createElement('br'));
+            });
+         
+        }
+    });
 }
