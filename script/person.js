@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fragment = document.createDocumentFragment();
                     enfants.forEach(child => {
                         const childItem = document.createElement('li');
-                        lienEnfant = creerAutreLien(child, 'lienPersonHEnGras', 'lienPersonFEnGras', 'listEnfant')
+                        lienEnfant = creerLienNom(child, 'lienPersonH', 'lienPersonF', 'listEnfant')
                         childItem.appendChild(lienEnfant);
                         fragment.appendChild(childItem);
                     });
@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fragment = document.createDocumentFragment();
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
-                            const lienFratrie = creerAutreLien(fratrie, 'lienHomme', 'lienFemme', 'listFratrie')
+                            const lienFratrie = creerLienNom(fratrie, 'lienHomme', 'lienFemme', 'listFratrie')
                             fratrieItem.appendChild(lienFratrie);
                             fragment.appendChild(fratrieItem);
                         });
