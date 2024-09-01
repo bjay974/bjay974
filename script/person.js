@@ -64,7 +64,7 @@ function ajouterDetailsReconnaissance(listeDetails, personne) {
 
 function ajouterDetailsDeces(listeDetails, personne) {
     if (!personne.date_deces) {
-        listeDetails.appendChild(creerElementDetail(`Âgé de : ${calculerAgeActuel(personne.date_naissance)} ans`));
+        listeDetails.appendChild(creerElementDetail(`Âgé de : ${afficherAgeActuel(personne.date_naissance)} ans`));
     } else if (personne.date_deces !== "01/01/1901") {
         const ageAuDeces = calculerDifferenceAge(personne.date_deces, personne.date_naissance);
         const detailsDeces = creerTexteDetailsDeces(personne, ageAuDeces);
@@ -255,13 +255,33 @@ function verifierDate(date) {
     }
 }
 
-function calculerAgeActuel(personne) {
+function afficherAgeActuel(personne) {
     const ageNowItem = document.createElement('p');
     const ageNow = calculeAge(personne.date_naissance);
     ageNowItem.classList.add('affichePerson');
-    const adjectif_genre = ajouterE("Agé", personne.genre);
+    const adjectif_genre = ajouterSuffixeGenre("Agé", personne.genre);
     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
     return ageNowItem;
+}
+
+function calculeAge(date1) {   
+    const an = parseInt(date1.substr(6, 4));
+    const mois = parseInt(date1.substr(3, 2));
+    const day = parseInt(date1.substr(0, 2));
+    const dateNaissance = new Date(an, mois - 1, day); // Le mois commence à 0 dans les objets Dat
+    const today = new Date();
+    const ageDiff = today.getTime() - dateNaissance.getTime(); // Différence en millisecondes
+    const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
+    return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
+}
+
+//Ajouter un e a un adjectif !! si genre est F (ex : NéE)
+function ajouterE(adjectif, genre) {
+    if (genre === "F") {
+        return adjectif + "e";
+    } else {
+        return adjectif;
+    }
 }
 
 function calculerDifferenceAge(date1, date2) {   
