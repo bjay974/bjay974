@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     enfants.forEach(enfant => {
                         const enfantItem = document.createElement('li');
                         const lienEnfant = creerLienNom(enfant, 'lienPersonH', 'lienPersonF', 'listFratrie')
-                        childItem.appendChild(lienEnfant);
+                        enfantItem.appendChild(lienEnfant);
                         fragment.appendChild(enfantItem);
                     });
                     enfantsList.appendChild(fragment);
@@ -197,7 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     commentaireItem.classList.add('smallerPerson');
                     detailsList.appendChild(commentaireItem);
                 }
-                
+
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
                     const arbrePersoItem = creerItem(`Notes : ${person.commentaire}`);
