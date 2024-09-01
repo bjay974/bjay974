@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
-                    const arbrePersoItem = creerItem(CreerTexteLienArbre(person.prenom));
+                    const arbrePersoItem =creerItem("");
                     const lienArbrePerso = document.createElement('a');
                     lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
                     lienArbrePerso.classList.add('labelArbrePerso' );
