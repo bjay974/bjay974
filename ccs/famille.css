@@ -39,11 +39,27 @@
     grid-column: 2;
 }
 
-.label {
+.labelFamille {
    margin : 1%; 
    padding : 1%; 
    color:var(--color-light);
    font-style: italic;
+}
+
+.lienHommeEnGras, .lienFemmeEnGras, .lienHomme, .lienFemme {
+    text-decoration: none;
+}
+
+.lienHommeEnGras, .lienFemmeEnGras {
+    font-weight: bold;
+}
+
+.lienHommeEnGras, .lienHomme {
+    color: var(--color-male);
+}
+
+.lienFemmeEnGras, .lienFemme {
+    color: var(--color-female);
 }
 
 

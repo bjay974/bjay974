@@ -75,19 +75,6 @@ footer {
     margin-top: auto;
 }
 
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
-}
-
-.label {
-   margin : 1%; 
-   padding : 1%; 
-   color:var(--color-light);
-   font-style: italic;
-}
-
 .male, .female {
     min-height: 30px;
     background-color: var(--color-male-bg); 
@@ -103,23 +90,6 @@ footer {
     background-color: var(--color-female-bg);
     color: var(--color-female);
 }
-
-.lienHommeEnGras, .lienFemmeEnGras, .lienHomme, .lienFemme {
-    text-decoration: none;
-}
-
-.lienHommeEnGras, .lienFemmeEnGras {
-    font-weight: bold;
-}
-
-.lienHommeEnGras, .lienHomme {
-    color: var(--color-male);
-}
-
-.lienFemmeEnGras, .lienFemme {
-    color: var(--color-female);
-}
-
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
