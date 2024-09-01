@@ -1,0 +1,103 @@
+.soustitre {
+    text-align: center;
+    color: var(--color-secondary);
+    margin-top: 10px;
+    width: 98%;
+    font-style: italic;
+    font-weight: bold; 
+    padding: 5px 5px 5px 20px;
+    text-decoration: none;
+}
+
+.soustitre {
+    background-color: var(--color-green);
+}
+
+.list {
+    display: grid;
+    text-align: left; 
+    flex-direction: column;
+    align-items: flex-start; 
+    flex-wrap: wrap;
+    list-style-type: none; 
+    padding-left: 1%;
+    line-height: 1.2;
+}
+
+.homlist, .femlist {
+    list-style-type: none; 
+    line-height: 2;
+    padding-left: 1%;
+}
+
+.homlist {
+    margin-left: 5%;
+    grid-column: 1;
+}
+
+.femlist {
+    grid-column: 2;
+}
+
+.label {
+   margin : 1%; 
+   padding : 1%; 
+   color:var(--color-light);
+   font-style: italic;
+}
+
+
+/* Styles pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 768px) {
+    .list {
+        display: flex;
+        margin-right: 0;
+        line-height: 1.2;
+    }
+     .homlist, .femlist {
+        align-items: left;
+        padding: 1%;
+        margin : 1%;
+        line-height: 2;
+
+    }
+    
+    .homlist {
+        grid-column: 1;
+    }
+    
+    .femlist {
+        grid-column: 2;
+    }
+  
+}
+
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+
+    .list {
+        display: grid;
+        margin-right: 0;
+        line-height: 1.2;
+    }
+
+    .homlist, .femlist {
+        align-items: left;
+        padding: 1%;
+        margin : 1%;
+        line-height: 2;
+    }
+    
+    .homlist {
+        grid-column: 1;
+    }
+    
+    .femlist {
+        grid-column: 2;
+    }
+
+    /* Cacher certains éléments si nécessaire */
+    .some-element {
+        display: none; /* Exemple : cacher certains éléments */
+    }
+}
