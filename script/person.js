@@ -116,15 +116,15 @@ function ajouterDetailsParents(listeDetails, personne, donnees) {
 
     if (personne.id_pere) {
         texteParents = ajouterDetailsPere(personne, donnees);
-        elementParents.innerHTML = texteParents;
+        elementParents.textContent = texteParents;
     }
 
     if (personne.id_mere) {
         const texteMere = ajouterDetailsMere(personne, donnees);
-        elementParents.innerHTML += texteMere;
+        elementParents.textContent += texteMere;
     }
 
-    if (elementParents.innerHTML) {
+    if (elementParents.textContent) {
         listeDetails.appendChild(elementParents);
     }
 }
@@ -224,9 +224,10 @@ function ajouterSuffixeGenre(baseTexte, genre) {
 }
 
 function creerElementDetail(texte = '') {
-    const elementDetail = document.createElement('div');
+    const elementDetail = document.createElement('p');
     elementDetail.classList.add('detailPersonne');
     elementDetail.innerHTML = texte;
+    elementDetail.classList.add('affichePerson');
     return elementDetail;
 }
 
@@ -253,17 +254,27 @@ function verifierDate(date) {
     }
 }
 
-function calculerAgeActuel(dateNaissance) {
-    const dateNaissanceObj = new Date(dateNaissance);
-    const age = new Date().getFullYear() - dateNaissanceObj.getFullYear();
-    return age;
+function calculerAgeActuel(person) {
+    const ageNowItem = document.createElement('li');
+    const ageNow = calculeAge(person.date_naissance);
+    ageNowItem.classList.add('listPerson');
+    const adjectif_genre = ajouterE("Agé", person.genre);
+    ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
+    return ageNowItem;
 }
 
-function calculerDifferenceAge(date1, date2) {
-    const date1Obj = new Date(date1);
-    const date2Obj = new Date(date2);
-    const difference = date1Obj.getFullYear() - date2Obj.getFullYear();
-    return difference;
+function calculerDifferenceAge(date1, date2) {   
+    const an1 = parseInt(date1.substr(6, 4));
+    const mois1 = parseInt(date1.substr(3, 2));
+    const day1 = parseInt(date1.substr(0, 2));
+    const an2 = parseInt(date2.substr(6, 4));
+    const mois2 = parseInt(date2.substr(3, 2));
+    const day2 = parseInt(date2.substr(0, 2));
+    const dateNaissance = new Date(an2, mois2 - 1, day2); // Le mois commence à 0 dans les objets Date
+    const newDate1 = new Date(an1, mois1 - 1, day1); // Le mois commence à 0 dans les objets Date
+    const ageDiff = newDate1 - dateNaissance.getTime(); // Différence en millisecondes
+    const ageDate = new Date(ageDiff); // Conversion de la différence en objet Date
+    return Math.abs(ageDate.getUTCFullYear() - 1970); // Obtenez l'année de l'objet Date pour obtenir l'âge
 }
 
 function afficherLieuNaissance(lieuNaissance) {
@@ -288,7 +299,7 @@ function chargerLiensActes(listeDetails, personne) {
 
     // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
     if (personne.date_mariage && personne.genre === "F") {
-        const nomFichierConjoint = person.id_conjoint;
+        const nomFichierConjoint = personne.id_conjoint;
         const afficheMessage = `Voir l'acte de mariage`;
         const promessesMariage = extensions.map(extension => 
             ajouterlienFichier(listeDetails, nomFichierConjoint, 'mariage', extension, afficheMessage)
