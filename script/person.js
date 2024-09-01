@@ -97,7 +97,7 @@ function ajouterDetailsMariage(listeDetails, personne, donnees) {
         (conjoint.genre === "M" ? "Conjoint : " : "Conjointe : ");
 
     const detailsMariage = creerElementDetail(texteMariage);
-    detailsMariage.appendChild(creerLienPersonne(conjoint, 'lienPersonHEnGras', 'lienPersonFEnGras'));
+    detailsMariage.appendChild(creerLienPersonne(conjoint, 'lienPersonHEnGras', 'lienPersonFEnGras',"",));
     listeDetails.appendChild(detailsMariage);
 }
 
@@ -132,7 +132,7 @@ function ajouterDetailsPere(personne, donnees) {
         return "De père inconnu";
     } else {
         const pere = donnees.find(p => p.id === personne.id_pere);
-        return pere ? `${personne.genre === "M" ? 'Fils de ' : 'Fille de '} ${creerLienPersonne(pere, 'lienPersonHEnGras', '')}` : '';
+        return pere ? `${personne.genre === "M" ? 'Fils de ' : 'Fille de '} ${creerLienPersonne(pere, 'lienPersonHEnGras', "", '')}` : '';
     }
 }
 
@@ -141,7 +141,7 @@ function ajouterDetailsMere(personne, donnees) {
         return personne.id_pere ? " et de mère inconnue" : "Mère inconnue";
     } else {
         const mere = donnees.find(p => p.id === personne.id_mere);
-        return mere ? ` et de ${creerLienPersonne(mere, '', 'lienPersonFEnGras')}` : '';
+        return mere ? ` et de ${creerLienPersonne(mere, '', 'lienPersonFEnGras',"")}` : '';
     }
 }
 
@@ -156,7 +156,7 @@ function ajouterDetailsEnfants(listeDetails, personne, donnees) {
     const fragment = document.createDocumentFragment();
     enfants.forEach(enfant => {
         const elementEnfant = document.createElement('li');
-        elementEnfant.appendChild(creerLienPersonne(enfant, 'lienPersonH', 'lienPersonF'));
+        elementEnfant.appendChild(creerLienPersonne(enfant, 'lienPersonH', 'lienPersonF','listeEnfants'));
         fragment.appendChild(elementEnfant);
     });
 
@@ -181,7 +181,7 @@ function ajouterDetailsFratrie(listeDetails, personne, donnees) {
     const fragment = document.createDocumentFragment();
     fratrie.forEach(frat => {
         const elementFrat = document.createElement('li');
-        elementFrat.appendChild(creerLienPersonne(frat, 'lienPersonH', 'lienPersonF'));
+        elementFrat.appendChild(creerLienPersonne(frat, 'lienPersonH', 'lienPersonF','listeFratrie'));
         fragment.appendChild(elementFrat);
     });
 
@@ -223,18 +223,21 @@ function ajouterSuffixeGenre(baseTexte, genre) {
 
 function creerElementDetail(texte = '') {
     const elementDetail = document.createElement('p');
-    elementDetail.classList.add('detailPersonne');
     elementDetail.innerHTML = texte;
     elementDetail.classList.add('affichePerson');
     return elementDetail;
 }
 
-function creerLienPersonne(personne, classeLienH, classeLienF) {
+function creerLienPersonne(personne, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
-    lienPersonne.href = `../html/person.html?id=${personne.id}`;
-    lienPersonne.classList.add(personne.genre === 'M' ? classeLienH : classeLienF);
-    lienPersonne.textContent = `${personne.prenom} ${personne.nom}`;
-    return lienPersonne;
+    const nomPersonne = personne.nom_legitime || personne.nom;    
+    lienPersonne.href = personne.id < 2000 ? `../html/person.html?id=${personne.id}` : '#';
+    lienPersonne.textContent = `${nomPersonne} ${personne.prenom}`;
+    lienPersonne.classList.add(personne.genre === 'M' ? lienHomme : lienFemme); 
+    if (laClasse) {
+        lienPersonne.classList.add(laClasse);
+    }
+    return lienPersonne; 
 }
 
 function verifierDate(date) {
@@ -253,9 +256,9 @@ function verifierDate(date) {
 }
 
 function calculerAgeActuel(personne) {
-    const ageNowItem = document.createElement('li');
+    const ageNowItem = document.createElement('p');
     const ageNow = calculeAge(personne.date_naissance);
-    ageNowItem.classList.add('listPerson');
+    ageNowItem.classList.add('affichePerson');
     const adjectif_genre = ajouterE("Agé", personne.genre);
     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
     return ageNowItem;

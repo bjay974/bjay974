@@ -1,4 +1,4 @@
-.listPerson, .listEnfant, .listFratrie, lienFichier{
+.listPerson, .listEnfant, .listFratrie, .lienFichier{
     display: grid;
     text-align: left; 
     flex-direction: column;
