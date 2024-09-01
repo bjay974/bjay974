@@ -157,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fragment = document.createDocumentFragment();
                     enfants.forEach(enfant => {
                         const enfantItem = document.createElement('li');
-                        const lienEnfant = creerLienNom(enfant, 'lienPersonH', 'lienPersonF', 'listFratrie')
+                        const lienEnfant = creerLienNom(enfant, 'lienPersonH', 'lienPersonF', 'listEnfant')
                         enfantItem.appendChild(lienEnfant);
                         fragment.appendChild(enfantItem);
                     });
@@ -201,7 +201,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
-                    const arbrePersoItem =creerItem("");
+                    const arbrePersoItem =document.createElement('a');
                     const lienArbrePerso = document.createElement('a');
                     lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
                     lienArbrePerso.classList.add('labelArbrePerso' );
