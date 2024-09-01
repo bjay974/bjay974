@@ -243,9 +243,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     const arbrePersoItem = document.createElement('p');
                     arbrePersoItem.classList.add('affichePerson');
                     const lienArbrePerso = document.createElement('a');
-                    lienArbrePerso.textContent = CreerLienArbrePerso(person.prenom);
+                    lienArbrePerso.textContent = CreerTexteLienArbre(person.prenom);
                     lienArbrePerso.href = `arbrePerso.html?id=${person.id}`;
-                    lienArbrePerso.classList.add('labelArbre' );
+                    lienArbrePerso.classList.add('labelArbrePerso' );
                     arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
                 }
@@ -271,7 +271,7 @@ function creerPersonLink(person) {
 }
 
 // Fonction pour déterminer le texte du lien
-function CreerLienArbrePerso(prenom) {
+function CreerTexteLienArbre(prenom) {
     if (!prenom) {
         return "Aperçu de son arbre";
     }

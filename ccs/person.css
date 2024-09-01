@@ -56,14 +56,20 @@
     text-align: left; 
 }
 
-
+.labelArbrePerso {
+    color:var(--color-green);
+    font-style: italic;
+    padding : 1%;
+    padding-bottom:2%;
+    margin: 1%;
+    text-align: left;
+ }
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
   
     .listPerson, .listEnfant, .listFratrie {
         grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
-        padding-left: 0; /* Ajuster le padding */
-        margin-right: 0; /* Ajuster le margin */
+        padding-left: 2%;
         line-height: 1.5;
     }
 
@@ -81,8 +87,7 @@
 
     .listPerson, .listEnfant, .listFratrie {
         grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
-        padding-left: 0; /* Ajuster le padding */
-        margin-right: 0; /* Ajuster le margin */
+        padding-left: 2%;
         line-height: 1.5;
     }
 
