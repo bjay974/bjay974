@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             } else {
                                 parentItem = document.createElement('p');
                                 parentItem.classList.add('affichePerson');
-                                textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
+                                const textParent = person.genre === "M" ? '<i>Fils de</i> ' : '<i>Fille de</i> ';
                             }
                         }
                         parentItem.appendChild(document.createTextNode(textParent)); 
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fragment = document.createDocumentFragment();
                     enfants.forEach(child => {
                         const childItem = document.createElement('li');
-                        lienEnfant = creerLienNom(child, 'lienPersonH', 'lienPersonF', 'listEnfant')
+                        enfantsList.innerHTML = `${enfants.length === 1 ? '<i>Enfant</i>' : '<i>Enfants</i>'} :`;
                         childItem.appendChild(lienEnfant);
                         fragment.appendChild(childItem);
                     });
@@ -203,11 +203,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
                         const fratriesList = document.createElement('p');
                         fratriesList.classList.add('affichePerson');
-                        fratriesList.innerHTML = `Fratrie :`;
+                        fratriesList.innerHTML = `<i>Fratrie :</i>`;
                         const fragment = document.createDocumentFragment();
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
-                            fratrieItem.classList.add('listFratrie');
                             const lienFratrie = creerLienNom(fratrie, 'lienPersonH', 'lienPersonF', 'listFratrie')
                             fratrieItem.appendChild(lienFratrie);
                             fragment.appendChild(fratrieItem);
@@ -358,7 +357,7 @@ function getAfficheMessage(repertoire) {
 }
 
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
-function ajouterLienActe(detailsList, nomFichier, repertoire, extension, afficheMessage) {
+function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage) {
     const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
     return fetch(monFichierComplet).then(response => {
         if (response.ok) {
@@ -420,7 +419,7 @@ function chargerLiensActes(person, detailsList) {
     repertoires.forEach(repertoire => {
         const afficheMessage = getAfficheMessage(repertoire);
         const promesses = extensions.map(extension => 
-            ajouterLienActe(detailsList, nomFichier, repertoire, extension, afficheMessage)
+            ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
         );
         // Exécuter toutes les promesses pour ce répertoire
         Promise.all(promesses);
@@ -431,7 +430,7 @@ function chargerLiensActes(person, detailsList) {
         const nomFichierConjoint = person.id_conjoint;
         const afficheMessage = `Voir l'acte de mariage`;
         const promessesMariage = extensions.map(extension => 
-            ajouterLienActe(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
+            ajouterlienFichier(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
         );
         // Exécuter toutes les promesses pour le mariage du conjoint
         Promise.all(promessesMariage);

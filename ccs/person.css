@@ -29,8 +29,11 @@
 }
 
 .lienFichier {
-    color: var(--color-primary);
-    font-size: 90%;
+    color:var(--color-secondary);
+    font-size: 85%;
+    padding-bottom:2%;
+    margin: 1%;
+    text-align: left;
 }
 
 .bannierePersonM {
@@ -68,15 +71,9 @@
     padding-bottom:2%;
     margin: 1%;
     text-align: left;
+    font-size: 90%;
  }
 
- .lienActe {
-    color:var(--color-secondary);
-    font-size: 85%;
-    padding-bottom:2%;
-    margin: 1%;
-    text-align: left;
- }
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
   
@@ -92,7 +89,7 @@
         width: 100%;
         padding: 5px 5px 5px 20px;
     }
-    .lienActe {
+    .lienFichier {
         font-size: 90%;
      }
 
@@ -112,7 +109,7 @@
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
         padding: 5px 5px 5px 10px;
     }
-    .lienActe {
+    .lienFichier {
         font-size: 90%;
      }
 
