@@ -68,9 +68,6 @@
 .labelArbrePerso {
     color:var(--color-secondary);
     font-style: italic;
-    padding : 1%;
-    padding-bottom:2%;
-    margin: 1%;
     text-align: left;
     font-size: 90%;
  }
