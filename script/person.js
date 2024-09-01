@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             const dateValide = verifieDate(person.date_deces);
                             const adjectif_genre = ajouterE("Décédé", person.genre);
                             const ageDeces = diffAge(person.date_deces, person.date_naissance);
+                            let decesItem
                             if (ageDeces <= 5) {
                                 if (person.lieu_deces === "Inconnu") {
                                     decesItem = creerItem(`${adjectif_genre} ${dateValide}`);
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (enfants.length > 0) {
                     enfants.sort((a, b) => b.id - a.id);
                     // Créer un élément li pour contenir la liste des enfants
-                    enfantsList = creerItem(enfants.length === 1 ? '<i>Enfant</i>' : '<i>Enfants</i>');
+                    const enfantsList = creerItem(enfants.length === 1 ? '<i>Enfant</i>' : '<i>Enfants</i>');
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
                     enfants.forEach(enfant => {
@@ -194,7 +195,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Charger le commentaire
                 if (person.commentaire) {
                     const commentaireItem = creerItem(`Notes : ${person.commentaire}`);
-                    commentaireItem.classList.add('smallerPerson');
+                    commentaireItem.classList.add('commentairePersonne');
                     detailsList.appendChild(commentaireItem);
                 }
 
@@ -243,10 +244,10 @@ function CreerTexteLienArbre(prenom) {
         : `Aperçu de l'arbre de ${prenom}`;
 }
 
-function creerItem(text) {
+function creerItem(htmlContent) {
     const itemParagraphe = document.createElement('p');
-    itemParagraphe.textContent = text;
-    itemParagraphe.classList.add('affichePerson')
+    itemParagraphe.innerHTML = htmlContent; 
+    itemParagraphe.classList.add('affichePerson');
     return itemParagraphe;
 }
 
