@@ -364,6 +364,7 @@ function ajouterLienActe(detailsList, nomFichier, repertoire, extension, affiche
         if (response.ok) {
             const acteItem = document.createElement('a');
             const lienFichier = document.createElement('a');
+            lienFichier.classList.add('lienFichier')
             lienFichier.textContent = afficheMessage;
             lienFichier.href = monFichierComplet;
             acteItem.appendChild(lienFichier);
@@ -381,6 +382,7 @@ function ajouterLienActe(detailsList, nomFichier, repertoire, extension, affiche
                 detailsList.appendChild(acteItem);
                 detailsList.appendChild(document.createElement('br'));
             });
+         
         }
     });
 }
