@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     const infoConjoint = creerItem("");
-                    const nomConjoint = creerLienNom(conjoint, 'lienPersonH', 'lienPersonF', '');
+                    const nomConjoint = creerLienNom(conjoint, 'lienPersonHEnGras', 'lienPersonFEnGras', '');
                     let texteConjoint 
                     if (person.date_mariage) {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem.appendChild(document.createTextNode(textParent));    
-                            const nomPere = creerLienNom(father, 'lienPersonH', '', '');
+                            const nomPere = creerLienNom(father, 'lienPersonHEnGras', '', '');
                             parentItem.appendChild(nomPere); 
                         }
                     }
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
                         parentItem.appendChild(document.createTextNode(textParent)); 
-                        const nomMere = creerLienNom(mother, '', 'lienPersonF', '');
+                        const nomMere = creerLienNom(mother, '', 'lienPersonFEnGras', '');
                         parentItem.appendChild(nomMere);         
                     }
                 }
@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (enfants.length > 0) {
                     enfants.sort((a, b) => b.id - a.id);
                     // Créer un élément li pour contenir la liste des enfants
-                    const enfantsList = creerItem(enfants.length === 1 ? '<i>Enfant</i>' : '<i>Enfants</i>');
+                    const enfantsList = creerItem(enfants.length === 1 ? '<i>Enfant :</i>' : '<i>Enfants :</i>');
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
                     enfants.forEach(enfant => {
