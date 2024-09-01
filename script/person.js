@@ -209,7 +209,7 @@ function ajouterLienArbreGenealogique(listeDetails, personne) {
     listeDetails.appendChild(lienArbre);
 }
 
-function CreerTexteLienArbre(prenom) {
+function creerTexteLienArbre(prenom) {
     if (!prenom) {
         return "Aperçu de son arbre";
     }
