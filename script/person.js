@@ -211,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
                         const fratriesList = document.createElement('p');
                         fratriesList.classList.add('affichePerson');
-                        fratriesList.innerHTML = `${fratries.length === 1 ? 'Frère ou sœur' : 'Frères et sœurs'} :`;
+                        fratriesList.innerHTML = `Fratrie'} :`;
                         const fragment = document.createDocumentFragment();
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
