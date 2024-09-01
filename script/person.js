@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
-                    const infoConjoint = creerItem();
+                    const infoConjoint = creerItem("");
                     const nomConjoint = creerLienNom(conjoint, 'lienPersonH', 'lienPersonF', '');
                     let texteConjoint 
                     if (person.date_mariage) {
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 let parentItem = null;
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    parentItem = creerItem();
+                    parentItem = creerItem("");
                     if (person.id_pere === "inconnu") {
                         textParent = "De pére inconnu"
                         parentItem.appendChild(document.createTextNode(textParent));    }
