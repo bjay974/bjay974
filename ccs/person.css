@@ -62,9 +62,17 @@
 }
 
 .labelArbrePerso {
-    color:var(--color-green);
+    color:var(--color-secondary);
     font-style: italic;
     padding : 1%;
+    padding-bottom:2%;
+    margin: 1%;
+    text-align: left;
+ }
+
+ .lienActe {
+    color:var(--color-secondary);
+    font-size: 85%;
     padding-bottom:2%;
     margin: 1%;
     text-align: left;
@@ -84,6 +92,9 @@
         width: 100%;
         padding: 5px 5px 5px 20px;
     }
+    .lienActe {
+        font-size: 90%;
+     }
 
 }
 
@@ -101,5 +112,8 @@
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
         padding: 5px 5px 5px 10px;
     }
+    .lienActe {
+        font-size: 90%;
+     }
 
 }

@@ -207,7 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fragment = document.createDocumentFragment();
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
-                            const lienFratrie = creerLienNom(fratrie, 'lienHomme', 'lienFemme', 'listFratrie')
+                            fratrieItem.classList.add('listFratrie');
+                            const lienFratrie = creerLienNom(fratrie, 'lienPersonH', 'lienPersonF', 'listFratrie')
                             fratrieItem.appendChild(lienFratrie);
                             fragment.appendChild(fratrieItem);
                         });
