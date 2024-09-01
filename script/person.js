@@ -90,9 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
                     const infoConjoint = document.createElement('p');
                     infoConjoint.classList.add('affichePerson');
-                    const nomConjoint = creerPersonLink(conjoint); 
+                    const nomConjoint = creerLienNom(conjoint, 'lienPersonH', 'lienPersonF', '');
                     let texteConjoint 
-                    nomConjoint.classList.add(conjoint.genre === 'M' ? 'lienPersonH' : 'lienPersonF');
                     if (person.date_mariage) {
                         const ageMariage = diffAge(person.date_mariage, person.date_naissance);
                         const adjectif_genre = ajouterE("Marié", person.genre);
@@ -131,8 +130,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                             parentItem.appendChild(document.createTextNode(textParent));    
-                            const nomPere = creerPersonLink(father); 
-                            nomPere.classList.add('lienPersonH');
+                            const nomPere = creerLienNom(father, 'lienPersonH', '', '');
                             parentItem.appendChild(nomPere); 
                         }
                     }
@@ -160,8 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }
                         }
                         parentItem.appendChild(document.createTextNode(textParent)); 
-                        const nomMere = creerPersonLink(mother);
-                        nomMere.classList.add('lienPersonF');
+                        const nomMere = creerLienNom(mother, '', 'lienPersonF', '');
                         parentItem.appendChild(nomMere);         
                     }
                 }
@@ -182,13 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     const fragment = document.createDocumentFragment();
                     enfants.forEach(child => {
                         const childItem = document.createElement('li');
-                        const nomLink = document.createElement('a');
-                        const nomPers = child.nom_legitime || child.nom;    
-                        nomLink.href = child.id < 2000 ? `../html/person.html?id=${child.id}` : '#';
-                        nomLink.textContent = `${nomPers} ${child.prenom}`;
-                        nomLink.classList.add(child.genre === 'M' ? 'lienPersonHEnGras' : 'lienPersonFEnGras'); 
-                        nomLink.classList.add('listEnfant');
-                        childItem.appendChild(nomLink);
+                        lienEnfant = creerAutreLien(child, 'lienPersonHEnGras', 'lienPersonFEnGras', 'listEnfant')
+                        childItem.appendChild(lienEnfant);
                         fragment.appendChild(childItem);
                     });
                     enfantsList.appendChild(fragment);
@@ -215,14 +207,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         const fragment = document.createDocumentFragment();
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
-                            fratrieItem.classList.add('listFratrie');
-                            const nomLink = document.createElement('a');
-                            const nomPers = fratrie.nom_legitime || fratrie.nom;
-                            nomLink.href = fratrie.id < 2000 ? `../html/person.html?id=${fratrie.id}` : '#';
-                            nomLink.textContent = `${nomPers} ${fratrie.prenom}`;
-                            nomLink.classList.add(fratrie.genre === 'M' ? 'lienPersonH' : 'lienPersonF');
-                            nomLink.classList.add('smallerPerson');
-                            fratrieItem.appendChild(nomLink);
+                            const lienFratrie = creerAutreLien(fratrie, 'lienHomme', 'lienFemme', 'listFratrie')
+                            fratrieItem.appendChild(lienFratrie);
                             fragment.appendChild(fratrieItem);
                         });
                         fratriesList.appendChild(fragment);
@@ -260,15 +246,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// Fonction pour créer un lien formaté pour une personne (nom + prénom) avec une couleur et un href optionnel
-function creerPersonLink(person) {
-    const nomLink = document.createElement('a');
-    nomLink.style.textDecoration = "none";
-    if (person.id < 2000) {
-        nomLink.href = `../html/person.html?id=${person.id}`;
+// Fonction pour créer un lien formaté pour enfants ou fratrie (nom + prénom) avec une couleur et un href optionnel
+function creerLienNom(laPersonne, lienHomme, lienFemme, laClasse) {
+    const lienPersonne = document.createElement('a');
+    const nomPersonne = laPersonne.nom_legitime || laPersonne.nom;    
+    lienPersonne.href = laPersonne.id < 2000 ? `../html/person.html?id=${laPersonne.id}` : '#';
+    lienPersonne.textContent = `${nomPersonne} ${laPersonne.prenom}`;
+    lienPersonne.classList.add(child.genre === 'M' ? lienHomme : lienFemme); 
+    if (laClasse) {
+        lienPersonne.classList.add(laClasse);
     }
-    nomLink.innerHTML = `<span><strong>${person.nom}</strong> ${person.prenom}</span>`;
-    return nomLink;
+    return lienPersonne; // Ne pas oublier de retourner le lien créé
 }
 
 // Fonction pour déterminer le texte du lien
@@ -371,7 +359,7 @@ function getAfficheMessage(repertoire) {
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
 function ajouterLienActe(detailsList, nomFichier, repertoire, extension, afficheMessage) {
     const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
-    return fetch(monFichier).then(response => {
+    return fetch(monFichierComplet).then(response => {
         if (response.ok) {
             const acteItem = document.createElement('a');
             const lienFichier = document.createElement('a');
