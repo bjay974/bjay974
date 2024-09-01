@@ -9,20 +9,12 @@
     line-height: 1.2;
 }
 
-.listPerson {
-    padding-left: 1%;
-    line-height: 1.2;
-}
-
 .listEnfant {
     line-height: 1.5;
-    margin-right: 2%;
 }
 
 .listFratrie {
-    line-height: 1.2;
     font-size: 90%;
-    margin-right: 2%;
 }
 
 .bannierePersonM, .bannierePersonF {
@@ -68,11 +60,13 @@
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
   
-    .listPerson {
-        display: flex;
-        margin-right: 0;
+    .listPerson, .listEnfant, .listFratrie {
+        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+        padding-left: 0; /* Ajuster le padding */
+        margin-right: 0; /* Ajuster le margin */
         line-height: 1.5;
-    } 
+    }
+
     .bannierePersonM, .bannierePersonF {
         text-align: center;
         margin-top: 10px;
@@ -85,11 +79,13 @@
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
 
-    .listPerson {
-        display: flex;
-        margin-right: 0;
+    .listPerson, .listEnfant, .listFratrie {
+        grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
+        padding-left: 0; /* Ajuster le padding */
+        margin-right: 0; /* Ajuster le margin */
         line-height: 1.5;
     }
+
     .bannierePersonM, .bannierePersonF {
         text-align: center;
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
