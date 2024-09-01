@@ -26,7 +26,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         })
         .then(response => {
             alert('Lé Valab. Merci pou out message');
-            window.location.href = 'html/index.html'; // Redirige vers la page d'accueil après succès
+            window.location.href = '../html/index.html'; // Redirige vers la page d'accueil après succès
         })
         .catch(error => {
             console.error('FAILED...');

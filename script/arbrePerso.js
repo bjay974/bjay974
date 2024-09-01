@@ -80,7 +80,7 @@ function afficherPersonne(personneId, containerClass, data) {
     titre.classList.add('label'); 
     container.appendChild(titre); 
 
-    conjointHTML += '<p><a href="html/arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
+    conjointHTML += '<p><a href="../html/arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
     conjointHTML += '</div>';
     container.innerHTML += conjointHTML;
 }
@@ -169,7 +169,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
                   const petitEnfantDiv = document.createElement('div');
                   petitEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
 
-                  const petitEnfantLink = `<p><a href="html/arbrePerso.html?id=${petitEnfant.id}" style="text-decoration: none; color: inherit;">${petitEnfant.nom} ${petitEnfant.prenom}</a></p>`;
+                  const petitEnfantLink = `<p><a href="../html/arbrePerso.html?id=${petitEnfant.id}" style="text-decoration: none; color: inherit;">${petitEnfant.nom} ${petitEnfant.prenom}</a></p>`;
                   const parentInfo = `<p class="parent-info">(${petitEnfant.parentPrenom})</p>`;
                   petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
 
@@ -224,7 +224,7 @@ function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parent
       const membreDiv = document.createElement('div');
       membreDiv.className = `${cssClass} ${genderClass}`;
       
-      const membreLink = `<p><a href="html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
+      const membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
       
       membreDiv.innerHTML = parentPrenom ? membreLink + `<p class="parent-info">(${parentPrenom})</p>` : membreLink;
       container.appendChild(membreDiv);
@@ -261,7 +261,7 @@ function creerParentHTML(parent, containerClass, genderClass) {
   if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
 
   let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-  parentHTML += `<p><a href="html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
+  parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
   parentHTML += '</div>';
   
   return parentHTML;

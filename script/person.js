@@ -184,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         const childItem = document.createElement('li');
                         const nomLink = document.createElement('a');
                         const nomPers = child.nom_legitime || child.nom;    
-                        nomLink.href = child.id < 2000 ? `html/person.html?id=${child.id}` : '#';
+                        nomLink.href = child.id < 2000 ? `../html/person.html?id=${child.id}` : '#';
                         nomLink.textContent = `${nomPers} ${child.prenom}`;
                         nomLink.classList.add(child.genre === 'M' ? 'lienPersonHEnGras' : 'lienPersonFEnGras'); 
                         nomLink.classList.add('listEnfant');
@@ -218,7 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             fratrieItem.classList.add('listFratrie');
                             const nomLink = document.createElement('a');
                             const nomPers = fratrie.nom_legitime || fratrie.nom;
-                            nomLink.href = fratrie.id < 2000 ? `html/person.html?id=${fratrie.id}` : '#';
+                            nomLink.href = fratrie.id < 2000 ? `../html/person.html?id=${fratrie.id}` : '#';
                             nomLink.textContent = `${nomPers} ${fratrie.prenom}`;
                             nomLink.classList.add(fratrie.genre === 'M' ? 'lienPersonH' : 'lienPersonF');
                             nomLink.classList.add('smallerPerson');
@@ -244,7 +244,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     arbrePersoItem.classList.add('affichePerson');
                     const lienArbrePerso = document.createElement('a');
                     lienArbrePerso.textContent = CreerTexteLienArbre(person.prenom);
-                    lienArbrePerso.href = `html/arbrePerso.html?id=${person.id}`;
+                    lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
                     lienArbrePerso.classList.add('labelArbrePerso' );
                     arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
@@ -264,7 +264,7 @@ function creerPersonLink(person) {
     const nomLink = document.createElement('a');
     nomLink.style.textDecoration = "none";
     if (person.id < 2000) {
-        nomLink.href = `html/person.html?id=${person.id}`;
+        nomLink.href = `../html/person.html?id=${person.id}`;
     }
     nomLink.innerHTML = `<span><strong>${person.nom}</strong> ${person.prenom}</span>`;
     return nomLink;
