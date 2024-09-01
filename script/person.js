@@ -251,6 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 // Charger les liens vers les actes si il y en a
                 chargerLiensActes(person, detailsList);
+
         personDetails.appendChild(detailsList);
             }      
         })
@@ -369,31 +370,24 @@ function getAfficheMessage(repertoire) {
 
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
 function ajouterLienActe(detailsList, nomFichier, repertoire, extension, afficheMessage) {
-    const monFichier = `${repertoire}/${nomFichier}.${extension}`;
+    const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
     return fetch(monFichier).then(response => {
         if (response.ok) {
             const acteItem = document.createElement('a');
-            const ficLink = document.createElement('a');
-            ficLink.textContent = afficheMessage;
-            ficLink.href = monFichier;
-            ficLink.target = '_blank';                                  
-            ficLink.style.textDecoration = "none";
-            ficLink.style.color = "#999"; 
-            ficLink.style.fontSize = "90%";
-            acteItem.appendChild(ficLink);
-
+            const lienFichier = document.createElement('a');
+            lienFichier.textContent = afficheMessage;
+            lienFichier.href = monFichierComplet;
+            acteItem.appendChild(lienFichier);
             // Vérifier l'existence d'une deuxième partie
-            const monFichierBis = `${repertoire}/${nomFichier}_2.${extension}`;
+            const monFichierBis = `../${repertoire}/${nomFichier}_2.${extension}`;
             return fetch(monFichierBis).then(responseBis => {
                 if (responseBis.ok) {
-                    const ficLinkbis = document.createElement('a');
-                    ficLinkbis.textContent = "Deuxième partie";
-                    ficLinkbis.href = monFichierBis;                                          
-                    ficLinkbis.style.textDecoration = "none";
-                    ficLinkbis.style.color = "#999";
-                    ficLinkbis.style.fontSize = "90%";
+                    const lienFichierbis = document.createElement('a');
+                    lienFichierbis.classList.add('lienFichier')
+                    lienFichierbis.textContent = "Deuxième partie";
+                    lienFichierbis.href = monFichierBis;                                          
                     acteItem.appendChild(document.createTextNode('  ||  '));
-                    acteItem.appendChild(ficLinkbis);
+                    acteItem.appendChild(lienFichierbis);
                 }
                 detailsList.appendChild(acteItem);
                 detailsList.appendChild(document.createElement('br'));

@@ -28,6 +28,11 @@
     padding: 5px 5px 5px 20px;
 }
 
+.lienFichier {
+    color: var(--color-primary);
+    font-size: 90%;
+}
+
 .bannierePersonM {
     background-color: var(--color-male-bg);
 }
