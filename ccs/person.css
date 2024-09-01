@@ -32,9 +32,13 @@
 .lienFichier {
     color:var(--color-secondary);
     font-size: 85%;
-    padding-bottom:2%;
-    margin: 1%;
+    padding-bottom: 2%;
+    margin-right: 0.5%;
     text-align: left;
+}
+
+.lienFichier + .lienFichier {
+    margin-left: 0.5%;
 }
 
 .bannierePersonM {
@@ -76,9 +80,7 @@
     color:var(--color-secondary);
     font-style: italic;
     font-size: 80%;
-    padding : 1%;
     padding-bottom:2%;
-    margin: 1%;
     text-align: left;
  }
 
