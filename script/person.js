@@ -39,7 +39,6 @@ function ajouterNom(listeDetails, personne) {
     const nomLegitime = personne.nom_legitime ?? "";
     elementNom.innerHTML = `${personne.nom} <em>${nomLegitime}</em> ${personne.prenom}`;
     listeDetails.appendChild(elementNom);
-    listeDetails.appendChild(document.createElement('br'));
 }
 
 function ajouterDetailsNaissance(listeDetails, personne) {
@@ -49,7 +48,6 @@ function ajouterDetailsNaissance(listeDetails, personne) {
     const lieuNaissance = afficherLieuNaissance(personne.lieu_naissance);
     elementDateNaissance.textContent = `${adjectifGenre} ${dateValide} ${lieuNaissance}`;
     listeDetails.appendChild(elementDateNaissance);
-    listeDetails.appendChild(document.createElement('br'));
 }
 
 function ajouterDetailsReconnaissance(listeDetails, personne) {
@@ -254,11 +252,11 @@ function verifierDate(date) {
     }
 }
 
-function calculerAgeActuel(person) {
+function calculerAgeActuel(personne) {
     const ageNowItem = document.createElement('li');
-    const ageNow = calculeAge(person.date_naissance);
+    const ageNow = calculeAge(personne.date_naissance);
     ageNowItem.classList.add('listPerson');
-    const adjectif_genre = ajouterE("Agé", person.genre);
+    const adjectif_genre = ajouterE("Agé", personne.genre);
     ageNowItem.textContent = `${adjectif_genre} de : ${ageNow} ans `;
     return ageNowItem;
 }
@@ -306,9 +304,7 @@ function chargerLiensActes(listeDetails, personne) {
         );
         // Exécuter toutes les promesses pour le mariage du conjoint
         Promise.all(promessesMariage);
-    } else {
-        listeDetails.appendChild(document.createElement('br'));
-    }
+    } 
 }
 
 function getAfficheMessage(repertoire) {
@@ -350,7 +346,6 @@ function ajouterlienFichier(listeDetails, nomFichier, repertoire, extension, aff
                     acteItem.appendChild(lienFichierbis);
                 }
                 listeDetails.appendChild(acteItem);
-                listeDetails.appendChild(document.createElement('br'));
             });
          
         }
