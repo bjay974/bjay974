@@ -284,7 +284,7 @@ function chargerLiensActes(person, listeDetails) {
     repertoires.forEach(repertoire => {
         const afficheMessage = getAfficheMessage(repertoire);
         const promesses = extensions.map(extension => 
-            ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
+            ajouterlienFichier(listeDetails, nomFichier, repertoire, extension, afficheMessage)
         );
         // Exécuter toutes les promesses pour ce répertoire
         Promise.all(promesses);
@@ -295,7 +295,7 @@ function chargerLiensActes(person, listeDetails) {
         const nomFichierConjoint = person.id_conjoint;
         const afficheMessage = `Voir l'acte de mariage`;
         const promessesMariage = extensions.map(extension => 
-            ajouterlienFichier(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
+            ajouterlienFichier(listeDetails, nomFichierConjoint, 'mariage', extension, afficheMessage)
         );
         // Exécuter toutes les promesses pour le mariage du conjoint
         Promise.all(promessesMariage);
