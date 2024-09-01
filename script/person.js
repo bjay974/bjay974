@@ -17,23 +17,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter le nom et prénom en gras
                 const nameItem = document.createElement('h3');
-                if (person.genre === "M") {
-                    nameItem.classList.add('bannierePersonM');
-                }
-                else{
-                    nameItem.classList.add('bannierePersonF');
-                }                
-                let nomLegitime = "";
-                if (person.nom_legitime) {
-                    nomLegitime = person.nom_legitime
-                }
+                nameItem.classList.add(person.genre === 'M' ? 'bannierePersonM' : 'bannierePersonF'); 
+                let nomLegitime = person.nom_legitime ?? "";
                 nameItem.innerHTML = `${person.nom} <em>${nomLegitime}</em> ${person.prenom}`;
                 detailsList.appendChild(nameItem);
                 detailsList.appendChild(document.createElement('br')); // Ajout d'un espace
                 
                 // Ajouter le lieu et la date de naissance
-                const birthDateItem = document.createElement('span');
-                birthDateItem.classList.add('affichePerson');
+                const birthDateItem = creerItem();
                 const adjectif_genre = ajouterE("Né", person.genre);
                 const dateValide = verifieDate(person.date_naissance);
                 const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
@@ -43,20 +34,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Ajouter la date de reconnaisance ainsi que le nom
                 if (person.date_legitime) {
-                    const legDateItem = document.createElement('p');
-                    legDateItem.classList.add('affichePerson');
+                    const legDateItem = creerItem();
                     const dateValide = verifieDate(person.date_legitime);
                     const adjectif_genre = ajouterE("Reconnu", person.genre);
                     const linkClass = person.genre === "M" ? "lienPersonHEnGras" : "lienPersonFEnGras";
-                    const nomEnCouleur = `<span class="${linkClass}">${person.nom_legitime}</span>`;
+                    const nomEnCouleur = `<span class="${linkClass}">${nomLegitime}</span>`;
                     legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide}`;
                     detailsList.appendChild(legDateItem);
                 }
 
                 if (!person.date_deces) {
-                    const ageActuel = document.createElement('p');
-                    ageActuel.classList.add('affichePerson');
-                    ageActuel.appendChild(getAgeActuel(person));
+                    const ageActuel = creerItem(getAgeActuel(person));
                     detailsList.appendChild(ageActuel);
                 } else {
                     if (person.date_deces !== "01/01/1901") {
@@ -64,32 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
                             const dateValide = verifieDate(person.date_deces);
                             const adjectif_genre = ajouterE("Décédé", person.genre);
                             const ageDeces = diffAge(person.date_deces, person.date_naissance);
-                            let decesItem
                             if (ageDeces <= 5) {
                                 if (person.lieu_deces === "Inconnu") {
-                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide}`);
+                                    decesItem = creerItem(`${adjectif_genre} ${dateValide}`);
                                 } else {
-                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
+                                    decesItem = creerItem(`${adjectif_genre} ${dateValide} à ${person.lieu_deces}`);
                                 }
                             } else {
                                 if (person.lieu_deces === "Inconnu") {
-                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
+                                    decesItem = creerItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans`);
                                 } else {
-                                    decesItem = creerDecesItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
+                                    decesItem = creerItem(`${adjectif_genre} ${dateValide} à ${ageDeces} ans à ${person.lieu_deces}`);
                                 }
                             }
-                            detailsList.appendChild(decesItem)
+                            decesItem ? detailsList.appendChild(decesItem) : null;
                         }
                     } else {
-                        detailsList.appendChild(creerDecesItem('Date de décès inconnue'));
+                        detailsList.appendChild(creerItem('Date de décès inconnue'));    
                     }
                 }
                
                 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
                 if (person.id_conjoint) {
                     const conjoint = data.find(p => p.id === person.id_conjoint);
-                    const infoConjoint = document.createElement('p');
-                    infoConjoint.classList.add('affichePerson');
+                    const infoConjoint = creerItem();
                     const nomConjoint = creerLienNom(conjoint, 'lienPersonH', 'lienPersonF', '');
                     let texteConjoint 
                     if (person.date_mariage) {
@@ -106,11 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
            
                 // Charger la date d'affranchissement 
                 if (person.date_affranchi) {
-                    const affranchiDateItem = document.createElement('p');
-                    affranchiDateItem.classList.add('affichePersonx');
-                    const dateValide = verifieDate(person.date_affranchi) 
                     const adjectif_genre = ajouterE("Affranchi", person.genre)
-                    affranchiDateItem.textContent = `${adjectif_genre} ${dateValide}`;
+                    const dateValide = verifieDate(person.date_affranchi) 
+                    const affranchiDateItem = creerItem(`${adjectif_genre} ${dateValide}`);
                     detailsList.appendChild(affranchiDateItem);
                 }
 
@@ -120,12 +104,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 let parentItem = null;
                 // Charger le père si l'ID du père est défini
                 if (person.id_pere) {
-                    parentItem = document.createElement('p');
-                    parentItem.classList.add('affichePerson');
+                    parentItem = creerItem();
                     if (person.id_pere === "inconnu") {
                         textParent = "De pére inconnu"
-                        parentItem.appendChild(document.createTextNode(textParent));  
-                    } else {
+                        parentItem.appendChild(document.createTextNode(textParent));    }
+                    else {
                         father = data.find(p => p.id === person.id_pere);
                         if (father) {
                             textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
@@ -141,9 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         if (parentItem) {
                             textParent = " et de mère inconnue"
                         } else {
-                            parentItem = document.createElement('p');
-                            parentItem.classList.add('affichePerson');
-                            textParent = "Mère inconnue"
+                            parentItem = creerItem("Mère inconnue");
                         }
                         parentItem.appendChild(document.createTextNode(textParent)); 
                     } else {
@@ -152,9 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             if (parentItem) {
                                 textParent = " et de "
                             } else {
-                                parentItem = document.createElement('p');
-                                parentItem.classList.add('affichePerson');
-                                const textParent = person.genre === "M" ? '<i>Fils de</i> ' : '<i>Fille de</i> ';
+                                parentItem = creerItem(person.genre === "M" ? '<i>Fils de</i> ' : '<i>Fille de</i> ');
                             }
                         }
                         parentItem.appendChild(document.createTextNode(textParent)); 
@@ -168,20 +147,18 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
           
                 // Récupérer les enfants de la personne si elle est définie comme père ou mère
-                const enfants = data.filter(child => child.id_pere === person.id || child.id_mere === person.id);
+                const enfants = data.filter(enfant => enfant.id_pere === person.id || enfant.id_mere === person.id);
                 if (enfants.length > 0) {
                     enfants.sort((a, b) => b.id - a.id);
                     // Créer un élément li pour contenir la liste des enfants
-                    const enfantsList = document.createElement('p');
-                    enfantsList.classList.add('affichePerson');
-                    enfantsList.innerHTML = `${enfants.length === 1 ? 'Enfant' : 'Enfants'} :`;
+                    enfantsList = creerItem(enfants.length === 1 ? '<i>Enfant</i>' : '<i>Enfants</i>');
                     // Utiliser un DocumentFragment pour améliorer les performances
                     const fragment = document.createDocumentFragment();
-                    enfants.forEach(child => {
-                        const childItem = document.createElement('li');
-                        enfantsList.innerHTML = `${enfants.length === 1 ? '<i>Enfant</i>' : '<i>Enfants</i>'} :`;
+                    enfants.forEach(enfant => {
+                        const enfantItem = document.createElement('li');
+                        const lienEnfant = creerLienNom(enfant, 'lienPersonH', 'lienPersonF', 'listFratrie')
                         childItem.appendChild(lienEnfant);
-                        fragment.appendChild(childItem);
+                        fragment.appendChild(enfantItem);
                     });
                     enfantsList.appendChild(fragment);
                     detailsList.appendChild(enfantsList);
@@ -201,9 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     if (fratries.length > 0) {
                         fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
-                        const fratriesList = document.createElement('p');
-                        fratriesList.classList.add('affichePerson');
-                        fratriesList.innerHTML = `<i>Fratrie :</i>`;
+                        const fratriesList = creerItem(`<i>Fratrie :</i>`);
                         const fragment = document.createDocumentFragment();
                         fratries.forEach(fratrie => {
                             const fratrieItem = document.createElement('li');
@@ -218,16 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Charger le commentaire
                 if (person.commentaire) {
-                    const commentaireItem = document.createElement('p');
-                    commentaireItem.classList.add('affichePerson');
-                    commentaireItem.textContent = `Notes : ${person.commentaire}`;
+                    const commentaireItem = creerItem(`Notes : ${person.commentaire}`);
                     commentaireItem.classList.add('smallerPerson');
                     detailsList.appendChild(commentaireItem);
                 }
+                
                 // Charger l'apercu de l'arbre 
                 if (person.id < 2000) {
-                    const arbrePersoItem = document.createElement('p');
-                    arbrePersoItem.classList.add('affichePerson');
+                    const arbrePersoItem = creerItem(`Notes : ${person.commentaire}`);
                     const lienArbrePerso = document.createElement('a');
                     lienArbrePerso.textContent = CreerTexteLienArbre(person.prenom);
                     lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
@@ -235,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
                 }
+
                 // Charger les liens vers les actes si il y en a
                 chargerLiensActes(person, detailsList);
 
@@ -270,11 +244,11 @@ function CreerTexteLienArbre(prenom) {
         : `Aperçu de l'arbre de ${prenom}`;
 }
 
-function creerDecesItem(text) {
-    const decesItem = document.createElement('p');
-    decesItem.textContent = text;
-    decesItem.classList.add('affichePerson')
-    return decesItem;
+function creerItem(text) {
+    const itemParagraphe = document.createElement('p');
+    itemParagraphe.textContent = text;
+    itemParagraphe.classList.add('affichePerson')
+    return itemParagraphe;
 }
 
 function getAgeActuel(person) {
