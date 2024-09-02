@@ -129,7 +129,7 @@ function ajouterCommentaire(detailsList, person){
 function ajouterLienArbre(detailsList, person){
     // Charger l'apercu de l'arbre 
     if (person.id < 2001) {
-        const arbrePersoItem = document.createElement('div');
+        const arbrePersoItem = creerItem("");
         const lienArbrePerso = document.createElement('a');
         lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
         lienArbrePerso.classList.add('labelArbrePerso' );
@@ -289,7 +289,7 @@ function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, affi
     const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
     return fetch(monFichierComplet).then(response => {
         if (response.ok) {
-            const acteItem = document.createElement('a');
+            const acteItem = creerItem("");
             const lienFichier = document.createElement('a');
             lienFichier.classList.add('lienFichier')
             lienFichier.textContent = afficheMessage;
