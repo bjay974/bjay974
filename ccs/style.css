@@ -2,11 +2,11 @@
     --color-bleu-reunion: #2F66FF;
     --color-jaune-reunion: #FFFF02;
     --color-rouge-reunion: #F60100;
-    --color-font-blanc: #ECE5DD;
-    --color-primary: #075E54;
-    --color-secondary: #128C7E;
-    --color-light: #999;
-    --color-green: #075E54;
+    --color-font-blanc: #ECE5DD;  /*creme*/
+    --color-primary: #3B3B3B;    /*vert foncé*/
+    --color-secondary: #128C7E;  /*vert clair*/
+    --color-light: #999;  /*gris clair*/
+    --color-green: #075E54; /*vert foncé*/
     --color-male: rgb(32, 101, 124);
     --color-female: #724162;
     --color-male-bg: rgb(185, 219, 231);
@@ -40,31 +40,28 @@ nav {
     padding: 0.5%;
     text-align: center;
     font-size: large;
-    border-radius: 5px;
-
 }
 
 nav a {
     color: var(--color-font-blanc);
-    border-radius: 5px;
+    text-decoration: none;
     padding: 1%;
     
 }
 
 nav a.actif {
-    background-color: var(--color-primary);
+    background-color: var(--color-green);
     font-weight: bold; 
     border-radius: 5px; 
 }
 
 nav a:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-green);
     border-radius: 5px; 
 }
 
 a {
     text-decoration: none;
-    border-radius: 5px; 
 }
 
 section {
@@ -87,8 +84,8 @@ footer {
 
 .male, .female {
     min-height: 30px;
-    background-color: var(--color-male-bg); 
-    color: var(--color-male);
+    background-color: var(--color-male); 
+    color: var(--color-male-bg);
     border-radius: 5px; 
     text-decoration: none;  
     display: flex;
@@ -97,8 +94,8 @@ footer {
  }
 
 .female {
-    background-color: var(--color-female-bg);
-    color: var(--color-female);
+    background-color: var(--color-female);
+    color: var(--color-female-bg);
 }
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
