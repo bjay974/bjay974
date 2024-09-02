@@ -1,24 +1,27 @@
 .soustitreMail {
     background-color: var(--color-green);
-    color: var(--color-primary);
+    color: var(--color-font-blanc);
     margin-top: 1%;
     margin-bottom: 1%;
-    padding: 1% 0px 1% 5%;
+    margin-left: 1%;
+    padding-top : 1%;
+    padding-bottom : 1%; 
     text-align: center;
+    width: 98%;
+    font-weight: bold;
 }
 
 .labelMail {
     color:var(--color-green);
     text-decoration: none;
-    padding : 1%;
-    margin: 1%;
     text-align: center;
     font-weight: bold;
+ 
  }
 
 input[type="submit"] {
-    background-color: var(--color-green);
-    color: var(--color-primary); /* Couleur du texte */
+    background-color: var(--color-secondary);
+    color: var(--color-fond-blanc); /* Couleur du texte */
     border: none; /* Supprimer les bordures */
     padding: 15px 32px; /* Padding interne du bouton */
     text-align: center; /* Aligner le texte */
@@ -32,7 +35,9 @@ input[type="submit"] {
 
 /* Effet au survol (hover) */
 input[type="submit"]:hover {
-    background-color: var(--color-light); /* Couleur de fond au survol */
+    background-color: var(--color-green); /* Couleur de fond au survol */
+    color : var(--color-font-blanc);
+    font-weight: bold;      
 }
 
 input[type="text"], textarea {
@@ -42,7 +47,7 @@ input[type="text"], textarea {
     box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
     border: 2px solid #ccc; /* Bordure gris clair */
     border-radius: 5px; /* Bordure arrondie */
-    background-color: var(--color-font-blanc); /* Couleur de fond */
+    background-color: var(--color-light); /* Couleur de fond */
     color: var(--color-primary); /* Couleur du texte */
 }
 
