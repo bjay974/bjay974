@@ -59,7 +59,7 @@ a {
 }
 
 lienActif {
-    color:var(--color-primary);
+    background-color: var(--color-primary);
     font-weight: bold;
 }
 
