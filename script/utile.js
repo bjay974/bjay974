@@ -1,8 +1,10 @@
-const pageCourrante = window.location.pathname;
+const urlCourrante = window.location.pathname;
 const liensMenu = document.querySelectorAll('nav a');
 
 liensMenu.forEach(lien => {
-    if(lien.includes(pageCourrante.getAttribute('href'))) {
+    const lienChemin = new URL(lien.href).pathname.split('/')/pop();
+    const pageCourrante = urlCourrante.split('/').pop();
+    if(lienChemin === .includes(pageCourrante.getAttribute('href'))) {
         lien.classList.add('lienActif')
     }
     
