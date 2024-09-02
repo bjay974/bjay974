@@ -198,9 +198,8 @@ function ajoutDeces(detailsList,person){
         const ageNow = calculeAge(person.date_naissance);
         const adjectif_genre = ajouterE("Agé", person.genre);
         ageNowItem.innerHTML += `${adjectif_genre} de : ${ageNow} ans `;
-        }
-        detailsList.appendChild(ageActuel);
-    } else {
+        detailsList.appendChild(ageActuel);  }
+    else {
         if (person.date_deces !== "01/01/1901") {
             if (person.date_naissance !== "01/01/1901") {
                 const dateValide = verifieDate(person.date_deces);
