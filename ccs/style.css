@@ -2,13 +2,13 @@
     --color-bleu-reunion: #2F66FF;
     --color-jaune-reunion: #FFFF02;
     --color-rouge-reunion: #F60100;
-    --color-font-blanc: #F5F5DC;
-    --color-primary: #333;
-    --color-secondary: #666;
+    --color-font-blanc: #ECE5DD;
+    --color-primary: #128C7E;
+    --color-secondary: #ECE5DD;
     --color-light: #999;
-    --color-green: #aeddc3;
-    --color-male: rgb(39, 141, 175);
-    --color-female: #d474b4;
+    --color-green: #075E54;
+    --color-male: rgb(32, 101, 124);
+    --color-female: #724162;
     --color-male-bg: rgb(185, 219, 231);
     --color-female-bg: rgb(230, 176, 176);
     --font-size-small: 90%;
@@ -57,8 +57,9 @@ a {
     text-decoration: none;
 }
 
-menuActif {
-    color
+lienActif {
+    color:var(--color-primary);
+    font-weight: bold;
 }
 
 section {
