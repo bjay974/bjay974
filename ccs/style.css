@@ -3,8 +3,8 @@
     --color-jaune-reunion: #FFFF02;
     --color-rouge-reunion: #F60100;
     --color-font-blanc: #ECE5DD;
-    --color-primary: #128C7E;
-    --color-secondary: #ECE5DD;
+    --color-primary: #075E54;
+    --color-secondary: #128C7E;
     --color-light: #999;
     --color-green: #075E54;
     --color-male: rgb(32, 101, 124);
@@ -50,7 +50,7 @@ nav a {
 }
 
 nav a:hover {
-    background-color: var(--color-light);
+    background-color: var(--color-primary);
 }
 
 a {
