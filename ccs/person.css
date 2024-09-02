@@ -86,13 +86,11 @@
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
-  
     .listPerson, .listEnfant, .listFratrie {
         grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
         padding-left: 2%;
         line-height: 1.5;
     }
-
     .bannierePersonM, .bannierePersonF {
         text-align: center;
         margin-top: 10px;
@@ -101,19 +99,24 @@
     }
     .lienFichier {
         font-size: 90%;
-     }
+    }
+    .listEnfant {
+        line-height: 1.5;
+        font-size: 95%;
+    }
+    .listFratrie {
+        font-size: 90%;
+    } 
 
 }
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
-
     .listPerson, .listEnfant, .listFratrie {
         grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
         padding-left: 2%;
         line-height: 1.5;
     }
-
     .bannierePersonM, .bannierePersonF {
         text-align: center;
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
@@ -122,10 +125,16 @@
     .lienFichier {
         font-size: 95%;
      }
-     .labelArbrePerso {
+    .labelArbrePerso {
         font-size: 95%;
      }
      .commentairePersonne{
-        font-size: 85%;
+        font-size: 90%;
      }
+     .listEnfant {
+        font-size: 95%;
+    }
+    .listFratrie {
+        font-size: 90%;
+    } 
 }
