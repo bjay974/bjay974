@@ -62,6 +62,10 @@ input[type="text"]:focus, textarea:focus {
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
+    .soustitreMail {
+        width: 90%;
+        font-style: normal;
+     } 
  
    input[type="text"], textarea {
        width: 10%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
@@ -77,6 +81,10 @@ input[type="text"]:focus, textarea:focus {
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
+    .soustitreMail {
+        width: 90%;
+        font-style: normal;
+     } 
   
    input[type="text"], textarea {
        width: 50%; /* Assurez-vous qu'ils prennent toute la largeur disponible */

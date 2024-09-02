@@ -64,6 +64,19 @@
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
+    .soustitre {
+        text-align: center;
+        background-color: var(--color-light);
+        color: var(--color-green);
+        margin-top: 10px;
+        margin-left: 1%;
+        width: 90%;
+        font-style: italic;
+        font-weight: bold; 
+        padding: 5px 5px 5px 20px;
+        text-decoration: none;
+        border-radius: 5px; 
+     }
     .list {
         display: flex;
         margin-right: 0;
@@ -89,6 +102,19 @@
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
+    .soustitre {
+        text-align: center;
+        background-color: var(--color-light);
+        color: var(--color-green);
+        margin-top: 10px;
+        margin-left: 1%;
+        width: 90%;
+        font-style: italic;
+        font-weight: bold; 
+        padding: 5px 5px 5px 20px;
+        text-decoration: none;
+        border-radius: 5px; 
+     }    
 
     .list {
         display: grid;
