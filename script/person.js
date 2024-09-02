@@ -194,11 +194,11 @@ function ajouterFratrie(detailsList, person, data){
 // Ajouter details du décés ou l'age actuel 
 function ajoutDeces(detailsList,person){
     if (!person.date_deces) {
-        const ageNowItem = creerItem(person);
-        const ageNow = calculeAge(person.date_naissance);
+        const ageActuelItem = creerItem(person);
+        const ageActuel = calculeAge(person.date_naissance);
         const adjectif_genre = ajouterE("Agé", person.genre);
-        ageNowItem.innerHTML += `${adjectif_genre} de : ${ageNow} ans `;
-        detailsList.appendChild(ageActuel);  }
+        ageActuelItem.innerHTML += `${adjectif_genre} de : ${ageActuel} ans `;
+        detailsList.appendChild(ageActuelItem);  }
     else {
         if (person.date_deces !== "01/01/1901") {
             if (person.date_naissance !== "01/01/1901") {
