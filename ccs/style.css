@@ -52,6 +52,7 @@ nav a {
 nav a.actif {
     background-color: var(--color-primary);
     font-weight: bold; 
+    border-radius: 5px; 
 }
 
 nav a:hover {
