@@ -194,7 +194,11 @@ function ajouterFratrie(detailsList, person, data){
 // Ajouter details du décés ou l'age actuel 
 function ajoutDeces(detailsList,person){
     if (!person.date_deces) {
-        const ageActuel = creerItem(getAgeActuel(person));
+        const ageNowItem = creerItem(person);
+        const ageNow = calculeAge(person.date_naissance);
+        const adjectif_genre = ajouterE("Agé", person.genre);
+        ageNowItem.innerHTML += `${adjectif_genre} de : ${ageNow} ans `;
+        }
         detailsList.appendChild(ageActuel);
     } else {
         if (person.date_deces !== "01/01/1901") {
@@ -388,16 +392,6 @@ function diffAge(date1, date2) {
     const ageDate = new Date(ageDiff);
     return Math.abs(ageDate.getUTCFullYear() - 1970); 
 }
-
-
-function getAgeActuel(person) {
-    const ageNowItem = creerItem(person);
-    const ageNow = calculeAge(person.date_naissance);
-    const adjectif_genre = ajouterE("Agé", person.genre);
-    ageNowItem.innerHTML += `${adjectif_genre} de : ${ageNow} ans `;
-    return ageNowItem;
-}
-
 
 // Fonction pour déterminer le texte du lien
 function CreerTexteLienArbre(prenom) {
