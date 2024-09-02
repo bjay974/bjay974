@@ -57,6 +57,10 @@ a {
     text-decoration: none;
 }
 
+menuActif {
+    color
+}
+
 section {
     padding: 0px 0px 0px 0px;
     overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
