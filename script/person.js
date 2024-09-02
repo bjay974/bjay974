@@ -37,7 +37,7 @@ function afficherInfoPersonne(data, personId) {
 
  // Ajouter le nom et prénom en gras
 function ajouterNom(detailsList,person) {
-    const nameItem = creerLienNom(person.personId, 'lienPersonHEnGras', 'lienPersonFEnGras', ''); 
+    const nameItem = creerLienNom(person, 'lienPersonHEnGras', 'lienPersonFEnGras', ''); 
     nameItem.classList.add(person.genre === 'M' ? 'bannierePersonM' : 'bannierePersonF');    // ajouter h3 a la classe 
     detailsList.appendChild(nameItem);
     detailsList.appendChild(document.createElement('br')); 
@@ -315,12 +315,12 @@ function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, affi
 //fonctions utiles 
 
 // Fonction pour créer un lien formaté (nom + prénom) et  un href optionnel et une classe
-function creerLienNom(laPersonne, lienHomme, lienFemme, laClasse) {
+function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
-    const nomPersonne = laPersonne.nom_legitime || laPersonne.nom;    
-    lienPersonne.href = laPersonne.id < 2001 ? `../html/person.html?id=${laPersonne.id}` : '#';
+    const nomPersonne = person.nom_legitime || person.nom;    
+    lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
     lienPersonne.textContent = `${nomPersonne} ${laPersonne.prenom}`;
-    lienPersonne.classList.add(laPersonne.genre === 'M' ? lienHomme : lienFemme); 
+    lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
     if (laClasse) {
         lienPersonne.classList.add(laClasse);
     }
