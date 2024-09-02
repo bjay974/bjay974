@@ -1,89 +1,91 @@
 .soustitreMail {
-    background-color: var(--color-green);
-    color: var(--color-font-blanc);
-    margin-top: 1%;
-    margin-bottom: 1%;
-    margin-left: 1%;
-    padding-top : 1%;
-    padding-bottom : 1%; 
     text-align: center;
-    width: 98%;
-    font-weight: bold;
+   background-color: var(--color-light);
+   color: var(--color-green);
+   margin-top: 30px;
+   margin-bottom : 30px;
+   margin-left: 1%;
+   width: 95%;
+   font-style: italic;
+   font-weight: bold; 
+   padding: 5px 5px 5px 20px;
+   text-decoration: none;
+   border-radius: 5px; 
 }
 
 .labelMail {
-    color:var(--color-green);
-    text-decoration: none;
-    text-align: center;
-    font-weight: bold;
- 
+   color:var(--color-green);
+   text-decoration: none;
+   text-align: center;
+   font-weight: bold;
+   font-size : 95%;
  }
 
 input[type="submit"] {
-    background-color: var(--color-secondary);
-    color: var(--color-fond-blanc); /* Couleur du texte */
-    border: none; /* Supprimer les bordures */
-    padding: 15px 32px; /* Padding interne du bouton */
-    text-align: center; /* Aligner le texte */
-    text-decoration: none; /* Supprimer la décoration du texte */
-    display: inline-block; /* Garder l'affichage en ligne */
-    margin: 4px 2px; /* Espacement extérieur */
-    cursor: help; /* Curseur de la souris */    border-radius: 5px; /* Bordures arrondies */
-    transition: background-color 0.5s ease; /* Transition fluide pour l'effet de survol */
-    cursor: grabbing; /* Curseur de la souris */
+   background-color: var(--color-secondary);
+   color: var(--color-fond-blanc); /* Couleur du texte */
+   border: none; /* Supprimer les bordures */
+   padding: 15px 32px; /* Padding interne du bouton */
+   text-align: center; /* Aligner le texte */
+   text-decoration: none; /* Supprimer la décoration du texte */
+   display: inline-block; /* Garder l'affichage en ligne */
+   margin: 4px 2px; /* Espacement extérieur */
+   cursor: help; /* Curseur de la souris */    border-radius: 5px; /* Bordures arrondies */
+   transition: background-color 0.5s ease; /* Transition fluide pour l'effet de survol */
+   cursor: grabbing; /* Curseur de la souris */
 }
 
 /* Effet au survol (hover) */
 input[type="submit"]:hover {
-    background-color: var(--color-green); /* Couleur de fond au survol */
-    color : var(--color-font-blanc);
-    font-weight: bold;      
+   background-color: var(--color-green); /* Couleur de fond au survol */
+   color : var(--color-font-blanc);
+   font-weight: bold;      
 }
 
 input[type="text"], textarea {
-    width: 25%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
-    padding: 10px; /* Ajoute de l'espace interne */
-    margin: 10px 10px; /* Espace entre les éléments */
-    box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
-    border: 2px solid #ccc; /* Bordure gris clair */
-    border-radius: 5px; /* Bordure arrondie */
-    background-color: var(--color-light); /* Couleur de fond */
-    color: var(--color-primary); /* Couleur du texte */
+   width: 25%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+   padding: 10px; /* Ajoute de l'espace interne */
+   margin: 10px 10px; /* Espace entre les éléments */
+   box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+   border: 2px solid #ccc; /* Bordure gris clair */
+   border-radius: 5px; /* Bordure arrondie */
+   background-color: var(--color-light); /* Couleur de fond */
+   color: var(--color-primary); /* Couleur du texte */
 }
 
 /* Style au focus (quand l'utilisateur clique ou navigue dans le champ) */
 input[type="text"]:focus, textarea:focus {
-    border-color: var(--color-green); /* Change la couleur de la bordure lorsqu'elle est active */
-    outline: none; /* Enlève le contour bleu par défaut */
-    background-color:var(--color-font-blanc); /* Change la couleur de fond au focus */
+   border-color: var(--color-green); /* Change la couleur de la bordure lorsqu'elle est active */
+   outline: none; /* Enlève le contour bleu par défaut */
+   background-color:var(--color-font-blanc); /* Change la couleur de fond au focus */
 }
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
-  
-    input[type="text"], textarea {
-        width: 10%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
-        padding: 10px; /* Ajoute de l'espace interne */
-        margin: 1px 1px; /* Espace entre les éléments */
-        box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
-        border: 2px solid #ccc; /* Bordure gris clair */
-        border-radius: 5px; /* Bordure arrondie */
-        background-color: var(--color-font-blanc); /* Couleur de fond */
-        color: var(--color-primary); /* Couleur du texte */
-    }    
+ 
+   input[type="text"], textarea {
+       width: 10%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+       padding: 10px; /* Ajoute de l'espace interne */
+       margin: 1px 1px; /* Espace entre les éléments */
+       box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+       border: 2px solid #ccc; /* Bordure gris clair */
+       border-radius: 5px; /* Bordure arrondie */
+       background-color: var(--color-font-blanc); /* Couleur de fond */
+       color: var(--color-primary); /* Couleur du texte */
+   }    
 }
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
-   
-    input[type="text"], textarea {
-        width: 50%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
-        padding: 2%; /* Ajoute de l'espace interne */
-        margin: 1px 1px; /* Espace entre les éléments */
-        box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
-        border: 2px solid #ccc; /* Bordure gris clair */
-        border-radius: 5px; /* Bordure arrondie */
-        background-color: var(--color-font-blanc); /* Couleur de fond */
-        color: var(--color-primary); /* Couleur du texte */
-    } 
+  
+   input[type="text"], textarea {
+       width: 50%; /* Assurez-vous qu'ils prennent toute la largeur disponible */
+       padding: 2%; /* Ajoute de l'espace interne */
+       margin: 1px 1px; /* Espace entre les éléments */
+       box-sizing: border-box; /* Inclut le padding et la bordure dans la largeur */
+       border: 2px solid #ccc; /* Bordure gris clair */
+       border-radius: 5px; /* Bordure arrondie */
+       background-color: var(--color-font-blanc); /* Couleur de fond */
+       color: var(--color-primary); /* Couleur du texte */
+   } 
 }
