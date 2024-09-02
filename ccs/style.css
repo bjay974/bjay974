@@ -49,6 +49,11 @@ nav a {
     
 }
 
+nav a.actif {
+    background-color: var(--color-primary);
+    font-weight: bold; 
+}
+
 nav a:hover {
     background-color: var(--color-primary);
     border-radius: 5px; 
@@ -56,11 +61,6 @@ nav a:hover {
 
 a {
     text-decoration: none;
-}
-
-lienActif {
-    background-color: var(--color-primary);
-    font-weight: bold;
 }
 
 section {
