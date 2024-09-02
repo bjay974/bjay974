@@ -319,7 +319,7 @@ function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
     const nomPersonne = person.nom_legitime || person.nom;    
     lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
-    lienPersonne.textContent = `${nomPersonne} ${laPersonne.prenom}`;
+    lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
     lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
     if (laClasse) {
         lienPersonne.classList.add(laClasse);
