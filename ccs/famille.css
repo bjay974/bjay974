@@ -1,17 +1,16 @@
 .soustitre {
     text-align: center;
-    color: var(--color-secondary);
+    background-color: var(--color-light);
+    color: var(--color-green);
     margin-top: 10px;
-    width: 98%;
+    margin-left: 1%;
+    width: 95%;
     font-style: italic;
     font-weight: bold; 
     padding: 5px 5px 5px 20px;
     text-decoration: none;
-}
-
-.soustitre {
-    background-color: var(--color-green);
-}
+    border-radius: 5px; 
+ }
 
 .list {
     display: grid;

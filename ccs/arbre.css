@@ -1,10 +1,13 @@
 .soustitreArbre {
-    background-color: var(--color-green);
-    color: var(--color-primary);
+    background-color: var(--color-light);
+    color: var(--color-green);
     margin-bottom: 1%;
+    margin-left: 1%;
     padding : 1%;
     padding-left: 4%;
     text-align: left;
+    border-radius: 5px; 
+    width: 90%;
 }
 
 .grid-containerArbre {
@@ -35,7 +38,7 @@
 }
 
 .labelArbre {
-    color:var(--color-primary);
+    color:var(--color-green);
     text-decoration: none;
     font-style: italic;
     margin-bottom: 2%;
