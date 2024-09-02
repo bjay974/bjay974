@@ -194,7 +194,7 @@ function ajouterFratrie(detailsList, person, data){
 // Ajouter details du décés ou l'age actuel 
 function ajoutDeces(detailsList,person){
     if (!person.date_deces) {
-        const ageActuelItem = creerItem(person);
+        const ageActuelItem = creerItem("");
         const ageActuel = calculeAge(person.date_naissance);
         const adjectif_genre = ajouterE("Agé", person.genre);
         ageActuelItem.innerHTML += `${adjectif_genre} de : ${ageActuel} ans `;
