@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const lienArbrePerso = document.createElement('a');
                     lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;
                     lienArbrePerso.classList.add('labelArbrePerso' );
-                    lienArbrePerso.textContent = CreerTexteLienArbre(prenom);
+                    lienArbrePerso.textContent = CreerTexteLienArbre(person.prenom);
                     arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
                 }
