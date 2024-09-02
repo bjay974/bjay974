@@ -208,6 +208,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     lienArbrePerso.textContent = CreerTexteLienArbre(person.prenom);
                     arbrePersoItem.appendChild(lienArbrePerso);
                     detailsList.appendChild(arbrePersoItem);
+                    detailsList.appendChild(document.createElement('br'));
                 }
 
                 // Charger les liens vers les actes si il y en a
