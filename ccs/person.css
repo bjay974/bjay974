@@ -20,7 +20,6 @@
 
 .bannierePersonM, .bannierePersonF {
     text-align: left;
-    color: var(--color-secondary);
     margin-top: 10px;
     margin-left: 10px;
     width: 95%;
@@ -43,11 +42,13 @@
 }
 
 .bannierePersonM {
-    background-color: var(--color-male-bg);
+    background-color: var(--color-male); 
+    color: var(--color-male-bg);
 }
 
 .bannierePersonF {
-    background-color: var(--color-female-bg);
+    background-color: var(--color-female);
+    color: var(--color-female-bg);
 }
 
 .lienPersonHEnGras, .lienPersonFEnGras, .lienPersonH, .lienPersonF {
