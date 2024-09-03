@@ -107,7 +107,9 @@ footer {
     nav {
         padding: 2%;
     }
-
+    body{
+        height: 90%;
+    }
     footer {
         background-color: var(--color-primary);
         color: var(--color-font-blanc); 
