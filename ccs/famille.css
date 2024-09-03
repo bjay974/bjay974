@@ -41,11 +41,11 @@
 }
 
 .lienHommeEnGras, .lienHomme {
-    color: var(--color-male-bg);
+    color: var(--color-male);
 }
 
 .lienFemmeEnGras, .lienFemme {
-    color: var(--color-female-bg);
+    color: var(--color-female);
 }
 
 .soustitre {
