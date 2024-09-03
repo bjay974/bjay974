@@ -140,7 +140,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 
   if (enfants.length > 0) {
     // Conteneur global pour tous les enfants et petits-enfants
-    const globalContainer = ajouterDivetTitre('global-container', enfants.length === 1, "Enfant", "Enfants");
+    const globalContainer = ajouterDivetTitre('global-container', Enfants.length === 1, "Enfant", "Enfants");
     globalContainer.className = 'global-container';
 
     enfants.sort((a, b) => b.id - a.id);
@@ -154,7 +154,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 
       // Ajouter l'enfant au conteneur
       afficherMembreDansConteneur(enfant, enfantContainer, 'enfant');
-
+      let petitsEnfantsContainer
       // Conteneur pour les petits-enfants
       const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
       if (petitsEnfants.length > 0) {
