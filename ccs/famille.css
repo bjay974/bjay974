@@ -41,11 +41,11 @@
 }
 
 .lienHommeEnGras, .lienHomme {
-    color: var(--color-male);
+    color: var(--color-male-bg);
 }
 
 .lienFemmeEnGras, .lienFemme {
-    color: var(--color-female);
+    color: var(--color-female-bg);
 }
 
 .soustitre {
@@ -118,7 +118,7 @@
      }    
 
     .list {
-        display: grid;
+        grid-template-areas: 80%;
         margin-right: 0;
         line-height: 1.2;
     }
