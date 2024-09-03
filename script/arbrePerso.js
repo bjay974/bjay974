@@ -149,16 +149,22 @@ function afficherEnfantsPetitEnfants(parentId, data) {
       enfantContainer.className = 'enfant-container';
 
       // Ajouter l'enfant au conteneur
-      afficherMembreDansConteneur(enfant, enfantContainer);
+      afficherMembreDansConteneur(enfant, enfantContainer, 'enfant');
 
       // Conteneur pour les petits-enfants
+      const petitsEnfantsContainer = document.createElement('div');
+      petitsEnfantsContainer.className = 'petits-enfants-container';
+
       const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
       if (petitsEnfants.length > 0) {
         petitsEnfants.sort((a, b) => b.id - a.id);
 
         petitsEnfants.forEach(petitEnfant => {
-          afficherMembreDansConteneur(petitEnfant, enfantContainer);
+          afficherMembreDansConteneur(petitEnfant, petitsEnfantsContainer, 'petitenfant');
         });
+
+        // Ajouter les petits-enfants au conteneur de l'enfant
+        enfantContainer.appendChild(petitsEnfantsContainer);
       }
 
       // Ajouter l'enfant (et ses petits-enfants) au conteneur global
@@ -171,16 +177,17 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 }
 
 // Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
-function afficherMembreDansConteneur(membre, conteneur) {
+function afficherMembreDansConteneur(membre, conteneur, role) {
   const genderClass = membre.genre === 'M' ? 'male' : 'female';
   const membreDiv = document.createElement('div');
-  membreDiv.className = `${genderClass} membre-container`;
+  membreDiv.className = `${role} ${genderClass} membre-container`;
 
   const membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
   membreDiv.innerHTML = membreLink;
 
   conteneur.appendChild(membreDiv);
 }
+
 
 
 function trouverGrandsParents(pereId, mereId, data) {
