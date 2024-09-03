@@ -123,6 +123,20 @@
     position: relative;
 } 
 
+.global-container {
+    display: flex;
+    justify-content: space-between; /* Espace entre les colonnes */
+}
+
+.enfants-container, .petits-enfants-global-container {
+    flex: 1; /* Prendre une largeur égale pour chaque colonne */
+    margin: 0 10px; /* Espacement entre les colonnes */
+}
+
+.enfant-container, .petits-enfants-container {
+    margin-top: 10px; /* Espacement entre les enfants/petits-enfants */
+}
+
 .label {
   margin : 0; 
   padding : 0; 
