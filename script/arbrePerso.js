@@ -135,13 +135,17 @@ function afficherParent(fatherId, motherId, containerClass, data) {
 
 function afficherEnfantsPetitEnfants(parentId, data) {
   const enfants = data.filter(enfant => enfant.id_pere === parentId || enfant.id_mere === parentId);
+  
+ 
 
   if (enfants.length > 0) {
     // Conteneur global pour tous les enfants et petits-enfants
-    const globalContainer = document.createElement('div');
+    const globalContainer = ajouterDivetTitre('global-container', petitsEnfants.length === 1, "Enfant", "Enfants");
     globalContainer.className = 'global-container';
 
     enfants.sort((a, b) => b.id - a.id);
+
+    let nombrePetitEnfant = 0;
 
     enfants.forEach(enfant => {
       // Conteneur pour chaque enfant et ses petits-enfants
@@ -152,13 +156,16 @@ function afficherEnfantsPetitEnfants(parentId, data) {
       afficherMembreDansConteneur(enfant, enfantContainer, 'enfant');
 
       // Conteneur pour les petits-enfants
-      const petitsEnfantsContainer = document.createElement('div');
-      petitsEnfantsContainer.className = 'petits-enfants-container';
-
       const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
       if (petitsEnfants.length > 0) {
+        if (nombrePetitEnfant = 0) {
+          if (petitsEnfants.length >= 1) {
+            const petitsEnfantsContainer = ajouterDivetTitre('global-container', petitsEnfants.length === 1, "Petit(s) Enfant(s)", "Petits-Enfants");
+            petitsEnfantsContainer.className = 'petits-enfants-container';
+            nombrePetitEnfant = nombrePetitEnfant + 1
+          }
+        }
         petitsEnfants.sort((a, b) => b.id - a.id);
-
         petitsEnfants.forEach(petitEnfant => {
           afficherMembreDansConteneur(petitEnfant, petitsEnfantsContainer, 'petitenfant');
         });

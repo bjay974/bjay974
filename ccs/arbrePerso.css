@@ -1,21 +1,22 @@
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
+    grid-template-columns: 20% 20% 20% 40%;
+    grid-template-areas: "colonne1 colonne2 colonne3 colonne4" ;
     padding : 0;
     margin: 0;  
 }
 
 .personne {
-  padding: 5px;
+  padding: 1px;
   display: flex;
   grid-area: colonne3;
   margin-top: 100px; 
-  height: auto;
+  height: 160px;
   flex-direction: column;
   box-sizing: border-box; 
   text-overflow: ellipsis;
   white-space: nowrap;
+  width: 250px
 }
 
 .parent, .grandparent, .enfant, .petitenfant {
@@ -25,24 +26,26 @@
   padding: 1%;
   text-overflow: ellipsis;
   white-space: nowrap;
-  min-height: 60px
+  min-height: 60px;
 }
 
 .parent {
   grid-area: colonne2;
   margin-top: 20px; 
+  width: 250px
 }
 
 .grandparent {
   margin-top: 20px; 
   margin-left: 2%; 
   grid-area: colonne1;
+  width: 250px
 }
 
 .enfant {
   margin-top: 20px; 
   grid-area: colonne4;
-
+  width: 250px
 }
 
 .petitenfant {
@@ -50,12 +53,14 @@
   grid-area: colonne5;
   margin-right: 2%;
   font-size:  var(--font-size-small);
+  width: 250px
 }
 
 .petitenfant .parent-info {
   font-size: var(--font-size-very-small);
   font-style: italic;
   margin: 0;
+  width: 220px
 }
 
 .grandparent .female::before {
@@ -74,10 +79,11 @@
     top: 85px; /* Place le trait au milieu, verticalement par rapport à l'homme */
     left: 50%; /* Place le trait juste à droite de l'homme */
     transform: translateY(-50%);
-    width: 185px; /* Longueur du trait horizontal */
+    width: 250px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
 }
+
 .parent .female::before {
     content: '';
     position: absolute;
@@ -87,17 +93,30 @@
     width: 3px; /* Épaisseur du trait */
     height: 210px; /* Hauteur du trait couvrant toute la hauteur du couple */
     background-color: var(--color-green);
-} 
+}
+
 .parent .male::after {
     content: '';
     position: absolute;
     top: 165px; /* Place le trait au milieu, verticalement par rapport à l'homme */
     left: 50%; /* Place le trait juste à droite de l'homme */
     transform: translateY(-50%);
-    width: 195px; /* Longueur du trait horizontal */
+    width: 255px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
 }
+
+.personne .female::before {
+    content: '';
+    position: absolute;
+    top: 466px;
+    left: 44%; /* Centre le trait verticalement */
+    transform: translateX(-50%);
+    width: 3px; /* Épaisseur du trait */
+    height: 140px; /* Hauteur du trait couvrant toute la hauteur du couple */
+    background-color: var(--color-green);
+} 
+
 .grandparent.male, .grandparent.female,.parent.male, .parent.female {
     z-index: 1; 
     display: flex;
@@ -105,11 +124,14 @@
 } 
 
 .label {
-margin : 0; 
-padding : 0; 
-color:var(--color-light);
-font-style: italic;
+  margin : 0; 
+  padding : 0; 
+  color:var(--color-green);
+  font-style: italic;
 }
+
+.enfant-container {margin-top : 50px}
+
 
 .personne + .label {margin-top : 60px}
 .label + .personne {margin-top : 60px}
@@ -121,10 +143,11 @@ font-style: italic;
 .grandparent.female + .grandparent.male{margin-top : 100px;}
 
 /* Conteneur global pour tous les enfants et petits-enfants */
-.global-container {
+ .global-container {
+    grid-area : colonne4;
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Espacement entre les groupes */
+    gap: 10px; /* Espacement entre les groupes */
   }
   
   /* Conteneur pour chaque enfant et ses petits-enfants */
@@ -136,8 +159,9 @@ font-style: italic;
   
   /* Affichage des membres */
   .membre-container {
-    margin-right: 20px; /* Espacement entre l'enfant et ses petits-enfants */
+    margin-right: 40px; /* Espacement entre l'enfant et ses petits-enfants */
     text-align: center;
+
   }
 
 
