@@ -86,6 +86,25 @@
     text-align: left;
  }
 
+ /* Conteneur global pour tous les enfants et petits-enfants */
+.global-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacement entre les groupes */
+  }
+  
+  /* Conteneur pour chaque enfant et ses petits-enfants */
+  .enfant-container {
+    display: flex;
+    flex-wrap: wrap; /* Pour permettre aux petits-enfants de passer à la ligne suivante */
+    align-items: flex-start;
+  }
+  
+  /* Affichage des membres */
+  .membre-container {
+    margin-right: 20px; /* Espacement entre l'enfant et ses petits-enfants */
+    text-align: center;
+  }
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
     .listPerson, .listEnfant, .listFratrie {

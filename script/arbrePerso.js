@@ -117,8 +117,6 @@ function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, contain
   }
 }
 
-
-
 function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
   var mother = data.find(person => person.id === motherId);
@@ -135,59 +133,55 @@ function afficherParent(fatherId, motherId, containerClass, data) {
   }
 }
 
-// Fonction pour afficher les enfants et les petits-enfants
 function afficherEnfantsPetitEnfants(parentId, data) {
-  // Filtrer les enfants du parent
   const enfants = data.filter(enfant => enfant.id_pere === parentId || enfant.id_mere === parentId);
 
   if (enfants.length > 0) {
-      // Afficher les enfants
-      enfants.sort((a, b) => b.id - a.id);
-      afficherMembres('Enfant', 'Enfants', enfants, 'enfant');
+    // Conteneur global pour tous les enfants et petits-enfants
+    const globalContainer = document.createElement('div');
+    globalContainer.className = 'global-container';
 
-      // Créer un conteneur unique pour tous les petits-enfants
-      let petitsEnfantsContainer = null;
-      let isLabelAdded = false;
+    enfants.sort((a, b) => b.id - a.id);
 
-      // Afficher les petits-enfants groupés par parent
-      enfants.forEach(enfant => {
-          const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
-          if (petitsEnfants.length > 0) {
-              // Ajouter le nom du parent à chaque petit-enfant
-              petitsEnfants.forEach(gc => gc.parentPrenom = enfant.prenom);
-              petitsEnfants.sort((a, b) => b.id - a.id);
+    enfants.forEach(enfant => {
+      // Conteneur pour chaque enfant et ses petits-enfants
+      const enfantContainer = document.createElement('div');
+      enfantContainer.className = 'enfant-container';
 
-              // Si ce n'est pas encore fait, créer le conteneur pour les petits-enfants avec le label
-              if (!petitsEnfantsContainer) {
-                  petitsEnfantsContainer = document.createElement('div');
-                  petitsEnfantsContainer.className = 'petits-enfants-container';
-              }
+      // Ajouter l'enfant au conteneur
+      afficherMembreDansConteneur(enfant, enfantContainer);
 
-              // Ajouter les petits-enfants au conteneur
-              petitsEnfants.forEach(petitEnfant => {
-                  const genderClass = petitEnfant.genre === 'M' ? 'male' : 'female';
-                  const petitEnfantDiv = document.createElement('div');
-                  petitEnfantDiv.className = 'petitenfant' + ' ' + genderClass;
+      // Conteneur pour les petits-enfants
+      const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
+      if (petitsEnfants.length > 0) {
+        petitsEnfants.sort((a, b) => b.id - a.id);
 
-                  const petitEnfantLink = `<p><a href="../html/arbrePerso.html?id=${petitEnfant.id}" style="text-decoration: none; color: inherit;">${petitEnfant.nom} ${petitEnfant.prenom}</a></p>`;
-                  const parentInfo = `<p class="parent-info">(${petitEnfant.parentPrenom})</p>`;
-                  petitEnfantDiv.innerHTML = petitEnfantLink + parentInfo;
+        petitsEnfants.forEach(petitEnfant => {
+          afficherMembreDansConteneur(petitEnfant, enfantContainer);
+        });
+      }
 
-                  petitsEnfantsContainer.appendChild(petitEnfantDiv);
-              });
+      // Ajouter l'enfant (et ses petits-enfants) au conteneur global
+      globalContainer.appendChild(enfantContainer);
+    });
 
-              // Ajouter le conteneur avec le label la première fois uniquement
-              if (!isLabelAdded) {
-                  const container = ajouterDivetTitre('petitenfant', petitsEnfants.length === 1, "Petit-enfant", "Petits-enfants");
-                  container.appendChild(petitsEnfantsContainer);
-                  const personContainer = document.getElementById('person-container');
-                  personContainer.appendChild(container);
-                  isLabelAdded = true;
-              }
-          }
-      });
+    // Ajouter le conteneur global au conteneur principal
+    document.getElementById('person-container').appendChild(globalContainer);
   }
 }
+
+// Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
+function afficherMembreDansConteneur(membre, conteneur) {
+  const genderClass = membre.genre === 'M' ? 'male' : 'female';
+  const membreDiv = document.createElement('div');
+  membreDiv.className = `${genderClass} membre-container`;
+
+  const membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
+  membreDiv.innerHTML = membreLink;
+
+  conteneur.appendChild(membreDiv);
+}
+
 
 function trouverGrandsParents(pereId, mereId, data) {
   // Trouver les parents dans les données

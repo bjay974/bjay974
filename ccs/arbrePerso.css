@@ -1,5 +1,4 @@
 .grid-container {
-    
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
@@ -99,11 +98,12 @@
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
 }
-.male, .female {
+.grandparent.male, .grandparent.female,.parent.male, .parent.female {
     z-index: 1; 
     display: flex;
     position: relative;
-}
+} 
+
 .label {
 margin : 0; 
 padding : 0; 
@@ -120,10 +120,35 @@ font-style: italic;
 .grandparent.male + .grandparent.female{margin-top : 50px}
 .grandparent.female + .grandparent.male{margin-top : 100px;}
 
+/* Conteneur global pour tous les enfants et petits-enfants */
+.global-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Espacement entre les groupes */
+  }
+  
+  /* Conteneur pour chaque enfant et ses petits-enfants */
+  .enfant-container {
+    display: flex;
+    flex-wrap: wrap; /* Pour permettre aux petits-enfants de passer à la ligne suivante */
+    align-items: flex-start;
+  }
+  
+  /* Affichage des membres */
+  .membre-container {
+    margin-right: 20px; /* Espacement entre l'enfant et ses petits-enfants */
+    text-align: center;
+  }
+
+
+
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
   body {
       font-size: var(--font-size-small); /* Ajuste la taille de la police */
+  }
+  .parent, .grandparent, .enfant, .petitenfant {
+    min-height: 20px;
   }
 }
 
@@ -131,5 +156,8 @@ font-style: italic;
 @media (max-width: 480px) {
   body {
       font-size: 0.5rem; /* Ajuste la taille de la police pour les petits écrans */
+  }
+  .parent, .grandparent, .enfant, .petitenfant {
+    min-height: 20px;
   }
 }
