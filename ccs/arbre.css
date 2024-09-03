@@ -1,119 +1,117 @@
-.soustitreArbre {
-    text-align: left;
-    background-color: var(--color-light);
-    color: var(--color-green);
-    margin-top: 30px;
-    margin-left: 1%;
-    width: 95%;
-    font-style: italic;
-    font-weight: bold; 
-    padding: 5px 5px 5px 20px;
-    text-decoration: none;
-    border-radius: 5px; 
-}
-
 .grid-containerArbre {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-  }
-
-.containerArbre1 {
-  margin-top: 10%;
-  flex-direction: column;
-  align-content: flex-start;
-  padding-left: 10%;
-  padding-bottom: 10%;
-
-}
-
-.containerArbre2 { margin-top: 15%; }
-.containerArbre3 { margin-top: 40%; }
-.containerArbre4 { margin-top: 90%; }
-.containerArbre5 { margin-top: 200%; }
-
-.generation {
-  display: flex;
-  flex-direction: column;
-  align-content: flex-start;
-  padding : 0;
-  margin: 0;  
-}
-
-.labelArbre {
-    color:var(--color-green);
-    text-decoration: none;
-    font-style: italic;
-    margin-bottom: 2%;
-    margin: 1%;
-    text-align: left;
-    font-size: 85%;
+    grid-template-columns: repeat(6, 1fr);
+   flex-direction: column;
+   align-content: flex-start;
+   padding : 0;
+   margin: 0;  
+   }
+ 
+ .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5, .containerArbre6 {
+     flex-direction: column;
+     align-content: flex-start;
+     display: flex;
+     box-sizing: border-box; 
+     text-overflow: ellipsis;
+     white-space: nowrap;  
  }
-
-.containerArbre1 .male:first-child { margin-top: 5%}
-.containerArbre2 .male:first-child { margin-top: 15%}
-.containerArbre3 .male:first-child { margin-top: 25%}
-.containerArbre4 .male:first-child { margin-top: 50%}
-.containerArbre5 .male:first-child { margin-top: 900%}
-.containerArbre5 .female:first-child { margin-top: 90%}
-.containerArbre1 .male + .female {margin-top: 20%}
-.containerArbre1 .female + .male {margin-top: 35%}
-.containerArbre2 .male + .female {margin-top: 60%}
-.containerArbre2 .female + .male {margin-top: 59%}
-.containerArbre3 .male + .female {margin-top: 130%}
-.containerArbre3 .female + .male {margin-top: 130%}
-.containerArbre4 .male + .female {margin-top: 270%}
-
-
-/* Styles pour les écrans de taille moyenne (tablettes) */
-@media (max-width: 768px) {
-    .grid-containerArbre {
-        grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
-    }
-
-    .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
-        padding-left: 10px;
-        margin-top: 20px;
-    }
-    .soustitreArbre {
-        margin-bottom: 2%;
-        margin-left: 2%;
-        padding : 2%;
-        text-align: left;
-        border-radius: 5px; 
-        width: 85%;
-    }
-}
-
-/* Styles pour les petits écrans (mobiles) */
-@media (max-width: 480px) {
-    .grid-containerArbre {
-        grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
-    }
-
-    .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
-        padding-left: 10px;
-        margin-top: 20px;
-    }
-    /* Cacher certains éléments si nécessaire */
-    .some-element {
-        display: none; /* Exemple : cacher certains éléments */
-    }
-    .soustitreArbre {
-        margin-bottom: 2%;
-        margin-left: 2%;
-        padding : 2%;
-        text-align: left;
-        border-radius: 5px; 
-        width: 90%;
-    }
-    .labelArbre {
-        color:var(--color-green);
-        text-decoration: none;
-        font-style: italic;
-        margin-bottom: 2%;
-        margin: 1%;
-        margin-left: 2%;
-        text-align: left;
-        font-size: 90%;
+ 
+ .containerArbre1 {grid:1 ; margin-top: 10px }
+ .containerArbre2 {grid:2 ; margin-top: 20px }
+ .containerArbre3 {grid:3 ; margin-top: 30px }
+ .containerArbre4 {grid:4 ; margin-top: 40px }
+ .containerArbre5 {grid:5 ; margin-top: 50px }
+ .containerArbre6 {grid:6 ; margin-top: 60px }
+ 
+ .labelArbre {
+     color:var(--color-green);
+     text-decoration: none;
+     font-style: italic;
+     margin-bottom: 2%;
+     margin: 1%;
+     text-align: left;
+     font-size: 85%;
+  }
+ 
+ .containerArbre1 .male:first-child { margin-top: 5%}
+ .containerArbre2 .male:first-child { margin-top: 15%}
+ .containerArbre3 .male:first-child { margin-top: 25%}
+ .containerArbre4 .male:first-child { margin-top: 50%}
+ .containerArbre5 .male:first-child { margin-top: 900%}
+ .containerArbre5 .female:first-child { margin-top: 90%}
+ .containerArbre1 .male + .female {margin-top: 20%}
+ .containerArbre1 .female + .male {margin-top: 35%}
+ .containerArbre2 .male + .female {margin-top: 60%}
+ .containerArbre2 .female + .male {margin-top: 59%}
+ .containerArbre3 .male + .female {margin-top: 130%}
+ .containerArbre3 .female + .male {margin-top: 130%}
+ .containerArbre4 .male + .female {margin-top: 270%}
+ 
+ .soustitreArbre {
+     text-align: left;
+     background-color: var(--color-light);
+     color: var(--color-green);
+     margin-top: 30px;
+     margin-left: 1%;
+     width: 95%;
+     font-style: italic;
+     font-weight: bold; 
+     padding: 5px 5px 5px 20px;
+     text-decoration: none;
+     border-radius: 5px; 
+ }
+ 
+ /* Styles pour les écrans de taille moyenne (tablettes) */
+ @media (max-width: 768px) {
+     .grid-containerArbre {
+         grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
      }
-}
+ 
+     .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
+         padding-left: 10px;
+         margin-top: 20px;
+     }
+     .soustitreArbre {
+         margin-bottom: 2%;
+         margin-left: 2%;
+         padding : 2%;
+         text-align: left;
+         border-radius: 5px; 
+         width: 85%;
+     }
+ }
+ 
+ /* Styles pour les petits écrans (mobiles) */
+ @media (max-width: 480px) {
+     .grid-containerArbre {
+         grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
+     }
+ 
+     .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
+         padding-left: 10px;
+         margin-top: 20px;
+     }
+     /* Cacher certains éléments si nécessaire */
+     .some-element {
+         display: none; /* Exemple : cacher certains éléments */
+     }
+     .soustitreArbre {
+         margin-bottom: 2%;
+         margin-left: 2%;
+         padding : 2%;
+         text-align: left;
+         border-radius: 5px; 
+         width: 90%;
+     }
+     .labelArbre {
+         color:var(--color-green);
+         text-decoration: none;
+         font-style: italic;
+         margin-bottom: 2%;
+         margin: 1%;
+         margin-left: 2%;
+         text-align: left;
+         font-size: 90%;
+      }
+ }
+ 

@@ -83,14 +83,11 @@ footer {
 }
 
 .male, .female {
-    min-height: 30px;
     background-color: var(--color-male); 
     color: var(--color-male-bg);
     border-radius: 5px; 
     text-decoration: none;  
     display: flex;
-    padding : 1%;
-    margin : 1%;
  }
 
 .female {
