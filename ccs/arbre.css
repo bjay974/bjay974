@@ -1,132 +1,119 @@
-.grid-containerArbre {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    padding : 0;
-    margin: 0;  
+:root {
+    --color-bleu-reunion: #2F66FF;
+    --color-jaune-reunion: #FFFF02;
+    --color-rouge-reunion: #F60100;
+    --color-font-blanc: #ECE5DD;  /*creme*/
+    --color-primary: #3B3B3B;    /*vert foncé*/
+    --color-secondary: #128C7E;  /*vert clair*/
+    --color-light: #999;  /*gris clair*/
+    --color-green: #075E54; /*vert foncé*/
+    --color-male: rgb(32, 101, 124);
+    --color-female: #724162;
+    --color-male-bg: rgb(185, 219, 231);
+    --color-female-bg: rgb(230, 176, 176);
+    --font-size-small: 90%;
+    --font-size-very-small: 70%;
+    --padding-small: 5px;
+    --margin-small: 5px;
+}
+
+body {
+    padding: 0px; /* haut | droit | bas | gauche */
+    margin: 0px;
+    overflow: auto; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-font-blanc);
+}
+
+header {
+    background-color: var(--color-primary);
+    color: var(--color-font-blanc);
+    text-align: center;
+    font-size: large;
+}
+
+nav {
+    color: var(--color-font-blanc);
+    background-color: var(--color-secondary);
+    padding: 0.5%;
+    text-align: center;
+    font-size: large;
+}
+
+nav a {
+    color: var(--color-font-blanc);
+    text-decoration: none;
+    padding: 1%;
+    
+}
+
+nav a.actif {
+    background-color: var(--color-green);
+    font-weight: bold; 
+    border-radius: 5px; 
+}
+
+nav a:hover {
+    background-color: var(--color-green);
+    border-radius: 5px; 
+}
+
+a {
+    text-decoration: none;
+}
+
+section {
+    padding: 0px 0px 0px 0px;
+    overflow: auto; /* Ajoute une barre de défilement lorsque  le contenu dépasse les dimensions de la fenêtre */
+    text-align: center;
+    height: 100%;
+}
+
+footer {
+    background-color: var(--color-primary);
+    color: var(--color-font-blanc); 
+    padding: 1px;
+    text-align: center;
+    width: 100%;
+    height: 5%;
+    font-size: var(--font-size-small);
+    margin-top: 2%;
+}
+
+.male, .female {
+    background-color: var(--color-male); 
+    color: var(--color-male-bg);
+    border-radius: 5px; 
+    text-decoration: none;  
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+ }
+
+.female {
+    background-color: var(--color-female);
+    color: var(--color-female-bg);
+}
+
+/* Styles pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 768px) {
+    body {
+        font-size: var(--font-size-small); /* Ajuste la taille de la police */
     }
-  
-  .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5, .containerArbre6 {
-     padding: 5px;
-     flex-direction: column;
-     align-content: flex-start;
-     display: flex;
-     box-sizing: border-box; 
-     text-overflow: ellipsis;
-     white-space: nowrap;  
-     min-height: 60px;
-     min-width: 50px; 
-  }
-  
-  .containerArbre1 {grid:1};
-  .containerArbre2 {grid:2};
-  .containerArbre3 {grid:3};
-  .containerArbre4 {grid:4};
-  .containerArbre5 {grid:5};
-  .containerArbre6 {grid:6};
-  
- 
-  .containerArbre1 .male:first-child { margin-top: 00px}
-  .containerArbre1 .male + .female {margin-top: 10px}
-  .containerArbre1 .female + .male {margin-top: 50px}
- 
-  .containerArbre2 .male:first-child { margin-top: 30px}
-  .containerArbre2 .male + .female {margin-top: 105px}
-  .containerArbre2 .female + .male {margin-top: 105px}
- 
-  .containerArbre3 .male:first-child { margin-top: 70px}
-  .containerArbre3 .male + .female {margin-top: 140px}
-  .containerArbre3 .female + .male {margin-top: 60px}
- 
-  .containerArbre4 .male:first-child { margin-top: 145px}
-  .containerArbre4 .male + .female {margin-top: 80px}
-  .containerArbre4 .female + .male {margin-top: 80px}
- 
-  .containerArbre5 .male:first-child { margin-top: 10px}
-  .containerArbre5 .male + .female {margin-top: 140px}
-  .containerArbre5 .female + .male {margin-top: 60px}
- 
-  .containerArbre6 .female:first-child  { margin-top: 10px}
-  .containerArbre6 .male:first-child  { margin-top: 10px}
- 
- 
- 
- 
- 
-  .labelArbre {
-      color:var(--color-green);
-      text-decoration: none;
-      font-style: italic;
-      margin-bottom: 2%;
-      margin: 1%;
-      text-align: left;
-      font-size: 85%;
-   }
-  
-  .soustitreArbre {
-      text-align: left;
-      background-color: var(--color-light);
-      color: var(--color-green);
-      margin-top: 30px;
-      margin-left: 1%;
-      width: 95%;
-      font-style: italic;
-      font-weight: bold; 
-      padding: 5px 5px 5px 20px;
-      text-decoration: none;
-      border-radius: 5px; 
-  }
-  
-  /* Styles pour les écrans de taille moyenne (tablettes) */
-  @media (max-width: 768px) {
-      .grid-containerArbre {
-          grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
-      }
-  
-      .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
-          padding-left: 10px;
-          margin-top: 20px;
-      }
-      .soustitreArbre {
-          margin-bottom: 2%;
-          margin-left: 2%;
-          padding : 2%;
-          text-align: left;
-          border-radius: 5px; 
-          width: 85%;
-      }
-  }
-  
-  /* Styles pour les petits écrans (mobiles) */
-  @media (max-width: 480px) {
-      .grid-containerArbre {
-          grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
-      }
-  
-      .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
-          padding-left: 10px;
-          margin-top: 20px;
-      }
-      /* Cacher certains éléments si nécessaire */
-      .some-element {
-          display: none; /* Exemple : cacher certains éléments */
-      }
-      .soustitreArbre {
-          margin-bottom: 2%;
-          margin-left: 2%;
-          padding : 2%;
-          text-align: left;
-          border-radius: 5px; 
-          width: 90%;
-      }
-      .labelArbre {
-          color:var(--color-green);
-          text-decoration: none;
-          font-style: italic;
-          margin-bottom: 2%;
-          margin: 1%;
-          margin-left: 2%;
-          text-align: left;
-          font-size: 90%;
-       }
-  }
-  
+}
+
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+    nav {
+        padding: 5%;
+    }
+
+    footer {
+        background-color: var(--color-primary);
+        color: var(--color-font-blanc); 
+        padding: 2px;
+        margin-top: 2%;
+    }
+}
