@@ -118,7 +118,7 @@
      }    
 
     .list {
-        grid-template-areas: 80%;
+        grid-template-columns: 1fr;
         margin-right: 0;
         line-height: 1.2;
     }
@@ -129,15 +129,10 @@
     }
     
     .homlist {
-        grid-column: 1;
         padding: 1%;
         margin : 1%;
     }
     
-    .femlist {
-        grid-column: 1;
-    }
-
     /* Cacher certains éléments si nécessaire */
     .some-element {
         display: none; /* Exemple : cacher certains éléments */
