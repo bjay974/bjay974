@@ -1,16 +1,11 @@
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
-  }
-  
-  .label {
-     margin : 0; 
-     padding : 0; 
-     color:var(--color-light);
-     font-style: italic;
-  }
-  
+    .grid-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
+        padding : 0;
+        margin: 0;  
+    }
+    
   .personne {
       padding: 5px;
       display: flex;
@@ -62,6 +57,13 @@
       font-style: italic;
       margin: 0;
   }
+
+  .label {
+    margin : 0; 
+    padding : 0; 
+    color:var(--color-light);
+    font-style: italic;
+ }
   
   .personne + .label {margin-top : 60px}
   .label + .personne {margin-top : 60px}
