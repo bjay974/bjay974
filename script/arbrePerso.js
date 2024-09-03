@@ -97,7 +97,7 @@ function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, contain
 
   let container;
   if ((father1 && father1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') || (father2 && father2 !== 'inconnu') || (mother2 && mother2 !== 'inconnue')) {
-    container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands-parents paternels", "Grand-parent paternel");
+    container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands-parent", "Grand-parents");
     
     if (father1) {
       container.innerHTML += creerParentHTML(father1, containerClass, 'male');
@@ -123,7 +123,7 @@ function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
   var mother = data.find(person => person.id === motherId);
   if (father || mother) {
-    container = ajouterDivetTitre(containerClass, father && mother === true, "Parents", "Parent");
+    container = ajouterDivetTitre(containerClass, father && mother === true, "Parent", "Parents");
     if (father) {
       container.innerHTML += creerParentHTML(father, containerClass, 'male');
     }

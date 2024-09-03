@@ -1,77 +1,88 @@
 .grid-container {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
-}
-
-.label {
-   margin : 1%; 
-   padding : 1%; 
-   color:var(--color-light);
-   font-style: italic;
-}
-
-.personne {
-    padding: 5px;
-    display: flex;
-    grid-area: colonne3;
-    margin-bottom: 1%; 
-    margin-top: 35%; 
-    height: auto;
-    flex-direction: column;
-    box-sizing: border-box; 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.parent, .grandparent, .enfant, .petitenfant  {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    padding: 5px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.parent {
-    grid-area: colonne2;
-    margin-top: 10%; 
-}
-
-.grandparent {
-    margin-top: 10%; 
-    margin-left: 1%; 
-    grid-area: colonne1;
-}
-
-.enfant {
-    margin-top: 10%; 
-    grid-area: colonne4;
-
-}
-
-.petitenfant {
-    margin-top: 10%; 
-    grid-area: colonne5;
-    margin-right: 2%;
-}
-
-.petitenfant .parent-info {
-    font-size: var(--font-size-very-small);
-    font-style: italic;
-    margin: 0;
-}
-
-/* Styles pour les écrans de taille moyenne (tablettes) */
-@media (max-width: 768px) {
-    body {
-        font-size: var(--font-size-small); /* Ajuste la taille de la police */
-    }
-}
-
-/* Styles pour les petits écrans (mobiles) */
-@media (max-width: 480px) {
-    body {
-        font-size: 0.5rem; /* Ajuste la taille de la police pour les petits écrans */
-    }
-}
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
+  }
+  
+  .label {
+     margin : 0; 
+     padding : 0; 
+     color:var(--color-light);
+     font-style: italic;
+  }
+  
+  .personne {
+      padding: 5px;
+      display: flex;
+      grid-area: colonne3;
+      margin-top: 100px; 
+      height: auto;
+      flex-direction: column;
+      box-sizing: border-box; 
+      text-overflow: ellipsis;
+      white-space: nowrap;
+  }
+  
+  .parent, .grandparent, .enfant, .petitenfant {
+      display: flex;
+      flex-direction: column;
+      box-sizing: border-box;
+      padding: 1%;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      min-height: 60px
+  }
+  
+  .parent {
+      grid-area: colonne2;
+      margin-top: 20px; 
+  }
+  
+  .grandparent {
+      margin-top: 20px; 
+      margin-left: 2%; 
+      grid-area: colonne1;
+  }
+  
+  .enfant {
+      margin-top: 20px; 
+      grid-area: colonne4;
+  
+  }
+  
+  .petitenfant {
+      margin-top: 20px; 
+      grid-area: colonne5;
+      margin-right: 2%;
+      font-size:  var(--font-size-small);
+  }
+  
+  .petitenfant .parent-info {
+      font-size: var(--font-size-very-small);
+      font-style: italic;
+      margin: 0;
+  }
+  
+  .personne + .label {margin-top : 60px}
+  .label + .personne {margin-top : 60px}
+  
+  .label + .parent {margin-top: 80px}
+  .parent.male + .parent.female{margin-top : 210px;}
+  
+  .grandparent.male + .grandparent.female{margin-top : 50px}
+  .grandparent.female + .grandparent.male{margin-top : 100px;}
+  
+  /* Styles pour les écrans de taille moyenne (tablettes) */
+  @media (max-width: 768px) {
+      body {
+          font-size: var(--font-size-small); /* Ajuste la taille de la police */
+      }
+  }
+  
+  /* Styles pour les petits écrans (mobiles) */
+  @media (max-width: 480px) {
+      body {
+          font-size: 0.5rem; /* Ajuste la taille de la police pour les petits écrans */
+      }
+  }
+  
