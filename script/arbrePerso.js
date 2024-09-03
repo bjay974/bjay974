@@ -216,6 +216,17 @@ function afficherEnfantsPetitEnfants(parentId, data) {
   }
 }
 
+// Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
+function afficherMembreDansConteneur(membre, conteneur, role) {
+  const genderClass = membre.genre === 'M' ? 'male' : 'female';
+  const membreDiv = document.createElement('div');
+  membreDiv.className = `${role} ${genderClass} membre-container`;
+
+  const membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
+  membreDiv.innerHTML = membreLink;
+
+  conteneur.appendChild(membreDiv);
+}
 
 
 // Fonction générique pour afficher les membres
