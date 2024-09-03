@@ -18,7 +18,7 @@ function displayData() {
 
           if (grand.PerePat || grand.PereMat || grand.MereMat ||grand.PereMat) {
             afficherGrandParent(
-              grand.PerePat, grand.PereMat, grand.MerePat, grand.MereMat,'grandparent', data); 
+              grand.PerePat, grand.MerePat, grand.PereMat, grand.MereMat,'grandparent', data); 
           }
 
           // Afficher les parents
