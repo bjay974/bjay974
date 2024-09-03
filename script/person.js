@@ -40,7 +40,6 @@ function ajouterNom(detailsList,person) {
     const nameItem = creerLienNom(person, 'lienPersonHEnGras', 'lienPersonFEnGras', ''); 
     nameItem.classList.add(person.genre === 'M' ? 'bannierePersonM' : 'bannierePersonF');    // ajouter h3 a la classe 
     detailsList.appendChild(nameItem);
-    detailsList.appendChild(document.createElement('br')); 
 }  
 
 // Ajouter le lieu et la date de naissance
@@ -51,7 +50,6 @@ function ajouterNaissance(detailsList,person) {
     const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
     dateNaissance.textContent = `${adjectif_genre} ${dateValide} ${lieuNaissance}`;     
     detailsList.appendChild(dateNaissance);
-    detailsList.appendChild(document.createElement('br')); 
 }
 
 // Ajouter la date de reconnaisance ainsi que le nom

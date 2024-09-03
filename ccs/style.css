@@ -24,7 +24,7 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-font-blanc);
+    background-color: var(--color-light);
 }
 
 header {
@@ -105,7 +105,7 @@ footer {
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
     nav {
-        padding: 5%;
+        padding: 2%;
     }
 
     footer {
