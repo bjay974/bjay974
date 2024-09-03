@@ -51,9 +51,27 @@
     justify-content: center; /* Centre horizontalement */
     align-items: center; /* Centre verticalement */
     min-height: 40px;
+    z-index: 1; /* Assure que l'homme est au-dessus du trait */
 }
  
- 
+.containerArbre1 .couple {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.containerArbre1 .couple::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%; /* Centre le trait verticalement */
+    transform: translateX(-50%);
+    width: 2px; /* Épaisseur du trait */
+    height: 100%; /* Hauteur du trait couvrant toute la hauteur du couple */
+    background-color: black; /* Couleur du trait */
+} 
  
   .labelArbre {
       color:var(--color-green);
