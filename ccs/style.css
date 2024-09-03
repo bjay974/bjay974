@@ -107,30 +107,14 @@ footer {
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
-    header {
-        background-color: var(--color-primary);
-        color: var(--color-font-blanc);
-        text-align: center;
-        font-size: large;
-        padding: 5%;
-    }
-    
     nav {
-        color: var(--color-font-blanc);
-        background-color: var(--color-secondary);
         padding: 5%;
-        text-align: center;
-        font-size: large;
     }
-    
+
     footer {
         background-color: var(--color-primary);
         color: var(--color-font-blanc); 
-        padding: 1px;
-        text-align: center;
-        width: 100%;
-        height: 5%;
-        font-size: var(--font-size-small);
+        padding: 2px;
         margin-top: 2%;
     }
 }
