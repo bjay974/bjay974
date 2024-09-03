@@ -1,4 +1,5 @@
 .grid-container {
+    
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5" ;
@@ -58,6 +59,51 @@
   margin: 0;
 }
 
+.grandparent .female::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    left: 50%; /* Centre le trait verticalement */
+    transform: translateX(-50%);
+    width: 3px; /* Épaisseur du trait */
+    height: 50px; /* Hauteur du trait couvrant toute la hauteur du couple */
+    background-color: var(--color-green);
+} 
+.grandparent .male::after {
+    content: '';
+    position: absolute;
+    top: 85px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+    left: 50%; /* Place le trait juste à droite de l'homme */
+    transform: translateY(-50%);
+    width: 185px; /* Longueur du trait horizontal */
+    height: 3px; /* Épaisseur du trait */
+    background-color: var(--color-green); /* Couleur du trait */
+}
+.parent .female::before {
+    content: '';
+    position: absolute;
+    top: -210px;
+    left: 50%; /* Centre le trait verticalement */
+    transform: translateX(-50%);
+    width: 3px; /* Épaisseur du trait */
+    height: 210px; /* Hauteur du trait couvrant toute la hauteur du couple */
+    background-color: var(--color-green);
+} 
+.parent .male::after {
+    content: '';
+    position: absolute;
+    top: 165px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+    left: 50%; /* Place le trait juste à droite de l'homme */
+    transform: translateY(-50%);
+    width: 195px; /* Longueur du trait horizontal */
+    height: 3px; /* Épaisseur du trait */
+    background-color: var(--color-green); /* Couleur du trait */
+}
+.male, .female {
+    z-index: 1; 
+    display: flex;
+    position: relative;
+}
 .label {
 margin : 0; 
 padding : 0; 
