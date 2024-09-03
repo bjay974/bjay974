@@ -115,7 +115,7 @@
     .bannierePersonM, .bannierePersonF {
         text-align: center;
         margin-top: 10px;
-        width: 100%;
+        width: 90%;
         padding: 5px 5px 5px 20px;
     }
     .lienFichier {
@@ -142,6 +142,7 @@
         text-align: center;
         font-size: 0.8rem; /* Réduit la taille des sous-titres */
         padding: 5px 5px 5px 10px;
+        width: 90%;
     }
     .lienFichier {
         font-size: 95%;
