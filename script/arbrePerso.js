@@ -117,6 +117,30 @@ function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, contain
   }
 }
 
+function trouverGrandsParents(pereId, mereId, data) {
+  // Trouver les parents dans les données
+  const pere = data.find(person => person.id === pereId);
+  const mere = data.find(person => person.id === mereId);
+  // Initialiser un objet avec des propriétés définies par défaut
+  const result = { PerePat: null, MerePat: null, PereMat:null, MereMat:null };
+  if (pere) {
+    // Vérifier si id_pere et id_mere sont des entiers valides
+    if (Number.isInteger(pere.id_pere)) {
+      result.PerePat = pere.id_pere;
+    }
+    if (Number.isInteger(pere.id_mere)) {
+      result.MerePat = pere.id_mere;
+  } }
+  if (mere) {
+      // Vérifier si id_pere et id_mere sont des entiers valides
+      if (Number.isInteger(mere.id_pere)) {
+        result.PereMat = mere.id_pere;
+      }
+      if (Number.isInteger(mere.id_mere)) {
+        result.MereMat = mere.id_mere;
+  } }
+  return result;
+}
 function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
   var mother = data.find(person => person.id === motherId);
