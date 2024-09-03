@@ -37,8 +37,7 @@ function afficherInfoPersonne(data, personId) {
 
  // Ajouter le nom et prénom en gras
 function ajouterNom(detailsList,person) {
-    const nameItem = creerLienNom(person, '', '', ''); 
-    nameItem.classList.add(person.genre === 'M' ? 'bannierePersonM' : 'bannierePersonF');    // ajouter h3 a la classe 
+    const nameItem = creerLienNom(person, 'bannierePersonM', 'bannierePersonF', ''); 
     detailsList.appendChild(nameItem);
 }  
 
