@@ -160,7 +160,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
       if (petitsEnfants.length > 0) {
         if (nombrePetitEnfant = 0) {
           if (petitsEnfants.length >= 1) {
-            const petitsEnfantsContainer = ajouterDivetTitre('global-container', petitsEnfants.length === 1, "Petit(s) Enfant(s)", "Petits-Enfants");
+            petitsEnfantsContainer = ajouterDivetTitre('global-container', petitsEnfants.length === 1, "Petit(s) Enfant(s)", "Petits-Enfants");
             petitsEnfantsContainer.className = 'petits-enfants-container';
             nombrePetitEnfant = nombrePetitEnfant + 1
           }
