@@ -140,7 +140,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
 
   if (enfants.length > 0) {
     // Conteneur global pour tous les enfants et petits-enfants
-    const globalContainer = ajouterDivetTitre('global-container', petitsEnfants.length === 1, "Enfant", "Enfants");
+    const globalContainer = ajouterDivetTitre('global-container', enfants.length === 1, "Enfant", "Enfants");
     globalContainer.className = 'global-container';
 
     enfants.sort((a, b) => b.id - a.id);
