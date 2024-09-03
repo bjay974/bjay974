@@ -134,7 +134,7 @@
     }
     
     .femlist {
-        grid-column: 2;
+        grid-column: 1;
     }
 
     /* Cacher certains éléments si nécessaire */
