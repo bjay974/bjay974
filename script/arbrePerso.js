@@ -279,6 +279,7 @@ function creerParentHTML(parent, containerClass, genderClass) {
 // Fonction pour créer le HTML pour un parent (père ou mère)
 function creerCaseVideHTML(containerClass, genderClass) {
   let parentHTML = `<div class="${containerClass} ${genderClass}">`;
+  parentHTML += `<p>" "</p>`;
   parentHTML += '</div>';
   return parentHTML;
 }
