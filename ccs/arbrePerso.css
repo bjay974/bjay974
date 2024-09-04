@@ -168,13 +168,15 @@
     width: 250px;
   }
 
+
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
   body {
       font-size: var(--font-size-small); /* Ajuste la taille de la police */
   }
   .parent, .grandparent, .enfant, .petitenfant {
-    min-height: 20px;
+    min-height: 30px;
+    min-width: 10px;
   }
 }
 
@@ -185,5 +187,10 @@
   }
   .parent, .grandparent, .enfant, .petitenfant {
     min-height: 20px;
+    min-width: 80px;
+  }
+  .membre-container {
+    margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
+    width: 80px;
   }
 }
