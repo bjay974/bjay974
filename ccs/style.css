@@ -25,6 +25,7 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--color-font-blanc);
+    min-height: calc(100vh - 60px - 30px - 35px);
 }
 
 header {
@@ -32,6 +33,7 @@ header {
     color: var(--color-font-blanc);
     text-align: center;
     font-size: large;
+    min-height: 60px;
 }
 
 nav {
@@ -40,6 +42,7 @@ nav {
     padding: 0.5%;
     text-align: center;
     font-size: large;
+    min-height: 30px;
 }
 
 nav a {
@@ -74,12 +77,13 @@ section {
 footer {
     background-color: var(--color-primary);
     color: var(--color-font-blanc); 
-    padding: 1px;
+    padding: 0px;
     text-align: center;
     width: 100%;
-    height: 5%;
     font-size: var(--font-size-small);
     margin-top: 2%;
+    min-height: 30px;
+
 }
 
 .male, .female {
@@ -105,7 +109,7 @@ footer {
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
     nav {
-        padding: 2%;
+        padding: 2px;
     }
     body{
         height: 90%;
@@ -114,6 +118,6 @@ footer {
         background-color: var(--color-primary);
         color: var(--color-font-blanc); 
         padding: 2px;
-        margin-top: 2%;
+        margin-top: 2px;
     }
 }
