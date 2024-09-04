@@ -11,22 +11,14 @@ function displayData() {
       .then(data => {
           // Trouver la personne correspondante
           const person = data.find(p => p.id === parseInt(personId));
-
           // Afficher les grands-parents
-
           var grand = trouverGrandsParents(person.id_pere, person.id_mere, data);
-
-          if (grand.PerePat || grand.PereMat || grand.MereMat ||grand.PereMat) {
-            afficherGrandParent(
+          afficherGrandParent(
               grand.PerePat, grand.MerePat, grand.PereMat, grand.MereMat,'grandparent', data); 
-          }
-
           // Afficher les parents
           afficherParent(person.id_pere, person.id_mere, 'parent', data);
-
           // Afficher les informations de la personne
           afficherPersonne(person.id, 'personne', data);
-          
           // Afficher les enfants et  petits-enfants
           afficherEnfantsPetitEnfants(person.id, data);
       });
@@ -98,21 +90,22 @@ function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, contain
   if ((father1 !== 'inconnu') || (mother1 !== 'inconnue') || (father2 !== 'inconnu') || (mother2 !== 'inconnue')) {
     container = ajouterDivetTitre(containerClass, (father1 && mother1) || (father2 && mother2) , "Grands-parent", "Grand-parents");
    
-    if (father1) {  container.innerHTML += creerParentHTML(father1, containerClass, 'male');
+    if (father1 && father1 !== 'inconnu')
+       {  container.innerHTML += creerParentHTML(father1, containerClass, 'male');
     } else 
       {container.innerHTML += creerCaseVideHTML(containerClass, 'male');
     }
-    if (mother1) {
+    if (mother1 && mother1 !== 'inconnu') {
       container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
     } else 
       {container.innerHTML += creerCaseVideHTML(containerClass, 'female');
     }
-    if (father2) {
+    if (father2 && father2 !== 'inconnu') {
       container.innerHTML += creerParentHTML(father2, containerClass, 'male');
     } else 
       {container.innerHTML += creerCaseVideHTML(containerClass, 'male');
     }
-    if (mother2) {
+    if (mother2 && mother2 !== 'inconnu') {
       container.innerHTML += creerParentHTML(mother2, containerClass, 'female');
     } else 
       {container.innerHTML += creerCaseVideHTML(containerClass, 'female');
@@ -162,7 +155,7 @@ function afficherParent(fatherId, motherId, containerClass, data) {
       container.innerHTML += creerParentHTML(mother, containerClass, 'female');
     }
     else {
-      container.innerHTML += creerCaseVideHTML(containerClass, 'male');
+      container.innerHTML += creerCaseVideHTML(containerClass, 'female');
     }
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
@@ -281,7 +274,7 @@ function creerParentHTML(parent, containerClass, genderClass) {
 // Fonction pour créer le HTML pour un parent (père ou mère)
 function creerCaseVideHTML(containerClass, genderClass) {
   let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-  parentHTML += `<p>" "</p>`;
+  parentHTML += `<p> </p>`;
   parentHTML += '</div>';
   return parentHTML;
 }
