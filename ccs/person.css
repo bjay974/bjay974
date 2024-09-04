@@ -21,11 +21,11 @@
 .bannierePersonM, .bannierePersonF {
     text-align: left;
     margin-top: 10px;
-    margin-left: 10px;
+    margin-left: 5px;
     width: 95%;
     font-style: italic;
     font-weight: bold; 
-    padding: 5px 5px 5px 20px;
+    padding: 5px 5px 5px 45px;
     font-size: larger ;
 }
 
@@ -70,6 +70,7 @@
 }
 
 .affichePerson  {
+    margin-left : 50px;
     text-align: left; 
 }
 
