@@ -159,11 +159,6 @@ function afficherEnfantsPetitEnfants(parentId, data) {
       // Conteneur global pour tous les enfants et petits-enfants
       const globalContainer = document.createElement('div');
       globalContainer.className = 'global-container';
-      // Ajouter un label "Enfant" avant le premier enfant
-      const labelEnfant = document.createElement('p');
-      labelEnfant.textContent = enfants.length === 1 ? "Enfant" : "Enfants";
-      labelEnfant.classList.add('label');
-      globalContainer.appendChild(labelEnfant);
       enfants.sort((a, b) => b.id - a.id);
       let labelPetitEnfantAdded = false;
       let labelEnfantAdded = false;
