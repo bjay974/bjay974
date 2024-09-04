@@ -186,6 +186,9 @@ function afficherEnfantsPetitEnfants(parentId, data) {
           // Conteneur pour les petits-enfants
           const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
           if (petitsEnfants.length > 0) {
+             const petitsEnfantsContainer = document.createElement('div');
+             petitsEnfantsContainer.className = 'petits-enfants-container';
+             
               // Ajouter un label "Petit(s) Enfant(s)" avant le premier petit-enfant
               if (!labelPetitEnfantAdded) {
                   const labelPetitEnfant = document.createElement('p');
@@ -194,9 +197,6 @@ function afficherEnfantsPetitEnfants(parentId, data) {
                   globalContainer.appendChild(labelPetitEnfant);
                   labelPetitEnfantAdded = true;
               }
-
-              const petitsEnfantsContainer = document.createElement('div');
-              petitsEnfantsContainer.className = 'petits-enfants-container';
 
               petitsEnfants.sort((a, b) => b.id - a.id);
               petitsEnfants.forEach(petitEnfant => {

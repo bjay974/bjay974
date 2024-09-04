@@ -113,7 +113,7 @@
 .personne:last-of-type::before {
     content: '';
     position: absolute;
-    top: 466px;
+    top: 468px;
     left: 44%; /* Centre le trait verticalement */
     transform: translateX(-50%);
     width: 3px; /* Épaisseur du trait */
