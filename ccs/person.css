@@ -44,11 +44,13 @@
 .bannierePersonM {
     background-color: var(--color-male); 
     color: var(--color-male-bg);
+    border-radius: 5px; 
 }
 
 .bannierePersonF {
     background-color: var(--color-female);
     color: var(--color-female-bg);
+    border-radius: 5px; 
 }
 
 .lienPersonHEnGras, .lienPersonFEnGras, .lienPersonH, .lienPersonF {
