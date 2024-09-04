@@ -16,7 +16,11 @@
   box-sizing: border-box; 
   text-overflow: ellipsis;
   white-space: nowrap;
-  width: 250px
+  width: 250px;
+}
+
+.personne:last-of-type{
+  min-height: 60px
 }
 
 .parent, .grandparent, .enfant, .petitenfant {
@@ -43,17 +47,17 @@
 }
 
 .enfant {
-  margin-top: 20px; 
+  margin-top: 10px; 
   grid-area: colonne4;
-  width: 250px
+  width: 220px
 }
 
 .petitenfant {
-  margin-top: 20px; 
+  margin-top: 10px; 
   grid-area: colonne5;
   margin-right: 2%;
   font-size:  var(--font-size-small);
-  width: 250px
+  width: 220px
 }
 
 .petitenfant .parent-info {
@@ -106,7 +110,7 @@
     background-color: var(--color-green); /* Couleur du trait */
 }
 
-.personne .female::before {
+.personne:last-of-type::before {
     content: '';
     position: absolute;
     top: 466px;
@@ -130,7 +134,7 @@
   font-style: italic;
 }
 
-.enfant-container {margin-top : 50px}
+.enfant-container {margin-top : 20px}
 
 
 .personne + .label {margin-top : 60px}
@@ -161,10 +165,8 @@
   .membre-container {
     margin-right: 40px; /* Espacement entre l'enfant et ses petits-enfants */
     text-align: center;
-
+    width: 250px;
   }
-
-
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {

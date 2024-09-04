@@ -161,65 +161,60 @@ function afficherEnfantsPetitEnfants(parentId, data) {
   const enfants = data.filter(enfant => enfant.id_pere === parentId || enfant.id_mere === parentId);
 
   if (enfants.length > 0) {
-      // Conteneur global pour les enfants et les petits-enfants
+      // Conteneur global pour tous les enfants et petits-enfants
       const globalContainer = document.createElement('div');
       globalContainer.className = 'global-container';
 
-      // Conteneur pour la colonne des enfants
-      const enfantsContainer = document.createElement('div');
-      enfantsContainer.className = 'enfants-container';
-
-      // Conteneur pour la colonne des petits-enfants
-      const petitsEnfantsGlobalContainer = document.createElement('div');
-      petitsEnfantsGlobalContainer.className = 'petits-enfants-global-container';
-
-      // Ajouter un label "Enfants" en haut de la colonne des enfants
+      // Ajouter un label "Enfant" avant le premier enfant
       const labelEnfant = document.createElement('p');
       labelEnfant.textContent = enfants.length === 1 ? "Enfant" : "Enfants";
       labelEnfant.classList.add('label');
-      enfantsContainer.appendChild(labelEnfant);
-
-      // Ajouter un label "Petit(s) Enfant(s)" en haut de la colonne des petits-enfants
-      const labelPetitEnfant = document.createElement('p');
-      labelPetitEnfant.textContent = "Petit(s) Enfant(s)";
-      labelPetitEnfant.classList.add('label');
-      petitsEnfantsGlobalContainer.appendChild(labelPetitEnfant);
+      globalContainer.appendChild(labelEnfant);
 
       enfants.sort((a, b) => b.id - a.id);
 
+      let labelPetitEnfantAdded = false;
+
       enfants.forEach(enfant => {
-          // Conteneur pour chaque enfant
+          // Conteneur pour chaque enfant et ses petits-enfants
           const enfantContainer = document.createElement('div');
           enfantContainer.className = 'enfant-container';
+
+          // Ajouter l'enfant au conteneur
           afficherMembreDansConteneur(enfant, enfantContainer, 'enfant');
 
           // Conteneur pour les petits-enfants
-          const petitsEnfantsContainer = document.createElement('div');
-          petitsEnfantsContainer.className = 'petits-enfants-container';
-
           const petitsEnfants = data.filter(gc => gc.id_pere === enfant.id || gc.id_mere === enfant.id);
-          petitsEnfants.sort((a, b) => b.id - a.id);
+          if (petitsEnfants.length > 0) {
+              // Ajouter un label "Petit(s) Enfant(s)" avant le premier petit-enfant
+              if (!labelPetitEnfantAdded) {
+                  const labelPetitEnfant = document.createElement('p');
+                  labelPetitEnfant.textContent = "Petit(s) Enfant(s)";
+                  labelPetitEnfant.classList.add('label');
+                  globalContainer.appendChild(labelPetitEnfant);
+                  labelPetitEnfantAdded = true;
+              }
 
-          petitsEnfants.forEach(petitEnfant => {
-              afficherMembreDansConteneur(petitEnfant, petitsEnfantsContainer, 'petitenfant');
-          });
+              const petitsEnfantsContainer = document.createElement('div');
+              petitsEnfantsContainer.className = 'petits-enfants-container';
 
-          // Ajouter chaque enfant à la colonne des enfants
-          enfantsContainer.appendChild(enfantContainer);
+              petitsEnfants.sort((a, b) => b.id - a.id);
+              petitsEnfants.forEach(petitEnfant => {
+                  afficherMembreDansConteneur(petitEnfant, petitsEnfantsContainer, 'petitenfant');
+              });
 
-          // Ajouter les petits-enfants correspondants à la colonne des petits-enfants
-          petitsEnfantsGlobalContainer.appendChild(petitsEnfantsContainer);
+              // Ajouter les petits-enfants au conteneur de l'enfant
+              enfantContainer.appendChild(petitsEnfantsContainer);
+          }
+
+          // Ajouter l'enfant (et ses petits-enfants) au conteneur global
+          globalContainer.appendChild(enfantContainer);
       });
-
-      // Ajouter les deux colonnes au conteneur global
-      globalContainer.appendChild(enfantsContainer);
-      globalContainer.appendChild(petitsEnfantsGlobalContainer);
 
       // Ajouter le conteneur global au conteneur principal
       document.getElementById('person-container').appendChild(globalContainer);
   }
 }
-
 
 // Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
 function afficherMembreDansConteneur(membre, conteneur, role) {
