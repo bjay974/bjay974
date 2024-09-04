@@ -25,7 +25,6 @@ body {
     display: flex;
     flex-direction: column;
     background-color: var(--color-font-blanc);
-    min-height: calc(100vh - 60px - 30px - 35px);
 }
 
 header {

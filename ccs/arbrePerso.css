@@ -7,16 +7,16 @@
 }
 
 .personne {
-padding: 1px;
-display: flex;
-grid-area: colonne3;
-margin-top: 60px;
-height: 160px;
-flex-direction: column;
-box-sizing: border-box; 
-text-overflow: ellipsis;
-white-space: nowrap;
-width: 250px;
+  padding: 1px;
+  display: flex;
+  grid-area: colonne3;
+  margin-top: 60px;
+  min-height: 180px;
+  flex-direction: column;
+  box-sizing: border-box; 
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 250px;
 }
 
 .personne:last-of-type{
@@ -113,11 +113,11 @@ width: 220px
 .personne:last-of-type::before {
   content: '';
   position: absolute;
-  top: 397px;
+  top: 417px;
   left: 49%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 110px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 90px; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 } 
 
@@ -126,6 +126,11 @@ width: 220px
   display: flex;
   position: relative;
 } 
+
+.vide {
+  content: '';
+  background-color: transparent;
+}
 
 .label {
 margin : 0; 
@@ -136,7 +141,7 @@ font-style: italic;
 
 .enfant-container {margin-top : 20px}
 
-
+.personne + .personne {margin-top : 90px}
 .personne + .label {margin-top : 45px}
 .label + .personne {margin-top : 45px}
 

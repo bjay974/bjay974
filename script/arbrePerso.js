@@ -74,8 +74,10 @@ function afficherPersonne(personneId, containerClass, data) {
     container.innerHTML += conjointHTML;
   }
   else {
-    var genderClass = person.genre === 'M' ? 'male' : 'female';
-    container.innerHTML += creerCaseVideHTML(containerClass, genderClass);
+    let dernierPersonne = document.querySelector('.personne:last-of-type');
+    var genderClass = person.genre === 'M' ? 'female' : 'male';
+    container.innerHTML += creerCaseVideHTML(containerClass, 'vide');
+    dernierPersonne.classList.add('vide');
   }
    const personContainer = document.getElementById('person-container');
   personContainer.appendChild(container);
