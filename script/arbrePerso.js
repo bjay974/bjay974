@@ -55,7 +55,7 @@ function afficherPersonne(personneId, containerClass, data) {
   }
   personHTML += '</div>';
   container.innerHTML += personHTML;
-  if (person.id_conjoint > 0){
+  if (person.id_conjoint){
     var conjoint = data.find(p => p.id === person.id_conjoint);
     var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
     var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
@@ -95,9 +95,9 @@ function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, contain
   var father2 = data.find(person => person.id === father2Id);
   var mother2 = data.find(person => person.id === mother2Id);
   let container;
-  if ((father1 && father1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') || (father2 && father2 !== 'inconnu') || (mother2 && mother2 !== 'inconnue')) {
-    container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands-parent", "Grand-parents");
-    
+  if ((father1 !== 'inconnu') || (mother1 !== 'inconnue') || (father2 !== 'inconnu') || (mother2 !== 'inconnue')) {
+    container = ajouterDivetTitre(containerClass, (father1 && mother1) || (father2 && mother2) , "Grands-parent", "Grand-parents");
+   
     if (father1) {  container.innerHTML += creerParentHTML(father1, containerClass, 'male');
     } else 
       {container.innerHTML += creerCaseVideHTML(containerClass, 'male');
@@ -151,7 +151,6 @@ function trouverGrandsParents(pereId, mereId, data) {
 function afficherParent(fatherId, motherId, containerClass, data) {
   var father = data.find(person => person.id === fatherId);
   var mother = data.find(person => person.id === motherId);
-  if (father || mother) {
     container = ajouterDivetTitre(containerClass, father && mother === true, "Parent", "Parents");
     if (father) {
       container.innerHTML += creerParentHTML(father, containerClass, 'male');
@@ -167,7 +166,6 @@ function afficherParent(fatherId, motherId, containerClass, data) {
     }
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
-  }
 }
 
 function afficherEnfantsPetitEnfants(parentId, data) {
