@@ -187,21 +187,53 @@ body {
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
+ .grid-container {
+    grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
+ }
+
 .parent, .grandparent, .enfant, .petitenfant, .personne {
+  margin-top : 10px;
   min-height: 20px;
   width: 120px;
-  font-size: 90%
+  font-size: 90%;
+  margin : 2%;  
 }
 .membre-container {
   margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
   width: 80px;
   width: 120px;
 }
-  .parent.male + .parent.female{margin-top : 200px;}
-  .grandparent.male + .grandparent.female{margin-top : 80px}
-  .grandparent.female + .grandparent.male{margin-top : 80px;}
-  .personne + .personne {margin-top : 60px}
-  .personne + .label {margin-top : 45px}
-  .label + .personne {margin-top : 45px}
-  
+  .parent.male + .parent.female{margin-top : 170px;}
+  .grandparent.male + .grandparent.female{margin-top : 60px}
+  .grandparent.female + .grandparent.male{margin-top : 60px;}
+  .personne + .personne {margin-top : 50px}
+  .personne + .label {margin-top : 30px}
+  .label + .personne {margin-top : 30px}
+  .label + .parent {margin-top : 40px}
+  .grandparent .female::before {
+  content: '';
+  background-color: transparent;
+ } 
+.grandparent .male::after {
+  content: '';
+  background-color: transparent;
+}
+
+.parent .female::before {
+  content: '';
+  background-color: transparent;
+}
+
+.parent .male::after {
+  content: '';
+  background-color: transparent;
+}
+  .personne:first-child {
+    margin-top: 150px;
+  }
+.personne:last-of-type::before {
+  content: '';
+  background-color: transparent;
+} 
+
 }
