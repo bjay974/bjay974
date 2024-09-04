@@ -182,9 +182,6 @@
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
-  body {
-      font-size: 0.5rem; /* Ajuste la taille de la police pour les petits écrans */
-  }
   .parent, .grandparent, .enfant, .petitenfant {
     min-height: 20px;
     min-width: 80px;
