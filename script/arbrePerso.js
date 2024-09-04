@@ -179,6 +179,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
               const labelEnfant = document.createElement('p');
               labelEnfant.textContent = enfants.length === 1 ? "Enfant" : "Enfants";
               labelEnfant.classList.add('label');
+              labelEnfant.classList.add('enfant-container');
               globalContainer.appendChild(labelEnfant);
               labelEnfantAdded = true;
           }
@@ -195,6 +196,7 @@ function afficherEnfantsPetitEnfants(parentId, data) {
                   const labelPetitEnfant = document.createElement('p');
                   labelPetitEnfant.textContent = "Petit(s) Enfant(s)";
                   labelPetitEnfant.classList.add('label');
+                  labelPetitEnfant.classList.add('petits-enfants-container');
                   globalContainer.appendChild(labelPetitEnfant);
                   labelPetitEnfantAdded = true;
               }
