@@ -94,17 +94,24 @@ function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, contain
   if ((father1 && father1 !== 'inconnu') || (mother1 && mother1 !== 'inconnue') || (father2 && father2 !== 'inconnu') || (mother2 && mother2 !== 'inconnue')) {
     container = ajouterDivetTitre(containerClass, father1 && mother1, "Grands-parent", "Grand-parents");
     
-    if (father1) {
-      container.innerHTML += creerParentHTML(father1, containerClass, 'male');
+    if (father1) {  container.innerHTML += creerParentHTML(father1, containerClass, 'male');
+    } else 
+      {container.innerHTML += creerCaseVideHTML(containerClass, 'male');
     }
     if (mother1) {
       container.innerHTML += creerParentHTML(mother1, containerClass, 'female');
+    } else 
+      {container.innerHTML += creerCaseVideHTML(containerClass, 'female');
     }
     if (father2) {
       container.innerHTML += creerParentHTML(father2, containerClass, 'male');
+    } else 
+      {container.innerHTML += creerCaseVideHTML(containerClass, 'male');
     }
     if (mother2) {
       container.innerHTML += creerParentHTML(mother2, containerClass, 'female');
+    } else 
+      {container.innerHTML += creerCaseVideHTML(containerClass, 'female');
     }
 
     const personContainer = document.getElementById('person-container');
@@ -145,8 +152,14 @@ function afficherParent(fatherId, motherId, containerClass, data) {
     if (father) {
       container.innerHTML += creerParentHTML(father, containerClass, 'male');
     }
+    else {
+      container.innerHTML += creerCaseVideHTML(containerClass, 'male');
+    }
     if (mother) {
       container.innerHTML += creerParentHTML(mother, containerClass, 'female');
+    }
+    else {
+      container.innerHTML += creerCaseVideHTML(containerClass, 'male');
     }
     const personContainer = document.getElementById('person-container');
     personContainer.appendChild(container);
@@ -257,12 +270,16 @@ function verifieDate(date) {
 
 // Fonction pour créer le HTML pour un parent (père ou mère)
 function creerParentHTML(parent, containerClass, genderClass) {
-  if (!parent) return ''; // Si le parent n'existe pas, retourner une chaîne vide
-
   let parentHTML = `<div class="${containerClass} ${genderClass}">`;
   parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
   parentHTML += '</div>';
-  
+  return parentHTML;
+}
+
+// Fonction pour créer le HTML pour un parent (père ou mère)
+function creerCaseVideHTML(containerClass, genderClass) {
+  let parentHTML = `<div class="${containerClass} ${genderClass}">`;
+  parentHTML += '</div>';
   return parentHTML;
 }
 
