@@ -187,12 +187,21 @@ body {
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
-.parent, .grandparent, .enfant, .petitenfant {
+.parent, .grandparent, .enfant, .petitenfant, .personne {
   min-height: 20px;
-  min-width: 80px;
+  width: 120px;
+  font-size: 90%
 }
 .membre-container {
   margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
   width: 80px;
+  width: 120px;
 }
+  .parent.male + .parent.female{margin-top : 200px;}
+  .grandparent.male + .grandparent.female{margin-top : 80px}
+  .grandparent.female + .grandparent.male{margin-top : 80px;}
+  .personne + .personne {margin-top : 60px}
+  .personne + .label {margin-top : 45px}
+  .label + .personne {margin-top : 45px}
+  
 }
