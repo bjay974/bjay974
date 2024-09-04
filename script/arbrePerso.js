@@ -81,6 +81,10 @@ function afficherPersonne(personneId, containerClass, data) {
     conjointHTML += '</div>';
     container.innerHTML += conjointHTML;
   }
+  else {
+    var genderClass = person.genre === 'M' ? 'male' : 'female';
+    container.innerHTML += creerCaseVideHTML(containerClass, genderClass);
+  }
    const personContainer = document.getElementById('person-container');
   personContainer.appendChild(container);
 }
