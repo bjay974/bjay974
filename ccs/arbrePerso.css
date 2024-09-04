@@ -1,144 +1,144 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: 20% 20% 20% 40%;
-    grid-template-areas: "colonne1 colonne2 colonne3 colonne4" ;
-    padding : 0;
-    margin: 0;  
+  display: grid;
+  grid-template-columns: 20% 20% 20% 40%;
+  grid-template-areas: "colonne1 colonne2 colonne3 colonne4" ;
+  padding : 0;
+  margin: 0;  
 }
 
 .personne {
-  padding: 1px;
-  display: flex;
-  grid-area: colonne3;
-  margin-top: 100px; 
-  height: 160px;
-  flex-direction: column;
-  box-sizing: border-box; 
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 250px;
+padding: 1px;
+display: flex;
+grid-area: colonne3;
+margin-top: 60px;
+height: 160px;
+flex-direction: column;
+box-sizing: border-box; 
+text-overflow: ellipsis;
+white-space: nowrap;
+width: 250px;
 }
 
 .personne:last-of-type{
-  min-height: 60px
+min-height: 60px
 }
 
 .parent, .grandparent, .enfant, .petitenfant {
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  padding: 1%;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  min-height: 60px;
+display: flex;
+flex-direction: column;
+box-sizing: border-box;
+padding: 1%;
+text-overflow: ellipsis;
+white-space: nowrap;
+min-height: 60px;
 }
 
 .parent {
-  grid-area: colonne2;
-  margin-top: 20px; 
-  width: 250px
+grid-area: colonne2;
+margin-top: 20px; 
+width: 250px
 }
 
 .grandparent {
-  margin-top: 20px; 
-  margin-left: 2%; 
-  grid-area: colonne1;
-  width: 250px
+margin-top: 20px; 
+margin-left: 2%; 
+grid-area: colonne1;
+width: 250px
 }
 
 .enfant {
-  margin-top: 10px; 
-  grid-area: colonne4;
-  width: 220px
+margin-top: 10px; 
+grid-area: colonne4;
+width: 220px
 }
 
 .petitenfant {
-  margin-top: 10px; 
-  grid-area: colonne5;
-  margin-right: 2%;
-  font-size:  var(--font-size-small);
-  width: 220px
+margin-top: 10px; 
+grid-area: colonne5;
+margin-right: 2%;
+font-size:  var(--font-size-small);
+width: 220px
 }
 
 .petitenfant .parent-info {
-  font-size: var(--font-size-very-small);
-  font-style: italic;
-  margin: 0;
-  width: 220px
+font-size: var(--font-size-very-small);
+font-style: italic;
+margin: 0;
+width: 220px
 }
 
 .grandparent .female::before {
-    content: '';
-    position: absolute;
-    top: -50px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 50px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
+  content: '';
+  position: absolute;
+  top: -50px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 50px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
 } 
 .grandparent .male::after {
-    content: '';
-    position: absolute;
-    top: 85px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 250px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
+  content: '';
+  position: absolute;
+  top: 85px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: 50%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(-50%);
+  width: 250px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
 }
 
 .parent .female::before {
-    content: '';
-    position: absolute;
-    top: -210px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 210px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
+  content: '';
+  position: absolute;
+  top: -210px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 210px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
 }
 
 .parent .male::after {
-    content: '';
-    position: absolute;
-    top: 165px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 255px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
+  content: '';
+  position: absolute;
+  top: 100px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: 50%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(-50%);
+  width: 255px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
 }
 
 .personne:last-of-type::before {
-    content: '';
-    position: absolute;
-    top: 468px;
-    left: 44%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 140px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
+  content: '';
+  position: absolute;
+  top: 397px;
+  left: 49%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 110px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
 } 
 
 .grandparent.male, .grandparent.female,.parent.male, .parent.female {
-    z-index: 1; 
-    display: flex;
-    position: relative;
+  z-index: 1; 
+  display: flex;
+  position: relative;
 } 
 
 .label {
-  margin : 0; 
-  padding : 0; 
-  color:var(--color-green);
-  font-style: italic;
+margin : 0; 
+padding : 0; 
+color:var(--color-green);
+font-style: italic;
 }
 
 .enfant-container {margin-top : 20px}
 
 
-.personne + .label {margin-top : 60px}
-.label + .personne {margin-top : 60px}
+.personne + .label {margin-top : 45px}
+.label + .personne {margin-top : 45px}
 
 .label + .parent {margin-top: 80px}
 .parent.male + .parent.female{margin-top : 210px;}
@@ -147,47 +147,47 @@
 .grandparent.female + .grandparent.male{margin-top : 100px;}
 
 /* Conteneur global pour tous les enfants et petits-enfants */
- .global-container {
-    grid-area : colonne4;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Espacement entre les groupes */
-  }
-  
-  /* Conteneur pour chaque enfant et ses petits-enfants */
-  .enfant-container {
-    display: flex;
-    flex-wrap: wrap; /* Pour permettre aux petits-enfants de passer à la ligne suivante */
-    align-items: flex-start;
-  }
-  
-  /* Affichage des membres */
-  .membre-container {
-    margin-right: 40px; /* Espacement entre l'enfant et ses petits-enfants */
-    text-align: center;
-    width: 250px;
-  }
+.global-container {
+  grid-area : colonne4;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Espacement entre les groupes */
+}
+
+/* Conteneur pour chaque enfant et ses petits-enfants */
+.enfant-container {
+  display: flex;
+  flex-wrap: wrap; /* Pour permettre aux petits-enfants de passer à la ligne suivante */
+  align-items: flex-start;
+}
+
+/* Affichage des membres */
+.membre-container {
+  margin-right: 40px; /* Espacement entre l'enfant et ses petits-enfants */
+  text-align: center;
+  width: 250px;
+}
 
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
-  body {
-      font-size: var(--font-size-small); /* Ajuste la taille de la police */
-  }
-  .parent, .grandparent, .enfant, .petitenfant {
-    min-height: 30px;
-    min-width: 10px;
-  }
+body {
+    font-size: var(--font-size-small); /* Ajuste la taille de la police */
+}
+.parent, .grandparent, .enfant, .petitenfant {
+  min-height: 30px;
+  min-width: 10px;
+}
 }
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
-  .parent, .grandparent, .enfant, .petitenfant {
-    min-height: 20px;
-    min-width: 80px;
-  }
-  .membre-container {
-    margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
-    width: 80px;
-  }
+.parent, .grandparent, .enfant, .petitenfant {
+  min-height: 20px;
+  min-width: 80px;
+}
+.membre-container {
+  margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
+  width: 80px;
+}
 }
