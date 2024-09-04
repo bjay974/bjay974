@@ -75,9 +75,7 @@ function afficherPersonne(personneId, containerClass, data) {
   }
   else {
     var genderClass = person.genre === 'M' ? 'female' : 'male';
-    container.innerHTML += creerCaseVideHTML(containerClass, 'male');
-    let dernierPersonne = document.querySelector('.personne.male:last-child');
-    dernierPersonne.classList.add('vide');
+    container.innerHTML += creerCaseVideHTML(containerClass, 'genderClass');
   }
    const personContainer = document.getElementById('person-container');
   personContainer.appendChild(container);
