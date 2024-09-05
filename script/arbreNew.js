@@ -23,10 +23,10 @@ function afficherPersonne(persData, generationClasse) {
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
   const conteneur = document.createElement('div');
   conteneur.classList.add(generationClasse,classeGenre );
-  let lienHtml = `<p><a href="../html/arbrePerso.html?id=${persData.id}">
+  let lienHtml = `<div class="${generationClasse} ${classeGenre}">`;
+  lienHtml = `<p><a href="../html/arbrePerso.html?id=${persData.id}">
               ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
-  lienHtml += '</div>';
   conteneur.innerHTML += lienHtml;
   const conteneurPersonne = document.getElementById('pageConteneur');
   conteneurPersonne.appendChild(conteneur);
@@ -75,9 +75,9 @@ function creerDate(dateNaissance, dateDeces) {
   else {
     if (anDeces === 1901) {
       texteDeces = "??" 
-      return `${texteNaissance} ${anNaiss} + '/' + ${texteDeces}` }
+      return `${texteNaissance} ${anNaiss} '/' ${texteDeces}` }
     else {
-      return `${texteNaissance} ${anNaiss} + '/' + ${anDeces}`
+      return `${texteNaissance} ${anNaiss} '/' ${anDeces}`
     };
   }
 }
