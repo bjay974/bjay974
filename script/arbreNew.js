@@ -118,18 +118,18 @@ function trouverGenerations(personneId, data) {
     const generation = [];
 
     // Trouver le père ou mettre un ID 20 si absent
-    if (personne.id_pere !== null) {
+    if (person.id_pere !== null) {
       const pere = trouverPersonneParId(personne.id_pere, data);
-      generation.push(personne.id_pere);
+      generation.push(person.id_pere);
       personne = pere;
     } else {
       generation.push(42);  
     }
 
     // Trouver la mère ou mettre un ID 10 si absente
-    if (personne.id_mere !== null) {
+    if (person.id_mere !== null) {
       const mere = trouverPersonneParId(personne.id_mere, data);
-      generation.push(personne.id_mere);
+      generation.push(person.id_mere);
       personne = mere;
     } else {
       generation.push(47);  
