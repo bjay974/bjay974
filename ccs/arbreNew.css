@@ -6,7 +6,7 @@
   margin: 0;  
 }
 
-.personne {
+.personConteneur {
   display: flex;
   grid-area: colonne1;
   flex-direction: column;

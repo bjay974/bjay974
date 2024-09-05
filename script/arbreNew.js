@@ -2,16 +2,16 @@
 function displayData() {
 
     var urlParams = new URLSearchParams(window.location.search);
-    var personId = 302;
+    let personId = 302;
     
     // Charger les données depuis le fichier JSON
     fetch('../data/data.json')
         .then(response => response.json())
         .then(data => {
             // Trouver la personne correspondante
-            const person = data.find(p => p.id === parseInt(personId));
+            const personData = data.find(p => p.id === parseInt(personId));
             // Afficher les informations de la personne
-            afficherPersonne('302', 'personne');
+            afficherPersonne(personData, 'personConteneur');
    /*         // Afficher les grands-parents
             var grand = trouverGrandsParents(person.id_pere, person.id_mere, data);
             afficherGrandParent(
@@ -25,7 +25,7 @@ function displayData() {
         });
   }
 
-function affichermembre(personne, containerClass) {
+function afficherPersonne(personne, containerClass) {
   const genderClass = personne.genre === 'M' ? 'male' : 'female';
   const lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
   const dateNaissance = creerAn(personne.date_naissance);
