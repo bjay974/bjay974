@@ -1,14 +1,14 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-areas: "colonne1 colonne2 colonne3 colonne4" ;
+  grid-template-areas: "colonne1 colonne2 colonne3 colonne4 colonne5 colonne6" ;
   padding : 0;
   margin: 0;  
 }
 
 .personConteneur {
   display: flex;
-  grid-area: colonne1;
+  grid-area: colonne6;
   flex-direction: column;
   box-sizing: border-box; 
   text-overflow: ellipsis;
@@ -30,29 +30,29 @@
 }
 
 .parent {
-  grid-area: colonne2;
+  grid-area: colonne5;
   margin-top: 20px; 
 }
 
 .grandparent {
-  grid-area: colonne3;
+  grid-area: colonne4;
   margin-top: 20px; 
   margin-left: 2%; 
 }
 
 .generation3 {
-  grid-area: colonne4;
+  grid-area: colonne3;
   margin-top: 10px; 
 }
 
 .generation4 {
-  grid-area: colonne5;
+  grid-area: colonne2;
   margin-top: 10px; 
   margin-right: 2%;
 }
 
 .generation5 {
-  grid-area: colonne6;
+  grid-area: colonne1;
   margin-top: 10px; 
   margin-right: 2%;
 }
