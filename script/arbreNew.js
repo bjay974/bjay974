@@ -41,7 +41,7 @@ function afficherCaseVide(generationClasse, classeGenre) {
   conteneur.textContent = ''; 
   document.getElementById('page-conteneur').appendChild(conteneur);
 }
-
+ 
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
 function afficherGenerations(generations, data) {
