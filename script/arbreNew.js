@@ -29,7 +29,6 @@ function afficherPersonne(persData, generationClasse) {
   const lien = document.createElement('a');
   lien.href = `../html/arbrePerso.html?id=${persData.id}`;
   lien.innerHTML = `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
-  lien.class = ${classeGenre}
   conteneur.appendChild(lien);
 
   document.getElementById('page-conteneur').appendChild(conteneur);
