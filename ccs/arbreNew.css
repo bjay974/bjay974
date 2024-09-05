@@ -57,98 +57,19 @@
   margin-right: 2%;
 }
 
-.generation5 .female::before {
-  content: '';
-  position: absolute;
-  top: -50px;
-  left: 50%; /* Centre le trait verticalement */
-  transform: translateX(-50%);
-  width: 3px; /* Épaisseur du trait */
-  height: 50px; /* Hauteur du trait couvrant toute la hauteur du couple */
-  background-color: var(--color-green);
-} 
-.grandparent .male::after {
-  content: '';
-  position: absolute;
-  top: 85px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-  left: 50%; /* Place le trait juste à droite de l'homme */
-  transform: translateY(-50%);
-  width: 250px; /* Longueur du trait horizontal */
-  height: 3px; /* Épaisseur du trait */
-  background-color: var(--color-green); /* Couleur du trait */
-}
-
-.parent .female::before {
-  content: '';
-  position: absolute;
-  top: -210px;
-  left: 50%; /* Centre le trait verticalement */
-  transform: translateX(-50%);
-  width: 3px; /* Épaisseur du trait */
-  height: 210px; /* Hauteur du trait couvrant toute la hauteur du couple */
-  background-color: var(--color-green);
-}
-
-.parent .male::after {
-  content: '';
-  position: absolute;
-  top: 100px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-  left: 50%; /* Place le trait juste à droite de l'homme */
-  transform: translateY(-50%);
-  width: 255px; /* Longueur du trait horizontal */
-  height: 3px; /* Épaisseur du trait */
-  background-color: var(--color-green); /* Couleur du trait */
-}
-
-.personne:last-of-type::before {
-  content: '';
-  position: absolute;
-  top: 417px;
-  left: 49%; /* Centre le trait verticalement */
-  transform: translateX(-50%);
-  width: 3px; /* Épaisseur du trait */
-  height: 90px; /* Hauteur du trait couvrant toute la hauteur du couple */
-  background-color: var(--color-green);
-} 
-
-.grandparent.male, .grandparent.female,.parent.male, .parent.female {
-  z-index: 1; 
-  display: flex;
-  position: relative;
-} 
-
-.vide {
-  content: '';
-  background-color: transparent;
-}
-
 .label {
-margin : 0; 
-padding : 0; 
-color:var(--color-green);
-font-style: italic;
+  margin : 0; 
+  padding : 0; 
+  color:var(--color-green);
+  font-style: italic;
 }
-
-.enfant-container {margin-top : 20px}
-
-.personne + .personne {margin-top : 90px}
-.personne + .label {margin-top : 45px}
-.label + .personne {margin-top : 45px}
-
-.label + .parent {margin-top: 80px}
-.parent.male + .parent.female{margin-top : 210px;}
-
-.grandparent.male + .grandparent.female{margin-top : 50px}
-.grandparent.female + .grandparent.male{margin-top : 100px;}
-
-
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
 body {
   font-size: var(--font-size-small); /* Ajuste la taille de la police */
 }
-.parent, .grandparent, .enfant, .petitenfant {
+.parent, .grandparent, .generation3, .generation4, .generation5 {
   min-height: 30px;
   min-width: 10px;
 }
@@ -160,18 +81,14 @@ body {
     grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
  }
 
-.parent, .grandparent, .enfant, .petitenfant, .personne {
+ .parent, .grandparent, .generation3, .generation4, .generation5 {
   margin-top : 10px;
   min-height: 20px;
   width: 120px;
   font-size: 90%;
   margin : 2%;  
 }
-.membre-container {
-  margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
-  width: 80px;
-  width: 120px;
-}
+
   .parent.male + .parent.female{margin-top : 170px;}
   .grandparent.male + .grandparent.female{margin-top : 60px}
   .grandparent.female + .grandparent.male{margin-top : 60px;}
@@ -179,30 +96,7 @@ body {
   .personne + .label {margin-top : 30px}
   .label + .personne {margin-top : 30px}
   .label + .parent {margin-top : 40px}
-  .grandparent .female::before {
-  content: '';
-  background-color: transparent;
- } 
-.grandparent .male::after {
-  content: '';
-  background-color: transparent;
-}
 
-.parent .female::before {
-  content: '';
-  background-color: transparent;
-}
-
-.parent .male::after {
-  content: '';
-  background-color: transparent;
-}
-  .personne:first-child {
-    margin-top: 150px;
-  }
-.personne:last-of-type::before {
-  content: '';
-  background-color: transparent;
 } 
 
-}
+
