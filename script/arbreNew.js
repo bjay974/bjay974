@@ -39,10 +39,10 @@ function creerDate(dateNaissance, dateDeces) {
   const anDeces = parseInt(dateDeces.substr(6, 4)); 
   if (anNaiss === 1901) {anNaiss = "??"} ;
   if (!anDeces) {
-     return anNaiss  };
+     return anNaiss  }
   else {
     if (anDeces === 1901) {
-      anDeces = "??" };
+      anDeces = "??" }
     return anNaiss + '/' anDeces};
 }
 
