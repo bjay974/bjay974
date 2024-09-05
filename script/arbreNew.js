@@ -1,4 +1,3 @@
-  
 // Fonction pour afficher les données dans la page
 function displayData() {
 
