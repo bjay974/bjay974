@@ -28,25 +28,15 @@ function afficherPersonne(persData, generationClasse) {
               ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
   conteneur.innerHTML += lienHtml;
-  const conteneurPersonne = document.getElementById('pageConteneur');
-  conteneurPersonne.appendChild(conteneur);
+  document.getElementById('pageConteneur').appendChild(conteneur);
 }
 
 // Fonction pour une case homme ou femme sans données
 function afficherCaseVide(containerClass, genderClass) {
   const conteneur = document.createElement('div');
   conteneur.classList.add(containerClass, genderClass);
-  conteneur.textContent("");
-  const conteneurPersonne = document.getElementById('pageConteneur');
-  conteneurPersonne.appendChild(caseVide);
-}
-// Fonction pour une case homme ou femme sans données
-function afficherCaseVide(containerClass, genderClass) {
-  const conteneur = document.createElement('div');
-  conteneur.classList.add(containerClass, genderClass);
   conteneur.textContent = ''; 
-  const conteneurPersonne = document.getElementById('pageConteneur');
-  conteneurPersonne.appendChild(conteneur);
+  document.getElementById('pageConteneur').appendChild(conteneur);
 }
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
