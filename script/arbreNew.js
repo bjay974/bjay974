@@ -18,26 +18,29 @@ function displayData() {
   }
 
 function afficherPersonne(persData, generationClasse) {
+  // Générer les informations nécessaires
   const afficheDate = creerDate(persData.date_naissance, persData.date_deces);
   const origine = getOrigine(persData.lieu_naissance);
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
+
   const conteneur = document.createElement('div');
-  conteneur.classList.add(generationClasse,classeGenre );
-  let lienHtml = `<div class="${generationClasse} ${classeGenre}">`;
-  lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
-              ${persData.nom} ${persData.prenom} <br>
-              ${afficheDate} ${origine}</a></p>`;
-  lienHtml += '</div>';
-  conteneur.innerHTML += lienHtml;
-  document.getElementById('pageConteneur').appendChild(conteneur);
+  conteneur.classList.add(generationClasse, classeGenre);
+
+  const lien = document.createElement('a');
+  lien.href = `../html/arbrePerso.html?id=${persData.id}`;
+  lien.innerHTML = `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
+
+  conteneur.appendChild(lien);
+
+  document.getElementById('page-conteneur').appendChild(conteneur);
 }
 
 // Fonction pour une case homme ou femme sans données
-function afficherCaseVide(containerClass, genderClass) {
+function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
-  conteneur.classList.add(containerClass, genderClass);
+  conteneur.classList.add(generationClasse, classeGenre);
   conteneur.textContent = ''; 
-  document.getElementById('pageConteneur').appendChild(conteneur);
+  document.getElementById('page-conteneur').appendChild(conteneur);
 }
 
 
