@@ -27,13 +27,13 @@ function afficherPersonne(persData, generationClasse) {
   conteneur.classList.add(classeGenre);
 
   const lien = document.createElement('a');
-  lien.href = `../html/arbrePerso.html?id=${persData.id}`;
-  lien.innerHTML = `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
+  lien.href += `../html/arbrePerso.html?id=${persData.id}`;
+  lien.innerHTML += `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
   conteneur.appendChild(lien);
 
   document.getElementById('page-conteneur').appendChild(conteneur);
 }
-
+    
 // Fonction pour une case homme ou femme sans données
 function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
