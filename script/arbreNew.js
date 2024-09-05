@@ -11,7 +11,7 @@ function displayData() {
             const personData = data.find(p => p.id === (personId));
             const generations = obtenirGenerations(personId, data); console.log(generations);
             // Afficher les informations de la personne
-            afficherPersonne(personData, 'personConteneur');
+            ajouterPersonnePrincipal(personData, 'personConteneur');
             // Afficher les ancetres
             afficherGenerations(generations, data)           
         });
@@ -38,22 +38,25 @@ function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
   conteneur.classList.add(generationClasse, classeGenre);
   conteneur.textContent = ''; 
-
   return conteneur; // Retourner le conteneur vide
 }
+
 
 function ajouterDivetTitre(generationClass) {
   const container = document.createElement('div');
   container.classList.add(generationClass);
-  
   // Ajout d'un titre (optionnel)
   const titre = document.createElement('h3');
   titre.textContent = ``;
   container.appendChild(titre);
-  
   return container;
 }
 
+function ajouterPersonnePrincipal(persData, generationClasse){
+  const container = ajouterDivetTitre(generationClasse);
+  lien = afficherPersonne(persData, generationClasse);
+  container.appendChild(lien); 
+}
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
 function afficherGenerations(generations, data) {
