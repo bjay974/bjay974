@@ -34,11 +34,11 @@ function afficherPersonne(persData, generationClasse) {
 
 // Fonction pour une case homme ou femme sans données
 function afficherCaseVide(containerClass, genderClass) {
-  let caseVide = `<div class="${containerClass} ${genderClass}">`;
-  caseVide += `<p>" "</p>`;
-  caseVide += '</div>';
-  const personContainer = document.getElementById('pageConteneur');
-  personContainer.appendChild(caseVide);
+  const conteneur = document.createElement('div');
+  conteneur.classList.add(containerClass, genderClass);
+  conteneur.textContent("");
+  const conteneurPersonne = document.getElementById('pageConteneur');
+  conteneurPersonne.appendChild(caseVide);
 }
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
