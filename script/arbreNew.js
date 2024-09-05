@@ -10,7 +10,7 @@ function displayData() {
         .then(data => {
             // Trouver la personne correspondante
             const personData = data.find(p => p.id === parseInt(personId));
-            const generations = trouverGenerations(personId, data); console.log(generations);
+            const generations = obtenirGenerations(personId, data); console.log(generations);
             // Afficher les informations de la personne
             afficherPersonne(personData, 'personConteneur');
             // Afficher les parents
@@ -100,42 +100,44 @@ function getOrigine(lieuDeNaissance) {
     return parentHTML;
   }
    
- // Fonction pour defifine les id
-// Fonction pour trouver une personne par son id 
-function trouverPersonneParId(id,data) {
-  return data.find(person => person.id === id); 
+// Fonction pour retrouver une personne par son ID dans le tableau
+function trouverPersonneParId(id, data) {
+  return data.find(person => person.id === id);
 }
 
-// Fonction pour trouver les parents sur plusieurs générations 
-function trouverGenerations(personneId, data) {
-  const resultats = [];
+// Fonction pour récupérer les ancêtres sur plusieurs générations
+function obtenirGenerations(idPersonne, data) {
+  let resultats = [];
+  let personnesCourantes = [idPersonne]; // Démarrer avec l'ID de la personne initiale
 
-  let personne = trouverPersonneParId(personneId, data);
+  for (let i = 1; i <= 5; i++) {
+      let generationActuelle = [];
+      let prochaineGeneration = [];
 
-  // Boucle pour les 5 générations
-  for (let i = 0; i < 5; i++) {
+      personnesCourantes.forEach(id => {
+          let personne = trouverPersonneParId(id, data);
 
-    const generation = [];
+          if (personne) {
+              // Ajouter le père à la génération actuelle, sinon ajouter 10 par défaut
+              let idPere = personne.id_pere !== null && personne.id_pere !== undefined ? personne.id_pere : 10;
+              generationActuelle.push(idPere);
+              prochaineGeneration.push(idPere);
 
-    // Trouver le père ou mettre un ID 20 si absent
-    if (person.id_pere !== null) {
-      const pere = trouverPersonneParId(personne.id_pere, data);
-      generation.push(person.id_pere);
-      personne = pere;
-    } else {
-      generation.push(42);  
-    }
+              // Ajouter la mère à la génération actuelle, sinon ajouter 20 par défaut
+              let idMere = personne.id_mere !== null && personne.id_mere !== undefined ? personne.id_mere : 20;
+              generationActuelle.push(idMere);
+              prochaineGeneration.push(idMere);
+          } else {
+              // Si la personne n'existe pas, ajouter les parents par défaut
+              generationActuelle.push(10); // Père par défaut
+              generationActuelle.push(20); // Mère par défaut
+              prochaineGeneration.push(10); // Père par défaut
+              prochaineGeneration.push(20); // Mère par défaut
+          }
+      });
 
-    // Trouver la mère ou mettre un ID 10 si absente
-    if (person.id_mere !== null) {
-      const mere = trouverPersonneParId(personne.id_mere, data);
-      generation.push(person.id_mere);
-      personne = mere;
-    } else {
-      generation.push(47);  
-    }
-
-    resultats.push(generation);
+      resultats.push(generationActuelle);
+      personnesCourantes = prochaineGeneration; // Passer à la génération suivante
   }
 
   return resultats;
