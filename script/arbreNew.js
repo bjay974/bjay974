@@ -26,11 +26,9 @@ function afficherPersonne(persData, generationClasse) {
   const conteneur = document.createElement('div');
   conteneur.classList.add(classeGenre);
 
-  const lien = document.createElement('a');
-  lien.href += `../html/arbrePerso.html?id=${persData.id}`;
-  lien.innerHTML += `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
+  const lien = `<p><a href="../html/arbrePerso.html?id=${persData.id}" style="text-decoration: none; color: inherit;">${persData.nom} ${persData.prenom}<br></a></p>`;
+  lien.innerHTML += `${afficheDate} ${origine}`;    
   conteneur.appendChild(lien);
-
   document.getElementById('page-conteneur').appendChild(conteneur);
 }
     
