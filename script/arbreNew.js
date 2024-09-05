@@ -13,30 +13,21 @@ function displayData() {
             const generations = obtenirGenerations(personId, data); console.log(generations);
             // Afficher les informations de la personne
             afficherPersonne(personData, 'personConteneur');
-            // Afficher les parents
-            afficherParent(person.id_pere, person.id_mere, 'parentConteneur', data);            
-   /*         // Afficher les grands-parents
-            var grand = trouverGrandsParents(person.id_pere, person.id_mere, data);
-            afficherGrandParent(
-                grand.PerePat, grand.MerePat, grand.PereMat, grand.MereMat,'grandparent', data); 
-            // Afficher les parents
-            afficherParent(person.id_pere, person.id_mere, 'parent', data);
-            // Afficher les informations de la personne
-            // Afficher les enfants et  petits-enfants
-            afficherEnfantsPetitEnfants(person.id, data);  */
+            // Afficher les ancetres
+            afficherGenerations(generations, data)           
         });
   }
 
-function afficherPersonne(personne, containerClass) {
-  const afficheDate = creerDate(personne.date_naissance, personne.date_deces);
-  const origine = getOrigine(personne.lieu_naissance);
-  const classeGenre = personne.genre === 'M' ? 'male' : 'female';
+function afficherPersonne(persData, generationClasse) {
+  const afficheDate = creerDate(persData.date_naissance, persData.date_deces);
+  const origine = getOrigine(persData.lieu_naissance);
+  const classeGenre = persData.genre === 'M' ? 'male' : 'female';
 
   const conteneur = document.createElement('div');
-  conteneur.classList.add(containerClass);
+  conteneur.classList.add(generationClasse);
   let lienHtml = `<div class="${classeGenre}">`;
-  lienHtml += `<p><a href="../html/arbrePerso.html?id=${personne.id}">
-              ${parent.nom} ${parent.prenom} <br>
+  lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
+              ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
   lienHtml += '</div>';
   conteneur.innerHTML += lienHtml;
@@ -53,21 +44,24 @@ function afficherCaseVide(containerClass, genderClass) {
   personContainer.appendChild(caseVide);
 }
 
-function afficherParent(fatherId, motherId, containerClass, data) {
-  var father = data.find(person => person.id === fatherId);
-  var mother = data.find(person => person.id === motherId);
-    if (father) {
-      const container = afficherPersonne(father, containerClass);
-    }
-    else {
-      const container = afficherCaseVide(containerClass, 'male');
-    }
-    if (mother) {
-      const container = afficherPersonne(mother, containerClass);
-    }
-    else {
-      const container = afficherCaseVide(containerClass, 'female');
-    }
+// Fonction qui affiche chaque personne dans le conteneur correspondant
+function afficherGenerations(generations, data) {
+  // Boucle sur chaque génération
+  generations.forEach((generation, index) => {
+      // Sélectionner le conteneur pour la génération correspondante (generation1, generation2, etc.)
+      const generationClass = `generation${index + 1}`;
+      // Boucle sur chaque personne de la génération (pair = père, impair = mère)
+        generation.forEach(idPersonne => {
+          if ((idPersonne === 10) || (idPersonne === 20)) {
+            afficherCaseVide(
+              generationClass, 
+              (idPersonne === 10) ? 'male' : (idPersonne === 20) ? 'female' : ''
+            );   }
+          else {
+            const personData = data.find(p => p.id === idPersonne);
+            afficherPersonne(personData, generationClass); }
+      });
+  });
 }
 
 function creerDate(dateNaissance, dateDeces) {
@@ -109,22 +103,19 @@ function trouverPersonneParId(id, data) {
 function obtenirGenerations(idPersonne, data) {
   let resultats = [];
   let personnesCourantes = [idPersonne]; // Démarrer avec l'ID de la personne initiale
-
   for (let i = 1; i <= 5; i++) {
       let generationActuelle = [];
       let prochaineGeneration = [];
-
       personnesCourantes.forEach(id => {
           let personne = trouverPersonneParId(id, data);
-
           if (personne) {
               // Ajouter le père à la génération actuelle, sinon ajouter 10 par défaut
-              let idPere = personne.id_pere !== null && personne.id_pere !== undefined ? personne.id_pere : 10;
+              let idPere = personne.id_pere !== null && personne.id_pere !== undefined && personne.id_pere !== "inconnu" ? personne.id_pere : 10;
               generationActuelle.push(idPere);
               prochaineGeneration.push(idPere);
 
               // Ajouter la mère à la génération actuelle, sinon ajouter 20 par défaut
-              let idMere = personne.id_mere !== null && personne.id_mere !== undefined ? personne.id_mere : 20;
+              let idMere = personne.id_mere !== null && personne.id_mere !== undefined && personne.id_mere !== "inconnue" ? personne.id_mere : 20;
               generationActuelle.push(idMere);
               prochaineGeneration.push(idMere);
           } else {
@@ -135,14 +126,11 @@ function obtenirGenerations(idPersonne, data) {
               prochaineGeneration.push(20); // Mère par défaut
           }
       });
-
       resultats.push(generationActuelle);
       personnesCourantes = prochaineGeneration; // Passer à la génération suivante
   }
-
   return resultats;
 }
-
 
   
   // Appeler la fonction pour afficher les données

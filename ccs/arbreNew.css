@@ -18,7 +18,7 @@
   width: 180px;
 }
 
-.parentConteneur, .grandparentConteneur, .generation3Conteneur, .generation4Conteneur, .generation5Conteneur {
+.generation1, .generation2, .generation3, .generation4, .generation5 {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -29,29 +29,29 @@
   width: 180px;
 }
 
-.parentConteneur {
+.generation1 {
   grid-area: colonne5;
   margin-top: 20px; 
 }
 
-.grandparentConteneur {
+.generation2 {
   grid-area: colonne4;
   margin-top: 20px; 
   margin-left: 2%; 
 }
 
-.generation3Conteneur {
+.generation3 {
   grid-area: colonne3;
   margin-top: 10px; 
 }
 
-.generation4Conteneur {
+.generation4 {
   grid-area: colonne2;
   margin-top: 10px; 
   margin-right: 2%;
 }
 
-.generation5Conteneur {
+.generation5 {
   grid-area: colonne1;
   margin-top: 10px; 
   margin-right: 2%;
