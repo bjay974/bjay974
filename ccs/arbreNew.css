@@ -55,6 +55,24 @@
   margin-top : 15px;
 
 }
+.generation5 .male:first-child { margin-top: 20px}
+.generation5 .male + .female {margin-top: 40px}
+.generation5 .female + .male {margin-top: 80px}
+
+.generation4 .male:first-child { margin-top: 60px}
+.generation4 .male + .female {margin-top: 160px}
+.generation5 .female + .male {margin-top: 160px}
+
+.generation3 .male:first-child { margin-top: 160px}
+.generation3 .male + .female {margin-top: 360px}
+.generation3 .female + .male {margin-top: 360px}
+
+.generation2 .male:first-child { margin-top: 360px}
+.generation2 .male + .female {margin-top: 760px}
+.generation2 .female + .male {margin-top: 760px}
+
+.generation1 .male:first-child { margin-top: 760px}
+.generation1 .male + .female {margin-top: 1560px}
 
 .generation1::before, .generation2::before, .generation3::before, .generation4::before, .generation5::before {
   content: '';

@@ -56,6 +56,7 @@ function ajouterPersonnePrincipal(persData, generationClasse){
   const container = ajouterDivetTitre(generationClasse);
   lien = afficherPersonne(persData, generationClasse);
   container.appendChild(lien); 
+  document.getElementById('page-conteneur').appendChild(container);
 }
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
