@@ -24,9 +24,10 @@ function afficherPersonne(persData, generationClasse) {
   const conteneur = document.createElement('div');
   conteneur.classList.add(generationClasse,classeGenre );
   let lienHtml = `<div class="${generationClasse} ${classeGenre}">`;
-  lienHtml = `<p><a href="../html/arbrePerso.html?id=${persData.id}">
+  lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
               ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
+  lienHtml += '</div>';
   conteneur.innerHTML += lienHtml;
   document.getElementById('pageConteneur').appendChild(conteneur);
 }
@@ -38,6 +39,7 @@ function afficherCaseVide(containerClass, genderClass) {
   conteneur.textContent = ''; 
   document.getElementById('pageConteneur').appendChild(conteneur);
 }
+
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
 function afficherGenerations(generations, data) {
