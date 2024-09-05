@@ -35,9 +35,9 @@ function afficherPersonne(personne, containerClass) {
   conteneur.classList.add(containerClass);
   const lienHtml = `<div class="${classeGenre}">`;
   lienHtml += `<p><a href="../html/arbrePerso.html?id=${personne.id}">
-              ${parent.nom} ${parent.prenom}<br>
+              ${parent.nom} ${parent.prenom}
               ${afficheDate} "</a></p>`;
-              lienHtml += '</div>';
+  lienHtml += '</div>';
   conteneur.innerHTML += lienHtml;
   const conteneurPersonne = document.getElementById('pageConteneur');
   conteneurPersonne.appendChild(conteneur);
