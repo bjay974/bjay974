@@ -1,15 +1,14 @@
 // Fonction pour afficher les données dans la page
 function displayData() {
 
-    var urlParams = new URLSearchParams(window.location.search);
-    let personId = 302;
+   let personId = 302;
     
     // Charger les données depuis le fichier JSON
     fetch('../data/data.json')
         .then(response => response.json())
         .then(data => {
             // Trouver la personne correspondante
-            const personData = data.find(p => p.id === parseInt(personId));
+            const personData = data.find(p => p.id === (personId));
             const generations = obtenirGenerations(personId, data); console.log(generations);
             // Afficher les informations de la personne
             afficherPersonne(personData, 'personConteneur');
@@ -24,7 +23,7 @@ function afficherPersonne(persData, generationClasse) {
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
   const conteneur = document.createElement('div');
   conteneur.classList.add(generationClasse,classeGenre );
-  lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
+  const lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
               ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
   lienHtml += '</div>';
@@ -91,15 +90,6 @@ function getOrigine(lieuDeNaissance) {
   const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France"];
   return lieuxAcceptes.includes(lieuDeNaissance) ? `(${lieuDeNaissance})` : "";
 }
-
-  
-  // Fonction pour créer le HTML pour un parent (père ou mère)
-  function creerParentHTML(parent, containerClass, genderClass) {
-    let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-    parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
-    parentHTML += '</div>';
-    return parentHTML;
-  }
    
 // Fonction pour retrouver une personne par son ID dans le tableau
 function trouverPersonneParId(id, data) {
