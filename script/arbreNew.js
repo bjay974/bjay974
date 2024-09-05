@@ -27,20 +27,23 @@ function displayData() {
 function afficherPersonne(personne, containerClass) {
   const genderClass = personne.genre === 'M' ? 'male' : 'female';
   const lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
-  const dateNaissance = creerAn(personne.date_naissance);
-  const dateDeces = creerAn(personne.date_deces);
+  const afficheDate = creerDate(personne.date_naissance);
   const origine = getOrigine(personne.lieu_naissance);
   lienPersonne += `<p><a href="../html/person.html?id=${personne.id}"
                 class="${genderClass}">${personne.nom} ${personne.prenom} <br>
-                (${dateNaissance} / ${dateDeces}) (${origine})</a></p>`
+                ${afficheDate} ${origine}</a></p>`
 }
    
-function creerAn(date) {
-  const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
-  if (year === 1901) {
-    return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
-  }
-  return year;
+function creerDate(dateNaissance, dateDeces) {
+  const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
+  const anDeces = parseInt(dateDeces.substr(6, 4)); 
+  if (anNaiss === 1901) {anNaiss = "??"} 
+  if (!anDeces) {
+     return anNaiss  }
+  else {
+    if (anDeces === 1901) {
+      anDeces = "??" }
+    return anNaiss + '/' anDeces;}
 }
 
 function getOrigine(lieuDeNaissance) {
