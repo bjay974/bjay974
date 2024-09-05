@@ -32,7 +32,7 @@ function affichermembre(personne, containerClass) {
   var dateDeces = creerAn(personne.date_deces);
   cont origine = getOrigine(personne.lieu_naissance);
 
-  membreLien += `<p><a href="../html/person.html?id=${personne.id}" 
+  membreLien += `<p><a href="../html/person.html?id=${personne.id}"
                 class="${genderClass}">${personne.nom} ${personne.prenom} <br>
                 (${dateNaissance} / ${dateDeces}) (${origine})</a></p>`
 }
