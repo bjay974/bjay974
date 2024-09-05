@@ -33,8 +33,8 @@ function afficherPersonne(personne, containerClass) {
 
   const conteneur = document.createElement('div');
   conteneur.classList.add(containerClass);
-  const lienHtml = `<div class="${genderClass}">`;
-  lienHtml += `<p><a href="../html/arbrePerso.html?id=${parent.id}">
+  const lienHtml = `<div class="${classeGenre}">`;
+  lienHtml += `<p><a href="../html/arbrePerso.html?id=${personne.id}">
               ${parent.nom} ${parent.prenom}<br>
               ${afficheDate} ${origine}"</a></p>`;
               lienHtml += '</div>';
