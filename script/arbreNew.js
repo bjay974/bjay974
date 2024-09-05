@@ -23,7 +23,7 @@ function afficherPersonne(persData, generationClasse) {
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
   const conteneur = document.createElement('div');
   conteneur.classList.add(generationClasse,classeGenre );
-  const lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
+  const lienHtml = `<p><a href="../html/arbrePerso.html?id=${persData.id}">
               ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
   lienHtml += '</div>';
