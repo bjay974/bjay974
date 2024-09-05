@@ -12,6 +12,8 @@ function displayData() {
             const personData = data.find(p => p.id === parseInt(personId));
             // Afficher les informations de la personne
             afficherPersonne(personData, 'personConteneur');
+            // Afficher les parents
+            afficherParent(person.id_pere, person.id_mere, 'parentConteneur', data);            
    /*         // Afficher les grands-parents
             var grand = trouverGrandsParents(person.id_pere, person.id_mere, data);
             afficherGrandParent(
@@ -29,11 +31,37 @@ function afficherPersonne(personne, containerClass) {
   const lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
   const afficheDate = creerDate(personne.date_naissance, personne.date_deces);
   const origine = getOrigine(personne.lieu_naissance);
-  lienPersonne += `<p><a href="../html/person.html?id=${personne.id}"
-                class="${genderClass}">${personne.nom} ${personne.prenom} <br>
-                ${afficheDate} ${origine}</a></p>`
+  const textLien = `<span> ${personne.nom} ${personne.prenom} <br> ${afficheDate} ${origine}</span>`
+  lienPersonne += `<a href="../html/person.html?id=${personne.id}"class="${genderClass}">${textLien}</a>`
+  const personContainer = document.getElementById('pageConteneur');
+  personContainer.appendChild(lienPersonne);
 }
-   
+
+// Fonction pour créer le HTML pour un parent (père ou mère)
+function afficherCaseVide(containerClass, genderClass) {
+  let caseVide = `<div class="${containerClass} ${genderClass}">`;
+  caseVide += `<p> </p>`;
+  caseVide += '</div>';
+  const personContainer = document.getElementById('pageConteneur');
+  personContainer.appendChild(caseVide);}
+
+function afficherParent(fatherId, motherId, containerClass, data) {
+  var father = data.find(person => person.id === fatherId);
+  var mother = data.find(person => person.id === motherId);
+    if (father) {
+      const container = afficherPersonne(father, containerClass);
+    }
+    else {
+      const container = afficherCaseVide(containerClass, 'male');
+    }
+    if (mother) {
+      const container = afficherPersonne(mother, containerClass);
+    }
+    else {
+      const container = afficherCaseVide(containerClass, 'female');
+    }
+}
+
 function creerDate(dateNaissance, dateDeces) {
   const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
   const anDeces = parseInt(dateDeces.substr(6, 4)); 
@@ -124,25 +152,7 @@ function getOrigine(lieuDeNaissance) {
     return result;
   }
   
-  function afficherParent(fatherId, motherId, containerClass, data) {
-    var father = data.find(person => person.id === fatherId);
-    var mother = data.find(person => person.id === motherId);
-      container = ajouterDivetTitre(containerClass, father && mother === true, "Parent", "Parents");
-      if (father) {
-        container.innerHTML += creerParentHTML(father, containerClass, 'male');
-      }
-      else {
-        container.innerHTML += creerCaseVideHTML(containerClass, 'male');
-      }
-      if (mother) {
-        container.innerHTML += creerParentHTML(mother, containerClass, 'female');
-      }
-      else {
-        container.innerHTML += creerCaseVideHTML(containerClass, 'female');
-      }
-      const personContainer = document.getElementById('person-container');
-      personContainer.appendChild(container);
-  }
+
   
   function afficherEnfantsPetitEnfants(parentId, data) {
     const enfants = data.filter(enfant => enfant.id_pere === parentId || enfant.id_mere === parentId);
@@ -250,13 +260,7 @@ function getOrigine(lieuDeNaissance) {
   
 
   
-  // Fonction pour créer le HTML pour un parent (père ou mère)
-  function creerCaseVideHTML(containerClass, genderClass) {
-    let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-    parentHTML += `<p> </p>`;
-    parentHTML += '</div>';
-    return parentHTML;
-  }
+
   
   
   // Appeler la fonction pour afficher les données
