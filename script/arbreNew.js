@@ -31,7 +31,7 @@ function afficherPersonne(personne, containerClass) {
   const lienPersonne = document.createElement('a');
   const afficheDate = creerDate(personne.date_naissance, personne.date_deces);
   const origine = getOrigine(personne.lieu_naissance);
-  lienPersonne += `<div class="${containerClass} ${genderClass}">`;
+  lienPersonne += `<div class=${containerClass}>`;
   lienPersonne.href = "../html/person.html?id=${personne.id}";
   lienPersonne.innerHTML = "${personne.nom} ${personne.prenom}<br>${afficheDate} ${origine}";
   const personContainer = document.getElementById('pageConteneur');
