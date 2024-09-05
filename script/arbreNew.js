@@ -80,6 +80,7 @@ function creerDate(dateNaissance, dateDeces) {
     else {
       return `${texteNaissance} ${anNaiss} + '/' + ${anDeces}`
     };
+  }
 }
 
 function getOrigine(lieuDeNaissance) {
