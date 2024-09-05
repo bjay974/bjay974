@@ -73,16 +73,13 @@ function creerDate(dateNaissance, dateDeces) {
      texteNaissance = "??"}
   else 
      texteNaissance = "" ;
-  if (!anDeces) {
-     return `(${anNaiss})`  }
-  else {
-    if (anDeces === 1901) {
+  if (anDeces === 1901) {
       texteDeces = "??" 
-      return `${texteNaissance} ${anNaiss} '/' ${texteDeces}` }
-    else {
-      return `${texteNaissance} ${anNaiss} '/' ${anDeces}`
+      return `${texteNaissance} ${anNaiss} / ${texteDeces}` }
+  else {
+      return `${texteNaissance} ${anNaiss} / ${anDeces}`
     };
-  }
+
 }
 
 function getOrigine(lieuDeNaissance) {
