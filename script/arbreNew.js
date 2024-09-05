@@ -28,11 +28,12 @@ function displayData() {
 
 function afficherPersonne(personne, containerClass) {
   const genderClass = personne.genre === 'M' ? 'male' : 'female';
-  const lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
+  const lienPersonne = document.createElement('a');
   const afficheDate = creerDate(personne.date_naissance, personne.date_deces);
   const origine = getOrigine(personne.lieu_naissance);
-  const textLien = `<span> ${personne.nom} ${personne.prenom} <br> ${afficheDate} ${origine}</span>`
-  lienPersonne += `<a href="../html/person.html?id=${personne.id}"class="${genderClass}">${textLien}</a>`
+  lienPersonne += `<div class="${containerClass} ${genderClass}">`;
+  lienPersonne.href = "../html/person.html?id=${personne.id}";
+  lienPersonne.innerHTML = "${personne.nom} ${personne.prenom}<br>${afficheDate} ${origine}";
   const personContainer = document.getElementById('pageConteneur');
   personContainer.appendChild(lienPersonne);
 }
