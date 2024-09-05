@@ -24,12 +24,12 @@ function afficherPersonne(persData, generationClasse) {
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
 
   const conteneur = document.createElement('div');
-  conteneur.classList.add(generationClasse, classeGenre);
+  conteneur.classList.add(classeGenre);
 
   const lien = document.createElement('a');
   lien.href = `../html/arbrePerso.html?id=${persData.id}`;
   lien.innerHTML = `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
-
+  lien.class = ${classeGenre}
   conteneur.appendChild(lien);
 
   document.getElementById('page-conteneur').appendChild(conteneur);
