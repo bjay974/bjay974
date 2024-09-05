@@ -24,29 +24,36 @@ function afficherPersonne(persData, generationClasse) {
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
 
   const conteneur = document.createElement('div');
-  conteneur.classList.add(classeGenre);
+  conteneur.classList.add(generationClasse, classeGenre);
 
-  const lien = `<p><a href="../html/arbrePerso.html?id=${persData.id}" style="text-decoration: none; color: inherit;">${persData.nom} ${persData.prenom}<br></a></p>`;
-  lien.innerHTML += `${afficheDate} ${origine}`;    
-  return lien
+  const lien = document.createElement('a');
+  lien.href = `../html/arbrePerso.html?id=${persData.id}`;
+  lien.innerHTML = `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
+
+  conteneur.appendChild(lien);
+  return conteneur; // Retourner le conteneur pour qu'il puisse être ajouté
 }
     
-// Fonction pour une case homme ou femme sans données
-function afficherCaseVide(classeGenre) {
+function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
-  conteneur.classList.add(classeGenre);
+  conteneur.classList.add(generationClasse, classeGenre);
   conteneur.textContent = ''; 
-  return conteneur
+
+  return conteneur; // Retourner le conteneur vide
 }
-// Fonction pour ajouter un div avec un titre
-function ajouterDivetTitre(containerClass) {
+
+function ajouterDivetTitre(generationClass) {
   const container = document.createElement('div');
-  container.className = containerClass;
-  const titre = document.createElement('p');
-  titre.textContent = "" ;
+  container.classList.add(generationClass);
+  
+  // Ajout d'un titre (optionnel)
+  const titre = document.createElement('h3');
+  titre.textContent = ``;
   container.appendChild(titre);
+  
   return container;
-} 
+}
+
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
 function afficherGenerations(generations, data) {
@@ -55,21 +62,27 @@ function afficherGenerations(generations, data) {
       // Sélectionner le conteneur pour la génération correspondante (generation1, generation2, etc.)
       const generationClass = `generation${index + 1}`;
       const container = ajouterDivetTitre(generationClass);
+      
       // Boucle sur chaque personne de la génération (pair = père, impair = mère)
-        generation.forEach(idPersonne => {
-	  let lien	
-          if ((idPersonne === 10) || (idPersonne === 20)) {
-            lien= afficherCaseVide(
-              generationClass, 
-              (idPersonne === 10) ? 'male' : (idPersonne === 20) ? 'female' : ''
-            );   }
-          else {
-            const personData = data.find(p => p.id === idPersonne);
-            lien = afficherPersonne(personData, generationClass); }
-	  container.appendChild(lien);
-       }); 
+      generation.forEach(idPersonne => {
+        let lien; // Initialise la variable lien
+        
+        if (idPersonne === 10 || idPersonne === 20) {
+          lien = afficherCaseVide(generationClass, idPersonne === 10 ? 'male' : 'female');
+        } else {
+          const personData = data.find(p => p.id === idPersonne);
+          lien = afficherPersonne(personData, generationClass);
+        }
+        
+        // Ajouter l'élément lien au conteneur
+        container.appendChild(lien);
+      });
+      
+      // Ajouter le conteneur correspondant à cette génération dans le document
+      document.getElementById('page-conteneur').appendChild(container);
   });
 }
+
 
 function creerDate(dateNaissance, dateDeces) {
   const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
