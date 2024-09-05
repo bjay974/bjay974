@@ -43,7 +43,7 @@ function creerDate(dateNaissance, dateDeces) {
   else {
     if (anDeces === 1901) {
       anDeces = "??" }
-    return anNaiss + '/' anDeces};
+    return anNaiss + '/' + anDeces};
 }
 
 function getOrigine(lieuDeNaissance) {
