@@ -103,7 +103,7 @@ function getOrigine(lieuDeNaissance) {
  // Fonction pour defifine les id
 // Fonction pour trouver une personne par son id 
 function trouverPersonneParId(id) {
-  return personnes.find(personne => personne.id === id); 
+  return data.find(person => person.id === id); 
 }
 
 // Fonction pour trouver les parents sur plusieurs générations 
