@@ -22,10 +22,8 @@ function afficherPersonne(persData, generationClasse) {
   const afficheDate = creerDate(persData.date_naissance, persData.date_deces);
   const origine = getOrigine(persData.lieu_naissance);
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
-
   const conteneur = document.createElement('div');
-  conteneur.classList.add(generationClasse);
-  let lienHtml = `<div class="${classeGenre}">`;
+  conteneur.classList.add(generationClasse,classeGenre );
   lienHtml += `<p><a href="../html/arbrePerso.html?id=${persData.id}">
               ${persData.nom} ${persData.prenom} <br>
               ${afficheDate} ${origine}</a></p>`;
@@ -67,13 +65,21 @@ function afficherGenerations(generations, data) {
 function creerDate(dateNaissance, dateDeces) {
   const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
   const anDeces = parseInt(dateDeces.substr(6, 4)); 
-  if (anNaiss === 1901) {anNaiss = "??"} ;
+  let texteNaissance
+  let texteDeces
+  if (anNaiss === 1901) {      
+     texteNaissance = "??"}
+  else 
+     texteNaissance = "" ;
   if (!anDeces) {
-     return anNaiss  }
+     return `(${anNaiss})`  }
   else {
     if (anDeces === 1901) {
-      anDeces = "??" }
-    return anNaiss + '/' + anDeces};
+      texteDeces = "??" 
+      return `${texteNaissance} ${anNaiss} + '/' + ${texteDeces}` }
+    else {
+      return `${texteNaissance} ${anNaiss} + '/' + ${anDeces}`
+    };
 }
 
 function getOrigine(lieuDeNaissance) {
