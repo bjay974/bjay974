@@ -26,11 +26,11 @@ function displayData() {
   }
 
 function affichermembre(personne, containerClass) {
-  let genderClass = personne.genre === 'M' ? 'male' : 'female';
-  let lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
-  var dateNaissance = creerAn(personne.date_naissance);
-  var dateDeces = creerAn(personne.date_deces);
-  cont origine = getOrigine(personne.lieu_naissance);
+  const genderClass = personne.genre === 'M' ? 'male' : 'female';
+  const lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
+  const dateNaissance = creerAn(personne.date_naissance);
+  const dateDeces = creerAn(personne.date_deces);
+  const origine = getOrigine(personne.lieu_naissance);
 
   membreLien += `<p><a href="../html/person.html?id=${personne.id}"
                 class="${genderClass}">${personne.nom} ${personne.prenom} <br>
