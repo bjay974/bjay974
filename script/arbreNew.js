@@ -19,7 +19,6 @@ function displayData() {
             // Afficher les parents
             afficherParent(person.id_pere, person.id_mere, 'parent', data);
             // Afficher les informations de la personne
-            afficherPersonne(person.id, 'personne', data);
             // Afficher les enfants et  petits-enfants
             afficherEnfantsPetitEnfants(person.id, data);  */
         });
@@ -62,63 +61,7 @@ function getOrigine(lieuDeNaissance) {
     parentHTML += '</div>';
     return parentHTML;
   }
-  function afficherPersonne(personneId, containerClass, data) {
-    // Afficher les informations de la personne
-    var person = data.find(person => person.id === personneId);
-    var genderClass = person.genre === 'M' ? 'male' : 'female';
-    var container = document.createElement('div');
-    var icone = '\u{1F476}'
-    var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
-    container.className = containerClass;
-    personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
-    if (person.date_naissance !== "01/01/1901") {
-      var dateNaissance = verifieDate(person.date_naissance);
-      personHTML += '<p>' + icone + '  ' + dateNaissance + '</p>';
-    }
-    if (person.date_deces) {
-      var dateDeces = verifieDate(person.date_deces);
-      icone = '\u{1F64F}'
-      if (person.date_deces === "01/01/1901") {
-        personHTML += '<p>Date de décès inconnue</p>'; }
-      else {   
-      personHTML += '<p>' + icone + '  ' +  dateDeces + '</p>'; }
-    }
-    personHTML += '</div>';
-    container.innerHTML += personHTML;
-    if (person.id_conjoint){
-      var conjoint = data.find(p => p.id === person.id_conjoint);
-      var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
-      var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
-      var titre = document.createElement('p');
-      if (person.date_mariage) {
-        if (conjoint.genre === "M") {
-          titre.textContent = "Epoux";
-        }
-        else {
-          titre.textContent = "Epouse";
-        }
-      } else {
-        if (conjoint.genre === "M") {
-          titre.textContent = "Conjoint";
-        }
-        else {
-          titre.textContent = "Conjointe";
-        }
-      }
-      titre.classList.add('label'); 
-      container.appendChild(titre); 
-      conjointHTML += '<p><a href="../html/arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
-      conjointHTML += '</div>';
-      container.innerHTML += conjointHTML;
-    }
-    else {
-      var genderClass = person.genre === 'M' ? 'female' : 'male';
-      container.innerHTML += creerCaseVideHTML(containerClass, genderClass);
-    }
-     const personContainer = document.getElementById('person-container');
-    personContainer.appendChild(container);
-  }
-  
+   
   function afficherGrandParent(father1Id, mother1Id, father2Id, mother2Id, containerClass, data) {
     var father1 = data.find(person => person.id === father1Id);
     var mother1 = data.find(person => person.id === mother1Id);
