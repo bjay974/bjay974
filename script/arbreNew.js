@@ -28,18 +28,25 @@ function afficherPersonne(persData, generationClasse) {
 
   const lien = `<p><a href="../html/arbrePerso.html?id=${persData.id}" style="text-decoration: none; color: inherit;">${persData.nom} ${persData.prenom}<br></a></p>`;
   lien.innerHTML += `${afficheDate} ${origine}`;    
-  conteneur.appendChild(lien);
-  document.getElementById('page-conteneur').appendChild(conteneur);
+  return lien
 }
     
 // Fonction pour une case homme ou femme sans données
-function afficherCaseVide(generationClasse, classeGenre) {
+function afficherCaseVide(classeGenre) {
   const conteneur = document.createElement('div');
   conteneur.classList.add(classeGenre);
   conteneur.textContent = ''; 
-  document.getElementById('page-conteneur').appendChild(conteneur);
+  return conteneur
 }
- 
+// Fonction pour ajouter un div avec un titre
+function ajouterDivetTitre(containerClass) {
+  const container = document.createElement('div');
+  container.className = containerClass;
+  const titre = document.createElement('p');
+  titre.textContent = "" ;
+  container.appendChild(titre);
+  return container;
+} 
 
 // Fonction qui affiche chaque personne dans le conteneur correspondant
 function afficherGenerations(generations, data) {
@@ -47,19 +54,20 @@ function afficherGenerations(generations, data) {
   generations.forEach((generation, index) => {
       // Sélectionner le conteneur pour la génération correspondante (generation1, generation2, etc.)
       const generationClass = `generation${index + 1}`;
-      const conteneurGeneration  = document.createElement('div');
-      conteneurGeneration.classList.add(generationClass); 
+      const container = ajouterDivetTitre(generationClass);
       // Boucle sur chaque personne de la génération (pair = père, impair = mère)
         generation.forEach(idPersonne => {
+	  let lien	
           if ((idPersonne === 10) || (idPersonne === 20)) {
-            afficherCaseVide(
+            lien= afficherCaseVide(
               generationClass, 
               (idPersonne === 10) ? 'male' : (idPersonne === 20) ? 'female' : ''
             );   }
           else {
             const personData = data.find(p => p.id === idPersonne);
-            afficherPersonne(personData, generationClass); }
-      });
+            lien = afficherPersonne(personData, generationClass); }
+	  container.appendChild(lien);
+       }); 
   });
 }
 
