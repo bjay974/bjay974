@@ -27,7 +27,7 @@ function displayData() {
 function afficherPersonne(personne, containerClass) {
   const genderClass = personne.genre === 'M' ? 'male' : 'female';
   const lienPersonne = '<div class="' + containerClass + ' ' + genderClass + '">';
-  const afficheDate = creerDate(personne.date_naissance);
+  const afficheDate = creerDate(personne.date_naissance personne.date_deces);
   const origine = getOrigine(personne.lieu_naissance);
   lienPersonne += `<p><a href="../html/person.html?id=${personne.id}"
                 class="${genderClass}">${personne.nom} ${personne.prenom} <br>
