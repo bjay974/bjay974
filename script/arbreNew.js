@@ -32,7 +32,7 @@ function afficherPersonne(persData, generationClasse) {
   conteneurPersonne.appendChild(conteneur);
 }
 
-// Fonction pour créer le HTML pour un parent (père ou mère)
+// Fonction pour une case homme ou femme sans données
 function afficherCaseVide(containerClass, genderClass) {
   let caseVide = `<div class="${containerClass} ${genderClass}">`;
   caseVide += `<p> </p>`;
