@@ -86,6 +86,8 @@ footer {
 }
 
 .male, .female {
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
     background-color: var(--color-male); 
     color: var(--color-male-bg);
     border-radius: 5px; 

@@ -50,6 +50,10 @@ function afficherGenerations(generations, data) {
   generations.forEach((generation, index) => {
       // Sélectionner le conteneur pour la génération correspondante (generation1, generation2, etc.)
       const generationClass = `generation${index + 1}`;
+      const conteneurGeneration  = document.createElement('div');
+      conteneurGeneration.classList.add(generationClass); 
+      // Sélectionner le conteneur pour la génération correspondante (generation1, generation2, etc.)
+      const generationClass = `generation${index + 1}`;
       // Boucle sur chaque personne de la génération (pair = père, impair = mère)
         generation.forEach(idPersonne => {
           if ((idPersonne === 10) || (idPersonne === 20)) {

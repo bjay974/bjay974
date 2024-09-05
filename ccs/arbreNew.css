@@ -1,11 +1,12 @@
 .grid-container {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  padding : 0;
-  margin: 0;  
+  padding : 2px;
+  margin: 2px;  
 }
 
 .personConteneur {
+  margin-top: 150px; 
   padding: 2px;
   grid-column: 6; 
   flex-direction: column;
@@ -18,15 +19,18 @@
 }
 
 .generation1, .generation2, .generation3, .generation4, .generation5 {
+  margin-top: 40px; 
+  position: relative;
   box-sizing: border-box;
   padding: 2px;
   height: 60px;
   width: 180px;
+  text-align: center;
 }
 
 .generation1 {
   grid-column: 5; 
-  margin-top: 20px; 
+
 }
 
 .generation2 {
@@ -42,7 +46,6 @@
 
 .generation4 {
   grid-column: 2; 
-  margin-top: 10px; 
   margin-right: 2%;
 }
 
@@ -51,6 +54,22 @@
   margin-top: 10px; 
   margin-right: 2%;
 }
+.generation1::before, .generation2::before, .generation3::before, .generation4::before, .generation5::before {
+  content: '';
+  position: absolute;
+  left: 50%; /* Aligner le trait au centre de la case */
+  transform: translateX(-50%); /* Centrer horizontalement */
+  width: 3px;
+  background-color: var(--color-green);
+  height: 0;
+  top: 100%; /* Aligner le trait au milieu de la case */
+}
+
+.male::before {
+  bottom: 50%; /* Place le trait au-dessus de la case Male */
+  height: 25px; /* Longueur du trait jusqu'à la case Female */
+}
+
 
 .label {
   margin : 0; 
