@@ -35,7 +35,7 @@ function afficherPersonne(persData, generationClasse) {
 // Fonction pour une case homme ou femme sans données
 function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
-  conteneur.classList.add(generationClasse, classeGenre);
+  conteneur.classList.add(classeGenre);
   conteneur.textContent = ''; 
   document.getElementById('page-conteneur').appendChild(conteneur);
 }
