@@ -1,7 +1,8 @@
-// Fonction pour afficher les données dans la page
 function displayData(personId) {
 
-   
+  var urlParams = new URLSearchParams(window.location.search);
+  var personId = urlParams.get('personId');
+  
     // Charger les données depuis le fichier JSON
     fetch('../data/data.json')
         .then(response => response.json())
