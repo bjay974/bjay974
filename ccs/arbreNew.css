@@ -13,8 +13,15 @@
    box-sizing: border-box; 
    text-overflow: ellipsis;
    white-space: nowrap;  
-   min-height: 60px;
-   min-width: 50px; 
+
+}
+
+.male a, .female a {
+  justify-content: center; /* Centre horizontalement */
+  padding-top : 5px;
+  text-align: center; /* Centre le texte à l'intérieur du lien */
+  height: 40px;        /* Définir la hauteur minimale du conteneur */
+  width: 250px;
 }
 
 .generation5 {grid:1}

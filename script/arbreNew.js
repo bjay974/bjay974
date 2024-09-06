@@ -29,15 +29,24 @@ function afficherPersonne(persData, generationClasse) {
   const lien = document.createElement('a');
   lien.href = `../html/arbrePerso.html?id=${persData.id}`;
   lien.innerHTML = `${persData.nom} ${persData.prenom} <br> ${afficheDate} ${origine}`;
-
+  lien.style.color = 'inherit';
   conteneur.appendChild(lien);
   return conteneur; // Retourner le conteneur pour qu'il puisse être ajouté
 }
     
+function afficherVide(generationClasse, classeGenre) {
+  const conteneur = document.createElement('div');
+  conteneur.classList.add(generationClasse, classeGenre);
+  const lien = document.createElement('a');
+  conteneur.appendChild(lien);
+  return conteneur;
+}
 
-function ajouterDiv(classegeneration, classeGenre) {
+
+
+function ajouterDiv(classegeneration) {
   const container = document.createElement('div');
-  container.classList.add(classegeneration, classeGenre);
+  container.classList.add(classegeneration);
   return container;
 }
 
@@ -61,7 +70,7 @@ function afficherGenerations(generations, data) {
         let lien; // Initialise la variable lien
         
         if (idPersonne === 10 || idPersonne === 20) {
-          lien = ajouterDiv(generationClass, idPersonne === 10 ? 'male' : 'female');
+          lien = afficherVide(generationClass, idPersonne === 10 ? 'male' : 'female');
         } else {
           const personData = data.find(p => p.id === idPersonne);
           lien = afficherPersonne(personData, generationClass);
