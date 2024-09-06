@@ -45,9 +45,6 @@ function afficherCaseVide(generationClasse, classeGenre) {
 function ajouterDivetTitre(generationClass) {
   const container = document.createElement('div');
   container.classList.add(generationClass);
-  // Ajout d'un titre (optionnel)
-  const titre = document.createElement('h3');
-  titre.textContent = ``;
   container.appendChild(titre);
   return container;
 }
