@@ -37,10 +37,8 @@ function afficherPersonne(persData, generationClasse) {
 function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
   conteneur.classList.add(classeGenre);
-  conteneur.textContent = ''; 
   return conteneur; // Retourner le conteneur vide
 }
-
 
 function ajouterDivetTitre(generationClass) {
   const container = document.createElement('div');
