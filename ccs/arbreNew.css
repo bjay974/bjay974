@@ -6,17 +6,18 @@
 }
 
 .personConteneur {
-  padding: 1px;
-  margin : 1px;
+  padding: 1%;
+  margin : 1%;
   grid-column: 1; 
-  height: 60px;
-  width: 180px;
+  height: 12%;
+  width: 90%;
 }
 
 .generation1, .generation2, .generation3, .generation4, .generation5 {
-  padding: 1px;
-  height: 60px;
-  width: 200px;
+  padding: 1%;
+  margin : 1%;
+  height: 12%;
+  width: 90%;
 }
 
 .generation1 {
