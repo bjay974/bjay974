@@ -34,20 +34,15 @@ function afficherPersonne(persData, generationClasse) {
   return conteneur; // Retourner le conteneur pour qu'il puisse être ajouté
 }
     
-function afficherCaseVide(generationClasse, classeGenre) {
-  const conteneur = document.createElement('div');
-  conteneur.classList.add(classeGenre);
-  return conteneur; // Retourner le conteneur vide
-}
 
-function ajouterDivetTitre(generationClass) {
+function ajouterDiv(classe) {
   const container = document.createElement('div');
-  container.classList.add(generationClass);
+  container.classList.add(classe);
   return container;
 }
 
 function ajouterPersonnePrincipal(persData, generationClasse){
-  const container = ajouterDivetTitre(generationClasse);
+  const container = ajouterDiv(generationClasse);
   lien = afficherPersonne(persData, generationClasse);
   container.appendChild(lien); 
   document.getElementById('page-conteneur').appendChild(container);
@@ -59,14 +54,14 @@ function afficherGenerations(generations, data) {
   generations.forEach((generation, index) => {
       // Sélectionner le conteneur pour la génération correspondante (generation1, generation2, etc.)
       const generationClass = `generation${index + 1}`;
-      const container = ajouterDivetTitre(generationClass);
+      const container = ajouterDiv(generationClass);
       
       // Boucle sur chaque personne de la génération (pair = père, impair = mère)
       generation.forEach(idPersonne => {
         let lien; // Initialise la variable lien
         
         if (idPersonne === 10 || idPersonne === 20) {
-          lien = afficherCaseVide(generationClass, idPersonne === 10 ? 'male' : 'female');
+          lien = ajouterDiv(idPersonne === 10 ? 'male' : 'female');
         } else {
           const personData = data.find(p => p.id === idPersonne);
           lien = afficherPersonne(personData, generationClass);
@@ -80,7 +75,6 @@ function afficherGenerations(generations, data) {
       document.getElementById('page-conteneur').appendChild(container);
   });
 }
-
 
 function creerDate(dateNaissance, dateDeces) {
   const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
@@ -97,14 +91,12 @@ function creerDate(dateNaissance, dateDeces) {
   else {
       return `${texteNaissance} ${anNaiss} / ${anDeces}`
     };
-
 }
 
 function getOrigine(lieuDeNaissance) {
   // Vérification des valeurs nulles, indéfinies ou de type incorrect
   if (!lieuDeNaissance || typeof lieuDeNaissance !== 'string') {
-    return ""; 
-  }
+    return "";  }
   const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France"];
   return lieuxAcceptes.includes(lieuDeNaissance) ? `(${lieuDeNaissance})` : "";
 }
