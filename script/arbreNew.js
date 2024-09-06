@@ -24,7 +24,7 @@ function afficherPersonne(persData, generationClasse) {
   const classeGenre = persData.genre === 'M' ? 'male' : 'female';
 
   const conteneur = document.createElement('div');
-  conteneur.classList.add(generationClasse, classeGenre);
+  conteneur.classList.add(classeGenre);
 
   const lien = document.createElement('a');
   lien.href = `../html/arbrePerso.html?id=${persData.id}`;
@@ -36,7 +36,7 @@ function afficherPersonne(persData, generationClasse) {
     
 function afficherCaseVide(generationClasse, classeGenre) {
   const conteneur = document.createElement('div');
-  conteneur.classList.add(generationClasse, classeGenre);
+  conteneur.classList.add(classeGenre);
   conteneur.textContent = ''; 
   return conteneur; // Retourner le conteneur vide
 }

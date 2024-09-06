@@ -84,7 +84,6 @@
         line-height: 1.2;
     }
      .homlist, .femlist {
-        align-items: left;
         padding: 1%;
         margin : 1%;
         line-height: 2;
@@ -124,8 +123,7 @@
     }
 
     .homlist, .femlist {
-        align-items: left;
-        line-height: 1.5;
+      line-height: 1.5;
     }
     
     .homlist {

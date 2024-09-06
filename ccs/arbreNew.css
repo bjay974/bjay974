@@ -6,26 +6,17 @@
 }
 
 .personConteneur {
-  margin : 300px;
-  padding: 2px;
-  margin : 2px;
+  padding: 1px;
+  margin : 1px;
   grid-column: 1; 
-  flex-direction: column;
-  box-sizing: border-box; 
-  text-overflow: ellipsis;
-  white-space: nowrap;
   height: 60px;
   width: 180px;
 }
 
 .generation1, .generation2, .generation3, .generation4, .generation5 {
-  position: relative;
-  box-sizing: border-box;
-  padding: 2px;
-  margin: 2px;
+  padding: 1px;
   height: 60px;
   width: 200px;
-  text-align: center;
 }
 
 .generation1 {
@@ -47,15 +38,13 @@
 .generation4 {
   grid-column: 5; 
   margin-top : 50px;
-
 }
 
 .generation5 {
   grid-column: 6;
   margin-top : 15px;
-
 }
-.generation5 .male:first-child { margin-top: 20px}
+
 .generation5 .male + .female {margin-top: 40px}
 .generation5 .female + .male {margin-top: 80px}
 
@@ -63,15 +52,12 @@
 .generation4 .male + .female {margin-top: 160px}
 .generation5 .female + .male {margin-top: 160px}
 
-.generation3 .male:first-child { margin-top: 160px}
 .generation3 .male + .female {margin-top: 360px}
 .generation3 .female + .male {margin-top: 360px}
 
-.generation2 .male:first-child { margin-top: 360px}
 .generation2 .male + .female {margin-top: 760px}
 .generation2 .female + .male {margin-top: 760px}
 
-.generation1 .male:first-child { margin-top: 760px}
 .generation1 .male + .female {margin-top: 1560px}
 
 .generation1::before, .generation2::before, .generation3::before, .generation4::before, .generation5::before {
@@ -90,13 +76,6 @@
   height: 25px; /* Longueur du trait jusqu'à la case Female */
 }
 
-
-.label {
-  margin : 0; 
-  padding : 0; 
-  color:var(--color-green);
-  font-style: italic;
-}
 
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
