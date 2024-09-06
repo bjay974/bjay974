@@ -1,11 +1,11 @@
-.grid-containerArbre {
+.grid-container {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     padding : 0;
     margin: 0;  
     }
   
-  .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5, .containerArbre6 {
+  .generation5, .generation4, .generation3, .generation2, .generation1, .personConteneur {
      padding: 5px;
      flex-direction: column;
      align-content: flex-start;
@@ -13,50 +13,50 @@
      box-sizing: border-box; 
      text-overflow: ellipsis;
      white-space: nowrap;  
-     min-height: 60px;
-     min-width: 50px; 
+  
   }
   
-  .containerArbre1 {grid:1}
-  .containerArbre2 {grid:2}
-  .containerArbre3 {grid:3}
-  .containerArbre4 {grid:4}
-  .containerArbre5 {grid:5}
-  .containerArbre6 {grid:6}
+  .male a, .female a {
+    justify-content: center; /* Centre horizontalement */
+    padding-top : 5px;
+    text-align: center; /* Centre le texte à l'intérieur du lien */
+    height: 40px;        /* Définir la hauteur minimale du conteneur */
+    width: 250px;
+  }
   
- 
-  .containerArbre1 .male:first-child { margin-top: 20px}
-  .containerArbre1 .male + .female {margin-top: 40px}
-  .containerArbre1 .female + .male {margin-top: 80px}
- 
-  .containerArbre2 .male:first-child { margin-top: 60px}
-  .containerArbre2 .male + .female {margin-top: 160px}
-  .containerArbre2 .female + .male {margin-top: 160px}
- 
-  .containerArbre3 .male:first-child { margin-top: 160px}
-  .containerArbre3 .male + .female {margin-top: 360px}
-  .containerArbre3 .female + .male {margin-top: 360px}
- 
-  .containerArbre4 .male:first-child { margin-top: 360px}
-  .containerArbre4 .male + .female {margin-top: 760px}
-  .containerArbre4 .female + .male {margin-top: 760px}
- 
-  .containerArbre5 .male:first-child { margin-top: 760px}
-  .containerArbre5 .male + .female {margin-top: 1560px}
- 
-  .containerArbre6 .female:first-child  { margin-top: 1540px}
-  .containerArbre6 .male:first-child  { margin-top: 1540px}
- 
-.male, .female {
+  .generation5 .male:first-child { margin-top: 5px}
+  .generation5 .male + .female {margin-top: 20px}
+  .generation5 .female + .male {margin-top: 40px}
+  
+  .generation4 .male:first-child { margin-top: 45px}
+  .generation4 .male + .female {margin-top: 110px}
+  .generation4 .female + .male {margin-top: 120px}
+  
+  .generation3 .male:first-child { margin-top: 130px}
+  .generation3 .male + .female {margin-top: 285px}
+  .generation3 .female + .male {margin-top: 285px}
+  
+  .generation2 .male:first-child { margin-top: 360px}
+  .generation2 .male + .female {margin-top: 760px}
+  .generation2 .female + .male {margin-top: 760px}
+  
+  .generation1 .male:first-child { margin-top: 760px}
+  .generation1 .male + .female {margin-top: 1560px}
+  
+  .personConteneur .female:first-child  { margin-top: 1540px}
+  .personConteneur .male:first-child  { margin-top: 1540px}
+  
+  .male, .female {
     justify-content: center; /* Centre horizontalement */
     align-items: center; /* Centre verticalement */
     min-height: 40px;
     z-index: 1; /* Assure que l'homme est au-dessus du trait */
-        display: flex;
-        position: relative;
-}
- 
-.containerArbre1 .female::before {
+    display: flex;
+    position: relative;
+    font-weight:bolder ;
+  }
+  
+  .generation5 .female::before {
     content: '';
     position: absolute;
     top: -40px;
@@ -64,20 +64,20 @@
     transform: translateX(-50%);
     width: 3px; /* Épaisseur du trait */
     height: 100%; /* Hauteur du trait couvrant toute la hauteur du couple */
-     background-color: var(--color-green);
-} 
-.containerArbre1 .male::after {
+    background-color: var(--color-green);
+  } 
+  .generation5 .male::after {
     content: '';
     position: absolute;
     top: 60px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
+    left: -5%; /* Place le trait juste à droite de l'homme */
     transform: translateY(-50%);
-    width: 180px; /* Longueur du trait horizontal */
+    width: 168px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
-}
-
-.containerArbre2 .female::before {
+  }
+  
+  .generation4 .female::before {
     content: '';
     position: absolute;
     top: -160px;
@@ -86,19 +86,19 @@
     width: 3px; /* Épaisseur du trait */
     height: 160px; /* Hauteur du trait couvrant toute la hauteur du couple */
     background-color: var(--color-green);
-}
-.containerArbre2 .male::after {
+  }
+  .generation4 .male::after {
     content: '';
     position: absolute;
     top: 120px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
+    left: -5%; /* Place le trait juste à droite de l'homme */
     transform: translateY(-50%);
-    width: 180px; /* Longueur du trait horizontal */
+    width: 170px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
-}
-
-.containerArbre3 .female::before {
+  }
+  
+  .generation3 .female::before {
     content: '';
     position: absolute;
     top: -360px;
@@ -107,20 +107,20 @@
     width: 3px; /* Épaisseur du trait */
     height: 360px; /* Hauteur du trait couvrant toute la hauteur du couple */
     background-color: var(--color-green);
-}
-
-.containerArbre3 .male::after {
+  }
+  
+  .generation3 .male::after {
     content: '';
     position: absolute;
     top: 220px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
+    left: -5%; /* Place le trait juste à droite de l'homme */
     transform: translateY(-50%);
-    width: 180px; /* Longueur du trait horizontal */
+    width: 170px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
-}
-
-.containerArbre4 .female::before {
+  }
+  
+  .generation2 .female::before {
     content: '';
     position: absolute;
     top: -760px;
@@ -129,20 +129,20 @@
     width: 3px; /* Épaisseur du trait */
     height: 760px; /* Hauteur du trait couvrant toute la hauteur du couple */
     background-color: var(--color-green);
-}
-
-.containerArbre4 .male::after {
+  }
+  
+  .generation2 .male::after {
     content: '';
     position: absolute;
     top: 420px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
+    left: -5%; /* Place le trait juste à droite de l'homme */
     transform: translateY(-50%);
-    width: 180px; /* Longueur du trait horizontal */
+    width: 170px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
-}
-
-.containerArbre5 .female::before {
+  }
+  
+  .generation1 .female::before {
     content: '';
     position: absolute;
     top: -1560px;
@@ -151,54 +151,26 @@
     width: 3px; /* Épaisseur du trait */
     height: 1560px; /* Hauteur du trait couvrant toute la hauteur du couple */
     background-color: var(--color-green);
-}
-
-.containerArbre5 .male::after {
+  }
+  
+  .generation1 .male::after {
     content: '';
     position: absolute;
     top: 800px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: 50%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 180px; /* Longueur du trait horizontal */
+    left: -5%; /* Place le trait juste à droite de l'homme */
+    transform: translateY(100%);
+    width: 170px; /* Longueur du trait horizontal */
     height: 3px; /* Épaisseur du trait */
     background-color: var(--color-green); /* Couleur du trait */
-}
-
-  .labelArbre {
-      color:var(--color-green);
-      text-decoration: none;
-      font-style: italic;
-      margin-bottom: 2%;
-      margin: 1%;
-      text-align: left;
-      font-size: 85%;
-   }
-  
-  .soustitreArbre {
-      text-align: left;
-      background-color: var(--color-light);
-      color: var(--color-green);
-      margin-top: 30px;
-      margin-left: 1%;
-      width: 95%;
-      font-style: italic;
-      font-weight: bold; 
-      padding: 5px 5px 5px 20px;
-      text-decoration: none;
-      border-radius: 5px; 
   }
   
-  .male, .female {
-    font-weight:bolder ;
- }
-
-  /* Styles pour les écrans de taille moyenne (tablettes) */
+   /* Styles pour les écrans de taille moyenne (tablettes) */
   @media (max-width: 768px) {
-      .grid-containerArbre {
+      .grid-container {
           grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
       }
   
-      .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
+      .generation5, .generation4, .generation3, .generation2, .generation1 {
           padding-left: 10px;
           margin-top: 20px;
       }
@@ -214,11 +186,11 @@
   
   /* Styles pour les petits écrans (mobiles) */
   @media (max-width: 480px) {
-      .grid-containerArbre {
+      .grid-container {
           grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
       }
   
-      .containerArbre1, .containerArbre2, .containerArbre3, .containerArbre4, .containerArbre5 {
+      .generation5, .generation4, .generation3, .generation2, .generation1 {
           padding-left: 10px;
           margin-top: 20px;
       }
@@ -226,23 +198,5 @@
       .some-element {
           display: none; /* Exemple : cacher certains éléments */
       }
-      .soustitreArbre {
-          margin-bottom: 2%;
-          margin-left: 2%;
-          padding : 2%;
-          text-align: left;
-          border-radius: 5px; 
-          width: 90%;
-      }
-      .labelArbre {
-          color:var(--color-green);
-          text-decoration: none;
-          font-style: italic;
-          margin-bottom: 2%;
-          margin: 1%;
-          margin-left: 2%;
-          text-align: left;
-          font-size: 90%;
-       }
   }
   
