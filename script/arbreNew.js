@@ -35,9 +35,9 @@ function afficherPersonne(persData, generationClasse) {
 }
     
 
-function ajouterDiv(classe) {
+function ajouterDiv(classegeneration, classeGenre) {
   const container = document.createElement('div');
-  container.classList.add(classe);
+  container.classList.add(classegeneration, classeGenre);
   return container;
 }
 
@@ -61,7 +61,7 @@ function afficherGenerations(generations, data) {
         let lien; // Initialise la variable lien
         
         if (idPersonne === 10 || idPersonne === 20) {
-          lien = ajouterDiv(idPersonne === 10 ? 'male' : 'female');
+          lien = ajouterDiv(generationClass, idPersonne === 10 ? 'male' : 'female');
         } else {
           const personData = data.find(p => p.id === idPersonne);
           lien = afficherPersonne(personData, generationClass);
