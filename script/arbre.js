@@ -149,6 +149,6 @@ function obtenirGenerations(idPersonne, data) {
 
   
   // Appeler la fonction pour afficher les données
-  displayData();
+  displayData(personId);
   
   
