@@ -1,8 +1,7 @@
 // Fonction pour afficher les données dans la page
-function displayData() {
+function displayData(personId) {
 
-   let personId = 302;
-    
+   
     // Charger les données depuis le fichier JSON
     fetch('../data/data.json')
         .then(response => response.json())

@@ -1,202 +1,230 @@
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    padding : 0;
-    margin: 0;  
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  padding : 0;
+  margin: 0;  
+  }
+
+.generation5, .generation4, .generation3, .generation2, .generation1, .personConteneur {
+   padding: 5px;
+   flex-direction: column;
+   align-content: flex-start;
+   display: flex;
+   box-sizing: border-box; 
+   text-overflow: ellipsis;
+   white-space: nowrap;  
+
+}
+
+.male a, .female a {
+  justify-content: center; /* Centre horizontalement */
+  padding-top : 5px;
+  text-align: center; /* Centre le texte à l'intérieur du lien */
+  height: 40px;        /* Définir la hauteur minimale du conteneur */
+  width: 250px;
+}
+
+.generation5 {grid:1}
+.generation4 {grid:2}
+.generation2 {grid:4}
+.generation1 {grid:5}
+.personConteneur {grid:6}
+
+
+.generation5 .male:first-child { margin-top: 20px}
+.generation5 .male + .female {margin-top: 40px}
+.generation5 .female + .male {margin-top: 80px}
+
+.generation4 .male:first-child { margin-top: 60px}
+.generation4 .male + .female {margin-top: 160px}
+.generation4 .female + .male {margin-top: 160px}
+
+.generation3 .male:first-child { margin-top: 160px}
+.generation3 .male + .female {margin-top: 360px}
+.generation3 .female + .male {margin-top: 360px}
+
+.generation2 .male:first-child { margin-top: 360px}
+.generation2 .male + .female {margin-top: 760px}
+.generation2 .female + .male {margin-top: 760px}
+
+.generation1 .male:first-child { margin-top: 760px}
+.generation1 .male + .female {margin-top: 1560px}
+
+.personConteneur .female:first-child  { margin-top: 1540px}
+.personConteneur .male:first-child  { margin-top: 1540px}
+
+.male, .female {
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  min-height: 40px;
+  z-index: 1; /* Assure que l'homme est au-dessus du trait */
+  display: flex;
+  position: relative;
+  font-weight:bolder ;
+}
+
+.generation5 .female::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 100%; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
+} 
+.generation5 .male::after {
+  content: '';
+  position: absolute;
+  top: 60px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: -5%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(-50%);
+  width: 168px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
+}
+
+.generation4 .female::before {
+  content: '';
+  position: absolute;
+  top: -160px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 160px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
+}
+.generation4 .male::after {
+  content: '';
+  position: absolute;
+  top: 120px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: -5%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(-50%);
+  width: 170px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
+}
+
+.generation3 .female::before {
+  content: '';
+  position: absolute;
+  top: -360px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 360px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
+}
+
+.generation3 .male::after {
+  content: '';
+  position: absolute;
+  top: 220px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: -5%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(-50%);
+  width: 170px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
+}
+
+.generation2 .female::before {
+  content: '';
+  position: absolute;
+  top: -760px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 760px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
+}
+
+.generation2 .male::after {
+  content: '';
+  position: absolute;
+  top: 420px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: -5%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(-50%);
+  width: 170px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
+}
+
+.generation1 .female::before {
+  content: '';
+  position: absolute;
+  top: -1560px;
+  left: 50%; /* Centre le trait verticalement */
+  transform: translateX(-50%);
+  width: 3px; /* Épaisseur du trait */
+  height: 1560px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  background-color: var(--color-green);
+}
+
+.generation1 .male::after {
+  content: '';
+  position: absolute;
+  top: 800px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  left: -5%; /* Place le trait juste à droite de l'homme */
+  transform: translateY(100%);
+  width: 170px; /* Longueur du trait horizontal */
+  height: 3px; /* Épaisseur du trait */
+  background-color: var(--color-green); /* Couleur du trait */
+}
+
+.soustitreArbre {
+  text-align: center;
+  background-color: var(--color-light);
+  color: var(--color-green);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-left: 1%;
+  width: 95%;
+  font-style: italic;
+  font-weight: bold; 
+  padding: 5px 5px 5px 20px;
+  text-decoration: none;
+  border-radius: 5px; 
+}
+
+.labelArbre {
+  margin : 1%; 
+  padding : 1%; 
+  color:var(--color-light);
+  font-style: italic;
+}
+
+ /* Styles pour les écrans de taille moyenne (tablettes) */
+@media (max-width: 768px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
     }
-  
-  .generation5, .generation4, .generation3, .generation2, .generation1, .personConteneur {
-     padding: 5px;
-     flex-direction: column;
-     align-content: flex-start;
-     display: flex;
-     box-sizing: border-box; 
-     text-overflow: ellipsis;
-     white-space: nowrap;  
-  
-  }
-  
-  .male a, .female a {
-    justify-content: center; /* Centre horizontalement */
-    padding-top : 5px;
-    text-align: center; /* Centre le texte à l'intérieur du lien */
-    height: 40px;        /* Définir la hauteur minimale du conteneur */
-    width: 250px;
-  }
-  
-  .generation5 .male:first-child { margin-top: 5px}
-  .generation5 .male + .female {margin-top: 20px}
-  .generation5 .female + .male {margin-top: 40px}
-  
-  .generation4 .male:first-child { margin-top: 45px}
-  .generation4 .male + .female {margin-top: 110px}
-  .generation4 .female + .male {margin-top: 120px}
-  
-  .generation3 .male:first-child { margin-top: 130px}
-  .generation3 .male + .female {margin-top: 285px}
-  .generation3 .female + .male {margin-top: 285px}
-  
-  .generation2 .male:first-child { margin-top: 360px}
-  .generation2 .male + .female {margin-top: 760px}
-  .generation2 .female + .male {margin-top: 760px}
-  
-  .generation1 .male:first-child { margin-top: 760px}
-  .generation1 .male + .female {margin-top: 1560px}
-  
-  .personConteneur .female:first-child  { margin-top: 1540px}
-  .personConteneur .male:first-child  { margin-top: 1540px}
-  
-  .male, .female {
-    justify-content: center; /* Centre horizontalement */
-    align-items: center; /* Centre verticalement */
-    min-height: 40px;
-    z-index: 1; /* Assure que l'homme est au-dessus du trait */
-    display: flex;
-    position: relative;
-    font-weight:bolder ;
-  }
-  
-  .generation5 .female::before {
-    content: '';
-    position: absolute;
-    top: -40px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 100%; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
-  } 
-  .generation5 .male::after {
-    content: '';
-    position: absolute;
-    top: 60px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: -5%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 168px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
-  }
-  
-  .generation4 .female::before {
-    content: '';
-    position: absolute;
-    top: -160px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 160px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
-  }
-  .generation4 .male::after {
-    content: '';
-    position: absolute;
-    top: 120px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: -5%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 170px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
-  }
-  
-  .generation3 .female::before {
-    content: '';
-    position: absolute;
-    top: -360px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 360px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
-  }
-  
-  .generation3 .male::after {
-    content: '';
-    position: absolute;
-    top: 220px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: -5%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 170px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
-  }
-  
-  .generation2 .female::before {
-    content: '';
-    position: absolute;
-    top: -760px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 760px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
-  }
-  
-  .generation2 .male::after {
-    content: '';
-    position: absolute;
-    top: 420px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: -5%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(-50%);
-    width: 170px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
-  }
-  
-  .generation1 .female::before {
-    content: '';
-    position: absolute;
-    top: -1560px;
-    left: 50%; /* Centre le trait verticalement */
-    transform: translateX(-50%);
-    width: 3px; /* Épaisseur du trait */
-    height: 1560px; /* Hauteur du trait couvrant toute la hauteur du couple */
-    background-color: var(--color-green);
-  }
-  
-  .generation1 .male::after {
-    content: '';
-    position: absolute;
-    top: 800px; /* Place le trait au milieu, verticalement par rapport à l'homme */
-    left: -5%; /* Place le trait juste à droite de l'homme */
-    transform: translateY(100%);
-    width: 170px; /* Longueur du trait horizontal */
-    height: 3px; /* Épaisseur du trait */
-    background-color: var(--color-green); /* Couleur du trait */
-  }
-  
-   /* Styles pour les écrans de taille moyenne (tablettes) */
-  @media (max-width: 768px) {
-      .grid-container {
-          grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
-      }
-  
-      .generation5, .generation4, .generation3, .generation2, .generation1 {
-          padding-left: 10px;
-          margin-top: 20px;
-      }
-      .soustitreArbre {
-          margin-bottom: 2%;
-          margin-left: 2%;
-          padding : 2%;
-          text-align: left;
-          border-radius: 5px; 
-          width: 85%;
-      }
-  }
-  
-  /* Styles pour les petits écrans (mobiles) */
-  @media (max-width: 480px) {
-      .grid-container {
-          grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
-      }
-  
-      .generation5, .generation4, .generation3, .generation2, .generation1 {
-          padding-left: 10px;
-          margin-top: 20px;
-      }
-      /* Cacher certains éléments si nécessaire */
-      .some-element {
-          display: none; /* Exemple : cacher certains éléments */
-      }
-  }
-  
+
+    .generation5, .generation4, .generation3, .generation2, .generation1 {
+        padding-left: 10px;
+        margin-top: 20px;
+    }
+    .soustitreArbre {
+        margin-bottom: 2%;
+        margin-left: 2%;
+        padding : 2%;
+        text-align: left;
+        border-radius: 5px; 
+        width: 85%;
+    }
+}
+
+/* Styles pour les petits écrans (mobiles) */
+@media (max-width: 480px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* Passe à deux colonnes */
+    }
+
+    .generation5, .generation4, .generation3, .generation2, .generation1 {
+        padding-left: 10px;
+        margin-top: 20px;
+    }
+    /* Cacher certains éléments si nécessaire */
+    .some-element {
+        display: none; /* Exemple : cacher certains éléments */
+    }
+}
