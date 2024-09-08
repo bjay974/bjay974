@@ -18,7 +18,7 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
     };
 
     // Charger les données existantes depuis data.json
-    fetch('data.json')
+    fetch('..data/data.json')
         .then(response => response.json())
         .then(data => {
             const existingPerson = data.find(p => p.id == person.id);
