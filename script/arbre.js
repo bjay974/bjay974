@@ -1,16 +1,16 @@
 function displayData() {
 
-   /* var urlParams = new URLSearchParams(window.location.search);
-    var personId = urlParams.get('id');
-*/
-    let personId = 302;
+    var urlParams = new URLSearchParams(window.location.search);
+    let personId = urlParams.get('id');
+
+    personId = parseInt(personId, 10); 
       
     // Charger les données depuis le fichier JSON
     fetch('../data/data.json')
         .then(response => response.json())
         .then(data => {
             // Trouver la personne correspondante
-            const personData = data.find(p => p.id === parseInt(personId));
+            const personData = data.find(p => p.id === personId);
             const generations = obtenirGenerations(personId, data); console.log(generations);
             // Afficher les informations de la personne
             ajouterPersonnePrincipal(personData, 'personConteneur');
