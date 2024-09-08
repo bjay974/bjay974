@@ -1,10 +1,18 @@
 document.getElementById("person-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+    e.preventDefault(); // Empêcher le comportement par défaut du formulaire
+
+    const id = document.getElementById("id").value; // Récupérer l'ID saisi
 
     // Charger les données existantes depuis data.json
-    fetch('..data/data.json')
-        .then(response => response.json())
+    fetch('../data/data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors du chargement du fichier JSON');
+            }
+            return response.json();
+        })
         .then(data => {
+            // Chercher la personne avec l'ID saisi
             const person = data.find(p => p.id == id);
             if (person) {
                 // Si la personne existe, préremplir le formulaire avec ses informations
@@ -27,21 +35,25 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
                 alert("Aucune personne trouvée avec cet ID.");
                 resetForm();
             }
-        // Extraire tous les lieux existants (naissance, décès, mariage)
-        data.forEach(person => {
-            if (person.lieu_naissance) lieux.add(person.lieu_naissance);
-            if (person.lieu_deces) lieux.add(person.lieu_deces);
-            if (person.lieu_mariage) lieux.add(person.lieu_mariage);
-        });
 
-        // Insérer les lieux dans la datalist pour l'autocomplétion
-        const datalist = document.getElementById('lieux-list');
-        lieux.forEach(lieu => {
-            const option = document.createElement('option');
-            option.value = lieu;
-            datalist.appendChild(option);
-        });
-            // Sauvegarder les données dans le fichier (simulé ici)
+            // Extraire tous les lieux existants (naissance, décès, mariage)
+            const lieux = new Set(); // Créer un Set pour les lieux
+            data.forEach(person => {
+                if (person.lieu_naissance) lieux.add(person.lieu_naissance);
+                if (person.lieu_deces) lieux.add(person.lieu_deces);
+                if (person.lieu_mariage) lieux.add(person.lieu_mariage);
+            });
+
+            // Insérer les lieux dans la datalist pour l'autocomplétion
+            const datalist = document.getElementById('lieux-list');
+            datalist.innerHTML = ''; // Vider la datalist avant d'ajouter les nouveaux lieux
+            lieux.forEach(lieu => {
+                const option = document.createElement('option');
+                option.value = lieu;
+                datalist.appendChild(option);
+            });
+
+            // Simuler la sauvegarde des données (si tu souhaites modifier et sauvegarder)
             saveData(data);
         })
         .catch(error => {
@@ -49,6 +61,22 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
             document.getElementById("message").innerHTML = "Erreur lors de la manipulation des données.";
         });
 });
+
+// Fonction pour réinitialiser le formulaire
+function resetForm() {
+    document.getElementById("nom").value = "";
+    document.getElementById("prenom").value = "";
+    document.getElementById("genre").value = "";
+    document.getElementById("id_pere").value = "";
+    document.getElementById("id_mere").value = "";
+    document.getElementById("date_naissance").value = "";
+    document.getElementById("lieu_naissance").value = "";
+    document.getElementById("date_deces").value = "";
+    document.getElementById("lieu_deces").value = "";
+    document.getElementById("date_mariage").value = "";
+    document.getElementById("lieu_mariage").value = "";
+    document.getElementById("id_conjoint").value = "";
+}
 
 // Fonction pour sauvegarder les données (simulée)
 function saveData(data) {
