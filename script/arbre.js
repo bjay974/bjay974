@@ -1,7 +1,9 @@
 function displayData() {
 
-    var urlParams = new URLSearchParams(window.location.search);
+   /* var urlParams = new URLSearchParams(window.location.search);
     var personId = urlParams.get('id');
+*/
+    let personId = 302;
       
     // Charger les données depuis le fichier JSON
     fetch('../data/data.json')
