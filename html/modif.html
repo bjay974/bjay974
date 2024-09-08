@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier ou Créer des Données</title>
+</head>
+<body>
+    <header>
+        <h3>Modifier</h3>
+    </header>
+    <nav>
+     <a href="../html/index.html">Accueil</a>
+      <a href="../html/famille.html">La Famiy</a>
+      <a href="../html/arbre.html">Nout Larb</a>
+      <a href="../html/contact.html">Pou écri</a>
+      <a href="javascript:history.go(-1)">Artourn</a> 
+    </nav>
+
+
+    <form id="person-form">
+        <label for="id">ID:</label>
+        <input type="number" id="id" name="id"><br><br>
+
+        <label for="nom">Nom:</label>
+        <input type="text" id="nom" name="nom"><br><br>
+
+        <label for="prenom">Prénom:</label>
+        <input type="text" id="prenom" name="prenom"><br><br>
+
+        <label for="genre">Genre (M/F):</label>
+        <input type="text" id="genre" name="genre"><br><br>
+
+        <label for="id_pere">ID Père:</label>
+        <input type="text" id="id_pere" name="id_pere"><br><br>
+
+        <label for="id_mere">ID Mère:</label>
+        <input type="text" id="id_mere" name="id_mere"><br><br>
+
+        <label for="date_naissance">Date de Naissance:</label>
+        <input type="date" id="date_naissance" name="date_naissance"><br><br>
+
+        <label for="lieu_naissance">Lieu de Naissance:</label>
+        <input type="text" id="lieu_naissance" name="lieu_naissance"><br><br>
+
+        <label for="date_deces">Date de Décès:</label>
+        <input type="date" id="date_deces" name="date_deces"><br><br>
+
+        <label for="lieu_deces">Lieu de Décès:</label>
+        <input type="text" id="lieu_deces" name="lieu_deces"><br><br>
+
+        <label for="date_mariage">Date de Mariage:</label>
+        <input type="date" id="date_mariage" name="date_mariage"><br><br>
+
+        <label for="lieu_mariage">Lieu de Mariage:</label>
+        <input type="text" id="lieu_mariage" name="lieu_mariage"><br><br>
+
+        <label for="id_conjoint">ID Conjoint:</label>
+        <input type="number" id="id_conjoint" name="id_conjoint"><br><br>
+
+        <button type="submit">Soumettre</button>
+    </form>
+
+    <div id="message"></div>
+    
+    <script src="modif.js"></script>
+</body>
+<footer>
+    <p><em>&copy; 2024 - BETSMAN Jérôme -Tous droits réservés.</em></p>
+</footer>
+</html>
