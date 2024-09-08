@@ -18,53 +18,59 @@
       <a href="javascript:history.go(-1)">Artourn</a> 
     </nav>
 
+    <div class="form-container">
+        <form id="person-form">
 
-    <form id="person-form">
-        <label for="id">ID:</label>
-        <input type="number" id="id" name="id"><br><br>
+            <label for="id">ID:</label>
+            <input type="number" id="id" name="id"><br><br>
+            
+            <button type="button" id="load-person">Charger les données</button><br><br>
 
-        <label for="nom">Nom:</label>
-        <input type="text" id="nom" name="nom"><br><br>
+            <label for="nom">Nom:</label>
+            <input type="text" id="nom" name="nom"><br><br>
 
-        <label for="prenom">Prénom:</label>
-        <input type="text" id="prenom" name="prenom"><br><br>
+            <label for="prenom">Prénom:</label>
+            <input type="text" id="prenom" name="prenom"><br><br>
 
-        <label for="genre">Genre (M/F):</label>
-        <input type="text" id="genre" name="genre"><br><br>
+            <label for="genre">Genre (M/F):</label>
+            <input type="text" id="genre" name="genre"><br><br>
 
-        <label for="id_pere">ID Père:</label>
-        <input type="text" id="id_pere" name="id_pere"><br><br>
+            <label for="id_pere">ID Père:</label>
+            <input type="text" id="id_pere" name="id_pere"><br><br>
 
-        <label for="id_mere">ID Mère:</label>
-        <input type="text" id="id_mere" name="id_mere"><br><br>
+            <label for="id_mere">ID Mère:</label>
+            <input type="text" id="id_mere" name="id_mere"><br><br>
 
-        <label for="date_naissance">Date de Naissance:</label>
-        <input type="date" id="date_naissance" name="date_naissance"><br><br>
+            <label for="date_naissance">Date de Naissance:</label>
+            <input type="date" id="date_naissance" name="date_naissance"><br><br>
 
-        <label for="lieu_naissance">Lieu de Naissance:</label>
-        <input type="text" id="lieu_naissance" name="lieu_naissance"><br><br>
+            <label for="lieu_deces">Lieu de Décès:</label>
+            <input type="text" id="lieu_deces" name="lieu_deces" list="lieux-list"><br><br>
 
-        <label for="date_deces">Date de Décès:</label>
-        <input type="date" id="date_deces" name="date_deces"><br><br>
+            <label for="date_deces">Date de Décès:</label>
+            <input type="date" id="date_deces" name="date_deces"><br><br>
 
-        <label for="lieu_deces">Lieu de Décès:</label>
-        <input type="text" id="lieu_deces" name="lieu_deces"><br><br>
+            <label for="lieu_deces">Lieu de Décès:</label>
+            <input type="text" id="lieu_deces" name="lieu_deces" list="lieux-list"><br><br>
 
-        <label for="date_mariage">Date de Mariage:</label>
-        <input type="date" id="date_mariage" name="date_mariage"><br><br>
+            <label for="date_mariage">Date de Mariage:</label>
+            <input type="date" id="date_mariage" name="date_mariage"><br><br>
 
-        <label for="lieu_mariage">Lieu de Mariage:</label>
-        <input type="text" id="lieu_mariage" name="lieu_mariage"><br><br>
+            <label for="lieu_mariage">Lieu de Mariage:</label>
+            <input type="text" id="lieu_mariage" name="lieu_mariage" list="lieux-list"><br><br>
 
-        <label for="id_conjoint">ID Conjoint:</label>
-        <input type="number" id="id_conjoint" name="id_conjoint"><br><br>
+            <label for="id_conjoint">ID Conjoint:</label>
+            <input type="number" id="id_conjoint" name="id_conjoint"><br><br>
 
-        <button type="submit">Soumettre</button>
-    </form>
+            <datalist id="lieux-list"></datalist>
+
+            <button type="submit">Soumettre</button>
+        </form>
+    </div>
 
     <div id="message"></div>
     
-    <script src="modif.js"></script>
+    <script src="../script/modif.js"></script>
 </body>
 <footer>
     <p><em>&copy; 2024 - BETSMAN Jérôme -Tous droits réservés.</em></p>

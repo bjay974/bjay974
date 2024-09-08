@@ -31,7 +31,20 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
                 data.push(person);
                 document.getElementById("message").innerHTML = "Nouvelle personne ajoutée avec succès.";
             }
+        // Extraire tous les lieux existants (naissance, décès, mariage)
+        data.forEach(person => {
+            if (person.lieu_naissance) lieux.add(person.lieu_naissance);
+            if (person.lieu_deces) lieux.add(person.lieu_deces);
+            if (person.lieu_mariage) lieux.add(person.lieu_mariage);
+        });
 
+        // Insérer les lieux dans la datalist pour l'autocomplétion
+        const datalist = document.getElementById('lieux-list');
+        lieux.forEach(lieu => {
+            const option = document.createElement('option');
+            option.value = lieu;
+            datalist.appendChild(option);
+        });
             // Sauvegarder les données dans le fichier (simulé ici)
             saveData(data);
         })
