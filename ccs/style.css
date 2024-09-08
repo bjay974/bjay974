@@ -105,6 +105,7 @@ footer {
     color: var(--color-font-blanc);
 }
 
+
 /* Styles pour les écrans de taille moyenne (tablettes) */
 @media (max-width: 768px) {
     body {

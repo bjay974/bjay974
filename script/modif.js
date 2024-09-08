@@ -1,35 +1,31 @@
 document.getElementById("person-form").addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const person = {
-        id: document.getElementById("id").value,
-        nom: document.getElementById("nom").value,
-        prenom: document.getElementById("prenom").value,
-        genre: document.getElementById("genre").value,
-        id_pere: document.getElementById("id_pere").value,
-        id_mere: document.getElementById("id_mere").value,
-        date_naissance: document.getElementById("date_naissance").value,
-        lieu_naissance: document.getElementById("lieu_naissance").value,
-        date_deces: document.getElementById("date_deces").value,
-        lieu_deces: document.getElementById("lieu_deces").value,
-        date_mariage: document.getElementById("date_mariage").value,
-        lieu_mariage: document.getElementById("lieu_mariage").value,
-        id_conjoint: document.getElementById("id_conjoint").value
-    };
-
     // Charger les données existantes depuis data.json
     fetch('..data/data.json')
         .then(response => response.json())
         .then(data => {
-            const existingPerson = data.find(p => p.id == person.id);
-            if (existingPerson) {
-                // Si la personne existe, on met à jour
-                Object.assign(existingPerson, person);
-                document.getElementById("message").innerHTML = "Données mises à jour avec succès.";
+            const person = data.find(p => p.id == id);
+            if (person) {
+                // Si la personne existe, préremplir le formulaire avec ses informations
+                document.getElementById("nom").value = person.nom || "";
+                document.getElementById("prenom").value = person.prenom || "";
+                document.getElementById("genre").value = person.genre || "";
+                document.getElementById("id_pere").value = person.id_pere || "";
+                document.getElementById("id_mere").value = person.id_mere || "";
+                document.getElementById("date_naissance").value = person.date_naissance || "";
+                document.getElementById("lieu_naissance").value = person.lieu_naissance || "";
+                document.getElementById("date_deces").value = person.date_deces || "";
+                document.getElementById("lieu_deces").value = person.lieu_deces || "";
+                document.getElementById("date_mariage").value = person.date_mariage || "";
+                document.getElementById("lieu_mariage").value = person.lieu_mariage || "";
+                document.getElementById("id_conjoint").value = person.id_conjoint || "";
+
+                document.getElementById("message").innerHTML = "Données chargées avec succès.";
             } else {
-                // Si la personne n'existe pas, on l'ajoute
-                data.push(person);
-                document.getElementById("message").innerHTML = "Nouvelle personne ajoutée avec succès.";
+                // Si la personne n'existe pas, réinitialiser le formulaire
+                alert("Aucune personne trouvée avec cet ID.");
+                resetForm();
             }
         // Extraire tous les lieux existants (naissance, décès, mariage)
         data.forEach(person => {
