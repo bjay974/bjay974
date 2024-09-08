@@ -29,11 +29,11 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
                 document.getElementById("lieu_mariage").value = person.lieu_mariage || "";
                 document.getElementById("id_conjoint").value = person.id_conjoint || "";
 
-                document.getElementById("message").innerHTML = "Données chargées avec succès.";
+                document.getElementById("message").innerHTML = "Données existantes chargées avec succès.";
             } else {
-                // Si la personne n'existe pas, réinitialiser le formulaire
-                alert("Aucune personne trouvée avec cet ID.");
-                resetForm();
+                // Si l'ID n'existe pas, permettre à l'utilisateur de créer une nouvelle personne
+                resetForm(); // Réinitialiser le formulaire pour saisir les informations
+                document.getElementById("message").innerHTML = "ID non trouvé. Saisissez les informations pour créer une nouvelle personne.";
             }
 
             // Extraire tous les lieux existants (naissance, décès, mariage)
@@ -53,8 +53,10 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
                 datalist.appendChild(option);
             });
 
-            // Simuler la sauvegarde des données (si tu souhaites modifier et sauvegarder)
-            saveData(data);
+            // Sauvegarder les données (ajout ou modification)
+            document.getElementById("save-btn").addEventListener("click", function () {
+                savePerson(data, id); // Appeler la fonction pour sauvegarder ou ajouter la personne
+            });
         })
         .catch(error => {
             console.error('Erreur:', error);
@@ -78,9 +80,42 @@ function resetForm() {
     document.getElementById("id_conjoint").value = "";
 }
 
-// Fonction pour sauvegarder les données (simulée)
+// Fonction pour sauvegarder les données ou ajouter une nouvelle personne
+function savePerson(data, id) {
+    const newPerson = {
+        id: id,
+        nom: document.getElementById("nom").value,
+        prenom: document.getElementById("prenom").value,
+        genre: document.getElementById("genre").value,
+        id_pere: document.getElementById("id_pere").value,
+        id_mere: document.getElementById("id_mere").value,
+        date_naissance: document.getElementById("date_naissance").value,
+        lieu_naissance: document.getElementById("lieu_naissance").value,
+        date_deces: document.getElementById("date_deces").value,
+        lieu_deces: document.getElementById("lieu_deces").value,
+        date_mariage: document.getElementById("date_mariage").value,
+        lieu_mariage: document.getElementById("lieu_mariage").value,
+        id_conjoint: document.getElementById("id_conjoint").value
+    };
+
+    // Vérifier si la personne existe déjà dans les données
+    const existingPersonIndex = data.findIndex(p => p.id == id);
+    if (existingPersonIndex >= 0) {
+        // Si elle existe, on la met à jour
+        data[existingPersonIndex] = newPerson;
+        document.getElementById("message").innerHTML = "Les données ont été mises à jour avec succès.";
+    } else {
+        // Si elle n'existe pas, on l'ajoute à la base
+        data.push(newPerson);
+        document.getElementById("message").innerHTML = "Nouvelle personne ajoutée avec succès.";
+    }
+
+    // Simuler la sauvegarde des données dans le fichier (dans un environnement réel, il faut une API ou backend)
+    saveData(data);
+}
+
+// Fonction pour simuler la sauvegarde des données
 function saveData(data) {
-    // Simuler la sauvegarde dans un fichier JSON
-    console.log("Nouvelles données:", data);
+    console.log("Données mises à jour :", data);
     // Dans un environnement réel, il faudrait une API ou un backend pour sauvegarder les modifications
 }
