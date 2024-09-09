@@ -1,6 +1,4 @@
-document.getElementById("person-form").addEventListener("submit", function (e) {
-    e.preventDefault(); // Empêcher le comportement par défaut du formulaire
-
+document.getElementById("load-person").addEventListener("click", function () {
     const id = document.getElementById("id").value; // Récupérer l'ID saisi
 
     // Charger les données existantes depuis data.json
@@ -31,7 +29,6 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
 
                 document.getElementById("message").innerHTML = "Données existantes chargées avec succès.";
             } else {
-                // Si l'ID n'existe pas, permettre à l'utilisateur de créer une nouvelle personne
                 resetForm(); // Réinitialiser le formulaire pour saisir les informations
                 document.getElementById("message").innerHTML = "ID non trouvé. Saisissez les informations pour créer une nouvelle personne.";
             }
@@ -51,11 +48,6 @@ document.getElementById("person-form").addEventListener("submit", function (e) {
                 const option = document.createElement('option');
                 option.value = lieu;
                 datalist.appendChild(option);
-            });
-
-            // Sauvegarder les données (ajout ou modification)
-            document.getElementById("save-btn").addEventListener("click", function () {
-                savePerson(data, id); // Appeler la fonction pour sauvegarder ou ajouter la personne
             });
         })
         .catch(error => {
@@ -79,6 +71,27 @@ function resetForm() {
     document.getElementById("lieu_mariage").value = "";
     document.getElementById("id_conjoint").value = "";
 }
+
+// Ajouter une fonction pour sauvegarder les modifications
+document.getElementById("save-btn").addEventListener("click", function () {
+    const id = document.getElementById("id").value;
+
+    // Charger les données existantes pour mettre à jour
+    fetch('../data/data.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors du chargement du fichier JSON');
+            }
+            return response.json();
+        })
+        .then(data => {
+            savePerson(data, id); // Appeler la fonction pour sauvegarder ou ajouter la personne
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            document.getElementById("message").innerHTML = "Erreur lors de la manipulation des données.";
+        });
+});
 
 // Fonction pour sauvegarder les données ou ajouter une nouvelle personne
 function savePerson(data, id) {
@@ -114,8 +127,50 @@ function savePerson(data, id) {
     saveData(data);
 }
 
-// Fonction pour simuler la sauvegarde des données
-function saveData(data) {
-    console.log("Données mises à jour :", data);
-    // Dans un environnement réel, il faudrait une API ou un backend pour sauvegarder les modifications
+// Fonction pour sauvegarder les données (GitHub API)
+async function saveData(data) {
+    const repoOwner = 'bjay974'; // Remplacez par votre nom d'utilisateur GitHub
+    const repoName = 'bjay974'; // Remplacez par le nom de votre dépôt
+    const branch = 'main'; // Branche sur laquelle vous souhaitez effectuer les modifications
+    const filePath = 'data/data.json'; // Chemin vers le fichier JSON
+    const token = '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'; // Remplacez par votre token GitHub
+    const message = 'Updated JSON via web page'; // Message de commit
+
+    // Récupérer le sha du fichier actuel (requis pour faire un commit via l'API)
+    const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+        method: 'GET',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+        }
+    });
+
+    const fileData = await response.json();
+    const sha = fileData.sha; // Récupérer le SHA actuel du fichier
+
+    // Encoder les nouvelles données en base64
+    const newContent = JSON.stringify(data, null, 2); // Formater avec des retours à la ligne pour plus de lisibilité
+    const contentBase64 = btoa(newContent);
+
+    // Faire une requête PUT pour mettre à jour le fichier
+    const updateResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
+        method: 'PUT',
+        headers: {
+            'Authorization': `token ${token}`,
+            'Accept': 'application/vnd.github.v3+json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            message: message,
+            content: contentBase64,
+            sha: sha,
+            branch: branch
+        })
+    });
+
+    if (updateResponse.ok) {
+        alert('Fichier JSON mis à jour avec succès !');
+    } else {
+        alert('Erreur lors de la mise à jour du fichier JSON.');
+    }
 }
