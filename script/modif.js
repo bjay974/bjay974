@@ -14,16 +14,19 @@ document.getElementById("load-person").addEventListener("click", function () {
             const person = data.find(p => p.id == id);
             if (person) {
                 // Si la personne existe, préremplir le formulaire avec ses informations
+                const dateNaissance = verificationDate(person.date_naissance)
+                const dateMariage = verificationDate(person.date_mariage)
+                const dateDeces = verificationDate(person.date_deces)
                 document.getElementById("nom").value = person.nom || "";
                 document.getElementById("prenom").value = person.prenom || "";
                 document.getElementById("genre").value = person.genre || "";
                 document.getElementById("id_pere").value = person.id_pere || "";
                 document.getElementById("id_mere").value = person.id_mere || "";
-                document.getElementById("date_naissance").value = person.date_naissance || "";
+                document.getElementById("date_naissance").value = dateNaissance || "";
                 document.getElementById("lieu_naissance").value = person.lieu_naissance || "";
-                document.getElementById("date_deces").value = person.date_deces || "";
+                document.getElementById("date_deces").value = dateDeces || "";
                 document.getElementById("lieu_deces").value = person.lieu_deces || "";
-                document.getElementById("date_mariage").value = person.date_mariage || "";
+                document.getElementById("date_mariage").value = dateMariage || "";
                 document.getElementById("lieu_mariage").value = person.lieu_mariage || "";
                 document.getElementById("id_conjoint").value = person.id_conjoint || "";
 
@@ -92,6 +95,15 @@ document.getElementById("save-btn").addEventListener("click", function () {
             document.getElementById("message").innerHTML = "Erreur lors de la manipulation des données.";
         });
 });
+
+function verificationDate(date) {
+    const an = parseInt(date.substr(6, 4));
+    const mois = parseInt(date.substr(3, 2));
+    const day = parseInt(date.substr(0, 2));
+    const dateNew = new Date(an, mois, day); 
+    return dateNew; 
+}
+
 
 // Fonction pour sauvegarder les données ou ajouter une nouvelle personne
 function savePerson(data, id) {
