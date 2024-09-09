@@ -146,7 +146,7 @@ async function saveData(data) {
     const repoName = 'bjay974'; // Remplacez par le nom de votre dépôt
     const branch = 'main'; // Branche sur laquelle vous souhaitez effectuer les modifications
     const filePath = 'data/data.json'; // Chemin vers le fichier JSON
-    const token = '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'; // Remplacez par votre token GitHub
+    const token = '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'; // Remplacez par votre token GitHub
     const message = 'Updated JSON via web page'; // Message de commit
 
     // Récupérer le sha du fichier actuel (requis pour faire un commit via l'API)
