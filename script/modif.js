@@ -1,6 +1,9 @@
 document.getElementById("load-person").addEventListener("click", function () {
     const id = document.getElementById("id").value; // Récupérer l'ID saisi
-
+    if (!id) {
+        document.getElementById("message").innerHTML = "Erreur lors de la manipulation des données.";
+        throw new Error('Absence ID');
+    }    
     // Charger les données existantes depuis data.json
     fetch('../data/data.json')
         .then(response => {
