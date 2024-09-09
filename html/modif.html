@@ -12,11 +12,11 @@
         <h3>Modifier</h3>
     </header>
     <nav>
-     <a href="../html/index.html">Accueil</a>
-      <a href="../html/famille.html">La Famiy</a>
-      <a href="../html/arbre.html">Nout Larb</a>
-      <a href="../html/contact.html">Pou écri</a>
-      <a href="javascript:history.go(-1)">Artourn</a> 
+        <a href="../html/index.html">Accueil</a>
+        <a href="../html/famille.html">La Famiy</a>
+        <a href="../html/arbre.html">Nout Larb</a>
+        <a href="../html/contact.html">Pou écri</a>
+        <a href="javascript:history.go(-1)">Artourn</a> 
     </nav>
 
     <div class="form-container">
@@ -25,6 +25,7 @@
             <label for="id">ID:</label>
             <input type="number" id="id" name="id"><br><br>
             
+            <!-- Bouton pour charger les données -->
             <button type="button" id="load-person">Charger les données</button><br><br>
 
             <label for="nom">Nom:</label>
@@ -45,8 +46,8 @@
             <label for="date_naissance">Date de Naissance:</label>
             <input type="date" id="date_naissance" name="date_naissance"><br><br>
 
-            <label for="lieu_deces">Lieu de Décès:</label>
-            <input type="text" id="lieu_deces" name="lieu_deces" list="lieux-list"><br><br>
+            <label for="lieu_naissance">Lieu de Naissance:</label>
+            <input type="text" id="lieu_naissance" name="lieu_naissance" list="lieux-list"><br><br>
 
             <label for="date_deces">Date de Décès:</label>
             <input type="date" id="date_deces" name="date_deces"><br><br>
@@ -65,7 +66,9 @@
 
             <datalist id="lieux-list"></datalist>
 
-            <button type="submit">Soumettre</button>
+            <!-- Bouton pour sauvegarder les modifications -->
+            <button type="button" id="save-btn">Sauvegarder</button><br><br>
+
         </form>
     </div>
 
