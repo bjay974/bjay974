@@ -95,6 +95,7 @@ document.getElementById("reset-person").addEventListener("click", function () {
     document.getElementById("lieu_mariage").value = "";
     document.getElementById("id_conjoint").value = "";
     document.getElementById("commentaire").value = "";
+    document.getElementById("message").innerHTML = "Le zaffair lé prop.";
 });
 
 
