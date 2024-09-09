@@ -38,8 +38,8 @@
 .generation3 .female + .male {margin-top: 285px}
 
 .generation2 .male:first-child { margin-top: 300px}
-.generation2 .male + .female {margin-top: 620px}
-.generation2 .female + .male {margin-top: 620px}
+.generation2 .male + .female {margin-top: 625px}
+.generation2 .female + .male {margin-top: 625px}
 
 .generation1 .male:first-child { margin-top: 620px}
 .generation1 .male + .female {margin-top: 1300px}
@@ -60,20 +60,20 @@
 .generation5 .female::before {
   content: '';
   position: absolute;
-  top: -40px;
+  top: -20px;
   left: 50%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 100%; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 50%; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 } 
 .generation5 .male::after {
   content: '';
   position: absolute;
-  top: 60px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  top: 65px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 168px; /* Longueur du trait horizontal */
+  width: 155px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -81,20 +81,20 @@
 .generation4 .female::before {
   content: '';
   position: absolute;
-  top: -160px;
+  top: -120px;
   left: 50%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 160px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 120px; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 }
 .generation4 .male::after {
   content: '';
   position: absolute;
-  top: 120px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  top: 115px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 170px; /* Longueur du trait horizontal */
+  width: 155px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -102,21 +102,21 @@
 .generation3 .female::before {
   content: '';
   position: absolute;
-  top: -360px;
+  top: -285px;
   left: 50%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 360px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 290px; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 }
 
 .generation3 .male::after {
   content: '';
   position: absolute;
-  top: 220px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  top: 195px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 170px; /* Longueur du trait horizontal */
+  width: 155px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -124,21 +124,21 @@
 .generation2 .female::before {
   content: '';
   position: absolute;
-  top: -760px;
+  top: -630px;
   left: 50%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 760px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 630px; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 }
 
 .generation2 .male::after {
   content: '';
   position: absolute;
-  top: 420px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  top: 345px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 170px; /* Longueur du trait horizontal */
+  width: 155px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -146,21 +146,21 @@
 .generation1 .female::before {
   content: '';
   position: absolute;
-  top: -1560px;
+  top: -1300px;
   left: 50%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 1560px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 1300px; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 }
 
 .generation1 .male::after {
   content: '';
   position: absolute;
-  top: 800px; /* Place le trait au milieu, verticalement par rapport à l'homme */
+  top: 655px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(100%);
-  width: 170px; /* Longueur du trait horizontal */
+  width: 155px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
