@@ -76,7 +76,27 @@ function resetForm() {
     document.getElementById("date_mariage").value = "";
     document.getElementById("lieu_mariage").value = "";
     document.getElementById("id_conjoint").value = "";
+    document.getElementById("commentaire").value = "";
+
 }
+
+// Ajouter une fonction pour sauvegarder les modifications
+document.getElementById("reset-person").addEventListener("click", function () {
+    document.getElementById("nom").value = "";
+    document.getElementById("prenom").value = "";
+    document.getElementById("genre").value = "";
+    document.getElementById("id_pere").value = "";
+    document.getElementById("id_mere").value = "";
+    document.getElementById("date_naissance").value = "";
+    document.getElementById("lieu_naissance").value = "";
+    document.getElementById("date_deces").value = "";
+    document.getElementById("lieu_deces").value = "";
+    document.getElementById("date_mariage").value = "";
+    document.getElementById("lieu_mariage").value = "";
+    document.getElementById("id_conjoint").value = "";
+    document.getElementById("commentaire").value = "";
+});
+
 
 // Ajouter une fonction pour sauvegarder les modifications
 document.getElementById("save-btn").addEventListener("click", function () {
