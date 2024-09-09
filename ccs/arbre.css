@@ -24,34 +24,28 @@
   width: 250px;
 }
 
-.generation5 {grid:1}
-.generation4 {grid:2}
-.generation2 {grid:4}
-.generation1 {grid:5}
-.personConteneur {grid:6}
 
+.generation5 .male:first-child { margin-top: 10px}
+.generation5 .male + .female {margin-top: 20px}
+.generation5 .female + .male {margin-top: 40px}
 
-.generation5 .male:first-child { margin-top: 20px}
-.generation5 .male + .female {margin-top: 40px}
-.generation5 .female + .male {margin-top: 80px}
+.generation4 .male:first-child { margin-top: 45px}
+.generation4 .male + .female {margin-top: 115px}
+.generation4 .female + .male {margin-top: 115px}
 
-.generation4 .male:first-child { margin-top: 60px}
-.generation4 .male + .female {margin-top: 160px}
-.generation4 .female + .male {margin-top: 160px}
+.generation3 .male:first-child { margin-top: 130px}
+.generation3 .male + .female {margin-top: 285px}
+.generation3 .female + .male {margin-top: 285px}
 
-.generation3 .male:first-child { margin-top: 160px}
-.generation3 .male + .female {margin-top: 360px}
-.generation3 .female + .male {margin-top: 360px}
+.generation2 .male:first-child { margin-top: 300px}
+.generation2 .male + .female {margin-top: 620px}
+.generation2 .female + .male {margin-top: 620px}
 
-.generation2 .male:first-child { margin-top: 360px}
-.generation2 .male + .female {margin-top: 760px}
-.generation2 .female + .male {margin-top: 760px}
+.generation1 .male:first-child { margin-top: 620px}
+.generation1 .male + .female {margin-top: 1300px}
 
-.generation1 .male:first-child { margin-top: 760px}
-.generation1 .male + .female {margin-top: 1560px}
-
-.personConteneur .female:first-child  { margin-top: 1540px}
-.personConteneur .male:first-child  { margin-top: 1540px}
+.personConteneur .female:first-child  { margin-top: 1250px}
+.personConteneur .male:first-child  { margin-top: 1250px}
 
 .male, .female {
   justify-content: center; /* Centre horizontalement */
