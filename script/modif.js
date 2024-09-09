@@ -1,7 +1,7 @@
 document.getElementById("load-person").addEventListener("click", function () {
     const id = document.getElementById("id").value; // Récupérer l'ID saisi
     if (!id) {
-        document.getElementById("message").innerHTML = "Erreur lors de la manipulation des données.";
+        document.getElementById("message").innerHTML = "Ou la oubli mett le l'id.";
         throw new Error('Absence ID');
     }    
     // Charger les données existantes depuis data.json
@@ -146,7 +146,7 @@ async function saveData(data) {
     const repoName = 'bjay974'; // Remplacez par le nom de votre dépôt
     const branch = 'main'; // Branche sur laquelle vous souhaitez effectuer les modifications
     const filePath = 'data/data.json'; // Chemin vers le fichier JSON
-    const token = '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'; // Remplacez par votre token GitHub
+    const token = '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'; // Remplacez par votre token GitHub
     const message = 'Updated JSON via web page'; // Message de commit
 
     // Récupérer le sha du fichier actuel (requis pour faire un commit via l'API)
