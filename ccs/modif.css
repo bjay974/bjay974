@@ -1,7 +1,12 @@
+form {
+    display: grid;
+    grid-template-columns: auto; /* Deux colonnes : une pour les labels, une pour les inputs */
+    grid-gap: 10px; /* Espacement entre les champs */
+}
 
-/* Conteneur pour le formulaire */
 .form-container {
-    background-color: var(--color-font-blanc);
+    margin: 10px;
+    background-color: var(--color-male-bg);
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour donner du relief */
@@ -9,22 +14,9 @@
     align-self: center;
 }
 
-
-/* Formulaire avec des champs bien alignés */
-form {
-    display: grid;
-    grid-template-columns: 150px 1fr; /* Deux colonnes : une pour les labels, une pour les inputs */
-    grid-gap: 10px; /* Espacement entre les champs */
-}
-
-/* Alignement des labels */
-label {
-    justify-self: end; /* Aligner les labels à droite */
-}
-
-/* Appliquer du style aux champs */
 input, button {
-    padding: 8px;
+    margin-top : 0px;
+    padding: 1px;
     font-size: 1rem;
     border: 1px solid var(--color-secondary);
     border-radius: 5px;
@@ -32,10 +24,15 @@ input, button {
     box-sizing: border-box;
 }
 
-/* Style du bouton */
+
+label {
+    display: block; 
+    margin-bottom: 8px;}
+
 button {
+    padding : 5px;
     grid-column: 1 / span 2; /* Le bouton prend toute la largeur */
-    background-color: var(--color-green);
+    background-color: var(--color-secondary);
     color: white;
     cursor: pointer;
     border: none;
@@ -47,8 +44,7 @@ button:hover {
 
 /* Style du message */
 #message {
-    margin-top: 20px;
     text-align: center;
     font-size: 1.2rem;
-    color: var(--color-primary);
+    color: var(--color-green);
 }
