@@ -18,8 +18,8 @@ document.getElementById("load-person").addEventListener("click", function () {
             if (person) {
                 // Si la personne existe, préremplir le formulaire avec ses informations
                 let dateNaissance = person.date_naissance ? verificationDate(person.date_naissance) : null;
-                let dateMariage = person.dateMariage ? verificationDate(person.date_mariage) : null;
-                let dateDeces = person.dateDeces ? verificationDate(person.date_deces) : null;
+                let dateMariage = person.date_mariage ? verificationDate(person.date_mariage) : null;
+                let dateDeces = person.date_deces ? verificationDate(person.date_deces) : null;
                 document.getElementById("nom").value = person.nom || "";
                 document.getElementById("prenom").value = person.prenom || "";
                 document.getElementById("genre").value = person.genre || "";
@@ -100,11 +100,9 @@ document.getElementById("save-btn").addEventListener("click", function () {
 });
 
 function verificationDate(date) {
-    const an = parseInt(date.substr(6, 4));
-    const mois = parseInt(date.substr(3, 2));
-    const day = parseInt(date.substr(0, 2));
-    const dateNew = new Date(an, mois, day); 
-    return dateNew; 
+    const parts = date.split('/');
+    // Reformatage de DD/MM/YYYY en YYYY-MM-DD
+    return `${parts[2]}-${parts[1]}-${parts[0]}`;
 }
 
 
