@@ -18,8 +18,8 @@ document.getElementById("load-person").addEventListener("click", function () {
             if (person) {
                 // Si la personne existe, préremplir le formulaire avec ses informations
                 let dateNaissance = person.date_naissance ? verificationDate(person.date_naissance) : null;
-                let dateMariage = person.date_naissance ? verificationDate(person.date_mariage) : null;
-                let dateDeces = person.date_naissance ? verificationDate(person.date_deces) : null;
+                let dateMariage = person.dateMariage ? verificationDate(person.date_mariage) : null;
+                let dateDeces = person.dateDeces ? verificationDate(person.date_deces) : null;
                 document.getElementById("nom").value = person.nom || "";
                 document.getElementById("prenom").value = person.prenom || "";
                 document.getElementById("genre").value = person.genre || "";
