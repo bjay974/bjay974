@@ -17,9 +17,9 @@ document.getElementById("load-person").addEventListener("click", function () {
             const person = data.find(p => p.id == id);
             if (person) {
                 // Si la personne existe, préremplir le formulaire avec ses informations
-                const dateNaissance = verificationDate(person.date_naissance)
-                const dateMariage = verificationDate(person.date_mariage)
-                const dateDeces = verificationDate(person.date_deces)
+                let dateNaissance = person.date_naissance ? verificationDate(person.date_naissance) : null;
+                let dateMariage = person.date_naissance ? verificationDate(person.date_mariage) : null;
+                let dateDeces = person.date_naissance ? verificationDate(person.date_deces) : null;
                 document.getElementById("nom").value = person.nom || "";
                 document.getElementById("prenom").value = person.prenom || "";
                 document.getElementById("genre").value = person.genre || "";
