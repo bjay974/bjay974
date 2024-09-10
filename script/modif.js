@@ -194,7 +194,7 @@ async function saveData(data) {
     const updateResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
-            'Authorization': `token ${token}`,
+            'Authorization': `Bearer ${token}`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         },
@@ -206,9 +206,11 @@ async function saveData(data) {
         })
     });
 
+    const result = await updateResponse.json();
     if (updateResponse.ok) {
         alert('Fichier JSON mis à jour avec succès !');
     } else {
+        console.error(result);
         alert('Erreur lors de la mise à jour du fichier JSON.');
     }
 }
