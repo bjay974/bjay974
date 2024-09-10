@@ -169,12 +169,7 @@ async function saveData(data) {
     const message = 'Updated JSON via web page'; // Message de commit
 
     // Assurez-vous que le token est bien injecté via l'environnement
-    const token = process.env.GH_TOKEN;  // Assurez-vous que 'GH_TOKEN' est le bon nom de secret
-
-    if (!token) {
-        console.error("Le token GitHub n'est pas disponible.");
-        return;
-    }
+    const token = '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';
 
     // Récupérer le sha du fichier actuel (requis pour faire un commit via l'API)
     const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
@@ -195,7 +190,7 @@ async function saveData(data) {
 
     // Encoder les nouvelles données en base64
     const newContent = JSON.stringify(data, null, 2); // Formater avec des retours à la ligne pour plus de lisibilité
-    const contentBase64 = Buffer.from(newContent).toString('base64'); // Utilisation de Buffer pour Node.js
+    const contentBase64 = btoa(newContent);
 
     // Faire une requête PUT pour mettre à jour le fichier
     const updateResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
