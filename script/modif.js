@@ -161,10 +161,6 @@ function savePerson(data, id) {
     saveData(data);
 }
 
-function toBase64(str) {
-    return btoa(unescape(encodeURIComponent(str)));
-}
-
 // Fonction pour sauvegarder les données (GitHub API)
 async function saveData(data) {
     const repoOwner = 'bjay974'; // Remplacez par votre nom d'utilisateur GitHub
@@ -178,7 +174,7 @@ async function saveData(data) {
     const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'GET',
         headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `token ${token}`,
             'Accept': 'application/vnd.github.v3+json'
         }
     });
@@ -188,13 +184,13 @@ async function saveData(data) {
 
     // Encoder les nouvelles données en base64
     const newContent = JSON.stringify(data, null, 2); // Formater avec des retours à la ligne pour plus de lisibilité
-    const contentBase64 = toBase64(newContent);
+    const contentBase64 = btoa(newContent);
 
     // Faire une requête PUT pour mettre à jour le fichier
     const updateResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
-            'Authorization': `Bearer ${token}`,
+            'Authorization': `token ${token}`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         },
@@ -206,11 +202,9 @@ async function saveData(data) {
         })
     });
 
-    const result = await updateResponse.json();
     if (updateResponse.ok) {
         alert('Fichier JSON mis à jour avec succès !');
     } else {
-        console.error(result);
         alert('Erreur lors de la mise à jour du fichier JSON.');
     }
 }
