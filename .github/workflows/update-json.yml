@@ -22,4 +22,4 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.MY_GH_TOKEN }} # Injection du secret comme variable d'environnement
         run: |
-          node /script/modif.js  # Remplacez par le nom de votre script JavaScript
+          node script/modif.js  # Remplacez par le nom de votre script JavaScript
