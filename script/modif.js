@@ -33,10 +33,10 @@ document.getElementById("load-person").addEventListener("click", function () {
                 document.getElementById("lieu_mariage").value = person.lieu_mariage || "";
                 document.getElementById("id_conjoint").value = person.id_conjoint || "";
 
-                document.getElementById("message").innerHTML = "Données existantes chargées avec succès.";
+                document.getElementById("message").innerHTML = "Lé bon, la charge le zafair.";
             } else {
                 resetForm(); // Réinitialiser le formulaire pour saisir les informations
-                document.getElementById("message").innerHTML = "ID non trouvé. Saisissez les informations pour créer une nouvelle personne.";
+                document.getElementById("message").innerHTML = "Y faut saisi le moune.";
             }
 
             // Extraire tous les lieux existants (naissance, décès, mariage)
@@ -77,7 +77,6 @@ function resetForm() {
     document.getElementById("lieu_mariage").value = "";
     document.getElementById("id_conjoint").value = "";
     document.getElementById("commentaire").value = "";
-
 }
 
 // Ajouter une fonction pour sauvegarder les modifications
@@ -97,7 +96,6 @@ document.getElementById("reset-person").addEventListener("click", function () {
     document.getElementById("commentaire").value = "";
     document.getElementById("message").innerHTML = "Le zaffair lé prop.";
 });
-
 
 // Ajouter une fonction pour sauvegarder les modifications
 document.getElementById("save-btn").addEventListener("click", function () {
@@ -125,7 +123,6 @@ function verificationDate(date) {
     // Reformatage de DD/MM/YYYY en YYYY-MM-DD
     return `${parts[2]}-${parts[1]}-${parts[0]}`;
 }
-
 
 // Fonction pour sauvegarder les données ou ajouter une nouvelle personne
 function savePerson(data, id) {
@@ -210,6 +207,7 @@ async function saveData(data) {
 
     if (updateResponse.ok) {
         console.log('Fichier JSON mis à jour avec succès !');
+        resetForm() 
     } else {
         console.error('Erreur lors de la mise à jour du fichier JSON:', updateResponse.statusText);
     }
