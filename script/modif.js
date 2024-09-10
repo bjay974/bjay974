@@ -167,14 +167,13 @@ async function saveData(data) {
     const repoName = 'bjay974'; // Remplacez par le nom de votre dépôt
     const branch = 'main'; // Branche sur laquelle vous souhaitez effectuer les modifications
     const filePath = 'data/data.json'; // Chemin vers le fichier JSON
-    const token = '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'; // Remplacez par votre token GitHub
     const message = 'Updated JSON via web page'; // Message de commit
 
     // Récupérer le sha du fichier actuel (requis pour faire un commit via l'API)
     const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'GET',
         headers: {
-            'Authorization': `token ${token}`,
+            'Authorization': `token ${process.env.MY_GH_TOKEN}`,
             'Accept': 'application/vnd.github.v3+json'
         }
     });
@@ -190,7 +189,7 @@ async function saveData(data) {
     const updateResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
-            'Authorization': `token ${token}`,
+            'Authorization': `token ${process.env.MY_GH_TOKEN}`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         },
