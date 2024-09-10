@@ -161,7 +161,6 @@ function savePerson(data, id) {
     saveData(data);
 }
 
-// Fonction pour sauvegarder les données (GitHub API)
 async function saveData(data) {
     const repoOwner = 'bjay974'; // Remplacez par votre nom d'utilisateur GitHub
     const repoName = 'bjay974'; // Remplacez par le nom de votre dépôt
@@ -169,27 +168,40 @@ async function saveData(data) {
     const filePath = 'data/data.json'; // Chemin vers le fichier JSON
     const message = 'Updated JSON via web page'; // Message de commit
 
+    // Assurez-vous que le token est bien injecté via l'environnement
+    const token = process.env.GH_TOKEN;  // Assurez-vous que 'GH_TOKEN' est le bon nom de secret
+
+    if (!token) {
+        console.error("Le token GitHub n'est pas disponible.");
+        return;
+    }
+
     // Récupérer le sha du fichier actuel (requis pour faire un commit via l'API)
     const response = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'GET',
         headers: {
-            'Authorization': `token ${process.env.MY_GH_TOKEN}`,
+            'Authorization': `token ${token}`,
             'Accept': 'application/vnd.github.v3+json'
         }
     });
+
+    if (!response.ok) {
+        console.error('Erreur lors de la récupération du fichier:', response.statusText);
+        return;
+    }
 
     const fileData = await response.json();
     const sha = fileData.sha; // Récupérer le SHA actuel du fichier
 
     // Encoder les nouvelles données en base64
     const newContent = JSON.stringify(data, null, 2); // Formater avec des retours à la ligne pour plus de lisibilité
-    const contentBase64 = btoa(newContent);
+    const contentBase64 = Buffer.from(newContent).toString('base64'); // Utilisation de Buffer pour Node.js
 
     // Faire une requête PUT pour mettre à jour le fichier
     const updateResponse = await fetch(`https://api.github.com/repos/${repoOwner}/${repoName}/contents/${filePath}`, {
         method: 'PUT',
         headers: {
-            'Authorization': `token ${process.env.MY_GH_TOKEN}`,
+            'Authorization': `token ${token}`,
             'Accept': 'application/vnd.github.v3+json',
             'Content-Type': 'application/json'
         },
@@ -202,8 +214,8 @@ async function saveData(data) {
     });
 
     if (updateResponse.ok) {
-        alert('Fichier JSON mis à jour avec succès !');
+        console.log('Fichier JSON mis à jour avec succès !');
     } else {
-        alert('Erreur lors de la mise à jour du fichier JSON.');
+        console.error('Erreur lors de la mise à jour du fichier JSON:', updateResponse.statusText);
     }
 }
