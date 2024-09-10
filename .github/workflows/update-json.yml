@@ -1,7 +1,7 @@
 name: Update JSON File
 
-# Déclencher l'action à chaque push sur la branche 'main'
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -9,28 +9,17 @@ on:
 jobs:
   update-json:
     runs-on: ubuntu-latest
-
     steps:
-      # Étape 1 : Cloner le dépôt
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      # Étape 2 : Lire et modifier le fichier JSON
-      - name: Modify JSON file
-        run: |
-          echo "Modifying JSON file..."
-          # Afficher le contenu actuel du fichier JSON
-          cat data.json
-          # Modifier le contenu du fichier JSON (ajouter une clé par exemple)
-          echo '{"key": "newUpdatedValue"}' > data.json
-          # Afficher le nouveau contenu pour vérification
-          cat data.json
+      - name: Install Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
 
-      # Étape 3 : Committer et pousser les modifications
-      - name: Commit and push changes
+      - name: Run update script
+        env:
+          GH_TOKEN: ${{ secrets.MY_GH_TOKEN }} # Injection du secret comme variable d'environnement
         run: |
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          git add data.json
-          git commit -m "Updated JSON file via GitHub Actions"
-          git push
+          node /script/modif.js  # Remplacez par le nom de votre script JavaScript
