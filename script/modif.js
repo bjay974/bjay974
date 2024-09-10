@@ -12,7 +12,7 @@ document.getElementById("load-person").addEventListener("click", function () {
             }
             return response.json();
         })
-        .then(data => {
+        .then(data => { 
             // Chercher la personne avec l'ID saisi
             const person = data.find(p => p.id == id);
             if (person) {
