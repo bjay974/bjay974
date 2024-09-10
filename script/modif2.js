@@ -1,7 +1,7 @@
 document.getElementById("load-person").addEventListener("click", function () {
     const id = document.getElementById("id").value;
     if (!id) {
-        document.getElementById("message").innerText = "Veuillez entrer un ID.";
+        document.getElementById("message").innerText = "Ou la oubli mett le l'id.";
         return;
     }
 
@@ -97,6 +97,7 @@ document.getElementById("save-btn").addEventListener("click", function () {
         .then(response => response.json())
         .then(result => {
             document.getElementById("message").innerText = result.message;
+            document.getElementById("message").innerText = "Lé bon .. la enrezit le moun.";
             resetForm() 
         })
         .catch(error => {
