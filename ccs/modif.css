@@ -1,11 +1,11 @@
 form {
     display: grid;
     grid-template-columns: auto; /* Deux colonnes : une pour les labels, une pour les inputs */
-    grid-gap: 10px; /* Espacement entre les champs */
+    grid-gap: 5px; /* Espacement entre les champs */
 }
 
 .form-container {
-    margin: 10px;
+    margin: 5px;
     background-color: var(--color-male-bg);
     padding: 20px;
     border-radius: 10px;
@@ -23,7 +23,6 @@ input, button {
     width: 100%; /* Les champs occupent toute la largeur de la 2e colonne */
     box-sizing: border-box;
 }
-
 
 label {
     display: block; 

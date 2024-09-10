@@ -73,7 +73,7 @@
   top: 65px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 155px; /* Longueur du trait horizontal */
+  width: 150px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -94,7 +94,7 @@
   top: 115px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 155px; /* Longueur du trait horizontal */
+  width: 150px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -116,7 +116,7 @@
   top: 195px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 155px; /* Longueur du trait horizontal */
+  width: 150px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -138,7 +138,7 @@
   top: 345px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 155px; /* Longueur du trait horizontal */
+  width: 150px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -160,7 +160,7 @@
   top: 655px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: -5%; /* Place le trait juste à droite de l'homme */
   transform: translateY(100%);
-  width: 155px; /* Longueur du trait horizontal */
+  width: 150px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
