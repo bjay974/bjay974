@@ -29,10 +29,11 @@ function displayData() {
     var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
-    var icone = '\u{1F476}'
+    var icone = '\u{1F476}';
+    var nomAffiche = person.nom_legitime ? `${person.nom} (${person.nom_legitime})` : person.nom ;
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
-    personHTML += '<h4>' + person.nom + ' ' + person.prenom + '</h4>';
+    personHTML += '<h4>' + nomAffiche + ' ' + person.prenom + '</h4>';
     if (person.date_naissance !== "01/01/1901") {
       var dateNaissance = verifieDate(person.date_naissance);
       personHTML += '<p>' + icone + '  ' + dateNaissance + '</p>';

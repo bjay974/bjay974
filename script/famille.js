@@ -85,9 +85,11 @@ function ajoutMembresListe(listElement, persons) {
 // Ajoute un membre a la liste
 function creerListItem(person) {
   const li = document.createElement('li');
+  var nomAffiche = person.nom_legitime ? `${person.nom} (${person.nom_legitime})` : person.nom ;
+
   li.innerHTML = `
       <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
-          ${person.nom} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
+          ${nomAffiche} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
           <em>${getOrigine(person.lieu_naissance)} ${creerGeneration(person)}</em>
       </a>
   `;
