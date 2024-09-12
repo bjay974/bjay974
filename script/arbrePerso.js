@@ -29,22 +29,20 @@ function displayData() {
     var person = data.find(person => person.id === personneId);
     var genderClass = person.genre === 'M' ? 'male' : 'female';
     var container = document.createElement('div');
-    var icone = '\u{1F476}';
     var nomAffiche = person.nom_legitime ? `${person.nom} (${person.nom_legitime})` : person.nom ;
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + nomAffiche + ' ' + person.prenom + '</h4>';
     if (person.date_naissance !== "01/01/1901") {
       var dateNaissance = verifieDate(person.date_naissance);
-      personHTML += '<p>' + icone + '  ' + dateNaissance + '</p>';
+      personHTML += '<p>' +  '  ' + dateNaissance + '</p>';
     }
     if (person.date_deces) {
       var dateDeces = verifieDate(person.date_deces);
-      icone = '\u{1F64F}'
       if (person.date_deces === "01/01/1901") {
         personHTML += '<p>Date de décès inconnue</p>'; }
       else {   
-      personHTML += '<p>' + icone + '  ' +  dateDeces + '</p>'; }
+      personHTML += '<p>' + '/ c ' +  dateDeces + ' )</p>'; }
     }
     personHTML += '</div>';
     container.innerHTML += personHTML;
@@ -269,7 +267,7 @@ function displayData() {
   // Fonction pour créer le HTML pour un parent (père ou mère)
   function creerParentHTML(parent, containerClass, genderClass) {
     let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-    parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom}</a></p>`;
+    parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom} <br> </a></p>`;
     parentHTML += '</div>';
     return parentHTML;
   }
