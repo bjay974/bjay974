@@ -105,7 +105,7 @@ width: 220px
   top: 100px; /* Place le trait au milieu, verticalement par rapport à l'homme */
   left: 50%; /* Place le trait juste à droite de l'homme */
   transform: translateY(-50%);
-  width: 255px; /* Longueur du trait horizontal */
+  width: 205px; /* Longueur du trait horizontal */
   height: 3px; /* Épaisseur du trait */
   background-color: var(--color-green); /* Couleur du trait */
 }
@@ -113,11 +113,11 @@ width: 220px
 .personne:last-of-type::before {
   content: '';
   position: absolute;
-  top: 417px;
-  left: 49%; /* Centre le trait verticalement */
+  top: 415px;
+  left: 50%; /* Centre le trait verticalement */
   transform: translateX(-50%);
   width: 3px; /* Épaisseur du trait */
-  height: 90px; /* Hauteur du trait couvrant toute la hauteur du couple */
+  height: 110px; /* Hauteur du trait couvrant toute la hauteur du couple */
   background-color: var(--color-green);
 } 
 
