@@ -56,6 +56,7 @@ function displayData() {
     if (person.id_conjoint){
       var conjoint = data.find(p => p.id === person.id_conjoint);
       var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
+      const afficheDate = creerDate(membre.date_naissance, membre.date_deces);
       var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
       var titre = document.createElement('p');
       if (person.date_mariage) {
@@ -76,6 +77,7 @@ function displayData() {
       titre.classList.add('label'); 
       container.appendChild(titre); 
       conjointHTML += '<p><a href="../html/arbrePerso.html?id=' + conjoint.id  + '" style="text-decoration: none; color: inherit;">' + conjoint.nom + ' ' + conjoint.prenom + '</a></p>';;
+      conjointHTML += afficheDate;
       conjointHTML += '</div>';
       container.innerHTML += conjointHTML;
     }
