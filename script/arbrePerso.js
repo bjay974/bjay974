@@ -33,17 +33,22 @@ function displayData() {
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + nomAffiche + ' ' + person.prenom + '</h4>';
-    if (person.date_naissance !== "01/01/1901") {
-      var dateNaissance = verifieDate(person.date_naissance);
-      personHTML += '<p>' +  '  ' + dateNaissance + '</p>';
+    if ((person.date_naissance !== "01/01/1901") && (person.date_deces === "01/01/1901")) {
+      personHTML += '<p>' +  '( ??  /  ?? ' )</p>'; }
+      else {
+        if (person.date_naissance !== "01/01/1901") {
+          var dateNaissance = verifieDate(person.date_naissance);
+          personHTML += '<p>' +  '( ' + dateNaissance + ' )</p>';
+        }
+        if (person.date_deces) {
+          var dateDeces = verifieDate(person.date_deces);
+          if (person.date_deces === "01/01/1901") {
+            personHTML += '<p>Date de décès inconnue</p>'; }
+          else {   
+          personHTML += '<p>' + '( ' +  dateDeces + ' )</p>'; }
+        } }
     }
-    if (person.date_deces) {
-      var dateDeces = verifieDate(person.date_deces);
-      if (person.date_deces === "01/01/1901") {
-        personHTML += '<p>Date de décès inconnue</p>'; }
-      else {   
-      personHTML += '<p>' + '/ c ' +  dateDeces + ' )</p>'; }
-    }
+
     personHTML += '</div>';
     container.innerHTML += personHTML;
     if (person.id_conjoint){
@@ -258,16 +263,35 @@ function displayData() {
     const mois = parseInt(date.substr(3, 2));
     const day = parseInt(date.substr(0, 2));
     if (day === 1 && mois === 1) {
-      return "en " + an;
+      return an;
     } else {
-        return "le " + date;
+        return date;
     }
   }
   
+  function creerDate(dateNaissance, dateDeces) {
+    const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
+    const anDeces = parseInt(dateDeces.substr(6, 4)); 
+    let texteNaissance
+    let texteDeces
+    if (anNaiss === 1901) {      
+       texteNaissance = "??"}
+    else 
+       texteNaissance = "" ;
+    if (anDeces === 1901) {
+        texteDeces = "??" 
+        return `${texteNaissance} ${anNaiss} / ${texteDeces}` }
+    else {
+        return `${texteNaissance} ${anNaiss} / ${anDeces}`
+      };
+  }
+
   // Fonction pour créer le HTML pour un parent (père ou mère)
   function creerParentHTML(parent, containerClass, genderClass) {
     let parentHTML = `<div class="${containerClass} ${genderClass}">`;
+    const afficheDate = creerDate(parent.date_naissance, parent.date_deces);
     parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom} <br> </a></p>`;
+    parentHTML += afficheDate;
     parentHTML += '</div>';
     return parentHTML;
   }
