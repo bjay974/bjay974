@@ -271,15 +271,19 @@ function displayData() {
     if (anDeces === 1901) {
         texteDeces = "??" 
         return `${texteNaissance} ${anNaiss} / ${texteDeces}` }
-    else {
+    else if (anDeces === 1901)  {
         return `${texteNaissance} ${anNaiss} / ${anDeces}`
+      };
+    else (anDeces === 2100)  {
+        return `${texteNaissance} ${anNaiss}`
       };
   }
 
   // Fonction pour créer le HTML pour un parent (père ou mère)
   function creerParentHTML(parent, containerClass, genderClass) {
     let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-    const afficheDate = creerDate(parent.date_naissance, parent.date_deces);
+    var dateDeces = person.nom_legitime ? `${parent.date_deces}` : "01/01/2100" ;
+    const afficheDate = creerDate(parent.date_naissance, dateDeces);
     parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom} <br> </a></p>`;
     parentHTML += afficheDate;
     parentHTML += '</div>';
