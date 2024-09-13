@@ -33,8 +33,9 @@ function displayData() {
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + nomAffiche + ' ' + person.prenom + '</h4>';
-    if ((person.date_naissance !== "01/01/1901") && (person.date_deces === "01/01/1901")) {
-      personHTML += '<p>' +  '( ??  /  ?? ' )</p>'; }
+    if ((person.date_naissance !== "01/01/1901") && (person.date_deces === "01/01/1901")) 
+      {
+        personHTML += '<p>( ?? / ?? )</p>'; }
       else {
         if (person.date_naissance !== "01/01/1901") {
           var dateNaissance = verifieDate(person.date_naissance);
