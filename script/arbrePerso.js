@@ -226,7 +226,7 @@ function displayData() {
   // Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
   function afficherMembreDansConteneur(membre, conteneur, role) {
     const genderClass = membre.genre === 'M' ? 'male' : 'female';
-    const dateDeces = person.nom_legitime ? `${parent.date_deces}` : "01/01/2100" ;
+    const dateDeces = membre.date_deces ? `${membre.date_deces}` : "01/01/2100" ;
     const afficheDate = creerDate(membre.date_naissance, dateDeces);
     const membreDiv = document.createElement('div');
     membreDiv.className = `${role} ${genderClass} membre-container`;
