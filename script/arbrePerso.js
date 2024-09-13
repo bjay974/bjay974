@@ -283,7 +283,7 @@ function displayData() {
   // Fonction pour créer le HTML pour un parent (père ou mère)
   function creerParentHTML(parent, containerClass, genderClass) {
     let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-    const dateDeces = person.nom_legitime ? `${parent.date_deces}` : "01/01/2100" ;
+    const dateDeces = parent.date_deces ? `${parent.date_deces}` : "01/01/2100" ;
     const afficheDate = creerDate(parent.date_naissance, dateDeces);
     parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom} <br> </a></p>`;
     parentHTML += afficheDate;
