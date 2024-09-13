@@ -226,7 +226,8 @@ function displayData() {
   // Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
   function afficherMembreDansConteneur(membre, conteneur, role) {
     const genderClass = membre.genre === 'M' ? 'male' : 'female';
-    const afficheDate = creerDate(membre.date_naissance, membre.date_deces);
+    const dateDeces = person.nom_legitime ? `${parent.date_deces}` : "01/01/2100" ;
+    const afficheDate = creerDate(membre.date_naissance, dateDeces);
     const membreDiv = document.createElement('div');
     membreDiv.className = `${role} ${genderClass} membre-container`;
     let membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
@@ -282,7 +283,7 @@ function displayData() {
   // Fonction pour créer le HTML pour un parent (père ou mère)
   function creerParentHTML(parent, containerClass, genderClass) {
     let parentHTML = `<div class="${containerClass} ${genderClass}">`;
-    var dateDeces = person.nom_legitime ? `${parent.date_deces}` : "01/01/2100" ;
+    const dateDeces = person.nom_legitime ? `${parent.date_deces}` : "01/01/2100" ;
     const afficheDate = creerDate(parent.date_naissance, dateDeces);
     parentHTML += `<p><a href="../html/arbrePerso.html?id=${parent.id}" style="text-decoration: none; color: inherit;">${parent.nom} ${parent.prenom} <br> </a></p>`;
     parentHTML += afficheDate;
