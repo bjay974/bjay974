@@ -268,15 +268,15 @@ function displayData() {
     if (anNaiss === 1901) {      
        texteNaissance = "??"}
     else 
-       texteNaissance = "" ;
+       {texteNaissance = "" };
     if (anDeces === 1901) {
         texteDeces = "??" 
         return `${texteNaissance} ${anNaiss} / ${texteDeces}` }
-    else if (anDeces === 1901)  {
-        return `${texteNaissance} ${anNaiss} / ${anDeces}`
-      };
-    else (anDeces === 2100)  {
+    else if (anDeces === 2100)  {
         return `${texteNaissance} ${anNaiss}`
+      }
+    else {
+        return `${texteNaissance} ${anNaiss} / ${anDeces}`
       };
   }
 
