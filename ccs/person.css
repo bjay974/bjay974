@@ -86,6 +86,7 @@
     font-style: italic;
     font-size: 80%;
     padding-bottom:2%;
+     padding-right: 2%;
     text-align: left;
  }
 
@@ -136,6 +137,9 @@
 
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
+    .affichePerson  {
+    margin-left : 20px;
+}
     .listPerson, .listEnfant, .listFratrie {
         grid-template-columns: 1fr; /* Une seule colonne sur petits écrans */
         padding-left: 2%;
@@ -143,7 +147,7 @@
     }
     .bannierePersonM, .bannierePersonF {
         text-align: center;
-        font-size: 0.8rem; /* Réduit la taille des sous-titres */
+        margin-top: 20px ;
         padding: 5px 5px 5px 10px;
         width: 90%;
     }
