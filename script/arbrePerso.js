@@ -33,23 +33,24 @@ function displayData() {
     var personHTML = '<div class="' + containerClass + ' ' + genderClass + '">';
     container.className = containerClass;
     personHTML += '<h4>' + nomAffiche + ' ' + person.prenom + '</h4>';
-    if ((person.date_naissance !== "01/01/1901") && (person.date_deces === "01/01/1901")) 
-      {
-        personHTML += '<p>( ?? / ?? )</p>'; }
-      else {
+    if (person.date_naissance === "01/01/1901" && person.date_deces === "01/01/1901") {
+      personHTML += '<p>( ?? )</p>';
+      personHTML += '<p>( ?? )</p>';
+    } 
+    else {
         if (person.date_naissance !== "01/01/1901") {
-          var dateNaissance = verifieDate(person.date_naissance);
-          personHTML += '<p>' +  '( ' + dateNaissance + ' )</p>';
+            var dateNaissance = verifieDate(person.date_naissance);
+            personHTML += '<p>' +  '( ' + (dateNaissance || '??') + ' )</p>';
+        } else {
+            personHTML += '<p>( ?? )</p>';
         }
-        if (person.date_deces) {
-          var dateDeces = verifieDate(person.date_deces);
-          if (person.date_deces === "01/01/1901") {
-            personHTML += '<p>Date de décès inconnue</p>'; }
-          else {   
-          personHTML += '<p>' + '( ' +  dateDeces + ' )</p>'; }
-        } }
+        if (person.date_deces && person.date_deces !== "01/01/1901") {
+            var dateDeces = verifieDate(person.date_deces);
+            personHTML += '<p>' + '( ' + (dateDeces || '??') + ' )</p>';
+        } else {
+            personHTML += '<p>( ?? )</p>';
+        }
     }
-
     personHTML += '</div>';
     container.innerHTML += personHTML;
     if (person.id_conjoint){
