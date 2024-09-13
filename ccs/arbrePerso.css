@@ -20,7 +20,7 @@
 }
 
 .personne:last-of-type{
-  min-height: 70px
+  min-height: 75px
 }
 
 .parent, .grandparent, .enfant, .petitenfant {
@@ -30,7 +30,7 @@ box-sizing: border-box;
 padding: 1%;
 text-overflow: ellipsis;
 white-space: nowrap;
-min-height: 70px;
+min-height: 75px;
 }
 
 .parent {
@@ -141,7 +141,7 @@ width: 220px
  }
 
 .global-container .label {margin-left : 100px}
-.enfant-container + .label {margin-left : 200px}
+.enfant-container + .label {margin-left : 100px}
 .enfant-container {margin-top : 20px}
 
 .personne + .label {margin-top : 50px}

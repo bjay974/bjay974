@@ -224,30 +224,16 @@ function displayData() {
   // Fonction pour afficher un membre (enfant ou petit-enfant) dans un conteneur donné
   function afficherMembreDansConteneur(membre, conteneur, role) {
     const genderClass = membre.genre === 'M' ? 'male' : 'female';
+    const afficheDate = creerDate(membre.date_naissance, membre.date_deces);
     const membreDiv = document.createElement('div');
     membreDiv.className = `${role} ${genderClass} membre-container`;
-    const membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
+    let membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
+    membreLink += afficheDate;
     membreDiv.innerHTML = membreLink;
     conteneur.appendChild(membreDiv);
   }
   
-  
-  // Fonction générique pour afficher les membres
-  function afficherMembres(titreSingulier, titrePluriel, membres, cssClass, parentPrenom = null) {
-    const container = ajouterDivetTitre(cssClass, membres.length === 1, titreSingulier, titrePluriel);
-      membres.forEach(membre => {
-        const genderClass = membre.genre === 'M' ? 'male' : 'female';
-        const membreDiv = document.createElement('div');
-        membreDiv.className = `${cssClass} ${genderClass}`;
-        
-        const membreLink = `<p><a href="../html/arbrePerso.html?id=${membre.id}" style="text-decoration: none; color: inherit;">${membre.nom} ${membre.prenom}</a></p>`;
-        
-        membreDiv.innerHTML = parentPrenom ? membreLink + `<p class="parent-info">(${parentPrenom})</p>` : membreLink;
-        container.appendChild(membreDiv);
-    });
-      document.getElementById('person-container').appendChild(container);
-  }
-  
+    
   // Fonction pour ajouter un div avec un titre
   function ajouterDivetTitre(containerClass, condition, titreSingulier, titrePluriel) {
     const container = document.createElement('div');
