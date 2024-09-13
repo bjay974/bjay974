@@ -190,7 +190,7 @@ body {
 /* Styles pour les petits écrans (mobiles) */
 @media (max-width: 480px) {
  .grid-container {
-    grid-template-columns: repeat(5, 1fr); /* Passe à deux colonnes */
+    grid-template-columns: repeat(4, 1fr); /* Passe à deux colonnes */
  }
 
 .parent, .grandparent, .enfant, .petitenfant, .personne {
@@ -202,12 +202,12 @@ body {
   
 .membre-container {
   margin-right: 10px; /* Espacement entre l'enfant et ses petits-enfants */
-  width: 80px;
+  width: 120px;
 }
   .parent.male + .parent.female{margin-top : 175px;}
   .grandparent.male + .grandparent.female{margin-top : 60px}
   .grandparent.female + .grandparent.male{margin-top : 60px;}
-  .personne + .personne {margin-top : 50px}
+  .personne + .personne {margin-top : 40px}
   .personne + .label {margin-top : 30px}
   .label + .personne {margin-top : 30px}
   .label + .parent {margin-top : 60px}
@@ -231,7 +231,7 @@ body {
 }
 
   .personne:first-child {
-    margin-top: 150px;
+    margin-top: 140px;
   }
 .personne:last-of-type::before {
   content: '';
