@@ -119,7 +119,7 @@ footer {
         padding: 2px;
     }
     body{
-        height: 90%;
+        height: 750px;
     }
     footer {
         background-color: var(--color-primary);

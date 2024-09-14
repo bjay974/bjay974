@@ -56,7 +56,8 @@ function displayData() {
     if (person.id_conjoint){
       var conjoint = data.find(p => p.id === person.id_conjoint);
       var genderconjointClass = conjoint.genre === 'M' ? 'male' : 'female';
-      const afficheDate = creerDate(conjoint.date_naissance, conjoint.date_deces);
+      const dateDeces = conjoint.date_deces ? `${conjoint.date_deces}` : "01/01/2100" ;
+      const afficheDate = creerDate(conjoint.date_naissance, dateDeces);
       var conjointHTML = '<div class="' + containerClass + ' ' + genderconjointClass + '">';
       var titre = document.createElement('p');
       if (person.date_mariage) {
