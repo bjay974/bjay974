@@ -93,7 +93,8 @@ function creerDate(dateNaissance, dateDeces) {
   let texteNaissance
   let texteDeces
   if (anNaiss === 1901) {      
-     texteNaissance = "??"}
+     texteNaissance = "??"
+     anNaiss = "" }
   else 
      texteNaissance = "" ;
   if (anDeces === 1901) {
