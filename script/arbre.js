@@ -88,7 +88,7 @@ function afficherGenerations(generations, data) {
 }
 
 function creerDate(dateNaissance, dateDeces) {
-  const anNaiss = parseInt(dateNaissance.substr(6, 4)); 
+  var anNaiss = parseInt(dateNaissance.substr(6, 4)); 
   const anDeces = parseInt(dateDeces.substr(6, 4)); 
   let texteNaissance
   let texteDeces
