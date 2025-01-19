@@ -319,14 +319,20 @@ function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
     const nomPersonne = (person?.nom_legitime || person?.nom) 
     ? (person.nom_legitime || person.nom) 
-    : "Recherche en cours...";   
-    lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
-    lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
-    lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
-    if (laClasse) {
-        lienPersonne.classList.add(laClasse);
+    : "WIP"; 
+    if (nomPersonne === "WIP") {
+        lienPersonne.textContent = `Recherche en cours...`;
+        return lienPersonne; 
     }
-    return lienPersonne; 
+    else{
+        lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
+        lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
+        lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
+        if (laClasse) {
+            lienPersonne.classList.add(laClasse);
+        }
+        return lienPersonne; 
+    }
 }
 
 //Ajouter un e a un adjectif !! si genre est F (ex : NéE)
