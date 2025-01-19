@@ -255,30 +255,30 @@ function ajouterAffranchi(detailsList,person) {
 }
 
 // Fonction principale pour charger tous les liens vers les actes
-function ajouterLiensActes(person, detailsList) {
+async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
 
     // Charge les liens pour les répertoires normaux
-    repertoires.forEach(repertoire => {
+    for (let repertoire of repertoires) {
         const afficheMessage = getAfficheMessage(repertoire);
-        const promesses = extensions.map(extension => 
+        const promesses = extensions.map(extension =>
             ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
         );
-        // Exécuter toutes les promesses pour ce répertoire
-        Promise.all(promesses);
-    });
+        // Attendre que toutes les promesses pour ce répertoire soient résolues
+        await Promise.all(promesses);
+    }
 
     // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
     if (person.date_mariage && person.genre === "F") {
         const nomFichierConjoint = person.id_conjoint;
         const afficheMessage = `Voir l'acte de mariage`;
-        const promessesMariage = extensions.map(extension => 
+        const promessesMariage = extensions.map(extension =>
             ajouterlienFichier(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
         );
-        // Exécuter toutes les promesses pour le mariage du conjoint
-        Promise.all(promessesMariage);
+        // Attendre que toutes les promesses pour le mariage du conjoint soient résolues
+        await Promise.all(promessesMariage);
     } else {
         detailsList.appendChild(document.createElement('br'));
     }
@@ -287,31 +287,42 @@ function ajouterLiensActes(person, detailsList) {
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
 function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage) {
     const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
-    return fetch(monFichierComplet).then(response => {
-        if (response.ok) {
-            const acteItem = creerItem("");
-            const lienFichier = document.createElement('a');
-            lienFichier.classList.add('lienFichier')
-            lienFichier.textContent = afficheMessage;
-            lienFichier.href = monFichierComplet;
-            acteItem.appendChild(lienFichier);
-            // Vérifier l'existence d'une deuxième partie
-            const monFichierBis = `../${repertoire}/${nomFichier}_2.${extension}`;
-            return fetch(monFichierBis).then(responseBis => {
-                if (responseBis.ok) {
-                    const lienFichierbis = document.createElement('a');
-                    lienFichierbis.classList.add('lienFichier')
-                    lienFichierbis.textContent = "Deuxième partie";
-                    lienFichierbis.href = monFichierBis;                                          
-                    acteItem.appendChild(document.createTextNode('  ||  '));
-                    acteItem.appendChild(lienFichierbis);
-                }
-                detailsList.appendChild(acteItem);
-            });
-         
-        }
-    });
+    return fetch(monFichierComplet)
+        .then(response => {
+            if (response.ok) {
+                const acteItem = creerItem("");
+                const lienFichier = document.createElement('a');
+                lienFichier.classList.add('lienFichier');
+                lienFichier.textContent = afficheMessage;
+                lienFichier.href = monFichierComplet;
+                acteItem.appendChild(lienFichier);
+                // Vérifier l'existence d'une deuxième partie
+                const monFichierBis = `../${repertoire}/${nomFichier}_2.${extension}`;
+                return fetch(monFichierBis)
+                    .then(responseBis => {
+                        if (responseBis.ok) {
+                            const lienFichierbis = document.createElement('a');
+                            lienFichierbis.classList.add('lienFichier');
+                            lienFichierbis.textContent = "Deuxième partie";
+                            lienFichierbis.href = monFichierBis;
+                            acteItem.appendChild(document.createTextNode('  ||  '));
+                            acteItem.appendChild(lienFichierbis);
+                        }
+                        detailsList.appendChild(acteItem);
+                    })
+                    .catch(error => {
+                        console.error('Erreur lors de la récupération du fichier bis :', error);
+                        detailsList.appendChild(acteItem);
+                    });
+            } else {
+                console.error('Erreur lors de la récupération du fichier :', monFichierComplet);
+            }
+        })
+        .catch(error => {
+            console.error('Erreur lors de la récupération du fichier :', monFichierComplet);
+        });
 }
+
 //fonctions utiles 
 
 // Fonction pour créer un lien formaté (nom + prénom) et  un href optionnel et une classe
