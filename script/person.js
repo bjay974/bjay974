@@ -321,7 +321,7 @@ function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     ? (person.nom_legitime || person.nom) 
     : "WIP"; 
     if (nomPersonne === "WIP") {
-        lienPersonne.textContent = `Recherche en cours...`;
+        lienPersonne.textContent = `Recherche parents en cours...`;
         return lienPersonne; 
     }
     else{
