@@ -408,6 +408,20 @@
     "date_affranchi": "20/12/1848"
   },
   {
+    "id": 717,
+    "nom": "VERLUIS",
+    "prenom": "Avril",
+    "genre": "M",
+    "id_pere": "inconnu",
+    "id_mere": "inconnue",
+    "date_naissance": "01/01/1804",
+    "lieu_naissance": "Afrique",
+    "date_deces": "06/04/1850",
+    "lieu_deces": "Sainte-Rose",
+    "id_conjoint": 704,
+    "date_affranchi": "20/12/1848"
+  },
+  {
     "id": 715,
     "nom": "RODIN",
     "prenom": "Fortuné",
@@ -580,7 +594,7 @@
     "nom": "VERVOUX",
     "prenom": "Marie Zeline",
     "genre": "F",
-    "id_pere": "inconnu",
+    "id_pere": 717,
     "id_mere": 704,
     "date_naissance": "01/01/1835",
     "lieu_naissance": "Inconnu",
@@ -589,7 +603,8 @@
     "date_mariage": "03/11/1875",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 607,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire": "Prenommée dans certains acte : Marie Zelima"
   },
   {
     "id": 607,
