@@ -1124,7 +1124,9 @@
     "genre": "M",
     "id_pere": 1713,
     "id_mere": 1718,
-    "date_naissance": "01/01/1839"
+    "date_naissance": "01/01/1839",
+    "date_deces": "01/01/1901"
+
   },
   {
     "id": 1660,
@@ -1133,7 +1135,8 @@
     "genre": "F",
     "id_pere": 1717,
     "id_mere": 1722,
-    "date_naissance": "01/01/1832"
+    "date_naissance": "01/01/1832",
+    "date_deces": "01/01/1901"
   },
   {
     "id": 1645,
