@@ -260,15 +260,20 @@ async function ajouterLiensActes(person, detailsList) {
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
 
-    // Charge les liens pour les répertoires normaux
+    // Tableau pour stocker les promesses de chargement des documents
+    const promesses = [];
+
+    // Ajouter les promesses pour chaque répertoire dans l'ordre spécifié
     for (let repertoire of repertoires) {
         const afficheMessage = getAfficheMessage(repertoire);
-        const promesses = extensions.map(extension =>
+        const promesseRepertoire = extensions.map(extension =>
             ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
         );
-        // Attendre que toutes les promesses pour ce répertoire soient résolues
-        await Promise.all(promesses);
+        promesses.push(...promesseRepertoire);
     }
+
+    // Attendre que toutes les promesses soient résolues
+    await Promise.all(promesses);
 
     // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
     if (person.date_mariage && person.genre === "F") {
