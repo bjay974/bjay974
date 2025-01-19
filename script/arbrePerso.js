@@ -47,9 +47,7 @@ function displayData() {
         if (person.date_deces && person.date_deces !== "01/01/1901") {
             var dateDeces = verifieDate(person.date_deces);
             personHTML += '<p>' + '( ' + (dateDeces || '??') + ' )</p>';
-        } else {
-            personHTML += '<p>( ?? )</p>';
-        }
+        } 
     }
     personHTML += '</div>';
     container.innerHTML += personHTML;
