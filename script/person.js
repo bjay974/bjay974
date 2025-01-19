@@ -317,7 +317,9 @@ function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, affi
 // Fonction pour créer un lien formaté (nom + prénom) et  un href optionnel et une classe
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
-    const nomPersonne = person.nom_legitime || person.nom;    
+    const nomPersonne = (person?.nom_legitime || person?.nom) 
+    ? (person.nom_legitime || person.nom) 
+    : "Recherche en cours...";   
     lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
     lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
     lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
