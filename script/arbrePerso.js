@@ -269,8 +269,12 @@ function displayData() {
     else 
        {texteNaissance = "" };
     if (anDeces === 1901) {
-        texteDeces = "??" 
+      texteDeces = "??"
+      if (anNaiss === 1901) {
+        return `${texteNaissance} / ${texteDeces}` }
+      else {
         return `${texteNaissance} ${anNaiss} / ${texteDeces}` }
+      } 
     else if (anDeces === 2100)  {
         return `${texteNaissance} ${anNaiss}`
       }
