@@ -100,6 +100,68 @@
     "lieu_naissance": "Saint Denis"
   },
   {
+    "id": 1719,
+    "nom": "FONTAINE",
+    "prenom": "Ducorail Pierre",
+    "genre": "M",
+    "id_pere": "inconnu",
+    "id_mere": "inconnue",
+    "date_naissance": "09/10/1801",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "17/04/1840",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "06/06/1827",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1716
+  }, 
+  {
+    "id": 1716,
+    "nom": "HOAREAU",
+    "prenom": "Marie Geneviève",
+    "genre": "M",
+    "id_pere": "inconnu",
+    "id_mere": "inconnue",
+    "date_naissance": "07/12/1805",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "01/01/1901",
+    "lieu_deces": "Inconnu",
+    "date_mariage": "06/06/1827",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1719
+  },   
+  {
+    "id": 1705,
+    "nom": "LALISE",
+    "prenom": "Augustave",
+    "genre": "M",
+    "id_pere": "inconnu",
+    "id_mere": "inconnue",
+    "date_naissance": "01/01/1833",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "19/07/1867",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "09/04/1850",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1706,
+    "date_affranchi": "20/12/1848"
+  },
+  {
+    "id": 1706,
+    "nom": "ANGOU",
+    "prenom": "Pauline",
+    "genre": "F",
+    "id_pere": "inconnu",
+    "id_mere": "inconnue",
+    "date_naissance": "01/01/1833",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "19/07/1904",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "09/04/1850",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1705,
+    "date_affranchi": "20/12/1848"
+  },  
+  {
     "id": 1645,
     "nom": "FONTAINE",
     "prenom": "Martin Emilius",
@@ -1153,7 +1215,8 @@
     "lieu_naissance": "Saint Joseph",  
     "lieu_deces": "Saint Joseph ",      
     "date_deces": "16/08/1900",
-    "id_conjoint": 1660
+    "id_conjoint": 1660,
+    "date_affranchi": "20/12/1848"
   },
   {
     "id": 1660,
@@ -1165,7 +1228,8 @@
     "date_naissance": "01/01/1832",
     "lieu_naissance": "Saint Joseph",    
     "date_deces": "01/01/1901",
-    "id_conjoint": 1635
+    "id_conjoint": 1635,
+    "date_affranchi": "20/12/1848"
   },
   {
     "id": 1650,
