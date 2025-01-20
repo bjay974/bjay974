@@ -120,7 +120,7 @@
     "nom": "FONTAINE",
     "prenom": "Ducorail Pierre",
     "genre": "M",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 1830,
     "date_naissance": "09/10/1801",
     "lieu_naissance": "Saint Joseph",
@@ -150,7 +150,7 @@
     "nom": "LALISE",
     "prenom": "Augustave",
     "genre": "M",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 1828,
     "date_naissance": "01/01/1833",
     "lieu_naissance": "Saint Joseph",
@@ -185,7 +185,7 @@
     "date_naissance": "27/06/1834",
     "lieu_naissance": "Saint Joseph",
     "date_deces": "01/01/1901",
-    "lieu_deces": null,
+    "lieu_deces": "Inconnu",
     "date_mariage": "24/05/1853",
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1650
@@ -1370,7 +1370,7 @@
     "date_affranchi": "20/12/1848"
   },
   {
-    "id": 1708,
+    "id": 1718,
     "nom": "DUJARDIN",
     "prenom": "Eléonore",
     "genre": "F",
@@ -1575,7 +1575,7 @@
     "id_conjoint": 1708
   },
   {
-    "id": 1718,
+    "id": 1708,
     "nom": "FONTAINE",
     "prenom": "Olympe",
     "genre": "F",
