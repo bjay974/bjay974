@@ -1370,7 +1370,7 @@
     "date_affranchi": "20/12/1848"
   },
   {
-    "id": 1718,
+    "id": 1708,
     "nom": "DUJARDIN",
     "prenom": "Eléonore",
     "genre": "F",
@@ -1575,7 +1575,7 @@
     "id_conjoint": 1708
   },
   {
-    "id": 1708,
+    "id": 1718,
     "nom": "FONTAINE",
     "prenom": "Olympe",
     "genre": "F",
@@ -1589,4 +1589,5 @@
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1711
   }
+  
 ]
