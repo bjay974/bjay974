@@ -3,6 +3,7 @@
     "id": 2098,
     "nom": "RAVELONARIVO",
     "prenom": "Samuel",
+    "date_naissance": "01/01/1901",    
     "genre": "M"
   },
   {
@@ -1073,7 +1074,7 @@
     "nom": "LOKIMA",
     "prenom": "Shana",
     "genre": "F",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 104,
     "date_naissance": "22/02/1997",
     "lieu_naissance": "Limoges"
@@ -1093,7 +1094,7 @@
     "nom": "LOKIMA",
     "prenom": "Whitney",
     "genre": "F",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 104,
     "date_naissance": "20/12/1998",
     "lieu_naissance": "Limoges"
@@ -1123,7 +1124,7 @@
     "nom": "BETSMAN",
     "prenom": "Jordan",
     "genre": "M",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 104,
     "date_naissance": "08/06/2002",
     "lieu_naissance": "Limoges"
@@ -1358,8 +1359,8 @@
     "nom": "BARRE",
     "prenom": "Joseph",
     "genre": "M",
-    "id_pere": null,
-    "id_mere": null,
+    "id_pere": "Inconnu",
+    "id_mere": "Inconnue",
     "date_naissance": "01/01/1808",
     "lieu_naissance": "Inconnu",
     "date_deces": "18/08/1900",
@@ -1373,7 +1374,7 @@
     "nom": "DUJARDIN",
     "prenom": "Eléonore",
     "genre": "F",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 1816,
     "date_naissance": "01/01/1802",
     "lieu_naissance": "Inconnu",
@@ -1387,8 +1388,8 @@
     "nom": "SINCERE",
     "prenom": "Fortuné",
     "genre": "F",
-    "id_pere": null,
-    "id_mere": null,
+    "id_pere": "Inconnu",
+    "id_mere": "Inconnue",
     "date_naissance": "01/01/1802",
     "lieu_naissance": "Inconnu",
     "date_deces": "16/04/1885",
@@ -1471,12 +1472,6 @@
     "date_mariage": "10/01/1853",
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1703
-  },
-  {
-    "id": null,
-    "id_pere": null,
-    "id_mere": null,
-    "id_conjoint": null
   },
   {
     "id": 1721,
@@ -1584,7 +1579,7 @@
     "nom": "FONTAINE",
     "prenom": "Olympe",
     "genre": "F",
-    "id_pere": null,
+    "id_pere": "Inconnu",
     "id_mere": 1824,
     "date_naissance": "15/11/1813",
     "lieu_naissance": "Saint Joseph",
