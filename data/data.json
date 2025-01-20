@@ -1223,7 +1223,7 @@
   },
   {
     "id": 1635,
-    "nom": "BARRE",
+    "nom": "DUJARDIN",
     "prenom": "Joseph",
     "genre": "M",
     "id_pere": 1713,
@@ -1232,8 +1232,11 @@
     "lieu_naissance": "Saint Joseph",
     "lieu_deces": "Saint Joseph ",
     "date_deces": "16/08/1900",
+    "nom_legitime": "BARRE",
+    "date_legitime": "30/03/1859",    
     "id_conjoint": 1660,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire": "Reconnu par Joseph BARRE, demeurant alors à Saint Leu, aprés le deces de sa maman (1850)"
   },
   {
     "id": 1660,
