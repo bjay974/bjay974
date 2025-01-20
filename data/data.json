@@ -450,7 +450,8 @@
     "lieu_naissance": "Sainte-Rose",
     "date_deces": "19/08/1855",
     "lieu_deces": "Sainte-Rose",
-    "commentaire": "Née à Ste Rose d'AIMEE (à TURPIN et COLETTE Marie Catherine)"
+    "commentaire": "Née à Ste Rose d'AIMEE (à TURPIN et COLETTE Marie Catherine)",
+    "date_affranchi": "20/12/1848"    
   },
   {
     "id": 800,
@@ -604,7 +605,8 @@
     "date_naissance": "01/01/1813",
     "lieu_naissance": "Madagascar",
     "date_deces": "01/01/1872",
-    "lieu_deces": "Inconnu"
+    "lieu_deces": "Inconnu",
+    "date_affranchi": "20/12/1848"    
   },
   {
     "id": 701,
@@ -688,7 +690,7 @@
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 607,
     "date_affranchi": "20/12/1848",
-    "commentaire": "Prenommée dans certains acte : Marie Zelima"
+    "commentaire": "Prenommée dans certains actes : Marie Zelima"
   },
   {
     "id": 607,
@@ -754,7 +756,8 @@
     "date_mariage": "26/05/1862",
     "lieu_mariage": "Saint benoit",
     "id_conjoint": 602,
-    "commentaire": "Pierre a été employé à lusine sucriére de Beaulieu, propriétée du Credit Foncier"
+    "commentaire": "Pierre a été employé à l'usine sucriére de Beaulieu, propriétée du Credit Foncier",
+    "date_affranchi": "20/12/1848"    
   },
   {
     "id": 602,
@@ -1243,8 +1246,9 @@
     "date_naissance": "01/01/1832",
     "lieu_naissance": "Saint Joseph",
     "date_deces": "01/01/1901",
+    "commentaire": "Bien que fille d'un homme libre, Marianne subit le \"droit du ventre\" et reste donc esclave comme sa mére.  ",
     "id_conjoint": 1635,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848"    
   },
   {
     "id": 1650,
@@ -1350,5 +1354,125 @@
     "date_mariage": "07/07/1857",
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1701
+  },
+  {
+    "id": 1713,
+    "nom": "BARRE",
+    "prenom": "Joseph",
+    "genre": "M",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1808",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "18/08/1900",
+    "lieu_deces": "Saint Leu",
+    "commentaire": "Décédé à Saint Leu ? ",
+    "id_conjoint": 1718,
+    "date_affranchi": "20/12/1848"    
+  },
+  {
+    "id": 1718,
+    "nom": "DUJARDIN",
+    "prenom": "Eléonore",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1802",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "04/05/1850",
+    "lieu_deces": "Saint Joseph",
+    "commentaire": "Esclave : Domaine plaine des Grégues",
+    "id_conjoint": 1713,
+    "date_affranchi": "20/12/1848"    
+  },
+  {
+    "id": 1802,
+    "nom": "SINCERE",
+    "prenom": "Fortuné",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1802",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "16/04/1885",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "22/10/1851",
+    "lieu_mariage": "Saint Joseph",
+    "commentaire": "Esclave domaine MARTIN JB - Grégues",
+    "id_conjoint": 1717,
+    "date_affranchi": "20/12/1848"    
+  },
+  {
+    "id": 1717,
+    "nom": "FONTAINE",
+    "prenom": "Joseph Moreau",
+    "genre": "M",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "16/07/1800",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "11/08/1885",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "22/10/1851",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1722
+  },
+  {
+    "id": 1709,
+    "nom": "MOREL",
+    "prenom": "Louis Géodon",
+    "genre": "M",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1811",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "07/07/1876",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "17/10/1833",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1760
+  },
+  {
+    "id": 1760,
+    "nom": "LEBON",
+    "prenom": "Marie Zephinette",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1901",
+    "date_deces": "01/01/1901",
+    "date_mariage": "17/10/1833",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1709
+  },
+  {
+    "id": 1703,
+    "nom": "PAYET",
+    "prenom": "Charlemagne",
+    "genre": "M",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "24/02/1834",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "07/03/1879",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "10/01/1853",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1704
+  },
+  {
+    "id": 1704,
+    "nom": "CHEVALIER",
+    "prenom": "Henriette",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "25/03/1832",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "21/05/1874",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "10/01/1853",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1703
   }
 ]
