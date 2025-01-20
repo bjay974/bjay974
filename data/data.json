@@ -100,6 +100,21 @@
     "lieu_naissance": "Saint Denis"
   },
   {
+    "id": 1701,
+    "nom": "GIGAN",
+    "prenom": "Pierre Apollinaire",
+    "genre": "M",
+    "id_pere": "inconnu",
+    "id_mere": "inconnue",
+    "date_naissance": "09/10/1801",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "17/04/1840",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "06/06/1827",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1702
+  },  
+  {
     "id": 1719,
     "nom": "FONTAINE",
     "prenom": "Ducorail Pierre",
@@ -118,7 +133,7 @@
     "id": 1716,
     "nom": "HOAREAU",
     "prenom": "Marie Geneviève",
-    "genre": "M",
+    "genre": "F",
     "id_pere": "inconnu",
     "id_mere": "inconnue",
     "date_naissance": "07/12/1805",
