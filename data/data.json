@@ -1,5 +1,11 @@
 [
   {
+    "id": 2098,
+    "nom": "RAVELONARIVO",
+    "prenom": "Samuel",
+    "genre": "F"
+   },
+  {
     "id": 2100,
     "nom": "MARTIN",
     "prenom": "Marie Elisabeth",
@@ -1144,8 +1150,9 @@
     "id_pere": 1713,
     "id_mere": 1718,
     "date_naissance": "01/01/1839",
-    "lieu_naissance": "Saint Joseph",    
-    "date_deces": "01/01/1901",
+    "lieu_naissance": "Saint Joseph",  
+    "lieu_deces": "Saint Joseph ",      
+    "date_deces": "16/08/1900",
     "id_conjoint": 1660
   },
   {
@@ -1187,7 +1194,8 @@
     "date_deces": "28/03/1902",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "16/10/1860",
-    "lieu_mariage": "Saint Joseph"
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1630
   },
   {
     "id": 1630,
@@ -1201,7 +1209,8 @@
     "date_deces": "04/02/1889",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "16/10/1860",
-    "lieu_mariage": "Saint Joseph"
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1625
   },
   {
     "id": 1605,
@@ -1223,7 +1232,7 @@
     "nom": "FONTAINE",
     "prenom": "Alfred",
     "genre": "M",
-    "id_pere": null,
+    "id_pere": "inconnu",
     "id_mere": 1670,
     "date_naissance": "30/05/1849",
     "lieu_naissance": "Saint Joseph",
