@@ -111,7 +111,8 @@
     "date_deces": "25/11/1913",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "07/07/1857",
-    "lieu_mariage": "Saint Joseph"
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1702
   },
   {
     "id": 1719,
@@ -1347,6 +1348,7 @@
     "date_deces": "14/09/1869",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "07/07/1857",
-    "lieu_mariage": "Saint Joseph"
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 1701
   }
 ]
