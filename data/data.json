@@ -868,12 +868,13 @@
     "genre": "F",
     "id_pere": 501,
     "id_mere": 502,
-    "date_naissance": "26/01/1890",
-    "lieu_naissance": "Saint Benoit",
-    "date_deces": "04/02/1919",
+    "date_naissance": "15/01/1890",
+    "lieu_naissance": "Sainte-Rose",
+    "date_deces": "03/02/1919",
     "lieu_deces": "Saint Benoit",
     "date_mariage": "13/06/1908",
     "lieu_mariage": "Sainte-Rose",
+    "commentaire":"En fevrier 1919, Emmanuel est sous les drapeaux  Les premiers retours ont eu lieu en février 1919, suivis par l'arrivée de 1 400 poilus réunionnais à bord du paquebot Madonna en mars 1919",
     "id_conjoint": 401
   },
   {
