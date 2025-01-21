@@ -413,22 +413,6 @@
     "id_conjoint": 1302
   },
   {
-    "id": 801,
-    "nom": "TURQUOIS",
-    "prenom": "Henry",
-    "genre": "M",
-    "id_pere": "inconnu",
-    "id_mere": "inconnue",
-    "date_naissance": "01/01/1812",
-    "lieu_naissance": "Sainte-Rose",
-    "date_deces": "03/12/1874",
-    "lieu_deces": "Sainte-Rose",
-    "date_mariage":"01/02/1854",
-    "lieu_mariage": "Sainte-Rose",    
-    "id_conjoint": 802,
-    "date_affranchi": "20/12/1848"
-  }, 
-  {
     "id": 819,
     "nom": "RACCOLEUR",
     "prenom": "Auguste",
@@ -463,13 +447,10 @@
     "id_mere": "inconnue",
     "date_naissance": "10/12/1792",
     "lieu_naissance": "Sainte-Rose",
-    "date_mariage":"01/02/1854",
-    "lieu_mariage": "Sainte-Rose",
     "date_deces": "19/08/1855",
     "lieu_deces": "Sainte-Rose",
     "commentaire": "Née à Ste Rose de Marie Jeane  (à VEUVE MEULLER)",
-    "date_affranchi": "20/12/1848",
-    "id_conjoint":801
+    "date_affranchi": "20/12/1848"
   },
   {
     "id": 800,
