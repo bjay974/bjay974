@@ -503,7 +503,8 @@
     "date_deces": "06/04/1850",
     "lieu_deces": "Sainte-Rose",
     "id_conjoint": 704,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire":"Esclave de la Veuve Marchand Louis de Bois blanc, Avril est décédé en 1850 dans cette propriétée, aprés l'abolition de l'esclavage"
   },
   {
     "id": 715,
@@ -601,9 +602,9 @@
     "genre": "F",
     "id_pere": "inconnu",
     "id_mere": "inconnue",
-    "date_naissance": "01/01/1813",
+    "date_naissance": "01/01/1812",
     "lieu_naissance": "Madagascar",
-    "date_deces": "01/01/1872",
+    "date_deces": "26/03/1872",
     "lieu_deces": "Inconnu",
     "date_affranchi": "20/12/1848"
   },
@@ -1436,12 +1437,12 @@
   {
     "id": 1760,
     "nom": "LEBON",
-    "prenom": "Marie Zephinette",
+    "prenom": "Marie Zephirette",
     "genre": "F",
     "id_pere": 1821,
     "id_mere": 1820,
-    "date_naissance": "01/01/1901",
-    "date_deces": "01/01/1901",
+    "date_naissance": "01/01/1819",
+    "date_deces": "18/01/1880",
     "date_mariage": "17/10/1833",
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1709
