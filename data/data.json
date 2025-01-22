@@ -365,7 +365,8 @@
     "lieu_deces": "Inconnu",
     "date_mariage": "17/11/1925",
     "lieu_mariage": "Saint Joseph",
-    "id_conjoint": 1408
+    "id_conjoint": 1408,
+    "commentaire":"Domicilié au lieu dit : Les Lianes à Saint Joseph"
   },
   {
     "id": 1408,
@@ -564,7 +565,8 @@
     "date_mariage": "10/06/1848",
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 700,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire":"Esclave à l'etablissement Beaufonds, site desormais de la distillerie Riviere du mât"
   },
   {
     "id": 710,
@@ -715,10 +717,10 @@
     "genre": "F",
     "id_pere": 701,
     "id_mere": 712,
-    "date_naissance": "01/01/1843",
-    "lieu_naissance": "Inconnu",
+    "date_naissance": "13/12/1843",
+    "lieu_naissance": "Sainte-Rose",
     "date_deces": "22/01/1876",
-    "lieu_deces": "Saint Benoit",
+    "lieu_deces": "Sainte-Rose",
     "date_mariage": "26/05/1862",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 611,
@@ -874,7 +876,7 @@
     "lieu_deces": "Saint Benoit",
     "date_mariage": "13/06/1908",
     "lieu_mariage": "Sainte-Rose",
-    "commentaire":"En fevrier 1919, Emmanuel est sous les drapeaux  Les premiers retours ont eu lieu en février 1919, suivis par l'arrivée de 1 400 poilus réunionnais à bord du paquebot Madonna en mars 1919",
+    "commentaire":"En fevrier 1919, Emmanuel est sous les drapeaux. Les premiers retours ont eu lieu en février 1919, suivis par l'arrivée de 1 400 poilus réunionnais à bord du paquebot Madonna en mars 1919",
     "id_conjoint": 401
   },
   {
