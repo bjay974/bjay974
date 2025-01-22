@@ -530,10 +530,11 @@
     "id_mere": "inconnue",
     "date_naissance": "01/01/1811",
     "lieu_naissance": "Afrique",
-    "date_deces": "01/01/1901",
-    "lieu_deces": "Inconnu",
+    "date_deces": "23/08/1853",
+    "lieu_deces": "Saint Benoit",
     "id_conjoint": 715,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire": "Décédée sans engagement, dans la propiétée de Mr Pitou, son proprétaire d'avant l'abolition"
   },
   {
     "id": 712,
