@@ -429,18 +429,6 @@
     "commentaire":"Domicilié au quartier lieu dit le Canal, décédé au domicile de Mr RODIN Fortuné"
   },
   {
-    "id": 804,
-    "nom": "BABET",
-    "prenom": "",
-    "genre": "F",
-    "id_pere": "inconnu",
-    "id_mere": "inconnue",
-    "date_naissance": "01/01/1774",
-    "lieu_naissance": "Afrique",
-    "date_deces": "19/06/1822",
-    "lieu_deces": "Saint Benoit"
-  },
-  {
     "id": 802,
     "nom": "EVRARD",
     "prenom": "Vitaline",
@@ -573,13 +561,12 @@
   {
     "id": 710,
     "nom": "CHILDERIC",
-    "prenom": "Melisa",
+    "prenom": "Melise",
     "genre": "F",
-    "nom_legitime": "RENETTE",
     "id_pere": "inconnu",
-    "id_mere": 804,
-    "date_naissance": "13/10/1812",
-    "lieu_naissance": "Saint Benoit",
+    "id_mere": "inconnue",
+    "date_naissance": "01/01/1812",
+    "lieu_naissance": "Inconnu",
     "date_deces": "31/08/1863",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 709,
@@ -597,7 +584,8 @@
     "date_deces": "31/08/1871",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 710,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire": "Domicilié à Bras Canot"
   },
   {
     "id": 704,
