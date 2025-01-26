@@ -108,11 +108,11 @@
     "id_pere": 1825,
     "id_mere": 1834,
     "date_naissance": "09/10/1838",
-    "lieu_naissance": "Saint Joseph",
+    "lieu_naissance": "Saint Pierre",
     "date_deces": "25/11/1913",
-    "lieu_deces": "Saint Joseph",
+    "lieu_deces": "Saint Pierre",
     "date_mariage": "07/07/1857",
-    "lieu_mariage": "Saint Joseph",
+    "lieu_mariage": "Saint Pierre",
     "id_conjoint": 1702
   },
   {
@@ -198,8 +198,9 @@
     "id_pere": 1701,
     "id_mere": 1702,
     "date_naissance": "15/09/1859",
-    "date_deces": "01/01/1901",
+    "date_deces": "28/04/1919",
     "lieu_naissance": "Saint Pierre",
+    "lieu_deces": "Petite Ile",
     "id_conjoint": 1605
   },
   {
@@ -285,7 +286,7 @@
     "id_pere": "inconnu",
     "id_mere": 1610,
     "date_naissance": "19/09/1878",
-    "lieu_naissance": "Saint Joseph",
+    "lieu_naissance": "Saint Pierre",
     "date_deces": "01/12/1913",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "23/11/1895",
@@ -896,7 +897,8 @@
     "lieu_deces": "Saint Denis",
     "date_mariage": "29/12/1944",
     "lieu_mariage": "Saint Denis",
-    "id_conjoint": 301
+    "id_conjoint": 301,
+    "commentaire":"Domicilié à Saint Denis, rue de l'est"
   },
   {
     "id": 301,
