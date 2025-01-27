@@ -54,8 +54,8 @@ fetch('../data/data.json')
     const femMatList = document.getElementById('fem-list-mat');
     const homFamList = document.getElementById('hom-list');
     const femFamList = document.getElementById('fem-list');
-    const homGenList= document.getElementById('hom-list');
-    const femGenList = document.getElementById('fem-list');    
+    const homGenList= document.getElementById('hom-list-gen');
+    const femGenList = document.getElementById('fem-list-gen');    
 
     // Affichage des membres pour chaque catégorie
     afficheMembres(homPatList, 'Boug coté papa', homPat);
