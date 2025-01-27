@@ -54,7 +54,7 @@ fetch('../data/data.json')
     const femMatList = document.getElementById('fem-list-mat');
     const homFamList = document.getElementById('hom-list');
     const femFamList = document.getElementById('fem-list');
-    const homGenList= document.getElementById('hom-list-gen');
+    const homGenList = document.getElementById('hom-list-gen');
     const femGenList = document.getElementById('fem-list-gen');    
 
     // Affichage des membres pour chaque catégorie
@@ -117,7 +117,7 @@ function creerGeneration(person) {
   let idGeneration;
   if (personId >= 10000) {
     // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
-    idGeneration = parseInt(personId.toString().substring(0, 2), 10);
+    idGeneration = parseInt(personId.toString().slice(0, 2), 10);
   }  
   if (personId >= 1000 && personId < 2000) {
     // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
