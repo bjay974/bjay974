@@ -1591,5 +1591,34 @@
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1711
   }
-  
+  {
+    "id": 11002,
+    "nom": "MONZANCET",
+    "prenom": "François Louis",
+    "genre": "M",
+    "id_pere": "inconnu",
+    "id_mere": "Inconnue",
+    "date_naissance": "04/04/1600",
+    "lieu_naissance": "Saint Pierre",
+    "date_deces": "27/12/1857",
+    "lieu_deces": "Saint Pierre",
+    "date_mariage": "31/01/1832",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 10001
+  },
+  {
+    "id": 10001,
+    "nom": "MAZANCET",
+    "prenom": "Olympe",
+    "genre": "F",
+    "id_pere": "Inconnu",
+    "id_mere": "Inconnu",
+    "date_naissance": "15/11/1813",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "16/05/1903",
+    "lieu_deces": "Petite Ile",
+    "date_mariage": "31/01/1832",
+    "lieu_mariage": "Saint Joseph",
+    "id_conjoint": 11002
+  }  
 ]

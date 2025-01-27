@@ -125,7 +125,7 @@ function ajouterCommentaire(detailsList, person){
 
 function ajouterLienArbre(detailsList, person){
     // Charger l'apercu de l'arbre 
-    if (person.id < 2001) {
+    if (person.id < 2001 || person.id > 10000) {
         const arbrePersoItem = creerItem("");
         const lienArbrePerso = document.createElement('a');
         lienArbrePerso.href = `../html/arbrePerso.html?id=${person.id}`;

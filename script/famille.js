@@ -5,6 +5,7 @@ fetch('../data/data.json')
     const homFam = [], femFam = [];
     const homPat = [], femPat = [];
     const homMat = [], femMat = [];
+    const homGen = [], femGen = [];
 
     // Parcourt chaque personne et les répartir dans les tableaux correspondants
     data.forEach(person => {
@@ -20,13 +21,20 @@ fetch('../data/data.json')
         } else {
           femPat.push(person);
         }
-      } else if (person.id >= 1000 && person.id <= 1999) {
+      } else if (person.id >= 1000 && person.id <= 1899) {
         if (person.genre === 'M') {
           homMat.push(person);
         } else {
           femMat.push(person);
         }
       }
+      else if (person.id >= 10000 && person.id <= 19999) {
+        if (person.genre === 'M') {
+          homGen.push(person);
+        } else {
+          femGen.push(person);
+        }
+      }      
     });
 
     // Trie chaque tableau par ID de manière décroissante
@@ -36,6 +44,8 @@ fetch('../data/data.json')
     femPat.sort((a, b) => b.id - a.id);
     homMat.sort((a, b) => b.id - a.id);
     femMat.sort((a, b) => b.id - a.id);
+    homGen.sort((a, b) => b.id - a.id);
+    femGen.sort((a, b) => b.id - a.id);    
 
     // Création des éléments de liste pour chaque catégorie
     const homPatList = document.getElementById('hom-list-pat');
@@ -44,6 +54,8 @@ fetch('../data/data.json')
     const femMatList = document.getElementById('fem-list-mat');
     const homFamList = document.getElementById('hom-list');
     const femFamList = document.getElementById('fem-list');
+    const homGenList= document.getElementById('hom-list');
+    const femGenList = document.getElementById('fem-list');    
 
     // Affichage des membres pour chaque catégorie
     afficheMembres(homPatList, 'Boug coté papa', homPat);
@@ -52,6 +64,9 @@ fetch('../data/data.json')
     afficheMembres(femMatList, 'Fanm coté momon', femMat);
     afficheMembres(homFamList, 'Boug', homFam);
     afficheMembres(femFamList, 'Fanm', femFam);
+    afficheMembres(homGenList, 'Zancet boug', homGen);
+    afficheMembres(femGenList, 'Zancet Fanm', femGen);
+
   })
   .catch(error => console.error('Erreur lors du chargement des données :', error));
 
@@ -100,6 +115,10 @@ function creerListItem(person) {
 function creerGeneration(person) {
   const personId = person.id;
   let idGeneration;
+  if (personId >= 10000) {
+    // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
+    idGeneration = parseInt(personId.toString().substring(0, 2), 10);
+  }  
   if (personId >= 1000 && personId < 2000) {
     // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
     idGeneration = parseInt(personId.toString().charAt(1), 10);
