@@ -64,28 +64,33 @@ fetch('../data/data.json')
   .catch(error => console.error('Erreur lors du chargement des données :', error));
 
    // Fonction de tri par génération et date
-   function trierParGenerationEtDate(tableau) {
+
+  function trierParGenerationEtDate(tableau) {
     tableau.sort((a, b) => {
       const genA = extraireGeneration(a.id); // Génération de A
       const genB = extraireGeneration(b.id); // Génération de B
-
+  
       // Trier par génération d'abord (plus grande génération en premier)
       if (genA !== genB) {
         return genB - genA;
       }
-
-      // Si même génération, trier par date de naissance
-      if (a.date_naissance === "1901/01/01" && b.date_naissance !== "1901/01/01") {
-        return -1; // Date inconnue d'abord
+  
+      // Si même génération, trier par date inconnue d'abord
+      const dateAInconnue = a.date_naissance === "1901/01/01";
+      const dateBInconnue = b.date_naissance === "1901/01/01";
+  
+      if (dateAInconnue && !dateBInconnue) {
+        return -1; // A avant B si A a une date inconnue et B une date connue
       }
-      if (b.date_naissance === "1901/01/01" && a.date_naissance !== "1901/01/01") {
-        return 1; // Date inconnue d'abord
+      if (dateBInconnue && !dateAInconnue) {
+        return 1; // B avant A si B a une date inconnue et A une date connue
       }
-
-      // Ensuite, trier par date connue (ordre croissant, du plus âgé au moins âgé)
+  
+      // Si les deux ont des dates connues, trier du plus âgé au moins âgé
       return new Date(a.date_naissance) - new Date(b.date_naissance);
     });
   }
+  
 
   // Extraire la génération d'une personne à partir de son ID
   function extraireGeneration(id) {
