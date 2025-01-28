@@ -136,11 +136,13 @@ function creerListItem(person) {
   var nomAffiche = person.nom_legitime ? `${person.nom} (${person.nom_legitime})` : person.nom ;
 
   li.innerHTML = `
-      <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
-          ${nomAffiche} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
-          <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
-      </a>
-  `;
+  <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/generation.html?id=' + person.id : '#'}" 
+     class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
+      ${nomAffiche} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
+      <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+  </a>
+`;
+
 
   return li;
 }
