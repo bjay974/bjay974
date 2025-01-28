@@ -117,7 +117,7 @@ function creerGeneration(person) {
   let idGeneration;
   if (personId >= 10000) {
     // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
-    idGeneration = parseInt(personId.toString().slice(0, 2), 10);
+    idGeneration = Math.floor(personId / 1000);
   }  
   if (personId >= 1000 && personId < 2000) {
     // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
