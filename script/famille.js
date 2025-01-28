@@ -160,7 +160,7 @@ function getOrigine(lieuDeNaissance, departement = "") {
     return "";
   }
 
-  const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France"];
+  const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France", "Italie", "Pays-Bas", "Portugal"];
 
   // Si le lieu est accepté
   if (lieuxAcceptes.includes(lieuDeNaissance)) {

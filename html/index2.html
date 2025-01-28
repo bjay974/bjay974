@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page d'Accueil</title>
+    <link rel="stylesheet" href="../ccs/style.css">
+    <style>
+        nav a {
+            margin-right: 10px;
+        }
+        button {
+            margin: 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h3 id="header-title">Nout Famiy</h3>
+    </header>
+
+    <nav>
+        <a href="index.html" id="menu-home">Accueil</a>
+        <a href="famille.html" id="menu-family">La Famiy</a>
+        <a href="arbre.html" id="menu-tree">Nout Larb</a>
+        <a href="contact.html" id="menu-contact">Pou écri</a>
+        <a href="javascript:history.go(-1)" id="menu-back">Artourn</a>
+    </nav>
+
+    <!-- Boutons de changement de langue -->
+    <div>
+        <button id="btn-creole">Créole</button>
+        <button id="btn-fr">Français</button>
+        <button id="btn-en">English</button>
+    </div>
+
+    <section id="content">
+        <!-- Texte par défaut en créole -->
+        <p>
+            <b>Bienvni su nout arb généalogic ki racont un peu not famiy</b>
+            <br><br> Vien decouv' La Famiy ec in ti bout' son listwar. <br><br>
+            <b> Nou lé fier nout léritaz : <br> francé, malgass et africain.</b>
+        </p>
+        <br><br>
+        <img src="../data/favicon.ico" alt="La Rényon" width="25%" height="25%" title="mon ti péî">
+        <br><br> Si zot néna zinfo pou mwen comm band zenfant envoye a mwen (pése su "Pou écri") <br>
+        et ecrit zot date naissance ec zot papa et momon. Merci <br>
+    </section>
+
+    <audio id="audioPlayer" autoplay>
+        <source src="../data/musique.mp3" type="audio/mpeg">
+    </audio>
+
+    <footer>
+        <p id="footer-text"><em>&copy; 2024 - BETSMAN Jérôme - Tous droits réservés.</em></p>
+    </footer>
+
+    <script>
+        // Objets contenant les traductions
+        const translations = {
+            creole: {
+                header: "Nout Famiy",
+                menu: {
+                    home: "Accueil",
+                    family: "La Famiy",
+                    tree: "Nout Larb",
+                    contact: "Pou écri",
+                    back: "Artourn"
+                },
+                content: `
+                    <p>
+                        <b>Bienvni su nout arb généalogic ki racont un peu not famiy</b>
+                        <br><br> Vien decouv' La Famiy ec in ti bout' son listwar. <br><br>
+                        <b> Nou lé fier nout léritaz : <br> francé, malgass et africain.</b>
+                    </p>
+                    <br><br>
+                    <img src="../data/favicon.ico" alt="La Rényon" width="25%" height="25%" title="mon ti péî">
+                    <br><br> Si zot néna zinfo pou mwen comm band zenfant envoye a mwen (pése su "Pou écri") <br>
+                    et ecrit zot date naissance ec zot papa et momon. Merci <br>
+                `,
+                footer: "&copy; 2024 - BETSMAN Jérôme - Tous droits réservés."
+            },
+            fr: {
+                header: "Notre Famille",
+                menu: {
+                    home: "Accueil",
+                    family: "La Famille",
+                    tree: "Notre Arbre",
+                    contact: "Pour écrire",
+                    back: "Retour"
+                },
+                content: `
+                    <p>
+                        <b>Bienvenue sur notre arbre généalogique qui raconte un peu notre famille</b>
+                        <br><br> Venez découvrir la famille et un bout de son histoire. <br><br>
+                        <b> Nous sommes fiers de notre héritage : <br> français, malgache et africain.</b>
+                    </p>
+                    <br><br>
+                    <img src="../data/favicon.ico" alt="La Réunion" width="25%" height="25%" title="Notre île">
+                    <br><br> Si vous avez des informations sur les enfants, envoyez-les-moi (cliquez sur "Pour écrire") <br>
+                    et écrivez leur date de naissance ainsi que leur père et leur mère. Merci <br>
+                `,
+                footer: "&copy; 2024 - BETSMAN Jérôme - Tous droits réservés."
+            },
+            en: {
+                header: "Our Family",
+                menu: {
+                    home: "Home",
+                    family: "The Family",
+                    tree: "Our Tree",
+                    contact: "To Write",
+                    back: "Back"
+                },
+                content: `
+                    <p>
+                        <b>Welcome to our family tree that tells a bit about our family</b>
+                        <br><br> Come and discover the family and a piece of its history. <br><br>
+                        <b> We are proud of our heritage: <br> French, Malagasy, and African.</b>
+                    </p>
+                    <br><br>
+                    <img src="../data/favicon.ico" alt="La Réunion" width="25%" height="25%" title="Our island">
+                    <br><br> If you have information about the children, send it to me (click on "To Write") <br>
+                    and write their birth dates along with their father and mother. Thank you <br>
+                `,
+                footer: "&copy; 2024 - BETSMAN Jérôme - All rights reserved."
+            }
+        };
+
+        // Fonction pour changer la langue
+        function changeLanguage(lang) {
+            const t = translations[lang];
+            document.getElementById("header-title").textContent = t.header;
+            document.getElementById("menu-home").textContent = t.menu.home;
+            document.getElementById("menu-family").textContent = t.menu.family;
+            document.getElementById("menu-tree").textContent = t.menu.tree;
+            document.getElementById("menu-contact").textContent = t.menu.contact;
+            document.getElementById("menu-back").textContent = t.menu.back;
+            document.getElementById("content").innerHTML = t.content;
+            document.getElementById("footer-text").innerHTML = t.footer;
+        }
+
+        // Ajout d'événements aux boutons
+        document.getElementById("btn-creole").addEventListener("click", () => changeLanguage("creole"));
+        document.getElementById("btn-fr").addEventListener("click", () => changeLanguage("fr"));
+        document.getElementById("btn-en").addEventListener("click", () => changeLanguage("en"));
+    </script>
+</body>
+</html>
