@@ -138,7 +138,7 @@ function creerListItem(person) {
   li.innerHTML = `
       <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
           ${nomAffiche} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
-          <em>${getOrigine(person.lieu_naissance)} G${extraireGeneration(person.id)}</em>
+          <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
       </a>
   `;
 
@@ -153,10 +153,25 @@ function creerAn(date) {
     return year;
 }
 
-function getOrigine(lieuDeNaissance) {
+function getOrigine(lieuDeNaissance, departement = "") {
   if (!lieuDeNaissance || typeof lieuDeNaissance !== 'string') {
     return "";
   }
+
   const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France"];
-  return lieuxAcceptes.includes(lieuDeNaissance) ? `(${lieuDeNaissance})` : "";
+
+  // Si le lieu est accepté
+  if (lieuxAcceptes.includes(lieuDeNaissance)) {
+    // Si le lieu est "France", ajouter le département si présent
+    if (lieuDeNaissance === "France") {
+      if (departement && typeof departement === 'string') {
+        return `(France - ${departement})`;
+      }
+      return "(France)"; // Si le département est manquant
+    }
+    return `(${lieuDeNaissance})`; // Pour les autres lieux
+  }
+
+  return ""; // Lieu non accepté
 }
+
