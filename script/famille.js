@@ -133,7 +133,7 @@ function creerListItem(person) {
   li.innerHTML = `
       <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : '#'}" class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
           ${nomAffiche} ${person.prenom} (${creerAn(person.date_naissance)}${person.date_deces ? ' / ' + creerAn(person.date_deces) : ''}) 
-          <em>${getOrigine(person.lieu_naissance)} G${extraireGeneration(person)}</em>
+          <em>${getOrigine(person.lieu_naissance)} G${extraireGeneration(person.id)}</em>
       </a>
   `;
 
