@@ -41,22 +41,22 @@ fetch('../data/data.json')
     [homFam, femFam, homPat, femPat, homMat, femMat, homGen, femGen].forEach(trierParGenerationEtDate);
 
     // Création des éléments de liste pour chaque catégorie
+    const homFamList = document.getElementById('hom-list');
+    const femFamList = document.getElementById('fem-list');
     const homPatList = document.getElementById('hom-list-pat');
     const femPatList = document.getElementById('fem-list-pat');
     const homMatList = document.getElementById('hom-list-mat');
     const femMatList = document.getElementById('fem-list-mat');
-    const homFamList = document.getElementById('hom-list');
-    const femFamList = document.getElementById('fem-list');
     const homGenList = document.getElementById('hom-list-gen');
     const femGenList = document.getElementById('fem-list-gen');    
 
     // Affichage des membres pour chaque catégorie
+    afficheMembres(homFamList, 'Boug', homFam);
+    afficheMembres(femFamList, 'Fanm', femFam);
     afficheMembres(homPatList, 'Boug coté papa', homPat);
     afficheMembres(femPatList, 'Fanm coté papa', femPat);
     afficheMembres(homMatList, 'Boug coté momon', homMat);
     afficheMembres(femMatList, 'Fanm coté momon', femMat);
-    afficheMembres(homFamList, 'Boug', homFam);
-    afficheMembres(femFamList, 'Fanm', femFam);
     afficheMembres(homGenList, 'Zancet boug', homGen);
     afficheMembres(femGenList, 'Zancet Fanm', femGen);
 
