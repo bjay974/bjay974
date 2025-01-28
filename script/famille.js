@@ -36,9 +36,9 @@ fetch('../data/data.json')
         }
       }      
     });
-
+ 
     // Appliquer le tri à chaque catégorie
-    [homFam, femFam, homPat, femPat, homMat, femMat, homGen, femGen].forEach(trierParDate);
+    [homFam, femFam, homPat, femPat, homMat, femMat, homGen, femGen].forEach(trierParGenerationEtDate);
 
     // Création des éléments de liste pour chaque catégorie
     const homPatList = document.getElementById('hom-list-pat');
@@ -63,20 +63,43 @@ fetch('../data/data.json')
   })
   .catch(error => console.error('Erreur lors du chargement des données :', error));
 
- // Fonction de tri par génération
-    function trierParDate(tableau) {
-      tableau.sort((a, b) => {
-        // Trier d'abord par date inconnue (1901/01/01 en premier)
-        if (a.date_naissance === "1901/01/01" && b.date_naissance !== "1901/01/01") {
-          return -1;
-        }
-        if (b.date_naissance === "1901/01/01" && a.date_naissance !== "1901/01/01") {
-          return 1;
-        }
-        // Ensuite, trier par date de naissance connue (ordre croissant)
-        return new Date(a.date_naissance) - new Date(b.date_naissance);
-      });
+   // Fonction de tri par génération et date
+   function trierParGenerationEtDate(tableau) {
+    tableau.sort((a, b) => {
+      const genA = extraireGeneration(a.id); // Génération de A
+      const genB = extraireGeneration(b.id); // Génération de B
+
+      // Trier par génération d'abord (plus grande génération en premier)
+      if (genA !== genB) {
+        return genB - genA;
+      }
+
+      // Si même génération, trier par date de naissance
+      if (a.date_naissance === "1901/01/01" && b.date_naissance !== "1901/01/01") {
+        return -1; // Date inconnue d'abord
+      }
+      if (b.date_naissance === "1901/01/01" && a.date_naissance !== "1901/01/01") {
+        return 1; // Date inconnue d'abord
+      }
+
+      // Ensuite, trier par date connue (ordre croissant, du plus âgé au moins âgé)
+      return new Date(a.date_naissance) - new Date(b.date_naissance);
+    });
+  }
+
+  // Extraire la génération d'une personne à partir de son ID
+  function extraireGeneration(id) {
+    if (id >= 10000) {
+      return Math.floor(id / 1000); // Ex. ID 12898 -> Génération 12
+    } else if (id >= 1000 && id < 2000) {
+      return parseInt(id.toString().charAt(1), 10); // Ex. ID 1289 -> Génération 2
+    } else if (id >= 100 && id < 1000) {
+      return parseInt(id.toString().charAt(0), 10); // Ex. ID 289 -> Génération 2
+    } else {
+      return 0; // Génération par défaut pour les ID < 100
     }
+  }
+
 
 // Ajouter le titre et alimenter les membres
 function afficheMembres(listElement, titreText, persons) {
@@ -115,25 +138,6 @@ function creerListItem(person) {
   `;
 
   return li;
-}
-
-function creerGeneration(person) {
-  const personId = person.id;
-  let idGeneration;
-
-  if (personId >= 10000) {
-    idGeneration = Math.floor(personId / 1000);
-  } else if (personId >= 1000 && personId < 2000) {
-    idGeneration = parseInt(personId.toString().charAt(1), 10);
-  } else if (personId >= 100 && personId < 1000) {
-    idGeneration = parseInt(personId.toString().charAt(0), 10);
-  } else if (personId >= 0 && personId < 100) {
-    idGeneration = 0;
-  } else {
-    return "";
-  }
-
-  return "G" + idGeneration;
 }
 
 function creerAn(date) {
