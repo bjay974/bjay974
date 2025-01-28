@@ -115,25 +115,27 @@ function creerListItem(person) {
 function creerGeneration(person) {
   const personId = person.id;
   let idGeneration;
+
   if (personId >= 10000) {
-    // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
-    idGeneration = Math.floor(personId / 1000);
-  }  
-  if (personId >= 1000 && personId < 2000) {
-    // Pour les IDs entre 1000 et 1999, prendre le deuxième chiffre pour la génération
+    // Pour les IDs supérieurs ou égaux à 10000, prendre les deux premiers chiffres
+    idGeneration = Math.floor(personId / 100);
+  } else if (personId >= 1000 && personId < 2000) {
+    // Pour les IDs entre 1000 et 9999, prendre les deux premiers chiffres
     idGeneration = parseInt(personId.toString().charAt(1), 10);
-  } else if (personId >= 100) {
-    // Pour les IDs entre 100 et 999, prendre le premier chiffre pour la génération
+  } else if (personId >= 100 && personId < 1000) {
+    // Pour les IDs entre 100 et 999, prendre le premier chiffre
     idGeneration = parseInt(personId.toString().charAt(0), 10);
-  } else if (personId >= 0) {
-    // Pour les IDs inférieurs à 100, génération 0
+  } else if (personId >= 0 && personId < 100) {
+    // Pour les IDs entre 0 et 99, génération 0
     idGeneration = 0;
   } else {
-    // Pour les IDs non conformes, on retourne une génération inconnue
+    // Pour les IDs non conformes, retourner une génération inconnue
     return "";
   }
+
   return "G" + idGeneration;
 }
+
 
 function creerAn(date) {
     const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
