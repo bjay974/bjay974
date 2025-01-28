@@ -37,15 +37,8 @@ fetch('../data/data.json')
       }      
     });
 
-    // Trie chaque tableau par ID de manière décroissante
-    homFam.sort((a, b) => b.id - a.id);
-    femFam.sort((a, b) => b.id - a.id);
-    homPat.sort((a, b) => b.id - a.id);
-    femPat.sort((a, b) => b.id - a.id);
-    homMat.sort((a, b) => b.id - a.id);
-    femMat.sort((a, b) => b.id - a.id);
-    homGen.sort((a, b) => b.id - a.id);
-    femGen.sort((a, b) => b.id - a.id);    
+    // Appliquer le tri à chaque catégorie
+    [homFam, femFam, homPat, femPat, homMat, femMat, homGen, femGen].forEach(trierParDate);
 
     // Création des éléments de liste pour chaque catégorie
     const homPatList = document.getElementById('hom-list-pat');
@@ -70,8 +63,20 @@ fetch('../data/data.json')
   })
   .catch(error => console.error('Erreur lors du chargement des données :', error));
 
-// Les autres fonctions restent inchangées...
-
+ // Fonction de tri par génération
+    function trierParDate(tableau) {
+      tableau.sort((a, b) => {
+        // Trier d'abord par date inconnue (1901/01/01 en premier)
+        if (a.date_naissance === "1901/01/01" && b.date_naissance !== "1901/01/01") {
+          return -1;
+        }
+        if (b.date_naissance === "1901/01/01" && a.date_naissance !== "1901/01/01") {
+          return 1;
+        }
+        // Ensuite, trier par date de naissance connue (ordre croissant)
+        return new Date(a.date_naissance) - new Date(b.date_naissance);
+      });
+    }
 
 // Ajouter le titre et alimenter les membres
 function afficheMembres(listElement, titreText, persons) {
@@ -117,41 +122,32 @@ function creerGeneration(person) {
   let idGeneration;
 
   if (personId >= 10000) {
-    // Pour les IDs supérieurs ou égaux à 10000, prendre les deux premiers chiffres
     idGeneration = Math.floor(personId / 1000);
   } else if (personId >= 1000 && personId < 2000) {
-    // Pour les IDs entre 1000 et 9999, prendre les deux premiers chiffres
     idGeneration = parseInt(personId.toString().charAt(1), 10);
   } else if (personId >= 100 && personId < 1000) {
-    // Pour les IDs entre 100 et 999, prendre le premier chiffre
     idGeneration = parseInt(personId.toString().charAt(0), 10);
   } else if (personId >= 0 && personId < 100) {
-    // Pour les IDs entre 0 et 99, génération 0
     idGeneration = 0;
   } else {
-    // Pour les IDs non conformes, retourner une génération inconnue
     return "";
   }
 
   return "G" + idGeneration;
 }
 
-
 function creerAn(date) {
-    const year = parseInt(date.substr(6, 4)); // Extrait l'année à partir de la chaîne de date
+    const year = parseInt(date.substr(6, 4));
     if (year === 1901) {
-      return '??'; // Retourne un point d'interrogation pour indiquer une année inconnue
+      return '??';
     }
     return year;
 }
 
 function getOrigine(lieuDeNaissance) {
-  // Vérification des valeurs nulles, indéfinies ou de type incorrect
   if (!lieuDeNaissance || typeof lieuDeNaissance !== 'string') {
-    return ""; // Retourne une chaîne vide pour indiquer un lieu inconnu ou invalide
+    return "";
   }
   const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France"];
   return lieuxAcceptes.includes(lieuDeNaissance) ? `(${lieuDeNaissance})` : "";
 }
-
-
