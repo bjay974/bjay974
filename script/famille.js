@@ -167,7 +167,7 @@ function getOrigine(lieuDeNaissance, departement = "") {
     // Si le lieu est "France", ajouter le département si présent
     if (lieuDeNaissance === "France") {
       if (departement && typeof departement === 'string') {
-        return `(France - ${departement})`;
+        return `(${departement})`;
       }
       return "(France)"; // Si le département est manquant
     }
