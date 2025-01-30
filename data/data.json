@@ -1380,9 +1380,10 @@
     "id_mere": 1816,
     "date_naissance": "01/01/1802",
     "lieu_naissance": "Inconnu",
+    "date_affranchi":"20/12/1848",
     "date_deces": "04/05/1850",
     "lieu_deces": "Saint Joseph",
-    "commentaire": "Esclave : Domaine plaine des Grégues",
+    "commentaire": " Domaine plaine des Grégues",
     "id_conjoint": 1713
   },
   {
