@@ -1627,16 +1627,20 @@
   },
   {
     "id": 1827,
-    "nom": "MARIE LOUISE",
-    "genre": "F",
+    "nom": "ANGOU",
+    "prenom": "Jean-Pierre",
+    "genre": "M",
     "id_pere": null,
     "id_mere": null,
-    "date_naissance": "01/01/1797",
-    "lieu_naissance": "Inconnu",
-    "date_deces": "24/04/1838",
+    "date_naissance": "01/01/1811",
+    "lieu_naissance": "Afrique",
+    "date_deces": "12/02/1838",
     "lieu_deces": "Saint Joseph",
-    "commentaire": "Chez Etheve",
-    "id_conjoint": null
+    "date_mariage": "15/11/1849",
+    "lieu_mariage": "Saint Joseph",
+    "date_affranchi":"20/12/1848",
+    "commentaire": "Chez MALLET ",
+    "id_conjoint": 1836
   },
   {
     "id": 1836,
@@ -1651,6 +1655,7 @@
     "lieu_deces": "Saint Joseph",
     "date_mariage": "15/11/1849",
     "lieu_mariage": "Saint Joseph",
+    "date_affranchi":"20/12/1848",
     "commentaire": "Chez ETHEVE",
     "id_conjoint": 1827
   },
