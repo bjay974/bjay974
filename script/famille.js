@@ -72,7 +72,7 @@ fetch('../data/data.json')
   
       // Trier par génération d'abord (plus grande génération en premier)
       if (genA !== genB) {
-        return genB - genA;
+        return genA - genB;
       }
   
       // Si même génération, trier par date inconnue d'abord
@@ -80,14 +80,14 @@ fetch('../data/data.json')
       const dateBInconnue = b.date_naissance === "1901/01/01";
   
       if (dateAInconnue && !dateBInconnue) {
-        return -1; // A avant B si A a une date inconnue et B une date connue
+        return 1; // A avant B si A a une date inconnue et B une date connue
       }
       if (dateBInconnue && !dateAInconnue) {
-        return 1; // B avant A si B a une date inconnue et A une date connue
+        return -1; // B avant A si B a une date inconnue et A une date connue
       }
   
       // Si les deux ont des dates connues, trier du plus âgé au moins âgé
-      return new Date(a.date_naissance) - new Date(b.date_naissance);
+      return new Date(b.date_naissance) - new Date(a.date_naissance);
     });
   }
   
