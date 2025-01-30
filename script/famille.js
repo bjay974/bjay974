@@ -76,21 +76,20 @@ fetch('../data/data.json')
         }
 
         // Si même génération, trier par date inconnue d'abord
-        const dateAInconnue = a.date_naissance === "1901/01/01";
-        const dateBInconnue = b.date_naissance === "1901/01/01";
+        const yearA = parseInt(a.date_naissance.substr(6, 4));
+        const yearB = parseInt(b.date_naissance.substr(6, 4));
+        const yearAInconnue = parseInt(a.date_naissance.substr(6, 4)) === "1901";
+        const yearBInconnue = parseInt(b.date_naissance.substr(6, 4)) === "1901";
 
-        if (dateAInconnue && !dateBInconnue) {
+        if (yearAInconnue && !yearBInconnue) {
             return 1; // A après B si A a une date inconnue et B une date connue
         }
-        if (dateBInconnue && !dateAInconnue) {
+        if (yearBInconnue && !yearAInconnue) {
             return -1; // B après A si B a une date inconnue et A une date connue
         }
 
         // Si les deux ont des dates connues, trier du plus âgé au moins âgé
-        const dateA = new Date(a.date_naissance.replace(/(\d{4})\/(\d{2})\/(\d{2})/, "$1-$2-$3"));
-        const dateB = new Date(b.date_naissance.replace(/(\d{4})\/(\d{2})\/(\d{2})/, "$1-$2-$3"));
-
-        return dateB - dateA; // Plus âgé en premier
+        return yearB - yearA; // Plus âgé en premier
     });
 }
 
