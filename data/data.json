@@ -1662,6 +1662,7 @@
   {
     "id": 1828,
     "nom": "MARIE LOUISE",
+    "prenom": "",
     "genre": "F",
     "id_pere": null,
     "id_mere": null,
@@ -1670,7 +1671,6 @@
     "date_deces": "24/04/1838",
     "lieu_deces": "Saint Joseph",
     "commentaire": "Chez ETHEVE",
-    "id_conjoint": null
   },
   {
     "id": 1825,
