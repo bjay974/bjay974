@@ -3,7 +3,7 @@
     "id": 2098,
     "nom": "RAVELONARIVO",
     "prenom": "Samuel",
-    "date_naissance": "01/01/1901",    
+    "date_naissance": "01/01/1901",
     "genre": "M"
   },
   {
@@ -155,11 +155,11 @@
     "date_naissance": "20/12/1825",
     "lieu_naissance": "Saint Joseph",
     "date_deces": "19/07/1867",
-    "date_affranchi":"20/12/1848",
+    "date_affranchi": "20/12/1848",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "09/04/1850",
     "lieu_mariage": "Saint Joseph",
-    "commentaire": "Domicilié au lieu dit Les Lianes à Saint Joseph",    
+    "commentaire": "Domicilié au lieu dit Les Lianes à Saint Joseph",
     "id_conjoint": 1706
   },
   {
@@ -175,7 +175,7 @@
     "lieu_deces": "Saint Joseph",
     "date_mariage": "09/04/1850",
     "lieu_mariage": "Saint Joseph",
-    "commentaire": "Domicilié au lieu dit Les Lianes à Saint Joseph",    
+    "commentaire": "Domicilié au lieu dit Les Lianes à Saint Joseph",
     "id_conjoint": 1705
   },
   {
@@ -370,7 +370,7 @@
     "date_mariage": "17/11/1925",
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 1408,
-    "commentaire":"Domicilié au lieu dit : Les Lianes à Saint Joseph"
+    "commentaire": "Domicilié au lieu dit : Les Lianes à Saint Joseph"
   },
   {
     "id": 1408,
@@ -430,7 +430,7 @@
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 800,
     "date_affranchi": "20/12/1848",
-    "commentaire":"Domicilié au quartier lieu dit le Canal, décédé au domicile de Mr RODIN Fortuné"
+    "commentaire": "Domicilié au quartier lieu dit le Canal, décédé au domicile de Mr RODIN Fortuné"
   },
   {
     "id": 802,
@@ -498,7 +498,7 @@
     "lieu_deces": "Sainte-Rose",
     "id_conjoint": 704,
     "date_affranchi": "20/12/1848",
-    "commentaire":"Esclave de la Veuve Marchand Louis de Bois blanc, Avril est décédé en 1850 dans cette propriétée, aprés l'abolition de l'esclavage"
+    "commentaire": "Esclave de la Veuve Marchand Louis de Bois blanc, Avril est décédé en 1850 dans cette propriétée, aprés l'abolition de l'esclavage"
   },
   {
     "id": 715,
@@ -560,7 +560,7 @@
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 700,
     "date_affranchi": "20/12/1848",
-    "commentaire":"Esclave à l'etablissement Beaufonds, site desormais de la distillerie Riviere du mât"
+    "commentaire": "Esclave à l'etablissement Beaufonds, site desormais de la distillerie Riviere du mât"
   },
   {
     "id": 710,
@@ -871,7 +871,7 @@
     "lieu_deces": "Saint Benoit",
     "date_mariage": "13/06/1908",
     "lieu_mariage": "Sainte-Rose",
-    "commentaire":"En fevrier 1919, Emmanuel est sous les drapeaux. Les premiers retours ont eu lieu en février 1919, suivis par l'arrivée de 1 400 poilus réunionnais à bord du paquebot Madonna en mars 1919",
+    "commentaire": "En fevrier 1919, Emmanuel est sous les drapeaux. Les premiers retours ont eu lieu en février 1919, suivis par l'arrivée de 1 400 poilus réunionnais à bord du paquebot Madonna en mars 1919",
     "id_conjoint": 401
   },
   {
@@ -903,7 +903,7 @@
     "date_mariage": "29/12/1944",
     "lieu_mariage": "Saint Denis",
     "id_conjoint": 301,
-    "commentaire":"Domicilié à Saint Denis, rue de l'est"
+    "commentaire": "Domicilié à Saint Denis, rue de l'est"
   },
   {
     "id": 301,
@@ -1233,7 +1233,7 @@
     "lieu_deces": "Saint Joseph",
     "date_deces": "16/08/1900",
     "nom_legitime": "BARRE",
-    "date_legitime": "30/03/1859",    
+    "date_legitime": "30/03/1859",
     "id_conjoint": 1660,
     "date_affranchi": "20/12/1848",
     "commentaire": "Reconnu par Joseph BARRE, demeurant alors à Saint Leu, aprés le deces de sa maman (1850)"
@@ -1381,7 +1381,7 @@
     "id_mere": 1816,
     "date_naissance": "01/01/1802",
     "lieu_naissance": "Inconnu",
-    "date_affranchi":"20/12/1848",
+    "date_affranchi": "20/12/1848",
     "date_deces": "04/05/1850",
     "lieu_deces": "Saint Joseph",
     "commentaire": " Domaine plaine des Grégues",
@@ -1624,5 +1624,47 @@
     "date_mariage": "31/01/1620",
     "lieu_mariage": "Saint Joseph",
     "id_conjoint": 10002
-  }  
+  },
+  {
+    "id": 1827,
+    "nom": "MARIE LOUISE",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1797",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "24/04/1838",
+    "lieu_deces": "Saint Joseph",
+    "commentaire": "Chez Etheve",
+    "id_conjoint": null
+  },
+  {
+    "id": 1836,
+    "nom": "LUSACE",
+    "prenom": "Reine",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1813",
+    "lieu_naissance": "Afrique",
+    "date_deces": "02/02/1863",
+    "lieu_deces": "Saint Joseph",
+    "date_mariage": "15/11/1849",
+    "lieu_mariage": "Saint Joseph",
+    "commentaire": "Chez ETHEVE",
+    "id_conjoint": 1827
+  },
+  {
+    "id": 1828,
+    "nom": "MARIE LOUISE",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1797",
+    "lieu_naissance": "Inconnu",
+    "date_deces": "24/04/1838",
+    "lieu_deces": "Saint Joseph",
+    "commentaire": "Chez ETHEVE",
+    "id_conjoint": null
+  }
 ]
