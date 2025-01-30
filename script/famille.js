@@ -90,7 +90,7 @@ fetch('../data/data.json')
         const dateA = new Date(a.date_naissance.replace(/(\d{4})\/(\d{2})\/(\d{2})/, "$1-$2-$3"));
         const dateB = new Date(b.date_naissance.replace(/(\d{4})\/(\d{2})\/(\d{2})/, "$1-$2-$3"));
 
-        return dateA - dateB; // Plus âgé en premier
+        return dateB - dateA; // Plus âgé en premier
     });
 }
 
