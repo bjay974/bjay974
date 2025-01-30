@@ -65,31 +65,35 @@ fetch('../data/data.json')
 
    // Fonction de tri par génération et date
 
-  function trierParGenerationEtDate(tableau) {
+   function trierParGenerationEtDate(tableau) {
     tableau.sort((a, b) => {
-      const genA = extraireGeneration(a.id); // Génération de A
-      const genB = extraireGeneration(b.id); // Génération de B
-  
-      // Trier par génération d'abord (plus grande génération en premier)
-      if (genA !== genB) {
-        return genA - genB;
-      }
-  
-      // Si même génération, trier par date inconnue d'abord
-      const dateAInconnue = a.date_naissance === "1901/01/01";
-      const dateBInconnue = b.date_naissance === "1901/01/01";
-  
-      if (dateAInconnue && !dateBInconnue) {
-        return 1; // A avant B si A a une date inconnue et B une date connue
-      }
-      if (dateBInconnue && !dateAInconnue) {
-        return -1; // B avant A si B a une date inconnue et A une date connue
-      }
-  
-      // Si les deux ont des dates connues, trier du plus âgé au moins âgé
-      return new Date(b.date_naissance) - new Date(a.date_naissance);
+        const genA = extraireGeneration(a.id); // Génération de A
+        const genB = extraireGeneration(b.id); // Génération de B
+
+        // Trier par génération d'abord (plus grande génération en premier)
+        if (genA !== genB) {
+            return genA - genB;
+        }
+
+        // Si même génération, trier par date inconnue d'abord
+        const dateAInconnue = a.date_naissance === "1901/01/01";
+        const dateBInconnue = b.date_naissance === "1901/01/01";
+
+        if (dateAInconnue && !dateBInconnue) {
+            return 1; // A après B si A a une date inconnue et B une date connue
+        }
+        if (dateBInconnue && !dateAInconnue) {
+            return -1; // B après A si B a une date inconnue et A une date connue
+        }
+
+        // Si les deux ont des dates connues, trier du plus âgé au moins âgé
+        const dateA = new Date(a.date_naissance.replace(/(\d{4})\/(\d{2})\/(\d{2})/, "$1-$2-$3"));
+        const dateB = new Date(b.date_naissance.replace(/(\d{4})\/(\d{2})\/(\d{2})/, "$1-$2-$3"));
+
+        return dateA - dateB; // Plus âgé en premier
     });
-  }
+}
+
   
 
   // Extraire la génération d'une personne à partir de son ID
