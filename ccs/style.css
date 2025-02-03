@@ -17,6 +17,11 @@
     --margin-small: 5px;
 }
 
+button {
+    max-width: 30px; /* Définir une largeur maximale */
+    max-height: 30px; /* Définir une hauteur maximale */
+}
+
 body {
     padding: 0px; /* haut | droit | bas | gauche */
     margin: 0px;
