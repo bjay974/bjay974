@@ -176,19 +176,8 @@ width: 220px
 }
 
 
-/* Styles pour les écrans de taille moyenne (tablettes) */
-@media (max-width: 768px) {
-body {
-    font-size: var(--font-size-small); /* Ajuste la taille de la police */
-}
-.parent, .grandparent, .enfant, .petitenfant {
-  min-height: 30px;
-  min-width: 10px;
-}
-}
-
 /* Styles pour les petits écrans (mobiles) */
-@media (max-width: 430px) {
+@media (max-width: 768px) {
  .grid-container {
     grid-template-columns: repeat(4, 1fr); /* Passe à deux colonnes */
  }
@@ -231,7 +220,7 @@ body {
 }
 
   .personne:first-child {
-    margin-top: 140px;
+    margin-top: 80px;
   }
 .personne:last-of-type::before {
   content: '';
