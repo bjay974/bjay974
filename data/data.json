@@ -1701,5 +1701,20 @@
     "date_mariage": "01/01/1834",
     "lieu_mariage": "Saint Pierre",
     "id_conjoint": 1822
+  },
+  {
+    "id": 1831,
+    "nom": "GROSSET",
+    "prenom": "Marie Henriette",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "23/06/1818",
+    "lieu_naissance": "Saint Pierre",
+    "date_deces": "15/10/1847",
+    "lieu_deces": "Saint Pierre",
+    "date_mariage": "06/10/1835",
+    "lieu_mariage": "Saint Pierre",
+    "id_conjoint": 1831
   }
 ]
