@@ -1703,7 +1703,7 @@
     "id_conjoint": 1822
   },
   {
-    "id": 1831,
+    "id": 1840,
     "nom": "GROSSET",
     "prenom": "Marie Henriette",
     "genre": "F",
@@ -1716,6 +1716,21 @@
     "date_mariage": "06/10/1835",
     "lieu_mariage": "Saint Pierre",
     "id_conjoint": 1831
+  },
+  {
+    "id": 1831,
+    "nom": "FONTAINE",
+    "prenom": "Jacques Marie",
+    "genre": "M",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/06/1815",
+    "lieu_naissance": "Saint Pierre",
+    "date_deces": "11/10/1862",
+    "lieu_deces": "Saint Pierre",
+    "date_mariage": "06/10/1835",
+    "lieu_mariage": "Saint Pierre",
+    "id_conjoint": 1840
   },
   {
     "id": 1816,
