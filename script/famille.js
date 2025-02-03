@@ -21,7 +21,7 @@ fetch('../data/data.json')
         } else {
           femPat.push(person);
         }
-      } else if (person.id >= 1000 && person.id <= 1899) {
+      } else if (person.id >= 1000 && person.id <= 1999) {
         if (person.genre === 'M') {
           homMat.push(person);
         } else {
