@@ -1716,5 +1716,48 @@
     "date_mariage": "06/10/1835",
     "lieu_mariage": "Saint Pierre",
     "id_conjoint": 1831
+  },
+  {
+    "id": 1816,
+    "nom": "FONTAINE",
+    "prenom": "Joseph",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "01/01/1780",
+    "lieu_naissance": "Saint Joseph",
+    "date_deces": "05/08/1827",
+    "lieu_deces": "Saint Joseph",
+    "id_conjoint": null
+  },
+  {
+    "id": 1808,
+    "nom": "FONTAINE",
+    "prenom": "Marie Couronnée",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "24/02/1779",
+    "lieu_naissance": "Saint Pierre",
+    "date_deces": "17/04/1855",
+    "lieu_deces": "Saint Pierre",
+    "date_mariage": "22/08/1797",
+    "lieu_mariage": "Saint Pierre",
+    "id_conjoint": 1811
+  },
+  {
+    "id": 1811,
+    "nom": "FONTAINE",
+    "prenom": "Joseph",
+    "genre": "F",
+    "id_pere": null,
+    "id_mere": null,
+    "date_naissance": "04/03/1777",
+    "lieu_naissance": "Saint Pierre",
+    "date_deces": "28/11/1840",
+    "lieu_deces": "Saint Pierre",
+    "date_mariage": "22/08/1797",
+    "lieu_mariage": "Saint Pierre",
+    "id_conjoint": 1808
   }
 ]
