@@ -1,0 +1,33 @@
+/* Style des boutons */
+button {
+   width: 30px;  
+   height: 15px; 
+   padding: 0; 
+   border: none; 
+   background: none; 
+   display: flex; 
+   align-items: center; /* Centre verticalement */
+   justify-content: center; /* Centre horizontalement */
+   margin-right: 15px; /* Espacement entre les boutons */
+}
+
+/* Supprime la marge du dernier bouton */
+button:last-child {
+   margin-right: 0;
+}
+
+/* Style des images */
+button img {
+   width: 100%;  
+   height: 100%; 
+   object-fit: contain; /* Ajuste sans déformation */
+   vertical-align: middle; /* Alignement vertical */
+}
+
+/* S'assurer que les boutons restent alignés en ligne et bien centrés */
+.container {
+   display: flex;
+   align-items: center; /* Centre les boutons dans le conteneur */
+   justify-content: center; /* Centre horizontalement */
+   gap: 15px; /* Alternative à margin-right pour un meilleur espacement */
+}
