@@ -18,9 +18,22 @@
 }
 
 button {
-    max-width: 30px; /* Définir une largeur maximale */
-    max-height: 30px; /* Définir une hauteur maximale */
+    width: 30px;  /* Largeur fixe */
+    height: 15px; /* Hauteur fixe */
+    padding: 0; /* Supprime les marges internes */
+    border: none; /* Supprime les bordures */
+    background: none; /* Supprime le fond du bouton */
+    display: flex; /* Centre l'image à l'intérieur */
+    align-items: center;
+    justify-content: center;
 }
+
+button img {
+    width: 100%;  /* L'image prend toute la largeur du bouton */
+    height: 100%; /* L'image prend toute la hauteur du bouton */
+    object-fit: cover; /* Ajuste l'image pour qu'elle rentre bien */
+}
+
 
 body {
     padding: 0px; /* haut | droit | bas | gauche */
