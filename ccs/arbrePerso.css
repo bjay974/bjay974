@@ -188,7 +188,7 @@ body {
 }
 
 /* Styles pour les petits écrans (mobiles) */
-@media (max-width: 480px) {
+@media (max-width: 430px) {
  .grid-container {
     grid-template-columns: repeat(4, 1fr); /* Passe à deux colonnes */
  }
