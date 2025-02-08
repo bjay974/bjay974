@@ -308,7 +308,7 @@ function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, affi
                         if (responseBis.ok) {
                             const lienFichierbis = document.createElement('a');
                             lienFichierbis.classList.add('lienFichier');
-                            lienFichierbis.textContent = "Deuxième partie";
+                            lienFichierbis.textContent = "deuxième page";
                             lienFichierbis.href = monFichierBis;
                             acteItem.appendChild(document.createTextNode('  ||  '));
                             acteItem.appendChild(lienFichierbis);
@@ -391,6 +391,12 @@ function afficherLieuDeNaissance(lieuNaissance) {
         case "France":
             return " en France";
             break;
+        case "Portugal":
+            return " au Portugal";
+            break;
+        case "Pays Bas":
+            return " en Hollande";
+            break;                            
         case "Inconnu":
             return "";
             break;
