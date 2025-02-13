@@ -1331,7 +1331,7 @@
   {
     "id": 1620,
     "nom": "LALISE",
-    "prenom": "Eline Marie",
+    "prenom": "Marie Eline",
     "genre": "F",
     "id_pere": 1705,
     "id_mere": 1706,
@@ -1341,7 +1341,8 @@
     "lieu_deces": "Saint Joseph",
     "date_mariage": "16/06/1873",
     "lieu_mariage": "Saint Joseph",
-    "id_conjoint": 1603
+    "id_conjoint": 1603,
+    "commentaire":"Originaire de Manapany"
   },
   {
     "id": 1702,
