@@ -481,9 +481,10 @@
     "id_mere": "inconnue",
     "date_naissance": "01/01/1792",
     "lieu_naissance": "Afrique",
-    "date_deces": "31/12/1848",
+    "date_deces": "22/06/1841",
     "lieu_deces": "Inconnu",
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire":"Esclave chez Vve Meuller (à verifier acte décés des esclaves de Sainte rose 1841"
   },
   {
     "id": 717,
@@ -635,7 +636,7 @@
     "date_mariage": "10/06/1848",
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 711,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "10/12/1848"
   },
   {
     "id": 611,
@@ -666,7 +667,7 @@
     "lieu_deces": "Saint Benoit",
     "date_mariage": "03/05/1862",
     "lieu_mariage": "Saint Benoit",
-    "date_affranchi": "20/12/1848",
+    "date_affranchi": "06/12/1848",
     "id_conjoint": 604,
     "commentaire": "La traite des esclaves étant interdite depuis 1810 et Caprice étant né en 1825 il n'y a pas de documents officiels qui attestent son arrivée dans l'ile."
   },
