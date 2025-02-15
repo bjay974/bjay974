@@ -521,13 +521,13 @@
     "genre": "F",
     "id_pere": "inconnu",
     "id_mere": "inconnue",
-    "date_naissance": "01/01/1811",
+    "date_naissance": "01/01/1813",
     "lieu_naissance": "Afrique",
     "date_deces": "23/08/1853",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 715,
     "date_affranchi": "20/12/1848",
-    "commentaire": "Décédée sans engagement, dans la propiétée de Mr Pitou, son proprétaire d'avant l'abolition"
+    "commentaire": "Décédée sans engagement(acte au nom de MOUDINE ?) , dans la propiétée de Mr Pitou, son proprétaire d'avant l'abolition"
   },
   {
     "id": 712,
@@ -1392,8 +1392,8 @@
   },
   {
     "id": 1722,
-    "nom": "FORTUNE",
-    "prenom": "Sincère",
+    "nom": "SINCERE",
+    "prenom": "Fortuné",
     "genre": "F",
     "id_pere": "Inconnu",
     "id_mere": "Inconnue",
@@ -1410,12 +1410,12 @@
   {
     "id": 1717,
     "nom": "FONTAINE",
-    "prenom": "Joseph Moreau",
+    "prenom": "Moreau Joseph",
     "genre": "M",
     "id_pere": 1811,
     "id_mere": 1808,
     "date_naissance": "16/07/1800",
-    "lieu_naissance": "Saint Joseph",
+    "lieu_naissance": "Saint Louis",
     "date_deces": "11/08/1885",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "22/10/1851",
