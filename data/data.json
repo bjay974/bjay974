@@ -730,12 +730,13 @@
     "id_mere": 714,
     "date_naissance": "14/07/1841",
     "lieu_naissance": "Saint Benoit",
-    "date_deces": "01/01/1901",
-    "lieu_deces": "Inconnu",
+    "date_deces": "29/06/1920",
+    "lieu_deces": "Saint Benoit",
     "date_mariage": "03/05/1862",
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 609,
-    "date_affranchi": "20/12/1848"
+    "date_affranchi": "20/12/1848",
+    "commentaire":"Acte de décés au nom de Monty ? pas de renseignements sur cet acte sur ses parents, aprés recherche pas de Monty né à la Reunion, il y a de grande chance que cela corresponde"
   },
   {
     "id": 603,
