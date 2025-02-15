@@ -728,7 +728,7 @@
     "date_legitime": "11/04/1871",
     "id_pere": 715,
     "id_mere": 714,
-    "date_naissance": "14/07/1841",
+    "date_naissance": "21/11/1840",
     "lieu_naissance": "Saint Benoit",
     "date_deces": "29/06/1920",
     "lieu_deces": "Saint Benoit",
@@ -757,11 +757,13 @@
   },
   {
     "id": 602,
-    "nom": "NECODA",
+    "nom": "RACCOLEUR",
     "prenom": "Marie Rose",
     "genre": "F",
     "id_pere": 711,
     "id_mere": 700,
+    "date_legitime":"03/06/1848",
+    "nom_legitime":"NECODA",
     "date_naissance": "29/04/1843",
     "lieu_naissance": "Saint Benoit",
     "date_deces": "07/06/1911",
@@ -769,7 +771,7 @@
     "date_mariage": "26/05/1862",
     "lieu_mariage": "Saint benoit",
     "id_conjoint": 603,
-    "date_affranchi": "20/12/1848",
+    "date_affranchi": "10/12/1848",
     "commentaire": "Index des Naissances 1844 Saint Benoit : pas d'acte de naissance"
   },
   {
