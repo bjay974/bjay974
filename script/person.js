@@ -1,13 +1,18 @@
-document.addEventListener('DOMContentLoaded', () => {
-
+document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const personId = urlParams.get('id');
 
-    fetch('../data/data.json')
-        .then(response => response.json())
-        .then(data => afficherInfoPersonne(data, personId))
-        .catch(error => console.error('Erreur lors du chargement des données JSON:', error));
+    try {
+        const response = await fetch('../data/data.json');
+        const data = await response.json();
+        
+        // Création d'une Map pour un accès plus rapide aux personnes par ID
+        const dataMap = new Map(data.map(person => [String(person.id), person]));
 
+        afficherInfoPersonne(dataMap, personId);
+    } catch (error) {
+        console.error('Erreur lors du chargement des données JSON:', error);
+    }
 });
 
 function afficherInfoPersonne(data, personId) {
@@ -467,6 +472,5 @@ function getAfficheMessage(repertoire) {
             return "Voir l'acte de mariage";
         case "affranchissement":
             return "Voir l'acte d'affranchissement";            
-
     }
 }
