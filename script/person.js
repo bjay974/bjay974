@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function afficherInfoPersonne(data, personId) {
-    const person = data.find(p => p.id === parseInt(personId));
+    const person = dataMap.get(personId);
     const personDetails = document.getElementById('person-details');
 
     if (!person) return;
@@ -71,7 +71,6 @@ function ajouterReconnaissance(detailsList,person) {
 
 function ajouterParents(detailsList,person,data){
     // Initialisation des variables father et mother
-    let father, mother;
     let textParent = "";
     let parentItem = null;
     // Charger le père si l'ID du père est défini
@@ -81,7 +80,7 @@ function ajouterParents(detailsList,person,data){
             textParent = "De pére inconnu"
             parentItem.appendChild(document.createTextNode(textParent));    }
         else {
-            father = data.find(p => p.id === person.id_pere);
+            let father = data.get(person.id_pere);
             if (father) {
                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                 parentItem.appendChild(document.createTextNode(textParent));    
@@ -100,8 +99,8 @@ function ajouterParents(detailsList,person,data){
             }
             parentItem.appendChild(document.createTextNode(textParent)); 
         } else {
-            mother = data.find(p => p.id === person.id_mere);
-            if (mother) {
+           let mother = data.get(person.id_mere);
+           if (mother) {
                 if (parentItem) {
                     textParent = " et de "
                 } else {
@@ -232,7 +231,7 @@ function ajoutDeces(detailsList,person){
 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
 function ajouterMariage(detailsList,person,data) {
     if (person.id_conjoint) {
-        const conjoint = data.find(p => p.id === person.id_conjoint);
+        let conjoint = data.get(person.id_conjoint);         
         const infoConjoint = creerItem("");
         const nomConjoint = creerLienNom(conjoint, 'lienPersonHEnGras', 'lienPersonFEnGras', '');
         let texteConjoint 
