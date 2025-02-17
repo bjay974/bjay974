@@ -257,7 +257,7 @@ function ajouterAffranchi(detailsList,person) {
 // Fonction principale pour charger tous les liens vers les actes
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
-    const repertoires = ['naissance', 'mariage', 'particulier', 'deces','affranchissment'];
+    const repertoires = ['data/naissance', 'data/mariage', 'data/particulier', 'data/deces','data/affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
 
     // Tableau pour stocker les promesses de chargement des documents
@@ -455,18 +455,18 @@ function calculeAge(date1) {
 
 function getAfficheMessage(repertoire) {
     switch(repertoire){
-        case "particulier" : 
+        case "data/particulier" : 
             return "Voir l'acte spécial";
             break;
-        case "deces":
+        case "data/deces":
             return "Voir l'acte de décés";
             break;
-        case "naissance":
+        case "data/naissance":
             return "Voir l'acte de naissance";
             break;
-        case "mariage":
+        case "data/mariage":
             return "Voir l'acte de mariage";
-        case "affranchi":
+        case "data/affranchi":
             return "Voir l'acte d'affranchissement";            
 
     }
