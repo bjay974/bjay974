@@ -69,7 +69,7 @@ function ajouterReconnaissance(detailsList,person) {
     }
 }
 
-function ajouterParents(detailsList,person,data){
+function ajouterParents(detailsList,person,dataMap){
     // Initialisation des variables father et mother
     let textParent = "";
     let parentItem = null;
@@ -99,8 +99,8 @@ function ajouterParents(detailsList,person,data){
             }
             parentItem.appendChild(document.createTextNode(textParent)); 
         } else {
-           let mother = dataMap.get(person.id_mere);
-           if (mother) {
+           let father = dataMap.get(person.id_pere);
+           if (father) {
                 if (parentItem) {
                     textParent = " et de "
                 } else {
@@ -336,7 +336,7 @@ function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
     
     // Mettre à jour le texte du lien
-    lienPersonne.textContent = `${nomPersonne} ${person.prenom || 'Prénom inconnu'}`;
+    lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
     
     // Ajouter la classe en fonction du genre
     const classeGenre = person.genre === 'M' ? lienHomme : lienFemme;
