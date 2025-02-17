@@ -8,8 +8,11 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Création d'une Map pour un accès plus rapide aux personnes par ID
         const dataMap = new Map(data.map(person => [person.id, person]));
-
-        afficherInfoPersonne(dataMap, personId);
+        if (person) {
+            afficherInfoPersonne(person);
+        } else {
+            console.error(`Personne avec l'ID ${personId} non trouvée.`);
+        }
     } catch (error) {
         console.error('Erreur lors du chargement des données JSON:', error);
     }
@@ -18,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 function afficherInfoPersonne(data, personId) {
     const person = data.get(personId); 
     const personDetails = document.getElementById('person-details');
-    if (!person) return;
     const detailsList = document.createElement('li');
     detailsList.classList.add('listPerson');
 
@@ -293,6 +295,7 @@ async function ajouterLiensActes(person, detailsList) {
         detailsList.appendChild(acteItem);
     });
 }
+
 
 //fonctions utiles 
 
