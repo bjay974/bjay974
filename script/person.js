@@ -294,43 +294,42 @@ async function ajouterLiensActes(person, detailsList) {
    
 }
 
-// Fonction pour créer et ajouter des liens pour les fichiers d'actes
-function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage) {
-    const monFichierComplet = `../data/${repertoire}/${nomFichier}.${extension}`;
-    return fetch(monFichierComplet)
-        .then(response => {
-            if (response.ok) {
-                const acteItem = creerItem("");
-                const lienFichier = document.createElement('a');
-                lienFichier.classList.add('lienFichier');
-                lienFichier.textContent = afficheMessage;
-                lienFichier.href = monFichierComplet;
-                acteItem.appendChild(lienFichier);
-                // Vérifier l'existence d'une deuxième partie
-                const monFichierBis = `../data/${repertoire}/${nomFichier}_2.${extension}`;
-                return fetch(monFichierBis)
-                    .then(responseBis => {
-                        if (responseBis.ok) {
-                            const lienFichierbis = document.createElement('a');
-                            lienFichierbis.classList.add('lienFichier');
-                            lienFichierbis.textContent = "deuxième page";
-                            lienFichierbis.href = monFichierBis;
-                            acteItem.appendChild(document.createTextNode('  ||  '));
-                            acteItem.appendChild(lienFichierbis);
-                        }
-                        detailsList.appendChild(acteItem);
-                    })
-                    .catch(error => {
-                        console.error('Erreur lors de la récupération du fichier bis :', error);
-                        detailsList.appendChild(acteItem);
-                    });
-            } else {
-                console.error('Erreur lors de la récupération du fichier :', monFichierComplet);
+// Charger les actes 
+async function ajouterLiensActes(person, detailsList) {
+    const nomFichier = person.id;
+    const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
+    const extensions = ['pdf', 'jpg', 'jpeg'];
+
+    let fichiersExistants = [];
+
+    // Créer une liste de promesses pour vérifier tous les fichiers
+    const fetchPromises = repertoires.flatMap(repertoire => 
+        extensions.map(async extension => {
+            const fichier = `../data/${repertoire}/${nomFichier}.${extension}`;
+            try {
+                const response = await fetch(fichier, { method: 'HEAD' }); // Utilisation de HEAD pour vérifier l'existence
+                if (response.ok) {
+                    fichiersExistants.push({ fichier, message: getAfficheMessage(repertoire) });
+                }
+            } catch (error) {
+                console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
             }
         })
-        .catch(error => {
-            console.error('Erreur lors de la récupération du fichier :', monFichierComplet);
-        });
+    );
+
+    // Attendre que toutes les vérifications soient terminées
+    await Promise.all(fetchPromises);
+
+    // Affichage des fichiers existants
+    fichiersExistants.forEach(({ fichier, message }) => {
+        const acteItem = creerItem("");
+        const lienFichier = document.createElement('a');
+        lienFichier.classList.add('lienFichier');
+        lienFichier.textContent = message;
+        lienFichier.href = fichier;
+        acteItem.appendChild(lienFichier);
+        detailsList.appendChild(acteItem);
+    });
 }
 
 //fonctions utiles 
@@ -466,7 +465,7 @@ function getAfficheMessage(repertoire) {
             break;
         case "mariage":
             return "Voir l'acte de mariage";
-        case "affranchi":
+        case "affranchissement":
             return "Voir l'acte d'affranchissement";            
 
     }
