@@ -1,3 +1,5 @@
+let dataMap = new Map();
+
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const personId = Number(urlParams.get('id'));
@@ -7,22 +9,17 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
         
         // Création d'une Map pour un accès plus rapide aux personnes par ID
-        const dataMap = new Map(data.map(person => [person.id, person]));
+        dataMap = new Map(data.map(person => [person.id, person]));
+        
         // Recherche de la personne par ID dans la Map
         const person = dataMap.get(personId);
-        if (person) {
-            afficherInfoPersonne(person);
-        } else {
-            console.error(`Personne avec l'ID ${personId} non trouvée.`);
-        }
+        if (person) {afficherInfoPersonne(person); } 
     } catch (error) {
         console.error('Erreur lors du chargement des données JSON:', error);
     }
 });
 
-
-function afficherInfoPersonne(data, personId) {
-    const person = data.get(personId); 
+function afficherInfoPersonne(person) {
     const personDetails = document.getElementById('person-details');
     const detailsList = document.createElement('li');
     detailsList.classList.add('listPerson');
@@ -31,11 +28,11 @@ function afficherInfoPersonne(data, personId) {
     ajouterNaissance(detailsList, person);
     ajouterReconnaissance(detailsList, person);
     ajoutDeces(detailsList, person);
-    ajouterMariage(detailsList, person, data);
+    ajouterMariage(detailsList, person);
     ajouterAffranchi(detailsList, person);
-    ajouterParents(detailsList, person, data);
-    ajouterEnfants(detailsList, person, data);
-    ajouterFratrie(detailsList, person, data);
+    ajouterParents(detailsList, person, dataMap);
+    ajouterEnfants(detailsList, person, dataMap);
+    ajouterFratrie(detailsList, person, dataMap);
     ajouterCommentaire(detailsList, person);
     ajouterLienArbre(detailsList, person);
     ajouterLiensActes(person, detailsList);
@@ -83,7 +80,7 @@ function ajouterParents(detailsList,person,data){
             textParent = "De pére inconnu"
             parentItem.appendChild(document.createTextNode(textParent));    }
         else {
-            let father = data.get(person.id_pere);
+            let father = dataMap.get(person.id_pere);
             if (father) {
                 textParent = person.genre === "M" ? 'Fils de ' : 'Fille de ';
                 parentItem.appendChild(document.createTextNode(textParent));    
@@ -102,7 +99,7 @@ function ajouterParents(detailsList,person,data){
             }
             parentItem.appendChild(document.createTextNode(textParent)); 
         } else {
-           let mother = data.get(person.id_mere);
+           let mother = dataMap.get(person.id_mere);
            if (mother) {
                 if (parentItem) {
                     textParent = " et de "
@@ -146,18 +143,26 @@ function ajouterLienArbre(detailsList, person){
 // Charger les liens vers les actes si il y en a
 
 
-function ajouterEnfants(detailsList, person, data) {
+function ajouterEnfants(detailsList, person, dataMap) {
     // Récupérer les enfants de la personne si elle est définie comme père ou mère
-    const enfants = data.filter(enfant => enfant.id_pere === person.id || enfant.id_mere === person.id);
+    const enfants = [];
+    // Rechercher dans le map les enfants de cette personne (par id_pere ou id_mere)
+    dataMap.forEach((enfant) => {
+        if (enfant.id_pere === person.id || enfant.id_mere === person.id) {
+            enfants.push(enfant);
+        }
+    });
     if (enfants.length > 0) {
-        enfants.sort((a, b) => b.id - a.id);
+        enfants.sort((a, b) => b.id - a.id); // Trier les enfants par ID (ordre décroissant)
+        
         // Créer un élément li pour contenir la liste des enfants
         const enfantsList = creerItem(enfants.length === 1 ? '<i>Enfant :</i>' : '<i>Enfants :</i>');
+        
         // Utiliser un DocumentFragment pour améliorer les performances
         const fragment = document.createDocumentFragment();
         enfants.forEach(enfant => {
             const enfantItem = document.createElement('li');
-            const lienEnfant = creerLienNom(enfant, 'lienPersonH', 'lienPersonF', 'listEnfant')
+            const lienEnfant = creerLienNom(enfant, 'lienPersonH', 'lienPersonF', 'listEnfant');
             enfantItem.appendChild(lienEnfant);
             fragment.appendChild(enfantItem);
         });
@@ -165,35 +170,45 @@ function ajouterEnfants(detailsList, person, data) {
         detailsList.appendChild(enfantsList);
     }
 }
-
+           
 // Récupérer les frères et sœurs de la personne
-function ajouterFratrie(detailsList, person, data){
+function ajouterFratrie(detailsList, person, dataMap) {
     if (person.id < 2001) {
-        const fratries = data.filter(fratrie => {
+        const fratries = [];
+        
+        // Rechercher dans le map les frères et sœurs de cette personne
+        dataMap.forEach((fratrie) => {
             // Vérifier les conditions pour le père
             const pereOk = Number.isInteger(person.id_pere);
             const memePere = pereOk && fratrie.id_pere === person.id_pere;
             // Vérifier les conditions pour la mère
             const mereOk = Number.isInteger(person.id_mere);
             const memeMere = mereOk && fratrie.id_mere === person.id_mere;
-            // Exclure la personne elle-même et retourner true si l'un des parents correspond et est valide
-            return (memePere || memeMere) && fratrie.id !== person.id;
+            // Exclure la personne elle-même et vérifier que les conditions sur les parents sont remplies
+            if ((memePere || memeMere) && fratrie.id !== person.id) {
+                fratries.push(fratrie);
+            }
         });
+
         if (fratries.length > 0) {
-            fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID 
-            const fratriesList = creerItem(`<i>Fratrie :</i>`);
+            fratries.sort((a, b) => b.id - a.id); // Trier les frères et sœurs par ID (ordre décroissant)
+            const fratriesList = creerItem('<i>Fratrie :</i>');
             const fragment = document.createDocumentFragment();
+            
             fratries.forEach(fratrie => {
                 const fratrieItem = document.createElement('li');
-                const lienFratrie = creerLienNom(fratrie, 'lienPersonH', 'lienPersonF', 'listFratrie')
+                const lienFratrie = creerLienNom(fratrie, 'lienPersonH', 'lienPersonF', 'listFratrie');
                 fratrieItem.appendChild(lienFratrie);
                 fragment.appendChild(fratrieItem);
             });
+            
             fratriesList.appendChild(fragment);
             detailsList.appendChild(fratriesList);
         }
     }
 }
+          
+
 
 // Ajouter details du décés ou l'age actuel 
 function ajoutDeces(detailsList,person){
