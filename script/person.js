@@ -28,7 +28,7 @@ function afficherInfoPersonne(person) {
     ajouterNaissance(detailsList, person);
     ajouterReconnaissance(detailsList, person);
     ajoutDeces(detailsList, person);
-    ajouterMariage(detailsList, person);
+    ajouterMariage(detailsList, person, dataMap);
     ajouterAffranchi(detailsList, person);
     ajouterParents(detailsList, person, dataMap);
     ajouterEnfants(detailsList, person, dataMap);
@@ -247,9 +247,9 @@ function ajoutDeces(detailsList,person){
 }
 
 // Ajouter la date de mariage et le conjoint si la date n'est pas nulle
-function ajouterMariage(detailsList,person,data) {
+function ajouterMariage(detailsList,person,dataMap) {
     if (person.id_conjoint) {
-        let conjoint = data.get(person.id_conjoint);         
+        let conjoint = dataMap.get(person.id_conjoint);         
         const infoConjoint = creerItem("");
         const nomConjoint = creerLienNom(conjoint, 'lienPersonHEnGras', 'lienPersonFEnGras', '');
         let texteConjoint 
