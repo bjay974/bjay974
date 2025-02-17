@@ -257,36 +257,41 @@ function ajouterAffranchi(detailsList,person) {
 // Fonction principale pour charger tous les liens vers les actes
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
-    const repertoires = ['naissance', 'mariage', 'particulier', 'deces'];
+    const repertoires = ['naissance', 'mariage', 'particulier', 'deces','affranchissment'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
 
     // Tableau pour stocker les promesses de chargement des documents
     const promesses = [];
 
-    // Ajouter les promesses pour chaque répertoire dans l'ordre spécifié
-    for (let repertoire of repertoires) {
-        const afficheMessage = getAfficheMessage(repertoire);
-        const promesseRepertoire = extensions.map(extension =>
-            ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
-        );
-        promesses.push(...promesseRepertoire);
+    // Fonction pour ajouter les promesses pour chaque répertoire et gérer le mariage si applicable
+    async function chargerDocumentsEtMariage(repertoires, person, detailsList) {
+        // Fonction pour ajouter les liens de fichier avec promesses
+        async function ajouterLiens(repertoire, nomFichier, afficheMessage) {
+            const promesseRepertoire = extensions.map(extension =>
+                ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage)
+            );
+            await Promise.all(promesseRepertoire);
+        }
+
+        // Parcourir chaque répertoire et ajouter les promesses
+        for (let repertoire of repertoires) {
+            const afficheMessageRepertoire = getAfficheMessage(repertoire);
+            await ajouterLiens(repertoire, nomFichier, afficheMessageRepertoire);
+        }
+
+        // Charger les liens pour l'acte de mariage au nom du conjoint si applicable
+        if (person.date_mariage && person.genre === "F") {
+            const nomFichierConjoint = person.id_conjoint;
+            const afficheMessageMariage = `Voir l'acte de mariage`;
+            await ajouterLiens('mariage', nomFichierConjoint, afficheMessageMariage);
+        } else {
+            detailsList.appendChild(document.createElement('br'));
+        }
     }
 
-    // Attendre que toutes les promesses soient résolues
-    await Promise.all(promesses);
-
-    // Charge les liens pour l'acte de mariage au nom du conjoint si applicable
-    if (person.date_mariage && person.genre === "F") {
-        const nomFichierConjoint = person.id_conjoint;
-        const afficheMessage = `Voir l'acte de mariage`;
-        const promessesMariage = extensions.map(extension =>
-            ajouterlienFichier(detailsList, nomFichierConjoint, 'mariage', extension, afficheMessage)
-        );
-        // Attendre que toutes les promesses pour le mariage du conjoint soient résolues
-        await Promise.all(promessesMariage);
-    } else {
-        detailsList.appendChild(document.createElement('br'));
-    }
+    // Appeler la fonction pour charger les documents et gérer le mariage
+    await chargerDocumentsEtMariage(repertoires, person, detailsList);
+   
 }
 
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
@@ -461,5 +466,8 @@ function getAfficheMessage(repertoire) {
             break;
         case "mariage":
             return "Voir l'acte de mariage";
+        case "affranchi":
+            return "Voir l'acte d'affranchissement";            
+
     }
 }
