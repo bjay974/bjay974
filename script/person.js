@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const personId = urlParams.get('id');
+    const personId = Number(urlParams.get('id'));
 
     try {
         const response = await fetch('../data/data.json');
@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         
         // Création d'une Map pour un accès plus rapide aux personnes par ID
         const dataMap = new Map(data.map(person => [person.id, person]));
+        // Recherche de la personne par ID dans la Map
+        const person = dataMap.get(personId);
         if (person) {
             afficherInfoPersonne(person);
         } else {
@@ -17,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Erreur lors du chargement des données JSON:', error);
     }
 });
+
 
 function afficherInfoPersonne(data, personId) {
     const person = data.get(personId); 
