@@ -257,7 +257,7 @@ function ajouterAffranchi(detailsList,person) {
 // Fonction principale pour charger tous les liens vers les actes
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
-    const repertoires = ['data/naissance', 'data/mariage', 'data/particulier', 'data/deces','data/affranchissement'];
+    const repertoires = ['naissance', 'mariage', 'particulier', 'deces','affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
 
     // Tableau pour stocker les promesses de chargement des documents
@@ -296,7 +296,7 @@ async function ajouterLiensActes(person, detailsList) {
 
 // Fonction pour créer et ajouter des liens pour les fichiers d'actes
 function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, afficheMessage) {
-    const monFichierComplet = `../${repertoire}/${nomFichier}.${extension}`;
+    const monFichierComplet = `../data/${repertoire}/${nomFichier}.${extension}`;
     return fetch(monFichierComplet)
         .then(response => {
             if (response.ok) {
@@ -307,7 +307,7 @@ function ajouterlienFichier(detailsList, nomFichier, repertoire, extension, affi
                 lienFichier.href = monFichierComplet;
                 acteItem.appendChild(lienFichier);
                 // Vérifier l'existence d'une deuxième partie
-                const monFichierBis = `../${repertoire}/${nomFichier}_2.${extension}`;
+                const monFichierBis = `../data/${repertoire}/${nomFichier}_2.${extension}`;
                 return fetch(monFichierBis)
                     .then(responseBis => {
                         if (responseBis.ok) {
@@ -455,18 +455,18 @@ function calculeAge(date1) {
 
 function getAfficheMessage(repertoire) {
     switch(repertoire){
-        case "data/particulier" : 
+        case "particulier" : 
             return "Voir l'acte spécial";
             break;
-        case "data/deces":
+        case "deces":
             return "Voir l'acte de décés";
             break;
-        case "data/naissance":
+        case "naissance":
             return "Voir l'acte de naissance";
             break;
-        case "data/mariage":
+        case "mariage":
             return "Voir l'acte de mariage";
-        case "data/affranchi":
+        case "affranchi":
             return "Voir l'acte d'affranchissement";            
 
     }
