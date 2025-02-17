@@ -62,7 +62,7 @@ function ajouterReconnaissance(detailsList,person) {
         const legDateItem = creerItem();
         const dateValide = verifieDate(person.date_legitime);
         const adjectif_genre = ajouterE("Reconnu", person.genre);
-        const classeLien = person.genre === "M" ? "lienPersonHEnGras" : "lienPersonFEnGras";
+    const classeLien = person.genre === "M" ? "lienPersonHEnGras" : "lienPersonFEnGras";
         const nomEnCouleur = `<span class="${classeLien}">${person.nom_legitime}</span>`;
         legDateItem.innerHTML = `${adjectif_genre} <em>${nomEnCouleur}</em> ${dateValide}`;
         detailsList.appendChild(legDateItem);
@@ -100,7 +100,7 @@ function ajouterParents(detailsList,person,dataMap){
             parentItem.appendChild(document.createTextNode(textParent)); 
         } else {
            let mother = dataMap.get(person.id_mere);
-           if (father) {
+           if (mother) {
                 if (parentItem) {
                     textParent = " et de "
                 } else {
