@@ -56,6 +56,14 @@ function ajouterNaissance(detailsList,person) {
     detailsList.appendChild(dateNaissance);
 }
 
+function ajouterNaissance(person) {
+    const dateNaissance = verifieDate(person.date_naissance);
+    const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
+    const adjectif_genre = ajouterE("Né", person.genre);
+    
+    return creerItem(`${adjectif_genre} ${dateNaissance} ${lieuNaissance}`);
+}
+
 // Ajouter la date de reconnaisance ainsi que le nom
 function ajouterReconnaissance(detailsList,person) {
     if (person.date_legitime) {
@@ -314,28 +322,17 @@ async function ajouterLiensActes(person, detailsList) {
     });
 }
 
-
-//fonctions utiles 
-
 // Fonction pour créer un lien formaté (nom + prénom) et  un href optionnel et une classe
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
     const nomPersonne = (person?.nom_legitime || person?.nom) 
-    ? (person.nom_legitime || person.nom) 
-    : "WIP"; 
-    if (nomPersonne === "WIP") {
-        lienPersonne.textContent = `Recherche parents en cours...`;
-        return lienPersonne; 
-    }
-    else{
-        lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
+    lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
         lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
         lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
         if (laClasse) {
             lienPersonne.classList.add(laClasse);
         }
-        return lienPersonne; 
-    }
+    return lienPersonne; 
 }
 
 //Ajouter un e a un adjectif !! si genre est F (ex : NéE)
