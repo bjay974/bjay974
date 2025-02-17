@@ -294,6 +294,23 @@ async function ajouterLiensActes(person, detailsList) {
         })
     );
 
+    // Vérification spécifique pour le mariage (si la personne est une femme, vérifier le conjoint)
+    if (person.genre === 'F' && person.date_mariage) {
+        const nomFichierConjoint = person.conjointId;
+        if (nomFichierConjoint) {
+            const repertoireMariage = 'mariage';
+            const fichierConjoint = `../data/${repertoireMariage}/${nomFichierConjoint}.${extensions[0]}`; // pdf comme exemple
+            try {
+                const response = await fetch(fichierConjoint, { method: 'HEAD' });
+                if (response.ok) {
+                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage du conjoint') });
+                }
+            } catch (error) {
+                console.error(`Erreur lors de la récupération du fichier du conjoint ${fichierConjoint}:`, error);
+            }
+        }
+    }
+
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
 
