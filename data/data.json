@@ -662,13 +662,13 @@
     "id_mere": "inconnue",
     "date_naissance": "01/01/1825",
     "lieu_naissance": "Madagascar",
-    "date_deces": "29/08/1887",
+    "date_deces": "01/01/1901",
     "lieu_deces": "Saint Benoit",
     "date_mariage": "03/05/1862",
     "lieu_mariage": "Saint Benoit",
     "date_affranchi": "06/12/1848",
     "id_conjoint": 604,
-    "commentaire": "La traite des esclaves étant interdite depuis 1810 et Caprice étant né en 1825 il n'y a pas de documents officiels qui attestent son arrivée dans l'ile."
+    "commentaire": "La traite des esclaves étant interdite depuis 1810 et Caprice étant né en 1825 il n'y a pas de documents officiels qui attestent son arrivée dans l'ile.  deces 29/08/1887 ?"
   },
   {
     "id": 608,

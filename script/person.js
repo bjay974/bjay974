@@ -56,14 +56,6 @@ function ajouterNaissance(detailsList,person) {
     detailsList.appendChild(dateNaissance);
 }
 
-function ajouterNaissance(person) {
-    const dateNaissance = verifieDate(person.date_naissance);
-    const lieuNaissance = afficherLieuDeNaissance(person.lieu_naissance);
-    const adjectif_genre = ajouterE("Né", person.genre);
-    
-    return creerItem(`${adjectif_genre} ${dateNaissance} ${lieuNaissance}`);
-}
-
 // Ajouter la date de reconnaisance ainsi que le nom
 function ajouterReconnaissance(detailsList,person) {
     if (person.date_legitime) {
