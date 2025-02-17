@@ -99,7 +99,7 @@ function ajouterParents(detailsList,person,dataMap){
             }
             parentItem.appendChild(document.createTextNode(textParent)); 
         } else {
-           let father = dataMap.get(person.id_pere);
+           let mother = dataMap.get(person.id_mere);
            if (father) {
                 if (parentItem) {
                     textParent = " et de "
