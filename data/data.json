@@ -840,7 +840,7 @@
     "commentaire": "Domicilié au lieu dit Bois Blanc de Ste Rose"
   },
   {
-    "id": 411,
+    "id": 2095,
     "nom": "BETSMAN",
     "prenom": "Ovion",
     "genre": "M",
@@ -851,7 +851,7 @@
     "id_conjoint": 410
   },
   {
-    "id": 410,
+    "id": 2096,
     "nom": "BIOKOKO",
     "prenom": "",
     "genre": "F",
@@ -913,8 +913,8 @@
     "nom": "BETSMAN",
     "prenom": "Georges",
     "genre": "M",
-    "id_pere": 411,
-    "id_mere": 410,
+    "id_pere": 2095,
+    "id_mere": 2096,
     "date_naissance": "01/01/1895",
     "lieu_naissance": "Warrio - Nigéria",
     "date_deces": "01/01/1977",
