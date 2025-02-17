@@ -148,9 +148,6 @@ function ajouterLienArbre(detailsList, person){
     }
 }
 
-// Charger les liens vers les actes si il y en a
-
-
 function ajouterEnfants(detailsList, person, dataMap) {
     // Récupérer les enfants de la personne si elle est définie comme père ou mère
     const enfants = [];
@@ -216,8 +213,6 @@ function ajouterFratrie(detailsList, person, dataMap) {
     }
 }
           
-
-
 // Ajouter details du décés ou l'age actuel 
 function ajoutDeces(detailsList,person){
     if (!person.date_deces) {
@@ -322,18 +317,29 @@ async function ajouterLiensActes(person, detailsList) {
     });
 }
 
-// Fonction pour créer un lien formaté (nom + prénom) et  un href optionnel et une classe
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
-    const nomPersonne = (person?.nom_legitime || person?.nom) 
+    
+    // Déterminer le nom à afficher (priorité au nom légitime)
+    const nomPersonne = person?.nom_legitime || person?.nom;
+    
+    // Déterminer l'URL en fonction de l'ID de la personne
     lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
-        lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
-        lienPersonne.classList.add(person.genre === 'M' ? lienHomme : lienFemme); 
-        if (laClasse) {
-            lienPersonne.classList.add(laClasse);
-        }
+    
+    // Mettre à jour le texte du lien
+    lienPersonne.textContent = `${nomPersonne} ${person.prenom || 'Prénom inconnu'}`;
+    
+    // Ajouter la classe en fonction du genre
+    const classeGenre = person.genre === 'M' ? lienHomme : lienFemme;
+    lienPersonne.classList.add(classeGenre);
+    
+    // Ajouter la classe supplémentaire si elle est fournie
+    if (laClasse) {
+        lienPersonne.classList.add(laClasse);
+    }
     return lienPersonne; 
 }
+
 
 //Ajouter un e a un adjectif !! si genre est F (ex : NéE)
 function ajouterE(adjectif, genre) {
