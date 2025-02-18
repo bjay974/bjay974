@@ -1364,22 +1364,18 @@
     "nom": "BARRE",
     "prenom": "Joseph",
     "genre": "M",
-    "id_pere": "Inconnu",
-    "id_mere": "Inconnue",
     "date_naissance": "01/01/1808",
     "lieu_naissance": "Inconnu",
     "date_deces": "18/08/1869",
     "lieu_deces": "Saint Leu",
     "commentaire": "Décédé à Saint Leu ? ",
-    "id_conjoint": 1718,
-    "date_affranchi": "20/12/1848"
+    "id_conjoint": 1718
   },
   {
     "id": 1718,
     "nom": "DUJARDIN",
     "prenom": "Eléonore",
     "genre": "F",
-    "id_pere": "Inconnu",
     "id_mere": 1816,
     "date_naissance": "01/01/1802",
     "lieu_naissance": "Inconnu",

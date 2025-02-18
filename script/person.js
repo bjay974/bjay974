@@ -298,7 +298,7 @@ async function ajouterLiensActes(person, detailsList) {
             try {
                 const response = await fetch(fichierConjoint, { method: 'HEAD' });
                 if (response.ok) {
-                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage') });
+                    fichiersExistants.push({ fichierConjoint, message: getAfficheMessage('mariage') });
                 }
             } catch (error) {
                 console.error(`Erreur lors de la récupération du fichier du conjoint ${fichierConjoint}:`, error);
