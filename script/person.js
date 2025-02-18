@@ -172,7 +172,6 @@ function ajouterEnfants(detailsList, person, dataMap) {
 function ajouterFratrie(detailsList, person, dataMap) {
     if (person.id < 2001) {
         const fratries = [];
-        
         // Rechercher dans le map les frères et sœurs de cette personne
         dataMap.forEach((fratrie) => {
             // Vérifier les conditions pour le père
@@ -198,9 +197,8 @@ function ajouterFratrie(detailsList, person, dataMap) {
                 fratrieItem.appendChild(lienFratrie);
                 fragment.appendChild(fratrieItem);
             });
-            
-            fratriesList.appendChild(fragment);
-            detailsList.appendChild(fratriesList);
+           fratriesList.appendChild(fragment);
+           detailsList.appendChild(fratriesList);
         }
     }
 }
@@ -276,9 +274,7 @@ async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
-
     let fichiersExistants = [];
-
     // Créer une liste de promesses pour vérifier tous les fichiers
     const fetchPromises = repertoires.flatMap(repertoire => 
         extensions.map(async extension => {
@@ -293,7 +289,6 @@ async function ajouterLiensActes(person, detailsList) {
             }
         })
     );
-
     // Vérification spécifique pour le mariage (si la personne est une femme, vérifier le conjoint)
     if (person.genre === 'F' && person.date_mariage) {
         const nomFichierConjoint = person.conjointId;
@@ -303,17 +298,15 @@ async function ajouterLiensActes(person, detailsList) {
             try {
                 const response = await fetch(fichierConjoint, { method: 'HEAD' });
                 if (response.ok) {
-                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage du conjoint') });
+                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage') });
                 }
             } catch (error) {
                 console.error(`Erreur lors de la récupération du fichier du conjoint ${fichierConjoint}:`, error);
             }
         }
     }
-
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
-
     // Affichage des fichiers existants
     fichiersExistants.forEach(({ fichier, message }) => {
         const acteItem = creerItem("");
@@ -328,27 +321,23 @@ async function ajouterLiensActes(person, detailsList) {
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
-    
-    // Déterminer le nom à afficher (priorité au nom légitime)
-    const nomPersonne = person?.nom_legitime || person?.nom;
-    
-    // Déterminer l'URL en fonction de l'ID de la personne
+     // Déterminer le nom à afficher (priorité au nom légitime)
+    const nomPersonne = person?.nom_legitime 
+        ? `${person.nom_legitime} (${person.nom || ""})`.trim() 
+        : person?.nom || "";
+        // Déterminer l'URL en fonction de l'ID de la personne
     lienPersonne.href = person.id < 2001 ? `../html/person.html?id=${person.id}` : '#';
-    
-    // Mettre à jour le texte du lien
+        // Mettre à jour le texte du lien
     lienPersonne.textContent = `${nomPersonne} ${person.prenom}`;
-    
-    // Ajouter la classe en fonction du genre
+        // Ajouter la classe en fonction du genre
     const classeGenre = person.genre === 'M' ? lienHomme : lienFemme;
     lienPersonne.classList.add(classeGenre);
-    
-    // Ajouter la classe supplémentaire si elle est fournie
+        // Ajouter la classe supplémentaire si elle est fournie
     if (laClasse) {
         lienPersonne.classList.add(laClasse);
     }
     return lienPersonne; 
 }
-
 
 //Ajouter un e a un adjectif !! si genre est F (ex : NéE)
 function ajouterE(adjectif, genre) {
@@ -420,9 +409,7 @@ function diffAge(date1, date2) {
 
 // Fonction pour déterminer le texte du lien
 function CreerTexteLienArbre(prenom) {
-    if (!prenom) {
-        return "Aperçu de son arbre";
-    }
+    if (!prenom) { return "Aperçu de son arbre"}
     const prenomVoyelle = ['A', 'E', 'I', 'O', 'U', 'Y'].includes(prenom.charAt(0).toUpperCase());
     return prenomVoyelle
         ? `Aperçu de l'arbre d'${prenom}`
