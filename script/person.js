@@ -300,7 +300,7 @@ async function ajouterLiensActes(person, detailsList) {
     let fetchPromises = repertoires.flatMap(repertoire => 
         extensions.flatMap(extension => [
             verifierFichier(`../data/${repertoire}/${nomFichier}.${extension}`, getAfficheMessage(repertoire)),
-            verifierFichier(`../data/${repertoire}/${nomFichier2}.${extension}`, getAfficheMessage("Deuxième partie"))
+            verifierFichier(`../data/${repertoire}/${nomFichier2}.${extension}`, getAfficheMessage('deuxieme'))
         ])
     );
 
@@ -314,7 +314,7 @@ async function ajouterLiensActes(person, detailsList) {
             extensions.flatMap(extension => [
                 // Vérifier le mariage sous l'ID du mari (conjoint)
                 verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage')),
-                verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage("Deuxième partie"))
+                verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage('deuxieme'))
             ])
         );
     }
@@ -340,10 +340,9 @@ async function ajouterLiensActes(person, detailsList) {
         if (fichiers.deuxieme) {
             const separator = document.createTextNode(" | ");
             acteItem.appendChild(separator);
-
             const lienDeuxieme = document.createElement('a');
             lienDeuxieme.classList.add('lienFichier');
-            lienDeuxieme.textContent = "Deuxième partie";
+            lienDeuxieme.textContent = `${message}`;
             lienDeuxieme.href = fichiers.deuxieme;
             acteItem.appendChild(lienDeuxieme);
         }
