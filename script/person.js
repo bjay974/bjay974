@@ -282,8 +282,8 @@ async function ajouterLiensActes(person, detailsList) {
             const fichier2 = `../data/${repertoire}/${nomFichier2}.${extension}`;
 
             return [
-                fetchFichier(fichier1, repertoire, "Première partie"),
-                fetchFichier(fichier2, repertoire, "Deuxième partie")
+                fetchFichier(fichier1, repertoire),
+                fetchFichier(fichier2, "Deuxième partie")
             ];
         })
     );
@@ -298,8 +298,8 @@ async function ajouterLiensActes(person, detailsList) {
             const fichierConjoint2 = `../data/mariage/${nomFichierConjoint2}.${extension}`;
 
             return [
-                fetchFichier(fichierConjoint, 'mariage', "Première partie"),
-                fetchFichier(fichierConjoint2, 'mariage', "Deuxième partie")
+                fetchFichier(fichierConjoint, 'mariage'),
+                fetchFichier(fichierConjoint2, "Deuxième partie")
             ];
         });
 
@@ -310,19 +310,19 @@ async function ajouterLiensActes(person, detailsList) {
     await Promise.all(fetchPromises);
 
     // Affichage des fichiers existants
-    const fichiersGroupeParType = fichiersExistants.reduce((acc, { fichier, message, partie }) => {
+    const fichiersGroupeParType = fichiersExistants.reduce((acc, { fichier, message }) => {
         if (!acc[message]) acc[message] = [];
-        acc[message].push({ fichier, partie });
+        acc[message].push({ fichier});
         return acc;
     }, {});
 
     Object.entries(fichiersGroupeParType).forEach(([message, fichiers]) => {
         const acteItem = creerItem(""); // Crée un conteneur
 
-        fichiers.forEach(({ fichier, partie }) => {
+        fichiers.forEach(({ fichier }) => {
             const lienFichier = document.createElement('a');
             lienFichier.classList.add('lienFichier');
-            lienFichier.textContent = `${message} - ${partie}`;
+            lienFichier.textContent = `${message}`;
             lienFichier.href = fichier;
             lienFichier.style.marginRight = "10px"; // Espacement entre les liens
             acteItem.appendChild(lienFichier);
