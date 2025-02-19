@@ -275,14 +275,21 @@ async function ajouterLiensActes(person, detailsList) {
     const nomFichier2 = `${nomFichier}_2`; // Deuxième partie potentielle
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
-    let fichiersExistants = [];
+    let fichiersExistants = new Map();
 
     // Fonction pour vérifier un fichier et l'ajouter s'il existe
     async function verifierFichier(fichier, message, partie) {
         try {
             const response = await fetch(fichier, { method: 'HEAD' });
             if (response.ok) {
-                fichiersExistants.push({ fichier, message, partie });
+                if (!fichiersExistants.has(message)) {
+                    fichiersExistants.set(message, { premiere: null, deuxieme: null });
+                }
+                if (partie === "Première partie") {
+                    fichiersExistants.get(message).premiere = fichier;
+                } else {
+                    fichiersExistants.get(message).deuxieme = fichier;
+                }
             }
         } catch (error) {
             console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
@@ -313,36 +320,34 @@ async function ajouterLiensActes(person, detailsList) {
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
 
-    // Organisation des fichiers par type d'acte
-    const fichiersGroupeParType = fichiersExistants.reduce((acc, { fichier, message, partie }) => {
-        if (!acc[message]) acc[message] = [];
-        acc[message].push({ fichier, partie });
-        return acc;
-    }, {});
+    // Affichage structuré des fichiers
+    fichiersExistants.forEach((fichiers, message) => {
+        const acteItem = creerItem("");
 
-    // Affichage des fichiers
-    Object.entries(fichiersGroupeParType).forEach(([message, fichiers]) => {
-        const acteItem = creerItem(""); // Création du conteneur
-
-        fichiers.forEach(({ fichier, partie }, index) => {
+        if (fichiers.premiere) {
             const lienFichier = document.createElement('a');
             lienFichier.classList.add('lienFichier');
-            lienFichier.textContent = (partie === "Première partie") ? `Voir ${message}` : "Deuxième partie";
-            lienFichier.href = fichier;
-            lienFichier.style.marginRight = "10px"; // Espacement entre les liens
-
+            lienFichier.textContent = `Voir ${message}`;
+            lienFichier.href = fichiers.premiere;
+            lienFichier.style.marginRight = "10px";
             acteItem.appendChild(lienFichier);
+        }
 
-            // Ajouter un séparateur " | " entre les liens, sauf pour le dernier élément
-            if (index < fichiers.length - 1) {
-                const separator = document.createTextNode(" | ");
-                acteItem.appendChild(separator);
-            }
-        });
+        if (fichiers.deuxieme) {
+            const separator = document.createTextNode(" | ");
+            acteItem.appendChild(separator);
+
+            const lienDeuxieme = document.createElement('a');
+            lienDeuxieme.classList.add('lienFichier');
+            lienDeuxieme.textContent = "Deuxième partie";
+            lienDeuxieme.href = fichiers.deuxieme;
+            acteItem.appendChild(lienDeuxieme);
+        }
 
         detailsList.appendChild(acteItem);
     });
 }
+
 
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
