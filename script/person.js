@@ -299,8 +299,8 @@ async function ajouterLiensActes(person, detailsList) {
     // Vérification des fichiers principaux et des secondes parties
     let fetchPromises = repertoires.flatMap(repertoire => 
         extensions.flatMap(extension => [
-            verifierFichier(`../data/${repertoire}/${nomFichier}.${extension}`, getAfficheMessage(repertoire), "Première partie"),
-            verifierFichier(`../data/${repertoire}/${nomFichier2}.${extension}`, getAfficheMessage(repertoire), "Deuxième partie")
+            verifierFichier(`../data/${repertoire}/${nomFichier}.${extension}`, getAfficheMessage(repertoire)),
+            verifierFichier(`../data/${repertoire}/${nomFichier2}.${extension}`, getAfficheMessage("Deuxième partie"))
         ])
     );
 
@@ -313,8 +313,8 @@ async function ajouterLiensActes(person, detailsList) {
         fetchPromises = fetchPromises.concat(
             extensions.flatMap(extension => [
                 // Vérifier le mariage sous l'ID du mari (conjoint)
-                verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage'), "Première partie"),
-                verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage('mariage'), "Deuxième partie")
+                verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage')),
+                verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage("Deuxième partie"))
             ])
         );
     }
@@ -482,7 +482,11 @@ function getAfficheMessage(repertoire) {
             break;
         case "mariage":
             return "Voir l'acte de mariage";
+            break;
         case "affranchissement":
-            return "Voir l'acte d'affranchissement";            
+            return "Voir l'acte d'affranchissement";   
+            break;
+        default :
+            return "Deuxième Partie"         
     }
 }
