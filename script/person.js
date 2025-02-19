@@ -306,11 +306,13 @@ async function ajouterLiensActes(person, detailsList) {
 
     // Vérification spécifique pour les mariages des femmes (stockés sous l'ID du mari)
     if (person.genre === 'F' && person.conjointId) {
-        const nomFichierConjoint = person.conjointId;
-        const nomFichierConjoint2 = `${nomFichierConjoint}_2`;
+        const nomFichierConjoint = person.conjointId; // ID du conjoint (homme)
+        const nomFichierConjoint2 = `${nomFichierConjoint}_2`; // Deuxième partie du conjoint
 
+        // Vérifier les fichiers de mariage du conjoint (homme) et de l'épouse
         fetchPromises = fetchPromises.concat(
             extensions.flatMap(extension => [
+                // Vérifier le mariage sous l'ID du mari (conjoint)
                 verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage'), "Première partie"),
                 verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage('mariage'), "Deuxième partie")
             ])
@@ -324,15 +326,17 @@ async function ajouterLiensActes(person, detailsList) {
     fichiersExistants.forEach((fichiers, message) => {
         const acteItem = creerItem("");
 
+        // Afficher la première partie
         if (fichiers.premiere) {
             const lienFichier = document.createElement('a');
             lienFichier.classList.add('lienFichier');
-            lienFichier.textContent = `Voir ${message}`;
+            lienFichier.textContent = `${message}`;
             lienFichier.href = fichiers.premiere;
             lienFichier.style.marginRight = "10px";
             acteItem.appendChild(lienFichier);
         }
 
+        // Afficher la deuxième partie, si elle existe
         if (fichiers.deuxieme) {
             const separator = document.createTextNode(" | ");
             acteItem.appendChild(separator);
