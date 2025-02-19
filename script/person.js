@@ -268,47 +268,41 @@ function ajouterAffranchi(detailsList,person) {
         detailsList.appendChild(affranchiDateItem);
     }
 }
-
-// Ajouter les liens des actes
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
+    const nomFichier2 = `${nomFichier}_2`;  // Deuxième page potentielle
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
     let fichiersExistants = [];
 
-    // Création des promesses pour vérifier les fichiers personnels
+    // Vérification des fichiers principaux et des secondes parties
     let fetchPromises = repertoires.flatMap(repertoire => 
-        extensions.map(async extension => {
-            const fichier = `../data/${repertoire}/${nomFichier}.${extension}`;
-            try {
-                const response = await fetch(fichier, { method: 'HEAD' });
-                if (response.ok) {
-                    fichiersExistants.push({ fichier, message: getAfficheMessage(repertoire) });
-                }
-            } catch (error) {
-                console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
-            }
+        extensions.flatMap(extension => {
+            const fichier1 = `../data/${repertoire}/${nomFichier}.${extension}`;
+            const fichier2 = `../data/${repertoire}/${nomFichier2}.${extension}`;
+
+            return [
+                fetchFichier(fichier1, repertoire, "Première partie"),
+                fetchFichier(fichier2, repertoire, "Deuxième partie")
+            ];
         })
     );
 
     // Vérification spécifique pour le mariage si la personne est une femme et a un conjoint
     if (person.genre === 'F' && person.conjointId) {
         const nomFichierConjoint = person.conjointId;
-        
-        // Ajouter les vérifications pour le fichier du mari dans les promesses
-        const fetchMariagePromises = extensions.map(async extension => {
+        const nomFichierConjoint2 = `${nomFichierConjoint}_2`;
+
+        const fetchMariagePromises = extensions.flatMap(extension => {
             const fichierConjoint = `../data/mariage/${nomFichierConjoint}.${extension}`;
-            try {
-                const response = await fetch(fichierConjoint, { method: 'HEAD' });
-                if (response.ok) {
-                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage') });
-                }
-            } catch (error) {
-                console.error(`Erreur lors de la récupération du fichier de mariage du conjoint ${fichierConjoint}:`, error);
-            }
+            const fichierConjoint2 = `../data/mariage/${nomFichierConjoint2}.${extension}`;
+
+            return [
+                fetchFichier(fichierConjoint, 'mariage', "Première partie"),
+                fetchFichier(fichierConjoint2, 'mariage', "Deuxième partie")
+            ];
         });
 
-        // Ajouter ces nouvelles promesses à la liste globale
         fetchPromises = fetchPromises.concat(fetchMariagePromises);
     }
 
@@ -316,15 +310,38 @@ async function ajouterLiensActes(person, detailsList) {
     await Promise.all(fetchPromises);
 
     // Affichage des fichiers existants
-    fichiersExistants.forEach(({ fichier, message }) => {
-        const acteItem = creerItem("");
-        const lienFichier = document.createElement('a');
-        lienFichier.classList.add('lienFichier');
-        lienFichier.textContent = message;
-        lienFichier.href = fichier;
-        acteItem.appendChild(lienFichier);
+    const fichiersGroupeParType = fichiersExistants.reduce((acc, { fichier, message, partie }) => {
+        if (!acc[message]) acc[message] = [];
+        acc[message].push({ fichier, partie });
+        return acc;
+    }, {});
+
+    Object.entries(fichiersGroupeParType).forEach(([message, fichiers]) => {
+        const acteItem = creerItem(""); // Crée un conteneur
+
+        fichiers.forEach(({ fichier, partie }) => {
+            const lienFichier = document.createElement('a');
+            lienFichier.classList.add('lienFichier');
+            lienFichier.textContent = `${message} - ${partie}`;
+            lienFichier.href = fichier;
+            lienFichier.style.marginRight = "10px"; // Espacement entre les liens
+            acteItem.appendChild(lienFichier);
+        });
+
         detailsList.appendChild(acteItem);
     });
+
+    // Fonction pour vérifier l'existence d'un fichier
+    async function fetchFichier(fichier, repertoire, partie) {
+        try {
+            const response = await fetch(fichier, { method: 'HEAD' });
+            if (response.ok) {
+                fichiersExistants.push({ fichier, message: getAfficheMessage(repertoire), partie });
+            }
+        } catch (error) {
+            console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
+        }
+    }
 }
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
