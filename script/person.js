@@ -304,11 +304,12 @@ async function ajouterLiensActes(person, detailsList) {
         ])
     );
 
-    // Vérification spécifique pour les mariages des femmes (stockés sous l'ID du mari)
+    // Vérification spécifique pour les mariages des femmes (actes sous l'ID de l'époux)
     if (person.genre === 'F' && person.conjointId) {
-        const nomFichierConjoint = person.conjointId;
-        const nomFichierConjoint2 = `${nomFichierConjoint}_2`;
+        const nomFichierConjoint = person.conjointId; // ID du conjoint (homme)
+        const nomFichierConjoint2 = `${nomFichierConjoint}_2`; // Deuxième partie du conjoint
 
+        // Vérifier les fichiers du conjoint (homme)
         fetchPromises = fetchPromises.concat(
             extensions.flatMap(extension => [
                 verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage'), "Première partie"),
