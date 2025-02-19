@@ -275,21 +275,14 @@ async function ajouterLiensActes(person, detailsList) {
     const nomFichier2 = `${nomFichier}_2`; // Deuxième partie potentielle
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
-    let fichiersExistants = new Map();
+    let fichiersExistants = [];
 
     // Fonction pour vérifier un fichier et l'ajouter s'il existe
     async function verifierFichier(fichier, message, partie) {
         try {
             const response = await fetch(fichier, { method: 'HEAD' });
             if (response.ok) {
-                if (!fichiersExistants.has(message)) {
-                    fichiersExistants.set(message, { premiere: null, deuxieme: null });
-                }
-                if (partie === "Première partie") {
-                    fichiersExistants.get(message).premiere = fichier;
-                } else {
-                    fichiersExistants.get(message).deuxieme = fichier;
-                }
+                fichiersExistants.push({ fichier, message, partie });
             }
         } catch (error) {
             console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
@@ -304,12 +297,11 @@ async function ajouterLiensActes(person, detailsList) {
         ])
     );
 
-    // Vérification spécifique pour les mariages des femmes (actes sous l'ID de l'époux)
+    // Vérification spécifique pour les mariages des femmes (stockés sous l'ID du mari)
     if (person.genre === 'F' && person.conjointId) {
-        const nomFichierConjoint = person.conjointId; // ID du conjoint (homme)
-        const nomFichierConjoint2 = `${nomFichierConjoint}_2`; // Deuxième partie du conjoint
+        const nomFichierConjoint = person.conjointId;
+        const nomFichierConjoint2 = `${nomFichierConjoint}_2`;
 
-        // Vérifier les fichiers du conjoint (homme)
         fetchPromises = fetchPromises.concat(
             extensions.flatMap(extension => [
                 verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage'), "Première partie"),
@@ -321,34 +313,36 @@ async function ajouterLiensActes(person, detailsList) {
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
 
-    // Affichage structuré des fichiers
-    fichiersExistants.forEach((fichiers, message) => {
-        const acteItem = creerItem("");
+    // Organisation des fichiers par type d'acte
+    const fichiersGroupeParType = fichiersExistants.reduce((acc, { fichier, message, partie }) => {
+        if (!acc[message]) acc[message] = [];
+        acc[message].push({ fichier, partie });
+        return acc;
+    }, {});
 
-        if (fichiers.premiere) {
+    // Affichage des fichiers
+    Object.entries(fichiersGroupeParType).forEach(([message, fichiers]) => {
+        const acteItem = creerItem(""); // Création du conteneur
+
+        fichiers.forEach(({ fichier, partie }, index) => {
             const lienFichier = document.createElement('a');
             lienFichier.classList.add('lienFichier');
-            lienFichier.textContent = `Voir ${message}`;
-            lienFichier.href = fichiers.premiere;
-            lienFichier.style.marginRight = "10px";
+            lienFichier.textContent = (partie === "Première partie") ? `Voir ${message}` : "Deuxième partie";
+            lienFichier.href = fichier;
+            lienFichier.style.marginRight = "10px"; // Espacement entre les liens
+
             acteItem.appendChild(lienFichier);
-        }
 
-        if (fichiers.deuxieme) {
-            const separator = document.createTextNode(" | ");
-            acteItem.appendChild(separator);
-
-            const lienDeuxieme = document.createElement('a');
-            lienDeuxieme.classList.add('lienFichier');
-            lienDeuxieme.textContent = "Deuxième partie";
-            lienDeuxieme.href = fichiers.deuxieme;
-            acteItem.appendChild(lienDeuxieme);
-        }
+            // Ajouter un séparateur " | " entre les liens, sauf pour le dernier élément
+            if (index < fichiers.length - 1) {
+                const separator = document.createTextNode(" | ");
+                acteItem.appendChild(separator);
+            }
+        });
 
         detailsList.appendChild(acteItem);
     });
 }
-
 
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
