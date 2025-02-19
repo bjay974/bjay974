@@ -313,8 +313,8 @@ async function ajouterLiensActes(person, detailsList) {
         fetchPromises = fetchPromises.concat(
             extensions.flatMap(extension => [
                 // Vérifier le mariage sous l'ID du mari (conjoint)
-                verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage')),
-                verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage('deuxieme'))
+                verifierFichier(`../data/mariage/${nomFichierConjoint}.${extension}`, getAfficheMessage('mariage'), "Première partie"),
+                verifierFichier(`../data/mariage/${nomFichierConjoint2}.${extension}`, getAfficheMessage('mariage'), "Deuxième partie")
             ])
         );
     }
@@ -336,21 +336,22 @@ async function ajouterLiensActes(person, detailsList) {
             acteItem.appendChild(lienFichier);
         }
 
-        // Afficher la deuxième partie, si elle existe
+        // Afficher la deuxième partie, si elle existe, sur la même ligne
         if (fichiers.deuxieme) {
             const separator = document.createTextNode(" | ");
             acteItem.appendChild(separator);
+
             const lienDeuxieme = document.createElement('a');
             lienDeuxieme.classList.add('lienFichier');
-            lienDeuxieme.textContent = `${message}`;
+            lienDeuxieme.textContent = "Deuxième partie";
             lienDeuxieme.href = fichiers.deuxieme;
             acteItem.appendChild(lienDeuxieme);
         }
 
+        // Ajouter le fichier à la liste
         detailsList.appendChild(acteItem);
     });
 }
-
 
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
