@@ -269,32 +269,34 @@ function ajouterAffranchi(detailsList,person) {
     }
 }
 
-// Charger les actes 
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
-    const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
+    const repertoires = ['naissance', 'mariage', 'particulier', 'affranchissement', 'deces'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
     let fichiersExistants = [];
-    // Créer une liste de promesses pour vérifier tous les fichiers
-    const fetchPromises = repertoires.flatMap(repertoire => 
-        extensions.map(async extension => {
+
+    // Vérifier chaque répertoire dans l'ordre mais exécuter les requêtes de fichiers en parallèle
+    for (const repertoire of repertoires) {
+        const fetchPromises = extensions.map(async (extension) => {
             const fichier = `../data/${repertoire}/${nomFichier}.${extension}`;
             try {
-                const response = await fetch(fichier, { method: 'HEAD' }); // Utilisation de HEAD pour vérifier l'existence
+                const response = await fetch(fichier, { method: 'HEAD' });
                 if (response.ok) {
                     fichiersExistants.push({ fichier, message: getAfficheMessage(repertoire) });
                 }
             } catch (error) {
                 console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
             }
-        })
-    );
+        });
+
+        await Promise.all(fetchPromises); // Attendre toutes les requêtes du répertoire avant de passer au suivant
+    }
+
     // Vérification spécifique pour le mariage (si la personne est une femme, vérifier le conjoint)
     if (person.genre === 'F' && person.date_mariage) {
         const nomFichierConjoint = person.conjointId;
         if (nomFichierConjoint) {
-            const repertoireMariage = 'mariage';
-            const fichierConjoint = `../data/${repertoireMariage}/${nomFichierConjoint}.${extensions[0]}`; // pdf comme exemple
+            const fichierConjoint = `../data/mariage/${nomFichierConjoint}.pdf`;
             try {
                 const response = await fetch(fichierConjoint, { method: 'HEAD' });
                 if (response.ok) {
@@ -305,9 +307,8 @@ async function ajouterLiensActes(person, detailsList) {
             }
         }
     }
-    // Attendre que toutes les vérifications soient terminées
-    await Promise.all(fetchPromises);
-    // Affichage des fichiers existants
+
+    // Affichage des fichiers existants dans l'ordre des répertoires
     fichiersExistants.forEach(({ fichier, message }) => {
         const acteItem = creerItem("");
         const lienFichier = document.createElement('a');
@@ -318,6 +319,7 @@ async function ajouterLiensActes(person, detailsList) {
         detailsList.appendChild(acteItem);
     });
 }
+
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
