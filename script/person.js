@@ -269,18 +269,18 @@ function ajouterAffranchi(detailsList,person) {
     }
 }
 
-// Charger les actes 
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
     let fichiersExistants = [];
-    // Créer une liste de promesses pour vérifier tous les fichiers
+
+    // Création des promesses pour vérifier les fichiers personnels
     const fetchPromises = repertoires.flatMap(repertoire => 
         extensions.map(async extension => {
             const fichier = `../data/${repertoire}/${nomFichier}.${extension}`;
             try {
-                const response = await fetch(fichier, { method: 'HEAD' }); // Utilisation de HEAD pour vérifier l'existence
+                const response = await fetch(fichier, { method: 'HEAD' });
                 if (response.ok) {
                     fichiersExistants.push({ fichier, message: getAfficheMessage(repertoire) });
                 }
@@ -289,24 +289,26 @@ async function ajouterLiensActes(person, detailsList) {
             }
         })
     );
-    // Vérification spécifique pour le mariage (si la personne est une femme, vérifier le conjoint)
-    if (person.genre === 'F' && person.date_mariage) {
+
+    // Vérification spécifique pour le mariage si la personne est une femme et a un conjoint
+    if (person.genre === 'F' && person.conjointId) {
         const nomFichierConjoint = person.conjointId;
-        if (nomFichierConjoint) {
-            const repertoireMariage = 'mariage';
-            const fichierConjoint = `../data/${repertoireMariage}/${nomFichierConjoint}.${extensions[0]}`; // pdf comme exemple
+        extensions.forEach(async extension => {
+            const fichierConjoint = `../data/mariage/${nomFichierConjoint}.${extension}`;
             try {
                 const response = await fetch(fichierConjoint, { method: 'HEAD' });
                 if (response.ok) {
-                    fichiersExistants.push({ fichierConjoint, message: getAfficheMessage('mariage') });
+                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage') });
                 }
             } catch (error) {
-                console.error(`Erreur lors de la récupération du fichier du conjoint ${fichierConjoint}:`, error);
+                console.error(`Erreur lors de la récupération du fichier de mariage du conjoint ${fichierConjoint}:`, error);
             }
-        }
+        });
     }
+
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
+
     // Affichage des fichiers existants
     fichiersExistants.forEach(({ fichier, message }) => {
         const acteItem = creerItem("");
@@ -318,6 +320,7 @@ async function ajouterLiensActes(person, detailsList) {
         detailsList.appendChild(acteItem);
     });
 }
+
 
 function creerLienNom(person, lienHomme, lienFemme, laClasse) {
     const lienPersonne = document.createElement('a');
