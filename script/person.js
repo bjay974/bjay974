@@ -271,13 +271,14 @@ function ajouterAffranchi(detailsList,person) {
 
 async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
-    const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
+    const repertoires = ['naissance', 'mariage', 'particulier', 'affranchissement', 'deces'];
     const extensions = ['pdf', 'jpg', 'jpeg'];
     let fichiersExistants = [];
 
-    // Création des promesses pour vérifier les fichiers personnels
-    const fetchPromises = repertoires.flatMap(repertoire => 
-        extensions.map(async extension => {
+
+    // Vérifier chaque répertoire dans l'ordre mais exécuter les requêtes de fichiers en parallèle
+    for (const repertoire of repertoires) {
+        const fetchPromises = extensions.map(async (extension) => {
             const fichier = `../data/${repertoire}/${nomFichier}.${extension}`;
             try {
                 const response = await fetch(fichier, { method: 'HEAD' });
@@ -288,28 +289,25 @@ async function ajouterLiensActes(person, detailsList) {
                 console.error(`Erreur lors de la récupération du fichier ${fichier}:`, error);
             }
         })
-    );
-
-    // Vérification spécifique pour le mariage si la personne est une femme et a un conjoint
+     // Vérification spécifique pour le mariage si la personne est une femme et a un conjoint
     if (person.genre === 'F' && person.conjointId) {
         const nomFichierConjoint = person.conjointId;
         extensions.forEach(async extension => {
             const fichierConjoint = `../data/mariage/${nomFichierConjoint}.${extension}`;
-            try {
-                const response = await fetch(fichierConjoint, { method: 'HEAD' });
-                if (response.ok) {
-                    fichiersExistants.push({ fichier: fichierConjoint, message: getAfficheMessage('mariage') });
-                }
-            } catch (error) {
-                console.error(`Erreur lors de la récupération du fichier de mariage du conjoint ${fichierConjoint}:`, error);
-            }
         });
-    }
 
+        await Promise.all(fetchPromises); // Attendre toutes les requêtes du répertoire avant de passer au suivant
+    }
+ }
+
+<<<<<<< HEAD
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
 
     // Affichage des fichiers existants
+=======
+    // Affichage des fichiers existants dans l'ordre des répertoires
+>>>>>>> b5d4677ff9dc5b1f807e472c78817591c41ee251
     fichiersExistants.forEach(({ fichier, message }) => {
         const acteItem = creerItem("");
         const lienFichier = document.createElement('a');
