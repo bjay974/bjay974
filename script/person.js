@@ -282,9 +282,6 @@ async function ajouterLiensActes(person, detailsList) {
         try {
             const response = await fetch(fichier, { method: 'HEAD' });
             if (response.ok) {
-                if (!fichiersExistants.has(message)) {
-                    fichiersExistants.set(message, { premiere: null, deuxieme: null });
-                }
                 if (partie === "Première partie") {
                     fichiersExistants.get(message).premiere = fichier;
                 } else {
