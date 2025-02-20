@@ -282,6 +282,9 @@ async function ajouterLiensActes(person, detailsList) {
         try {
             const response = await fetch(fichier, { method: 'HEAD' });
             if (response.ok) {
+                if (!fichiersExistants.has(message)) {
+                    fichiersExistants.set(message, {});
+                }
                 if (partie === "Première partie") {
                     fichiersExistants.get(message).premiere = fichier;
                 } else {
@@ -297,7 +300,7 @@ async function ajouterLiensActes(person, detailsList) {
     let fetchPromises = repertoires.flatMap(repertoire => 
         extensions.flatMap(extension => [
             verifierFichier(`../data/${repertoire}/${nomFichier}.${extension}`, getAfficheMessage(repertoire), "Première partie"),
-            verifierFichier(`../data/${repertoire}/${nomFichier2}.${extension}`, getAfficheMessage('deuxieme'), "Deuxième partie")
+            verifierFichier(`../data/${repertoire}/${nomFichier2}.${extension}`, getAfficheMessage(repertoire), "Deuxième partie")
         ])
     );
 
@@ -321,7 +324,7 @@ async function ajouterLiensActes(person, detailsList) {
 
     // Affichage structuré des fichiers
     fichiersExistants.forEach((fichiers, message) => {
-        const acteItem = creerItem("");
+        const acteItem = document.createElement('div');
 
         // Afficher la première partie
         if (fichiers.premiere) {
@@ -348,6 +351,22 @@ async function ajouterLiensActes(person, detailsList) {
         // Ajouter le fichier à la liste
         detailsList.appendChild(acteItem);
     });
+}
+
+// Fonction pour obtenir le message d'affichage
+function getAfficheMessage(repertoire) {
+    switch (repertoire) {
+        case 'naissance':
+            return 'Voir l\'acte de naissance';
+        case 'mariage':
+            return 'Voir l\'acte de mariage';
+        case 'particulier':
+            return 'Voir l\'acte particulier';
+        case 'deces':
+            return 'Voir l\'acte de décès';
+        case 'affranchissement':
+            return 'Voir l\'acte d\'affranchissement';
+    }
 }
 
 
