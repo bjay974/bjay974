@@ -274,7 +274,7 @@ async function ajouterLiensActes(person, detailsList) {
     const nomFichier = person.id;
     const nomFichier2 = `${nomFichier}_2`; // Deuxième partie potentielle
     const repertoires = ['naissance', 'mariage', 'particulier', 'deces', 'affranchissement'];
-    const extensions = ['pdf', 'jpg', 'jpeg'];
+    const extensions = ['pdf', 'jpg'];
     let fichiersExistants = new Map();
 
     // Fonction pour vérifier un fichier et l'ajouter s'il existe
