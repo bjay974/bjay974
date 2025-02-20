@@ -76,8 +76,8 @@ function ajouterParents(detailsList,person,dataMap){
     // Charger le père si l'ID du père est défini
     if (person.id_pere) {
         parentItem = creerItem("");
-        if (person.id_pere === "inconnu") {
-            textParent = "De pére inconnu"
+        if (person.id_pere === "Inconnu") {
+            textParent = "De père inconnu"
             parentItem.appendChild(document.createTextNode(textParent));    }
         else {
             let father = dataMap.get(person.id_pere);
@@ -91,7 +91,7 @@ function ajouterParents(detailsList,person,dataMap){
     }
     // Charger la mère si l'ID de la mère est défini
     if (person.id_mere) {
-        if (person.id_mere === "inconnue") {
+        if (person.id_mere === "Inconnue") {
             if (parentItem) {
                 textParent = " et de mère inconnue"
             } else {
