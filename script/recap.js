@@ -150,7 +150,17 @@ function creerListItem(person) {
     }
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
-
+ 
+   function afficheActe(reponse, repertoire) {
+    const repPrefix = repertoire.substring(0, 3);
+    if (reponse === "OK") {
+        return `<span style="color: green;">${repPrefix}</span>`;
+    } else if (reponse === "KO") {
+        return `<span style="color: red;">${repPrefix}</span>`;    
+    } else {
+        return null; 
+    }
+  }
   async function verifierDocument(person, repertoire) {
     const dateProperty = 'date_' + repertoire;
     if (!person[dateProperty]) return "PasDeDate";
