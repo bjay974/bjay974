@@ -70,16 +70,16 @@ async function creerListItem(person) {
     const [naissance_R, deces_R, mariage_R, affranchissement_R, special_R] = await Promise.all([
         verifierDocument(person, "naissance"),
         verifierDocument(person, "deces"),
-        verifierDocument(person, "mariage"),
+        person.genre === "M" ? verifierDocument(person, "mariage") : Promise.resolve(""),
         verifierDocument(person, "affranchissement"),
         verifierDocumentSpecial(person, "particulier"),
     ]);
 
-    const naissance = afficheActe(naissance_R, "naissance");
-    const deces = afficheActe(deces_R, "deces");
-    const mariage = afficheActe(mariage_R, "mariage");
-    const affranchissement = afficheActe(affranchissement_R, "affranchissement");
-    const special = afficheActe(special_R, "particulier");
+    const naissance = afficheActe(naissance_R, "naissance",person.date_naissance);
+    const deces = afficheActe(deces_R, "deces",person.date_deces);
+    const mariage = afficheActe(mariage_R, "mariage",person.date_mariage);
+    const affranchissement = afficheActe(affranchissement_R, "affranchissement",person.date_affranchissement);
+    const special = afficheActe(special_R, "particulier",person.date_affranchissement);
 
     setTimeout(1)
     li.innerHTML = `
@@ -94,17 +94,34 @@ async function creerListItem(person) {
     return li;
 }
 
-function afficheActe(reponse, repertoire) {
-    const repPrefix = repertoire.substring(0, 3);
-    return reponse === "OK" ? `<span style="color: green;">${repPrefix}</span>` 
-         : reponse === "KO" ? `<span style="color: red;">${repPrefix}</span>` 
-         : null;
+function afficheActe(reponse, repertoire, date) {
+  if (!date) return ""; // Gérer le cas où la date est absente
+
+  const repPrefix = repertoire.substring(0, 3);
+  const jourMois = date.substr(0, 5);
+  const year = date.substr(6, 4);
+
+  if (reponse === "KO") {
+      // Si la date commence par "01/01", afficher l'année en bleu
+      if (jourMois === "01/01") {
+          return `<span style="color: blue;">${year}</span>`;
+      }
+      // Sinon, afficher le préfixe en rouge
+      return `<span style="color: red;">${repPrefix}</span>`;
+  }
+
+  // Si "OK", afficher le préfixe en vert
+  if (reponse === "OK") {
+      return `<span style="color: green;">${repPrefix}</span>`;
+  }
+
+  return ""; // Retourne une chaîne vide si la réponse est autre
 }
+
 
 async function verifierDocument(person, repertoire) {
     const dateProperty = 'date_' + repertoire;
     if (!person[dateProperty]) return "PasDeDate";
-
     const extensions = ['pdf', 'jpg', 'png'];
     const basePath = `../data/${repertoire}/${person.id}`;
 
