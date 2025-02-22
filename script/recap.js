@@ -156,23 +156,23 @@ function creerListItem(person) {
   const affranchissement_R = verifierDocument(person, "affranchissement");
   const special_R = verifierDocumentSpecial(person, "affranchissement");
   // Construction des résultats de chaque document
-  naissance = afficheActe("OK", "naissance")}
-  deces_R = afficheActe(true, "deces")
-  mariage_R = afficheActe(true, "mariage")
-  affranchissement_R = afficheActe(true, "affranchissement")
-  special_R = afficheActe(true, "particulier")
+  const naissance = afficheActe(naissance_R, "naissance")
+  const deces = afficheActe(deces_R, "deces")
+  const mariage = afficheActe(mariage_R, "mariage")
+  const affranchissement = afficheActe(affranchissement_R, "affranchissement")
+  const special = afficheActe(special_R, "particulier")
   const resultat = `
   ${naissance}
-  ${deces_R}
-  ${mariage_R}
-  ${affranchissement_R}
-  ${special_R}
+  ${deces}
+  ${mariage}
+  ${affranchissement}
+  ${special}
 `;
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
-      ${resultat}  <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+      ${resultat}<em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
   return li;
@@ -226,10 +226,11 @@ async function verifierDocumentSpecial(person, repertoire) {
 }
 
 function afficheActe(reponse,repertoire) {
+  const response = reponse
   const repPrefix = repertoire.substring(0, 3);
-  if (reponse = "OK") {
+  if (response = "OK") {
     return `<span style="color: green;">${repPrefix}</span>`;
-  } else if  (reponse = "KO") {
+  } else if  (response = "KO") {
     return `<span style="color: red;">${repPrefix}</span>`;    
   }
 }
