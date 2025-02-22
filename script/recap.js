@@ -104,7 +104,7 @@ function afficheActe(reponse, repertoire, date) {
   if (reponse === "KO") {
       // Si la date commence par "01/01", afficher l'année en bleu
       if (jourMois === "01/01") {
-          return `<span style="color: blue;">${year}</span>`;
+          return `<span style="color: blue;">${repPrefix}</span>`;
       }
       // Sinon, afficher le préfixe en rouge
       return `<span style="color: red;">${repPrefix}</span>`;
