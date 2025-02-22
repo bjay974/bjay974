@@ -146,22 +146,78 @@ function creerListItem(person) {
     }
     // Vérifier si la date est uniquement une année (01/01/XXXX)
     if (jourMois === "01/01") {
-      return `<span style="color: blue;">N${year}</span>`; // Année seule en rouge
+      return `<span style="color: blue;">${year}</span>`; // Année seule en bleue
     }
     const color = type === 'naissance' ? 'green' : 'red';
     return `<span style="color: ${color};">${year}</span>`; // Année complète (verte pour naissance, rouge pour décès)
   }
+  naissance = verifierDocument(person, "naissance");
+  deces = verifierDocument(person, "deces");
+  mariage = verifierDocument(person, "mariage");
+  affranchissiment = verifierDocument(person, "affranchissiment");
+  special= verifierDocumentSpecial(person, "affranchissiment");
 
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance, 'naissance')}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces, 'deces') : ''}) 
-      <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+      ${naissance} ${deces} ${mariage} ${affranchissiment} ${special} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
   return li;
 }
 
+async function verifierDocument(person, repertoire) {
+  // Construire le nom de la propriété de date en fonction du répertoire
+  const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
+
+  // Vérifier si la propriété de date existe et est définie
+  if (person[dateProperty]) {
+    // Construire le chemin vers le fichier en utilisant l'ID de la personne
+    const filePath = `../data/${repertoire}/${person.id}.*`; // Supposons que les fichiers soient au format PDF
+    try {
+      // Tenter de récupérer le fichier
+      const response = await fetch(filePath, { method: 'HEAD' });
+      // Extraire les trois premières lettres du répertoire
+      const repPrefix = repertoire.substring(0, 3);
+      // Créer un élément <span> pour afficher le préfixe du répertoire avec la couleur appropriée
+      const span = document.createElement('span');
+      span.textContent = repPrefix;
+      if (response.ok) {
+        span.style.color = 'green'; // Le fichier existe, couleur verte
+      } else {
+        span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
+      }
+      return span; // Retourner l'élément <span>
+    } 
+  } 
+}
+
+async function verifierDocumentSpecial(person, repertoire) {
+  // Construire le nom de la propriété de date en fonction du répertoire
+  const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
+
+  // Vérifier si la propriété de date existe et est définie
+  if (person[dateProperty]) {
+    // Construire le chemin vers le fichier en utilisant l'ID de la personne
+    const filePath = `../data/particulier/${person.id}.*`; // Supposons que les fichiers soient au format PDF
+    try {
+      // Tenter de récupérer le fichier
+      const response = await fetch(filePath, { method: 'HEAD' });
+      // Extraire les trois premières lettres du répertoire
+      const repPrefix = "spec"
+      // Créer un élément <span> pour afficher le préfixe du répertoire avec la couleur appropriée
+      const span = document.createElement('span');
+      span.textContent = repPrefix;
+      if (response.ok) {
+        span.style.color = 'green'; // Le fichier existe, couleur verte
+      } else {
+        span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
+      }
+      return span; // Retourner l'élément <span>
+    } 
+  } 
+}
 
 function creerAn(date) {
     const year = parseInt(date.substr(6, 4));

@@ -155,7 +155,7 @@
     "date_naissance": "20/12/1825",
     "lieu_naissance": "Saint Joseph",
     "date_deces": "19/07/1867",
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "lieu_deces": "Saint Joseph",
     "date_mariage": "09/04/1850",
     "lieu_mariage": "Saint Joseph",
@@ -429,7 +429,7 @@
     "date_deces": "02/09/1862",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 800,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Domicilié au quartier lieu dit le Canal, décédé au domicile de Mr RODIN Fortuné"
   },
   {
@@ -444,7 +444,7 @@
     "date_deces": "19/08/1855",
     "lieu_deces": "Sainte-Rose",
     "commentaire": "Née à Ste Rose de Marie Jeane  (à VEUVE MEULLER)",
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 800,
@@ -458,7 +458,7 @@
     "date_deces": "03/07/1868",
     "lieu_deces": "Inconnu",
     "id_conjoint": 819,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 720,
@@ -497,7 +497,7 @@
     "date_deces": "06/04/1850",
     "lieu_deces": "Sainte-Rose",
     "id_conjoint": 704,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Esclave de la Veuve Marchand Louis de Bois blanc, Avril est décédé en 1850 dans cette propriétée, aprés l'abolition de l'esclavage"
   },
   {
@@ -512,7 +512,7 @@
     "date_deces": "24/01/1883",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 714,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 714,
@@ -526,7 +526,7 @@
     "date_deces": "23/08/1853",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 715,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Décédée sans engagement(acte au nom de MOUDINE ?) , dans la propiétée de Mr Pitou, son proprétaire d'avant l'abolition"
   },
   {
@@ -543,7 +543,7 @@
     "date_mariage": "08/05/1852",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 701,
-    "date_affranchi": "23/11/1848"
+    "date_affranchissement": "23/11/1848"
   },
   {
     "id": 711,
@@ -559,7 +559,7 @@
     "date_mariage": "10/06/1848",
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 700,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Esclave à l'etablissement Beaufonds, site desormais de la distillerie Riviere du mât"
   },
   {
@@ -574,7 +574,7 @@
     "date_deces": "31/08/1863",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 709,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 709,
@@ -588,7 +588,7 @@
     "date_deces": "31/08/1871",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 710,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Domicilié à Bras Canot"
   },
   {
@@ -602,7 +602,7 @@
     "lieu_naissance": "Madagascar",
     "date_deces": "26/03/1872",
     "lieu_deces": "Sainte-Rose",
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Esclave à Bois Blanc "
   },
   {
@@ -619,7 +619,7 @@
     "date_mariage": "08/05/1852",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 712,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Nomé ADONIS à Salazie comme affranchi, s'est marié avec le nom EVRARD (nom donné à sa mére par l'administration)"
   },
   {
@@ -636,7 +636,7 @@
     "date_mariage": "10/06/1848",
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 711,
-    "date_affranchi": "10/12/1848"
+    "date_affranchissement": "10/12/1848"
   },
   {
     "id": 611,
@@ -652,7 +652,7 @@
     "date_mariage": "29/09/1858",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 606,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 609,
@@ -667,7 +667,7 @@
     "lieu_deces": "Saint Benoit",
     "date_mariage": "03/05/1862",
     "lieu_mariage": "Saint Benoit",
-    "date_affranchi": "06/12/1848",
+    "date_affranchissement": "06/12/1848",
     "id_conjoint": 604,
     "commentaire": "Esclave à la Ravine Saint-Pierre. "
   },
@@ -685,7 +685,7 @@
     "date_mariage": "03/11/1875",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 607,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Prenommée dans certains actes : Marie Zelima"
   },
   {
@@ -702,7 +702,7 @@
     "date_mariage": "03/11/1875",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 608,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 606,
@@ -718,7 +718,7 @@
     "date_mariage": "26/05/1862",
     "lieu_mariage": "Sainte-Rose",
     "id_conjoint": 611,
-    "date_affranchi": "23/11/1848"
+    "date_affranchissement": "23/11/1848"
   },
   {
     "id": 604,
@@ -736,7 +736,7 @@
     "date_mariage": "03/05/1862",
     "lieu_mariage": "Saint Benoit",
     "id_conjoint": 609,
-    "date_affranchi": "19/12/1848",
+    "date_affranchissement": "19/12/1848",
     "commentaire":"Acte de décés au nom de Monty ? pas de renseignements sur cet acte sur ses parents, aprés recherche pas de Monty né à la Reunion, il y a de grande chance que cela corresponde"
   },
   {
@@ -754,7 +754,7 @@
     "lieu_mariage": "Saint benoit",
     "id_conjoint": 602,
     "commentaire": "Pierre a été employé à l'usine sucriére de Beaulieu, propriétée du Credit Foncier",
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 602,
@@ -772,7 +772,7 @@
     "date_mariage": "26/05/1862",
     "lieu_mariage": "Saint benoit",
     "id_conjoint": 603,
-    "date_affranchi": "10/12/1848",
+    "date_affranchissement": "10/12/1848",
     "commentaire": "Index des Naissances 1844 Saint Benoit : pas d'acte de naissance"
   },
   {
@@ -1239,7 +1239,7 @@
     "nom_legitime": "BARRE",
     "date_legitime": "30/03/1859",
     "id_conjoint": 1660,
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Reconnu par Joseph BARRE, demeurant alors à Saint Leu, aprés le deces de sa maman (1850)"
   },
   {
@@ -1257,7 +1257,7 @@
     "lieu_deces":"Saint Joseph",
     "commentaire": "Bien que fille d'un homme libre, Marianne subit le \"droit du ventre\" et reste donc esclave comme sa mére.  ",
     "id_conjoint": 1635,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 1650,
@@ -1416,7 +1416,7 @@
     "id_mere": 1816,
     "date_naissance": "01/01/1802",
     "lieu_naissance": "Inconnu",
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "date_deces": "04/05/1850",
     "lieu_deces": "Saint Joseph",
     "commentaire": " Domaine plaine des Grégues",
@@ -1437,7 +1437,7 @@
     "lieu_mariage": "Saint Joseph",
     "commentaire": "Esclave domaine MARTIN JB - Grégues",
     "id_conjoint": 1717,
-    "date_affranchi": "20/12/1848"
+    "date_affranchissement": "20/12/1848"
   },
   {
     "id": 1717,
@@ -1671,7 +1671,7 @@
     "lieu_deces": "Saint Joseph",
     "date_mariage": "15/11/1849",
     "lieu_mariage": "Saint Joseph",
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Chez MALLET ",
     "id_conjoint": 1836
   },
@@ -1688,7 +1688,7 @@
     "lieu_deces": "Saint Joseph",
     "date_mariage": "15/11/1849",
     "lieu_mariage": "Saint Joseph",
-    "date_affranchi": "20/12/1848",
+    "date_affranchissement": "20/12/1848",
     "commentaire": "Chez ETHEVE",
     "id_conjoint": 1827
   },

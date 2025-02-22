@@ -261,9 +261,9 @@ function ajouterMariage(detailsList,person,dataMap) {
 
 // Charger la date d'affranchissement 
 function ajouterAffranchi(detailsList,person) {
-    if (person.date_affranchi) {
+    if (person.date_affranchissement) {
         const adjectif_genre = ajouterE("Affranchi", person.genre)
-        const dateValide = verifieDate(person.date_affranchi) 
+        const dateValide = verifieDate(person.date_affranchissement) 
         const affranchiDateItem = creerItem(`${adjectif_genre} ${dateValide}`);
         detailsList.appendChild(affranchiDateItem);
     }
