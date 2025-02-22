@@ -119,22 +119,25 @@ function afficheActe(reponse, repertoire, date) {
 
 
 async function verifierDocument(person, repertoire) {
-    const dateProperty = 'date_' + repertoire;
-    if (!person[dateProperty]) return "PasDeDate";
-    const extensions = ['pdf', 'jpg', 'png'];
-    const basePath = `../data/${repertoire}/${person.id}`;
+  const dateProperty = 'date_' + repertoire;
+  if (!person[dateProperty]) return "PasDeDate";
+  
+  const extensions = ['pdf', 'jpg', 'png'];
+  const basePath = `../data/${repertoire}/${person.id}`;
 
-    for (const ext of extensions) {
-        const filePath = `${basePath}.${ext}`;
-        try {
-            const response = await fetch(filePath, { method: 'HEAD' });
-            if (response.ok) return "OK";
-        } catch (error) {
-            console.error(`Erreur lors de la vérification de ${filePath}:`, error);
-        }
-    }
-    return "KO";
+  for (const ext of extensions) {
+      const filePath = `${basePath}.${ext}`;
+      try {
+          await new Promise(resolve => setTimeout(resolve, Math.random() * 200)); // Délai aléatoire entre 0 et 200 ms
+          const response = await fetch(filePath, { method: 'HEAD' });
+          if (response.ok) return "OK";
+      } catch (error) {
+          console.error(`Erreur lors de la vérification de ${filePath}:`, error);
+      }
+  }
+  return "KO";
 }
+
 
 async function verifierDocumentSpecial(person, repertoire) {
     return verifierDocument(person, `particulier/${person.id}`);
