@@ -222,6 +222,7 @@ async function afficherResultats(person) {
 
   console.log("Valeur de naissance :", naissance);
   console.log("Valeur de resultat :", [naissance, deces, mariage, affranchissement, special]);
+  setTimeout(1)
 }
 
   li.innerHTML = `
