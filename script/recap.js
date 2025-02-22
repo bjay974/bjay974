@@ -150,11 +150,17 @@ function creerListItem(person) {
     }
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
-  naissance = verifierDocument(person, "naissance");
-  deces = verifierDocument(person, "deces");
-  mariage = verifierDocument(person, "mariage");
-  affranchissiment = verifierDocument(person, "affranchissiment");
-  special= verifierDocumentSpecial(person, "affranchissiment");
+  naissance_R = verifierDocument(person, "naissance");
+  naisssance = afficheActe(naissance_R, "naissance");
+  deces_R = verifierDocument(person, "deces");
+  deces = afficheActe(naissance_R, "deces");
+  mariage_R = verifierDocument(person, "mariage");
+  mariage = afficheActe(naissance_R, "mariage");
+  affranchissiment_R = verifierDocument(person, "affranchissiment");
+  affranchissement = afficheActe(naissance_R, "affranchissiment");
+  special_R= verifierDocumentSpecial(person, "affranchissiment");
+  affranchissement = afficheActe(naissance_R, "special");
+
 
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
@@ -171,32 +177,25 @@ async function verifierDocument(person, repertoire) {
   const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
 
   // Vérifier si la propriété de date existe et est définie
-  if (person[dateProperty]) {
-    // Construire le chemin vers le fichier en utilisant l'ID de la personne
-    const filePath = `../data/${repertoire}/${person.id}.*`; // Supposons que les fichiers soient au format PDF
-    try {
-      // Tenter de récupérer le fichier
-      const response = await fetch(filePath, { method: 'HEAD' });
-      // Extraire les trois premières lettres du répertoire
-      const repPrefix = repertoire.substring(0, 3);
-      // Créer un élément <span> pour afficher le préfixe du répertoire avec la couleur appropriée
-      const span = document.createElement('span');
-      span.textContent = repPrefix;
-      if (response.ok) {
-        span.style.color = 'green'; // Le fichier existe, couleur verte
-      } else {
-        span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
+  async function verifierDocument(person, repertoire) {
+    // Construire le nom de la propriété de date en fonction du répertoire
+    const dateProperty = 'date_' + repertoire;
+   // Vérifier si la propriété de date existe et est définie
+    if (person[dateProperty]) {
+      // Construire le chemin vers le fichier en utilisant l'ID de la personne
+      const filePath = `../data/${repertoire}/${person.id}.*`; // Supposons que les fichiers soient au format PDF
+      try {
+        // Tenter de récupérer le fichier
+        const response = await fetch(filePath, { method: 'HEAD' });
+        // Vérifier si la réponse est positive
+        return response.ok; // Retourne true si le fichier existe, sinon false
+      } catch (error) {
+        // En cas d'erreur (par exemple, problème réseau), retourner false
+        return false;
       }
-      return span; // Retourner l'élément <span>
-    } catch (error) {
-      console.error('Erreur lors de la vérification du document :', error);
-      // Gérer l'erreur si nécessaire
-    }
+    } 
   }
-  // Retourner null si la propriété de date n'existe pas ou si une erreur s'est produite
-  return null;
-}
-
+} 
 
 async function verifierDocumentSpecial(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
@@ -228,6 +227,21 @@ async function verifierDocumentSpecial(person, repertoire) {
   // Retourner null si la propriété de date n'existe pas ou si une erreur s'est produite
   return null;
 }
+
+function afficheActe(reponse,repertoire) {
+  const repPrefix = repertoire.substring(0, 3);
+  // Créer un élément <span> pour afficher le préfixe du répertoire avec la couleur appropriée
+  const span = document.createElement('span');
+  span.textContent = repPrefix;
+  if (reponse.ok) {
+    span.style.color = 'green'; // Le fichier existe, couleur verte
+  } else {
+    span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
+  }
+  return span; // Retourner l'élément <span> 
+}
+
+
 
 function creerAn(date) {
     const year = parseInt(date.substr(6, 4));
