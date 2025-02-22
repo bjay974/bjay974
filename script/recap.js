@@ -136,7 +136,7 @@ function ajoutMembresListe(listElement, persons) {
 function creerListItem(person) {
   const li = document.createElement('li');
   // Fonction pour générer l'année avec indication de couleur
-  function creerAnAvecCouleur(date, type) {
+  function creerAnAvecCouleur(date) {
     if (!date) return '';
     const jourMois = date.substr(0, 5);
     const year = date.substr(6, 4);
@@ -148,7 +148,7 @@ function creerListItem(person) {
     if (jourMois === "01/01") {
       return `<span style="color: blue;">${year}</span>`; // Année seule en bleue
     }
-    return `<span style="color: green;">${year}</span>`; // Année complète (verte pour naissance, rouge pour décès)
+    return `<span style="color: green;">${year}</span>`; // Année complète
   }
   naissance = verifierDocument(person, "naissance");
   deces = verifierDocument(person, "deces");
@@ -159,7 +159,7 @@ function creerListItem(person) {
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
-      ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance, 'naissance')}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces, 'deces') : ''}) 
+      ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
       ${naissance} ${deces} ${mariage} ${affranchissiment} ${special} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
@@ -188,9 +188,15 @@ async function verifierDocument(person, repertoire) {
         span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
       }
       return span; // Retourner l'élément <span>
-    } 
-  } 
+    } catch (error) {
+      console.error('Erreur lors de la vérification du document :', error);
+      // Gérer l'erreur si nécessaire
+    }
+  }
+  // Retourner null si la propriété de date n'existe pas ou si une erreur s'est produite
+  return null;
 }
+
 
 async function verifierDocumentSpecial(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
