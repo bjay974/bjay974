@@ -60,6 +60,7 @@ function creerTitreEtListe(listElement, titreText) {
 function ajoutMembresListe(listElement, persons) {
     persons.forEach(async person => {
         const listItem = await creerListItem(person);
+        setTimeout(20)
         listElement.appendChild(listItem);
     });
 }
@@ -128,7 +129,7 @@ async function verifierDocument(person, repertoire) {
   for (const ext of extensions) {
       const filePath = `${basePath}.${ext}`;
       try {
-          await new Promise(resolve => setTimeout(resolve, Math.random() * 200)); // Délai aléatoire entre 0 et 200 ms
+          await new Promise(resolve => setTimeout(resolve, Math.random() * 20)); // Délai aléatoire entre 0 et 200 ms
           const response = await fetch(filePath, { method: 'HEAD' });
           if (response.ok) return "OK";
       } catch (error) {
@@ -140,7 +141,23 @@ async function verifierDocument(person, repertoire) {
 
 
 async function verifierDocumentSpecial(person, repertoire) {
-    return verifierDocument(person, `particulier/${person.id}`);
+  const dateProperty = 'date_' + repertoire;
+  if (!person[dateProperty]) return "PasDeDate";
+  
+  const extensions = ['pdf', 'jpg', 'png'];
+  const basePath = `../data/particulier/${person.id}`;
+
+  for (const ext of extensions) {
+      const filePath = `${basePath}.${ext}`;
+      try {
+          await new Promise(resolve => setTimeout(resolve, Math.random() * 20)); // Délai aléatoire entre 0 et 200 ms
+          const response = await fetch(filePath, { method: 'HEAD' });
+          if (response.ok) return "OK";
+      } catch (error) {
+          console.error(`Erreur lors de la vérification de ${filePath}:`, error);
+      }
+  }
+  return "KO";
 }
 
 function creerAnAvecCouleur(date) {
