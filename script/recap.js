@@ -156,7 +156,7 @@ function creerListItem(person) {
   deces = afficheActe(deces_R, "deces");
   mariage_R = verifierDocument(person, "mariage");
   mariage = afficheActe(mariage_R, "mariage");
-  affranchissiment_R = verifierDocument(person, "affranchissiment");
+  affranchissement_R = verifierDocument(person, "affranchissiment");
   affranchissement = afficheActe(affanchissement_R, "affranchissiment");
   special_R= verifierDocumentSpecial(person, "affranchissiment");
   special = afficheActe(special_R, "special");
@@ -166,7 +166,7 @@ function creerListItem(person) {
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
-      ${naissance} ${deces} ${mariage} ${affranchissiment} ${special} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+      ${naissance} ${deces} ${mariage} ${affranchissement} ${special} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
   return li;
@@ -175,11 +175,6 @@ function creerListItem(person) {
 async function verifierDocument(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
   const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
-
-  // Vérifier si la propriété de date existe et est définie
-  async function verifierDocument(person, repertoire) {
-    // Construire le nom de la propriété de date en fonction du répertoire
-    const dateProperty = 'date_' + repertoire;
    // Vérifier si la propriété de date existe et est définie
     if (person[dateProperty]) {
       // Construire le chemin vers le fichier en utilisant l'ID de la personne
@@ -194,38 +189,25 @@ async function verifierDocument(person, repertoire) {
         return false;
       }
     } 
-  }
-} 
+}
 
 async function verifierDocumentSpecial(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
   const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
-
-  // Vérifier si la propriété de date existe et est définie
-  if (person[dateProperty]) {
-    // Construire le chemin vers le fichier en utilisant l'ID de la personne
-    const filePath = `../data/particulier/${person.id}.*`; // Supposons que les fichiers soient au format PDF
-    try {
-      // Tenter de récupérer le fichier
-      const response = await fetch(filePath, { method: 'HEAD' });
-      // Extraire les trois premières lettres du répertoire
-      const repPrefix = "spec"
-      // Créer un élément <span> pour afficher le préfixe du répertoire avec la couleur appropriée
-      const span = document.createElement('span');
-      span.textContent = repPrefix;
-      if (response.ok) {
-        span.style.color = 'green'; // Le fichier existe, couleur verte
-      } else {
-        span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
+   // Vérifier si la propriété de date existe et est définie
+    if (person[dateProperty]) {
+      // Construire le chemin vers le fichier en utilisant l'ID de la personne
+      const filePath = `../data/special/${person.id}.*`; // Supposons que les fichiers soient au format PDF
+      try {
+        // Tenter de récupérer le fichier
+        const response = await fetch(filePath, { method: 'HEAD' });
+        // Vérifier si la réponse est positive
+        return response.ok; // Retourne true si le fichier existe, sinon false
+      } catch (error) {
+        // En cas d'erreur (par exemple, problème réseau), retourner false
+        return false;
       }
-      return span; // Retourner l'élément <span>
-    } catch (error) {
-      console.error('Erreur lors de la vérification du document :', error);
-      // Gérer l'erreur si nécessaire
-    }
-  }
-  // Retourner null si la propriété de date n'existe pas ou si une erreur s'est produite
-  return null;
+    } 
 }
 
 function afficheActe(reponse,repertoire) {
@@ -241,8 +223,6 @@ function afficheActe(reponse,repertoire) {
   return span; // Retourner l'élément <span> 
 }
 
-
-
 function creerAn(date) {
     const year = parseInt(date.substr(6, 4));
     if (year === 1901) {
@@ -255,7 +235,6 @@ function getOrigine(lieuDeNaissance, departement = "") {
   if (!lieuDeNaissance || typeof lieuDeNaissance !== 'string') {
     return "";
   }
-
   const lieuxAcceptes = ["Afrique", "Warrio - Nigéria", "Nigéria", "Madagascar", "Indes", "France", "Italie", "Pays-Bas", "Portugal"];
 
   // Si le lieu est accepté
@@ -269,7 +248,6 @@ function getOrigine(lieuDeNaissance, departement = "") {
     }
     return `(${lieuDeNaissance})`; // Pour les autres lieux
   }
-
   return ""; // Lieu non accepté
 }
 
