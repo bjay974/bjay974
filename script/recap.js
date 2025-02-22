@@ -153,13 +153,13 @@ function creerListItem(person) {
   naissance_R = verifierDocument(person, "naissance");
   naissance = afficheActe(naissance_R, "naissance");
   deces_R = verifierDocument(person, "deces");
-  deces = afficheActe(naissance_R, "deces");
+  deces = afficheActe(deces_R, "deces");
   mariage_R = verifierDocument(person, "mariage");
-  mariage = afficheActe(naissance_R, "mariage");
+  mariage = afficheActe(mariage_R, "mariage");
   affranchissiment_R = verifierDocument(person, "affranchissiment");
-  affranchissement = afficheActe(naissance_R, "affranchissiment");
+  affranchissement = afficheActe(affanchissement_R, "affranchissiment");
   special_R= verifierDocumentSpecial(person, "affranchissiment");
-  special = afficheActe(naissance_R, "special");
+  special = afficheActe(special_R, "special");
 
 
   li.innerHTML = `
