@@ -212,7 +212,7 @@ function creerListItem(person) {
     } else {
       return null 
     }
- }  
+  }  
   const naissance_R = verifierDocument(person, "naissance");
   const deces_R = verifierDocument(person, "deces");
   const mariage_R = verifierDocument(person, "mariage");
@@ -224,13 +224,10 @@ function creerListItem(person) {
   const mariage = afficheActe(mariage_R, "mariage")
   const affranchissement = afficheActe(affranchissement_R, "affranchissement")
   const special = afficheActe(special_R, "particulier")
-  const resultat = `
-  ${naissance}
-  ${deces}
-  ${mariage}
-  ${affranchissement}
-  ${special}
-`;
+  const resultat = [naissance, deces, mariage, affranchissement, special]
+  .filter(value => value !== "") // Filtrer les valeurs vides
+  .join(" "); // Joindre les valeurs restantes avec un espace
+
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
