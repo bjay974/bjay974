@@ -85,7 +85,7 @@ async function creerListItem(person) {
       <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
          class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
           ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
-          ${naissance || '-'} ${deces || '-'} ${mariage || '-'} ${affranchissement || '-'} ${special || '-'} 
+          ${naissance || ''} ${deces || ''} ${mariage || ''} ${affranchissement || ''} ${special || ''} 
           <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
       </a>
     `;
