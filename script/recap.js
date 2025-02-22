@@ -150,18 +150,19 @@ function creerListItem(person) {
     }
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
-  naissance_R = verifierDocument(person, "naissance");
-  deces_R = verifierDocument(person, "deces");
-  mariage_R = verifierDocument(person, "mariage");
-  affranchissement_R = verifierDocument(person, "affranchissiment");
-  special_R= verifierDocumentSpecial(person, "affranchissiment");
+  const naissance_R = await verifierDocument(person, "naissance");
+  const deces_R = await verifierDocument(person, "deces");
+  const mariage_R = await verifierDocument(person, "mariage");
+  const affranchissement_R = await verifierDocument(person, "affranchissement");
+  const special_R = await verifierDocumentSpecial(person, "affranchissement");
+  // Construction des résultats de chaque document
   const resultat = `
-  ${naissance_R ? afficheActe(naissance_R, "naissance") : ''}
-  ${deces_R ? afficheActe(deces_R, "deces") : ''}
-  ${mariage_R ? afficheActe(mariage_R, "mariage") : ''}
-  ${affranchissement_R ? afficheActe(affranchissement_R, "affranchissement") : ''}
-  ${special_R ? afficheActe(special_R, "particulier") : ''}
-`;
+    ${naissance_R ? afficheActe(true, "naissance") : afficheActe(false, "naissance")}
+    ${deces_R ? afficheActe(true, "deces") : afficheActe(false, "deces")}
+    ${mariage_R ? afficheActe(true, "mariage") : afficheActe(false, "mariage")}
+    ${affranchissement_R ? afficheActe(true, "affranchissement") : afficheActe(false, "affranchissement")}
+    ${special_R ? afficheActe(true, "particulier") : afficheActe(false, "particulier")}
+  `;
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
@@ -175,21 +176,23 @@ function creerListItem(person) {
 async function verifierDocument(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
   const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
-   // Vérifier si la propriété de date existe et est définie
-    if (person[dateProperty]) {
-      // Construire le chemin vers le fichier en utilisant l'ID de la personne
-      const filePath = `../data/${repertoire}/${person.id}.*`; // Supposons que les fichiers soient au format PDF
-      try {
-        // Tenter de récupérer le fichier
-        const response = await fetch(filePath, { method: 'HEAD' });
-        // Vérifier si la réponse est positive
-        return response.ok; // Retourne true si le fichier existe, sinon false
-      } catch (error) {
-        // En cas d'erreur (par exemple, problème réseau), retourner false
-        return false;
-      }
-    } 
+
+  // Vérifier si la propriété de date existe et est définie
+  if (person[dateProperty]) {
+    const filePath = `../data/${repertoire}/${person.id}.*`; // Chemin du fichier
+
+    try {
+      // Vérifier si le fichier existe (méthode HEAD pour ne pas récupérer le contenu)
+      const response = await fetch(filePath, { method: 'HEAD' });
+      return response.ok; // Retourne true si le fichier existe, sinon false
+    } catch (error) {
+      // Si un problème réseau survient, retourner false
+      return false;
+    }
+  }
+  return false; // Si la date n'est pas définie
 }
+
 
 async function verifierDocumentSpecial(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
