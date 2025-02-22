@@ -151,12 +151,12 @@ function creerListItem(person) {
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
 
-  async function verifierDocumentSpecial(person, repertoire) {
+  async function verifierDocument(person, repertoire) {
     const dateProperty = 'date_' + repertoire;
     if (!person[dateProperty]) return "PasDeDate";
 
     const extensions = ['pdf', 'jpg', 'png']; // Ajouter les formats possibles
-    const basePath = `../data/particulier/${person.id}`;
+    const basePath = `../data/${repertoire}/${person.id}`;
 
     for (const ext of extensions) {
         const filePath = `${basePath}.${ext}`;
