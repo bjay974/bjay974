@@ -150,58 +150,51 @@ function creerListItem(person) {
     }
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
-  async function verifierDocument(person, repertoire) {
-    // Construire le nom de la propriété de date en fonction du répertoire
-    const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
-  
-    // Vérifier si la propriété de date existe et est définie
-    if (person[dateProperty]) {
-      const filePath = `../data/${repertoire}/${person.id}.*`; // Chemin du fichier
-  
-      try {
-        // Tenter de récupérer le fichier
-        const response = await fetch(filePath, { method: 'HEAD' });
-        // Vérifier si la réponse est positive
-        if (response.ok) {
-            return "OK"
-        }
-        else {
-            return "KO"
-        }
-      } catch (error) {
-        // En cas d'erreur (par exemple, problème réseau), retourner false
-        return false;
-      }
-    }
-    return false; // Si la date n'est pas définie
-  }
-  
-  
+
   async function verifierDocumentSpecial(person, repertoire) {
-    // Construire le nom de la propriété de date en fonction du répertoire
     const dateProperty = 'date_' + repertoire;
-    let doc 
-     // Vérifier si la propriété de date existe et est définie
-      if (person[dateProperty]) {
-        // Construire le chemin vers le fichier en utilisant l'ID de la personne
-        const filePath = `../data/particulier/${person.id}.*`; // Supposons que les fichiers soient au format PDF
+    if (!person[dateProperty]) return "PasDeDate";
+
+    const extensions = ['pdf', 'jpg', 'png']; // Ajouter les formats possibles
+    const basePath = `../data/particulier/${person.id}`;
+
+    for (const ext of extensions) {
+        const filePath = `${basePath}.${ext}`;
         try {
-          // Tenter de récupérer le fichier
-          const response = await fetch(filePath, { method: 'HEAD' });
-          // Vérifier si la réponse est positive
-          if (response.ok) {
-              return "OK"
-          }
-          else {
-              return "KO"
-          }
+            const response = await fetch(filePath, { method: 'HEAD' });
+            if (response.ok) {
+                return "OK"; // Fichier trouvé
+            }
         } catch (error) {
-          // En cas d'erreur (par exemple, problème réseau), retourner false
-          return false;
+            console.error(`Erreur lors de la vérification de ${filePath}:`, error);
         }
-      } 
-      return "PasDeDate"; // Si la date n'est pas définie
+    }
+
+    return "KO"; // Aucun fichier trouvé  
   }
+
+  async function verifierDocumentSpecial(person, repertoire) {
+    const dateProperty = 'date_' + repertoire;
+    if (!person[dateProperty]) return "PasDeDate";
+
+    const extensions = ['pdf', 'jpg', 'png']; // Ajouter les formats possibles
+    const basePath = `../data/particulier/${person.id}`;
+
+    for (const ext of extensions) {
+        const filePath = `${basePath}.${ext}`;
+        try {
+            const response = await fetch(filePath, { method: 'HEAD' });
+            if (response.ok) {
+                return "OK"; // Fichier trouvé
+            }
+        } catch (error) {
+            console.error(`Erreur lors de la vérification de ${filePath}:`, error);
+        }
+    }
+
+    return "KO"; // Aucun fichier trouvé
+}
+
   function afficheActe(reponse,repertoire) {
     const response = reponse
     const repPrefix = repertoire.substring(0, 3);
