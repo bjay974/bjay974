@@ -155,12 +155,18 @@ function creerListItem(person) {
   mariage_R = verifierDocument(person, "mariage");
   affranchissement_R = verifierDocument(person, "affranchissiment");
   special_R= verifierDocumentSpecial(person, "affranchissiment");
-
+  const resultat = `
+  ${naissance_R ? afficheActe(naissance_R, "naissance") : ''}
+  ${deces_R ? afficheActe(deces_R, "deces") : ''}
+  ${mariage_R ? afficheActe(mariage_R, "mariage") : ''}
+  ${affranchissement_R ? afficheActe(affranchissement_R, "affranchissement") : ''}
+  ${special_R ? afficheActe(special_R, "particulier") : ''}
+`;
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
-      ${afficheActe(naissance_R, "naissance")} ${afficheActe(deces_R, "deces")} ${afficheActe(mariage_R, "mariage")} ${afficheActe(affranchissement_R, "affranchissiment")} ${afficheActe(special_R, "particulier")} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+      ${resultat}  <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
   return li;
