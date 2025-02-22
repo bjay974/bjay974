@@ -220,8 +220,13 @@ async function verifierDocumentSpecial(person, repertoire) {
         span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
       }
       return span; // Retourner l'élément <span>
-    } 
-  } 
+    } catch (error) {
+      console.error('Erreur lors de la vérification du document :', error);
+      // Gérer l'erreur si nécessaire
+    }
+  }
+  // Retourner null si la propriété de date n'existe pas ou si une erreur s'est produite
+  return null;
 }
 
 function creerAn(date) {
