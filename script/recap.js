@@ -157,9 +157,9 @@ function creerListItem(person) {
   mariage_R = verifierDocument(person, "mariage");
   mariage = afficheActe(mariage_R, "mariage");
   affranchissement_R = verifierDocument(person, "affranchissiment");
-  affranchissement = afficheActe(affanchissement_R, "affranchissiment");
+  affranchissement = afficheActe(affranchissement_R, "affranchissiment");
   special_R= verifierDocumentSpecial(person, "affranchissiment");
-  special = afficheActe(special_R, "special");
+  special = afficheActe(special_R, "particulier");
 
 
   li.innerHTML = `
@@ -197,7 +197,7 @@ async function verifierDocumentSpecial(person, repertoire) {
    // Vérifier si la propriété de date existe et est définie
     if (person[dateProperty]) {
       // Construire le chemin vers le fichier en utilisant l'ID de la personne
-      const filePath = `../data/special/${person.id}.*`; // Supposons que les fichiers soient au format PDF
+      const filePath = `../data/particulier/${person.id}.*`; // Supposons que les fichiers soient au format PDF
       try {
         // Tenter de récupérer le fichier
         const response = await fetch(filePath, { method: 'HEAD' });
