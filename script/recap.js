@@ -1,36 +1,68 @@
 fetch('../data/data.json')
   .then(response => response.json())
   .then(data => {
+    // Initialisation des tableaux pour chaque catégorie
     const homFam = [], femFam = [];
     const homPat = [], femPat = [];
     const homMat = [], femMat = [];
     const homGen = [], femGen = [];
 
+    // Parcourt chaque personne et les répartir dans les tableaux correspondants
     data.forEach(person => {
       if (person.id <= 203) {
-        (person.genre === 'M' ? homFam : femFam).push(person);
-      } else if (person.id <= 999) {
-        (person.genre === 'M' ? homPat : femPat).push(person);
-      } else if (person.id <= 1999) {
-        (person.genre === 'M' ? homMat : femMat).push(person);
-      } else if (person.id <= 19999) {
-        (person.genre === 'M' ? homGen : femGen).push(person);
+        if (person.genre === 'M') {
+          homFam.push(person);
+        } else {
+          femFam.push(person);
+        }
+      } else if (person.id >= 204 && person.id <= 999) {
+        if (person.genre === 'M') {
+          homPat.push(person);
+        } else {
+          femPat.push(person);
+        }
+      } else if (person.id >= 1000 && person.id <= 1999) {
+        if (person.genre === 'M') {
+          homMat.push(person);
+        } else {
+          femMat.push(person);
+        }
       }
+      else if (person.id >= 10000 && person.id <= 19999) {
+        if (person.genre === 'M') {
+          homGen.push(person);
+        } else {
+          femGen.push(person);
+        }
+      }      
     });
-
+ 
+    // Appliquer le tri à chaque catégorie
     [homFam, femFam, homPat, femPat, homMat, femMat, homGen, femGen].forEach(trierParGenerationEtDate);
 
-    afficheMembres(document.getElementById('hom-list'), 'Boug', homFam);
-    afficheMembres(document.getElementById('fem-list'), 'Fanm', femFam);
-    afficheMembres(document.getElementById('hom-list-pat'), 'Boug coté papa', homPat);
-    afficheMembres(document.getElementById('fem-list-pat'), 'Fanm coté papa', femPat);
-    afficheMembres(document.getElementById('hom-list-mat'), 'Boug coté momon', homMat);
-    afficheMembres(document.getElementById('fem-list-mat'), 'Fanm coté momon', femMat);
-    afficheMembres(document.getElementById('hom-list-gen'), 'Zancet boug', homGen);
-    afficheMembres(document.getElementById('fem-list-gen'), 'Zancet Fanm', femGen);
+    // Création des éléments de liste pour chaque catégorie
+    const homFamList = document.getElementById('hom-list');
+    const femFamList = document.getElementById('fem-list');
+    const homPatList = document.getElementById('hom-list-pat');
+    const femPatList = document.getElementById('fem-list-pat');
+    const homMatList = document.getElementById('hom-list-mat');
+    const femMatList = document.getElementById('fem-list-mat');
+    const homGenList = document.getElementById('hom-list-gen');
+    const femGenList = document.getElementById('fem-list-gen');    
+
+    // Affichage des membres pour chaque catégorie
+    afficheMembres(homFamList, 'Boug', homFam);
+    afficheMembres(femFamList, 'Fanm', femFam);
+    afficheMembres(homPatList, 'Boug coté papa', homPat);
+    afficheMembres(femPatList, 'Fanm coté papa', femPat);
+    afficheMembres(homMatList, 'Boug coté momon', homMat);
+    afficheMembres(femMatList, 'Fanm coté momon', femMat);
+    afficheMembres(homGenList, 'Zancet boug', homGen);
+    afficheMembres(femGenList, 'Zancet Fanm', femGen);
+
   })
   .catch(error => console.error('Erreur lors du chargement des données :', error));
-
+  
 function trierParGenerationEtDate(tableau) {
     tableau.sort((a, b) => {
         const genA = extraireGeneration(a.id);
