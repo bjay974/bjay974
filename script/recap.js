@@ -148,8 +148,7 @@ function creerListItem(person) {
     if (jourMois === "01/01") {
       return `<span style="color: blue;">${year}</span>`; // Année seule en bleue
     }
-    const color = type === 'naissance' ? 'green' : 'red';
-    return `<span style="color: ${color};">${year}</span>`; // Année complète (verte pour naissance, rouge pour décès)
+    return `<span style="color: green;">${year}</span>`; // Année complète (verte pour naissance, rouge pour décès)
   }
   naissance = verifierDocument(person, "naissance");
   deces = verifierDocument(person, "deces");
