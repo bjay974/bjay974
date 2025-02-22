@@ -208,12 +208,16 @@ function creerListItem(person) {
 async function afficherResultats(person) {
   const [naissance_R, deces_R, mariage_R, affranchissement_R, special_R] = await Promise.all([
       verifierDocument(person, "naissance"),
+      setTimeout(1),
       verifierDocument(person, "deces"),
+      setTimeout(1),
       verifierDocument(person, "mariage"),
+      setTimeout(1),
       verifierDocument(person, "affranchissement"),
+      setTimeout(1),
       verifierDocumentSpecial(person, "affranchissement"),
   ]);
-
+  setTimeout(10)
   const naissance = afficheActe(naissance_R, "naissance");
   const deces = afficheActe(deces_R, "deces");
   const mariage = afficheActe(mariage_R, "mariage");
@@ -222,7 +226,7 @@ async function afficherResultats(person) {
 
   console.log("Valeur de naissance :", naissance);
   console.log("Valeur de resultat :", [naissance, deces, mariage, affranchissement, special]);
-  setTimeout(1)
+
 }
 
   li.innerHTML = `
