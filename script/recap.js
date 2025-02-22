@@ -81,6 +81,7 @@ async function creerListItem(person) {
     const affranchissement = afficheActe(affranchissement_R, "affranchissement");
     const special = afficheActe(special_R, "particulier");
 
+    setTimeout(1)
     li.innerHTML = `
       <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
          class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
