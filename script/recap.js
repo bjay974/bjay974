@@ -150,11 +150,11 @@ function creerListItem(person) {
     }
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
-  const naissance_R = await verifierDocument(person, "naissance");
-  const deces_R = await verifierDocument(person, "deces");
-  const mariage_R = await verifierDocument(person, "mariage");
-  const affranchissement_R = await verifierDocument(person, "affranchissement");
-  const special_R = await verifierDocumentSpecial(person, "affranchissement");
+  const naissance_R = verifierDocument(person, "naissance");
+  const deces_R = verifierDocument(person, "deces");
+  const mariage_R = verifierDocument(person, "mariage");
+  const affranchissement_R = verifierDocument(person, "affranchissement");
+  const special_R = verifierDocumentSpecial(person, "affranchissement");
   // Construction des résultats de chaque document
   const resultat = `
     ${naissance_R ? afficheActe(true, "naissance") : afficheActe(false, "naissance")}
