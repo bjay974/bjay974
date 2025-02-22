@@ -151,22 +151,16 @@ function creerListItem(person) {
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
   naissance_R = verifierDocument(person, "naissance");
-  naissance = afficheActe(naissance_R, "naissance");
   deces_R = verifierDocument(person, "deces");
-  deces = afficheActe(deces_R, "deces");
   mariage_R = verifierDocument(person, "mariage");
-  mariage = afficheActe(mariage_R, "mariage");
   affranchissement_R = verifierDocument(person, "affranchissiment");
-  affranchissement = afficheActe(affranchissement_R, "affranchissiment");
   special_R= verifierDocumentSpecial(person, "affranchissiment");
-  special = afficheActe(special_R, "particulier");
-
 
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
-      ${naissance} ${deces} ${mariage} ${affranchissement} ${special} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+      ${afficheActe(naissance_R, "naissance")} ${afficheActe(deces_R, "deces")} ${afficheActe(mariage_R, "mariage")} ${afficheActe(affranchissement_R, "affranchissiment")} ${afficheActe(special_R, "particulier")} <em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
   return li;
@@ -212,15 +206,11 @@ async function verifierDocumentSpecial(person, repertoire) {
 
 function afficheActe(reponse,repertoire) {
   const repPrefix = repertoire.substring(0, 3);
-  // Créer un élément <span> pour afficher le préfixe du répertoire avec la couleur appropriée
-  const span = document.createElement('span');
-  span.textContent = repPrefix;
   if (reponse.ok) {
-    span.style.color = 'green'; // Le fichier existe, couleur verte
+    return `<span style="color: green;">${repPrefix}</span>`;
   } else {
-    span.style.color = 'red'; // Le fichier n'existe pas, couleur rouge
+    return `<span style="color: red;">${repPrefix}</span>`;    
   }
-  return span; // Retourner l'élément <span> 
 }
 
 function creerAn(date) {
