@@ -187,11 +187,17 @@ async function verifierDocument(person, repertoire) {
     const filePath = `../data/${repertoire}/${person.id}.*`; // Chemin du fichier
 
     try {
-      // Vérifier si le fichier existe (méthode HEAD pour ne pas récupérer le contenu)
+      // Tenter de récupérer le fichier
       const response = await fetch(filePath, { method: 'HEAD' });
-      return response.ok; // Retourne true si le fichier existe, sinon false
+      // Vérifier si la réponse est positive
+      if (response.ok) {
+          return "OK"
+      }
+      else {
+          return "KO"
+      }
     } catch (error) {
-      // Si un problème réseau survient, retourner false
+      // En cas d'erreur (par exemple, problème réseau), retourner false
       return false;
     }
   }
@@ -222,15 +228,15 @@ async function verifierDocumentSpecial(person, repertoire) {
         return false;
       }
     } 
-    return "NON"
+    return false; // Si la date n'est pas définie
 }
 
 function afficheActe(reponse,repertoire) {
   const response = reponse
   const repPrefix = repertoire.substring(0, 3);
-  if (response = "OK") {
+  if (response === "OK") {
     return `<span style="color: green;">${repPrefix}</span>`;
-  } else if  (response = "KO") {
+  } else if  (response === "KO") {
     return `<span style="color: red;">${repPrefix}</span>`;    
   }
 }
