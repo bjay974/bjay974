@@ -60,7 +60,6 @@ function creerTitreEtListe(listElement, titreText) {
 function ajoutMembresListe(listElement, persons) {
     persons.forEach(async person => {
         const listItem = await creerListItem(person);
-        setTimeout(200)
         listElement.appendChild(listItem);
     });
 }
@@ -129,7 +128,7 @@ async function verifierDocument(person, repertoire) {
   for (const ext of extensions) {
       const filePath = `${basePath}.${ext}`;
       try {
-          await new Promise(resolve => setTimeout(resolve, Math.random() * 2)); // Délai aléatoire entre 0 et 200 ms
+          await new Promise(resolve => setTimeout(resolve, Math.random() * 1)); // Délai aléatoire entre 0 et 200 ms
           const response = await fetch(filePath, { method: 'HEAD' });
           if (response.ok) return "OK";
       } catch (error) {
@@ -150,7 +149,7 @@ async function verifierDocumentSpecial(person, repertoire) {
   for (const ext of extensions) {
       const filePath = `${basePath}.${ext}`;
       try {
-          await new Promise(resolve => setTimeout(resolve, Math.random() * 2)); // Délai aléatoire entre 0 et 200 ms
+          await new Promise(resolve => setTimeout(resolve, Math.random() * 1)); // Délai aléatoire entre 0 et 200 ms
           const response = await fetch(filePath, { method: 'HEAD' });
           if (response.ok) return "OK";
       } catch (error) {
