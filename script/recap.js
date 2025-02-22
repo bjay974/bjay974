@@ -224,9 +224,16 @@ function creerListItem(person) {
   const mariage = afficheActe(mariage_R, "mariage")
   const affranchissement = afficheActe(affranchissement_R, "affranchissement")
   const special = afficheActe(special_R, "particulier")
+
   const resultat = [naissance, deces, mariage, affranchissement, special]
   .filter(value => value !== "") // Filtrer les valeurs vides
   .join(" "); // Joindre les valeurs restantes avec un espace
+
+  console.log("Valeur de naissanceR :", naissance_R);
+  console.log("Valeur de naissance :", naissance);
+  console.log("Valeurs de affranchissement :", affranchissement); 
+  console.log("Valeurs de resultat :", resultat);
+  
 
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
