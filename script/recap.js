@@ -157,11 +157,11 @@ function creerListItem(person) {
   const special_R = verifierDocumentSpecial(person, "affranchissement");
   // Construction des résultats de chaque document
   const resultat = `
-  ${naissance_R === "OK" ? afficheActe(true, "naissance") : ""}
-  ${deces_R === "OK" ? afficheActe(true, "deces") : ""}
-  ${mariage_R === "OK" ? afficheActe(true, "mariage") : ""}
-  ${affranchissement_R === "OK" ? afficheActe(true, "affranchissement") : ""}
-  ${special_R === "OK" ? afficheActe(true, "particulier") : ""}
+  ${naissance_R = afficheActe("OK", "naissance")}
+  ${deces_R = afficheActe(true, "deces")}
+  ${mariage_R = afficheActe(true, "mariage")}
+  ${affranchissement_R = afficheActe(true, "affranchissement")}
+  ${special_R = afficheActe(true, "particulier")}
 `;
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
@@ -217,13 +217,14 @@ async function verifierDocumentSpecial(person, repertoire) {
         return false;
       }
     } 
+    return "NON"
 }
 
 function afficheActe(reponse,repertoire) {
   const repPrefix = repertoire.substring(0, 3);
-  if (reponse.ok) {
+  if (reponse = "OK") {
     return `<span style="color: green;">${repPrefix}</span>`;
-  } else {
+  } else if  (reponse = "KO") {
     return `<span style="color: red;">${repPrefix}</span>`;    
   }
 }
