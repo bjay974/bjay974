@@ -133,8 +133,9 @@ function ajoutMembresListe(listElement, persons) {
   listElement.appendChild(fragment);
 }
 
-function creerListItem(person) {
+async function creerListItem(person) {
   const li = document.createElement('li');
+  
   // Fonction pour générer l'année avec indication de couleur
   function creerAnAvecCouleur(date) {
     if (!date) return '';
@@ -150,96 +151,93 @@ function creerListItem(person) {
     }
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
-  const naissance_R = verifierDocument(person, "naissance");
-  const deces_R = verifierDocument(person, "deces");
-  const mariage_R = verifierDocument(person, "mariage");
-  const affranchissement_R = verifierDocument(person, "affranchissement");
-  const special_R = verifierDocumentSpecial(person, "affranchissement");
+
+  // Vérifier si un document existe pour un répertoire donné
+  async function verifierDocument(person, repertoire) {
+    const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
+
+    if (person[dateProperty]) {
+      const filePath = `../data/${repertoire}/${person.id}.*`; // Chemin du fichier
+
+      try {
+        const response = await fetch(filePath, { method: 'HEAD' });
+        if (response.ok) {
+          return "OK";
+        } else {
+          return "KO";
+        }
+      } catch (error) {
+        return false;
+      }
+    }
+    return false; // Si la date n'est pas définie
+  }
+
+  // Vérifier pour les documents spéciaux
+  async function verifierDocumentSpecial(person, repertoire) {
+    const dateProperty = 'date_' + repertoire;
+    if (person[dateProperty]) {
+      const filePath = `../data/particulier/${person.id}.*`;
+
+      try {
+        const response = await fetch(filePath, { method: 'HEAD' });
+        if (response.ok) {
+          return "OK";
+        } else {
+          return "KO";
+        }
+      } catch (error) {
+        return false;
+      }
+    }
+    return false;
+  }
+
+  // Fonction pour afficher un acte
+  function afficheActe(response, repertoire) {
+    const repPrefix = repertoire.substring(0, 3);
+    if (response === "OK") {
+      return `<span style="color: green;">${repPrefix}</span>`;
+    } else if (response === "KO") {
+      return `<span style="color: red;">${repPrefix}</span>`;
+    }
+    return '';
+  }
+
+  // Attendre la résolution des promesses avant de continuer
+  const [naissance_R, deces_R, mariage_R, affranchissement_R, special_R] = await Promise.all([
+    verifierDocument(person, "naissance"),
+    verifierDocument(person, "deces"),
+    verifierDocument(person, "mariage"),
+    verifierDocument(person, "affranchissement"),
+    verifierDocumentSpecial(person, "affranchissement")
+  ]);
+
   // Construction des résultats de chaque document
-  const naissance = afficheActe(naissance_R, "naissance")
-  const deces = afficheActe(deces_R, "deces")
-  const mariage = afficheActe(mariage_R, "mariage")
-  const affranchissement = afficheActe(affranchissement_R, "affranchissement")
-  const special = afficheActe(special_R, "particulier")
+  const naissance = afficheActe(naissance_R, "naissance");
+  const deces = afficheActe(deces_R, "deces");
+  const mariage = afficheActe(mariage_R, "mariage");
+  const affranchissement = afficheActe(affranchissement_R, "affranchissement");
+  const special = afficheActe(special_R, "particulier");
+
   const resultat = `
-  ${naissance}
-  ${deces}
-  ${mariage}
-  ${affranchissement}
-  ${special}
-`;
+    ${naissance}
+    ${deces}
+    ${mariage}
+    ${affranchissement}
+    ${special}
+  `;
+
   li.innerHTML = `
-  <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
-     class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
+    <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
+       class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
       ${resultat}<em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
-  </a>
-`;
+    </a>
+  `;
   return li;
 }
 
-async function verifierDocument(person, repertoire) {
-  // Construire le nom de la propriété de date en fonction du répertoire
-  const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
-
-  // Vérifier si la propriété de date existe et est définie
-  if (person[dateProperty]) {
-    const filePath = `../data/${repertoire}/${person.id}.*`; // Chemin du fichier
-
-    try {
-      // Tenter de récupérer le fichier
-      const response = await fetch(filePath, { method: 'HEAD' });
-      // Vérifier si la réponse est positive
-      if (response.ok) {
-          return "OK"
-      }
-      else {
-          return "KO"
-      }
-    } catch (error) {
-      // En cas d'erreur (par exemple, problème réseau), retourner false
-      return false;
-    }
-  }
-  return false; // Si la date n'est pas définie
-}
-
-
-async function verifierDocumentSpecial(person, repertoire) {
-  // Construire le nom de la propriété de date en fonction du répertoire
-  const dateProperty = 'date_' + repertoire;
-  let doc 
-   // Vérifier si la propriété de date existe et est définie
-    if (person[dateProperty]) {
-      // Construire le chemin vers le fichier en utilisant l'ID de la personne
-      const filePath = `../data/particulier/${person.id}.*`; // Supposons que les fichiers soient au format PDF
-      try {
-        // Tenter de récupérer le fichier
-        const response = await fetch(filePath, { method: 'HEAD' });
-        // Vérifier si la réponse est positive
-        if (response.ok) {
-            return "OK"
-        }
-        else {
-            return "KO"
-        }
-      } catch (error) {
-        // En cas d'erreur (par exemple, problème réseau), retourner false
-        return false;
-      }
-    } 
-    return false; // Si la date n'est pas définie
-}
-
-function afficheActe(reponse,repertoire) {
-  const response = reponse
-  const repPrefix = repertoire.substring(0, 3);
-  if (response === "OK") {
-    return `<span style="color: green;">${repPrefix}</span>`;
-  } else if  (response === "KO") {
-    return `<span style="color: red;">${repPrefix}</span>`;    
-  }
-}
 
 function creerAn(date) {
     const year = parseInt(date.substr(6, 4));
