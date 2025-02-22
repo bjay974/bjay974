@@ -142,7 +142,7 @@ function creerListItem(person) {
     const year = date.substr(6, 4);
     const yearInt = parseInt(year);
     if (yearInt === 1901) {
-      return `<span style="color: red;">${year}</span>`; // Année inconnue en rouge
+      return `<span style="color: red;">??</span>`; // Année inconnue en rouge
     }
     // Vérifier si la date est uniquement une année (01/01/XXXX)
     if (jourMois === "01/01") {
@@ -157,12 +157,12 @@ function creerListItem(person) {
   const special_R = verifierDocumentSpecial(person, "affranchissement");
   // Construction des résultats de chaque document
   const resultat = `
-    ${naissance_R ? afficheActe(true, "naissance") : afficheActe(false, "naissance")}
-    ${deces_R ? afficheActe(true, "deces") : afficheActe(false, "deces")}
-    ${mariage_R ? afficheActe(true, "mariage") : afficheActe(false, "mariage")}
-    ${affranchissement_R ? afficheActe(true, "affranchissement") : afficheActe(false, "affranchissement")}
-    ${special_R ? afficheActe(true, "particulier") : afficheActe(false, "particulier")}
-  `;
+  ${naissance_R === "OK" ? afficheActe(true, "naissance") : ""}
+  ${deces_R === "OK" ? afficheActe(true, "deces") : ""}
+  ${mariage_R === "OK" ? afficheActe(true, "mariage") : ""}
+  ${affranchissement_R === "OK" ? afficheActe(true, "affranchissement") : ""}
+  ${special_R === "OK" ? afficheActe(true, "particulier") : ""}
+`;
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
@@ -196,7 +196,8 @@ async function verifierDocument(person, repertoire) {
 
 async function verifierDocumentSpecial(person, repertoire) {
   // Construire le nom de la propriété de date en fonction du répertoire
-  const dateProperty = 'date' + repertoire.charAt(0).toUpperCase() + repertoire.slice(1);
+  const dateProperty = 'date_' + repertoire;
+  let doc 
    // Vérifier si la propriété de date existe et est définie
     if (person[dateProperty]) {
       // Construire le chemin vers le fichier en utilisant l'ID de la personne
@@ -205,7 +206,12 @@ async function verifierDocumentSpecial(person, repertoire) {
         // Tenter de récupérer le fichier
         const response = await fetch(filePath, { method: 'HEAD' });
         // Vérifier si la réponse est positive
-        return response.ok; // Retourne true si le fichier existe, sinon false
+        if (response.ok) {
+            return "OK"
+        }
+        else {
+            return "KO"
+        }
       } catch (error) {
         // En cas d'erreur (par exemple, problème réseau), retourner false
         return false;
