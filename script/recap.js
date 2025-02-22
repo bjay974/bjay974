@@ -142,7 +142,7 @@ function creerListItem(person) {
     const year = date.substr(6, 4);
     const yearInt = parseInt(year);
     if (yearInt === 1901) {
-      return '<span style="color: red;">N??</span>'; // Année inconnue en rouge
+      return `<span style="color: red;">${year}</span>`; // Année inconnue en rouge
     }
     // Vérifier si la date est uniquement une année (01/01/XXXX)
     if (jourMois === "01/01") {
