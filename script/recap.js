@@ -151,7 +151,7 @@ function creerListItem(person) {
     return `<span style="color: green;">${year}</span>`; // Année complète
   }
   naissance_R = verifierDocument(person, "naissance");
-  naisssance = afficheActe(naissance_R, "naissance");
+  naissance = afficheActe(naissance_R, "naissance");
   deces_R = verifierDocument(person, "deces");
   deces = afficheActe(naissance_R, "deces");
   mariage_R = verifierDocument(person, "mariage");
@@ -159,7 +159,7 @@ function creerListItem(person) {
   affranchissiment_R = verifierDocument(person, "affranchissiment");
   affranchissement = afficheActe(naissance_R, "affranchissiment");
   special_R= verifierDocumentSpecial(person, "affranchissiment");
-  affranchissement = afficheActe(naissance_R, "special");
+  special = afficheActe(naissance_R, "special");
 
 
   li.innerHTML = `
