@@ -73,7 +73,7 @@ async function creerListItem(person) {
         verifierDocument(person, "deces"),
         person.genre === "M" ? verifierDocument(person, "mariage") : Promise.resolve(""),
         verifierDocument(person, "affranchissement"),
-        verifierDocumentSpecial(person, "particulier"),
+        verifierDocumentSpecial(person, "affranchissement"),
     ]);
 
     const naissance = afficheActe(naissance_R, "naissance",person.date_naissance);
