@@ -195,44 +195,30 @@ function creerListItem(person) {
     return "KO"; // Aucun fichier trouvé
 }
 
-  function afficheActe(reponse,repertoire) {
-    const response = reponse
-    const repPrefix = repertoire.substring(0, 3);
-    if (response === "OK") {
-      return `<span style="color: green;">${repPrefix}</span>`;
-    } else if  (response === "KO") {
-      return `<span style="color: red;">${repPrefix}</span>`;    
-    } else {
-      return null 
-    }
-  }  
-  const naissance_R = verifierDocument(person, "naissance");
-  const deces_R = verifierDocument(person, "deces");
-  const mariage_R = verifierDocument(person, "mariage");
-  const affranchissement_R = verifierDocument(person, "affranchissement");
-  const special_R = verifierDocumentSpecial(person, "affranchissement");
-  // Construction des résultats de chaque document
-  const naissance = afficheActe(naissance_R, "naissance")
-  const deces = afficheActe(deces_R, "deces")
-  const mariage = afficheActe(mariage_R, "mariage")
-  const affranchissement = afficheActe(affranchissement_R, "affranchissement")
-  const special = afficheActe(special_R, "particulier")
+async function afficherResultats(person) {
+  const [naissance_R, deces_R, mariage_R, affranchissement_R, special_R] = await Promise.all([
+      verifierDocument(person, "naissance"),
+      verifierDocument(person, "deces"),
+      verifierDocument(person, "mariage"),
+      verifierDocument(person, "affranchissement"),
+      verifierDocumentSpecial(person, "affranchissement"),
+  ]);
 
-  const resultat = [naissance, deces, mariage, affranchissement, special]
-  .filter(value => value !== "") // Filtrer les valeurs vides
-  .join(" "); // Joindre les valeurs restantes avec un espace
+  const naissance = afficheActe(naissance_R, "naissance");
+  const deces = afficheActe(deces_R, "deces");
+  const mariage = afficheActe(mariage_R, "mariage");
+  const affranchissement = afficheActe(affranchissement_R, "affranchissement");
+  const special = afficheActe(special_R, "particulier");
 
-  console.log("Valeur de naissanceR :", naissance_R);
   console.log("Valeur de naissance :", naissance);
-  console.log("Valeurs de affranchissement :", affranchissement); 
-  console.log("Valeurs de resultat :", resultat);
-  
+  console.log("Valeur de resultat :", [naissance, deces, mariage, affranchissement, special]);
+}
 
   li.innerHTML = `
   <a href="${person.id < 2000 ? '../html/person.html?id=' + person.id : person.id > 10000 ? '../html/person.html?id=' + person.id : '#'}" 
      class="${person.genre === 'M' ? 'lienHommeEnGras' : 'lienFemmeEnGras'}">
       ${person.nom} ${person.prenom} (${creerAnAvecCouleur(person.date_naissance)}${person.date_deces ? ' / ' + creerAnAvecCouleur(person.date_deces) : ''}) 
-      ${resultat}<em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
+      ${afficherResultats(person)}<em>${getOrigine(person.lieu_naissance, person.departement_naissance)} G${extraireGeneration(person.id)}</em>
   </a>
 `;
   return li;
