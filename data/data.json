@@ -586,10 +586,12 @@
     "date_naissance": "01/01/1811",
     "lieu_naissance": "Afrique",
     "date_deces": "31/08/1871",
+
+    
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 710,
     "date_affranchissement": "20/12/1848",
-    "commentaire": "Domicilié à Bras Canot"
+    "commentaire": "Saisi du bateau les 2 freres en 1823, à ~ 10ans, engagé a l'atelier colonial et affranchit aprés 7 ans d'engagement."
   },
   {
     "id": 704,
@@ -751,7 +753,7 @@
     "date_deces": "11/02/1906",
     "lieu_deces": "Saint Benoit",
     "date_mariage": "26/05/1862",
-    "lieu_mariage": "Saint benoit",
+    "lieu_mariage": "Saint Benoit",
     "id_conjoint": 602,
     "commentaire": "Pierre a été employé à l'usine sucriére de Beaulieu, propriétée du Credit Foncier",
     "date_affranchissement": "20/12/1848"
@@ -770,7 +772,7 @@
     "date_deces": "07/06/1911",
     "lieu_deces": "Saint Benoit",
     "date_mariage": "26/05/1862",
-    "lieu_mariage": "Saint benoit",
+    "lieu_mariage": "Saint Benoit",
     "id_conjoint": 603,
     "date_affranchissement": "10/12/1848",
     "commentaire": "Index des Naissances 1844 Saint Benoit : pas d'acte de naissance"
