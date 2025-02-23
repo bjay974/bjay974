@@ -233,6 +233,13 @@ function ajoutDeces(detailsList,person){
                 }
                 decesItem ? detailsList.appendChild(decesItem) : null;
             }
+            else (person.date_naissance !== "01/01/1901") {
+                const dateValide = verifieDate(person.date_deces);
+                const adjectif_genre = ajouterE("Décédé", person.genre);
+                let decesItem
+                decesItem = creerItem(`${adjectif_genre} ${dateValide}`);
+                decesItem ? detailsList.appendChild(decesItem) : null;
+            }
         } else {
             detailsList.appendChild(creerItem('Date de décès inconnue'));    
         }
