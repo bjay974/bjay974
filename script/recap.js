@@ -62,7 +62,7 @@ fetch('../data/data.json')
 
   })
   .catch(error => console.error('Erreur lors du chargement des données :', error));
-  
+
 function trierParGenerationEtDate(tableau) {
     tableau.sort((a, b) => {
         const genA = extraireGeneration(a.id);
@@ -154,7 +154,7 @@ async function verifierDocument(person, repertoire) {
   const dateProperty = 'date_' + repertoire;
   if (!person[dateProperty]) return "PasDeDate";
   
-  const extensions = ['pdf', 'jpg', 'png'];
+  const extensions = ['pdf', 'jpg', 'JPG'];
   const basePath = `../data/${repertoire}/${person.id}`;
 
   for (const ext of extensions) {
