@@ -426,10 +426,12 @@
     "id_mere": "Inconnue",
     "date_naissance": "01/01/1799",
     "lieu_naissance": "Afrique",
+    "date_mariage": "12/12/1846",
+    "lieu_mariage":"Saint Benoit",
     "date_deces": "02/09/1862",
     "lieu_deces": "Saint Benoit",
     "id_conjoint": 800,
-    "date_affranchissement": "20/12/1848",
+    "date_affranchissement": "09/12/1848",
     "commentaire": "Domicilié au quartier lieu dit le Canal, décédé au domicile de Mr RODIN Fortuné"
   },
   {
@@ -456,9 +458,11 @@
     "date_naissance": "01/01/1805",
     "lieu_naissance": "Madagascar",
     "date_deces": "03/07/1868",
-    "lieu_deces": "Inconnu",
+    "lieu_deces": "Saint Benoit",
+    "date_mariage": "12/12/1846",
+    "lieu_mariage":"Saint Benoit",    
     "id_conjoint": 819,
-    "date_affranchissement": "20/12/1848"
+    "date_affranchissement": "09/12/1848"
   },
   {
     "id": 720,
