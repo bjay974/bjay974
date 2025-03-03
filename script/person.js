@@ -331,7 +331,7 @@ async function ajouterLiensActes(person, detailsList) {
 
     // Affichage structuré des fichiers
     fichiersExistants.forEach((fichiers, message) => {
-        const acteItem = document.createElement('div');
+        const acteItem = document.createElement('li');
 
         // Afficher la première partie
         if (fichiers.premiere) {
