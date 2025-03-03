@@ -328,14 +328,14 @@ async function ajouterLiensActes(person, detailsList) {
 
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
+    const acteItem = creerItem("");
 
     // Affichage structuré des fichiers
     fichiersExistants.forEach((fichiers, message) => {
-        const acteItem = creerItem("");
 
         // Afficher la première partie
         if (fichiers.premiere) {
-            const lienFichier = document.createElement('a');
+            const lienFichier = document.createElement('li');
             lienFichier.classList.add('lienFichier');
             lienFichier.textContent = `${message}`;
             lienFichier.href = fichiers.premiere;
@@ -347,8 +347,7 @@ async function ajouterLiensActes(person, detailsList) {
         if (fichiers.deuxieme) {
             const separator = document.createTextNode(" | ");
             acteItem.appendChild(separator);
-
-            const lienDeuxieme = document.createElement('a');
+            const lienDeuxieme = document.createElement('li');
             lienDeuxieme.classList.add('lienFichier');
             lienDeuxieme.textContent = "Deuxième partie";
             lienDeuxieme.href = fichiers.deuxieme;
