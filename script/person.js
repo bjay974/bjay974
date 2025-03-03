@@ -312,8 +312,8 @@ async function ajouterLiensActes(person, detailsList) {
     );
 
     // Vérification spécifique pour les mariages des femmes (stockés sous l'ID du mari)
-    if (person.genre === 'F' && person.conjointId) {
-        const nomFichierConjoint = person.conjointId; // ID du conjoint (homme)
+    if (person.genre === 'F' && person.id_conjoint) {
+        const nomFichierConjoint = person.id_conjoint; // ID du conjoint (homme)
         const nomFichierConjoint2 = `${nomFichierConjoint}_2`; // Deuxième partie du conjoint
 
         // Vérifier les fichiers de mariage du conjoint (homme) et de l'épouse
