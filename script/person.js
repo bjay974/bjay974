@@ -335,11 +335,10 @@ async function ajouterLiensActes(person, detailsList) {
 
         // Afficher la première partie
         if (fichiers.premiere) {
-            const lienFichier = document.createElement('li');
+            const lienFichier = document.createElement('a');
             lienFichier.classList.add('lienFichier');
             lienFichier.textContent = `${message}`;
             lienFichier.href = fichiers.premiere;
-            lienFichier.style.marginRight = "10px";
             acteItem.appendChild(lienFichier);
         }
 
@@ -347,7 +346,7 @@ async function ajouterLiensActes(person, detailsList) {
         if (fichiers.deuxieme) {
             const separator = document.createTextNode(" | ");
             acteItem.appendChild(separator);
-            const lienDeuxieme = document.createElement('li');
+            const lienDeuxieme = document.createElement('a');
             lienDeuxieme.classList.add('lienFichier');
             lienDeuxieme.textContent = "Deuxième partie";
             lienDeuxieme.href = fichiers.deuxieme;
