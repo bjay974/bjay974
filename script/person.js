@@ -331,8 +331,7 @@ async function ajouterLiensActes(person, detailsList) {
 
     // Affichage structuré des fichiers
     fichiersExistants.forEach((fichiers, message) => {
-        const acteItem = document.createElement('li');
-
+        const acteItem = document.createElement('div');
         // Afficher la première partie
         if (fichiers.premiere) {
             const lienFichier = document.createElement('a');
@@ -510,6 +509,6 @@ function getAfficheMessage(repertoire) {
             return "Voir l'acte d'affranchissement";   
             break;
         default :
-            return "Deuxième Partie"         
+            return "Deuxième partie"         
     }
 }

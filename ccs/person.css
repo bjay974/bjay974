@@ -31,9 +31,10 @@
 
 .lienFichier {
     color:var(--color-secondary);
-    font-size: 85%;
+    font-size: 80%;
     padding-bottom: 2%;
     margin-right: 0.5%;
+    margin-left: 1%;
     text-align: left;
 }
 
