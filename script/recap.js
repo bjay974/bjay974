@@ -15,20 +15,20 @@ fetch('../data/data.json')
         } else {
           femFam.push(person);
         }
-      } else if (person.id >= 204 && person.id <= 999) {
+      } else if (person.id >= 204 && person.id <= 1199) {
         if (person.genre === 'M') {
           homPat.push(person);
         } else {
           femPat.push(person);
         }
-      } else if (person.id >= 1000 && person.id <= 1999) {
+      } else if (person.id >= 2000 && person.id <= 1599) {
         if (person.genre === 'M') {
           homMat.push(person);
         } else {
           femMat.push(person);
         }
       }
-      else if (person.id >= 10000 && person.id <= 19999) {
+      else if (person.id >= 1600 && person.id <= 19999) {
         if (person.genre === 'M') {
           homGen.push(person);
         } else {
