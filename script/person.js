@@ -332,10 +332,12 @@ async function ajouterLiensActes(person, detailsList) {
     // Affichage structuré des fichiers
     fichiersExistants.forEach((fichiers, message) => {
         const acteItem = document.createElement('div');
+        acteItem.classList.add('listFichier');
+
         // Afficher la première partie
         if (fichiers.premiere) {
             const lienFichier = document.createElement('a');
-            lienFichier.classList.add('lienFichier');
+            lienFichier.classList.add('labelArbrePerso');
             lienFichier.textContent = `${message}`;
             lienFichier.href = fichiers.premiere;
             lienFichier.style.marginRight = "10px";
