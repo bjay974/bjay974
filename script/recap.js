@@ -21,14 +21,14 @@ fetch('../data/data.json')
         } else {
           femPat.push(person);
         }
-      } else if (person.id >= 1400 && person.id <= 1599) {
+      } else if (person.id >= 1600 && person.id <= 1799) {
         if (person.genre === 'M') {
           homMat.push(person);
         } else {
           femMat.push(person);
         }
       }
-      else if (person.id >= 1600 && person.id <= 19999) {
+      else if (person.id >= 1800 && person.id <= 1999) {
         if (person.genre === 'M') {
           homGen.push(person);
         } else {

@@ -329,7 +329,7 @@ async function ajouterLiensActes(person, detailsList) {
     // Attendre que toutes les vérifications soient terminées
     await Promise.all(fetchPromises);
     const acteItem = creerItem("");
-
+    
     // Affichage structuré des fichiers
     fichiersExistants.forEach((fichiers, message) => {
 
