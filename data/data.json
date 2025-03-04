@@ -135,8 +135,8 @@
     "nom": "HOAREAU",
     "prenom": "Marie Geneviève",
     "genre": "F",
-    "id_pere": 1823,
-    "id_mere": 1806,
+    "id_pere": "Inconnu",
+    "id_mere": "Inconnue",
     "date_naissance": "23/10/1804",
     "lieu_naissance": "Saint Pierre",
     "date_deces": "09/10/1838",
@@ -303,7 +303,7 @@
     "prenom": "Michel",
     "genre": "M",
     "id_pere": 1635,
-    "id_mere": 1670,
+    "id_mere": 1660,
     "date_naissance": "13/05/1874",
     "lieu_naissance": "Saint Joseph",
     "date_deces": "28/12/1926",
@@ -1219,18 +1219,6 @@
     "id_conjoint": 1655
   },
   {
-    "id": 1670,
-    "nom": "FONTAINE",
-    "prenom": "Marianne",
-    "genre": "F",
-    "id_pere": 1719,
-    "id_mere": 1716, 
-    "date_naissance": "28/06/1828",
-    "lieu_naissance": "Saint Joseph",
-    "date_deces": "30/06/1862",
-    "lieu_deces": "Saint Philippe "
-  },
-  {
     "id": 1635,
     "nom": "DUJARDIN",
     "prenom": "Joseph",
@@ -1245,7 +1233,7 @@
     "date_deces": "16/08/1900",
     "nom_legitime": "BARRE",
     "date_legitime": "30/03/1859",
-    "id_conjoint": 1670,
+    "id_conjoint": 1660,
     "date_affranchissement": "20/12/1848",
     "commentaire": "Reconnu par Joseph BARRE, demeurant alors à Saint Leu, aprés le deces de sa maman (1850)"
   },
