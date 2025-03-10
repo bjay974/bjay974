@@ -1,6 +1,6 @@
 // Fonction pour charger les actes
 async function chargerPiecesArchives() {
-    const detailsList = document.getElementById('listeArchives'); // L'élément où les pièces seront affichées
+    const detailsList = document.getElementById('archive-details'); // L'élément où les pièces seront affichées
 
     // Tableau des noms de fichiers
     const nomsFichiers = Array.from({ length: 23 }, (_, i) => {
