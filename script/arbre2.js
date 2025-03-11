@@ -12,7 +12,7 @@ async function chargerPiecesArchives() {
     // Parcourir les noms de fichiers et créer les liens
     for (let i = 0; i < nomsFichiers.length; i++) {
         const nomFichier = nomsFichiers[i];
-        const lienTexte = `Pièce_${i + 1}`; // Nom du lien à afficher
+        const lienTexte = `Pièce n° ${i + 1}`; // Nom du lien à afficher
         const fichierURL = `../data/particulier/${nomFichier}`; // URL du fichier à charger
 
         // Création de l'élément lien
@@ -21,13 +21,8 @@ async function chargerPiecesArchives() {
         lienPiece.textContent = lienTexte;
         lienPiece.href = fichierURL;
 
-        // Création de l'élément colonne pour chaque lien
-        const colonnePiece = document.createElement('div');
-        colonnePiece.classList.add('colonnePiece');
-        colonnePiece.appendChild(lienPiece);
-
         // Ajouter la colonne à la liste des détails
-        detailsList.appendChild(colonnePiece);
+        detailsList.appendChild(lienPiece);
     }
 }
 
