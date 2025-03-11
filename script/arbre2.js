@@ -17,7 +17,7 @@ async function chargerPiecesArchives() {
 
         // Création de l'élément lien
         const lienPiece = document.createElement('a');
-        lienPiece.classList.add('lienFichier');
+        lienPiece.classList.add('lienArchive');
         lienPiece.textContent = lienTexte;
         lienPiece.href = fichierURL;
 
