@@ -1,4 +1,4 @@
-.listPerson, .listEnfant, .listFratrie, .listFichier {
+.listPerson, .listEnfant, .listFratrie, .listFichier, .listArchive {
     display: grid;
     text-align: left; 
     flex-direction: column;
@@ -34,6 +34,13 @@
     font-size: 80%;
     padding-bottom: 2%;
     margin-right: 0.5%;
+    text-align: left;
+}
+
+.lienArchive {
+    color:var(--color-secondary);
+    padding-bottom: 1%;
+    margin-right: 10%;
     text-align: left;
 }
 
