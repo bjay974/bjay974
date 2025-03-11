@@ -98,7 +98,14 @@
     font-size: 90%;
     margin-right: 0.5%;
  }
- 
+
+ .labelArbre1 {
+    color:var(--color-secondary);
+    text-align: center;
+    font-weight: bold; 
+    font-size: 1.1em;
+}
+
 .labelArbre2 {
     color:var(--color-secondary);
     text-align: left;
