@@ -6,7 +6,7 @@ async function chargerPiecesArchives() {
     const nomsFichiers = Array.from({ length: 23 }, (_, i) => {
         const index = i + 1;
         const numeroPiece = index.toString().padStart(4, '0'); // Formatage du numéro de pièce
-        return `102_600_345_BETSMAN_${numeroPiece}.jpg`;
+        return `102_600_345_%20BETSMAN_${numeroPiece}.jpg`;
     });
 
     // Parcourir les noms de fichiers et créer les liens
