@@ -43,6 +43,7 @@
 }
 
 .lienArchive {
+    box-sizing: border-box; /* Inclut padding et border dans le calcul de largeur */
     flex: 0 0 calc(33.33% - 20px); /* Calcul de la largeur pour trois colonnes avec un espace de marge */
     margin: 5px; /* Marge entre les éléments */
     text-align: center; /* Centrer le texte à l'intérieur des liens */
