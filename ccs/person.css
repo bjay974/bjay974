@@ -44,11 +44,11 @@
 
 .lienArchive {
     flex: 0 0 calc(33.33% - 20px); /* Calcul de la largeur pour trois colonnes avec un espace de marge */
-    margin: 10px; /* Marge entre les éléments */
+    margin: 5px; /* Marge entre les éléments */
     text-align: center; /* Centrer le texte à l'intérieur des liens */
     text-decoration: none; /* Enlever la décoration de lien par défaut */
     color:var(--color-secondary);
-    padding: 10px; /* Espacement intérieur pour un meilleur aspect */
+    padding: 5px; /* Espacement intérieur pour un meilleur aspect */
     border: 1px solid #ccc; /* Bordure autour des liens */
     border-radius: 5px; /* Coins arrondis pour un aspect plus doux */
 }
