@@ -1474,6 +1474,8 @@
     "id_pere": "Inconnu",
     "id_mere": "Inconnue",
     "date_naissance": "01/01/1819",
+    "lieu_naissance": "Saint Joseph",
+    "lieu_deces" :"Saint Joseph",
     "date_deces": "18/01/1880",
     "date_mariage": "17/10/1833",
     "lieu_mariage": "Saint Joseph",
